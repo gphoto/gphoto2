@@ -1,1 +1,1 @@
-SUBDIRS = doc gphoto2 po
+SUBDIRS = doc gphoto2 packaging po
