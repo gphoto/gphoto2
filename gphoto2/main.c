@@ -183,8 +183,6 @@ OPTION_CALLBACK(manual);
 OPTION_CALLBACK(about);
 OPTION_CALLBACK(make_dir);
 OPTION_CALLBACK(remove_dir);
-OPTION_CALLBACK(authors);
-OPTION_CALLBACK(license);
 
 /* 2) Add an entry in the option table                          */
 /*    ----------------------------------------------------------------- */
@@ -256,8 +254,6 @@ Option option[] = {
 {"",  "manual",         "",  N_("Camera driver manual"),     manual,  0},
 {"",  "about",          "",  N_("About the camera driver"),  about,   0},
 {"",  "shell",          "",  N_("gPhoto shell"),             shell,   0},
-{"",  "authors",        "",  N_("Authors"),                  authors, 0},
-{"",  "license",        "",  N_("License"),                  license, 0},
 
 /* End of list                  */
 {"" , "", "", "", NULL, 0}
@@ -297,48 +293,6 @@ static int glob_cols = 80;
 /*    The callback function is passed "char *arg" to the argument of    */
 /*    command-line option. It must return GP_OK or GP_ERROR.            */
 /*    Again, use the OPTION_CALLBACK(function) macro.                   */
-
-OPTION_CALLBACK(license)
-{
-	FILE *f;
-	char buf[1024];
-	size_t size;
-
-	f = fopen (DOC_DIR "/COPYING", "rb");
-	if (!f) {
-		gp_context_error (glob_context, _("Could not open "
-			"'" DOC_DIR "/COPYING'. Please verify your "
-			"installation."));
-		return (GP_ERROR_FILE_NOT_FOUND);
-	}
-
-	while ((size = fread (buf, 1, 1024, f)))
-		fwrite (buf, 1, size, stdout);
-
-	fclose (f);
-	return (GP_OK);
-}
-
-OPTION_CALLBACK(authors)
-{
-	FILE *f;
-	char buf[1024];
-	size_t size;
-
-	f = fopen (DOC_DIR "/AUTHORS", "rb");
-	if (!f) {
-		gp_context_error (glob_context, _("Could not open " 
-			"'" DOC_DIR "/COPYING'. Please verify your "
-			"installation."));
-		return (GP_ERROR_FILE_NOT_FOUND);
-	}
-
-	while ((size = fread (buf, 1, 1024, f)))
-		fwrite (buf, 1, size, stdout);
-
-	fclose (f);
-	return (GP_OK);
-}
 
 OPTION_CALLBACK(help)
 {

@@ -209,6 +209,14 @@ if $try_exif; then
                         exif_msg=yes
                         AC_DEFINE(HAVE_EXIF,,[whether we use libexif])])
         fi
+	if $have_exif; then
+		CPPFLAGS_save="$CPPFLAGS"
+		CPPFLAGS=$EXIF_CFLAGS
+		AC_CHECK_HEADER([exif-ifd.h], [
+			exif_msg="yes (>= 0.5.4)"
+			AC_DEFINE(HAVE_EXIF_0_5_4,,[whether we use a version of libexif greater than 0.5.3])])
+		CPPFLAGS="$CPPFLAGS_save"
+	fi
 fi
 AM_CONDITIONAL(HAVE_EXIF, $have_exif)
 AC_SUBST(EXIF_CFLAGS)

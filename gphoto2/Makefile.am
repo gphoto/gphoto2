@@ -12,11 +12,7 @@ INCLUDES =						\
 	-DGPHOTO2_LOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(top_srcdir)					\
 	-I$(top_srcdir)/gphoto2				\
-	$(CDK_CFLAGS)					\
-	$(GP_CFLAGS)					\
-	$(AA_CFLAGS)					\
-	$(EXIF_CFLAGS)					\
-	$(RL_CFLAGS)
+	$(CDK_CFLAGS) $(GP_CFLAGS) $(AA_CFLAGS) $(EXIF_CFLAGS) $(RL_CFLAGS)
 
 if HAVE_CDK
 CDK_FILES = gphoto2-cmd-config.c gphoto2-cmd-config.h
