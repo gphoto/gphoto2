@@ -1,14 +1,14 @@
 # Swedish translation of gPhoto
 # Copyright © 2000 Free Software Foundation, Inc.
 # Andreas Hyden <a.hyden@cyberpoint.se> 2000.
-# Stefan Björnelund <stefanb@update.uu.se> 2002.
 # Sverker Wiberg <sverkerw@du.uab.ericsson.se> 2002.
+# Stefan Björnelund <stefanb@update.uu.se> 2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gphoto 0.4.3\n"
 "POT-Creation-Date: 2002-11-28 05:14-0800\n"
-"PO-Revision-Date: 2002-07-24 08:56+0200\n"
+"PO-Revision-Date: 2003-01-08 23:13+0100\n"
 "Last-Translator: Stefan Björnelund <stefanb@update.uu.se>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 
 #: gphoto2/actions.c:117
-#, fuzzy, c-format
+#, c-format
 msgid "Number of files in folder '%s': %i\n"
-msgstr "Antal filer i mappen %s: %i\n"
+msgstr "Antal filer i mappen '%s': %i\n"
 
 #: gphoto2/actions.c:136
 #, c-format
@@ -317,27 +317,20 @@ msgstr ""
 "stavningen är korrekt (dvs med prefixet 'serial:' eller 'usb:')."
 
 #: gphoto2/actions.c:680
-#, fuzzy
 msgid "About the camera driver:"
-msgstr "Om kameradrivrutinen"
+msgstr "Om kameradrivrutinen:"
 
 #: gphoto2/actions.c:694
-#, fuzzy
 msgid "Camera summary:"
-msgstr ""
-"Kamera sammanfattning:\n"
-"%s\n"
+msgstr "Kamera sammanfattning:"
 
 #: gphoto2/actions.c:708
-#, fuzzy
 msgid "Camera manual:"
-msgstr ""
-"Kameramanual:\n"
-"%s\n"
+msgstr "Kameramanual:"
 
 #: gphoto2/actions.c:724
 msgid "You can only specify speeds for serial ports."
-msgstr ""
+msgstr "Du kan bara specificera hastigheter för serieportar."
 
 #: gphoto2/actions.c:775
 #, c-format
@@ -354,18 +347,26 @@ msgid ""
 "This version of gphoto2 is using the following software versions and "
 "options:\n"
 msgstr ""
+"gphoto2 %s\n"
+"\n"
+"Copyright (C) 2000-2002 Lutz Mueller och andra\n"
+"%s\n"
+"gphoto2 kommer UTAN GARANTI, i den mån lagen så tillåter. Du får\n"
+"återdistribuera kopior av gphoto2 under villkoren i GNU General Public\n"
+"License. För ytterligare information, se filerna med namnet COPYING.\n"
+"\n"
+"Denna version av gphoto2 använder följande programvaruversioner och tillval:\n"
 
 #: gphoto2/actions.c:788
 msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "OS/2-portering av Bart van Leeuwen\n"
 
 #: gphoto2/actions.c:902
-#, fuzzy
 msgid ""
 "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
 "MAILING LIST:"
 msgstr ""
-"INKLUDERA ALLTID DEN FÖLJANDE RADEN NÄR DU SKICKAR AVLUSNINGS MEDELANDEN "
+"INKLUDERA ALLTID DE FÖLJANDE RADERNA NÄR DU SKICKAR AVLUSNINGS MEDELANDEN "
 "TILL POSTLISTAN:"
 
 #: gphoto2/foreach.c:262
@@ -399,19 +400,16 @@ msgstr ""
 "först."
 
 #: gphoto2/gp-params.c:64
-#, fuzzy
 msgid "*** Error ***              \n"
-msgstr ""
-"***  Fel  ('%s') ***       \n"
-"\n"
+msgstr "***  Fel  ***              \n"
 
 #: gphoto2/gp-params.c:231
 msgid "Press any key to continue.\n"
-msgstr ""
+msgstr "Tryck på någon tangent för att fortsätta.\n"
 
 #: gphoto2/gp-params.c:248
 msgid "Not enough memory."
-msgstr ""
+msgstr "Inte tillräckligt med minne."
 
 #: gphoto2/gphoto2-cmd-capture.c:218
 msgid "Operation cancelled"
@@ -653,182 +651,176 @@ msgstr ""
 
 #: gphoto2/main.c:487
 msgid "Jan"
-msgstr ""
+msgstr "Jan"
 
 #: gphoto2/main.c:487
 msgid "January"
-msgstr ""
+msgstr "Januari"
 
 #: gphoto2/main.c:488
 msgid "Feb"
-msgstr ""
+msgstr "Feb"
 
 #: gphoto2/main.c:488
 msgid "February"
-msgstr ""
+msgstr "Februari"
 
 #: gphoto2/main.c:489
-#, fuzzy
 msgid "Mar"
-msgstr "Makro"
+msgstr "Mar"
 
 #: gphoto2/main.c:489
-#, fuzzy
 msgid "March"
-msgstr "Makro"
+msgstr "Mars"
 
 #: gphoto2/main.c:490
 msgid "Apr"
-msgstr ""
+msgstr "Apr"
 
 #: gphoto2/main.c:490
 msgid "April"
-msgstr ""
+msgstr "April"
 
 #: gphoto2/main.c:491
 msgid "May"
-msgstr ""
+msgstr "Maj"
 
 #: gphoto2/main.c:492
 msgid "Jun"
-msgstr ""
+msgstr "Jun"
 
 #: gphoto2/main.c:492
 msgid "June"
-msgstr ""
+msgstr "Juni"
 
 #: gphoto2/main.c:493
 msgid "Jul"
-msgstr ""
+msgstr "Jul"
 
 #: gphoto2/main.c:493
 msgid "July"
-msgstr ""
+msgstr "Juli"
 
 #: gphoto2/main.c:494
 msgid "Aug"
-msgstr ""
+msgstr "Aug"
 
 #: gphoto2/main.c:494
-#, fuzzy
 msgid "August"
-msgstr "Auto"
+msgstr "Augusti"
 
 #: gphoto2/main.c:495
-#, fuzzy
 msgid "Sep"
-msgstr "Sepiabrunt"
+msgstr "Sep"
 
 #: gphoto2/main.c:495
 msgid "September"
-msgstr ""
+msgstr "September"
 
 #: gphoto2/main.c:496
 msgid "Oct"
-msgstr ""
+msgstr "Okt"
 
 #: gphoto2/main.c:496
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
 #: gphoto2/main.c:497
-#, fuzzy
 msgid "Nov"
-msgstr "Nej"
+msgstr "Nov"
 
 #: gphoto2/main.c:497
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: gphoto2/main.c:498
 msgid "Dec"
-msgstr ""
+msgstr "Dec"
 
 #: gphoto2/main.c:498
 msgid "December"
-msgstr ""
+msgstr "December"
 
 #: gphoto2/main.c:505
 msgid "Sun"
-msgstr ""
+msgstr "Sön"
 
 #: gphoto2/main.c:505
 msgid "Sunday"
-msgstr ""
+msgstr "Söndag"
 
 #: gphoto2/main.c:506
-#, fuzzy
 msgid "Mon"
-msgstr "på"
+msgstr "Mån"
 
 #: gphoto2/main.c:506
 msgid "Monday"
-msgstr ""
+msgstr "Måndag"
 
 #: gphoto2/main.c:507
 msgid "Tue"
-msgstr ""
+msgstr "Tis"
 
 #: gphoto2/main.c:507
 msgid "Tuesday"
-msgstr ""
+msgstr "Tisdag"
 
 #: gphoto2/main.c:508
-#, fuzzy
 msgid "Wed"
-msgstr "Röd"
+msgstr "Ons"
 
 #: gphoto2/main.c:508
 msgid "Wednesday"
-msgstr ""
+msgstr "Onsdag"
 
 #: gphoto2/main.c:509
 msgid "Thu"
-msgstr ""
+msgstr "Tor"
 
 #: gphoto2/main.c:509
 msgid "Thursday"
-msgstr ""
+msgstr "Torsdag"
 
 #: gphoto2/main.c:510
 msgid "Fri"
-msgstr ""
+msgstr "Fre"
 
 #: gphoto2/main.c:510
 msgid "Friday"
-msgstr ""
+msgstr "Fredag"
 
 #: gphoto2/main.c:511
 msgid "Sat"
-msgstr ""
+msgstr "Lör"
 
 #: gphoto2/main.c:511
 msgid "Saturday"
-msgstr ""
+msgstr "Lördag"
 
 #: gphoto2/main.c:568
 #, c-format
 msgid "You cannot use '%n' in combination with non-persistent files!"
-msgstr ""
+msgstr "Du kan inte använda '%n' i kombination med icke-beständiga filer!"
 
 #: gphoto2/main.c:591
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
 msgstr ""
+"Filnamnet tillhandahållet av kameran ('%s'%) innehåller inte ett suffix!"
 
 #: gphoto2/main.c:667
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
-msgstr ""
+msgstr "Ogiltigt format '%s' (fel i position %i)."
 
 #: gphoto2/main.c:714
 #, c-format
 msgid "File %s exists. Overwrite? [y|n] "
-msgstr "Filen %s existerar. Skriva över? [j|n] "
+msgstr "Filen %s existerar. Skriva över? Ja/Nej [y|n] "
 
 #: gphoto2/main.c:725
 msgid "Specify new filename? [y|n] "
-msgstr "Specificera filnamn? [j|n] "
+msgstr "Specificera filnamn? Ja/Nej [y|n] "
 
 #: gphoto2/main.c:734
 msgid "Enter new filename: "
@@ -869,21 +861,20 @@ msgstr ""
 "Avbryter...\n"
 
 #: gphoto2/main.c:1304
-#, fuzzy
 msgid "gphoto2 has been compiled without support for CDK."
-msgstr "gphoto2 har kompilerats utan EXIF stöd."
+msgstr "gphoto2 har blivit kompilerad utan stöd för CDK."
 
 #: gphoto2/main.c:1417
 msgid "Operation cancelled.\n"
 msgstr "Operationen avbruten.\n"
 
 #: gphoto2/main.c:1421
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
 "\n"
 msgstr ""
-"***  Fel  ('%s') ***       \n"
+"***  Fel  (%i: '%s') ***       \n"
 "\n"
 
 #: gphoto2/main.c:1425
@@ -904,52 +895,47 @@ msgstr ""
 
 #: gphoto2/main.c:1478
 msgid "Overwrite files without asking."
-msgstr ""
+msgstr "Skriv över filer utan att fråga."
 
 #: gphoto2/main.c:1492
 msgid "path"
-msgstr ""
+msgstr "väg"
 
 #: gphoto2/main.c:1494
 msgid "speed"
-msgstr ""
+msgstr "hastighet"
 
 #: gphoto2/main.c:1496
-#, fuzzy
 msgid "model"
-msgstr "Modell"
+msgstr "modell"
 
 #: gphoto2/main.c:1498
-#, fuzzy
 msgid "filename"
-msgstr "fin"
+msgstr "filnamn"
 
 #: gphoto2/main.c:1500
 msgid "usbid"
-msgstr ""
+msgstr "usbid"
 
 #: gphoto2/main.c:1504
 msgid "folder"
-msgstr ""
+msgstr "mapp"
 
 #: gphoto2/main.c:1556
-#, fuzzy
 msgid "Capture a movie"
-msgstr "Ta en film"
+msgstr "Spela in en film"
 
 #: gphoto2/main.c:1566
 msgid "Show summary"
-msgstr ""
+msgstr "Visa summering"
 
 #: gphoto2/main.c:1568
-#, fuzzy
 msgid "Show camera driver manual"
-msgstr "Kameradrivrutinens manual"
+msgstr "Visa kameradrivrutinens manual"
 
 #: gphoto2/main.c:1570
-#, fuzzy
 msgid "About the camera driver manual"
-msgstr "Om kameradrivrutinen"
+msgstr "Om kameradrivrutinens manual"
 
 #: gphoto2/main.c:1795
 msgid ""
