@@ -799,6 +799,23 @@ get_path_for_file (CameraFile *file, char **path)
 				snprintf (b, sizeof (b), "%i", n + 1);
 				break;
 
+			case 'C':
+
+				/* Get the suffix of the original name */
+				p = strrchr (name, '.');
+				if (!p) {
+					free (*path);
+					*path = NULL;
+					gp_context_error (glob_context,
+						_("The filename provided "
+						  "by the camera ('%s') "
+						  "does not contain a "
+						  "suffix!"), name);
+					return (GP_ERROR_BAD_PARAMETERS);
+				}
+				strncpy (b, p + 1, sizeof (b) - 1);
+				break;
+
 			case 'a':
 				snprintf (b, sizeof (b), "%s",
 					  WeekdayTable[tm->tm_wday].s);
