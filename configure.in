@@ -16,7 +16,7 @@ AC_DEFINE_UNQUOTED(HAVE_CC,"$CC",[The C compiler we're using])
 dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
-ALL_LINGUAS="cs da de es fr it ja no pt_BR ru sk sl sv uk zh_CN"
+ALL_LINGUAS="cs da de es fr it ja no pt_BR ru sk sl sv uk zh_CN ro"
 # EVIL HACKS
 AC_MSG_CHECKING([for po/Makevars requiring evil hack])
 if test -f po/Makevars.template
@@ -346,7 +346,7 @@ AM_CONDITIONAL(HAVE_RL, $have_readline)
 AC_SUBST(RL_LIBS)
 AC_SUBST(RL_CFLAGS)
 
-AC_OUTPUT([
+AC_OUTPUT([  intl/Makefile po/Makefile.in 
 Makefile
 gphoto2/Makefile
 doc/Makefile
