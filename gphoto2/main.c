@@ -1259,7 +1259,7 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		case ARG_FOLDER:
 			params->p.r = set_folder_action (&p, arg);
 			break;
-		case ARG_FORCE:
+		case ARG_FORCE_OVERWRITE:
 			p.force_overwrite = 1;
 			break;
 		case ARG_MODEL:
