@@ -1940,7 +1940,7 @@ main (int argc, char **argv)
 
 	/* Prepare processing options. */
 #ifdef HAVE_POPT
-	ctx = poptGetContext (PACKAGE, argc, argv, options, 0);
+	ctx = poptGetContext (PACKAGE, argc, (const char **) argv, options, 0);
 	if (argc <= 1) {
 		poptPrintUsage (ctx, stdout, 0);
 		return (0);
