@@ -1416,7 +1416,7 @@ report_failure (int result, int argc, char **argv)
 			  "If you intend to send any error or "
 			  "debug messages to the gphoto\n"
 			  "developer mailing list "
-			  "<gphoto-devel@gphoto.org>, please run\n"
+			  "<gphoto-devel@lists.sourceforge.net>, please run\n"
 			  "gphoto2 as follows:\n\n"));
 
 		/*
