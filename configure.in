@@ -243,6 +243,9 @@ if $try_exif; then
 	if $have_exif; then
 		CPPFLAGS_save="$CPPFLAGS"
 		CPPFLAGS=$EXIF_CFLAGS
+		AC_CHECK_HEADER([exif-log.h], [
+			exif_msg="${exif_msg}, (>= 0.6.9)"
+			AC_DEFINE(HAVE_EXIF_0_6_9,1,[whether we use a version of libexif equal or greater than 0.6.9])])
 		AC_CHECK_HEADER([exif-ifd.h], [
                         exif_msg="${exif_msg}, (>= 0.5.4)"
 			AC_DEFINE(HAVE_EXIF_0_5_4,1,[whether we use a version of libexif greater than 0.5.3])])

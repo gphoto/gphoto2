@@ -351,7 +351,13 @@ show_ifd (ExifContent *content)
                 e = content->entries[i];
                 printf ("%-20.20s", exif_tag_get_name (e->tag));
                 printf ("|");
+#ifdef HAVE_EXIF_0_6_9
+		{char b[1024];
+		printf ("%-59.59s", exif_entry_get_value (e, b, sizeof (b)));
+		}
+#else
                 printf ("%-59.59s", exif_entry_get_value (e));
+#endif
                 printf ("\n");
         }
 }
