@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-14 15:36+0100\n"
+"POT-Creation-Date: 2004-03-22 00:36+0100\n"
 "PO-Revision-Date: 2002-11-21 09:26+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -64,12 +64,14 @@ msgstr "关于文件“%s”(文件夹“%s”)的信息：\n"
 
 # frontends/command-line/actions.c:141
 #: gphoto2/actions.c:190
+#, c-format
 msgid "File:\n"
 msgstr "文件：\n"
 
 # frontends/command-line/actions.c:143 frontends/command-line/actions.c:177
 # frontends/command-line/actions.c:193
 #: gphoto2/actions.c:192 gphoto2/actions.c:226 gphoto2/actions.c:242
+#, c-format
 msgid "  None available.\n"
 msgstr "  不可用。\n"
 
@@ -133,26 +135,31 @@ msgstr "否"
 
 # frontends/command-line/actions.c:159
 #: gphoto2/actions.c:208
+#, c-format
 msgid "  Permissions: "
 msgstr "  访问权限："
 
 # frontends/command-line/actions.c:162
 #: gphoto2/actions.c:211
+#, c-format
 msgid "read/delete"
 msgstr "读取/删除"
 
 # frontends/command-line/actions.c:164
 #: gphoto2/actions.c:213
+#, c-format
 msgid "read"
 msgstr "读取"
 
 # frontends/command-line/actions.c:166
 #: gphoto2/actions.c:215
+#, c-format
 msgid "delete"
 msgstr "删除"
 
 # frontends/command-line/actions.c:168
 #: gphoto2/actions.c:217
+#, c-format
 msgid "none"
 msgstr "无"
 
@@ -164,11 +171,13 @@ msgstr "  时间：       %s"
 
 # frontends/command-line/actions.c:175
 #: gphoto2/actions.c:224
+#, c-format
 msgid "Thumbnail:\n"
 msgstr "缩略图：\n"
 
 # frontends/command-line/actions.c:191
 #: gphoto2/actions.c:240
+#, c-format
 msgid "Audio data:\n"
 msgstr "音频数据：\n"
 
@@ -197,6 +206,7 @@ msgstr "无法解析 EXIF 数据。"
 
 # frontends/command-line/actions.c:326
 #: gphoto2/actions.c:396
+#, c-format
 msgid "EXIF tags:"
 msgstr "EXIF 标记："
 
@@ -229,6 +239,7 @@ msgstr "支持相机数量         ：%i\n"
 
 # frontends/command-line/main.c:465
 #: gphoto2/actions.c:451
+#, c-format
 msgid "Supported cameras:\n"
 msgstr "已支持相机：\n"
 
@@ -258,6 +269,7 @@ msgstr "找到设备：%i\n"
 
 # frontends/command-line/main.c:549
 #: gphoto2/actions.c:501
+#, c-format
 msgid ""
 "Path                             Description\n"
 "--------------------------------------------------------------\n"
@@ -283,6 +295,7 @@ msgstr "端口"
 
 # frontends/command-line/main.c:385
 #: gphoto2/actions.c:541
+#, c-format
 msgid "----------------------------------------------------------\n"
 msgstr "----------------------------------------------------------\n"
 
@@ -306,6 +319,7 @@ msgstr "USB 支持             ：%s\n"
 
 # frontends/command-line/main.c:420
 #: gphoto2/actions.c:565
+#, c-format
 msgid "Transfer speeds supported        :\n"
 msgstr "支持的传输速度       ：\n"
 
@@ -317,32 +331,37 @@ msgstr "                     ：%i\n"
 
 # frontends/command-line/main.c:427
 #: gphoto2/actions.c:570
+#, c-format
 msgid "Capture choices                  :\n"
 msgstr "捕捉选项             ：\n"
 
 # frontends/command-line/main.c:429
 #: gphoto2/actions.c:572
+#, c-format
 msgid "                                 : Image\n"
 msgstr "                     ：图像\n"
 
 # frontends/command-line/main.c:431
 #: gphoto2/actions.c:576
+#, c-format
 msgid "                                 : Video\n"
 msgstr "                     ：视频\n"
 
 # frontends/command-line/main.c:433
 #: gphoto2/actions.c:580
+#, c-format
 msgid "                                 : Audio\n"
 msgstr "                     ：音频\n"
 
 # frontends/command-line/main.c:435
 #: gphoto2/actions.c:584
+#, c-format
 msgid "                                 : Preview\n"
 msgstr "                     ：预览\n"
 
 # frontends/command-line/main.c:435
 #: gphoto2/actions.c:588
-#, fuzzy
+#, fuzzy, c-format
 msgid ""
 "                                 : Capture not supported by the driver\n"
 msgstr "                     ：预览\n"
@@ -394,20 +413,24 @@ msgstr ""
 
 # frontends/command-line/main.c:243
 #: gphoto2/actions.c:692
+#, c-format
 msgid "About the camera driver:"
 msgstr "关于相机驱动程序："
 
 # frontends/command-line/main.c:1180
 #: gphoto2/actions.c:706
+#, c-format
 msgid "Camera summary:"
 msgstr "相机概要："
 
 # frontends/command-line/main.c:1192
 #: gphoto2/actions.c:720
+#, c-format
 msgid "Camera manual:"
 msgstr "相机手册："
 
 #: gphoto2/actions.c:736
+#, c-format
 msgid "You can only specify speeds for serial ports."
 msgstr "您只能为串口指定速度。"
 
@@ -416,7 +439,7 @@ msgstr "您只能为串口指定速度。"
 msgid ""
 "gphoto2 %s\n"
 "\n"
-"Copyright (c) 2000-2003 Lutz Mueller and others\n"
+"Copyright (c) 2000-2004 Lutz Mueller and others\n"
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
@@ -478,17 +501,19 @@ msgstr ""
 
 # frontends/command-line/main.c:1753
 #: gphoto2/gp-params.c:53
-#, fuzzy
+#, fuzzy, c-format
 msgid "*** Error ***              \n"
 msgstr ""
 "*** 错误 (%i：“%s”) ***       \n"
 "\n"
 
 #: gphoto2/gp-params.c:220
+#, c-format
 msgid "Press any key to continue.\n"
 msgstr ""
 
 #: gphoto2/gp-params.c:237
+#, c-format
 msgid "Not enough memory."
 msgstr ""
 
@@ -788,6 +813,7 @@ msgstr "gPhoto shell"
 
 # frontends/command-line/main.c:637
 #: gphoto2/main.c:343 gphoto2/main.c:1217
+#, c-format
 msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
 "c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
@@ -991,11 +1017,13 @@ msgstr "文件 %s 存在。覆盖？[y|n] "
 
 # frontends/command-line/main.c:870
 #: gphoto2/main.c:712
+#, c-format
 msgid "Specify new filename? [y|n] "
 msgstr "给出新文件名？[y|n]"
 
 # frontends/command-line/main.c:879
 #: gphoto2/main.c:721
+#, c-format
 msgid "Enter new filename: "
 msgstr "输入新文件名："
 
@@ -1013,11 +1041,13 @@ msgstr "新文件在相机中 %s%s%s 处\n"
 
 # frontends/command-line/main.c:1614
 #: gphoto2/main.c:1075
+#, c-format
 msgid "ERROR: "
 msgstr "错误："
 
 # frontends/command-line/main.c:1637
 #: gphoto2/main.c:1098
+#, c-format
 msgid ""
 "\n"
 "Aborting...\n"
@@ -1027,11 +1057,13 @@ msgstr ""
 
 # frontends/command-line/main.c:1643
 #: gphoto2/main.c:1104
+#, c-format
 msgid "Aborted.\n"
 msgstr "已中断。\n"
 
 # frontends/command-line/main.c:1648
 #: gphoto2/main.c:1109
+#, c-format
 msgid ""
 "\n"
 "Cancelling...\n"
@@ -1046,6 +1078,7 @@ msgstr "gphoto2 编译时没有包含对 CDK 的支持。"
 
 # frontends/command-line/main.c:1750
 #: gphoto2/main.c:1429
+#, c-format
 msgid "Operation cancelled.\n"
 msgstr "操作已取消。\n"
 
@@ -1061,6 +1094,7 @@ msgstr ""
 
 # frontends/command-line/main.c:1759
 #: gphoto2/main.c:1437
+#, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
 "Debugging messages may help finding a solution to your problem.\n"
@@ -1127,6 +1161,7 @@ msgstr "关于相机驱动程序手册"
 
 # frontends/command-line/main.c:1699
 #: gphoto2/main.c:1809
+#, c-format
 msgid ""
 "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
 "location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
@@ -1136,6 +1171,7 @@ msgstr ""
 
 # frontends/command-line/main.c:1709
 #: gphoto2/main.c:1819
+#, c-format
 msgid ""
 "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
 "location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
@@ -1145,11 +1181,13 @@ msgstr ""
 
 # frontends/command-line/options.c:212
 #: gphoto2/options.c:181
+#, c-format
 msgid "Usage:\n"
 msgstr "用法：\n"
 
 # frontends/command-line/options.c:215
 #: gphoto2/options.c:184
+#, c-format
 msgid ""
 "Short/long options (& argument)        Description\n"
 "--------------------------------------------------------------------------------\n"
@@ -1165,6 +1203,7 @@ msgstr "%-38s %s\n"
 
 # frontends/command-line/options.c:245
 #: gphoto2/options.c:214
+#, c-format
 msgid ""
 "--------------------------------------------------------------------------------\n"
 "[Use double-quotes around arguments]        [Picture numbers begin with one "
@@ -1361,25 +1400,30 @@ msgstr "关于“%s”的求助信息："
 
 # frontends/command-line/shell.c:752
 #: gphoto2/shell.c:743
+#, c-format
 msgid "Usage:"
 msgstr "用法："
 
 # frontends/command-line/shell.c:756
 #: gphoto2/shell.c:747
+#, c-format
 msgid "Description:"
 msgstr "描述："
 
 # frontends/command-line/shell.c:758
 #: gphoto2/shell.c:749
+#, c-format
 msgid "* Arguments in brackets [] are optional"
 msgstr "* 出现在方括号 [] 中的参数是可选的"
 
 # frontends/command-line/shell.c:779
 #: gphoto2/shell.c:770
+#, c-format
 msgid "Available commands:"
 msgstr "可用的命令："
 
 # frontends/command-line/shell.c:784
 #: gphoto2/shell.c:775
+#, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
 msgstr "为得到特定命令的求助信息，输入“help 命令名”。"
