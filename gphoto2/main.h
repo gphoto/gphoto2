@@ -31,7 +31,7 @@ struct _Option {
         char    short_id[3];
         char    long_id[20];
         char    argument[32];
-        char    description[35];
+        char    description[55];
         OPTION_CALLBACK((*execute));
         int     required;
 };

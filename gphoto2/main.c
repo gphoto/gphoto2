@@ -138,6 +138,8 @@ OPTION_CALLBACK(get_all_audio_data);
 OPTION_CALLBACK(delete_file);
 OPTION_CALLBACK(delete_all_files);
 OPTION_CALLBACK(upload_file);
+OPTION_CALLBACK(capture_frames);
+OPTION_CALLBACK(capture_interval);
 OPTION_CALLBACK(capture_image);
 OPTION_CALLBACK(capture_preview);
 OPTION_CALLBACK(capture_movie);
@@ -202,6 +204,8 @@ Option option[] = {
 #ifdef HAVE_CDK
 {"" , "config",         "",  N_("Configure"),               config,          0},
 #endif
+{"F" , "frames", "count", N_("Set number of frames to capture (default=infinite)"), capture_frames, 0},
+{"I" , "interval", "seconds", N_("Set capture interval in seconds"), capture_interval, 0},
 {"" , "capture-preview", "", N_("Capture a quick preview"), capture_preview, 0},
 {"" , "capture-image",  "",  N_("Capture an image"),        capture_image,   0},
 {"" , "capture-movie",  "",  N_("Capture a movie "),        capture_movie,   0},
@@ -231,6 +235,8 @@ int  glob_debug = -1;
 int  glob_stdout=0;
 int  glob_stdout_size=0;
 char glob_cancel = 0;
+int  glob_frames = 0;
+int  glob_interval = 0;
 
 GPParams p;
 
@@ -397,6 +403,20 @@ OPTION_CALLBACK (no_recurse)
 OPTION_CALLBACK (list_folders)
 {
 	CR (for_each_folder (&p, list_folders_action));
+
+	return (GP_OK);
+}
+
+OPTION_CALLBACK (capture_frames)
+{
+	glob_frames = atoi(arg);
+
+	return (GP_OK);
+}
+
+OPTION_CALLBACK (capture_interval)
+{
+	glob_interval = atoi(arg);
 
 	return (GP_OK);
 }
@@ -922,28 +942,122 @@ OPTION_CALLBACK (remove_dir)
 static int
 capture_generic (CameraCaptureType type, const char *name)
 {
-        CameraFilePath path;
-        char *pathsep;
-        int result;
+	CameraFilePath path, last;
+	char *pathsep;
+	int result, frames = 0;
 
-	result =  gp_camera_capture (p.camera, type, &path, p.context);
-	if (result != GP_OK) {
-		cli_error_print("Could not capture.");
-		return (result);
+	if(glob_interval) {
+		memset(&last, 0, sizeof(last));
+		if (!p.quiet)
+			printf (_("Time-lapse mode enabled (interval: %ds).\n"),
+				glob_interval);
 	}
 
-	if (strcmp(path.folder, "/") == 0)
-		pathsep = "";
-	else
-		pathsep = "/";
+	while(++frames) {
+		if (!p.quiet && glob_interval) {
+			if(!glob_frames)
+				printf (_("Capturing frame #%d...\n"), frames);
+			else
+				printf (_("Capturing frame #%d/%d...\n"), frames, glob_frames);
+		}
 
-	if (p.quiet)
-		printf ("%s%s%s\n", path.folder, pathsep, path.name);
-	else
-		printf (_("New file is in location %s%s%s on the camera\n"),
-			path.folder, pathsep, path.name);
+		fflush(stdout);
 
-        return (GP_OK);
+		result =  gp_camera_capture (p.camera, type, &path, p.context);
+		if (result != GP_OK) {
+			cli_error_print(_("Could not capture."));
+			return (result);
+		}
+
+		/* If my Canon EOS 10D is set to auto-focus and it is unable to
+		 * get focus lock - it will return with *UNKNOWN* as the filename.
+		 */
+		if (glob_interval && strcmp(path.name, "*UNKNOWN*") == 0) {
+			if (!p.quiet) {
+				printf (_("Capture failed (auto-focus problem?)...\n"));
+				sleep(1);
+				continue;
+			}
+		}
+
+		if (strcmp(path.folder, "/") == 0)
+			pathsep = "";
+		else
+			pathsep = "/";
+
+		if (p.quiet)
+			printf ("%s%s%s\n", path.folder, pathsep, path.name);
+		else
+			printf (_("New file is in location %s%s%s on the camera\n"),
+				path.folder, pathsep, path.name);
+
+		if(!glob_interval) break;
+
+		if(strcmp(path.folder, last.folder)) {
+			memcpy(&last, &path, sizeof(last));
+
+			result = set_folder_action(&p, path.folder);
+			if (result != GP_OK) {
+				cli_error_print(_("Could not set folder."));
+				return (result);
+			}
+		}
+
+		/* XXX: I wonder if there is some way to determine if the camera
+		 * is still writing the image because if we don't sleep here,
+		 * the image will be corrupt when we attempt to download it.
+		 * I assume this is a result of the camera still writing the
+		 * data!  I picked 2 seconds as a first try and it seems like
+		 * enough time for high-quality JPEG on the Canon EOS 10D (with
+		 * a San Disk Ultra II CF).  May need to be increased for RAW
+		 * images...  I don't think this is the correct way to do this.
+		 */
+		sleep(2);
+
+		result = get_file_common (path.name, GP_FILE_TYPE_NORMAL);
+		if (result != GP_OK) {
+			cli_error_print (_("Could not get image."));
+			if(result == GP_ERROR_FILE_NOT_FOUND) {
+				/* Buggy libcanon.so?
+				 * Can happen if this was the first capture after a
+				 * CF card format, or during a directory roll-over,
+				 * ie: CANON100 -> CANON101
+				 */
+				cli_error_print ( _("Buggy libcanon.so?"));
+			}
+			return (result);
+		}
+
+		if (!p.quiet)
+			printf (_("Deleting file %s%s%s on the camera\n"),
+				path.folder, pathsep, path.name);
+
+		result = delete_file_action (&p, path.name);
+		if (result != GP_OK) {
+			cli_error_print ( _("Count not delete image."));
+			return (result);
+		}
+
+		/* Break if we've reached the requested number of frames
+		 * to capture.
+		 */
+		if(glob_frames && frames == glob_frames) break;
+
+		/* Without this, it seems that the second capture always fails.
+		 * That is probably obvious...  for me it was trial n' error.
+		 */
+		result = gp_camera_exit (p.camera, p.context);
+		if (result != GP_OK) {
+			cli_error_print (_("Could not close camera connection."));
+		}
+
+		if (!p.quiet && glob_interval)
+			printf (_("Sleeping for %d second(s)...\n"), glob_interval);
+	
+		if(sleep(glob_interval) != 0) break;
+	}
+
+	return (GP_OK);
 }
 
 #ifndef HAVE_POPT
@@ -1109,6 +1223,7 @@ signal_exit (int signo)
                 printf (_("\nCancelling...\n"));
 
 	glob_cancel = 1;
+	glob_interval = 0;
 }
 
 /* Main :)                                                              */
@@ -1120,6 +1235,8 @@ typedef enum {
 	ARG_ABILITIES,
 	ARG_ABOUT,
 	ARG_AUTO_DETECT,
+	ARG_CAPTURE_FRAMES,
+	ARG_CAPTURE_INTERVAL,
 	ARG_CAPTURE_IMAGE,
 	ARG_CAPTURE_MOVIE,
 	ARG_CAPTURE_PREVIEW,
@@ -1271,6 +1388,12 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		case ARG_STDOUT:
 			p.quiet = 1;
 			glob_stdout = 1;
+			break;
+		case ARG_CAPTURE_FRAMES:
+			glob_frames = atoi(arg);
+			break;
+		case ARG_CAPTURE_INTERVAL:
+			glob_interval = atoi(arg);
 			break;
 		case ARG_STDOUT_SIZE:
 			glob_stdout_size = 1;
@@ -1562,6 +1685,10 @@ main (int argc, char **argv)
 		{"capture-preview", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_PREVIEW,
 		 N_("Capture a quick preview"), NULL},
+		{"frames", 'F', POPT_ARG_INT, NULL, ARG_CAPTURE_FRAMES,
+		 N_("Set number of frames to capture (default=infinite)"), N_("count")},
+		{"interval", 'I', POPT_ARG_INT, NULL, ARG_CAPTURE_INTERVAL,
+		 N_("Set capture interval in seconds"), N_("seconds")},
 		{"capture-image", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_IMAGE, N_("Capture an image"), NULL},
 		{"capture-movie", '\0', POPT_ARG_NONE, NULL,
