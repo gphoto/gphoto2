@@ -33,9 +33,9 @@ AM_GNU_GETTEXT
 dnl ---------------------------------------------------------------------------
 dnl Check for libgphoto2
 dnl ---------------------------------------------------------------------------
-PKG_CHECK_MODULES(GP, libgphoto2 >= 2.1.1)
+PKG_CHECK_MODULES(GP, libgphoto2 >= 2.1.2)
 AC_CHECK_LIB(gphoto2, gp_library_version, [], [
-AC_MSG_ERROR([Sorry, you need at least release 2.1.1 of libgphoto2])
+AC_MSG_ERROR([Sorry, you need at least release 2.1.2 of libgphoto2])
 ], [$GP_LIBS])
 AC_SUBST(GP_LIBS)
 AC_SUBST(GP_CFLAGS)
