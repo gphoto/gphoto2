@@ -30,6 +30,10 @@
 
 #ifdef HAVE_POPT
 #  include <popt.h>
+/* POPT_TABLEEND is only defined from popt 1.6.1 */
+# ifndef POPT_TABLEEND
+#  define POPT_TABLEEND { NULL, '\0', 0, 0, 0, NULL, NULL }
+# endif
 #endif
 
 #ifdef HAVE_RL
