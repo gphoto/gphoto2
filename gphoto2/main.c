@@ -1370,7 +1370,7 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 	case ARG_MANUAL:
 		params->p.r = action_camera_manual (&p);
 		break;
-	case ARG_MKDIR:
+	case ARG_RMDIR:
 		params->p.r = gp_camera_folder_remove_dir (p.camera,
 				p.folder, arg, p.context);
 		break;
@@ -1380,7 +1380,7 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		p.context = p.context;
 		params->p.r = num_files_action (&p);
 		break;
-	case ARG_RMDIR:
+	case ARG_MKDIR:
 		params->p.r = gp_camera_folder_make_dir (p.camera,
 				p.folder, arg, p.context);
 		break;
