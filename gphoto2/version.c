@@ -101,8 +101,8 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 }
 
 const module_version module_versions[] = {
-  	{ "gphoto2", gphoto2_frontend_version },
-  	{ "libgphoto2", gp_library_version },
+	{ "gphoto2", gphoto2_frontend_version },
+	{ "libgphoto2", gp_library_version },
 	{ "libgphoto2_port", gp_port_library_version },
 	{ NULL, NULL }
 };
