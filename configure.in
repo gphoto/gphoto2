@@ -48,7 +48,7 @@ AC_MSG_CHECKING([libgphoto2 used])
 AC_MSG_RESULT([version $libgphoto2_version from $libgphoto2_prefix])
 
 
-AC_CHECK_FUNC(strptime)
+AC_CHECK_FUNCS(strptime)
 
 dnl ---------------------------------------------------------------------------
 dnl pthread: The gphoto2 shell (--shell) keeps up a connection to the 
