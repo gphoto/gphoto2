@@ -1,5 +1,10 @@
 2002-10-03  Lutz Müller <lutz@users.sourceforge.net>
 
+	* configure.in: Require libgphoto2-2.1.1.
+	* gphoto2/main.c: Create the context before the abilities list.
+
+2002-10-03  Lutz Müller <lutz@users.sourceforge.net>
+
 	* gphoto2/main.c: Don't call gp_cmd_config #ifndef HAVE_CDK.
 
 2002-09-29  Lutz Müller <lutz@users.sourceforge.net>

@@ -1746,7 +1746,6 @@ free_globals (void)
 static void
 init_globals (void)
 {
-	/* We need a camera, an abilites list, and a folder. */
 	glob_folder = strdup ("/");
 	if (!glob_folder) {
 		fprintf (stderr, _("Not enough memory."));
@@ -1754,8 +1753,6 @@ init_globals (void)
 		exit (EXIT_FAILURE);
 	}
 	gp_camera_new (&glob_camera);
-	gp_abilities_list_new (&glob_abilities_list);
-	gp_abilities_list_load (glob_abilities_list, glob_context);
 
 	/* Create a context. Report progress only if users will see it. */
 	glob_context = gp_context_new ();
@@ -1767,6 +1764,9 @@ init_globals (void)
 		gp_context_set_progress_funcs (glob_context,
 			ctx_progress_start_func, ctx_progress_update_func,
 			ctx_progress_stop_func, NULL);
+
+	gp_abilities_list_new (&glob_abilities_list);
+	gp_abilities_list_load (glob_abilities_list, glob_context);
 }
 
 static void

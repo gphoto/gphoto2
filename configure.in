@@ -20,7 +20,7 @@ AM_GNU_GETTEXT
 dnl ---------------------------------------------------------------------------
 dnl Check for libgphoto2
 dnl ---------------------------------------------------------------------------
-PKG_CHECK_MODULES(GP, libgphoto2 >= 2.1.0)
+PKG_CHECK_MODULES(GP, libgphoto2 >= 2.1.1)
 AC_SUBST(GP_LIBS)
 AC_SUBST(GP_CFLAGS)
 
