@@ -1,14 +1,14 @@
-# gphoto ja.po.
-# Copyright (C) 2000-2001 Free Software Foundation, Inc.
+# gphoto2 ja.po.
+# Copyright (C) 2000-2002 Free Software Foundation, Inc.
 # Yukihiro Nakai <nakai@gnome.gr.jp>, 2000.
 # Takeshi Aihana <aihana@gnome.gr.jp>, 2001-2002.
 # AMANO Kazuhiro <haa13142@jnb.odn.ne.jp>, 2002.
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.1.0rc2\n"
-"POT-Creation-Date: 2002-11-20 19:11+0100\n"
-"PO-Revision-Date: 2002-06-22 01:18+0900\n"
+"Project-Id-Version: gphoto2 2.1.1rc2\n"
+"POT-Creation-Date: 2002-11-26 00:59+0900\n"
+"PO-Revision-Date: 2002-11-25 08:16+0900\n"
 "Last-Translator: Takeshi Aihana <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: gphoto2/actions.c:117
-#, fuzzy, c-format
+#, c-format
 msgid "Number of files in folder '%s': %i\n"
-msgstr "フォルダ %s 内のファイルの数: %i\n"
+msgstr "フォルダ '%s' 内のファイルの数: %i\n"
 
 #: gphoto2/actions.c:136
 #, c-format
@@ -317,27 +317,20 @@ msgstr ""
 "'serial:' または 'usb:')。"
 
 #: gphoto2/actions.c:680
-#, fuzzy
 msgid "About the camera driver:"
 msgstr "カメラのドライバ情報"
 
 #: gphoto2/actions.c:694
-#, fuzzy
 msgid "Camera summary:"
-msgstr ""
-"カメラのサマリ:\n"
-"%s\n"
+msgstr "カメラのサマリ:"
 
 #: gphoto2/actions.c:708
-#, fuzzy
 msgid "Camera manual:"
-msgstr ""
-"カメラのマニュアル:\n"
-"%s\n"
+msgstr "カメラのマニュアル:"
 
 #: gphoto2/actions.c:724
 msgid "You can only specify speeds for serial ports."
-msgstr ""
+msgstr "シリアルポートの転送速度のみ指定することが可能です。"
 
 #: gphoto2/actions.c:775
 #, c-format
@@ -354,19 +347,29 @@ msgid ""
 "This version of gphoto2 is using the following software versions and "
 "options:\n"
 msgstr ""
+"gphoto2 %s\n"
+"\n"
+"Copyright (C) 2000-2002 Lutz Mueller 氏とその他の方々\n"
+"%s\n"
+"gphoto2 は法律により許可された範囲で完全無保証です。\n"
+"あなたは GNU 公有使用許諾契約書の下で gphoto2 の複製を再配布することができま"
+"す。\n"
+"これらの内容について詳細な情報については COPYING ファイルを参照下さい。\n"
+"\n"
+"このバージョンの gphoto2 は次のソフトウェア・バージョンとオプションを使用しま"
+"す:\n"
 
 #: gphoto2/actions.c:788
 msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "Bart van Leeuwen : OS/2 のポーティング担当\n"
 
 #: gphoto2/actions.c:902
-#, fuzzy
 msgid ""
 "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
 "MAILING LIST:"
 msgstr ""
-"[メーリングリストにデバッグメッセージを送信する場合は、必ず次の行を挿入して下"
-"さい]:"
+"メーリングリストにデバッグメッセージを送信する場合は、必ず次の行を挿入して下"
+"さい:"
 
 #: gphoto2/foreach.c:262
 #, c-format
@@ -442,6 +445,7 @@ msgstr "はい"
 msgid "No"
 msgstr "いいえ"
 
+#. Settings needed for formatting output
 #: gphoto2/main.c:183 gphoto2/main.c:1475
 msgid "Turn on debugging"
 msgstr "デバッグを有効にする"
@@ -450,6 +454,7 @@ msgstr "デバッグを有効にする"
 msgid "Quiet output (default=verbose)"
 msgstr "簡易出力 (デフォルト=詳細)"
 
+#. Display and die actions
 #: gphoto2/main.c:188 gphoto2/main.c:1481
 msgid "Display version and exit"
 msgstr "バージョン情報を表示して終了する"
@@ -478,6 +483,7 @@ msgstr "データの前にファイルサイズを出力する"
 msgid "List auto-detected cameras"
 msgstr "自動検出したカメラの一覧を表示する"
 
+#. Settings needed for camera functions
 #: gphoto2/main.c:197 gphoto2/main.c:1493
 msgid "Specify port device"
 msgstr "ポート・デバイスを指定する"
@@ -498,6 +504,7 @@ msgstr "ファイル名を指定する"
 msgid "(expert only) Override USB IDs"
 msgstr "USB ID の上書き (エキスパート向け)"
 
+#. Actions that depend on settings
 #: gphoto2/main.c:204 gphoto2/main.c:1503
 msgid "Display camera abilities"
 msgstr "カメラの性能を表示する"
@@ -636,173 +643,166 @@ msgstr ""
 
 #: gphoto2/main.c:488
 msgid "Jan"
-msgstr ""
+msgstr "1月"
 
 #: gphoto2/main.c:488
 msgid "January"
-msgstr ""
+msgstr "1月"
 
 #: gphoto2/main.c:489
 msgid "Feb"
-msgstr ""
+msgstr "2月"
 
 #: gphoto2/main.c:489
 msgid "February"
-msgstr ""
+msgstr "2月"
 
 #: gphoto2/main.c:490
-#, fuzzy
 msgid "Mar"
-msgstr "マクロ"
+msgstr "3月"
 
 #: gphoto2/main.c:490
-#, fuzzy
 msgid "March"
-msgstr "マクロ"
+msgstr "3月"
 
 #: gphoto2/main.c:491
 msgid "Apr"
-msgstr ""
+msgstr "4月"
 
 #: gphoto2/main.c:491
 msgid "April"
-msgstr ""
+msgstr "4月"
 
 #: gphoto2/main.c:492
 msgid "May"
-msgstr ""
+msgstr "5月"
 
 #: gphoto2/main.c:493
 msgid "Jun"
-msgstr ""
+msgstr "6月"
 
 #: gphoto2/main.c:493
 msgid "June"
-msgstr ""
+msgstr "6月"
 
 #: gphoto2/main.c:494
 msgid "Jul"
-msgstr ""
+msgstr "7月"
 
 #: gphoto2/main.c:494
 msgid "July"
-msgstr ""
+msgstr "7月"
 
 #: gphoto2/main.c:495
 msgid "Aug"
-msgstr ""
+msgstr "8月"
 
 #: gphoto2/main.c:495
-#, fuzzy
 msgid "August"
-msgstr "自動"
+msgstr "8月"
 
 #: gphoto2/main.c:496
-#, fuzzy
 msgid "Sep"
-msgstr "セピア"
+msgstr "9月"
 
 #: gphoto2/main.c:496
 msgid "September"
-msgstr ""
+msgstr "9月"
 
 #: gphoto2/main.c:497
 msgid "Oct"
-msgstr ""
+msgstr "10月"
 
 #: gphoto2/main.c:497
 msgid "October"
-msgstr ""
+msgstr "10月"
 
 #: gphoto2/main.c:498
-#, fuzzy
 msgid "Nov"
-msgstr "いいえ"
+msgstr "11月"
 
 #: gphoto2/main.c:498
 msgid "November"
-msgstr ""
+msgstr "11月"
 
 #: gphoto2/main.c:499
 msgid "Dec"
-msgstr ""
+msgstr "12月"
 
 #: gphoto2/main.c:499
 msgid "December"
-msgstr ""
+msgstr "12月"
 
 #: gphoto2/main.c:506
 msgid "Sun"
-msgstr ""
+msgstr "日"
 
 #: gphoto2/main.c:506
 msgid "Sunday"
-msgstr ""
+msgstr "日曜日"
 
 #: gphoto2/main.c:507
-#, fuzzy
 msgid "Mon"
-msgstr "ON"
+msgstr "月"
 
 #: gphoto2/main.c:507
 msgid "Monday"
-msgstr ""
+msgstr "月曜日"
 
 #: gphoto2/main.c:508
 msgid "Tue"
-msgstr ""
+msgstr "火"
 
 #: gphoto2/main.c:508
 msgid "Tuesday"
-msgstr ""
+msgstr "火曜日"
 
 #: gphoto2/main.c:509
-#, fuzzy
 msgid "Wed"
-msgstr "赤"
+msgstr "水"
 
 #: gphoto2/main.c:509
 msgid "Wednesday"
-msgstr ""
+msgstr "水曜日"
 
 #: gphoto2/main.c:510
 msgid "Thu"
-msgstr ""
+msgstr "木"
 
 #: gphoto2/main.c:510
 msgid "Thursday"
-msgstr ""
+msgstr "木曜日"
 
 #: gphoto2/main.c:511
 msgid "Fri"
-msgstr ""
+msgstr "金"
 
 #: gphoto2/main.c:511
 msgid "Friday"
-msgstr ""
+msgstr "金曜日"
 
 #: gphoto2/main.c:512
 msgid "Sat"
-msgstr ""
+msgstr "土"
 
 #: gphoto2/main.c:512
 msgid "Saturday"
-msgstr ""
+msgstr "土曜日"
 
 #: gphoto2/main.c:569
 #, c-format
 msgid "You cannot use '%n' in combination with non-persistent files!"
-msgstr ""
+msgstr "作業用ファイルと一緒に '%n' を使用することはできません！"
 
 #: gphoto2/main.c:592
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr ""
+msgstr "カメラが提供するファイル名 ('%s') には拡張子がありません！"
 
 #: gphoto2/main.c:668
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
-msgstr ""
+msgstr "不正な書式 '%s' (%i でエラー) です。"
 
 #: gphoto2/main.c:715
 #, c-format
@@ -852,21 +852,20 @@ msgstr ""
 "キャンセル中...\n"
 
 #: gphoto2/main.c:1305
-#, fuzzy
 msgid "gphoto2 has been compiled without support for CDK."
-msgstr "この gphoto2 は EXIF をサポートしていません。"
+msgstr "この gphoto2 は CDK をサポートしていません。"
 
 #: gphoto2/main.c:1418
 msgid "Operation cancelled.\n"
 msgstr "操作がキャンセルされました。\n"
 
 #: gphoto2/main.c:1422
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
 "\n"
 msgstr ""
-"*** エラー ('%s') ***      \n"
+"*** エラー (%i: '%s') ***       \n"
 "\n"
 
 #: gphoto2/main.c:1426
@@ -888,52 +887,47 @@ msgstr ""
 
 #: gphoto2/main.c:1479
 msgid "Overwrite files without asking."
-msgstr ""
+msgstr "ファイルの上書きで問い合わせない。"
 
 #: gphoto2/main.c:1493
 msgid "path"
-msgstr ""
+msgstr "パス名"
 
 #: gphoto2/main.c:1495
 msgid "speed"
-msgstr ""
+msgstr "転送スピード"
 
 #: gphoto2/main.c:1497
-#, fuzzy
 msgid "model"
 msgstr "型式"
 
 #: gphoto2/main.c:1499
-#, fuzzy
 msgid "filename"
-msgstr "ファイン"
+msgstr "ファイル名"
 
 #: gphoto2/main.c:1501
 msgid "usbid"
-msgstr ""
+msgstr "USB-ID"
 
 #: gphoto2/main.c:1505
 msgid "folder"
-msgstr ""
+msgstr "フォルダ名"
 
 #: gphoto2/main.c:1557
-#, fuzzy
 msgid "Capture a movie"
 msgstr "映像のキャプチャ"
 
 #: gphoto2/main.c:1567
 msgid "Show summary"
-msgstr ""
+msgstr "サマリの表示"
 
 #: gphoto2/main.c:1569
-#, fuzzy
 msgid "Show camera driver manual"
-msgstr "カメラのドライバのマニュアル"
+msgstr "カメラのドライバのマニュアルを表示する"
 
 #: gphoto2/main.c:1571
-#, fuzzy
 msgid "About the camera driver manual"
-msgstr "カメラのドライバ情報"
+msgstr "カメラのドライバのマニュアルの情報"
 
 #: gphoto2/main.c:1796
 msgid ""
@@ -955,6 +949,7 @@ msgstr ""
 msgid "Usage:\n"
 msgstr "用法:\n"
 
+#. Make this 79 characters long. Some languages need the space.
 #: gphoto2/options.c:202
 msgid ""
 "Short/long options (& argument)        Description\n"
@@ -963,11 +958,16 @@ msgstr ""
 "オプション (含む引数)                  説明\n"
 "--------------------------------------------------------------------------------\n"
 
+#. The format line is made translatable so that some
+#. languages can make the table a bit tighter. Make
+#. sure you only use 79 characters (since #80 is
+#. needed for the line break).
 #: gphoto2/options.c:227
 #, c-format
 msgid "%-38s %s\n"
 msgstr "%-38s %s\n"
 
+#. Make this 79 characters long. Some languages need the space.
 #: gphoto2/options.c:232
 msgid ""
 "--------------------------------------------------------------------------------\n"
@@ -1128,6 +1128,7 @@ msgstr ""
 "コマンド '%s' が見つかりませんでした。'help' で利用可能なコマンド一覧を表示し"
 "ます。"
 
+#. Print the command's syntax.
 #: gphoto2/shell.c:739
 #, c-format
 msgid "Help on \"%s\":"
@@ -1145,6 +1146,7 @@ msgstr "説明:"
 msgid "* Arguments in brackets [] are optional"
 msgstr "* [] 内の引数はオプションです。"
 
+#. No command specified. Print command listing.
 #: gphoto2/shell.c:768
 msgid "Available commands:"
 msgstr "利用可能なコマンド:"

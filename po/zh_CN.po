@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2\n"
 "POT-Creation-Date: 2002-11-20 19:11+0100\n"
-"PO-Revision-Date: 2002-06-15 20:09+0800\n"
+"PO-Revision-Date: 2002-11-21 09:26+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -15,9 +15,9 @@ msgstr ""
 
 # frontends/command-line/main.c:799
 #: gphoto2/actions.c:117
-#, fuzzy, c-format
+#, c-format
 msgid "Number of files in folder '%s': %i\n"
-msgstr "文件夹 %s 中文件的数量：%i\n"
+msgstr "文件夹 “%s” 中文件的数量：%i\n"
 
 # frontends/command-line/actions.c:77
 #: gphoto2/actions.c:136
@@ -386,29 +386,22 @@ msgstr ""
 
 # frontends/command-line/main.c:243
 #: gphoto2/actions.c:680
-#, fuzzy
 msgid "About the camera driver:"
-msgstr "关于相机驱动程序"
+msgstr "关于相机驱动程序："
 
 # frontends/command-line/main.c:1180
 #: gphoto2/actions.c:694
-#, fuzzy
 msgid "Camera summary:"
-msgstr ""
-"相机概要：\n"
-"%s\n"
+msgstr "相机概要："
 
 # frontends/command-line/main.c:1192
 #: gphoto2/actions.c:708
-#, fuzzy
 msgid "Camera manual:"
-msgstr ""
-"相机手册：\n"
-"%s\n"
+msgstr "相机手册："
 
 #: gphoto2/actions.c:724
 msgid "You can only specify speeds for serial ports."
-msgstr ""
+msgstr "您只能为串口指定速度。"
 
 #: gphoto2/actions.c:775
 #, c-format
@@ -425,6 +418,15 @@ msgid ""
 "This version of gphoto2 is using the following software versions and "
 "options:\n"
 msgstr ""
+"gphoto2 %s\n"
+"\n"
+"版权所有 (C) 2000-2002 Lutz Mueller 及其它\n"
+"%s\n"
+"在法律允许的范围内，gphoto2 没有担保。您可以按照\n"
+"GNU 通用公共许可证的条款重新发行 gphoto2 的副本。\n"
+"关于此事的更多信息，参见名为 COPYING 的文件。\n"
+"\n"
+"这个版本的 gphoto2 使用下列软件版本和选项：\n"
 
 # frontends/command-line/options.c:197
 #: gphoto2/actions.c:788
@@ -432,7 +434,6 @@ msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "由 Bart van Leeuwen 移植到 OS/2\n"
 
 #: gphoto2/actions.c:902
-#, fuzzy
 msgid ""
 "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
 "MAILING LIST:"
@@ -772,67 +773,65 @@ msgstr ""
 
 #: gphoto2/main.c:488
 msgid "Jan"
-msgstr ""
+msgstr "一月"
 
 #: gphoto2/main.c:488
 msgid "January"
-msgstr ""
+msgstr "一月"
 
 #: gphoto2/main.c:489
 msgid "Feb"
-msgstr ""
+msgstr "二月"
 
 #: gphoto2/main.c:489
 msgid "February"
-msgstr ""
+msgstr "二月"
 
 # camlibs/sierra/sierra.c:978 camlibs/sierra/sierra.c:983
 # camlibs/sierra/sierra.c:1254 camlibs/sierra/sierra.c:1450
 # camlibs/sierra/sierra.c:1453 camlibs/sierra/sierra.c:1666
 #: gphoto2/main.c:490
-#, fuzzy
 msgid "Mar"
-msgstr "巨大"
+msgstr "三月"
 
 # camlibs/sierra/sierra.c:978 camlibs/sierra/sierra.c:983
 # camlibs/sierra/sierra.c:1254 camlibs/sierra/sierra.c:1450
 # camlibs/sierra/sierra.c:1453 camlibs/sierra/sierra.c:1666
 #: gphoto2/main.c:490
-#, fuzzy
 msgid "March"
-msgstr "巨大"
+msgstr "三月"
 
 #: gphoto2/main.c:491
 msgid "Apr"
-msgstr ""
+msgstr "四月"
 
 #: gphoto2/main.c:491
 msgid "April"
-msgstr ""
+msgstr "四月"
 
 #: gphoto2/main.c:492
 msgid "May"
-msgstr ""
+msgstr "五月"
 
 #: gphoto2/main.c:493
 msgid "Jun"
-msgstr ""
+msgstr "六月"
 
 #: gphoto2/main.c:493
 msgid "June"
-msgstr ""
+msgstr "六月"
 
 #: gphoto2/main.c:494
 msgid "Jul"
-msgstr ""
+msgstr "七月"
 
 #: gphoto2/main.c:494
 msgid "July"
-msgstr ""
+msgstr "七月"
 
 #: gphoto2/main.c:495
 msgid "Aug"
-msgstr ""
+msgstr "八月"
 
 # camlibs/konica/library.c:749 camlibs/konica/library.c:765
 # camlibs/konica/library.c:780 camlibs/konica/library.c:783
@@ -847,123 +846,118 @@ msgstr ""
 # camlibs/sierra/sierra.c:1424 camlibs/sierra/sierra.c:1429
 # camlibs/sierra/sierra.c:1629 camlibs/sierra/sierra.c:1649
 #: gphoto2/main.c:495
-#, fuzzy
 msgid "August"
-msgstr "自动"
+msgstr "八月"
 
 # camlibs/sierra/sierra.c:858 camlibs/sierra/sierra.c:867
 # camlibs/sierra/sierra.c:1173
 #: gphoto2/main.c:496
-#, fuzzy
 msgid "Sep"
-msgstr "棕褐色"
+msgstr "九月"
 
 #: gphoto2/main.c:496
 msgid "September"
-msgstr ""
+msgstr "九月"
 
 #: gphoto2/main.c:497
 msgid "Oct"
-msgstr ""
+msgstr "十月"
 
 #: gphoto2/main.c:497
 msgid "October"
-msgstr ""
+msgstr "十月"
 
 # camlibs/minolta/dimagev/dimagev.c:300 camlibs/minolta/dimagev/dimagev.c:302
 # camlibs/minolta/dimagev/dimagev.c:306 camlibs/minolta/dimagev/dimagev.c:309
 # frontends/command-line/gphoto2-cmd-config.c:372
 #: gphoto2/main.c:498
-#, fuzzy
 msgid "Nov"
-msgstr "否"
+msgstr "十一月"
 
 #: gphoto2/main.c:498
 msgid "November"
-msgstr ""
+msgstr "十一月"
 
 #: gphoto2/main.c:499
 msgid "Dec"
-msgstr ""
+msgstr "十二月"
 
 #: gphoto2/main.c:499
 msgid "December"
-msgstr ""
+msgstr "十二月"
 
 #: gphoto2/main.c:506
 msgid "Sun"
-msgstr ""
+msgstr "周日"
 
 #: gphoto2/main.c:506
 msgid "Sunday"
-msgstr ""
+msgstr "星期日"
 
 # camlibs/polaroid/pdc700.c:169 camlibs/polaroid/pdc700.c:170
 #: gphoto2/main.c:507
-#, fuzzy
 msgid "Mon"
-msgstr "开"
+msgstr "周一"
 
 #: gphoto2/main.c:507
 msgid "Monday"
-msgstr ""
+msgstr "星期一"
 
 #: gphoto2/main.c:508
 msgid "Tue"
-msgstr ""
+msgstr "周二"
 
 #: gphoto2/main.c:508
 msgid "Tuesday"
-msgstr ""
+msgstr "星期二"
 
 # camlibs/jd11/jd11.c:221 camlibs/jd11/jd11.c:265
 #: gphoto2/main.c:509
-#, fuzzy
 msgid "Wed"
-msgstr "红"
+msgstr "周三"
 
 #: gphoto2/main.c:509
 msgid "Wednesday"
-msgstr ""
+msgstr "星期三"
 
 #: gphoto2/main.c:510
 msgid "Thu"
-msgstr ""
+msgstr "周四"
 
 #: gphoto2/main.c:510
 msgid "Thursday"
-msgstr ""
+msgstr "星期四"
 
 #: gphoto2/main.c:511
 msgid "Fri"
-msgstr ""
+msgstr "周五"
 
 #: gphoto2/main.c:511
 msgid "Friday"
-msgstr ""
+msgstr "星期五"
 
 #: gphoto2/main.c:512
 msgid "Sat"
-msgstr ""
+msgstr "周六"
 
 #: gphoto2/main.c:512
 msgid "Saturday"
-msgstr ""
+msgstr "星期六"
 
 #: gphoto2/main.c:569
 #, c-format
 msgid "You cannot use '%n' in combination with non-persistent files!"
-msgstr ""
+msgstr "您不能把“%n”同非永久文件一起使用！"
 
 #: gphoto2/main.c:592
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr ""
+msgstr "由照相机 (“%s”) 提供的文件名不含有后缀！"
 
 #: gphoto2/main.c:668
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
-msgstr ""
+msgstr "无效的格式“%s” (错误发生在 %i 字节)。"
 
 # frontends/command-line/main.c:859
 #: gphoto2/main.c:715
@@ -1023,9 +1017,8 @@ msgstr ""
 
 # frontends/command-line/actions.c:355
 #: gphoto2/main.c:1305
-#, fuzzy
 msgid "gphoto2 has been compiled without support for CDK."
-msgstr "gphoto2 编译时没有包含对 EXIF 的支持。"
+msgstr "gphoto2 编译时没有包含对 CDK 的支持。"
 
 # frontends/command-line/main.c:1750
 #: gphoto2/main.c:1418
@@ -1034,13 +1027,11 @@ msgstr "操作已取消。\n"
 
 # frontends/command-line/main.c:1753
 #: gphoto2/main.c:1422
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
 "\n"
-msgstr ""
-"*** 错误 ('%s') ***       \n"
-"\n"
+msgstr "*** 错误 (%i：“%s”) ***       \n\n"
 
 # frontends/command-line/main.c:1759
 #: gphoto2/main.c:1426
@@ -1061,57 +1052,52 @@ msgstr ""
 
 #: gphoto2/main.c:1479
 msgid "Overwrite files without asking."
-msgstr ""
+msgstr "在不查询的情况下覆盖文件。"
 
 #: gphoto2/main.c:1493
 msgid "path"
-msgstr ""
+msgstr "路径"
 
 #: gphoto2/main.c:1495
 msgid "speed"
-msgstr ""
+msgstr "速度"
 
 # frontends/command-line/main.c:384
 #: gphoto2/main.c:1497
-#, fuzzy
 msgid "model"
 msgstr "型号"
 
 # camlibs/polaroid/pdc700.c:167
 #: gphoto2/main.c:1499
-#, fuzzy
 msgid "filename"
-msgstr "精细"
+msgstr "文件名"
 
 #: gphoto2/main.c:1501
 msgid "usbid"
-msgstr ""
+msgstr "USB 编号"
 
 #: gphoto2/main.c:1505
 msgid "folder"
-msgstr ""
+msgstr "文件夹"
 
 # frontends/command-line/main.c:235
 #: gphoto2/main.c:1557
-#, fuzzy
 msgid "Capture a movie"
-msgstr "捕捉一段电影"
+msgstr "拍摄一段电影"
 
 #: gphoto2/main.c:1567
 msgid "Show summary"
-msgstr ""
+msgstr "显示概要"
 
 # frontends/command-line/main.c:242
 #: gphoto2/main.c:1569
-#, fuzzy
 msgid "Show camera driver manual"
-msgstr "相机驱动程序手册"
+msgstr "显示相机驱动程序手册"
 
 # frontends/command-line/main.c:243
 #: gphoto2/main.c:1571
-#, fuzzy
 msgid "About the camera driver manual"
-msgstr "关于相机驱动程序"
+msgstr "关于相机驱动程序手册"
 
 # frontends/command-line/main.c:1699
 #: gphoto2/main.c:1796
