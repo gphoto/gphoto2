@@ -541,6 +541,7 @@ action_camera_show_abilities (GPParams *p)
 {
 	CameraAbilities a;
 	int i;
+	int has_capture = 0;
 
 	CR (gp_camera_get_abilities (p->camera, &a));
 	printf (_("Abilities for camera             : %s\n"), a.model);
@@ -555,14 +556,25 @@ action_camera_show_abilities (GPParams *p)
 				a.speed[i]);
 	}
 	printf (_("Capture choices                  :\n"));
-	if (a.operations & GP_OPERATION_CAPTURE_IMAGE)
+	if (a.operations & GP_OPERATION_CAPTURE_IMAGE) {
 		printf (_("                                 : Image\n"));
-	if (a.operations & GP_OPERATION_CAPTURE_VIDEO)
+		has_capture = 1;
+	}
+	if (a.operations & GP_OPERATION_CAPTURE_VIDEO) {
 		printf (_("                                 : Video\n"));
-	if (a.operations & GP_OPERATION_CAPTURE_AUDIO)
+		has_capture = 1;
+	}
+	if (a.operations & GP_OPERATION_CAPTURE_AUDIO) {
 		printf (_("                                 : Audio\n"));
-	if (a.operations & GP_OPERATION_CAPTURE_PREVIEW)
+		has_capture = 1;
+	}
+	if (a.operations & GP_OPERATION_CAPTURE_PREVIEW) {
 		printf (_("                                 : Preview\n"));
+		has_capture = 1;
+	}
+	if (has_capture == 0) {
+		printf (_("                                 : Capture not supported by the driver\n"));
+	}
 	printf (_("Configuration support            : %s\n"),
 		(a.operations & GP_OPERATION_CONFIG) ? _("yes"):_("no"));
 	printf (_("Delete files on camera support   : %s\n"),

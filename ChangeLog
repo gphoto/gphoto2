@@ -1,3 +1,10 @@
+2003-08-22  Hubert Figuiere  <hfiguiere@teaser.fr>
+
+	* gphoto2/actions.c (action_camera_show_abilities): Display that 
+	capture is not supported by the driver instead of an empty string
+	to fix bug 642394 
+	<https://sf.net/tracker/index.php?func=detail&aid=642394&group_id=8874&atid=108874>
+
 2003-06-22  Christophe Barbe <christophe@ufies.org>
 
 	* gphoto2/main.c, po/*.po:
