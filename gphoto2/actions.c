@@ -915,6 +915,13 @@ int
 debug_action (GPParams *p)
 {
 	int n;
+
+	/* make sure we're only executed once */
+	static int debug_flag = 0;
+	if (debug_flag != 0)
+		return(GP_OK);
+	debug_flag = 1;
+
 	gettimeofday (&glob_tv_zero, NULL);
 
 	CR (p->debug_func_id = gp_log_add_func (GP_LOG_ALL, debug_func, NULL));
