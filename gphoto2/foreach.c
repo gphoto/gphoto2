@@ -312,8 +312,8 @@ for_each_file_in_range (GPParams *p, FileAction action,
 			const char *range)
 {
 	char	index[MAX_IMAGE_NUMBER];
-	int 	i, max = 0;
-	char ffolder[MAX_FOLDER_LEN], ffile[MAX_FILE_LEN];
+	int 	i, max = 0, r;
+	char ffolder[MAX_FOLDER_LEN], ffile[MAX_FILE_LEN], *f;
 
 	memset(index, 0, MAX_IMAGE_NUMBER);
 
@@ -344,7 +344,11 @@ for_each_file_in_range (GPParams *p, FileAction action,
 				CR (get_path_for_id (p, p->folder,
 					(unsigned int) i - count,
 					ffolder, ffile));
-				CR (action (p, ffile));
+				f = p->folder;
+				p->folder = ffolder;
+				r = action (p, ffile);
+				p->folder = f;
+				CR (r);
 				if (action == delete_file_action)
 					count++;
 			}
