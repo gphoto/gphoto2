@@ -1661,7 +1661,7 @@ main (int argc, char **argv)
 #endif
 		int count;
 		const char *model = NULL, *path = NULL;
-		CameraList list;
+		CameraList *list;
 		GPPortInfoList *il = NULL;
 		char buf[1024];
 
@@ -1670,14 +1670,15 @@ main (int argc, char **argv)
 
 		CR_MAIN (gp_port_info_list_new (&il));
 		CR_MAIN (gp_port_info_list_load (il));
+		CR_MAIN (gp_list_new (&list)); /* no freeing below */
 		CR_MAIN (gp_abilities_list_detect (p.abilities_list, il,
-						   &list, p.context));
-		CR_MAIN (count = gp_list_count (&list));
+						   list, p.context));
+		CR_MAIN (count = gp_list_count (list));
                 if (count == 1) {
 
                         /* Exactly one camera detected */
-			CR_MAIN (gp_list_get_name (&list, 0, &model));
-			CR_MAIN (gp_list_get_value (&list, 0, &path));
+			CR_MAIN (gp_list_get_name (list, 0, &model));
+			CR_MAIN (gp_list_get_value (list, 0, &path));
 			CR_MAIN (action_camera_set_model (&p, model));
 			CR_MAIN (action_camera_set_port (&p, path));
 
@@ -1696,13 +1697,14 @@ main (int argc, char **argv)
 
                         /* More than one camera detected */
                         /*FIXME: Let the user choose from the list!*/
-			CR_MAIN (gp_list_get_name (&list, 0, &model));
-			CR_MAIN (gp_list_get_value (&list, 0, &path));
+			CR_MAIN (gp_list_get_name (list, 0, &model));
+			CR_MAIN (gp_list_get_value (list, 0, &path));
 			CR_MAIN (action_camera_set_model (&p, model));
 			CR_MAIN (action_camera_set_port (&p, path));
                 }
 
 		CR_MAIN (gp_port_info_list_free (il));
+		gp_list_free (list);
         }
 
 	/*

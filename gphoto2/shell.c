@@ -43,6 +43,7 @@
 #endif
 
 #define CHECK(result) {int r=(result);if(r<0) return(r);}
+#define CL(result,list) {int r=(result);if(r<0) {gp_list_free(list);return(r);}}
 #define CHECK_CONT(result)					\
 {								\
 	int r = (result);					\
@@ -236,7 +237,7 @@ shell_path_generator (const char *text, int state)
 {
 	static int x;
 	const char *slash, *name;
-	CameraList list;
+	CameraList *list;
 	int file_count, folder_count, r, len;
 	char folder[MAX_FOLDER_LEN], basename[MAX_FILE_LEN], *path;
 
@@ -257,16 +258,23 @@ shell_path_generator (const char *text, int state)
 	if (!state)
 		x = 0;
 
-	/* First search for matching file */
-	r = gp_camera_folder_list_files (p->camera, folder, &list, p->context);
+	r = gp_list_new (&list);
 	if (r < 0)
 		return (NULL);
-	file_count = gp_list_count (&list);
-	if (file_count < 0)
+	/* First search for matching file */
+	r = gp_camera_folder_list_files (p->camera, folder, list, p->context);
+	if (r < 0) {
+		gp_list_free (list);
 		return (NULL);
+	}
+	file_count = gp_list_count (list);
+	if (file_count < 0) {
+		gp_list_free (list);
+		return (NULL);
+	}
 	if (x < file_count) {
 		for (; x < file_count; x++) {
-			r = gp_list_get_name (&list, x, &name);
+			r = gp_list_get_name (list, x, &name);
 			if (r < 0)
 				return (NULL);
 			if (!strncmp (name, basename, len)) {
@@ -294,18 +302,24 @@ shell_path_generator (const char *text, int state)
 	}
 
 	/* Ok, we listed all matching files. Now, list matching folders. */
-	r = gp_camera_folder_list_folders (p->camera, folder, &list,
+	r = gp_camera_folder_list_folders (p->camera, folder, list,
 					   p->context);
-	if (r < 0)
+	if (r < 0) {
+		gp_list_free (list);
 		return (NULL);
-	folder_count = gp_list_count (&list);
-	if (folder_count < 0)
+	}
+	folder_count = gp_list_count (list);
+	if (folder_count < 0) {
+		gp_list_free (list);
 		return (NULL);
+	}
 	if (x - file_count < folder_count) {
 		for (; x - file_count < folder_count; x++) {
-			r = gp_list_get_name (&list, x - file_count, &name);
-			if (r < 0)
+			r = gp_list_get_name (list, x - file_count, &name);
+			if (r < 0) {
+				gp_list_free (list);
 				return (NULL);
+			}
 			if (!strncmp (name, basename, len)) {
 				x++;
 				slash = strrchr (text, '/');
@@ -325,12 +339,15 @@ shell_path_generator (const char *text, int state)
 					strcat (path, name);
 					strcat (path, "/");
 				}
+				gp_list_free (list);
 				return (path);
 			}
 		}
+		gp_list_free (list);
 		return (NULL);
 	}
 
+	gp_list_free (list);
 	return (NULL);
 }
 
@@ -532,7 +549,7 @@ static int
 shell_cd (Camera *camera, const char *arg)
 {
 	char folder[MAX_FOLDER_LEN];
-	CameraList list;
+	CameraList *list;
 	int arg_count = shell_arg_count (arg);
 
 	if (!arg_count)
@@ -548,8 +565,11 @@ shell_cd (Camera *camera, const char *arg)
 	/* Get the new folder value */
 	shell_construct_path (p->folder, arg, folder, NULL);
 
-	CHECK (gp_camera_folder_list_folders (p->camera, folder, &list,
-					      p->context));
+	CHECK (gp_list_new (&list));
+
+	CL (gp_camera_folder_list_folders (p->camera, folder, list,
+					      p->context), list);
+	gp_list_free (list);
 	free (p->folder);
 	p->folder = malloc (sizeof (char) * (strlen (folder) + 1));
 	if (!p->folder)
@@ -557,14 +577,13 @@ shell_cd (Camera *camera, const char *arg)
 	strcpy (p->folder, folder);
 	printf (_("Remote directory now '%s'."), p->folder);
 	printf ("\n");
-
 	return (GP_OK);
 }
 
 static int
 shell_ls (Camera *camera, const char *arg)
 {
-	CameraList list;
+	CameraList *list;
 	char buf[1024], folder[MAX_FOLDER_LEN];
 	int x, y=1;
 	int arg_count = shell_arg_count(arg);
@@ -576,14 +595,15 @@ shell_ls (Camera *camera, const char *arg)
 		strcpy (folder, p->folder);
 	}
 
-	CHECK (gp_camera_folder_list_folders (p->camera, folder, &list,
-					      p->context));
+	CHECK (gp_list_new (&list));
+	CL (gp_camera_folder_list_folders (p->camera, folder, list,
+					      p->context), list);
 
 	if (p->quiet)
-		printf ("%i\n", gp_list_count (&list));
+		printf ("%i\n", gp_list_count (list));
 
-	for (x = 1; x <= gp_list_count (&list); x++) {
-		CHECK (gp_list_get_name (&list, x - 1, &name));
+	for (x = 1; x <= gp_list_count (list); x++) {
+		CL (gp_list_get_name (list, x - 1, &name), list);
 		if (p->quiet)
 			printf ("%s\n", name);
 		else {
@@ -594,14 +614,14 @@ shell_ls (Camera *camera, const char *arg)
 		}
 	}
 
-	CHECK (gp_camera_folder_list_files (p->camera, folder, &list,
-					    p->context));
+	CL (gp_camera_folder_list_files (p->camera, folder, list,
+					    p->context), list);
 
 	if (p->quiet)
-		printf("%i\n", gp_list_count(&list));
+		printf("%i\n", gp_list_count(list));
 
-	for (x = 1; x <= gp_list_count (&list); x++) {
-		gp_list_get_name (&list, x - 1, &name);
+	for (x = 1; x <= gp_list_count (list); x++) {
+		gp_list_get_name (list, x - 1, &name);
 		if (p->quiet)
 			printf ("%s\n", name);
 		   else {
@@ -613,6 +633,7 @@ shell_ls (Camera *camera, const char *arg)
 	if ((!p->quiet) && (y % 4 != 1))
 		printf("\n");
 
+	gp_list_free (list);
 	return (GP_OK);
 }
 

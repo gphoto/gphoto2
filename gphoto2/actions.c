@@ -45,6 +45,7 @@
 
 #define CR(result)       {int r=(result); if (r<0) return r;}
 #define CRU(result,file) {int r=(result); if (r<0) {gp_file_unref(file);return r;}}
+#define CL(result,list)  {int r=(result); if (r<0) {gp_list_free(list); return r;}}
 
 int
 delete_all_action (GPParams *p)
@@ -86,12 +87,14 @@ action_camera_upload_file (GPParams *p, const char *folder, const char *path)
 int
 num_files_action (GPParams *p)
 {
-	CameraList list;
+	CameraList *list;
 	int n;
 
-	CR (gp_camera_folder_list_files (p->camera, p->folder,
-					 &list, p->context));
-	CR (n = gp_list_count (&list));
+	CR (gp_list_new (&list));
+	CL (gp_camera_folder_list_files (p->camera, p->folder,
+					 list, p->context), list);
+	CL (n = gp_list_count (list), list);
+	gp_list_free (list);
 	if (p->quiet)
 		fprintf (stdout, "%i\n", n);
 	else
@@ -104,14 +107,16 @@ num_files_action (GPParams *p)
 int
 list_folders_action (GPParams *p)
 {
-	CameraList list;
+	CameraList *list;
 	int count;
 	const char *name;
 	unsigned int i;
+	
+	CR (gp_list_new (&list));
 
-	CR (gp_camera_folder_list_folders (p->camera, p->folder, &list,
-					   p->context));
-	CR (count = gp_list_count (&list));
+	CL (gp_camera_folder_list_folders (p->camera, p->folder, list,
+					   p->context), list);
+	CL (count = gp_list_count (list), list);
 	switch (count) {
         case 0:
                 printf (_("There are no folders in folder '%s'."), p->folder);
@@ -128,24 +133,25 @@ list_folders_action (GPParams *p)
                 break;
 	}
 	for (i = 0; i < count; i++) {
-		CR (gp_list_get_name (&list, i, &name));
+		CL (gp_list_get_name (list, i, &name), list);
 		printf (" - %s\n", name);
 	}
-
+	gp_list_free (list);
 	return (GP_OK);
 }
 
 int
 list_files_action (GPParams *p)
 {
-	CameraList list;
+	CameraList *list;
 	int count;
 	const char *name;
 	unsigned int i;
 
-	CR (gp_camera_folder_list_files (p->camera, p->folder, &list,
-					 p->context));
-	CR (count = gp_list_count (&list));
+	CR (gp_list_new (&list));
+	CL (gp_camera_folder_list_files (p->camera, p->folder, list,
+					 p->context), list);
+	CL (count = gp_list_count (list), list);
 	switch (count) {
 	case 0:
 		fprintf (stdout, _("There are no files in folder '%s'."),
@@ -164,10 +170,10 @@ list_files_action (GPParams *p)
 		break;
 	}
 	for (i = 0; i < count; i++) {
-		CR (gp_list_get_name (&list, i, &name));
-		CR (print_file_action (p, name));
+		CL (gp_list_get_name (list, i, &name), list);
+		CL (print_file_action (p, name), list);
 	}
-
+	gp_list_free (list);
 	return (GP_OK);
 }
 
@@ -503,29 +509,30 @@ int
 auto_detect_action (GPParams *p)
 {
 	int x, count;
-        CameraList list;
+        CameraList *list;
         CameraAbilitiesList *al = NULL;
         GPPortInfoList *il = NULL;
         const char *name = NULL, *value = NULL;
 
+	CR (gp_list_new (&list));
         gp_abilities_list_new (&al);
         gp_abilities_list_load (al, p->context);
         gp_port_info_list_new (&il);
         gp_port_info_list_load (il);
-        gp_abilities_list_detect (al, il, &list, p->context);
+        gp_abilities_list_detect (al, il, list, p->context);
         gp_abilities_list_free (al);
         gp_port_info_list_free (il);
 
-        CR (count = gp_list_count (&list));
+        CL (count = gp_list_count (list), list);
 
         printf(_("%-30s %-16s\n"), _("Model"), _("Port"));
         printf(_("----------------------------------------------------------\n"));
         for (x = 0; x < count; x++) {
-                CR (gp_list_get_name  (&list, x, &name));
-                CR (gp_list_get_value (&list, x, &value));
+                CL (gp_list_get_name  (list, x, &name), list);
+                CL (gp_list_get_value (list, x, &value), list);
                 printf(_("%-30s %-16s\n"), name, value);
         }
-
+	gp_list_free (list);
         return GP_OK;
 }
 
