@@ -1,0 +1,1136 @@
+# Finnish translation for gphoto2.
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gphoto2 package.
+# Matti Pöllä <mpo@iki.fi>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gphoto2 2.1.2\n"
+"POT-Creation-Date: 2003-08-10 20:58+0200\n"
+"PO-Revision-Date: 2004-07-09 23:27+0200\n"
+"Last-Translator: Matti Pöllä <mpo@iki.fi>\n"
+"Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: gphoto2/actions.c:101
+#, c-format
+msgid "Number of files in folder '%s': %i\n"
+msgstr "Kansiossa \"%s\" olevien tiedostojen lukumäärä: %i\n"
+
+#: gphoto2/actions.c:122
+#, c-format
+msgid "There are no folders in folder '%s'."
+msgstr "Kansio \"%s\" ei sisällä kansioita."
+
+#: gphoto2/actions.c:126
+#, c-format
+msgid "There is one folder in folder '%s':"
+msgstr "Kansio \"%s\" sisältää yhden kansion:"
+
+#: gphoto2/actions.c:130
+#, c-format
+msgid "There are %i folders in folder '%s':"
+msgstr "%i kansiota kansiossa \"%s\":"
+
+#: gphoto2/actions.c:157 gphoto2/foreach.c:277
+#, c-format
+msgid "There are no files in folder '%s'."
+msgstr "Kansio \"%s\" ei sisällä tiedostoja."
+
+#: gphoto2/actions.c:162
+#, c-format
+msgid "There is one file in folder '%s':"
+msgstr "Kansio \"%s\" sisältää yhden tiedoston:"
+
+#: gphoto2/actions.c:167
+#, c-format
+msgid "There are %i files in folder '%s':"
+msgstr "%i tiedostoa kansiossa \"%s\":"
+
+#: gphoto2/actions.c:188
+#, c-format
+msgid "Information on file '%s' (folder '%s'):\n"
+msgstr "Tiedoston \"%s\" tiedot (kansio \"%s\"):\n"
+
+#: gphoto2/actions.c:190
+msgid "File:\n"
+msgstr "Tiedosto:\n"
+
+#: gphoto2/actions.c:192 gphoto2/actions.c:226 gphoto2/actions.c:242
+msgid "  None available.\n"
+msgstr "  Ei saatavilla.\n"
+
+#: gphoto2/actions.c:195
+#, c-format
+msgid "  Name:        '%s'\n"
+msgstr "  Nimi:        \"%s\"\n"
+
+#: gphoto2/actions.c:197 gphoto2/actions.c:229
+#, c-format
+msgid "  Mime type:   '%s'\n"
+msgstr "  Mime-tyyppi:   \"%s\"\n"
+
+#: gphoto2/actions.c:199 gphoto2/actions.c:231
+#, c-format
+msgid "  Size:        %li byte(s)\n"
+msgstr "  Koko:        %li tavu(a)\n"
+
+#: gphoto2/actions.c:201 gphoto2/actions.c:233
+#, c-format
+msgid "  Width:       %i pixel(s)\n"
+msgstr "  Leveys:       %i pikseli(ä)\n"
+
+#: gphoto2/actions.c:203 gphoto2/actions.c:235
+#, c-format
+msgid "  Height:      %i pixel(s)\n"
+msgstr "  Korkeus:      %i pikseli(ä)\n"
+
+#: gphoto2/actions.c:205 gphoto2/actions.c:237
+#, c-format
+msgid "  Downloaded:  %s\n"
+msgstr "  Ladattu:  %s\n"
+
+#: gphoto2/actions.c:206 gphoto2/actions.c:238 gphoto2/actions.c:250
+#: gphoto2/actions.c:548 gphoto2/actions.c:550 gphoto2/actions.c:567
+#: gphoto2/actions.c:570 gphoto2/actions.c:573 gphoto2/actions.c:576
+msgid "yes"
+msgstr "kyllä"
+
+#: gphoto2/actions.c:206 gphoto2/actions.c:238 gphoto2/actions.c:250
+#: gphoto2/actions.c:548 gphoto2/actions.c:550 gphoto2/actions.c:567
+#: gphoto2/actions.c:570 gphoto2/actions.c:573 gphoto2/actions.c:576
+msgid "no"
+msgstr "ei"
+
+#: gphoto2/actions.c:208
+msgid "  Permissions: "
+msgstr "  Oikeudet: "
+
+#: gphoto2/actions.c:211
+msgid "read/delete"
+msgstr "luku/poistaminen"
+
+#: gphoto2/actions.c:213
+msgid "read"
+msgstr "luku"
+
+#: gphoto2/actions.c:215
+msgid "delete"
+msgstr "poistaminen"
+
+#: gphoto2/actions.c:217
+msgid "none"
+msgstr "ei mitään"
+
+#: gphoto2/actions.c:221
+#, c-format
+msgid "  Time:        %s"
+msgstr "  Aika:        %s"
+
+#: gphoto2/actions.c:224
+msgid "Thumbnail:\n"
+msgstr "Pienoiskuva:\n"
+
+#: gphoto2/actions.c:240
+msgid "Audio data:\n"
+msgstr "Äänidata:\n"
+
+#: gphoto2/actions.c:245
+#, c-format
+msgid "  Mime type:  '%s'\n"
+msgstr "  Mime-tyyppi:  \"%s\"\n"
+
+#: gphoto2/actions.c:247
+#, c-format
+msgid "  Size:       %li byte(s)\n"
+msgstr "  Koko:       %li tavu(a)\n"
+
+#: gphoto2/actions.c:249
+#, c-format
+msgid "  Downloaded: %s\n"
+msgstr "  Ladattu: %s\n"
+
+#: gphoto2/actions.c:380
+msgid "Could not parse EXIF data."
+msgstr "EXIF-tietojen jäsentäminen ei onnistunut."
+
+#: gphoto2/actions.c:384
+msgid "EXIF tags:"
+msgstr "EXIF-merkit:"
+
+#: gphoto2/actions.c:387
+msgid "Tag"
+msgstr "Merkki"
+
+#: gphoto2/actions.c:389
+msgid "Value"
+msgstr "Arvo"
+
+#: gphoto2/actions.c:410
+#, c-format
+msgid "EXIF data contains a thumbnail (%i bytes)."
+msgstr "EXIF-data sisältää pienoiskuvan (%i tavua)."
+
+#: gphoto2/actions.c:419
+msgid "gphoto2 has been compiled without EXIF support."
+msgstr "gphoto2 on käänetty ilman EXIF-tukea."
+
+#: gphoto2/actions.c:437
+#, c-format
+msgid "Number of supported cameras: %i\n"
+msgstr "Tuettujen kameroiden lukumäärä: %i\n"
+
+#: gphoto2/actions.c:439
+msgid "Supported cameras:\n"
+msgstr "Tuetut kamerat:\n"
+
+#: gphoto2/actions.c:452
+#, c-format
+msgid "\t\"%s\" (TESTING)\n"
+msgstr "\t\"%s\" (TESTIKÄYTTÖ)\n"
+
+#: gphoto2/actions.c:455
+#, c-format
+msgid "\t\"%s\" (EXPERIMENTAL)\n"
+msgstr "\t\"%s\" (KOKEELLINEN)\n"
+
+#: gphoto2/actions.c:460
+#, c-format
+msgid "\t\"%s\"\n"
+msgstr "\t\"%s\"\n"
+
+#: gphoto2/actions.c:488
+#, c-format
+msgid "Devices found: %i\n"
+msgstr "Löydettyjen laitteiden määrä: %i\n"
+
+#: gphoto2/actions.c:489
+msgid ""
+"Path                             Description\n"
+"--------------------------------------------------------------\n"
+msgstr ""
+"Polku                            Kuvaus\n"
+"--------------------------------------------------------------\n"
+
+#: gphoto2/actions.c:528 gphoto2/actions.c:533
+#, c-format
+msgid "%-30s %-16s\n"
+msgstr "%-30s %-16s\n"
+
+#: gphoto2/actions.c:528
+msgid "Model"
+msgstr "Malli"
+
+#: gphoto2/actions.c:528
+msgid "Port"
+msgstr "Portti"
+
+#: gphoto2/actions.c:529
+msgid "----------------------------------------------------------\n"
+msgstr "----------------------------------------------------------\n"
+
+#: gphoto2/actions.c:546
+#, c-format
+msgid "Abilities for camera             : %s\n"
+msgstr "Kameran valmiudet                : %s\n"
+
+#: gphoto2/actions.c:547
+#, c-format
+msgid "Serial port support              : %s\n"
+msgstr "Tuki sarjaportille               : %s\n"
+
+#: gphoto2/actions.c:549
+#, c-format
+msgid "USB support                      : %s\n"
+msgstr "USB-tuki                         : %s\n"
+
+#: gphoto2/actions.c:552
+msgid "Transfer speeds supported        :\n"
+msgstr "Tuetut siirtonopeudet            :\n"
+
+#: gphoto2/actions.c:554
+#, c-format
+msgid "                                 : %i\n"
+msgstr "                                 : %i\n"
+
+#: gphoto2/actions.c:557
+msgid "Capture choices                  :\n"
+msgstr "Kaappausvaihtoehdot              :\n"
+
+#: gphoto2/actions.c:559
+msgid "                                 : Image\n"
+msgstr "                                 : Kuva\n"
+
+#: gphoto2/actions.c:561
+msgid "                                 : Video\n"
+msgstr "                                 : Video\n"
+
+#: gphoto2/actions.c:563
+msgid "                                 : Audio\n"
+msgstr "                                 : Äani\n"
+
+#: gphoto2/actions.c:565
+msgid "                                 : Preview\n"
+msgstr "                                 : Esikatselu\n"
+
+#: gphoto2/actions.c:566
+#, c-format
+msgid "Configuration support            : %s\n"
+msgstr "Tuki asetusten muuttamiselle     : %s\n"
+
+#: gphoto2/actions.c:568
+#, c-format
+msgid "Delete files on camera support   : %s\n"
+msgstr "Kuvien poistaminen kamerasta     : %s\n"
+
+#: gphoto2/actions.c:571
+#, c-format
+msgid "File preview (thumbnail) support : %s\n"
+msgstr "Tuki tiedoston esikatselulle     : %s\n"
+
+#: gphoto2/actions.c:574
+#, c-format
+msgid "File upload support              : %s\n"
+msgstr ""
+"Tuki tiedostojen lataamiselle \n"
+"tietokoneelta kameraan           : %s\n"
+
+#: gphoto2/actions.c:591
+#, c-format
+msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
+msgstr ""
+"Portti ilmaistaan esimerkiksi \"serial:/dev/ttyS0\" tai \"usb\", mutta \n"
+"merkkijonosta \"%s\" puuttuu kaksoispiste, joten oikea portti yritetään\n"
+"löytää automaattisesti."
+
+#: gphoto2/actions.c:630
+#, c-format
+msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
+msgstr ""
+"Määrittelemääsi porttia (\"%s\") ei löydy. Määrittele jokin komennon\n"
+"\"gphoto2 --list-ports\" listaamista porteista ja tarkista kirjoitusasu \n"
+"(esim. etuliite \"serial:\" tai \"usb:\")"
+
+#: gphoto2/actions.c:668
+msgid "About the camera driver:"
+msgstr "Tietoa kameran ajurista:"
+
+#: gphoto2/actions.c:682
+msgid "Camera summary:"
+msgstr "Kameran kooste:"
+
+#: gphoto2/actions.c:696
+msgid "Camera manual:"
+msgstr "Kameran käyttöohje:"
+
+#: gphoto2/actions.c:712
+msgid "You can only specify speeds for serial ports."
+msgstr "Nopeuden voi määrittää vain sarjaporteille."
+
+#: gphoto2/actions.c:763
+#, c-format
+msgid ""
+"gphoto2 %s\n"
+"\n"
+"Copyright (c) 2000-2003 Lutz Mueller and others\n"
+"%s\n"
+"gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
+"redistribute copies of gphoto2 under the terms of the GNU General Public\n"
+"License. For more information about these matters, see the files named COPYING.\n"
+"\n"
+"This version of gphoto2 is using the following software versions and options:\n"
+msgstr ""
+"gphoto2 %s\n"
+"\n"
+"Tekijänoikeus © 2000-2003 Lutz Müller ja muut\n"
+"%s\n"
+"\n"
+"Tällä ohjelmalla EI lain sallimissa rajoissa OLE TAKUUTA.\n"
+"Ohjelmaa saa levittää GNU:n General Public Licensen mukaisesti;\n"
+"katso lisätietoja tiedostosta COPYING.\n"
+"\n"
+"Tämä gphoto2:n versio käyttää seuraavia ohjelmistoversioita ja valitsimia:\n"
+
+#: gphoto2/actions.c:776
+msgid "OS/2 port by Bart van Leeuwen\n"
+msgstr "OS/2-siirros Bart van Leeuwen\n"
+
+#: gphoto2/actions.c:890
+msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
+msgstr ""
+"SISÄLLYTÄ VIESTIISI AINA SEURAAVAT RIVIT LÄHETTÄESSÄSI VIANETSINTÄ-\n"
+"VIESTEJÄ POSTITUSLISTALLE:"
+
+#: gphoto2/foreach.c:254
+#, c-format
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
+msgstr ""
+"Virheellinen tiedoston numero. Annoit numeron %i, mutta vain %i tiedostoa\n"
+"on saatavilla kansiossa \"%s\" ja sen alikansioissa. Selvitä ensin oikea\n"
+"tiedoston numero tiedostolistauksesta."
+
+#: gphoto2/foreach.c:283
+#, c-format
+msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
+msgstr ""
+"Virheellinen tiedoston numero. Määritit numeron %i, mutta kansio \"%s\"\n"
+"sisältää vain yhden tiedoston."
+
+#: gphoto2/foreach.c:291
+#, c-format
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s'.Please obtain a valid file number from a file listing first."
+msgstr ""
+"Virheellinen tiedoston numero. Määritit numeron %i, mutta vain %i tiedostoa on\n"
+"saatavilla kansiossa \"%s\". Selvitä ensin oikea tiedoston numero tiedostolistauksesta."
+
+#: gphoto2/gp-params.c:53
+msgid "*** Error ***              \n"
+msgstr "*** Virhe ***              \n"
+
+#: gphoto2/gp-params.c:220
+msgid "Press any key to continue.\n"
+msgstr "Paina jotakin näppäintä jatkaaksesi.\n"
+
+#: gphoto2/gp-params.c:237
+msgid "Not enough memory."
+msgstr "Muistin määrä ei riitä."
+
+#: gphoto2/gphoto2-cmd-capture.c:201
+msgid "Operation cancelled"
+msgstr "Operaatio peruttu"
+
+#: gphoto2/gphoto2-cmd-config.c:55
+msgid "</B/24>Continue"
+msgstr "</B/24>Jatka"
+
+#: gphoto2/gphoto2-cmd-config.c:55
+msgid "</B16>Cancel"
+msgstr "</B16>Peru"
+
+#: gphoto2/gphoto2-cmd-config.c:61
+msgid "<C></5>Error"
+msgstr "<C></5>Virhe"
+
+#: gphoto2/gphoto2-cmd-config.c:63
+msgid "Could not set configuration:"
+msgstr "Asetusten päivitys epäonistui:"
+
+#: gphoto2/gphoto2-cmd-config.c:107
+msgid "Exit"
+msgstr "Lopeta"
+
+#: gphoto2/gphoto2-cmd-config.c:109
+msgid "Back"
+msgstr "Takaisin"
+
+#: gphoto2/gphoto2-cmd-config.c:253
+msgid "Time: "
+msgstr "Aika: "
+
+#: gphoto2/gphoto2-cmd-config.c:312 gphoto2/gphoto2-cmd-config.c:340
+#: gphoto2/gphoto2-cmd-config.c:400 gphoto2/gphoto2-cmd-config.c:463
+msgid "Value: "
+msgstr "Arvo: "
+
+#: gphoto2/gphoto2-cmd-config.c:362
+msgid "Yes"
+msgstr "Kyllä"
+
+#: gphoto2/gphoto2-cmd-config.c:362
+msgid "No"
+msgstr "Ei"
+
+#: gphoto2/main.c:161 gphoto2/main.c:1461
+msgid "Turn on debugging"
+msgstr "Aseta vianetsintä päälle"
+
+#: gphoto2/main.c:162 gphoto2/main.c:1463
+msgid "Quiet output (default=verbose)"
+msgstr "Hiljainen tuloste (oletus=verbose)"
+
+#: gphoto2/main.c:166 gphoto2/main.c:1467
+msgid "Display version and exit"
+msgstr "Näytä versio ja lopeta"
+
+#: gphoto2/main.c:167
+msgid "Displays this help screen"
+msgstr "Näyttää tämän opasteruudun"
+
+#: gphoto2/main.c:168 gphoto2/main.c:1469
+msgid "List supported camera models"
+msgstr "Listaa tuetut kameramallit"
+
+#: gphoto2/main.c:169 gphoto2/main.c:1471
+msgid "List supported port devices"
+msgstr "Listaa tuetut portit"
+
+#: gphoto2/main.c:170 gphoto2/main.c:1473
+msgid "Send file to stdout"
+msgstr "Lähetä tiedosto vakiotulosteeseen"
+
+#: gphoto2/main.c:171 gphoto2/main.c:1475
+msgid "Print filesize before data"
+msgstr "Tulosta tiedoston koko ennen dataa"
+
+#: gphoto2/main.c:172 gphoto2/main.c:1477
+msgid "List auto-detected cameras"
+msgstr "Listaa automaattisesti tunnistetut kamerat"
+
+#: gphoto2/main.c:175 gphoto2/main.c:1479
+msgid "Specify port device"
+msgstr "Määritä portti"
+
+#: gphoto2/main.c:176 gphoto2/main.c:1481
+msgid "Specify serial transfer speed"
+msgstr "Määritä sarjaportin siirtonopeus"
+
+#: gphoto2/main.c:177 gphoto2/main.c:1483
+msgid "Specify camera model"
+msgstr "Määritä kameran malli"
+
+#: gphoto2/main.c:178 gphoto2/main.c:1485
+msgid "Specify a filename"
+msgstr "Määritä tiedoston nimi"
+
+#: gphoto2/main.c:179 gphoto2/main.c:1487
+msgid "(expert only) Override USB IDs"
+msgstr "(vain asiantuntijoille) Kumoa USB-tunnisteet"
+
+#: gphoto2/main.c:182 gphoto2/main.c:1489
+msgid "Display camera abilities"
+msgstr "Näytä kameran valmiudet"
+
+#: gphoto2/main.c:183 gphoto2/main.c:1491
+msgid "Specify camera folder (default=\"/\")"
+msgstr "Määritä kameran kansio (oletus=\"/\")"
+
+#: gphoto2/main.c:184 gphoto2/main.c:1493
+msgid "Recursion (default for download)"
+msgstr "Rekursio (oletus tiedostojen kamerasta lataamiselle)"
+
+#: gphoto2/main.c:185 gphoto2/main.c:1495
+msgid "No recursion (default for deletion)"
+msgstr "Ei rekursiota (oletus poistolle)"
+
+#: gphoto2/main.c:186 gphoto2/main.c:1497
+msgid "List folders in folder"
+msgstr "Listaa kansion sisältämät kansiot"
+
+#: gphoto2/main.c:187 gphoto2/main.c:1499
+msgid "List files in folder"
+msgstr "Listaa kansion sisältämät tiedostot"
+
+#: gphoto2/main.c:188 gphoto2/main.c:189
+msgid "name"
+msgstr "nimi"
+
+#: gphoto2/main.c:188 gphoto2/main.c:1501
+msgid "Create a directory"
+msgstr "Luo kansio"
+
+#: gphoto2/main.c:189 gphoto2/main.c:1503
+msgid "Remove a directory"
+msgstr "Poista kansio"
+
+#: gphoto2/main.c:190 gphoto2/main.c:1505
+msgid "Display number of files"
+msgstr "Näytä tiedostojen lukumäärä"
+
+#: gphoto2/main.c:191 gphoto2/main.c:1507
+msgid "Get files given in range"
+msgstr "Hae tiedostot määritellyltä lukualueelta"
+
+#: gphoto2/main.c:192 gphoto2/main.c:1509
+msgid "Get all files from folder"
+msgstr "Hae kaikki tiedostot kansiosta"
+
+#: gphoto2/main.c:193 gphoto2/main.c:1511
+msgid "Get thumbnails given in range"
+msgstr "Hae pienoiskuvat määritellyltä lukualueelta"
+
+#: gphoto2/main.c:194 gphoto2/main.c:1514
+msgid "Get all thumbnails from folder"
+msgstr "Hae kaikki pienoiskuvat kansiosta"
+
+#: gphoto2/main.c:195 gphoto2/main.c:1517
+msgid "Get raw data given in range"
+msgstr "Hae raakadata määritellyltä lukualueelta"
+
+#: gphoto2/main.c:196 gphoto2/main.c:1520
+msgid "Get all raw data from folder"
+msgstr "Hae kaikki raakadata kansiosta"
+
+#: gphoto2/main.c:197 gphoto2/main.c:1523
+msgid "Get audio data given in range"
+msgstr "Hae äänidata määritellyltä lukualueelta"
+
+#: gphoto2/main.c:198 gphoto2/main.c:1526
+msgid "Get all audio data from folder"
+msgstr "Hae kaikki äänidata kansiosta"
+
+#: gphoto2/main.c:199 gphoto2/main.c:1528
+msgid "Delete files given in range"
+msgstr "Poista tiedostot määritellyltä lukualueelta"
+
+#: gphoto2/main.c:200 gphoto2/main.c:1530
+msgid "Delete all files in folder"
+msgstr "Poista kaikki tiedostot kansiosta"
+
+#: gphoto2/main.c:201 gphoto2/main.c:1532
+msgid "Upload a file to camera"
+msgstr "Lataa tiedosto kameraan"
+
+#: gphoto2/main.c:203 gphoto2/main.c:1535
+msgid "Configure"
+msgstr "Aseta"
+
+#: gphoto2/main.c:205 gphoto2/main.c:1539
+msgid "Capture a quick preview"
+msgstr "Kaappaa nopea esikatselukuva"
+
+#: gphoto2/main.c:206 gphoto2/main.c:1541
+msgid "Capture an image"
+msgstr "Kaappaa kuva"
+
+#: gphoto2/main.c:207
+msgid "Capture a movie "
+msgstr "Kaappaa elokuva "
+
+#: gphoto2/main.c:208 gphoto2/main.c:1545
+msgid "Capture an audio clip"
+msgstr "Kaappaa äänipätkä"
+
+#: gphoto2/main.c:210 gphoto2/main.c:1548 gphoto2/shell.c:113
+msgid "Show EXIF information"
+msgstr "Näytä EXIF-tiedot"
+
+#: gphoto2/main.c:212 gphoto2/main.c:1551 gphoto2/shell.c:109
+msgid "Show info"
+msgstr "Näytä tiedot"
+
+#: gphoto2/main.c:213
+msgid "Summary of camera status"
+msgstr "Kooste kameran tilasta"
+
+#: gphoto2/main.c:214
+msgid "Camera driver manual"
+msgstr "Kameran ajurin käyttöohje"
+
+#: gphoto2/main.c:215
+msgid "About the camera driver"
+msgstr "Tietoa kameran ajurista"
+
+#: gphoto2/main.c:216 gphoto2/main.c:1559
+msgid "gPhoto shell"
+msgstr "gPhoto-komentotulkki"
+
+#: gphoto2/main.c:343 gphoto2/main.c:1192
+msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
+msgstr ""
+"Käytä merkintätapaa a:b=c:d käsitellessäsi a:b:nä tunnistettua \n"
+"USB-laitetta c:d:nä. a, b, c ja d tulee olla \"0x\":llä alkavia \n"
+"heksadesimaalilukuja.\n"
+
+#: gphoto2/main.c:466
+msgid "Jan"
+msgstr "tam"
+
+#: gphoto2/main.c:466
+msgid "January"
+msgstr "tammikuuta"
+
+#: gphoto2/main.c:467
+msgid "Feb"
+msgstr "hel"
+
+#: gphoto2/main.c:467
+msgid "February"
+msgstr "helmikuuta"
+
+#: gphoto2/main.c:468
+msgid "Mar"
+msgstr "maa"
+
+#: gphoto2/main.c:468
+msgid "March"
+msgstr "maaliskuuta"
+
+#: gphoto2/main.c:469
+msgid "Apr"
+msgstr "huh"
+
+#: gphoto2/main.c:469
+msgid "April"
+msgstr "huhtikuuta"
+
+#: gphoto2/main.c:470
+msgid "May"
+msgstr "tou"
+
+#: gphoto2/main.c:471
+msgid "Jun"
+msgstr "kes"
+
+#: gphoto2/main.c:471
+msgid "June"
+msgstr "kesäkuuta"
+
+#: gphoto2/main.c:472
+msgid "Jul"
+msgstr "hei"
+
+#: gphoto2/main.c:472
+msgid "July"
+msgstr "heinäkuuta"
+
+#: gphoto2/main.c:473
+msgid "Aug"
+msgstr "elo"
+
+#: gphoto2/main.c:473
+msgid "August"
+msgstr "elokuuta"
+
+#: gphoto2/main.c:474
+msgid "Sep"
+msgstr "syy"
+
+#: gphoto2/main.c:474
+msgid "September"
+msgstr "syyskuuta"
+
+#: gphoto2/main.c:475
+msgid "Oct"
+msgstr "lok"
+
+#: gphoto2/main.c:475
+msgid "October"
+msgstr "lokakuuta"
+
+#: gphoto2/main.c:476
+msgid "Nov"
+msgstr "mar"
+
+#: gphoto2/main.c:476
+msgid "November"
+msgstr "marraskuuta"
+
+#: gphoto2/main.c:477
+msgid "Dec"
+msgstr "jou"
+
+#: gphoto2/main.c:477
+msgid "December"
+msgstr "joulukuuta"
+
+#: gphoto2/main.c:484
+msgid "Sun"
+msgstr "su"
+
+#: gphoto2/main.c:484
+msgid "Sunday"
+msgstr "sunnuntai"
+
+#: gphoto2/main.c:485
+msgid "Mon"
+msgstr "ma"
+
+#: gphoto2/main.c:485
+msgid "Monday"
+msgstr "maanantai"
+
+#: gphoto2/main.c:486
+msgid "Tue"
+msgstr "ti"
+
+#: gphoto2/main.c:486
+msgid "Tuesday"
+msgstr "tiistai"
+
+#: gphoto2/main.c:487
+msgid "Wed"
+msgstr "ke"
+
+#: gphoto2/main.c:487
+msgid "Wednesday"
+msgstr "keskiviikko"
+
+#: gphoto2/main.c:488
+msgid "Thu"
+msgstr "to"
+
+#: gphoto2/main.c:488
+msgid "Thursday"
+msgstr "torstai"
+
+#: gphoto2/main.c:489
+msgid "Fri"
+msgstr "pe"
+
+#: gphoto2/main.c:489
+msgid "Friday"
+msgstr "perjantai"
+
+#: gphoto2/main.c:490
+msgid "Sat"
+msgstr "la"
+
+#: gphoto2/main.c:490
+msgid "Saturday"
+msgstr "lauantai"
+
+#: gphoto2/main.c:552
+#, c-format
+msgid "You cannot use '%n' in combination with non-persistent files!"
+msgstr "Et voi käyttää kohdetta \"%n\" väliaikaistiedostojen yhteydessä!"
+
+#: gphoto2/main.c:575
+#, c-format
+msgid "The filename provided by the camera ('%s') does not contain a suffix!"
+msgstr "Kameran antama tiedoston nimi (\"%s\") ei sisällä päätettä!"
+
+#: gphoto2/main.c:654
+#, c-format
+msgid "Invalid format '%s' (error at position %i)."
+msgstr "Virheellinen muoto \"%s\" (virhe kohdassa %i)."
+
+#: gphoto2/main.c:701
+#, c-format
+msgid "File %s exists. Overwrite? [y|n] "
+msgstr "Tiedosto %s on olemassa. Ylikirjoitetaanko? [y|n] "
+
+#: gphoto2/main.c:712
+msgid "Specify new filename? [y|n] "
+msgstr "Anna uusi tiedostonimi? [y|n] "
+
+#: gphoto2/main.c:721
+msgid "Enter new filename: "
+msgstr "Syötä uusi tiedostonimi: "
+
+#: gphoto2/main.c:726
+#, c-format
+msgid "Saving file as %s\n"
+msgstr "Tallennetaan tiedosto nimellä %s\n"
+
+#: gphoto2/main.c:918
+#, c-format
+msgid "New file is in location %s%s%s on the camera\n"
+msgstr "Uusi tiedosto sijaitsee kamerassa paikassa %s%s%s\n"
+
+#: gphoto2/main.c:1050
+msgid "ERROR: "
+msgstr "VIRHE: "
+
+#: gphoto2/main.c:1073
+msgid ""
+"\n"
+"Aborting...\n"
+msgstr ""
+"\n"
+"Keskeytetään...\n"
+
+#: gphoto2/main.c:1079
+msgid "Aborted.\n"
+msgstr "Keskeytetty.\n"
+
+#: gphoto2/main.c:1084
+msgid ""
+"\n"
+"Cancelling...\n"
+msgstr ""
+"\n"
+"Perutaan...\n"
+
+#: gphoto2/main.c:1291
+msgid "gphoto2 has been compiled without support for CDK."
+msgstr "gphoto2 on käänetty ilman tukea CDK:lle."
+
+#: gphoto2/main.c:1404
+msgid "Operation cancelled.\n"
+msgstr "Toimenpide keskeytetty.\n"
+
+#: gphoto2/main.c:1408
+#, c-format
+msgid ""
+"*** Error (%i: '%s') ***       \n"
+"\n"
+msgstr ""
+"*** Virhe (%i: \"%s\") ***        \n"
+"\n"
+
+#: gphoto2/main.c:1412
+msgid ""
+"For debugging messages, please use the --debug option.\n"
+"Debugging messages may help finding a solution to your problem.\n"
+"If you intend to send any error or debug messages to the gphoto\n"
+"developer mailing list <gphoto-devel@lists.sourceforge.net>, please run\n"
+"gphoto2 as follows:\n"
+"\n"
+msgstr ""
+"Nähdäksesi vianetsintäviestit, käytä ­-debug-valitsinta. \n"
+"Vianetsintäviestit voivat auttaa löytämään ratkaisun ongelmaasi. \n"
+"Jos aiot lähettää virhe- tai vianetsintäviestejä gphoto:n\n"
+"kehittäjien sähköpostilistalle <gphoto-devel@lists.sourceforge.net>,\n"
+"ole hyvä ja käynnistä gphoto2 seuraavasti:\n"
+"\n"
+
+#: gphoto2/main.c:1465
+msgid "Overwrite files without asking."
+msgstr "Ylikirjoita tiedostot kysymättä."
+
+#: gphoto2/main.c:1479
+msgid "path"
+msgstr "polku"
+
+#: gphoto2/main.c:1481
+msgid "speed"
+msgstr "nopeus"
+
+#: gphoto2/main.c:1483
+msgid "model"
+msgstr "malli"
+
+#: gphoto2/main.c:1485
+msgid "filename"
+msgstr "tiedostonimi"
+
+#: gphoto2/main.c:1487
+msgid "usbid"
+msgstr "usbid"
+
+#: gphoto2/main.c:1491
+msgid "folder"
+msgstr "kansio"
+
+#: gphoto2/main.c:1543
+msgid "Capture a movie"
+msgstr "Kaappaa elokuva"
+
+#: gphoto2/main.c:1553
+msgid "Show summary"
+msgstr "Näytä kooste"
+
+#: gphoto2/main.c:1555
+msgid "Show camera driver manual"
+msgstr "Näytä kameran ajurin käyttöohje"
+
+#: gphoto2/main.c:1557
+msgid "About the camera driver manual"
+msgstr "Tietoa kameran ajurin käyttöohjeesta"
+
+#: gphoto2/main.c:1784
+msgid "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+msgstr ""
+"gPhoto2 OS/2:lle vaatii \"CAMLIBS\"-ympäristömuuttujan asettamisen \n"
+"kamerakirjastoihin sopivaksi. Esim. SET CAMLIBS=C:\\\\GPHOTO2\\\\CAM\n"
+
+#: gphoto2/main.c:1794
+msgid "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
+msgstr ""
+"gPhoto2 OS/2:lle vaatii \"IOLIBS\"-ympäristömuuttujan asettamisen \n"
+"io-kirjastoihin sopivaksi. Esim. SET IOLIBS=C:\\\\GPHOTO2\\\\IOLIB\n"
+
+#: gphoto2/options.c:181
+msgid "Usage:\n"
+msgstr "Käyttö:\n"
+
+#: gphoto2/options.c:184
+msgid ""
+"Short/long options (& argument)        Description\n"
+"--------------------------------------------------------------------------------\n"
+msgstr ""
+"Lyhyet/pitkät valinnat (ja argumentit) Kuvaus\n"
+"--------------------------------------------------------------------------------\n"
+
+#: gphoto2/options.c:209
+#, c-format
+msgid "%-38s %s\n"
+msgstr "%-38s %s\n"
+
+#: gphoto2/options.c:214
+msgid ""
+"--------------------------------------------------------------------------------\n"
+"[Use double-quotes around arguments]        [Picture numbers begin with one (1)]\n"
+msgstr ""
+"--------------------------------------------------------------------------------\n"
+"[Käytä kaksoislainausmerkkejä argumenttien ympärillä   [Kuvan numero alkaa\n"
+"ykkösellä (1)]\n"
+
+#: gphoto2/range.c:103 gphoto2/range.c:157
+#, c-format
+msgid ""
+"%s\n"
+"Image IDs must be a number greater than zero."
+msgstr ""
+"%s\n"
+"Kuvan numeron tulee olla nollaa suurempi."
+
+#: gphoto2/range.c:109 gphoto2/range.c:163
+#, c-format
+msgid ""
+"%s\n"
+"Image ID %i too high."
+msgstr ""
+"%s\n"
+"Kuvan numero %i on liian suuri."
+
+#: gphoto2/range.c:125
+#, c-format
+msgid ""
+"%s\n"
+"Ranges must be separated by ','."
+msgstr ""
+"%s\n"
+"Lukualueet tulee erottaa pilkuilla \",\"."
+
+#: gphoto2/range.c:139
+#, c-format
+msgid ""
+"%s\n"
+"Ranges need to start with a number."
+msgstr ""
+"%s\n"
+"Lukualueiden tulee alkaa numerolla."
+
+#: gphoto2/range.c:179
+#, c-format
+msgid ""
+"%s\n"
+"Unexpected character '%c'."
+msgstr ""
+"%s\n"
+"Odottamaton merkki \"%c\"."
+
+#: gphoto2/range.c:202
+#, c-format
+msgid ""
+"%s\n"
+"Decreasing ranges are not allowed. You specified a range from %i to %i."
+msgstr ""
+"%s\n"
+"Vähenevät lukualueet eivät ole sallittuja. Määritit alueen luvusta %i \n"
+"lukuun %i."
+
+#: gphoto2/shell.c:55
+#, c-format
+msgid "*** Error (%i: '%s') ***"
+msgstr "*** Virhe (%i: \"%s\") ***"
+
+#: gphoto2/shell.c:98
+msgid "Change to a directory on the camera"
+msgstr "Siirry kameran kansioon"
+
+#: gphoto2/shell.c:99 gphoto2/shell.c:101
+msgid "directory"
+msgstr "kansio"
+
+#: gphoto2/shell.c:100
+msgid "Change to a directory on the local drive"
+msgstr "Siirry paikallisen aseman kansioon"
+
+#: gphoto2/shell.c:102 gphoto2/shell.c:120 gphoto2/shell.c:121
+msgid "Exit the gPhoto shell"
+msgstr "Poistu gPhoto-komentotulkista"
+
+#: gphoto2/shell.c:103
+msgid "Download a file"
+msgstr "Lataa tiedosto"
+
+#: gphoto2/shell.c:103 gphoto2/shell.c:106 gphoto2/shell.c:108
+#: gphoto2/shell.c:110 gphoto2/shell.c:111 gphoto2/shell.c:114
+msgid "[directory/]filename"
+msgstr "[kansio/]tiedostonimi"
+
+#: gphoto2/shell.c:105
+msgid "Download a thumbnail"
+msgstr "Lataa pienoiskuva"
+
+#: gphoto2/shell.c:107
+msgid "Download raw data"
+msgstr "Lataa raakadata"
+
+#: gphoto2/shell.c:111
+msgid "Delete"
+msgstr "Poista"
+
+#: gphoto2/shell.c:116 gphoto2/shell.c:122
+msgid "Displays command usage"
+msgstr "Näytä komennon käyttöohjeet"
+
+#: gphoto2/shell.c:117 gphoto2/shell.c:122
+msgid "[command]"
+msgstr "[komento]"
+
+#: gphoto2/shell.c:118
+msgid "List the contents of the current directory"
+msgstr "Listaa nykyisen kansion sisältö"
+
+#: gphoto2/shell.c:119
+msgid "[directory/]"
+msgstr "[kansio/]"
+
+#: gphoto2/shell.c:421
+msgid "Invalid command."
+msgstr "Virheellinen komento."
+
+#: gphoto2/shell.c:430
+#, c-format
+msgid "The command '%s' requires an argument."
+msgstr "Komento \"%s\" vaatii argumentin."
+
+#: gphoto2/shell.c:483
+msgid "Invalid path."
+msgstr "Virheellinen polku."
+
+#: gphoto2/shell.c:529
+msgid "Could not find home directory."
+msgstr "Kotikansiota ei löytynyt."
+
+#: gphoto2/shell.c:537
+#, c-format
+msgid "Could not change to local directory '%s'."
+msgstr "Paikalliseen kansioon \"%s\" siirtyminen ei onnistunut."
+
+#: gphoto2/shell.c:540
+#, c-format
+msgid "Local directory now '%s'."
+msgstr "Paikallinen kansio on nyt \"%s\"."
+
+#: gphoto2/shell.c:578
+#, c-format
+msgid "Remote directory now '%s'."
+msgstr "Etäkansio on nyt \"%s\"."
+
+#: gphoto2/shell.c:734
+#, c-format
+msgid "Command '%s' not found. Use 'help' to get a list of available commands."
+msgstr ""
+"Komentoa \"%s\" ei löydy. Käytä komentoa \"help\" nähdäksesi listan käytössä olevista\n"
+"komennoista."
+
+#: gphoto2/shell.c:741
+#, c-format
+msgid "Help on \"%s\":"
+msgstr "Ohjeita aiheesta \"%s\":"
+
+#: gphoto2/shell.c:743
+msgid "Usage:"
+msgstr "Käyttö:"
+
+#: gphoto2/shell.c:747
+msgid "Description:"
+msgstr "Kuvaus:"
+
+#: gphoto2/shell.c:749
+msgid "* Arguments in brackets [] are optional"
+msgstr "* Argumentit hakasuluissa [] ovat valinnaisia"
+
+#: gphoto2/shell.c:770
+msgid "Available commands:"
+msgstr "Käytössä olevat komennot:"
+
+#: gphoto2/shell.c:775
+msgid "To get help on a particular command, type in 'help command-name'."
+msgstr "Saadaksesi apua tietyn komennon käytöstä kirjoita \"help komennon-nimi\"."
