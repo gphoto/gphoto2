@@ -44,6 +44,7 @@ gphoto2_SOURCES = 		\
 	globals.h 		\
 	gp-params.c gp-params.h	\
 	main.c main.h 		\
+	version.c version.h	\
 	range.c range.h 	\
 	shell.c shell.h 
 

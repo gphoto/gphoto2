@@ -20,6 +20,7 @@
 
 #include <config.h>
 #include "actions.h"
+#include "version.h"
 
 #include <string.h>
 #include <stdio.h>
@@ -765,20 +766,51 @@ set_filename_action (GPParams *p, const char *filename)
 	return (p->filename ? GP_OK: GP_ERROR_NO_MEMORY);
 }
 
+#define CHECK_NULL(x) { if (x == NULL) { return(-1); /* FIXME: what code? */ } }
+
 int
 print_version_action (GPParams *p)
 {
-	printf (_("gPhoto (v%s) - Cross-platform digital camera library.\n"
-		  "Copyright (C) 2000-2002 Scott Fritzinger and others\n"
+	int n;
+	printf (_("gphoto2 %s\n"
+		  "\n"
+		  "Copyright (C) 2000-2002 Lutz Müller and others\n"
 		  "%s"
-		  "Licensed under the Library GNU Public License (LGPL).\n"),
-			VERSION,
+		  "\n"
+		  "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
+		  "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
+		  "License. For more information about these matters, see the files named COPYING.\n"
+		  "\n"
+		  "This version of gphoto2 is using the following software versions and options:\n"),
+
+		VERSION,
 #ifdef OS2
 			_("OS/2 port by Bart van Leeuwen\n")
 #else
 			""
 #endif
-			);
+		);
+
+	for (n = 0; module_versions[n].name != NULL; n++) {
+	  int i;
+	  const char **v = NULL;
+	  char *name = module_versions[n].name;
+	  GPVersionFunc func = module_versions[n].version_func;
+	  CHECK_NULL (name);
+	  CHECK_NULL (func);
+	  v = func(GP_VERSION_SHORT);
+	  CHECK_NULL (v);
+	  CHECK_NULL (v[0]);
+	  printf ("%-17s %-12s ", name, v[0]);
+	  for (i = 1; v[i] != NULL; i++) {
+		  if (v[i+1] != NULL) {
+			  printf ("%s, ", v[i]);
+		  } else {
+			  printf ("%s", v[i]);
+		  }
+	  }
+	  printf ("\n");
+	}
 
 	return (GP_OK);
 }
@@ -863,39 +895,37 @@ debug_func (GPLogLevel level, const char *domain, const char *format,
 int
 debug_action (GPParams *p)
 {
+	int n;
 	gettimeofday (&glob_tv_zero, NULL);
 
 	CR (p->debug_func_id = gp_log_add_func (GP_LOG_ALL, debug_func, NULL));
-	gp_log (GP_LOG_DEBUG, "main", _("ALWAYS INCLUDE THE FOLLOWING LINE "
+	gp_log (GP_LOG_DEBUG, "main", _("ALWAYS INCLUDE THE FOLLOWING LINES "
 					"WHEN SENDING DEBUG MESSAGES TO THE "
 					"MAILING LIST:"));
-	gp_log (GP_LOG_DEBUG, "main", PACKAGE " " VERSION);
-	gp_log (GP_LOG_DEBUG, "main", PACKAGE
-		" has been compiled with the following options:");
-#ifdef HAVE_POPT
-	gp_log (GP_LOG_DEBUG, "main",
-		" + popt (for handling command-line parameters)");
-#endif
-#ifdef HAVE_EXIF
-	gp_log (GP_LOG_DEBUG, "main",
-		" + exif (for displaying EXIF information)");
-#endif
-#ifdef HAVE_CDK
-	gp_log (GP_LOG_DEBUG, "main",
-		" + cdk (for accessing configuration options)");
-#endif
-#ifdef HAVE_AA
-	gp_log (GP_LOG_DEBUG, "main",
-		" + aa (for displaying live previews)");
-#endif
-#ifdef HAVE_JPEG
-	gp_log (GP_LOG_DEBUG, "main",
-		" + jpeg (for displaying live previews in JPEG format)");
-#endif
-#ifdef HAVE_RL
-	gp_log (GP_LOG_DEBUG, "main",
-		" + readline (for easy navigation in the shell)");
-#endif
+
+	for (n = 0; module_versions[n].name != NULL; n++) {
+	  int i;
+	  const char **v = NULL;
+	  char *name = module_versions[n].name;
+	  GPVersionFunc func = module_versions[n].version_func;
+	  CHECK_NULL (name);
+	  CHECK_NULL (func);
+	  v = func(GP_VERSION_VERBOSE);
+	  CHECK_NULL (v);
+	  CHECK_NULL (v[0]);
+	  gp_log (GP_LOG_DEBUG, "main", "%s %s", name, v[0]);
+	  gp_log (GP_LOG_DEBUG, "main", "%s has been compiled with the following options:", name);
+	  for (i = 1; v[i] != NULL; i++) {
+	    gp_log (GP_LOG_DEBUG, "main", " + %s", v[i]);
+	  }
+	}
 
 	return (GP_OK);
 }
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */
