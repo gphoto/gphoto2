@@ -37,6 +37,9 @@
 #endif
 
 static void
+#ifdef __GNUC__
+__attribute__((__format__(printf,2,0)))
+#endif
 ctx_status_func (GPContext *context, const char *format, va_list args,
                  void *data)
 {
@@ -46,6 +49,9 @@ ctx_status_func (GPContext *context, const char *format, va_list args,
 }
 
 static void
+#ifdef __GNUC__
+__attribute__((__format__(printf,2,0)))
+#endif
 ctx_error_func (GPContext *context, const char *format, va_list args,
                 void *data)
 {
@@ -70,6 +76,9 @@ static struct {
 } progress_states[MAX_PROGRESS_STATES];
 
 static unsigned int
+#ifdef __GNUC__
+__attribute__((__format__(printf,3,0)))
+#endif
 ctx_progress_start_func (GPContext *context, float target,
                          const char *format, va_list args, void *data)
 {
@@ -207,6 +216,9 @@ ctx_cancel_func (GPContext *context, void *data)
 }
 
 static void
+#ifdef __GNUC__
+__attribute__((__format__(printf,2,0)))
+#endif
 ctx_message_func (GPContext *context, const char *format, va_list args,
                   void *data)
 {

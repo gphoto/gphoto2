@@ -896,6 +896,9 @@ override_usbids_action (GPParams *p, int usb_vendor, int usb_product,
 struct timeval glob_tv_zero = { 0, 0 };
 
 static void
+#ifdef __GNUC__
+		__attribute__((__format__(printf,3,0)))
+#endif
 debug_func (GPLogLevel level, const char *domain, const char *format,
 	    va_list args, void *data)
 {
