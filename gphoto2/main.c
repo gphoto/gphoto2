@@ -503,6 +503,7 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 	CameraFileType type;
 	time_t t;
 	struct tm *tm;
+	int hour12;
 
 	if (!file || !path)
 		return (GP_ERROR_BAD_PARAMETERS);
@@ -511,6 +512,10 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 	CR (gp_file_get_name (file, &name));
 	CR (gp_file_get_mtime (file, &t));
 	tm = localtime (&t);
+	hour12 = tm->tm_hour % 12;
+	if (hour12 == 0) {
+		hour12 = 12;
+	}
 
 	/*
 	 * If the user didn't specify a filename, use the original name 
@@ -609,19 +614,22 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 				snprintf (b, sizeof (b), "%02i", tm->tm_mday);
 				break;
 			case 'H':
-			case 'k':
 				snprintf (b, sizeof (b), "%02i", tm->tm_hour);
 				break;
+			case 'k':
+				snprintf (b, sizeof (b), "%i", tm->tm_hour);
+				break;
 			case 'I':
+				snprintf (b, sizeof (b), "%02i", hour12);
+				break;
 			case 'l':
-				snprintf (b, sizeof (b), "%02i",
-					  tm->tm_hour % 12);
+				snprintf (b, sizeof (b), "%i", hour12);
 				break;
 			case 'j':
-				snprintf (b, sizeof (b), "%03i", tm->tm_yday);
+				snprintf (b, sizeof (b), "%03i", tm->tm_yday + 1);
 				break;
 			case 'm':
-				snprintf (b, sizeof (b), "%02i", tm->tm_mon);
+				snprintf (b, sizeof (b), "%02i", tm->tm_mon + 1);
 				break;
 			case 'M':
 				snprintf (b, sizeof (b), "%02i", tm->tm_min);
@@ -630,7 +638,7 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 				snprintf (b, sizeof (b), "%02i", tm->tm_sec);
 				break;
 			case 'y':
-				snprintf (b, sizeof (b), "%02i", tm->tm_year);
+				snprintf (b, sizeof (b), "%02i", tm->tm_year % 100);
 				break;
 			case 'Y':
 				snprintf (b, sizeof (b), "%i",
