@@ -734,13 +734,13 @@ static struct {
 	const char *s;
 	const char *l;
 } WeekdayTable[] = {
+	{N_("Sun"), N_("Sunday")},
 	{N_("Mon"), N_("Monday")},
 	{N_("Tue"), N_("Tuesday")},
 	{N_("Wed"), N_("Wednesday")},
 	{N_("Thu"), N_("Thursday")},
 	{N_("Fri"), N_("Friday")},
-	{N_("Sat"), N_("Saturday")},
-	{N_("Sun"), N_("Sunday")}
+	{N_("Sat"), N_("Saturday")}
 };
 
 static int
