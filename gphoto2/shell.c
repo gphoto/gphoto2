@@ -223,10 +223,10 @@ shell_command_generator (const char *text, int state)
 	}
 
 	/* Search 'text' */
-	for (; func[x].command; x++)
+	for (; func[x].function; x++)
 		if (!strncmp (func[x].command, text, len))
 			break;
-	if (func[x].command)
+	if (func[x].function)
 		return (strdup (func[x++].command));
 
 	return (NULL);
