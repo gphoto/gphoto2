@@ -1,1 +1,1 @@
-SUBDIRS = gphoto2 po intl
+SUBDIRS = gphoto2 po intl doc
