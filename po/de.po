@@ -2,9 +2,11 @@
 # translation of de.po to
 # translation of de.po to
 # translation of de.po to
+# translation of de.po to
 # German Translation for gphoto2.
 # Copyright (C) 2000, 2001, 2002, 2003 Scott Fritzinger <scottf@unr.edu> et al.
 # This file is distributed under the same license as the gphoto2 package.
+# Marcus Meissner, 2005.
 # Marcus Meissner, 2005.
 # Marcus Meissner, 2005.
 # Marcus Meissner, 2005.
@@ -19,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 12:40+0100\n"
-"PO-Revision-Date: 2005-01-09 12:40+0100\n"
+"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"PO-Revision-Date: 2005-01-09 19:54+0100\n"
 "Last-Translator: Marcus Meissner\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -28,212 +30,212 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9\n"
 
-#: gphoto2/actions.c:103
+#: gphoto2/actions.c:124
 #, c-format
 msgid "Number of files in folder '%s': %i\n"
 msgstr "Anzahl der Dateien im Verzeichnis »%s«: %i\n"
 
-#: gphoto2/actions.c:124
+#: gphoto2/actions.c:145
 #, c-format
 msgid "There are no folders in folder '%s'."
 msgstr "Es gibt keine Verzeichnisse im Verzeichnis »%s«."
 
-#: gphoto2/actions.c:128
+#: gphoto2/actions.c:149
 #, c-format
 msgid "There is one folder in folder '%s':"
 msgstr "Es gibt ein Verzeichnis im Verzeichnis »%s«:"
 
-#: gphoto2/actions.c:132
+#: gphoto2/actions.c:153
 #, c-format
 msgid "There are %i folders in folder '%s':"
 msgstr "Es gibt %i Verzeichnisse im Verzeichnis »%s«:"
 
-#: gphoto2/actions.c:159 gphoto2/foreach.c:277
+#: gphoto2/actions.c:196 gphoto2/foreach.c:277
 #, c-format
 msgid "There are no files in folder '%s'."
 msgstr "Es gibt keine Datei im Verzeichnis »%s«."
 
-#: gphoto2/actions.c:164
+#: gphoto2/actions.c:200
 #, c-format
 msgid "There is one file in folder '%s':"
 msgstr "Es gibt eine Datei im Verzeichnis »%s« an:"
 
-#: gphoto2/actions.c:169
+#: gphoto2/actions.c:204
 #, c-format
 msgid "There are %i files in folder '%s':"
 msgstr "Es gibt %i Dateien im Verzeichnis »%s«:"
 
-#: gphoto2/actions.c:190
+#: gphoto2/actions.c:225
 #, c-format
 msgid "Information on file '%s' (folder '%s'):\n"
 msgstr "Informationen für Datei »%s« (Verzeichnis »%s«):\n"
 
-#: gphoto2/actions.c:192
+#: gphoto2/actions.c:227
 #, c-format
 msgid "File:\n"
 msgstr "Datei:\n"
 
-#: gphoto2/actions.c:194 gphoto2/actions.c:228 gphoto2/actions.c:244
+#: gphoto2/actions.c:229 gphoto2/actions.c:263 gphoto2/actions.c:279
 #, c-format
 msgid "  None available.\n"
 msgstr "  Nicht verfügbar.\n"
 
-#: gphoto2/actions.c:197
+#: gphoto2/actions.c:232
 #, c-format
 msgid "  Name:        '%s'\n"
 msgstr "  Name:        »%s«\n"
 
-#: gphoto2/actions.c:199 gphoto2/actions.c:231
+#: gphoto2/actions.c:234 gphoto2/actions.c:266
 #, c-format
 msgid "  Mime type:   '%s'\n"
 msgstr "  MIME-Typ:   »%s«\n"
 
-#: gphoto2/actions.c:201 gphoto2/actions.c:233
+#: gphoto2/actions.c:236 gphoto2/actions.c:268
 #, c-format
 msgid "  Size:        %li byte(s)\n"
 msgstr "  Größe:       %li Byte(s)\n"
 
-#: gphoto2/actions.c:203 gphoto2/actions.c:235
+#: gphoto2/actions.c:238 gphoto2/actions.c:270
 #, c-format
 msgid "  Width:       %i pixel(s)\n"
 msgstr "  Breite:      %i Pixel\n"
 
-#: gphoto2/actions.c:205 gphoto2/actions.c:237
+#: gphoto2/actions.c:240 gphoto2/actions.c:272
 #, c-format
 msgid "  Height:      %i pixel(s)\n"
 msgstr "  Höhe:        %i pixel(s)\n"
 
-#: gphoto2/actions.c:207 gphoto2/actions.c:239
+#: gphoto2/actions.c:242 gphoto2/actions.c:274
 #, c-format
 msgid "  Downloaded:  %s\n"
 msgstr "Heruntergeladen: »%s«\n"
 
-#: gphoto2/actions.c:208 gphoto2/actions.c:240 gphoto2/actions.c:252
-#: gphoto2/actions.c:569 gphoto2/actions.c:571 gphoto2/actions.c:599
-#: gphoto2/actions.c:602 gphoto2/actions.c:605 gphoto2/actions.c:608
-#: gphoto2/actions.c:1235
+#: gphoto2/actions.c:243 gphoto2/actions.c:275 gphoto2/actions.c:287
+#: gphoto2/actions.c:624 gphoto2/actions.c:626 gphoto2/actions.c:654
+#: gphoto2/actions.c:657 gphoto2/actions.c:660 gphoto2/actions.c:663
+#: gphoto2/actions.c:1286
 msgid "yes"
 msgstr "Ja"
 
-#: gphoto2/actions.c:208 gphoto2/actions.c:240 gphoto2/actions.c:252
-#: gphoto2/actions.c:569 gphoto2/actions.c:571 gphoto2/actions.c:599
-#: gphoto2/actions.c:602 gphoto2/actions.c:605 gphoto2/actions.c:608
-#: gphoto2/actions.c:1229
+#: gphoto2/actions.c:243 gphoto2/actions.c:275 gphoto2/actions.c:287
+#: gphoto2/actions.c:624 gphoto2/actions.c:626 gphoto2/actions.c:654
+#: gphoto2/actions.c:657 gphoto2/actions.c:660 gphoto2/actions.c:663
+#: gphoto2/actions.c:1280
 msgid "no"
 msgstr "Nein"
 
-#: gphoto2/actions.c:210
+#: gphoto2/actions.c:245
 #, c-format
 msgid "  Permissions: "
 msgstr "  Berechtigungen: "
 
-#: gphoto2/actions.c:213
+#: gphoto2/actions.c:248
 #, c-format
 msgid "read/delete"
 msgstr "Lesen/Löschen"
 
-#: gphoto2/actions.c:215
+#: gphoto2/actions.c:250
 #, c-format
 msgid "read"
 msgstr "Lesen"
 
-#: gphoto2/actions.c:217
+#: gphoto2/actions.c:252
 #, c-format
 msgid "delete"
 msgstr "Löschen"
 
-#: gphoto2/actions.c:219
+#: gphoto2/actions.c:254
 #, c-format
 msgid "none"
 msgstr "Keine"
 
-#: gphoto2/actions.c:223
+#: gphoto2/actions.c:258
 #, c-format
 msgid "  Time:        %s"
 msgstr "  Zeit:        %s"
 
-#: gphoto2/actions.c:226
+#: gphoto2/actions.c:261
 #, c-format
 msgid "Thumbnail:\n"
 msgstr "Vorschaubild:\n"
 
-#: gphoto2/actions.c:242
+#: gphoto2/actions.c:277
 #, c-format
 msgid "Audio data:\n"
 msgstr "Audiodaten:\n"
 
-#: gphoto2/actions.c:247
+#: gphoto2/actions.c:282
 #, c-format
 msgid "  Mime type:  '%s'\n"
 msgstr "  MIME-Typ:  »%s«\n"
 
-#: gphoto2/actions.c:249
+#: gphoto2/actions.c:284
 #, c-format
 msgid "  Size:       %li byte(s)\n"
 msgstr "  Größe:      %li byte(s)\n"
 
-#: gphoto2/actions.c:251
+#: gphoto2/actions.c:286
 #, c-format
 msgid "  Downloaded: %s\n"
 msgstr "  Heruntergeladen: »%s«\n"
 
-#: gphoto2/actions.c:400
+#: gphoto2/actions.c:455
 msgid "Could not parse EXIF data."
 msgstr "Konnte EXIF-Daten nicht parsen."
 
-#: gphoto2/actions.c:404
+#: gphoto2/actions.c:459
 #, c-format
 msgid "EXIF tags:"
 msgstr "EXIF-Tags:"
 
-#: gphoto2/actions.c:407
+#: gphoto2/actions.c:462
 msgid "Tag"
 msgstr "Tag"
 
-#: gphoto2/actions.c:409
+#: gphoto2/actions.c:464
 msgid "Value"
 msgstr "Wert"
 
-#: gphoto2/actions.c:430
+#: gphoto2/actions.c:485
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
 msgstr "EXIF-Daten enthalten ein Vorschaubild (%i Bytes)."
 
-#: gphoto2/actions.c:439
+#: gphoto2/actions.c:494
 msgid "gphoto2 has been compiled without EXIF support."
 msgstr "gphoto2 wurde ohne Unterstützung für EXIF kompiliert."
 
-#: gphoto2/actions.c:457
+#: gphoto2/actions.c:512
 #, c-format
 msgid "Number of supported cameras: %i\n"
 msgstr "Anzahl der unterstützten Kameras: %i\n"
 
-#: gphoto2/actions.c:459
+#: gphoto2/actions.c:513
 #, c-format
 msgid "Supported cameras:\n"
 msgstr "Unterstützte Kameras:\n"
 
-#: gphoto2/actions.c:472
+#: gphoto2/actions.c:526
 #, c-format
 msgid "\t\"%s\" (TESTING)\n"
 msgstr "\t»%s« (IM TEST)\n"
 
-#: gphoto2/actions.c:475
+#: gphoto2/actions.c:529
 #, c-format
 msgid "\t\"%s\" (EXPERIMENTAL)\n"
 msgstr "\t»%s« (EXPERIMENTELL)\n"
 
-#: gphoto2/actions.c:480
+#: gphoto2/actions.c:534
 #, c-format
 msgid "\t\"%s\"\n"
 msgstr "\t»%s«\n"
 
-#: gphoto2/actions.c:508
+#: gphoto2/actions.c:564
 #, c-format
 msgid "Devices found: %i\n"
 msgstr "Gefundene Geräte: %i\n"
 
-#: gphoto2/actions.c:509
+#: gphoto2/actions.c:565
 #, c-format
 msgid ""
 "Path                             Description\n"
@@ -242,103 +244,102 @@ msgstr ""
 "Pfad                             Beschreibung\n"
 "------------------------------------------------------------------------\n"
 
-#: gphoto2/actions.c:548 gphoto2/actions.c:553
+#: gphoto2/actions.c:603 gphoto2/actions.c:608
 #, c-format
 msgid "%-30s %-16s\n"
 msgstr "%-30s %-16s\n"
 
-#: gphoto2/actions.c:548
+#: gphoto2/actions.c:603
 msgid "Model"
 msgstr "Modell"
 
-#: gphoto2/actions.c:548
+#: gphoto2/actions.c:603
 msgid "Port"
 msgstr "Port"
 
-#: gphoto2/actions.c:549
+#: gphoto2/actions.c:604
 #, c-format
 msgid "----------------------------------------------------------\n"
 msgstr "----------------------------------------------------------\n"
 
-#: gphoto2/actions.c:567
+#: gphoto2/actions.c:622
 #, c-format
 msgid "Abilities for camera             : %s\n"
 msgstr "Fähigkeiten für Kamera           : %s\n"
 
-#: gphoto2/actions.c:568
+#: gphoto2/actions.c:623
 #, c-format
 msgid "Serial port support              : %s\n"
 msgstr "Unterstützung für seriellen Port : %s\n"
 
-#: gphoto2/actions.c:570
+#: gphoto2/actions.c:625
 #, c-format
 msgid "USB support                      : %s\n"
 msgstr "USB-Unterstützung                : %s\n"
 
-#: gphoto2/actions.c:573
+#: gphoto2/actions.c:628
 #, c-format
 msgid "Transfer speeds supported        :\n"
 msgstr "Unterstützte Datenraten (seriell):\n"
 
-#: gphoto2/actions.c:575
+#: gphoto2/actions.c:630
 #, c-format
 msgid "                                 : %i\n"
 msgstr "                                 : %i\n"
 
-#: gphoto2/actions.c:578
+#: gphoto2/actions.c:633
 #, c-format
 msgid "Capture choices                  :\n"
 msgstr "Aufnahme machen (Auswahl)        :\n"
 
-#: gphoto2/actions.c:580
+#: gphoto2/actions.c:635
 #, c-format
 msgid "                                 : Image\n"
 msgstr "                                 : Bild\n"
 
-#: gphoto2/actions.c:584
+#: gphoto2/actions.c:639
 #, c-format
 msgid "                                 : Video\n"
 msgstr "                                 : Video\n"
 
-#: gphoto2/actions.c:588
+#: gphoto2/actions.c:643
 #, c-format
 msgid "                                 : Audio\n"
 msgstr "                                 : Audio\n"
 
-#: gphoto2/actions.c:592
+#: gphoto2/actions.c:647
 #, c-format
 msgid "                                 : Preview\n"
 msgstr "                                 : Bildvorschau\n"
 
-#: gphoto2/actions.c:596
+#: gphoto2/actions.c:651
 #, c-format
-msgid ""
-"                                 : Capture not supported by the driver\n"
+msgid "                                 : Capture not supported by the driver\n"
 msgstr ""
 "                                 : Aufnahme wird nicht durch Treiber "
 "unterstützt\n"
 
-#: gphoto2/actions.c:598
+#: gphoto2/actions.c:653
 #, c-format
 msgid "Configuration support            : %s\n"
 msgstr "Konfigurationsunterstützung      : %s\n"
 
-#: gphoto2/actions.c:600
+#: gphoto2/actions.c:655
 #, c-format
 msgid "Delete files on camera support   : %s\n"
 msgstr "Unterstützung für Bildlöschung   : %s\n"
 
-#: gphoto2/actions.c:603
+#: gphoto2/actions.c:658
 #, c-format
 msgid "File preview (thumbnail) support : %s\n"
 msgstr "Unterstützung für Bildvorschau   : %s\n"
 
-#: gphoto2/actions.c:606
+#: gphoto2/actions.c:661
 #, c-format
 msgid "File upload support              : %s\n"
 msgstr "Unterstützung für Bildhochladen  : %s\n"
 
-#: gphoto2/actions.c:623
+#: gphoto2/actions.c:678
 #, c-format
 msgid ""
 "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
@@ -347,7 +348,7 @@ msgstr ""
 "Ports müssen als »serial:/dev/ttyS0« oder »usb:« angegeben werden, aber »%s« "
 "hat keinen Doppelpunkt. Es wird versucht, herauszufinden, was Sie meinen."
 
-#: gphoto2/actions.c:662
+#: gphoto2/actions.c:717
 #, c-format
 msgid ""
 "The port you specified ('%s') can not be found. Please specify one of the "
@@ -359,27 +360,27 @@ msgstr ""
 "der von »gphoto2 --list-ports« gelisteten Ports an und stellen Sie sicher, \n"
 "daß die Schreibweise korrekt ist (mit Präfix »serial:« oder »usb:«)."
 
-#: gphoto2/actions.c:700
+#: gphoto2/actions.c:755
 #, c-format
 msgid "About the camera driver:"
 msgstr "Über den Kameratreiber"
 
-#: gphoto2/actions.c:714
+#: gphoto2/actions.c:768
 #, c-format
 msgid "Camera summary:"
 msgstr "Kamerazusammenfassung:"
 
-#: gphoto2/actions.c:728
+#: gphoto2/actions.c:781
 #, c-format
 msgid "Camera manual:"
 msgstr "Kameraanleitung:"
 
-#: gphoto2/actions.c:744
+#: gphoto2/actions.c:796
 #, c-format
 msgid "You can only specify speeds for serial ports."
 msgstr "Nur mit seriellen Ports können Sie eine Datenrate setzen."
 
-#: gphoto2/actions.c:795
+#: gphoto2/actions.c:847
 #, c-format
 msgid ""
 "gphoto2 %s\n"
@@ -406,16 +407,16 @@ msgstr ""
 "Diese Version von gphoto2 benutzt die folgenden Softwareversionen und "
 "Optionen:\n"
 
-#: gphoto2/actions.c:808
+#: gphoto2/actions.c:860
 msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "OS/2-Portierung von Bart van Leeuwen\n"
 
-#: gphoto2/actions.c:882
+#: gphoto2/actions.c:933
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Ersetze USB Vendor/Product ID 0x%x/0x%x durch 0x%x/0x%x"
 
-#: gphoto2/actions.c:933
+#: gphoto2/actions.c:984
 msgid ""
 "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
 "MAILING LIST:"
@@ -423,110 +424,110 @@ msgstr ""
 "BITTE IMMER FOLGENDE ZEILE EINFÜGEN WENN DEBUG MESSAGES AN DIE MAILINGLISTE "
 "GESCHICKT WERDEN:"
 
-#: gphoto2/actions.c:948
+#: gphoto2/actions.c:999
 #, c-format
 msgid "%s has been compiled with the following options:"
 msgstr "%s wurde mit den folgenden Optionen übersetzt:"
 
-#: gphoto2/actions.c:1045
+#: gphoto2/actions.c:1096
 #, c-format
 msgid "%s not found in configuration tree."
 msgstr "%s wurde nicht in der Konfiguration gefunden."
 
-#: gphoto2/actions.c:1087
+#: gphoto2/actions.c:1138
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr "Konnte den Inhalt des Textfeldes %s holen."
 
-#: gphoto2/actions.c:1104
+#: gphoto2/actions.c:1155
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr "Konnte die Werte für den Bereiches %s nicht bestimmen."
 
-#: gphoto2/actions.c:1116
+#: gphoto2/actions.c:1167
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr "Konnte die möglichen Werte der Auswahl %s nicht holen."
 
-#: gphoto2/actions.c:1128
+#: gphoto2/actions.c:1179
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr "Konnte die Werte der Datum/Zeit Konfiguration %s nicht holen."
 
-#: gphoto2/actions.c:1158
+#: gphoto2/actions.c:1209
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr "Konnte die Werte der Auswahl %s nicht holen."
 
-#: gphoto2/actions.c:1199
+#: gphoto2/actions.c:1250
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr "Konnte den Inhalt des Textfeldes %s nicht auf %s setzen."
 
-#: gphoto2/actions.c:1209
+#: gphoto2/actions.c:1260
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr "Der übergebene Wert %s ist kein Fließkomma Wert."
 
-#: gphoto2/actions.c:1214
+#: gphoto2/actions.c:1265
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr "Der übergebene Wert %f ist nicht im erwarteten Bereich %f - %f."
 
-#: gphoto2/actions.c:1220
+#: gphoto2/actions.c:1271
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr "Konnte den Wert des Bereichs %s nicht auf %f setzen."
 
-#: gphoto2/actions.c:1229
+#: gphoto2/actions.c:1280
 msgid "off"
 msgstr "aus"
 
-#: gphoto2/actions.c:1230
+#: gphoto2/actions.c:1281
 msgid "false"
 msgstr "falsch"
 
-#: gphoto2/actions.c:1235
+#: gphoto2/actions.c:1286
 msgid "on"
 msgstr "an"
 
-#: gphoto2/actions.c:1236
+#: gphoto2/actions.c:1287
 msgid "true"
 msgstr "wahr"
 
-#: gphoto2/actions.c:1240
+#: gphoto2/actions.c:1291
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
 msgstr "Der übergebene Wert %s ist kein zulässige Schalterwert."
 
-#: gphoto2/actions.c:1246
+#: gphoto2/actions.c:1297
 #, c-format
 msgid "Failed to set values %s of toggle widget %s."
 msgstr "Konnte den Schalter %s nicht auf den Wert %s setzen."
 
-#: gphoto2/actions.c:1259
+#: gphoto2/actions.c:1310
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr ""
 "Der übergebene Wert %s ist kein Integer oder wurde nicht als Zeitangabe "
 "erkannt."
 
-#: gphoto2/actions.c:1266
+#: gphoto2/actions.c:1317
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr "Konnte %s nicht als neue Zeit im der Konfiguration %s setzen."
 
-#: gphoto2/actions.c:1303
+#: gphoto2/actions.c:1354
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr "Wert %s wurde nicht in der Liste möglicher Werte gefunden."
 
-#: gphoto2/actions.c:1311
+#: gphoto2/actions.c:1362
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr "Das Konfigurationssubmenü %s hat keinen änderbaren Wert."
 
-#: gphoto2/actions.c:1318
+#: gphoto2/actions.c:1369
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr "Konnte den neuen Wert %s für die Konfiguration %s nicht setzen."
@@ -547,8 +548,7 @@ msgstr ""
 msgid ""
 "Bad file number. You specified %i, but there is only 1 file available in '%"
 "s'."
-msgstr ""
-"Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
+msgstr "Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
 
 #: gphoto2/foreach.c:291
 #, c-format
@@ -619,211 +619,215 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#: gphoto2/main.c:166 gphoto2/main.c:1612
+#: gphoto2/main.c:167 gphoto2/main.c:1638
 msgid "Turn on debugging"
 msgstr "Schalte Debugging ein"
 
-#: gphoto2/main.c:167 gphoto2/main.c:1614
+#: gphoto2/main.c:168 gphoto2/main.c:1640
 msgid "Quiet output (default=verbose)"
 msgstr "Wenige Ausgaben (Vorgabe=gesprächig)"
 
-#: gphoto2/main.c:171 gphoto2/main.c:1618
+#: gphoto2/main.c:172 gphoto2/main.c:1644
 msgid "Display version and exit"
 msgstr "Zeige Version und beende"
 
-#: gphoto2/main.c:172
+#: gphoto2/main.c:173
 msgid "Displays this help screen"
 msgstr "Zeigt diese Hilfe"
 
-#: gphoto2/main.c:173 gphoto2/main.c:1620
+#: gphoto2/main.c:174 gphoto2/main.c:1646
 msgid "List supported camera models"
 msgstr "Zeige unterstützte Kameramodelle"
 
-#: gphoto2/main.c:174 gphoto2/main.c:1622
+#: gphoto2/main.c:175 gphoto2/main.c:1648
 msgid "List supported port devices"
 msgstr "Liste unterstützte Port-Geräte"
 
-#: gphoto2/main.c:175 gphoto2/main.c:1624
+#: gphoto2/main.c:176 gphoto2/main.c:1650
 msgid "Send file to stdout"
 msgstr "Sende Datei auf die Standardausgabe"
 
-#: gphoto2/main.c:176 gphoto2/main.c:1626
+#: gphoto2/main.c:177 gphoto2/main.c:1652
 msgid "Print filesize before data"
 msgstr "Dateigröße vor Daten ausgeben"
 
-#: gphoto2/main.c:177 gphoto2/main.c:1628
+#: gphoto2/main.c:178 gphoto2/main.c:1654
 msgid "List auto-detected cameras"
 msgstr "Liste automatisch erkannte Kameras"
 
-#: gphoto2/main.c:180 gphoto2/main.c:1630
+#: gphoto2/main.c:181 gphoto2/main.c:1656
 msgid "Specify port device"
 msgstr "Angabe des Port-Geräts"
 
-#: gphoto2/main.c:181 gphoto2/main.c:1632
+#: gphoto2/main.c:182 gphoto2/main.c:1658
 msgid "Specify serial transfer speed"
 msgstr "Angabe der seriellen Datenrate"
 
-#: gphoto2/main.c:182 gphoto2/main.c:1634
+#: gphoto2/main.c:183 gphoto2/main.c:1660
 msgid "Specify camera model"
 msgstr "Angabe des Kameramodells"
 
-#: gphoto2/main.c:183 gphoto2/main.c:1636
+#: gphoto2/main.c:184 gphoto2/main.c:1662
 msgid "Specify a filename"
 msgstr "Angabe des Dateinamens"
 
-#: gphoto2/main.c:184 gphoto2/main.c:1638
+#: gphoto2/main.c:185 gphoto2/main.c:1664
 msgid "(expert only) Override USB IDs"
 msgstr "(für Experten) Überschreibe USB-IDs"
 
-#: gphoto2/main.c:187 gphoto2/main.c:1640
+#: gphoto2/main.c:188 gphoto2/main.c:1666
 msgid "Display camera abilities"
 msgstr "Zeige Kamerafähigkeiten"
 
-#: gphoto2/main.c:188 gphoto2/main.c:1642
+#: gphoto2/main.c:189 gphoto2/main.c:1668
 msgid "Specify camera folder (default=\"/\")"
 msgstr "Angabe des Kameraverzeichnisses (Vorgabe=\"/\")"
 
-#: gphoto2/main.c:189 gphoto2/main.c:1644
+#: gphoto2/main.c:190 gphoto2/main.c:1670
 msgid "Recursion (default for download)"
 msgstr "Rekursion (Vorgabe für das Herunterladen)"
 
-#: gphoto2/main.c:190 gphoto2/main.c:1646
+#: gphoto2/main.c:191 gphoto2/main.c:1672
 msgid "No recursion (default for deletion)"
 msgstr "Keine Rekursion (Vorgabe für das Löschen)"
 
-#: gphoto2/main.c:191 gphoto2/main.c:1648
+#: gphoto2/main.c:192 gphoto2/main.c:1674
+msgid "Process new files only"
+msgstr "Bearbeite nur neue Dateien"
+
+#: gphoto2/main.c:193 gphoto2/main.c:1676
 msgid "List folders in folder"
 msgstr "Liste Verzeichnisse in Verzeichnis"
 
-#: gphoto2/main.c:192 gphoto2/main.c:1650
+#: gphoto2/main.c:194 gphoto2/main.c:1678
 msgid "List files in folder"
 msgstr "Liste Dateien in Verzeichnis"
 
-#: gphoto2/main.c:193 gphoto2/main.c:194
+#: gphoto2/main.c:195 gphoto2/main.c:196
 msgid "name"
 msgstr "Name"
 
-#: gphoto2/main.c:193 gphoto2/main.c:1652
+#: gphoto2/main.c:195 gphoto2/main.c:1680
 msgid "Create a directory"
 msgstr "Verzeichnis anlegen"
 
-#: gphoto2/main.c:194 gphoto2/main.c:1654
+#: gphoto2/main.c:196 gphoto2/main.c:1682
 msgid "Remove a directory"
 msgstr "Verzeichnis löschen"
 
-#: gphoto2/main.c:195 gphoto2/main.c:1656
+#: gphoto2/main.c:197 gphoto2/main.c:1684
 msgid "Display number of files"
 msgstr "Zeige Anzahl der Dateien"
 
-#: gphoto2/main.c:196 gphoto2/main.c:1658
+#: gphoto2/main.c:198 gphoto2/main.c:1686
 msgid "Get files given in range"
 msgstr "Hole Dateien im angegebenen Bereich"
 
-#: gphoto2/main.c:197 gphoto2/main.c:1660
+#: gphoto2/main.c:199 gphoto2/main.c:1688
 msgid "Get all files from folder"
 msgstr "Hole alle Dateien im Verzeichnis"
 
-#: gphoto2/main.c:198 gphoto2/main.c:1662
+#: gphoto2/main.c:200 gphoto2/main.c:1690
 msgid "Get thumbnails given in range"
 msgstr "Hole Vorschaubilder im angegebenen Bereich"
 
-#: gphoto2/main.c:199 gphoto2/main.c:1665
+#: gphoto2/main.c:201 gphoto2/main.c:1693
 msgid "Get all thumbnails from folder"
 msgstr "Hole alle Vorschaubilder im Verzeichnis"
 
-#: gphoto2/main.c:200 gphoto2/main.c:1668
+#: gphoto2/main.c:202 gphoto2/main.c:1696
 msgid "Get raw data given in range"
 msgstr "Hole Rohdaten im angegebenen Bereich"
 
-#: gphoto2/main.c:201 gphoto2/main.c:1671
+#: gphoto2/main.c:203 gphoto2/main.c:1699
 msgid "Get all raw data from folder"
 msgstr "Hole alle Rohdaten im Verzeichnis"
 
-#: gphoto2/main.c:202 gphoto2/main.c:1674
+#: gphoto2/main.c:204 gphoto2/main.c:1702
 msgid "Get audio data given in range"
 msgstr "Hole Audiodaten im angegebenen Bereich"
 
-#: gphoto2/main.c:203 gphoto2/main.c:1677
+#: gphoto2/main.c:205 gphoto2/main.c:1705
 msgid "Get all audio data from folder"
 msgstr "Hole alle Audiodaten im Verzeichnis"
 
-#: gphoto2/main.c:204 gphoto2/main.c:1679
+#: gphoto2/main.c:206 gphoto2/main.c:1707
 msgid "Delete files given in range"
 msgstr "Lösche Dateien im angegebenen Bereich"
 
-#: gphoto2/main.c:205 gphoto2/main.c:1681
+#: gphoto2/main.c:207 gphoto2/main.c:1709
 msgid "Delete all files in folder"
 msgstr "Lösche alle Dateien im Verzeichnis"
 
-#: gphoto2/main.c:206 gphoto2/main.c:1683
+#: gphoto2/main.c:208 gphoto2/main.c:1711
 msgid "Upload a file to camera"
 msgstr "Datei auf Kamera hochladen"
 
-#: gphoto2/main.c:208 gphoto2/main.c:1686
+#: gphoto2/main.c:210 gphoto2/main.c:1714
 msgid "Configure"
 msgstr "Konfigurieren"
 
-#: gphoto2/main.c:210
+#: gphoto2/main.c:212
 msgid "List the configuration tree"
 msgstr "Zeige den Konfigurationsbaum"
 
-#: gphoto2/main.c:211
+#: gphoto2/main.c:213
 msgid "Get a configuration variable"
 msgstr "Frage einen Wert der Konfiguration ab"
 
-#: gphoto2/main.c:212
+#: gphoto2/main.c:214
 msgid "Set a configuration variable"
 msgstr "Setze einen Konfigurationswert"
 
-#: gphoto2/main.c:213 gphoto2/main.c:1698
+#: gphoto2/main.c:215 gphoto2/main.c:1726
 msgid "Set number of frames to capture (default=infinite)"
 msgstr "Setze die Anzahl der aufzunehmenden Bilder (default=unendlich)"
 
-#: gphoto2/main.c:214 gphoto2/main.c:1700
+#: gphoto2/main.c:216 gphoto2/main.c:1728
 msgid "Set capture interval in seconds"
 msgstr "Setze das Aufnahmeintervall in Sekunden"
 
-#: gphoto2/main.c:215 gphoto2/main.c:1696
+#: gphoto2/main.c:217 gphoto2/main.c:1724
 msgid "Capture a quick preview"
 msgstr "Mache eine Vorschaubild-Aufnahme"
 
-#: gphoto2/main.c:216 gphoto2/main.c:1702
+#: gphoto2/main.c:218 gphoto2/main.c:1730
 msgid "Capture an image"
 msgstr "Eine Bildaufnahme machen"
 
-#: gphoto2/main.c:217
+#: gphoto2/main.c:219
 msgid "Capture a movie "
 msgstr "Eine Filmaufnahme machen"
 
-#: gphoto2/main.c:218 gphoto2/main.c:1706
+#: gphoto2/main.c:220 gphoto2/main.c:1734
 msgid "Capture an audio clip"
 msgstr "Eine Audioaufnahme machen"
 
-#: gphoto2/main.c:220 gphoto2/main.c:1709 gphoto2/shell.c:113
+#: gphoto2/main.c:222 gphoto2/main.c:1737 gphoto2/shell.c:113
 msgid "Show EXIF information"
 msgstr "Zeige EXIF-Informationen"
 
-#: gphoto2/main.c:222 gphoto2/main.c:1712 gphoto2/shell.c:109
+#: gphoto2/main.c:224 gphoto2/main.c:1740 gphoto2/shell.c:109
 msgid "Show info"
 msgstr "Zeige Info"
 
-#: gphoto2/main.c:223
+#: gphoto2/main.c:225
 msgid "Summary of camera status"
 msgstr "Zusammenfassung des Kamerastatusses"
 
-#: gphoto2/main.c:224
+#: gphoto2/main.c:226
 msgid "Camera driver manual"
 msgstr "Anleitung für Kameratreiber"
 
-#: gphoto2/main.c:225
+#: gphoto2/main.c:227
 msgid "About the camera driver"
 msgstr "Über den Kameratreiber"
 
-#: gphoto2/main.c:226 gphoto2/main.c:1720
+#: gphoto2/main.c:228 gphoto2/main.c:1748
 msgid "gPhoto shell"
 msgstr "gPhoto-Shell"
 
-#: gphoto2/main.c:387 gphoto2/main.c:1315
+#: gphoto2/main.c:382 gphoto2/main.c:1343
 #, c-format
 msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
@@ -833,110 +837,109 @@ msgstr ""
 "»c:d« zu behandeln.\n"
 "a b c d sind hexadezimale Angaben, die mit »0x« beginnen müssen.\n"
 
-#: gphoto2/main.c:579
+#: gphoto2/main.c:581
 #, c-format
 msgid "You cannot use '%%n' in combination with non-persistent files!"
 msgstr ""
 "Sie können »%%n« nicht im Zusammenhang mit nicht-persistenten Dateien "
 "benutzen!"
 
-#: gphoto2/main.c:602
+#: gphoto2/main.c:604
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr ""
-"Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
+msgstr "Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
 
-#: gphoto2/main.c:652
+#: gphoto2/main.c:654
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
 msgstr "Ungültiges Format »%s« (Fehler an Position %i)."
 
 # !!! [y/n] !!! [CM]
-#: gphoto2/main.c:699
+#: gphoto2/main.c:702
 #, c-format
 msgid "File %s exists. Overwrite? [y|n] "
 msgstr "Datei %s existiert bereits. Überschreiben? [y|n] "
 
-#: gphoto2/main.c:710
+#: gphoto2/main.c:713
 #, c-format
 msgid "Specify new filename? [y|n] "
 msgstr "Neuen Dateinamen angeben? [y|n] "
 
-#: gphoto2/main.c:719
+#: gphoto2/main.c:722
 #, c-format
 msgid "Enter new filename: "
 msgstr "Geben Sie einen neuen Dateinamen an: "
 
-#: gphoto2/main.c:724
+#: gphoto2/main.c:727
 #, c-format
 msgid "Saving file as %s\n"
 msgstr "Speichere Datei als %s\n"
 
-#: gphoto2/main.c:930
+#: gphoto2/main.c:957
 #, c-format
 msgid "Time-lapse mode enabled (interval: %ds).\n"
 msgstr "Zeitlupen Modus aktiviert (Intervall: %ds).\n"
 
-#: gphoto2/main.c:937
+#: gphoto2/main.c:964
 #, c-format
 msgid "Capturing frame #%d...\n"
 msgstr "Nehme Bild %d auf...\n"
 
-#: gphoto2/main.c:939
+#: gphoto2/main.c:966
 #, c-format
 msgid "Capturing frame #%d/%d...\n"
 msgstr "Nehme Bild %d von %d auf...\n"
 
-#: gphoto2/main.c:946
+#: gphoto2/main.c:973
 msgid "Could not capture."
 msgstr "Konnte nicht aufnehmen."
 
-#: gphoto2/main.c:955
+#: gphoto2/main.c:982
 #, c-format
 msgid "Capture failed (auto-focus problem?)...\n"
 msgstr "Aufnahme fehlgeschlagen (Auto Fokus Problem?)...\n"
 
-#: gphoto2/main.c:969
+#: gphoto2/main.c:996
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "Neue Datei ist in %s%s%s auf der Kamera\n"
 
-#: gphoto2/main.c:979
+#: gphoto2/main.c:1006
 msgid "Could not set folder."
 msgstr "Konnte Verzeichnis nicht setzen."
 
-#: gphoto2/main.c:997
+#: gphoto2/main.c:1024
 msgid "Could not get image."
 msgstr "Konnte Bild nicht holen."
 
-#: gphoto2/main.c:1004
+#: gphoto2/main.c:1031
 msgid "Buggy libcanon.so?"
 msgstr "Kaputte libcanon.so?"
 
-#: gphoto2/main.c:1010
+#: gphoto2/main.c:1037
 #, c-format
 msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Lösche Datei %s%s%s auf der Kamera\n"
 
-#: gphoto2/main.c:1015
+#: gphoto2/main.c:1042
 msgid "Count not delete image."
 msgstr "Konnte Bild nicht löschen."
 
-#: gphoto2/main.c:1029
+#: gphoto2/main.c:1056
 msgid "Could not close camera connection."
 msgstr "Konnte Verbindung zur Kamera nicht schließen."
 
-#: gphoto2/main.c:1033
+#: gphoto2/main.c:1060
 #, c-format
 msgid "Sleeping for %d second(s)...\n"
 msgstr "Warte %d Sekunde(n)...\n"
 
-#: gphoto2/main.c:1167
+#: gphoto2/main.c:1194
 #, c-format
 msgid "ERROR: "
 msgstr "FEHLER: "
 
-#: gphoto2/main.c:1190
+#: gphoto2/main.c:1217
 #, c-format
 msgid ""
 "\n"
@@ -945,12 +948,12 @@ msgstr ""
 "\n"
 "Harter Abbruch...\n"
 
-#: gphoto2/main.c:1196
+#: gphoto2/main.c:1223
 #, c-format
 msgid "Aborted.\n"
 msgstr "Abgebrochen.\n"
 
-#: gphoto2/main.c:1201
+#: gphoto2/main.c:1228
 #, c-format
 msgid ""
 "\n"
@@ -959,16 +962,16 @@ msgstr ""
 "\n"
 "Abbruch...\n"
 
-#: gphoto2/main.c:1420
+#: gphoto2/main.c:1446
 msgid "gphoto2 has been compiled without support for CDK."
 msgstr "gphoto2 wurde ohne Unterstützung für CDK kompiliert."
 
-#: gphoto2/main.c:1555
+#: gphoto2/main.c:1581
 #, c-format
 msgid "Operation cancelled.\n"
 msgstr "Operation abgebrochen.\n"
 
-#: gphoto2/main.c:1559
+#: gphoto2/main.c:1585
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -977,7 +980,7 @@ msgstr ""
 "*** Fehler (%i: »%s«) ***      \n"
 "\n"
 
-#: gphoto2/main.c:1563
+#: gphoto2/main.c:1589
 #, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
@@ -994,71 +997,71 @@ msgstr ""
 "so starten sie gphoto2 bitte wie folgt:\n"
 "\n"
 
-#: gphoto2/main.c:1616
+#: gphoto2/main.c:1642
 msgid "Overwrite files without asking."
 msgstr "Dateien ohne Nachfragen überschreiben."
 
-#: gphoto2/main.c:1630
+#: gphoto2/main.c:1656
 msgid "path"
 msgstr "Pfad"
 
-#: gphoto2/main.c:1632
+#: gphoto2/main.c:1658
 msgid "speed"
 msgstr "Baudrate"
 
-#: gphoto2/main.c:1634
+#: gphoto2/main.c:1660
 msgid "model"
 msgstr "Modell"
 
-#: gphoto2/main.c:1636
+#: gphoto2/main.c:1662
 msgid "filename"
 msgstr "Dateiname"
 
-#: gphoto2/main.c:1638
+#: gphoto2/main.c:1664
 msgid "usbid"
 msgstr "usbid"
 
-#: gphoto2/main.c:1642
+#: gphoto2/main.c:1668
 msgid "folder"
 msgstr "Verzeichnis"
 
-#: gphoto2/main.c:1689
+#: gphoto2/main.c:1717
 msgid "List configuration tree"
 msgstr "Zeige Konfigurationsbaum"
 
-#: gphoto2/main.c:1691
+#: gphoto2/main.c:1719
 msgid "Get configuration value"
 msgstr "Hole Konfigurationswert"
 
-#: gphoto2/main.c:1693
+#: gphoto2/main.c:1721
 msgid "Set configuration value"
 msgstr "Setze Konfigurationswert"
 
-#: gphoto2/main.c:1698
+#: gphoto2/main.c:1726
 msgid "count"
 msgstr "Anzahl"
 
-#: gphoto2/main.c:1700
+#: gphoto2/main.c:1728
 msgid "seconds"
 msgstr "Sekunden"
 
-#: gphoto2/main.c:1704
+#: gphoto2/main.c:1732
 msgid "Capture a movie"
 msgstr "Eine Filmaufnahme machen"
 
-#: gphoto2/main.c:1714
+#: gphoto2/main.c:1742
 msgid "Show summary"
 msgstr "Zusammenfassung zeigen"
 
-#: gphoto2/main.c:1716
+#: gphoto2/main.c:1744
 msgid "Show camera driver manual"
 msgstr "Anleitung für Kameratreiber zeigen"
 
-#: gphoto2/main.c:1718
+#: gphoto2/main.c:1746
 msgid "About the camera driver manual"
 msgstr "Die Kameratreiberhilfe anzeigen"
 
-#: gphoto2/main.c:1945
+#: gphoto2/main.c:1973
 #, c-format
 msgid ""
 "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
@@ -1067,7 +1070,7 @@ msgstr ""
 "gPhoto2 für OS/2 erfordert, daß die Umgebungsvariable CAMLIBS auf den Ort "
 "der Kamerabibliotheken zeigt, z.B. mit SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
 
-#: gphoto2/main.c:1955
+#: gphoto2/main.c:1983
 #, c-format
 msgid ""
 "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
@@ -1267,24 +1270,25 @@ msgstr "Hilfe für \"%s\":"
 msgid "Usage:"
 msgstr "Verwendung:"
 
-#: gphoto2/shell.c:751
+#: gphoto2/shell.c:750
 #, c-format
 msgid "Description:"
 msgstr "Beschreibung:"
 
-#: gphoto2/shell.c:753
+#: gphoto2/shell.c:752
 #, c-format
 msgid "* Arguments in brackets [] are optional"
 msgstr "* Argumente in eckigen Klammern [] sind optional"
 
-#: gphoto2/shell.c:774
+#: gphoto2/shell.c:773
 #, c-format
 msgid "Available commands:"
 msgstr "Verfügbare Befehle:"
 
-#: gphoto2/shell.c:779
+#: gphoto2/shell.c:778
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
 msgstr ""
 "Um Hilfe zu einem bestimmten Befehl zu erhalten, verwenden Sie »help "
 "Befehlsname«."
+
