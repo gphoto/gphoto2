@@ -743,10 +743,13 @@ static struct {
 	{N_("Sat"), N_("Saturday")}
 };
 
+#undef  MIN
+#define MIN(a, b)  (((a) < (b)) ? (a) : (b))
+
 static int
 get_path_for_file (CameraFile *file, char **path)
 {
-	unsigned int i;
+	unsigned int i, l;
 	int n;
 	char *p, b[1024];
 	const char *name, *prefix;
@@ -814,6 +817,19 @@ get_path_for_file (CameraFile *file, char **path)
 					return (GP_ERROR_BAD_PARAMETERS);
 				}
 				strncpy (b, p + 1, sizeof (b) - 1);
+				break;
+
+			case 'f':
+
+				/* Get the file name without suffix */
+				p = strrchr (name, '.');
+				if (!p)
+					strncpy (b, name, sizeof (b) - 1);
+				else {
+					l = MIN (sizeof (b) - 1, p - name);
+					strncpy (b, name, l);
+					b[l] = '\0';
+				}
 				break;
 
 			case 'a':
