@@ -273,7 +273,8 @@ if $try_popt; then
 		POPT_LIBS="-lpopt"
 		have_popt=true
 		popt_msg=yes
-		AC_DEFINE(HAVE_POPT,1,[whether we use popt])])
+		AC_DEFINE(HAVE_POPT,1,[whether we use popt])],
+		[rl_msg="no (couldn't link against it or version too old)"])
 fi
 AM_CONDITIONAL(HAVE_POPT, $have_popt)
 AC_SUBST(POPT_LIBS)
