@@ -19,6 +19,9 @@
  */
 
 #include <config.h>
+
+#include <stdlib.h>
+
 #include "version.h"
 
 static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
