@@ -884,6 +884,18 @@ debug_action (GPParams *p)
 	gp_log (GP_LOG_DEBUG, "main",
 		" + cdk (for accessing configuration options)");
 #endif
+#ifdef HAVE_AA
+	gp_log (GP_LOG_DEBUG, "main",
+		" + aa (for displaying live previews)");
+#endif
+#ifdef HAVE_JPEG
+	gp_log (GP_LOG_DEBUG, "main",
+		" + jpeg (for displaying live previews in JPEG format)");
+#endif
+#ifdef HAVE_RL
+	gp_log (GP_LOG_DEBUG, "main",
+		" + readline (for easy navigation in the shell)");
+#endif
 
 	return (GP_OK);
 }
