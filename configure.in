@@ -4,6 +4,7 @@ AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE(gphoto2, 2.1.4head)
 AM_MAINTAINER_MODE
 
+
 dnl ---------------------------------------------------------------------------
 dnl Some programs we need
 dnl ---------------------------------------------------------------------------
@@ -12,6 +13,7 @@ AC_PROG_CPP
 AC_PROG_INSTALL
 
 AC_DEFINE_UNQUOTED(HAVE_CC,"$CC",[The C compiler we're using])
+
 
 dnl ---------------------------------------------------------------------------
 dnl i18n support
@@ -30,6 +32,7 @@ else
 fi
 AM_GNU_GETTEXT
 
+
 dnl ---------------------------------------------------------------------------
 dnl Check for libgphoto2
 dnl ---------------------------------------------------------------------------
@@ -43,7 +46,6 @@ libgphoto2_version=`pkg-config --modversion libgphoto2`
 libgphoto2_prefix=`pkg-config --variable=prefix libgphoto2`
 AC_MSG_CHECKING([libgphoto2 used])
 AC_MSG_RESULT([version $libgphoto2_version from $libgphoto2_prefix])
-
 
 
 dnl ---------------------------------------------------------------------------
@@ -74,6 +76,7 @@ if $try_pthread; then
 fi
 AC_SUBST(PTHREAD_LIBS)
 
+
 dnl ---------------------------------------------------------------------------
 dnl Turn on debugging and all warnings when using gcc
 dnl ---------------------------------------------------------------------------
@@ -81,6 +84,7 @@ if test "$ac_cv_prog_gcc" = "yes"; then
         CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
         LDFLAGS="$LDFLAGS -g -Wall"
 fi
+
 
 dnl ---------------------------------------------------------------------------
 dnl CDK: If you would like to access the camera's configuration using
@@ -120,6 +124,7 @@ fi
 AM_CONDITIONAL(HAVE_CDK, $have_cdk)
 AC_SUBST(CDK_CFLAGS)
 AC_SUBST(CDK_LIBS)
+
 
 dnl ---------------------------------------------------------------------------
 dnl libjpeg: Right now, libjpeg is only used to interpret JPEG previews in
@@ -166,6 +171,7 @@ AM_CONDITIONAL(HAVE_JPEG, $have_jpeg)
 AC_SUBST(JPEG_LIBS)
 AC_SUBST(JPEG_CFLAGS)
 
+
 dnl ---------------------------------------------------------------------------
 dnl pkg-config: pkg-config is a tool to simplify checks for libraries and
 dnl             versions. I really think this is a good thing and therefore
@@ -187,6 +193,7 @@ if $try_pkgconfig; then
                 pkgconfig_msg="yes"
         fi
 fi
+
 
 dnl ---------------------------------------------------------------------------
 dnl libexif: The CameraFilesystem can use libexif for extracting thumbnails
@@ -246,6 +253,7 @@ AM_CONDITIONAL(HAVE_EXIF, $have_exif)
 AC_SUBST(EXIF_CFLAGS)
 AC_SUBST(EXIF_LIBS)
 
+
 dnl ---------------------------------------------------------------------------
 dnl aalib: gphoto2 (the frontend) has been designed as a command-line tool.
 dnl        However, life previews make only sense when you can actually 
@@ -279,6 +287,7 @@ AM_CONDITIONAL(HAVE_AA, $have_aa)
 AC_SUBST(AA_LIBS)
 AC_SUBST(AA_CFLAGS)
 
+
 dnl ---------------------------------------------------------------------------
 dnl popt.h: Simplifies handling of command-line options enormously.
 dnl ---------------------------------------------------------------------------
@@ -303,6 +312,7 @@ fi
 AM_CONDITIONAL(HAVE_POPT, $have_popt)
 AC_SUBST(POPT_LIBS)
 AC_SUBST(POPT_CFLAGS)
+
 
 dnl ---------------------------------------------------------------------------
 dnl readline: Readline is pretty cool - it allows you to use <tab> to complete
@@ -355,12 +365,12 @@ packaging/rpm/Makefile
 packaging/rpm/package.spec
 ])
 
-echo "
+cat<<EOF
 
 Configuration (gphoto2):
 
-        Source code location:      ${srcdir}
-        Compiler:                  ${CC}
+        Source code location:      $srcdir
+        Compiler:                  $CC
 
         Configuration support:     $cdk_msg
         Preview support:           $aa_msg
@@ -370,5 +380,5 @@ Configuration (gphoto2):
         readline support:          $rl_msg
         pthread support:           $pthread_msg
 	popt support:              $popt_msg
-"
+EOF
 
