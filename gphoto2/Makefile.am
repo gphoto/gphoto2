@@ -11,6 +11,7 @@ bin_PROGRAMS = gphoto2
 INCLUDES =						\
 	-DGPHOTO2_LOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(top_srcdir)					\
+	-I$(top_srcdir)/intl				\
 	-I$(top_srcdir)/gphoto2				\
 	$(CDK_CFLAGS) $(GP_CFLAGS) $(AA_CFLAGS) $(EXIF_CFLAGS) $(RL_CFLAGS)
 

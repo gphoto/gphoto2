@@ -1,4 +1,4 @@
-SUBDIRS =  gphoto2 po intl doc
+SUBDIRS = doc gphoto2 po
 
 ########################################################################
 # The following rules are only interesting if you want to create
