@@ -349,7 +349,6 @@ show_text (CmdConfig *cmd_config, CameraWidget *text)
 		gp_widget_set_value (text, info);
 		set_config (cmd_config);
 	}
-
 	destroyCDKEntry (entry);
 	return (GP_OK);
 }

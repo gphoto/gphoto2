@@ -149,6 +149,8 @@ OPTION_CALLBACK(manual);
 OPTION_CALLBACK(about);
 OPTION_CALLBACK(make_dir);
 OPTION_CALLBACK(remove_dir);
+OPTION_CALLBACK(list_config);
+OPTION_CALLBACK(get_config);
 
 /* 2) Add an entry in the option table                          */
 /*    ----------------------------------------------------------------- */
@@ -204,6 +206,8 @@ Option option[] = {
 #ifdef HAVE_CDK
 {"" , "config",         "",  N_("Configure"),               config,          0},
 #endif
+{"", "list-config", "", N_("List the configuration tree"),    list_config, 0},
+{"", "get-config", "name", N_("Get a configuration variable"),    get_config, 0},
 {"F" , "frames", "count", N_("Set number of frames to capture (default=infinite)"), capture_frames, 0},
 {"I" , "interval", "seconds", N_("Set capture interval in seconds"), capture_interval, 0},
 {"" , "capture-preview", "", N_("Capture a quick preview"), capture_preview, 0},
@@ -299,6 +303,20 @@ OPTION_CALLBACK (abilities)
 OPTION_CALLBACK(list_cameras)
 {
 	CR (list_cameras_action (&p));
+
+        return (GP_OK);
+}
+
+OPTION_CALLBACK(get_config)
+{
+	CR (get_config_action (&p, arg));
+
+        return (GP_OK);
+}
+
+OPTION_CALLBACK(list_config)
+{
+	CR (list_config_action (&p));
 
         return (GP_OK);
 }
@@ -1253,6 +1271,7 @@ typedef enum {
 	ARG_GET_ALL_RAW_DATA,
 	ARG_GET_ALL_THUMBNAILS,
 	ARG_GET_AUDIO_DATA,
+	ARG_GET_CONFIG,
 	ARG_GET_FILE,
 	ARG_GET_RAW_DATA,
 	ARG_GET_THUMBNAIL,
@@ -1278,7 +1297,8 @@ typedef enum {
 	ARG_SUMMARY,
 	ARG_UPLOAD_FILE,
 	ARG_USBID,
-	ARG_VERSION
+	ARG_VERSION,
+	ARG_LIST_CONFIG
 } Arg;
 
 typedef enum {
@@ -1535,6 +1555,13 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		break;
 	case ARG_UPLOAD_FILE:
 		params->p.r = action_camera_upload_file (&p, p.folder, arg);
+		break;
+	case ARG_LIST_CONFIG:
+		params->p.r = list_config_action (&p);
+		break;
+	case ARG_GET_CONFIG:
+		params->p.r = get_config_action (&p, arg);
+		break;
 	default:
 		break;
 	};
@@ -1682,6 +1709,10 @@ main (int argc, char **argv)
 		{"config", '\0', POPT_ARG_NONE, NULL, ARG_CONFIG,
 		 N_("Configure"), NULL},
 #endif
+		{"list-config", '\0', POPT_ARG_NONE, NULL, ARG_LIST_CONFIG,
+		 N_("List configuration tree"), NULL},
+		{"get-config", '\0', POPT_ARG_STRING, NULL, ARG_GET_CONFIG,
+		 N_("Get configuration value"), NULL},
 		{"capture-preview", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_PREVIEW,
 		 N_("Capture a quick preview"), NULL},

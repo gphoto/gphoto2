@@ -877,8 +877,8 @@ override_usbids_action (GPParams *p, int usb_vendor, int usb_product,
 		if ((a.usb_vendor  == usb_vendor) &&
 		    (a.usb_product == usb_product)) {
 			gp_log (GP_LOG_DEBUG, "main",
-				"Overriding USB vendor/product id "
-				"0x%x/0x%x with 0x%x/0x%x",
+				_("Overriding USB vendor/product id "
+				"0x%x/0x%x with 0x%x/0x%x"),
 				a.usb_vendor, a.usb_product,
 				usb_vendor_modified, usb_product_modified);
 			a.usb_vendor  = usb_vendor_modified;
@@ -943,11 +943,208 @@ debug_action (GPParams *p)
 	  CHECK_NULL (v);
 	  CHECK_NULL (v[0]);
 	  gp_log (GP_LOG_DEBUG, "main", "%s %s", name, v[0]);
-	  gp_log (GP_LOG_DEBUG, "main", "%s has been compiled with the following options:", name);
+	  gp_log (GP_LOG_DEBUG, "main", _("%s has been compiled with the following options:"), name);
 	  for (i = 1; v[i] != NULL; i++) {
 	    gp_log (GP_LOG_DEBUG, "main", " + %s", v[i]);
 	  }
 	}
 
+	return (GP_OK);
+}
+
+static void
+display_widgets (CameraWidget *widget, char *prefix) {
+	int 	ret, n, i;
+	char	*newprefix;
+	const char *label, *name, *uselabel;
+	CameraWidgetType	type;
+
+	gp_widget_get_label (widget, &label);
+	/* fprintf(stderr,"label is %s\n", label); */
+	ret = gp_widget_get_name (widget, &name);
+	/* fprintf(stderr,"name is %s\n", name); */
+	gp_widget_get_type (widget, &type);
+
+	if (strlen(name))
+		uselabel = name;
+	else
+		uselabel = label;
+
+	n = gp_widget_count_children (widget);
+
+	newprefix = malloc(strlen(prefix)+1+strlen(uselabel)+1);
+	sprintf(newprefix,"%s/%s",prefix,uselabel);
+
+	if ((type != GP_WIDGET_WINDOW) && (type != GP_WIDGET_SECTION)) {
+		printf("%s\n",newprefix);
+	}
+	for (i=0; i<n; i++) {
+		CameraWidget *child;
+	
+		ret = gp_widget_get_child (widget, i, &child);
+		if (ret != GP_OK)
+			continue;
+		display_widgets (child, newprefix);
+	}
+}
+
+
+int
+list_config_action (GPParams *p) {
+	CameraWidget *rootconfig;
+	int	ret;
+
+	ret = gp_camera_get_config (p->camera, &rootconfig, p->context);
+	if (ret != GP_OK) return ret;
+	display_widgets (rootconfig, "");
+	gp_widget_free (rootconfig);
+	return (GP_OK);
+}
+
+int
+get_config_action (GPParams *p, const char *name) {
+	CameraWidget *rootconfig,*child;
+	int	ret;
+	const char *label;
+	CameraWidgetType	type;
+
+	ret = gp_camera_get_config (p->camera, &rootconfig, p->context);
+	if (ret != GP_OK) return ret;
+	ret = gp_widget_get_child_by_name (rootconfig, name, &child);
+	if (ret != GP_OK) {
+		char		*part, *s, *newname;
+
+		newname = strdup (name);
+		if (!newname)
+			return GP_ERROR_NO_MEMORY;
+
+		child = rootconfig;
+		part = newname;
+		while (part[0] == '/')
+			part++;
+		while (1) {
+			CameraWidget *tmp;
+
+			s = strchr (part,'/');
+			if (s)
+				*s='\0';
+			ret = gp_widget_get_child_by_name (child, part, &tmp);
+			if (ret != GP_OK)
+				break;
+			child = tmp;
+			if (!s) /* end of path */
+				break;
+			part = s+1;
+			while (part[0] == '/')
+				part++;
+		}
+		if (s) { /* if we have stuff left over, we failed */
+			gp_context_error (p->context, _("%s not found in configuration tree.\n"), newname);
+			free (newname);
+			gp_widget_free (rootconfig);
+			return GP_ERROR;
+		}
+		free (newname);
+	}
+	ret = gp_widget_get_type (child, &type);
+	if (ret != GP_OK) {
+		gp_widget_free (rootconfig);
+		return ret;
+	}
+	ret = gp_widget_get_label (child, &label);
+	if (ret != GP_OK) {
+		gp_widget_free (rootconfig);
+		return ret;
+	}
+
+	printf ("Label: %s\n", label); /* "Label:" is not i18ned, the "label" variable is */
+	switch (type) {
+	case GP_WIDGET_TEXT: {		/* char *		*/
+		char *txt;
+
+		ret = gp_widget_get_value (child, &txt);
+		if (ret == GP_OK) {
+			printf ("Type: TEXT\n"); /* parsed by scripts, no i18n */
+			printf ("Current: %s\n",txt);
+		} else {
+			gp_context_error (p->context, _("Failed to retrieve value of text widget %s.\n"), name);
+		}
+		break;
+	}
+	case GP_WIDGET_RANGE: {	/* float		*/
+		float	f, t,b,s;
+
+		ret = gp_widget_get_range (child, &b, &t, &s);
+		if (ret == GP_OK)
+			ret = gp_widget_get_value (child, &f);
+		if (ret == GP_OK) {
+			printf ("Type: RANGE\n");	/* parsed by scripts, no i18n */
+			printf ("Current: %g\n", f);	/* parsed by scripts, no i18n */
+			printf ("Bottom: %g\n", b);	/* parsed by scripts, no i18n */
+			printf ("Top: %g\n", t);	/* parsed by scripts, no i18n */
+			printf ("Step: %g\n", s);	/* parsed by scripts, no i18n */
+		} else {
+			gp_context_error (p->context, _("Failed to retrieve values of range widget %s.\n"), name);
+		}
+		break;
+	}
+	case GP_WIDGET_TOGGLE: {	/* int		*/
+		int	t;
+
+		ret = gp_widget_get_value (child, &t);
+		if (ret == GP_OK) {
+			printf ("Type: TOGGLE\n");
+			printf ("Current: %d\n",t);
+		} else {
+			gp_context_error (p->context, _("Failed to retrieve values of toggle widget %s.\n"), name);
+		}
+		break;
+	}
+	case GP_WIDGET_DATE:  {		/* int			*/
+		int	t;
+		time_t	xtime;
+
+		ret = gp_widget_get_value (child, &t);
+		if (ret == GP_OK) {
+			printf ("Type: DATE\n");
+			printf ("Current: %d\n",t);
+			xtime = t;
+			printf ("Printable: %s\n",ctime (&xtime));
+		} else {
+			gp_context_error (p->context, _("Failed to retrieve values of date/time widget %s.\n"), name);
+		}
+		break;
+	}
+	case GP_WIDGET_MENU:
+	case GP_WIDGET_RADIO: { /* char *		*/
+		int cnt, i;
+		char *current;
+
+		ret = gp_widget_get_value (child, &current);
+		if (ret == GP_OK) {
+			cnt = gp_widget_count_choices (child);
+			if (type == GP_WIDGET_MENU)
+				printf ("Type: MENU\n");
+			else
+				printf ("Type: RADIO\n");
+			printf ("Current: %s\n",current);
+			for ( i=0; i<cnt; i++) {
+				const char *choice;
+				ret = gp_widget_get_choice (child, i, &choice);
+				printf ("Choice: %d %s\n", i, choice);
+			}
+		} else {
+			gp_context_error (p->context, _("Failed to retrieve values of radio widget %s.\n"), name);
+		}
+		break;
+	}
+
+	/* ignore: */
+	case GP_WIDGET_WINDOW:
+	case GP_WIDGET_SECTION:
+	case GP_WIDGET_BUTTON:
+		break;
+	}
+	gp_widget_free (rootconfig);
 	return (GP_OK);
 }
