@@ -569,7 +569,7 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 				 */
 				if (!folder) {
 					gp_context_error (p.context, 
-						_("You cannot use '%n' "
+						_("You cannot use '%%n' "
 						  "in combination with "
 						  "non-persistent files!"));
 					return (GP_ERROR_BAD_PARAMETERS);
