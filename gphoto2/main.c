@@ -747,7 +747,7 @@ static struct {
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
 
 static int
-get_path_for_file (CameraFile *file, char **path)
+get_path_for_file (const char *folder, CameraFile *file, char **path)
 {
 	unsigned int i, l;
 	int n;
@@ -791,9 +791,19 @@ get_path_for_file (CameraFile *file, char **path)
 			switch (glob_filename[++i]) {
 			case 'n':
 
-				/* Get the number of the file */
+				/*
+				 * Get the number of the file. This can only
+				 * be done with persistent files!
+				 */
+				if (!folder) {
+					gp_context_error (glob_context, 
+						_("You cannot use '%n' "
+						  "in combination with "
+						  "non-persistent files!"));
+					return (GP_ERROR_BAD_PARAMETERS);
+				}
 				n = gp_filesystem_number (glob_camera->fs,
-					glob_folder, name, glob_context);
+					folder, name, glob_context);
 				if (n < 0) {
 					free (*path);
 					*path = NULL;
@@ -916,14 +926,14 @@ get_path_for_file (CameraFile *file, char **path)
 }
 
 static int
-save_camera_file_to_file (CameraFile *file)
+save_camera_file_to_file (const char *folder, CameraFile *file)
 {
 	char *path = NULL, p[1024], c[1024];
 	CameraFileType type;
 
 	CR (gp_file_get_type (file, &type));
 
-	CR (get_path_for_file (file, &path));
+	CR (get_path_for_file (folder, file, &path));
 	strncpy (p, path, sizeof (p) - 1);
 	p[sizeof (p) - 1] = '\0';
 	free (path);
@@ -989,7 +999,7 @@ save_file_to_file (Camera *camera, GPContext *context, const char *folder,
                 return (GP_OK);
         }
 
-        res = save_camera_file_to_file (file);
+        res = save_camera_file_to_file (folder, file);
 
         gp_file_unref (file);
 
@@ -1227,7 +1237,7 @@ OPTION_CALLBACK (capture_preview)
 		return (result);
 	}
 
-	result = save_camera_file_to_file (file);
+	result = save_camera_file_to_file (NULL, file);
 	if (result < 0) {
 		gp_file_unref (file);
 		return (result);
