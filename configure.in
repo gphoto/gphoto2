@@ -18,6 +18,13 @@ ALL_LINGUAS="da de es fr it ja no ru sl sv uk zh_CN"
 AM_GNU_GETTEXT
 
 dnl ---------------------------------------------------------------------------
+dnl Check for libgphoto2
+dnl ---------------------------------------------------------------------------
+PKG_CHECK_MODULES(GP, libgphoto2 >= 2.1.0)
+AC_SUBST(GP_LIBS)
+AC_SUBST(GP_CFLAGS)
+
+dnl ---------------------------------------------------------------------------
 dnl pthread: The gphoto2 shell (--shell) keeps up a connection to the 
 dnl          camera. Some cameras need to be sent keep-alive-messages
 dnl          in order to prevent a shut-down. This is what we need

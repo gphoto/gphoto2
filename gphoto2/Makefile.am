@@ -10,10 +10,10 @@ bin_PROGRAMS = gphoto2
 
 INCLUDES =						\
 	-DGPHOTO2_LOCALEDIR=\""$(datadir)/locale"\"	\
-	-DDOC_DIR=\""@DOC_DIR@"\"			\
-	-I$(top_srcdir)/libgphoto2_port/libgphoto2_port	\
-	-I$(top_srcdir)/libgphoto2			\
+	-I$(top_srcdir)					\
+	-I$(top_srcdir)/gphoto2				\
 	$(CDK_CFLAGS)					\
+	$(GP_CFLAGS)					\
 	$(AA_CFLAGS)					\
 	$(EXIF_CFLAGS)					\
 	$(RL_CFLAGS)
@@ -43,10 +43,6 @@ gphoto2_SOURCES = 		\
 
 gphoto2_LDFLAGS = -export-dynamic
 
-gphoto2_LDADD =						\
-	$(CDK_LIBS)					\
-	$(top_builddir)/libgphoto2_port/libgphoto2_port/libgphoto2_port.la\
-	$(top_builddir)/libgphoto2/libgphoto2.la	\
-	$(AA_LIBS)					\
-	$(JPEG_LIBS) $(PTHREAD_LIBS)			\
-	$(EXIF_LIBS) $(INTLLIBS) $(RL_LIBS)
+gphoto2_LDADD =							\
+	$(CDK_LIBS) $(AA_LIBS) $(JPEG_LIBS) $(PTHREAD_LIBS)	\
+	$(EXIF_LIBS) $(INTLLIBS) $(RL_LIBS) $(GP_LIBS)
