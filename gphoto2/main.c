@@ -1607,7 +1607,14 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		p->p.r = capture_generic (GP_CAPTURE_SOUND, arg);
 		break;
 	case ARG_CONFIG:
+#ifdef HAVE_CONFIG
 		p->p.r = gp_cmd_config (glob_camera, glob_context);
+#else
+		gp_context_error (glob_context,
+				  _("gphoto2 has been compiled without "
+				    "support for CDK."));
+		p->p.r = GP_ERROR_NOT_SUPPORTED;
+#endif
 		break;
 	case ARG_DELETE_ALL_FILES:
 		p->p.r = for_each_folder (&fparams, delete_all_action);
