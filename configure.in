@@ -1,7 +1,7 @@
 AC_PREREQ(2.50)
 AC_INIT(gphoto2/main.c)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gphoto2, 2.1.4head)
+AM_INIT_AUTOMAKE(gphoto2, 2.1.5head)
 AM_MAINTAINER_MODE
 
 
@@ -18,7 +18,7 @@ AC_DEFINE_UNQUOTED(HAVE_CC,"$CC",[The C compiler we're using])
 dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
-ALL_LINGUAS="az cs da de en_GB es fi fr hu it ja nl no pt_BR ro ru sk sl sr sv uk zh_CN"
+ALL_LINGUAS="az cs da de en_GB es fi fr hu it ja nb nl pt_BR ro ru sk sl sr sv uk zh_CN"
 # EVIL HACKS
 AC_MSG_CHECKING([for po/Makevars requiring evil hack])
 if test -f po/Makevars.template
@@ -359,7 +359,7 @@ AM_CONDITIONAL(HAVE_RL, $have_readline)
 AC_SUBST(RL_LIBS)
 AC_SUBST(RL_CFLAGS)
 
-AC_OUTPUT([
+AC_OUTPUT([ 
 Makefile
 gphoto2/Makefile
 doc/Makefile
