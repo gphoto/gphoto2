@@ -63,6 +63,7 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 	};
 	static const char *shrt[] = {
 		VERSION,
+		HAVE_CC " (C compiler used)",
 #ifdef HAVE_POPT
 		"popt",
 #else
