@@ -48,7 +48,7 @@ gphoto2_SOURCES = 		\
 	range.c range.h 	\
 	shell.c shell.h 
 
-gphoto2_LDFLAGS = -export-dynamic
+#gphoto2_LDFLAGS = -export-dynamic
 
 gphoto2_LDADD =								\
 	$(CDK_LIBS) $(AA_LIBS) $(JPEG_LIBS) $(PTHREAD_LIBS)		\
