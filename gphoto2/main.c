@@ -1988,6 +1988,7 @@ main (int argc, char **argv)
 			  "WHEN SENDING DEBUG MESSAGES TO THE "
 			  "MAILING LIST:"));
 		gp_log (GP_LOG_DEBUG, "main", PACKAGE " " VERSION);
+		glob_debug = 1;
 	}
 #endif
 
