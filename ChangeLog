@@ -1,3 +1,8 @@
+2003-09-01  Hubert Figuiere  <hfiguiere@teaser.fr>
+
+	* gphoto2/main.c (save_camera_file_to_file): call fflush();
+	See <https://sourceforge.net/tracker/?func=detail&atid=358874&aid=798071&group_id=8874>
+
 2003-08-24  Lutz Mueller <lutz@users.sourceforge.net>
 
 	* gphoto2/actions.c: Fix off-by-one bug (closes #729791).

@@ -724,6 +724,7 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 			s[strlen (s) - 1] = 0;
                 }
                 printf (_("Saving file as %s\n"), s);
+		fflush (stdout);
         }
 	CR (gp_file_save (file, s));
 
