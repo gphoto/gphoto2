@@ -21,210 +21,214 @@
 .SH NAME
 gphoto2 \- command-line gphoto2 client
 .SH "SYNOPSIS"
-
-.nf
+.ad l
+.hy 0
+.HP 8
 \fBgphoto2\fR [\-\-debug] [\fB\-q\fR | \fB\-\-quiet\fR] [\fB\-v\fR | \fB\-\-verbose\fR] [\fB\-h\fR | \fB\-\-help\fR]
-        [\-\-list\-cameras] [\-\-list\-ports] [\-\-stdout]
-        [\-\-stdout\-size] [\-\-auto\-detect] [\-\-port \fIPATH\fR]
-        [\-\-speed \fISPEED\fR] [\-\-camera \fIMODEL\fR] [\-\-filename \fIFILENAME\fR]
-        [\-\-usbid \fIUSBIDS\fR] [\fB\-a\fR | \fB\-\-abilities\fR] [\-\-folder \fIFOLDER\fR]
-        [[\fB\-R\fR | \fB\-\-recurse\fR] | \fB\-\-norecurse\fR] [\fB\-l\fR | \fB\-\-list\-folders\fR]
-        [\fB\-L\fR | \fB\-\-list\-files\fR] [\fB\-m \fINAME\fR\fR | \fB\-\-mkdir \fINAME\fR\fR]
-        [\fB\-r \fINAME\fR\fR | \fB\-\-rmdir \fINAME\fR\fR] [\fB\-n\fR | \fB\-\-num\-files\fR]
-        [\fB\-p \fIRANGE\fR\fR | \fB\-\-get\-file \fIRANGE\fR\fR] [\fB\-P\fR | \fB\-\-get\-all\-files\fR]
-        [\fB\-t \fIRANGE\fR\fR | \fB\-\-get\-thumbnail \fIRANGE\fR\fR]
-        [\fB\-T\fR | \fB\-\-get\-all\-thumbnails\fR]
-        [\fB\-r \fIRANGE\fR\fR | \fB\-\-get\-raw\-data \fIRANGE\fR\fR] [\-\-get\-all\-raw\-data]
-        [\-\-get\-audio\-data \fIRANGE\fR] [\-\-get\-all\-audio\-data]
-        [\fB\-d \fIRANGE\fR\fR | \fB\-\-delete\-file \fIRANGE\fR\fR] [\fB\-D\fR | \fB\-\-delete\-all\-files\fR]
-        [\fB\-u \fIFILENAME\fR\fR | \fB\-\-upload\-file \fIFILENAME\fR\fR] [\-\-capture\-preview]
-        [\-\-capture\-image] [\-\-capture\-movie] [\-\-capture\-sound]
-        [\-\-capture\-show\-info \fIRANGE\fR]
-        [\-\-summary] [\-\-manual] [\-\-about] [\-\-shell]
-.fi
+	[\-\-list\-cameras] [\-\-list\-ports] [\-\-stdout]
+	[\-\-stdout\-size] [\-\-auto\-detect] [\-\-port\ \fIPATH\fR]
+	[\-\-speed\ \fISPEED\fR] [\-\-camera\ \fIMODEL\fR]
+	[\-\-filename\ \fIFILENAME\fR] [\-\-usbid\ \fIUSBIDS\fR]
+	[\fB\-a\fR | \fB\-\-abilities\fR] [\-\-folder\ \fIFOLDER\fR]
+	[[\fB\-R\fR | \fB\-\-recurse\fR] | \fB\-\-norecurse\fR] [\fB\-l\fR | \fB\-\-list\-folders\fR]
+	[\fB\-L\fR | \fB\-\-list\-files\fR] [\fB\-m\ \fINAME\fR\fR | \fB\-\-mkdir\ \fINAME\fR\fR]
+	[\fB\-r\ \fINAME\fR\fR | \fB\-\-rmdir\ \fINAME\fR\fR] [\fB\-n\fR | \fB\-\-num\-files\fR]
+	[\fB\-p\ \fIRANGE\fR\fR | \fB\-\-get\-file\ \fIRANGE\fR\fR] [\fB\-P\fR | \fB\-\-get\-all\-files\fR]
+	[\fB\-t\ \fIRANGE\fR\fR | \fB\-\-get\-thumbnail\ \fIRANGE\fR\fR] [\fB\-T\fR | \fB\-\-get\-all\-thumbnails\fR] 
+	[\fB\-r\ \fIRANGE\fR\fR | \fB\-\-get\-raw\-data\ \fIRANGE\fR\fR] [\-\-get\-all\-raw\-data]
+	[\-\-get\-audio\-data\ \fIRANGE\fR] [\-\-get\-all\-audio\-data] 
+	[\fB\-d\ \fIRANGE\fR\fR | \fB\-\-delete\-file\ \fIRANGE\fR\fR] [\fB\-D\fR | \fB\-\-delete\-all\-files\fR] 
+	[\fB\-u\ \fIFILENAME\fR\fR | \fB\-\-upload\-file\ \fIFILENAME\fR\fR] 
+	[\-\-capture\-preview] [\-\-capture\-image] [\-\-capture\-movie] [\-\-capture\-sound] 
+	[\-\-capture\-show\-info\ \fIRANGE\fR] [\-\-summary] [\-\-manual] [\-\-about] [\-\-shell]
+.ad
+.hy
 
 .SH "DESCRIPTION"
 
 .PP
-\fBlibgphoto2\fR(3) is a cross\-platform digital camera library, and \fBgphoto2\fR(1) is a command\-line client for it.
+\fBlibgphoto2\fR(3) is a cross\-platform digital camera library, and \fBgphoto2\fR(1) is a command\-line client for it\&.
 
 .PP
-Where an option takes a range of files, thumbnails, or other data, they are numbered beginning at 1. A range is a comma\-separated list of numbers or spans (``\fIfirst\fR\-\fIlast\fR''). Ranges are XOR (exclusive or), so that ``1\-5,3,7'' is equivalent to ``1,2,4,5,7''.
+Where an option takes a range of files, thumbnails, or other data, they are numbered beginning at 1\&. A range is a comma\-separated list of numbers or spans (``\fIfirst\fR\-\fIlast\fR'')\&. Ranges are XOR (exclusive or), so that ``1\-5,3,7'' is equivalent to ``1,2,4,5,7''\&.
 
 .TP
 \fB\-\-debug\fR
-Turn on debugging.
+Turn on debugging\&.
 
 .TP
 \fB\-q\fR, \fB\-\-quiet\fR
-Quiet output (default=verbose).
+Quiet output (default=verbose)\&.
 
 .TP
 \fB\-v\fR, \fB\-\-version\fR
-Display version and exit.
+Display version and exit\&.
 
 .TP
 \fB\-h\fR, \fB\-\-help\fR
-Display a short usage message.
+Display a short usage message\&.
 
 .TP
 \fB\-\-list\-cameras\fR
-List supported camera models.
+List supported camera models\&.
 
 .TP
 \fB\-\-list\-ports\fR
-List supported port devices.
+List supported port devices\&.
 
 .TP
 \fB\-\-stdout\fR
-Send file to stdout.
+Send file to stdout\&.
 
 .TP
 \fB\-\-stdout\-size\fR
-Print filesize before data.
+Print filesize before data\&.
 
 .TP
 \fB\-\-auto\-detect\fR
-List auto\-detected cameras.
+List auto\-detected cameras and the ports to which they are connected\&.
 
 .TP
 \fB\-\-port\fR \fIPATH\fR
-Specify port device.
+Specify port device\&. The\fB\-\-list\-ports\fR prints a list of valid, usable ports\&. In case of multiple USB cameras, the\fB\-\-auto\-detect\fR shows you the specific port each camera is connected to\&.
 
 .TP
 \fB\-\-speed\fR \fISPEED\fR
-Specify serial transfer speed.
+Specify serial transfer speed\&.
 
 .TP
 \fB\-\-camera\fR \fIMODEL\fR
-Specify camera model. Most model names contain spaces: remember to enclose the name in quotes so that the shell knows it is one parameter. For example: \fB\fB\-\-camera\fR "Kodak DC240"\fR.
-Note that if you specify \fB\-\-camera\fR, you must also specify \fB\-\-port\fR.  Otherwise the \fB\-\-camera\fR option will be silently ignored.
+Specify camera model\&. The\fB\-\-list\-cameras\fR option prints a list of all explicitly supported cameras\&.
+
+Most model names contain spaces: remember to enclose the name in quotes so that the shell knows it is one parameter\&. For example: \fB\fB\-\-camera\fR "Kodak DC240"\fR\&.
+
+Note that if you specify\fB\fB\-\-camera\fR\fR, you must also specify\fB\fB\-\-port\fR\fR\&. Otherwise the\fB\fB\-\-camera\fR\fR option will be silently ignored\&.
 
 .TP
 \fB\-\-filename\fR \fIFILENAME\fR
-Specify the filename to use when saving downloaded files. The \fB\-\-filename\fR option accepts %a, %A, %b, %B, %d, %H, %k, %I, %l, %j, %m, %M, %S, %y, %%, (see date(1)) and, in addition, %n for the number, %C for the filename suffix, and %f for the filename without suffix.
+Specify the filename to use when saving downloaded files\&. The \fB\-\-filename\fR option accepts %a, %A, %b, %B, %d, %H, %k, %I, %l, %j, %m, %M, %S, %y, %%, (see date(1)) and, in addition, %n for the number, %C for the filename suffix, and %f for the filename without suffix\&.
 
 .TP
-\fB\-\-usbid\fR \fIUSBIDS\fR
-(Expert only) Override USB IDs. \fIUSBIDS\fR must be of the form \fIDetectedVendorID\fR:\fIDetectedProductID\fR=\fITreatAsVendorID\fR:\fITreatAsProductID\fR to treat any USB device detected as \fIDetectedVendorID\fR:\fIDetectedProductID\fR as \fITreatAsVendorID\fR:\fITreatAsProductID\fR instead. All the VendorIDs and ProductIDs should be hexadecimal numbers beginning in C notation, i.e. beginning with '0x'.
+\fB\-\-usbid\fR \fI\fIUSBIDS\fR\fR
+(Expert only) Override USB IDs\&.\fI\fIUSBIDS\fR\fR must be of the form\fI\fIDetectedVendorID\fR:\fIDetectedProductID\fR=\fITreatAsVendorID\fR:\fITreatAsProductID\fR\fR to treat any USB device detected as\fI\fIDetectedVendorID\fR:\fIDetectedProductID\fR\fR as\fI\fITreatAsVendorID\fR:\fITreatAsProductID\fR\fR instead\&. All the VendorIDs and ProductIDs should be hexadecimal numbers beginning in C notation, i\&.e\&. beginning with '0x'\&.
 
-Example: \fI\-\-usbid \fI0x4a9:0x306b=0x4a9:0x306c\fR\fR
+Example: \fI\-\-usbid \fI0x4a9:0x306b=0x4a9:0x306c\fR\fR 
 
 .TP
 \fB\-a\fR, \fB\-\-abilities\fR
-Display camera abilities.
+Display camera abilities\&.
 
 .TP
 \fB\-f\fR, \fB\-\-folder\fR \fIFOLDER\fR
-Specify camera folder (default="/").
+Specify camera folder (default="/")\&.
 
 .TP
 \fB\-R\fR, \fB\-\-recurse\fR
-Recursion (default for download).
+Recursion (default for download)\&.
 
 .TP
 \fB\-\-no\-recurse\fR
-No recursion (default for deletion).
+No recursion (default for deletion)\&.
 
 .TP
 \fB\-l\fR, \fB\-\-list\-folders\fR
-List folders in folder.
+List folders in folder\&.
 
 .TP
 \fB\-L\fR, \fB\-\-list\-files\fR
-List files in folder.
+List files in folder\&.
 
 .TP
 \fB\-m\fR, \fB\-\-mkdir\fR \fINAME\fR
-Create a directory.
+Create a directory\&.
 
 .TP
 \fB\-r\fR, \fB\-\-rmdir\fR \fINAME\fR
-Remove a directory.
+Remove a directory\&.
 
 .TP
 \fB\-n\fR, \fB\-\-num\-files\fR
-Display number of files.
+Display number of files\&.
 
 .TP
 \fB\-p\fR, \fB\-\-get\-file\fR \fIRANGE\fR
-Get files given in range.
+Get files given in range\&.
 
 .TP
 \fB\-P\fR, \fB\-\-get\-all\-files\fR
-Get all files from folder.
+Get all files from folder\&.
 
 .TP
 \fB\-t\fR, \fB\-\-get\-thumbnail\fR \fIRANGE\fR
-Get thumbnails given in range.
+Get thumbnails given in range\&.
 
 .TP
 \fB\-T\fR, \fB\-\-get\-all\-thumbnails\fR
-Get all thumbnails from folder.
+Get all thumbnails from folder\&.
 
 .TP
 \fB\-r\fR, \fB\-\-get\-raw\-data\fR \fIRANGE\fR
-Get raw data given in range.
+Get raw data given in range\&.
 
 .TP
 \fB\-\-get\-all\-raw\-data\fR
-Get all raw data from folder.
+Get all raw data from folder\&.
 
 .TP
 \fB\-\-get\-audio\-data\fR \fIRANGE\fR
-Get audio data given in range.
+Get audio data given in range\&.
 
 .TP
 \fB\-\-get\-all\-audio\-data\fR
-Get all audio data from folder.
+Get all audio data from folder\&.
 
 .TP
 \fB\-\-delete\-files\fR \fIRANGE\fR
-Delete files given in range.
+Delete files given in range\&.
 
 .TP
 \fB\-\-delete\-all\-files\fR
-Delete all files in folder.
+Delete all files in folder\&.
 
 .TP
 \fB\-u\fR, \fB\-\-upload\-file\fR \fIFILENAME\fR
-Upload a file to camera.
+Upload a file to camera\&.
 
 .TP
 \fB\-\-capture\-preview\fR
-Capture a quick preview.
+Capture a quick preview\&.
 
 .TP
 \fB\-\-capture\-image\fR
-Capture an image.
+Capture an image\&.
 
 .TP
 \fB\-\-capture\-movie\fR
-Capture a movie.
+Capture a movie\&.
 
 .TP
 \fB\-\-capture\-sound\fR
-Capture an audio clip.
+Capture an audio clip\&.
 
 .TP
 \fB\-\-show\-info\fR \fIRANGE\fR
-Show info.
+Show info\&.
 
 .TP
 \fB\-\-summary\fR
-Summary of camera status.
+Summary of camera status\&.
 
 .TP
 \fB\-\-manual\fR
-Camera driver manual.
+Camera driver manual\&.
 
 .TP
 \fB\-\-about\fR
-About the camera driver.
+About the camera driver\&.
 
 .TP
 \fB\-\-shell\fR
-Start the gphoto2 shell, an interactive environment. See SHELL MODE for a detailed description.
+Start the gphoto2 shell, an interactive environment\&. See SHELL MODE for a detailed description\&.
 
 .SH "SHELL MODE"
 
@@ -233,72 +237,72 @@ The following commands are available:
 
 .TP
 cd
-Change to a directory on the camera.
+Change to a directory on the camera\&.
 
 .TP
 lcd
-Change to a directory on the local machine.
+Change to a directory on the local machine\&.
 
 .TP
 exit, quit, q
-Exit the gphoto2 shell.
+Exit the gphoto2 shell\&.
 
 .TP
 get
-Download the file to the current directory.
+Download the file to the current directory\&.
 
 .TP
 get\-thumbnail
-Download the thumbnail to the current directory.
+Download the thumbnail to the current directory\&.
 
 .TP
 get\-raw
-Download raw data to the current directory.
+Download raw data to the current directory\&.
 
 .TP
 show\-info
-Show information.
+Show information\&.
 
 .TP
 delete
-Delete a file or directory.
+Delete a file or directory\&.
 
 .TP
 show\-exif
-Show EXIF information (only if compiled with EXIF support).
+Show EXIF information (only if compiled with EXIF support)\&.
 
 .TP
 help, ?
-Displays command usage.
+Displays command usage\&.
 
 .TP
 ls
-List the contents of the current directory on the camera.
+List the contents of the current directory on the camera\&.
 
 .SH "SEE ALSO"
 
 .PP
- \fBlibgphoto2\fR(3), The gPhoto2 Manual,   \fIhttp://www.gphoto.org/\fR 
+ \fBlibgphoto2\fR(3), The gPhoto2 Manual,   http://www\&.gphoto\&.org/: \fIhttp://www.gphoto.org/\fR 
 
 .SH "EXAMPLES"
 
 .TP
 \fBgphoto2 \fB\-\-list\-ports\fR\fR
-Shows what kinds of ports (USB and serial) you have.
+Shows what kinds of ports (USB and serial) you have\&.
 
 .TP
 \fBgphoto2 \fB\-\-auto\-detect\fR\fR
-Shows what camera(s) you have connected.
+Shows what camera(s) you have connected\&.
 
 .TP
 \fBgphoto2 \fB\-\-list\-files\fR\fR
-List files on camera.
+List files on camera\&.
 
 .TP
 \fBgphoto2 \fB\-\-get\-file\fR \fI7\-13\fR\fR
-Get files number 7 through 13 from the list output by \fB\fBgphoto2\fR \fB\-\-list\-files\fR\fR.
+Get files number 7 through 13 from the list output by \fB\fBgphoto2\fR \fB\-\-list\-files\fR\fR\&.
 
 .SH AUTHOR
 The gPhoto2 Team.
 .br
-Man page edited by Tim Waugh <twaugh@redhat.com>.
+Man page edited by Tim Waugh[ twaugh at redhat dot com ].
