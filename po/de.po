@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2\n"
-"POT-Creation-Date: 2002-07-29 00:47+0200\n"
+"POT-Creation-Date: 2002-11-20 19:11+0100\n"
 "PO-Revision-Date: 2002-05-30 10:22+0200\n"
 "Last-Translator: Marcus Meissner <marcus@jet.franken.de>\n"
 "Language-Team: Deutsch <de@li.org>\n"
@@ -17,165 +17,362 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.6\n"
 
-#: gphoto2/actions.c:75
+#: gphoto2/actions.c:117
+#, fuzzy, c-format
+msgid "Number of files in folder '%s': %i\n"
+msgstr "Anzahl der Dateien im Verzeichnis %s: %i\n"
+
+#: gphoto2/actions.c:136
 #, c-format
 msgid "There are no folders in folder '%s'."
 msgstr "Es gibt keine Verzeichnisse im Verzeichnis »%s«."
 
-#: gphoto2/actions.c:79
+#: gphoto2/actions.c:140
 #, c-format
 msgid "There is one folder in folder '%s':"
 msgstr "Es gibt ein Verzeichnis im Verzeichnis »%s«:"
 
-#: gphoto2/actions.c:83
+#: gphoto2/actions.c:144
 #, c-format
 msgid "There are %i folders in folder '%s':"
 msgstr "Es gibt %i Verzeichnisse im Verzeichnis »%s«:"
 
-#: gphoto2/actions.c:109 gphoto2/foreach.c:250
+#: gphoto2/actions.c:170 gphoto2/foreach.c:283
 #, c-format
 msgid "There are no files in folder '%s'."
 msgstr "Es gibt keine Datei im Verzeichnis »%s«."
 
-#: gphoto2/actions.c:113
+#: gphoto2/actions.c:175
 #, c-format
 msgid "There is one file in folder '%s':"
 msgstr "Es gibt eine Datei im Verzeichnis »%s« an:"
 
-#: gphoto2/actions.c:117
+#: gphoto2/actions.c:180
 #, c-format
 msgid "There are %i files in folder '%s':"
 msgstr "Es gibt %i Dateien im Verzeichnis »%s«:"
 
-#: gphoto2/actions.c:138
+#: gphoto2/actions.c:201
 #, c-format
 msgid "Information on file '%s' (folder '%s'):\n"
 msgstr "Informationen für Datei »%s« (Verzeichnis »%s«):\n"
 
-#: gphoto2/actions.c:140
+#: gphoto2/actions.c:203
 msgid "File:\n"
 msgstr "Datei:\n"
 
-#: gphoto2/actions.c:142 gphoto2/actions.c:176 gphoto2/actions.c:192
+#: gphoto2/actions.c:205 gphoto2/actions.c:239 gphoto2/actions.c:255
 msgid "  None available.\n"
 msgstr "  Nicht verfügbar.\n"
 
-#: gphoto2/actions.c:145
+#: gphoto2/actions.c:208
 #, c-format
 msgid "  Name:        '%s'\n"
 msgstr "  Name:        »%s«\n"
 
-#: gphoto2/actions.c:147 gphoto2/actions.c:179
+#: gphoto2/actions.c:210 gphoto2/actions.c:242
 #, c-format
 msgid "  Mime type:   '%s'\n"
 msgstr "  MIME-Typ:   »%s«\n"
 
-#: gphoto2/actions.c:149 gphoto2/actions.c:181
+#: gphoto2/actions.c:212 gphoto2/actions.c:244
 #, c-format
 msgid "  Size:        %li byte(s)\n"
 msgstr "  Größe:       %li Byte(s)\n"
 
-#: gphoto2/actions.c:151 gphoto2/actions.c:183
+#: gphoto2/actions.c:214 gphoto2/actions.c:246
 #, c-format
 msgid "  Width:       %i pixel(s)\n"
 msgstr "  Breite:      %i Pixel\n"
 
-#: gphoto2/actions.c:153 gphoto2/actions.c:185
+#: gphoto2/actions.c:216 gphoto2/actions.c:248
 #, c-format
 msgid "  Height:      %i pixel(s)\n"
 msgstr "  Höhe:        %i pixel(s)\n"
 
-#: gphoto2/actions.c:155 gphoto2/actions.c:187
+#: gphoto2/actions.c:218 gphoto2/actions.c:250
 #, c-format
 msgid "  Downloaded:  %s\n"
 msgstr "Heruntergeladen: »%s«\n"
 
-#: gphoto2/actions.c:156 gphoto2/actions.c:188 gphoto2/actions.c:200
-#: gphoto2/main.c:379 gphoto2/main.c:381 gphoto2/main.c:400 gphoto2/main.c:402
-#: gphoto2/main.c:404 gphoto2/main.c:406
+#: gphoto2/actions.c:219 gphoto2/actions.c:251 gphoto2/actions.c:263
+#: gphoto2/actions.c:560 gphoto2/actions.c:562 gphoto2/actions.c:579
+#: gphoto2/actions.c:582 gphoto2/actions.c:585 gphoto2/actions.c:588
 msgid "yes"
 msgstr "Ja"
 
-#: gphoto2/actions.c:156 gphoto2/actions.c:188 gphoto2/actions.c:200
-#: gphoto2/main.c:379 gphoto2/main.c:381 gphoto2/main.c:400 gphoto2/main.c:402
-#: gphoto2/main.c:404 gphoto2/main.c:406
+#: gphoto2/actions.c:219 gphoto2/actions.c:251 gphoto2/actions.c:263
+#: gphoto2/actions.c:560 gphoto2/actions.c:562 gphoto2/actions.c:579
+#: gphoto2/actions.c:582 gphoto2/actions.c:585 gphoto2/actions.c:588
 msgid "no"
 msgstr "Nein"
 
-#: gphoto2/actions.c:158
+#: gphoto2/actions.c:221
 msgid "  Permissions: "
 msgstr "  Berechtigungen: "
 
-#: gphoto2/actions.c:161
+#: gphoto2/actions.c:224
 msgid "read/delete"
 msgstr "Lesen/Löschen"
 
-#: gphoto2/actions.c:163
+#: gphoto2/actions.c:226
 msgid "read"
 msgstr "Lesen"
 
-#: gphoto2/actions.c:165
+#: gphoto2/actions.c:228
 msgid "delete"
 msgstr "Löschen"
 
-#: gphoto2/actions.c:167
+#: gphoto2/actions.c:230
 msgid "none"
 msgstr "Keine"
 
-#: gphoto2/actions.c:171
+#: gphoto2/actions.c:234
 #, c-format
 msgid "  Time:        %s"
 msgstr "  Zeit:        %s"
 
-#: gphoto2/actions.c:174
+#: gphoto2/actions.c:237
 msgid "Thumbnail:\n"
 msgstr "Vorschaubild:\n"
 
-#: gphoto2/actions.c:190
+#: gphoto2/actions.c:253
 msgid "Audio data:\n"
 msgstr "Audiodaten:\n"
 
-#: gphoto2/actions.c:195
+#: gphoto2/actions.c:258
 #, c-format
 msgid "  Mime type:  '%s'\n"
 msgstr "  MIME-Typ:  »%s«\n"
 
-#: gphoto2/actions.c:197
+#: gphoto2/actions.c:260
 #, c-format
 msgid "  Size:       %li byte(s)\n"
 msgstr "  Größe:      %li byte(s)\n"
 
-#: gphoto2/actions.c:199
+#: gphoto2/actions.c:262
 #, c-format
 msgid "  Downloaded: %s\n"
 msgstr "  Heruntergeladen: »%s«\n"
 
-#: gphoto2/actions.c:331
+#: gphoto2/actions.c:393
 msgid "Could not parse EXIF data."
 msgstr "Konnte EXIF-Daten nicht parsen."
 
-#: gphoto2/actions.c:335
+#: gphoto2/actions.c:397
 msgid "EXIF tags:"
 msgstr "EXIF-Tags:"
 
-#: gphoto2/actions.c:338
+#: gphoto2/actions.c:400
 msgid "Tag"
 msgstr "Tag"
 
-#: gphoto2/actions.c:340
+#: gphoto2/actions.c:402
 msgid "Value"
 msgstr "Wert"
 
-#: gphoto2/actions.c:361
+#: gphoto2/actions.c:423
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
 msgstr "EXIF-Daten enthalten ein Vorschaubild (%i Bytes)."
 
-#: gphoto2/actions.c:370
+#: gphoto2/actions.c:432
 msgid "gphoto2 has been compiled without EXIF support."
 msgstr "gphoto2 wurde ohne Unterstützung für EXIF kompiliert."
 
-#: gphoto2/foreach.c:229
+#: gphoto2/actions.c:450
+#, c-format
+msgid "Number of supported cameras: %i\n"
+msgstr "Anzahl der unterstützten Kameras: %i\n"
+
+#: gphoto2/actions.c:452
+msgid "Supported cameras:\n"
+msgstr "Unterstützte Kameras:\n"
+
+#: gphoto2/actions.c:465
+#, c-format
+msgid "\t\"%s\" (TESTING)\n"
+msgstr "\t»%s« (IM TEST)\n"
+
+#: gphoto2/actions.c:468
+#, c-format
+msgid "\t\"%s\" (EXPERIMENTAL)\n"
+msgstr "\t»%s« (EXPERIMENTELL)\n"
+
+#: gphoto2/actions.c:473
+#, c-format
+msgid "\t\"%s\"\n"
+msgstr "\t»%s«\n"
+
+#: gphoto2/actions.c:501
+#, c-format
+msgid "Devices found: %i\n"
+msgstr "Gefundene Geräte: %i\n"
+
+#: gphoto2/actions.c:502
+msgid ""
+"Path                             Description\n"
+"--------------------------------------------------------------\n"
+msgstr ""
+"Pfad                             Beschreibung\n"
+"------------------------------------------------------------------------\n"
+
+#: gphoto2/actions.c:540 gphoto2/actions.c:545
+#, c-format
+msgid "%-30s %-16s\n"
+msgstr "%-30s %-16s\n"
+
+#: gphoto2/actions.c:540
+msgid "Model"
+msgstr "Modell"
+
+#: gphoto2/actions.c:540
+msgid "Port"
+msgstr "Port"
+
+#: gphoto2/actions.c:541
+msgid "----------------------------------------------------------\n"
+msgstr "----------------------------------------------------------\n"
+
+#: gphoto2/actions.c:558
+#, c-format
+msgid "Abilities for camera             : %s\n"
+msgstr "Fähigkeiten für Kamera           : %s\n"
+
+#: gphoto2/actions.c:559
+#, c-format
+msgid "Serial port support              : %s\n"
+msgstr "Unterstützung für seriellen Port : %s\n"
+
+#: gphoto2/actions.c:561
+#, c-format
+msgid "USB support                      : %s\n"
+msgstr "USB-Unterstützung                : %s\n"
+
+#: gphoto2/actions.c:564
+msgid "Transfer speeds supported        :\n"
+msgstr "Unterstützte Datenraten (seriell):\n"
+
+#: gphoto2/actions.c:566
+#, c-format
+msgid "                                 : %i\n"
+msgstr "                                 : %i\n"
+
+#: gphoto2/actions.c:569
+msgid "Capture choices                  :\n"
+msgstr "Aufnahme machen (Auswahl)        :\n"
+
+#: gphoto2/actions.c:571
+msgid "                                 : Image\n"
+msgstr "                                 : Bild\n"
+
+#: gphoto2/actions.c:573
+msgid "                                 : Video\n"
+msgstr "                                 : Video\n"
+
+#: gphoto2/actions.c:575
+msgid "                                 : Audio\n"
+msgstr "                                 : Audio\n"
+
+#: gphoto2/actions.c:577
+msgid "                                 : Preview\n"
+msgstr "                                 : Bildvorschau\n"
+
+#: gphoto2/actions.c:578
+#, c-format
+msgid "Configuration support            : %s\n"
+msgstr "Konfigurationsunterstützung      : %s\n"
+
+#: gphoto2/actions.c:580
+#, c-format
+msgid "Delete files on camera support   : %s\n"
+msgstr "Unterstützung für Bildlöschung   : %s\n"
+
+#: gphoto2/actions.c:583
+#, c-format
+msgid "File preview (thumbnail) support : %s\n"
+msgstr "Unterstützung für Bildvorschau   : %s\n"
+
+#: gphoto2/actions.c:586
+#, c-format
+msgid "File upload support              : %s\n"
+msgstr "Unterstützung für Bildhochladen  : %s\n"
+
+#: gphoto2/actions.c:603
+#, c-format
+msgid ""
+"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
+"colon so I am going to guess what you mean."
+msgstr ""
+"Ports müssen als »serial:/dev/ttyS0« oder »usb:« angegeben werden, aber »%s« "
+"hat keinen Doppelpunkt. Es wird versucht, herauszufinden, was Sie meinen."
+
+#: gphoto2/actions.c:642
+#, c-format
+msgid ""
+"The port you specified ('%s') can not be found. Please specify one of the "
+"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
+"(i.e. with prefix 'serial:' or 'usb:')."
+msgstr ""
+"Der angegebene Port (»%s«) kann nicht gefunden werden. Bitte geben Sie "
+"einen \n"
+"der von »gphoto2 --list-ports« gelisteten Ports an und stellen Sie sicher, \n"
+"daß die Schreibweise korrekt ist (mit Präfix »serial:« oder »usb:«)."
+
+#: gphoto2/actions.c:680
+#, fuzzy
+msgid "About the camera driver:"
+msgstr "Über den Kameratreiber"
+
+#: gphoto2/actions.c:694
+#, fuzzy
+msgid "Camera summary:"
+msgstr ""
+"Kamerazusammenfassung:\n"
+"%s\n"
+
+#: gphoto2/actions.c:708
+#, fuzzy
+msgid "Camera manual:"
+msgstr ""
+"Kameraanleitung:\n"
+"%s\n"
+
+#: gphoto2/actions.c:724
+#, fuzzy
+msgid "You can only specify speeds for serial ports."
+msgstr "Nur mit seriellen Ports können Sie eine Datenrate setzen"
+
+#: gphoto2/actions.c:775
+#, c-format
+msgid ""
+"gphoto2 %s\n"
+"\n"
+"Copyright (C) 2000-2002 Lutz Mueller and others\n"
+"%s\n"
+"gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
+"redistribute copies of gphoto2 under the terms of the GNU General Public\n"
+"License. For more information about these matters, see the files named "
+"COPYING.\n"
+"\n"
+"This version of gphoto2 is using the following software versions and "
+"options:\n"
+msgstr ""
+
+#: gphoto2/actions.c:788
+msgid "OS/2 port by Bart van Leeuwen\n"
+msgstr "OS/2-Portierung von Bart van Leeuwen\n"
+
+#: gphoto2/actions.c:902
+#, fuzzy
+msgid ""
+"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
+"MAILING LIST:"
+msgstr ""
+"BITTE IMMER FOLGENDE ZEILE EINFÜGEN WENN DEBUG MESSAGES AN DIE MAILINGLISTE "
+"GESCHICKT WERDEN:"
+
+#: gphoto2/foreach.c:262
 #, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
@@ -186,7 +383,7 @@ msgstr ""
 "s« oder seinen Unterverzeichnissen. Bite holen Sie zuerst eine gültige "
 "Dateinummer aus einer Dateiliste."
 
-#: gphoto2/foreach.c:255
+#: gphoto2/foreach.c:288
 #, c-format
 msgid ""
 "Bad file number. You specified %i, but there is only 1 file available in '%"
@@ -194,7 +391,7 @@ msgid ""
 msgstr ""
 "Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
 
-#: gphoto2/foreach.c:262
+#: gphoto2/foreach.c:295
 #, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
@@ -248,335 +445,191 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#: gphoto2/main.c:198
+#: gphoto2/main.c:183 gphoto2/main.c:1475
 msgid "Turn on debugging"
 msgstr "Schalte Debugging ein"
 
-#: gphoto2/main.c:200
+#: gphoto2/main.c:184 gphoto2/main.c:1477
 msgid "Quiet output (default=verbose)"
 msgstr "Wenige Ausgaben (Vorgabe=gesprächig)"
 
-#. Display and die actions
-#: gphoto2/main.c:204
+#: gphoto2/main.c:188 gphoto2/main.c:1481
 msgid "Display version and exit"
 msgstr "Zeige Version und beende"
 
-#: gphoto2/main.c:205
+#: gphoto2/main.c:189
 msgid "Displays this help screen"
 msgstr "Zeigt diese Hilfe"
 
-#: gphoto2/main.c:206
+#: gphoto2/main.c:190 gphoto2/main.c:1483
 msgid "List supported camera models"
 msgstr "Zeige unterstützte Kameramodelle"
 
-#: gphoto2/main.c:207
-msgid "usb.usermap script (dflt=\"usbcam\")"
-msgstr "usb.usermap-Skript (Vorg.=\"usbcam\")"
-
-#: gphoto2/main.c:208
-msgid "Create output for usb.usermap"
-msgstr "Generiere Ausgabe für usb.usermap"
-
-#: gphoto2/main.c:209
+#: gphoto2/main.c:191 gphoto2/main.c:1485
 msgid "List supported port devices"
 msgstr "Liste unterstützte Port-Geräte"
 
-#: gphoto2/main.c:210
+#: gphoto2/main.c:192 gphoto2/main.c:1487
 msgid "Send file to stdout"
 msgstr "Sende Datei auf die Standardausgabe"
 
-#: gphoto2/main.c:211
+#: gphoto2/main.c:193 gphoto2/main.c:1489
 msgid "Print filesize before data"
 msgstr "Dateigröße vor Daten ausgeben"
 
-#: gphoto2/main.c:212
+#: gphoto2/main.c:194 gphoto2/main.c:1491
 msgid "List auto-detected cameras"
 msgstr "Liste automatisch erkannte Kameras"
 
-#. Settings needed for camera functions
-#: gphoto2/main.c:215
+#: gphoto2/main.c:197 gphoto2/main.c:1493
 msgid "Specify port device"
 msgstr "Angabe des Port-Geräts"
 
-#: gphoto2/main.c:216
+#: gphoto2/main.c:198 gphoto2/main.c:1495
 msgid "Specify serial transfer speed"
 msgstr "Angabe der seriellen Datenrate"
 
-#: gphoto2/main.c:217
+#: gphoto2/main.c:199 gphoto2/main.c:1497
 msgid "Specify camera model"
 msgstr "Angabe des Kameramodells"
 
-#: gphoto2/main.c:218
+#: gphoto2/main.c:200 gphoto2/main.c:1499
 msgid "Specify a filename"
 msgstr "Angabe des Dateinamens"
 
-#: gphoto2/main.c:219
+#: gphoto2/main.c:201 gphoto2/main.c:1501
 msgid "(expert only) Override USB IDs"
 msgstr "(für Experten) Überschreibe USB-IDs"
 
-#. Actions that depend on settings
-#: gphoto2/main.c:222
+#: gphoto2/main.c:204 gphoto2/main.c:1503
 msgid "Display camera abilities"
 msgstr "Zeige Kamerafähigkeiten"
 
-#: gphoto2/main.c:223
+#: gphoto2/main.c:205 gphoto2/main.c:1505
 msgid "Specify camera folder (default=\"/\")"
 msgstr "Angabe des Kameraverzeichnisses (Vorgabe=\"/\")"
 
-#: gphoto2/main.c:224
+#: gphoto2/main.c:206 gphoto2/main.c:1507
 msgid "Recursion (default for download)"
 msgstr "Rekursion (Vorgabe für das Herunterladen)"
 
-#: gphoto2/main.c:225
+#: gphoto2/main.c:207 gphoto2/main.c:1509
 msgid "No recursion (default for deletion)"
 msgstr "Keine Rekursion (Vorgabe für das Löschen)"
 
-#: gphoto2/main.c:226
+#: gphoto2/main.c:208 gphoto2/main.c:1511
 msgid "List folders in folder"
 msgstr "Liste Verzeichnisse in Verzeichnis"
 
-#: gphoto2/main.c:227
+#: gphoto2/main.c:209 gphoto2/main.c:1513
 msgid "List files in folder"
 msgstr "Liste Dateien in Verzeichnis"
 
-#: gphoto2/main.c:228 gphoto2/main.c:229
+#: gphoto2/main.c:210 gphoto2/main.c:211
 msgid "name"
 msgstr "Name"
 
-#: gphoto2/main.c:228
+#: gphoto2/main.c:210 gphoto2/main.c:1515
 msgid "Create a directory"
 msgstr "Verzeichnis anlegen"
 
-#: gphoto2/main.c:229
+#: gphoto2/main.c:211 gphoto2/main.c:1517
 msgid "Remove a directory"
 msgstr "Verzeichnis löschen"
 
-#: gphoto2/main.c:230
+#: gphoto2/main.c:212 gphoto2/main.c:1519
 msgid "Display number of files"
 msgstr "Zeige Anzahl der Dateien"
 
-#: gphoto2/main.c:231
+#: gphoto2/main.c:213 gphoto2/main.c:1521
 msgid "Get files given in range"
 msgstr "Hole Dateien im angegebenen Bereich"
 
-#: gphoto2/main.c:232
+#: gphoto2/main.c:214 gphoto2/main.c:1523
 msgid "Get all files from folder"
 msgstr "Hole alle Dateien im Verzeichnis"
 
-#: gphoto2/main.c:233
+#: gphoto2/main.c:215 gphoto2/main.c:1525
 msgid "Get thumbnails given in range"
 msgstr "Hole Vorschaubilder im angegebenen Bereich"
 
-#: gphoto2/main.c:234
+#: gphoto2/main.c:216 gphoto2/main.c:1528
 msgid "Get all thumbnails from folder"
 msgstr "Hole alle Vorschaubilder im Verzeichnis"
 
-#: gphoto2/main.c:235
+#: gphoto2/main.c:217 gphoto2/main.c:1531
 msgid "Get raw data given in range"
 msgstr "Hole Rohdaten im angegebenen Bereich"
 
-#: gphoto2/main.c:236
+#: gphoto2/main.c:218 gphoto2/main.c:1534
 msgid "Get all raw data from folder"
 msgstr "Hole alle Rohdaten im Verzeichnis"
 
-#: gphoto2/main.c:237
+#: gphoto2/main.c:219 gphoto2/main.c:1537
 msgid "Get audio data given in range"
 msgstr "Hole Audiodaten im angegebenen Bereich"
 
-#: gphoto2/main.c:238
+#: gphoto2/main.c:220 gphoto2/main.c:1540
 msgid "Get all audio data from folder"
 msgstr "Hole alle Audiodaten im Verzeichnis"
 
-#: gphoto2/main.c:239
+#: gphoto2/main.c:221 gphoto2/main.c:1542
 msgid "Delete files given in range"
 msgstr "Lösche Dateien im angegebenen Bereich"
 
-#: gphoto2/main.c:240
+#: gphoto2/main.c:222 gphoto2/main.c:1544
 msgid "Delete all files in folder"
 msgstr "Lösche alle Dateien im Verzeichnis"
 
-#: gphoto2/main.c:241
+#: gphoto2/main.c:223 gphoto2/main.c:1546
 msgid "Upload a file to camera"
 msgstr "Datei auf Kamera hochladen"
 
-#: gphoto2/main.c:243
+#: gphoto2/main.c:225 gphoto2/main.c:1549
 msgid "Configure"
 msgstr "Konfigurieren"
 
-#: gphoto2/main.c:245
+#: gphoto2/main.c:227 gphoto2/main.c:1553
 msgid "Capture a quick preview"
 msgstr "Mache eine Vorschaubild-Aufnahme"
 
-#: gphoto2/main.c:246
+#: gphoto2/main.c:228 gphoto2/main.c:1555
 msgid "Capture an image"
 msgstr "Eine Bildaufnahme machen"
 
-#: gphoto2/main.c:247
+#: gphoto2/main.c:229
 msgid "Capture a movie "
 msgstr "Eine Filmaufnahme machen"
 
-#: gphoto2/main.c:248
+#: gphoto2/main.c:230 gphoto2/main.c:1559
 msgid "Capture an audio clip"
 msgstr "Eine Audioaufnahme machen"
 
-#: gphoto2/main.c:250 gphoto2/shell.c:130
+#: gphoto2/main.c:232 gphoto2/main.c:1562 gphoto2/shell.c:131
 msgid "Show EXIF information"
 msgstr "Zeige EXIF-Informationen"
 
-#: gphoto2/main.c:252 gphoto2/shell.c:126
+#: gphoto2/main.c:234 gphoto2/main.c:1565 gphoto2/shell.c:127
 msgid "Show info"
 msgstr "Zeige Info"
 
-#: gphoto2/main.c:253
+#: gphoto2/main.c:235
 msgid "Summary of camera status"
 msgstr "Zusammenfassung des Kamerastatusses"
 
-#: gphoto2/main.c:254
+#: gphoto2/main.c:236
 msgid "Camera driver manual"
 msgstr "Anleitung für Kameratreiber"
 
-#: gphoto2/main.c:255
+#: gphoto2/main.c:237
 msgid "About the camera driver"
 msgstr "Über den Kameratreiber"
 
-#: gphoto2/main.c:256
+#: gphoto2/main.c:238 gphoto2/main.c:1573
 msgid "gPhoto shell"
 msgstr "gPhoto-Shell"
 
-#: gphoto2/main.c:347 gphoto2/main.c:352
-#, c-format
-msgid "%-30s %-16s\n"
-msgstr "%-30s %-16s\n"
-
-#: gphoto2/main.c:347
-msgid "Model"
-msgstr "Modell"
-
-#: gphoto2/main.c:347
-msgid "Port"
-msgstr "Port"
-
-#: gphoto2/main.c:348
-msgid "----------------------------------------------------------\n"
-msgstr "----------------------------------------------------------\n"
-
-#: gphoto2/main.c:365
-msgid "You need to specify a camera model"
-msgstr "Sie müssen ein Kameramodell angeben"
-
-#. Output a parsing friendly abilities table. Split on ":"
-#: gphoto2/main.c:376
-#, c-format
-msgid "Abilities for camera             : %s\n"
-msgstr "Fähigkeiten für Kamera           : %s\n"
-
-#: gphoto2/main.c:378
-#, c-format
-msgid "Serial port support              : %s\n"
-msgstr "Unterstützung für seriellen Port : %s\n"
-
-#: gphoto2/main.c:380
-#, c-format
-msgid "USB support                      : %s\n"
-msgstr "USB-Unterstützung                : %s\n"
-
-#: gphoto2/main.c:383
-msgid "Transfer speeds supported        :\n"
-msgstr "Unterstützte Datenraten (seriell):\n"
-
-#: gphoto2/main.c:386
-#, c-format
-msgid "                                 : %i\n"
-msgstr "                                 : %i\n"
-
-#: gphoto2/main.c:390
-msgid "Capture choices                  :\n"
-msgstr "Aufnahme machen (Auswahl)        :\n"
-
-#: gphoto2/main.c:392
-msgid "                                 : Image\n"
-msgstr "                                 : Bild\n"
-
-#: gphoto2/main.c:394
-msgid "                                 : Video\n"
-msgstr "                                 : Video\n"
-
-#: gphoto2/main.c:396
-msgid "                                 : Audio\n"
-msgstr "                                 : Audio\n"
-
-#: gphoto2/main.c:398
-msgid "                                 : Preview\n"
-msgstr "                                 : Bildvorschau\n"
-
-#: gphoto2/main.c:399
-#, c-format
-msgid "Configuration support            : %s\n"
-msgstr "Konfigurationsunterstützung      : %s\n"
-
-#: gphoto2/main.c:401
-#, c-format
-msgid "Delete files on camera support   : %s\n"
-msgstr "Unterstützung für Bildlöschung   : %s\n"
-
-#: gphoto2/main.c:403
-#, c-format
-msgid "File preview (thumbnail) support : %s\n"
-msgstr "Unterstützung für Bildvorschau   : %s\n"
-
-#: gphoto2/main.c:405
-#, c-format
-msgid "File upload support              : %s\n"
-msgstr "Unterstützung für Bildhochladen  : %s\n"
-
-#: gphoto2/main.c:425
-#, c-format
-msgid "Number of supported cameras: %i\n"
-msgstr "Anzahl der unterstützten Kameras: %i\n"
-
-#: gphoto2/main.c:426
-msgid "Supported cameras:\n"
-msgstr "Unterstützte Kameras:\n"
-
-#: gphoto2/main.c:437
-#, c-format
-msgid "\t\"%s\" (TESTING)\n"
-msgstr "\t»%s« (IM TEST)\n"
-
-#: gphoto2/main.c:440
-#, c-format
-msgid "\t\"%s\" (EXPERIMENTAL)\n"
-msgstr "\t»%s« (EXPERIMENTELL)\n"
-
-#: gphoto2/main.c:444
-#, c-format
-msgid "\t\"%s\"\n"
-msgstr "\t»%s«\n"
-
-#: gphoto2/main.c:544
-#, c-format
-msgid "Devices found: %i\n"
-msgstr "Gefundene Geräte: %i\n"
-
-#: gphoto2/main.c:545
-msgid ""
-"Path                             Description\n"
-"--------------------------------------------------------------\n"
-msgstr ""
-"Pfad                             Beschreibung\n"
-"------------------------------------------------------------------------\n"
-
-#. User didn't specify the port type; try to guess it
-#: gphoto2/main.c:582
-#, c-format
-msgid ""
-"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
-"colon so I am going to guess what you mean."
-msgstr ""
-"Ports müssen als »serial:/dev/ttyS0« oder »usb:« angegeben werden, aber »%s« "
-"hat keinen Doppelpunkt. Es wird versucht, herauszufinden, was Sie meinen."
-
-#: gphoto2/main.c:633
+#: gphoto2/main.c:365 gphoto2/main.c:1206
 msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
 "c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
@@ -585,113 +638,205 @@ msgstr ""
 "»c:d« zu behandeln.\n"
 "a b c d sind hexadezimale Angaben, die mit »0x« beginnen müssen.\n"
 
-#: gphoto2/main.c:664
-msgid ""
-"ALWAYS INCLUDE THE FOLLOWING LINE WHEN SENDING DEBUG MESSAGES TO THE MAILING "
-"LIST:"
+#: gphoto2/main.c:488
+msgid "Jan"
 msgstr ""
-"BITTE IMMER FOLGENDE ZEILE EINFÜGEN WENN DEBUG MESSAGES AN DIE MAILINGLISTE "
-"GESCHICKT WERDEN:"
 
-#: gphoto2/main.c:783
-#, c-format
-msgid "Number of files in folder %s: %i\n"
-msgstr "Anzahl der Dateien im Verzeichnis %s: %i\n"
+#: gphoto2/main.c:488
+msgid "January"
+msgstr ""
 
-#: gphoto2/main.c:817
+#: gphoto2/main.c:489
+msgid "Feb"
+msgstr ""
+
+#: gphoto2/main.c:489
+msgid "February"
+msgstr ""
+
+#: gphoto2/main.c:490
+#, fuzzy
+msgid "Mar"
+msgstr "Makro"
+
+#: gphoto2/main.c:490
+#, fuzzy
+msgid "March"
+msgstr "Makro"
+
+#: gphoto2/main.c:491
+msgid "Apr"
+msgstr ""
+
+#: gphoto2/main.c:491
+msgid "April"
+msgstr ""
+
+#: gphoto2/main.c:492
+msgid "May"
+msgstr ""
+
+#: gphoto2/main.c:493
+msgid "Jun"
+msgstr ""
+
+#: gphoto2/main.c:493
+msgid "June"
+msgstr ""
+
+#: gphoto2/main.c:494
+msgid "Jul"
+msgstr ""
+
+#: gphoto2/main.c:494
+msgid "July"
+msgstr ""
+
+#: gphoto2/main.c:495
+msgid "Aug"
+msgstr ""
+
+#: gphoto2/main.c:495
+#, fuzzy
+msgid "August"
+msgstr "Auto"
+
+#: gphoto2/main.c:496
+#, fuzzy
+msgid "Sep"
+msgstr "Sepia"
+
+#: gphoto2/main.c:496
+msgid "September"
+msgstr ""
+
+#: gphoto2/main.c:497
+msgid "Oct"
+msgstr ""
+
+#: gphoto2/main.c:497
+msgid "October"
+msgstr ""
+
+#: gphoto2/main.c:498
+#, fuzzy
+msgid "Nov"
+msgstr "Nein"
+
+#: gphoto2/main.c:498
+msgid "November"
+msgstr ""
+
+#: gphoto2/main.c:499
+msgid "Dec"
+msgstr ""
+
+#: gphoto2/main.c:499
+msgid "December"
+msgstr ""
+
+#: gphoto2/main.c:506
+msgid "Sun"
+msgstr ""
+
+#: gphoto2/main.c:506
+msgid "Sunday"
+msgstr ""
+
+#: gphoto2/main.c:507
+#, fuzzy
+msgid "Mon"
+msgstr "an"
+
+#: gphoto2/main.c:507
+msgid "Monday"
+msgstr ""
+
+#: gphoto2/main.c:508
+msgid "Tue"
+msgstr ""
+
+#: gphoto2/main.c:508
+msgid "Tuesday"
+msgstr ""
+
+#: gphoto2/main.c:509
+#, fuzzy
+msgid "Wed"
+msgstr "Rot"
+
+#: gphoto2/main.c:509
+msgid "Wednesday"
+msgstr ""
+
+#: gphoto2/main.c:510
+msgid "Thu"
+msgstr ""
+
+#: gphoto2/main.c:510
+msgid "Thursday"
+msgstr ""
+
+#: gphoto2/main.c:511
+msgid "Fri"
+msgstr ""
+
+#: gphoto2/main.c:511
+msgid "Friday"
+msgstr ""
+
+#: gphoto2/main.c:512
+msgid "Sat"
+msgstr ""
+
+#: gphoto2/main.c:512
+msgid "Saturday"
+msgstr ""
+
+#: gphoto2/main.c:569
 #, c-format
-msgid "Using filename '%s'..."
-msgstr "Verwende Dateinamen »%s«..."
+msgid "You cannot use '%n' in combination with non-persistent files!"
+msgstr ""
+
+#: gphoto2/main.c:592
+#, c-format
+msgid "The filename provided by the camera ('%s') does not contain a suffix!"
+msgstr ""
+
+#: gphoto2/main.c:668
+#, c-format
+msgid "Invalid format '%s' (error at position %i)."
+msgstr ""
 
 # !!! [y/n] !!! [CM]
-#: gphoto2/main.c:844
+#: gphoto2/main.c:715
 #, c-format
 msgid "File %s exists. Overwrite? [y|n] "
 msgstr "Datei %s existiert bereits. Überschreiben? [y|n] "
 
-#: gphoto2/main.c:855
+#: gphoto2/main.c:726
 msgid "Specify new filename? [y|n] "
 msgstr "Neuen Dateinamen angeben? [y|n] "
 
-#: gphoto2/main.c:864
+#: gphoto2/main.c:735
 msgid "Enter new filename: "
 msgstr "Geben Sie einen neuen Dateinamen an: "
 
-#: gphoto2/main.c:869
+#: gphoto2/main.c:740
 #, c-format
 msgid "Saving file as %s\n"
 msgstr "Speichere Datei als %s\n"
 
-#: gphoto2/main.c:873
-#, c-format
-msgid "Can not save file as %s"
-msgstr "Kann Datei nicht als %s speichern"
-
-#: gphoto2/main.c:1101
+#: gphoto2/main.c:932
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "Neue Datei ist in %s%s%s auf der Kamera\n"
 
-#: gphoto2/main.c:1159
-#, c-format
-msgid ""
-"Camera Summary:\n"
-"%s\n"
-msgstr ""
-"Kamerazusammenfassung:\n"
-"%s\n"
-
-#: gphoto2/main.c:1171
-#, c-format
-msgid ""
-"Camera Manual:\n"
-"%s\n"
-msgstr ""
-"Kameraanleitung:\n"
-"%s\n"
-
-#: gphoto2/main.c:1183
-#, c-format
-msgid ""
-"About the library:\n"
-"%s\n"
-msgstr ""
-"Über die Bibliothek:\n"
-"%s\n"
-
-#: gphoto2/main.c:1344
-msgid "Please specify a model."
-msgstr "Bitte geben Sie ein Modell an."
-
-#: gphoto2/main.c:1372
-#, c-format
-msgid ""
-"The port you specified ('%s') can not be found. Please specify one of the "
-"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
-"(i.e. with prefix 'serial:' or 'usb:')."
-msgstr ""
-"Der angegebene Port (»%s«) kann nicht gefunden werden. Bitte geben Sie "
-"einen \n"
-"der von »gphoto2 --list-ports« gelisteten Ports an und stellen Sie sicher, \n"
-"daß die Schreibweise korrekt ist (mit Präfix »serial:« oder »usb:«)."
-
-#: gphoto2/main.c:1389
-msgid "Please specify a port."
-msgstr "Bitte geben Sie einen Port an."
-
-#: gphoto2/main.c:1441
-msgid "*** Error ***              \n"
-msgstr "*** Fehler ***             \n"
-
-#: gphoto2/main.c:1606
-msgid "Press any key to continue.\n"
-msgstr "Bitten drücken Sie eine beliebige Taste, um fortzufahren.\n"
-
-#: gphoto2/main.c:1661
+#: gphoto2/main.c:1064
 msgid "ERROR: "
 msgstr "FEHLER: "
 
-#: gphoto2/main.c:1684
+#: gphoto2/main.c:1087
 msgid ""
 "\n"
 "Aborting...\n"
@@ -699,11 +844,11 @@ msgstr ""
 "\n"
 "Harter Abbruch...\n"
 
-#: gphoto2/main.c:1690
+#: gphoto2/main.c:1093
 msgid "Aborted.\n"
 msgstr "Abgebrochen.\n"
 
-#: gphoto2/main.c:1695
+#: gphoto2/main.c:1098
 msgid ""
 "\n"
 "Cancelling...\n"
@@ -711,36 +856,25 @@ msgstr ""
 "\n"
 "Abbruch...\n"
 
-#: gphoto2/main.c:1742
-msgid ""
-"gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
-"location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
-msgstr ""
-"gPhoto2 für OS/2 erfordert, daß die Umgebungsvariable CAMLIBS auf den Ort "
-"der Kamerabibliotheken zeigt, z.B. mit SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+#: gphoto2/main.c:1305
+#, fuzzy
+msgid "gphoto2 has been compiled without support for CDK."
+msgstr "gphoto2 wurde ohne Unterstützung für EXIF kompiliert."
 
-#: gphoto2/main.c:1752
-msgid ""
-"gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
-"location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-msgstr ""
-"gPhoto2 für OS/2 erfordert, daß die Umgebungsvariable IOLIBS auf den Ort der "
-"I/O-Bibliotheken zeigt, z.B. mit SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-
-#: gphoto2/main.c:1793
+#: gphoto2/main.c:1418
 msgid "Operation cancelled.\n"
 msgstr "Operation abgebrochen.\n"
 
-#: gphoto2/main.c:1796
-#, c-format
+#: gphoto2/main.c:1422
+#, fuzzy, c-format
 msgid ""
-"*** Error ('%s') ***       \n"
+"*** Error (%i: '%s') ***       \n"
 "\n"
 msgstr ""
 "*** Fehler ('%s') ***      \n"
 "\n"
 
-#: gphoto2/main.c:1802
+#: gphoto2/main.c:1426
 msgid ""
 "For debugging messages, please use the --debug option.\n"
 "Debugging messages may help finding a solution to your problem.\n"
@@ -756,27 +890,76 @@ msgstr ""
 "so starten sie gphoto2 bitte wie folgt:\n"
 "\n"
 
-#: gphoto2/options.c:193
-#, c-format
-msgid ""
-"gPhoto (v%s) - Cross-platform digital camera library.\n"
-"Copyright (C) 2000-2002 Scott Fritzinger and others\n"
-"%sLicensed under the Library GNU Public License (LGPL).\n"
+#: gphoto2/main.c:1479
+msgid "Overwrite files without asking."
 msgstr ""
-"gPhoto (v%s) - Multi-Plattform-Bibliothek für digitale Kameras.\n"
-"Copyright (C) 2000,2002 Scott Fritzinger und andere\n"
-"%sLizensiert unter der Library GNU Public License (LGPL).\n"
+
+#: gphoto2/main.c:1493
+msgid "path"
+msgstr ""
+
+#: gphoto2/main.c:1495
+msgid "speed"
+msgstr ""
+
+#: gphoto2/main.c:1497
+#, fuzzy
+msgid "model"
+msgstr "Modell"
+
+#: gphoto2/main.c:1499
+#, fuzzy
+msgid "filename"
+msgstr "fein"
+
+#: gphoto2/main.c:1501
+msgid "usbid"
+msgstr ""
+
+#: gphoto2/main.c:1505
+msgid "folder"
+msgstr ""
+
+#: gphoto2/main.c:1557
+#, fuzzy
+msgid "Capture a movie"
+msgstr "Eine Filmaufnahme machen"
+
+#: gphoto2/main.c:1567
+msgid "Show summary"
+msgstr ""
+
+#: gphoto2/main.c:1569
+#, fuzzy
+msgid "Show camera driver manual"
+msgstr "Anleitung für Kameratreiber"
+
+#: gphoto2/main.c:1571
+#, fuzzy
+msgid "About the camera driver manual"
+msgstr "Über den Kameratreiber"
+
+#: gphoto2/main.c:1796
+msgid ""
+"gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
+"location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+msgstr ""
+"gPhoto2 für OS/2 erfordert, daß die Umgebungsvariable CAMLIBS auf den Ort "
+"der Kamerabibliotheken zeigt, z.B. mit SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+
+#: gphoto2/main.c:1806
+msgid ""
+"gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
+"location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
+msgstr ""
+"gPhoto2 für OS/2 erfordert, daß die Umgebungsvariable IOLIBS auf den Ort der "
+"I/O-Bibliotheken zeigt, z.B. mit SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
 
 #: gphoto2/options.c:199
-msgid "OS/2 port by Bart van Leeuwen\n"
-msgstr "OS/2-Portierung von Bart van Leeuwen\n"
-
-#: gphoto2/options.c:214
 msgid "Usage:\n"
 msgstr "Verwendung:\n"
 
-#. Make this 79 characters long. Some languages need the space.
-#: gphoto2/options.c:217
+#: gphoto2/options.c:202
 msgid ""
 "Short/long options (& argument)        Description\n"
 "--------------------------------------------------------------------------------\n"
@@ -784,17 +967,12 @@ msgstr ""
 "Kurze/lange Optionen (& Argument)  Beschreibung\n"
 "--------------------------------------------------------------------------------\n"
 
-#. The format line is made translatable so that some
-#. languages can make the table a bit tighter. Make
-#. sure you only use 79 characters (since #80 is
-#. needed for the line break).
-#: gphoto2/options.c:242
+#: gphoto2/options.c:227
 #, c-format
 msgid "%-38s %s\n"
 msgstr "%-34s %s\n"
 
-#. Make this 79 characters long. Some languages need the space.
-#: gphoto2/options.c:247
+#: gphoto2/options.c:232
 msgid ""
 "--------------------------------------------------------------------------------\n"
 "[Use double-quotes around arguments]        [Picture numbers begin with one "
@@ -863,2805 +1041,121 @@ msgstr ""
 msgid "*** Error (%i: '%s') ***"
 msgstr "*** Fehler (%i: »%s«) ***"
 
-#: gphoto2/shell.c:115
+#: gphoto2/shell.c:116
 msgid "Change to a directory on the camera"
 msgstr "Wechsle in ein Verzeichnis auf der Kamera"
 
-#: gphoto2/shell.c:116 gphoto2/shell.c:118
+#: gphoto2/shell.c:117 gphoto2/shell.c:119
 msgid "directory"
 msgstr "Verzeichnis"
 
-#: gphoto2/shell.c:117
+#: gphoto2/shell.c:118
 msgid "Change to a directory on the local drive"
 msgstr "Wechsle in ein Verzeichnis auf der lokalen Festplatte."
 
-#: gphoto2/shell.c:119 gphoto2/shell.c:137 gphoto2/shell.c:138
+#: gphoto2/shell.c:120 gphoto2/shell.c:138 gphoto2/shell.c:139
 msgid "Exit the gPhoto shell"
 msgstr "gPhoto-Shell beenden"
 
-#: gphoto2/shell.c:120
+#: gphoto2/shell.c:121
 msgid "Download a file"
 msgstr "Lade eine Datei herunter"
 
-#: gphoto2/shell.c:120 gphoto2/shell.c:123 gphoto2/shell.c:125
-#: gphoto2/shell.c:127 gphoto2/shell.c:128 gphoto2/shell.c:131
+#: gphoto2/shell.c:121 gphoto2/shell.c:124 gphoto2/shell.c:126
+#: gphoto2/shell.c:128 gphoto2/shell.c:129 gphoto2/shell.c:132
 msgid "[directory/]filename"
 msgstr "[Verzeichnis/]Dateiname"
 
-#: gphoto2/shell.c:122
+#: gphoto2/shell.c:123
 msgid "Download a thumbnail"
 msgstr "Lade ein Vorschaubild herunter"
 
-#: gphoto2/shell.c:124
+#: gphoto2/shell.c:125
 msgid "Download raw data"
 msgstr "Lade Rohdaten herunter"
 
-#: gphoto2/shell.c:128
+#: gphoto2/shell.c:129
 msgid "Delete"
 msgstr "Löschen"
 
-#: gphoto2/shell.c:133 gphoto2/shell.c:139
+#: gphoto2/shell.c:134 gphoto2/shell.c:140
 msgid "Displays command usage"
 msgstr "Zeige Befehlsverwendung"
 
-#: gphoto2/shell.c:134 gphoto2/shell.c:139
+#: gphoto2/shell.c:135 gphoto2/shell.c:140
 msgid "[command]"
 msgstr "[Befehl]"
 
-#: gphoto2/shell.c:135
+#: gphoto2/shell.c:136
 msgid "List the contents of the current directory"
 msgstr "Zeige den Inhalt des aktuellen Verzeichnisses"
 
-#: gphoto2/shell.c:136
+#: gphoto2/shell.c:137
 msgid "[directory/]"
 msgstr "[Verzeichnis/]"
 
-#: gphoto2/shell.c:418
+#: gphoto2/shell.c:423
 msgid "Invalid command."
 msgstr "Ungültiger Befehl."
 
-#: gphoto2/shell.c:427
+#: gphoto2/shell.c:432
 #, c-format
 msgid "The command '%s' requires an argument."
 msgstr "Der Befehl »%s« erfordert ein Argument."
 
-#: gphoto2/shell.c:480
+#: gphoto2/shell.c:485
 msgid "Invalid path."
 msgstr "Ungültiger Pfad."
 
-#: gphoto2/shell.c:526
+#: gphoto2/shell.c:531
 msgid "Could not find home directory."
 msgstr "Konnte Heimverzeichnis nicht finden."
 
-#: gphoto2/shell.c:534
+#: gphoto2/shell.c:539
 #, c-format
 msgid "Could not change to local directory '%s'."
 msgstr "Konnte nicht in das lokale Verzeichnis »%s« wechseln."
 
-#: gphoto2/shell.c:537
+#: gphoto2/shell.c:542
 #, c-format
 msgid "Local directory now '%s'."
 msgstr "Lokales Verzeichnis ist nun »%s«."
 
-#: gphoto2/shell.c:568
+#: gphoto2/shell.c:577
 #, c-format
 msgid "Remote directory now '%s'."
 msgstr "Entferntes Verzeichnis ist nun »%s«."
 
-#: gphoto2/shell.c:729
+#: gphoto2/shell.c:732
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
 msgstr ""
 "Befehl »%s« nicht gefunden. Verwenden Sie »help«, um eine Liste aller "
 "verfügbaren Befehle zu erhalten."
 
-#. Print the command's syntax.
-#: gphoto2/shell.c:736
+#: gphoto2/shell.c:739
 #, c-format
 msgid "Help on \"%s\":"
 msgstr "Hilfe für \"%s\":"
 
-#: gphoto2/shell.c:738
+#: gphoto2/shell.c:741
 msgid "Usage:"
 msgstr "Verwendung:"
 
-#: gphoto2/shell.c:742
+#: gphoto2/shell.c:745
 msgid "Description:"
 msgstr "Beschreibung:"
 
-#: gphoto2/shell.c:744
+#: gphoto2/shell.c:747
 msgid "* Arguments in brackets [] are optional"
 msgstr "* Argumente in eckigen Klammern [] sind optional"
 
-#. No command specified. Print command listing.
-#: gphoto2/shell.c:765
+#: gphoto2/shell.c:768
 msgid "Available commands:"
 msgstr "Verfügbare Befehle:"
 
-#: gphoto2/shell.c:770
+#: gphoto2/shell.c:773
 msgid "To get help on a particular command, type in 'help command-name'."
 msgstr ""
 "Um Hilfe zu einem bestimmten Befehl zu erhalten, verwenden Sie »help "
 "Befehlsname«."
-
-#~ msgid "Number of pictures: %d"
-#~ msgstr "Anzahl der Bilder: %d"
-
-#~ msgid ""
-#~ "Agfa CL18\n"
-#~ "Vince Weaver <vince@deater.net>\n"
-#~ msgstr ""
-#~ "Agfa CL18\n"
-#~ "Vince Weaver <vince@deater.net>\n"
-
-#~ msgid ""
-#~ "Number of pictures: %i\n"
-#~ "Firmware Version: %s"
-#~ msgstr ""
-#~ "Anzahl der Bilder: %i\n"
-#~ "Firmware-Version: %s"
-
-#~ msgid ""
-#~ "Barbie/HotWheels/WWF\n"
-#~ "Scott Fritzinger <scottf@unr.edu>\n"
-#~ "Andreas Meyer <ahm@spies.com>\n"
-#~ "Pete Zaitcev <zaitcev@metabyte.com>\n"
-#~ "\n"
-#~ "Reverse engineering of image data by:\n"
-#~ "Jeff Laing <jeffl@SPATIALinfo.com>\n"
-#~ "\n"
-#~ "Implemented using documents found on\n"
-#~ "the web. Permission given by Vision."
-#~ msgstr ""
-#~ "Barbie/HotWheels/WWF\n"
-#~ "Scott Fritzinger <scottf@unr.edu>\n"
-#~ "Andreas Meyer <ahm@spies.com>\n"
-#~ "Pete Zaitcev <zaitcev@metabyte.com>\n"
-#~ "\n"
-#~ "Rückentwicklung der Bilddaten von\n"
-#~ "Jeff Laing <jeffl@SPATIALinfo.com>\n"
-#~ "\n"
-#~ "Implementiert mit Hilfe von Dokumenten\n"
-#~ "aus dem Web. Mit Erlaubnis von Vision."
-
-#~ msgid ""
-#~ "Name '%s' (%i characters) too long (%i chars), maximal 30 characters are "
-#~ "allowed."
-#~ msgstr ""
-#~ "Name »%s« (%i Zeichen) ist zu lang (%i Zeichen), maximal 30 Zeichen "
-#~ "erlaubt."
-
-#~ msgid "File protected."
-#~ msgstr "Datei geschützt."
-
-#~ msgid ""
-#~ "For the A50, 115200 may not be faster than 57600\n"
-#~ "Folders are NOT supported\n"
-#~ "if you experience a lot of transmissions errors, try to have you computer "
-#~ "as idle as possible (ie: no disk activity)"
-#~ msgstr ""
-#~ "Für das Modell A50 ist 115200 möglicherweise nicht schneller als 57600\n"
-#~ "Verzeichnisse werden nicht unterstützt.\n"
-#~ "Wenn Sie eine Menge von Übertragungsfehlern bekommen, dann versuchen "
-#~ "Sie,\n"
-#~ "den Computer so unbeschäftigt wie möglich zu lassen (besonders keine "
-#~ "Plattenaktivität)."
-
-#~ msgid "Camera unavailable"
-#~ msgstr "Kamera nicht verfügbar"
-
-#~ msgid "Switching Camera Off"
-#~ msgstr "Schalte Kamera aus"
-
-#~ msgid "Error capturing image"
-#~ msgstr "Fehler beim Aufnehmen des Bildes"
-
-#~ msgid "Could not get disk name: %s"
-#~ msgstr "Konnte Plattennamen nicht holen: %s"
-
-#~ msgid "No reason available"
-#~ msgstr "Kein Grund verfügbar"
-
-#~ msgid "Could not get disk info: %s"
-#~ msgstr "Konnte Platteninfo nicht holen: %s"
-
-#~ msgid ""
-#~ "  Drive %s\n"
-#~ "  %11s bytes total\n"
-#~ "  %11s bytes available"
-#~ msgstr ""
-#~ "  Laufwerk %s\n"
-#~ "  %11s bytes gesamt\n"
-#~ "  %11s bytes verfügbar"
-
-#~ msgid "AC adapter"
-#~ msgstr "Netzadapter "
-
-#~ msgid "on battery"
-#~ msgstr "mit Batterie "
-
-#~ msgid "power OK"
-#~ msgstr "Energieversorgung OK"
-
-#~ msgid "power bad"
-#~ msgstr "Energieversorgung nicht OK"
-
-#~ msgid "not available: %s"
-#~ msgstr "nicht verfügbar: %s"
-
-#~ msgid "%s (host time %s%i seconds)"
-#~ msgstr "%s (Zeit am PC %s%i Sekunden)"
-
-#~ msgid ""
-#~ "\n"
-#~ "Camera identification:\n"
-#~ "  Model: %s\n"
-#~ "  Owner: %s\n"
-#~ "\n"
-#~ "Power status: %s\n"
-#~ "\n"
-#~ "Flash disk information:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Time: %s\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Kameraidentifizierung:\n"
-#~ "  Modell: %s\n"
-#~ "  Eigentümer: %s\n"
-#~ "\n"
-#~ "Energiestatus: %s\n"
-#~ "\n"
-#~ "Flash Disk-Information:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Zeit: %s\n"
-
-#~ msgid ""
-#~ "Canon PowerShot series driver by\n"
-#~ "Wolfgang G. Reissnegger,\n"
-#~ "Werner Almesberger,\n"
-#~ "Edouard Lafargue,\n"
-#~ "Philippe Marzouk,\n"
-#~ "A5 additions by Ole W. Saastad\n"
-#~ "Holger Klemm\n"
-#~ msgstr ""
-#~ "Canon PowerShot-Treiber von \n"
-#~ "Wolfgang G. Reissnegger,\n"
-#~ "Werner Almesberger,\n"
-#~ "Edouard Lafargue,\n"
-#~ "Philippe Marzouk,\n"
-#~ "A5-Zusätze von Ole W. Saastad\n"
-#~ "Holger Klemm\n"
-
-#~ msgid "Error deleting file"
-#~ msgstr "Fehler beim Löschen der Datei"
-
-#~ msgid "Error deleting associated thumbnail file"
-#~ msgstr "Fehler beim Löschen des zugehörigen Vorschaubildes"
-
-#~ msgid ""
-#~ "Speeds greater than 57600 are not supported for uploading to this camera"
-#~ msgstr ""
-#~ "Raten über 57600 sind mit dieser Kamera nicht für das Hochladen "
-#~ "unterstützt"
-
-#~ msgid "Could not get flash drive letter"
-#~ msgstr "Konnte keinen Laufwerksbuchstaben für das Flash-Laufwerk bekommen"
-
-#~ msgid ""
-#~ "Could not upload, no free folder name available!\n"
-#~ "999CANON folder name exists and has an AUT_9999.JPG picture in it."
-#~ msgstr ""
-#~ "Kann nicht Hochladen, kein freier Verzeichnisname verfügbar!\n"
-#~ "Der Verzeichnisname 999CANON existiert und enthält eine Datei namens "
-#~ "AUT_9999.JPG."
-
-#~ msgid "Could not create \\DCIM directory."
-#~ msgstr "Konnte Verzeichnis \\\\DCIM nicht anlegen."
-
-#~ msgid "Could not create destination directory."
-#~ msgstr "Konnte Zielverzeichnis nicht anlegen."
-
-#~ msgid "Camera and Driver Configuration"
-#~ msgstr "Kamera- und Treiber-Konfiguration"
-
-#~ msgid "Camera"
-#~ msgstr "Kamera"
-
-#~ msgid "Camera Model (readonly)"
-#~ msgstr "Kameramodell (Nur-Lesen)"
-
-#~ msgid "Owner name"
-#~ msgstr "Eigentümername"
-
-#~ msgid "Date and Time (readonly)"
-#~ msgstr "Datum und Zeit (Nur-Lesen)"
-
-#~ msgid "Error"
-#~ msgstr "Fehler"
-
-#~ msgid "Unavailable"
-#~ msgstr "Nicht verfügbar"
-
-#~ msgid "Set camera date to PC date"
-#~ msgstr "Setze Kameradatum auf das Datum des PCs"
-
-#~ msgid "Firmware revision (readonly)"
-#~ msgstr "Firmware-Revision (Nur-Lesen)"
-
-#~ msgid "Power (readonly)"
-#~ msgstr "Energie (Nur-Lesen)"
-
-#~ msgid "Driver"
-#~ msgstr "Treiber"
-
-#~ msgid "List all files"
-#~ msgstr "Liste alle Dateien"
-
-#~ msgid "Keep filename on upload"
-#~ msgstr "Dateinamen beim Hochladen beibehalten"
-
-#~ msgid "Owner name changed"
-#~ msgstr "Eigentümername geändert"
-
-#~ msgid "could not change owner name"
-#~ msgstr "Konnte Eigentümernamen nicht ändern"
-
-#~ msgid "time set"
-#~ msgstr "Zeit gesetzt"
-
-#~ msgid "could not set time"
-#~ msgstr "Konnte Zeit nicht setzen"
-
-#~ msgid "Unsupported port type %i = 0x%x given. Initialization impossible."
-#~ msgstr ""
-#~ "Nichtunterstützter Port-Typ %i = 0x%x angegeben. Initialisierung nicht "
-#~ "möglich."
-
-#~ msgid "Battery exhausted, camera off."
-#~ msgstr "Batterie leer, Kamera aus."
-
-#~ msgid "ERROR: unexpected message"
-#~ msgstr "Fehler: unerwartete Meldung"
-
-#~ msgid "ERROR: message overrun"
-#~ msgstr "Fehler: Meldungsüberlauf"
-
-#~ msgid "ERROR: out of sequence."
-#~ msgstr "Fehler: aus der Reihe."
-
-#~ msgid "ERROR: unexpected packet type."
-#~ msgstr "Fehler: unerwarteter Pakettyp."
-
-#~ msgid "ERROR: message format error."
-#~ msgstr "Fehler: Meldungsformatfehler."
-
-#~ msgid "ERROR: unexpected message2."
-#~ msgstr "Fehler: unerwartete Meldung2."
-
-#~ msgid "Uploading file..."
-#~ msgstr "Lade Bild hoch..."
-
-#~ msgid "Getting file..."
-#~ msgstr "Hole Datei..."
-
-#~ msgid "Error changing speed."
-#~ msgstr "Fehler beim Ändern der Datenrate."
-
-#~ msgid "Resetting protocol..."
-#~ msgstr "Setze Protokoll zurück..."
-
-#~ msgid "Camera OK.\n"
-#~ msgstr "Kamera OK.\n"
-
-#~ msgid "Looking for camera ..."
-#~ msgstr "Suche nach Kamera ..."
-
-#~ msgid "Trying to contact camera..."
-#~ msgstr "Versuche, Kamera zu kontaktieren..."
-
-#~ msgid "Communication error 1"
-#~ msgstr "Kommunikationsfehler 1"
-
-#~ msgid "No response from camera"
-#~ msgstr "Keine Antwort von Kamera"
-
-#~ msgid "Unrecognized response"
-#~ msgstr "Nicht erkannte Antwort"
-
-#~ msgid "Bad EOT"
-#~ msgstr "Fehlerhafter EOT"
-
-#~ msgid "Communication error 2"
-#~ msgstr "Kommunikationsfehler 2"
-
-#~ msgid "Communication error 3"
-#~ msgstr "Kommunikationsfehler 3"
-
-#~ msgid "Changing speed... wait..."
-#~ msgstr "Ändere Datenrate... Warte..."
-
-#~ msgid "Error changing speed"
-#~ msgstr "Fehler beim Ändern der Datenrate"
-
-#~ msgid "Error waiting ACK during initialization retrying"
-#~ msgstr ""
-#~ "Fehler beim Warten auf ACK, während die Initialisierung erneut versucht "
-#~ "wird"
-
-#~ msgid "Error waiting ACK during initialization"
-#~ msgstr "Fehler beim Warten auf ACK während der Initialisierung"
-
-#~ msgid "Connected to camera"
-#~ msgstr "Mit Kamera verbunden"
-
-#~ msgid "Getting thumbnail..."
-#~ msgstr "Hole Vorschaubild..."
-
-#~ msgid "Could not apply USB settings"
-#~ msgstr "Konnte USB-Einstellungen nicht setzen"
-
-#~ msgid "Camera not ready, multiple 'Identify camera' requests failed: %s"
-#~ msgstr ""
-#~ "Kamera nicht bereit, mehrere »Identify camera«-Anfragen fehlgeschlagen: %s"
-
-#~ msgid "Camera not ready, could not lock camera keys: %s"
-#~ msgstr "Kamera nicht bereit, konnte Kameratasten nicht sperren: %s"
-
-#~ msgid "Receiving data..."
-#~ msgstr "Empfange Daten..."
-
-#~ msgid ""
-#~ "File was too big. You may have to turn your camera off and back on before "
-#~ "uploading more files."
-#~ msgstr ""
-#~ "Datei war zu groß. Möglicherweise müssen Sie ihre Kamera aus- und wieder "
-#~ "einschalten, um weitere Dateien hochzuladen."
-
-#~ msgid "Detected a '%s'."
-#~ msgstr "Erkannte eine »%s«."
-
-#~ msgid "Unsupported image type"
-#~ msgstr "Nicht unterstütztes Bildformat"
-
-#~ msgid ""
-#~ "Digita\n"
-#~ "Johannes Erdfelt <johannes@erdfelt.com>"
-#~ msgstr ""
-#~ "Digita\n"
-#~ "Johannes Erdfelt <johannes@erdfelt.com>"
-
-#~ msgid ""
-#~ "Only root folder is supported - you requested a file listing for folder '%"
-#~ "s'."
-#~ msgstr ""
-#~ "Nur das Wurzelverzeichnis wird unterstützt - Sie forderten eine "
-#~ "Dateiliste für Verzeichnis »%s«."
-
-#~ msgid "Problem getting number of images"
-#~ msgstr "Problem beim Holen der Anzahl der Bilder"
-
-#~ msgid "Image type is not supported"
-#~ msgstr "Bildtyp nicht unterstützt"
-
-#~ msgid "Problem getting image information"
-#~ msgstr "Problem beim Holen der Bildinformation"
-
-#~ msgid "Capture type is not supported"
-#~ msgstr "Aufnahmetyp nicht unterstützt"
-
-#~ msgid " (battery is %d%% full)"
-#~ msgstr " (Batterie ist zu %d%% voll)"
-
-#~ msgid ""
-#~ "Dimera 3500 ver. %s %d/%d %d:%d\n"
-#~ "%d pictures used of approximately %d (high res) or %d (low res)\n"
-#~ "Camera features: %s, %s, %s, %s\n"
-#~ "Flash is %s, is %s and is %s\n"
-#~ "Resolution is set to %s\n"
-#~ "Camera is %s powered%s\n"
-#~ msgstr ""
-#~ "Dimera 3500 Ver. %s %d/%d %d:%d\n"
-#~ "%d Bilder von etwa %d (hohe Aufl.) oder %d (niedrige Aufl.)\n"
-#~ "Kamera-Features: %s, %s, %s, %s\n"
-#~ "Blitz ist %s, ist %s und %s\n"
-#~ "Auflösung auf %s gesetzt\n"
-#~ "Kamera wird %s-betrieben%s\n"
-
-#~ msgid "Flash"
-#~ msgstr "Blitz"
-
-#~ msgid "NO Flash"
-#~ msgstr "Kein Blitz"
-
-#~ msgid "Dual Iris"
-#~ msgstr "Dual-Iris"
-
-#~ msgid "NO Dual Iris"
-#~ msgstr "Keine Dual-Iris"
-
-#~ msgid "Resolution Switch"
-#~ msgstr "Auflösungsumschaltung"
-
-#~ msgid "NO Resolution Switch"
-#~ msgstr "Keine Auflösungsumschaltung"
-
-#~ msgid "NO Power Light"
-#~ msgstr "Keine Powerlampe"
-
-#~ msgid "ON"
-#~ msgstr "An"
-
-#~ msgid "OFF"
-#~ msgstr "Aus"
-
-#~ msgid "ready"
-#~ msgstr "Bereit"
-
-#~ msgid "NOT ready"
-#~ msgstr "Nicht bereit"
-
-#~ msgid "in fill mode"
-#~ msgstr "Im Füllmodus"
-
-#~ msgid "NOT in fill mode"
-#~ msgstr "Nicht im Füllmodus"
-
-#~ msgid "low (320x240)"
-#~ msgstr "niedrig (320x240)"
-
-#~ msgid "high (640x480)"
-#~ msgstr "hoch (640x480)"
-
-#~ msgid "externally"
-#~ msgstr "extern"
-
-#~ msgid "internally"
-#~ msgstr "intern"
-
-#~ msgid ""
-#~ "* Image glitches or problems communicating are\n"
-#~ "  often caused by a low battery.\n"
-#~ "* Images captured remotely on this camera are stored\n"
-#~ "  in temporary RAM and not in the flash memory card.\n"
-#~ "* Exposure control when capturing all images is\n"
-#~ "  automatically set by the capture preview function.\n"
-#~ "* Image quality is currently lower than it could be.\n"
-#~ msgstr ""
-#~ "* Bildstörungen oder Probleme mit der Kommunikation\n"
-#~ "sind häufig auf einen niedrigen Batteriestand zurückzuführen.\n"
-#~ "* Bilder, die über Fernsteuerung aufgenommen wurden werden \n"
-#~ "in einem temporären RAM gespeichert, nicht auf der Flash-Karte.\n"
-#~ "* Die Belichtungskontrolle beim Bildaufnehmen wird automatisch \n"
-#~ "von der Aufnahmevorschau-Funktion gesetzt.\n"
-#~ "* Die Bildqualität ist im Moment geringer als sie sein könnte.\n"
-
-#~ msgid ""
-#~ "gPhoto2 Mustek VDC-3500/Relisys Dimera 3500\n"
-#~ "This software was created with the\n"
-#~ "help of proprietary information belonging\n"
-#~ "to StarDot Technologies.\n"
-#~ "\n"
-#~ "Author:\n"
-#~ "  Brian Beattie  <URL:http://www.beattie-home.net>\n"
-#~ "Contributors:\n"
-#~ "  Chuck Homic <chuck@vvisions.com>\n"
-#~ "     Converting raw camera images to RGB\n"
-#~ "  Dan Fandrich <dan@coneharvesters.com>\n"
-#~ "     Information on protocol, raw image format,\n"
-#~ "     gphoto2 port\n"
-#~ msgstr ""
-#~ "gPhoto2 Mustek VDC-3500/Relisys Dimera 3500\n"
-#~ "Diese Software wurde mit der Hilfe von proprietären \n"
-#~ "Informationen geschrieben, die der Firma\n"
-#~ "StarDot Technologies gehören.\n"
-#~ "\n"
-#~ "Autor:\n"
-#~ "  Brian Beattie  <URL:http://www.beattie-home.net>\n"
-#~ "Beteiligte:\n"
-#~ "  Chuck Homic <chuck@vvisions.com>\n"
-#~ "     Konvertierung von rohen Kamerabildern nach RGB\n"
-#~ "  Dan Fandrich <dan@coneharvesters.com>\n"
-#~ "     Informationen über Protokoll und Rohbildformat,\n"
-#~ "     gphoto2-Portierung\n"
-
-#~ msgid "Problem reading image from flash"
-#~ msgstr "Problem beim Lesen des Bildes vom Speicher"
-
-#~ msgid "Out of memory"
-#~ msgstr "Kein Speicherplatz vorhanden"
-
-#~ msgid "Downloading image..."
-#~ msgstr "Lade Bild herunter..."
-
-#~ msgid "Problem downloading image"
-#~ msgstr "Problem beim Herunterladen des Bildes"
-
-#~ msgid "User canceled download"
-#~ msgstr "Benutzerabbruch beim Herunterladen"
-
-#~ msgid "Problem taking live image"
-#~ msgstr "Problem bei der Aufnahme eines Live-Bildes"
-
-#~ msgid "Problem opening port"
-#~ msgstr "Problem beim Öffnen des Ports"
-
-#~ msgid "Problem resetting camera"
-#~ msgstr "Problem beim Kamera-Reset"
-
-#~ msgid "Problem setting camera communication speed"
-#~ msgstr "Problem beim Setzen der Kameradatenrate"
-
-#~ msgid "Looks like a modem, not a camera"
-#~ msgstr "Sieht wie ein Modem aus, nicht wie eine Kamera"
-
-#~ msgid "Listing files in '%s'..."
-#~ msgstr "Liste Dateien in »%s«..."
-
-#~ msgid "Could not get information about '%s' (%m)."
-#~ msgstr "Konnte keine Informationen über »%s« bekommen (%m)."
-
-#~ msgid "Could not follow the link '%s' (%m)."
-#~ msgstr "Konnte dem Link »%s« nicht folgen (%m)."
-
-#~ msgid "Listing folders in '%s'..."
-#~ msgstr "Liste Verzeichnisse in »%s«..."
-
-#~ msgid "Could not get information about '%s' in '%s' (%m)."
-#~ msgstr "Konnte keine Informationen über »%s« in »%s« bekommen (%m)."
-
-#~ msgid "Could not follow the link '%s' in '%s' (%m)."
-#~ msgstr "Konnte dem Link »%s« in »%s« nicht folgen (%m)."
-
-#~ msgid "Could not change time of file '%s' in '%s' (%m)."
-#~ msgstr "Konnte die Zeit von Datei »%s« in »%s« nicht ändern (%m)."
-
-#~ msgid "Could not open '%s'."
-#~ msgstr "Konnte »%s« nicht öffnen."
-
-# Browser == Stöberer? [CM]
-#~ msgid "Directory Browse"
-#~ msgstr "Verzeichnis-Liste"
-
-#~ msgid "View hidden directories"
-#~ msgstr "Zeige versteckte Verzeichnisse"
-
-#~ msgid ""
-#~ "The Directory Browse \"camera\" lets you index photos on your hard drive."
-#~ msgstr ""
-#~ "Die \"Kamera\" Verzeichnismodus erlaubt es Ihnen, \n"
-#~ "Bilder auf der Festplatte zu indexieren."
-
-#~ msgid ""
-#~ "Directory Browse Mode - written by Scott Fritzinger <scottf@unr.edu>."
-#~ msgstr ""
-#~ "Verzeichnis-Modus - geschrieben von Scott Fritzinger <scottf@unr.edu>."
-
-#~ msgid "Could not delete file '%s' in folder '%s' (error code %i: %m)."
-#~ msgstr ""
-#~ "Konnte die Datei »%s« in Ordner »%s« nicht löschen (Fehler: %i:-%m)."
-
-#~ msgid "The camera sent only %i byte(s), but we need at least %i."
-#~ msgstr ""
-#~ "Die Kamera sendete nur %i Bytes, aber wenigstens %i werden benötigt."
-
-#~ msgid "Could not contact camera."
-#~ msgstr "Konnte Kamera nicht kontaktieren."
-
-#~ msgid "Received unexpected data (0x%02x, 0x%02x)."
-#~ msgstr "Unerwartete Daten erhalten (0x%02x, 0x%02x)."
-
-#~ msgid "Wrong escape sequence: expected 0x%02x, got 0x%02x."
-#~ msgstr "Falsche Escape Sequenz: erwartet 0x%02x, erhalten 0x%02x."
-
-#~ msgid "Bad data - got 0x%02x, expected 0x%02x."
-#~ msgstr "Falsche Daten - erhalten 0x%02x, erwartet 0x%02x."
-
-#~ msgid "Bad data - got 0x%02x, expected 0x%02x or 0x%02x."
-#~ msgstr "Falsche Daten - erhalten 0x%02x, erwartet 0x%02x oder 0x%02x."
-
-#~ msgid "Bad checksum - got 0x%02x, expected 0x%02x."
-#~ msgstr "Falsche Checksumme - erhalten 0x%02x, erwartet 0x%02x."
-
-#~ msgid "Camera rejected the command."
-#~ msgstr "Die Kamera hat das Kommando nicht akzeptiert."
-
-#~ msgid "Camera reset itself."
-#~ msgstr "Kamera hat sich selbst zurückgesetzt."
-
-#~ msgid "Camera sent unexpected byte 0x%02x."
-#~ msgstr "Kamera hat unerwartetes Byte 0x%02x geschickt."
-
-#~ msgid "Downloading..."
-#~ msgstr "Lade herunter..."
-
-#~ msgid "Could not allocate %i byte(s) for downloading the thumbnail."
-#~ msgstr "Konnte nicht %i Bytes für den Download des Thumbnails anfordern."
-
-#~ msgid "Could not allocate %i byte(s) for downloading the picture."
-#~ msgstr "Konnte nicht %i Bytes für den Download des Bildes anfordern."
-
-#~ msgid "The camera does not accept '%s' as filename."
-#~ msgstr "Die Kamera hat '%s' nicht als Filenamen akzeptiert."
-
-#~ msgid "Could not initialize upload (camera responded with 0x%02x)."
-#~ msgstr "Konnte Upload nicht initialisieren (Kamera antwortete mit 0x%02x)."
-
-#~ msgid "The camera does not support speed %i."
-#~ msgstr "Die Kamera unterstützt die Geschwindigkeit %i nicht."
-
-#~ msgid "Could not set speed to %i (camera responded with %i)."
-#~ msgstr "Konnte die Baudrate nicht auf %i setzen (Kamera antwortete mit %i)."
-
-#~ msgid ""
-#~ "Matthew G. Martin\n"
-#~ "Based on fujiplay by Thierry Bousch <bousch@topo.math.u-psud.fr>\n"
-#~ msgstr ""
-#~ "Matthew G. Martin\n"
-#~ "Basierend auf fujiplay Thierry Bousch <bousch@topo.math.u-psud.fr>\n"
-
-#~ msgid "Bit rate %i is not supported."
-#~ msgstr "Bitrate %i wird nicht unterstützt."
-
-#~ msgid "Configuration for your FUJI camera"
-#~ msgstr "Konfiguration der FUJI Kamera."
-
-#~ msgid "Date & Time"
-#~ msgstr "Datum und Zeit"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Version: "
-#~ msgstr "Version: "
-
-#~ msgid "Model: "
-#~ msgstr "Modell:"
-
-#~ msgid "Available memory: "
-#~ msgstr "Verfügbarer Speicher:"
-
-#~ msgid "jamcam library v"
-#~ msgstr "jamcam-Bibliothek v"
-
-#~ msgid " "
-#~ msgstr " "
-
-#~ msgid ""
-#~ "\n"
-#~ "Chris Pinkham <cpinkham@infi.net>\n"
-#~ "Support for KBGear JamCam v2.0 & v3.0 digital cameras\n"
-#~ "based on reverse engineering serial protocol.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Chris Pinkham <cpinkham@infi.net>\n"
-#~ "Unterstützung für KBGear JamCam v2.0 & v3.0 Digitalkameras\n"
-#~ "basierend auf einer Rückentwicklung des seriellen Protokolls.\n"
-#~ "\n"
-
-#~ msgid "Downloading data..."
-#~ msgstr "Lade Daten herunter..."
-
-#~ msgid "Downloading thumbnail..."
-#~ msgstr "Lade Vorschaubild herunter..."
-
-#~ msgid ""
-#~ "The JD11 camera works rather well with this driver.\n"
-#~ "An RS232 interface @ 115 kbit is required for image transfer.\n"
-#~ "The driver allows you to get\n"
-#~ "\n"
-#~ "   - thumbnails (64x48 PGM format)\n"
-#~ "   - full images (640x480 PPM format)\n"
-#~ msgstr ""
-#~ "Die JD11-Kamera funktioniert mit diesem Treiber ziemlich gut.\n"
-#~ "Eine RS232 (serielle)-Schnittstelle mit 115kbit Datenrate ist für\n"
-#~ "den Bildtransfer erforderlich.\n"
-#~ "Mit dem Treiber können\n"
-#~ "\n"
-#~ "   - Vorschaubilder (64x48 PGM-Format)\n"
-#~ "   - Volle Bilder (640x480 PPM-Format)\n"
-#~ "\n"
-#~ "heruntergeladen werden.\n"
-
-#~ msgid ""
-#~ "JD11\n"
-#~ "Marcus Meissner <marcus@jet.franken.de>\n"
-#~ "Driver for the Jenoptik JD11 camera.\n"
-#~ "Protocol reverse engineered using WINE and IDA."
-#~ msgstr ""
-#~ "JD11\n"
-#~ "Marcus Meißner <marcus@jet.franken.de>\n"
-#~ "Treiber für die Jenoptik JD11-Kamera.\n"
-#~ "Protokoll mit WINE und IDA rückentwickelt."
-
-#~ msgid "Other Settings"
-#~ msgstr "Andere Einstellungen"
-
-#~ msgid "Bulb Exposure Time"
-#~ msgstr "Belichtungszeit bei Kunstlicht (Glühlampe)"
-
-#~ msgid "Color Settings"
-#~ msgstr "Farbeinstellungen"
-
-#~ msgid "Red"
-#~ msgstr "Rot"
-
-#~ msgid "Green"
-#~ msgstr "Grün"
-
-#~ msgid "Blue"
-#~ msgstr "Blau"
-
-#~ msgid "CompactFlash Card"
-#~ msgstr "CompactFlash-Karte"
-
-#~ msgid ""
-#~ "The Kodak DC120 camera uses the KDC file format for storing images. If "
-#~ "you want to view the images you download from your camera, you will need "
-#~ "to download the \"kdc2tiff\" program. It is available from http://"
-#~ "kdc2tiff.sourceforge.net"
-#~ msgstr ""
-#~ "Die Kodak DC120 verwendet das KDC-Dateiformat, um Bilder zu speichern. "
-#~ "Zum Ansehen der Kamerabilder benötigen Sie das \"kdc2tiff\"-Programm von "
-#~ "http://kdc2tiff.sourceforge.net"
-
-#~ msgid ""
-#~ "Kodak DC120 Camera Library\n"
-#~ "Scott Fritzinger <scottf@gphoto.net>\n"
-#~ "Camera Library for the Kodak DC120 camera.\n"
-#~ "(by popular demand)."
-#~ msgstr ""
-#~ "Kodak DC120 Kamera-Bibliothek\n"
-#~ "Scott Fritzinger <scottf@gphoto.net>\n"
-#~ "(aufgrund öffentlichen Interesses)."
-
-#~ msgid "Getting data..."
-#~ msgstr "Hole Daten..."
-
-#~ msgid "Waiting for completion..."
-#~ msgstr "Warte auf Beendigung..."
-
-#~ msgid "Model: Kodak %s\n"
-#~ msgstr "Modell: Kodak %s\n"
-
-#~ msgid "Firmware version: %d.%02d\n"
-#~ msgstr "Firmware-Revision: %d.%02d\n"
-
-#~ msgid "Battery status: %s, AC Adapter: %s\n"
-#~ msgstr "Batteriestatus: %s, Netzteil: %s\n"
-
-#~ msgid "Number of pictures: %d\n"
-#~ msgstr "Anzahl der Bilder: %d\n"
-
-#~ msgid "Space remaining: High: %d, Medium: %d, Low: %d\n"
-#~ msgstr "Verbleibender Platz: hoch: %d, mittel: %d, niedrig: %d\n"
-
-#~ msgid "Memory card status (%d): %s\n"
-#~ msgstr "Speicherkartenstatus (%d): %s\n"
-
-#~ msgid "Total pictures captured: %d, Flashes fired: %d\n"
-#~ msgstr "Aufnahmen, gesamt: %d; Blitz verwendet: %d\n"
-
-#~ msgid ""
-#~ "Kodak DC240 Camera Library\n"
-#~ "Scott Fritzinger <scottf@gphoto.net> and Hubert Figuiere "
-#~ "<hfiguiere@teaser.fr>\n"
-#~ "Camera Library for the Kodak DC240, DC280, DC3400 and DC5000 cameras.\n"
-#~ "Rewritten and updated for gPhoto2."
-#~ msgstr ""
-#~ "Kodak DC240 Kamera-Bibliothek\n"
-#~ "Scott Fritzinger <scottf@gphoto.net> und Hubert Figuiere "
-#~ "<hfiguiere@teaser.fr>\n"
-#~ "Bibliothek für die Kameras Kodak DC240, DC280, DC3400 und DC5000.\n"
-#~ "Neu geschrieben und aktualisiert für gPhoto2."
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Weak"
-#~ msgstr "Schwach"
-
-#~ msgid "Empty"
-#~ msgstr "Leer"
-
-#~ msgid "Invalid"
-#~ msgstr "Ungültig"
-
-#~ msgid "Not used"
-#~ msgstr "Nicht benutzt"
-
-#~ msgid "In use"
-#~ msgstr "Benutzt"
-
-#~ msgid "Card is open"
-#~ msgstr "Karte ist geöffnet"
-
-#~ msgid "Card is not open"
-#~ msgstr "Karte ist nicht geöffnet"
-
-#~ msgid "Card is not formatted"
-#~ msgstr "Karte ist nicht formatiert"
-
-#~ msgid "No card"
-#~ msgstr "Keine Karte vorhanden"
-
-#~ msgid ""
-#~ "There is currently an operation in progress. This camera only supports "
-#~ "one operation at a time. Please wait until the current operation has "
-#~ "finished."
-#~ msgstr ""
-#~ "Eine Operation ist im Moment aktiv. Diese Kamera unterstützt nur jeweils "
-#~ "eine \n"
-#~ "aktive Operation. Bitte warten Sie, bis die aktuelle Operation beendet "
-#~ "wurde."
-
-#~ msgid "camera inactive for > 9 seconds, re-initing.\n"
-#~ msgstr "Kamera inaktiv für > 9 Sekunden, initialisiere neu.\n"
-
-#~ msgid ""
-#~ "Known problems:\n"
-#~ "\n"
-#~ "1. If the Kodak DC3200 does not receive a command at least every 10 "
-#~ "seconds, it will time out, and will have to be re-initialized. If you "
-#~ "notice the camera does not respond, simply re-select the camera. This "
-#~ "will cause it to reinitialize."
-#~ msgstr ""
-#~ "Bekannte Probleme:\n"
-#~ "\n"
-#~ "1. Wenn die Kodak DC3200 nicht wenigstens alle 10 Sekunden einen Befehl "
-#~ "erhält, \n"
-#~ "dann muss sie neu initialisiert werden. Wenn die Kamera nicht reagiert, \n"
-#~ "dann wählen Sie die Kamera erneut an. Dies initialisiert die Kamera neu."
-
-#~ msgid ""
-#~ "Kodak DC3200 Driver\n"
-#~ "Donn Morrison <dmorriso@gulf.uvic.ca>\n"
-#~ "\n"
-#~ "Questions and comments appreciated."
-#~ msgstr ""
-#~ "Kodak DC3200-Treiber\n"
-#~ "Donn Morrison <dmorriso@gulf.uvic.ca>\n"
-#~ "\n"
-#~ "Fragen und Kommentare werden geschätzt."
-
-#~ msgid "%s"
-#~ msgstr "%s"
-
-#~ msgid "Getting file list..."
-#~ msgstr "Hole Dateiliste..."
-
-#~ msgid "Testing different speeds..."
-#~ msgstr "Teste verschiedene Datenraten..."
-
-#~ msgid ""
-#~ "The camera could not be contacted. Please make sure it is conntected to "
-#~ "the computer and turned on."
-#~ msgstr ""
-#~ "Konnte nicht mit der Kamera verbinden. Bitte stellen Sie sicher, daß die "
-#~ "Kamera\n"
-#~ "mit dem Computer verbunden und angeschaltet ist."
-
-#~ msgid "%i pictures could not be deleted because they are protected"
-#~ msgstr "%i Bilder konnten nicht gelöscht werden, da sie geschützt sind"
-
-#~ msgid ""
-#~ "Model: %s\n"
-#~ "Serial Number: %s,\n"
-#~ "Hardware Version: %i.%i\n"
-#~ "Software Version: %i.%i\n"
-#~ "Testing Software Version: %i.%i\n"
-#~ "Name: %s,\n"
-#~ "Manufacturer: %s\n"
-#~ msgstr ""
-#~ "Modell: %s\n"
-#~ "Seriennummer: %s,\n"
-#~ "Hardware-Version: %i.%i\n"
-#~ "Software-Version: %i.%i\n"
-#~ "Testsoftware-Version: %i.%i\n"
-#~ "Name: %s,\n"
-#~ "Hersteller: %s\n"
-
-#~ msgid ""
-#~ "Konica library\n"
-#~ "Lutz Mueller <lutz@users.sourceforge.net>\n"
-#~ "Support for all Konica and several HP cameras."
-#~ msgstr ""
-#~ "Konica-Bibliothek\n"
-#~ "Lutz Müller <lutz@users.sourceforge.net>\n"
-#~ "Unterstützung für alle Konica- und verschiedene HP-Kameras."
-
-#~ msgid "Getting configuration..."
-#~ msgstr "Lade Kamera-Konfiguration..."
-
-#~ msgid "Konica Configuration"
-#~ msgstr "Konica-Konfiguration"
-
-#~ msgid "Persistent Settings"
-#~ msgstr "Dauerhafte Einstellungen"
-
-#~ msgid "Date and Time"
-#~ msgstr "Datum und Zeit"
-
-#~ msgid "Beep"
-#~ msgstr "Ton"
-
-#~ msgid "On"
-#~ msgstr "An"
-
-#~ msgid "Off"
-#~ msgstr "Aus"
-
-#~ msgid "Shall the camera beep when taking a picture?"
-#~ msgstr "Soll die Kamera einen Ton spielen, wenn ein Bild aufgenommen wird?"
-
-#~ msgid "Self Timer Time"
-#~ msgstr "Selbstauslöserzeit"
-
-#~ msgid "Auto Off Time"
-#~ msgstr "Zeit für automatische Abschaltung"
-
-#~ msgid "Slide Show Interval"
-#~ msgstr "Diashow-Intervall"
-
-#~ msgid "Resolution"
-#~ msgstr "Auflösung"
-
-#~ msgid "Low (576 x 436)"
-#~ msgstr "Niedrig (576 x 436)"
-
-#~ msgid "Medium (1152 x 872)"
-#~ msgstr "Mittel (1152 x 872)"
-
-#~ msgid "High (1152 x 872)"
-#~ msgstr "Hoch (1152 x 872)"
-
-#~ msgid "Localization"
-#~ msgstr "Lokalisierung"
-
-#~ msgid "Language"
-#~ msgstr "Sprache"
-
-#~ msgid "None selected"
-#~ msgstr "Keine ausgewählt"
-
-#~ msgid "TV Output Format"
-#~ msgstr "TV-Ausgabeformat"
-
-#~ msgid "NTSC"
-#~ msgstr "NTSC"
-
-#~ msgid "PAL"
-#~ msgstr "PAL"
-
-#~ msgid "Do not display TV menu"
-#~ msgstr "TV-Menü nicht anzeigen"
-
-#~ msgid "Date Format"
-#~ msgstr "Datumsformat"
-
-#~ msgid "Month/Day/Year"
-#~ msgstr "Monat/Tag/Jahr"
-
-#~ msgid "Day/Month/Year"
-#~ msgstr "Tag/Monat/Jahr"
-
-#~ msgid "Year/Month/Day"
-#~ msgstr "Jahr/Monat/Tag"
-
-#~ msgid "Session-persistent Settings"
-#~ msgstr "Sitzungsdauerhafte Einstellungen"
-
-#~ msgid "On, red-eye reduction"
-#~ msgstr "An, Rote-Augen-Vermeidung"
-
-#~ msgid "Auto"
-#~ msgstr "Auto"
-
-#~ msgid "Auto, red-eye reduction"
-#~ msgstr "Auto, Rote-Augen-Vermeidung"
-
-#~ msgid "Exposure"
-#~ msgstr "Belichtung"
-
-#~ msgid "Focus"
-#~ msgstr "Fokus"
-
-#~ msgid "Fixed"
-#~ msgstr "Fest eingestellt"
-
-#~ msgid "Volatile Settings"
-#~ msgstr "Flüchtige Einstellungen"
-
-#~ msgid "Self Timer"
-#~ msgstr "Selbstauslöser"
-
-#~ msgid "Self Timer (only next picture)"
-#~ msgstr "Selbstauslöser (nur nächstes Bild)"
-
-#~ msgid "Normal"
-#~ msgstr "Normal"
-
-#~ msgid "Self Timer (next picture only)"
-#~ msgstr "Selbstauslöser (nur nächstes Bild)"
-
-#~ msgid "Could not find localization data at '%s'"
-#~ msgstr "Konnte Lokalisierungsdaten nicht in »%s« finden"
-
-#~ msgid "Localization file too long!"
-#~ msgstr "Lokalisierungsdatei zu lang!"
-
-#~ msgid "Focusing error."
-#~ msgstr "Fehler beim fokussieren."
-
-#~ msgid "Iris error."
-#~ msgstr "Iris Fehler."
-
-#~ msgid "Strobe error."
-#~ msgstr "Blitzfehler."
-
-#~ msgid "EEPROM checksum error."
-#~ msgstr "EEPROM-Prüfsummenfehler."
-
-#~ msgid "Internal error (1)."
-#~ msgstr "Interner Fehler (1)."
-
-#~ msgid "Internal error (2)."
-#~ msgstr "Interner Fehler (2)."
-
-#~ msgid "No card present."
-#~ msgstr "Keine Karte vorhanden."
-
-#~ msgid "Card not supported."
-#~ msgstr "Speicherkarte nicht unterstützt."
-
-#~ msgid "Card removed during access."
-#~ msgstr "Speicherkarte während Zugriff entnommen."
-
-#~ msgid "Image number not valid."
-#~ msgstr "Bildnummer ungültig."
-
-#~ msgid "Card can not be written."
-#~ msgstr "Speicherkarte kann nicht geschrieben werden."
-
-#~ msgid "Card is write protected."
-#~ msgstr "Datei ist schreibgeschützt."
-
-#~ msgid "No space left on card."
-#~ msgstr "Kein freier Speicher auf der Karte."
-
-#~ msgid "Image protected."
-#~ msgstr "Bild ist geschützt."
-
-#~ msgid "Light too dark."
-#~ msgstr "Nicht genügend Licht."
-
-#~ msgid "Autofocus error."
-#~ msgstr "Autofokus Fehler."
-
-#~ msgid "System error."
-#~ msgstr "Systemfehler."
-
-#~ msgid "Illegal parameter."
-#~ msgstr "Illegaler Parameter."
-
-#~ msgid "Command can not be cancelled."
-#~ msgstr "Kommando kann nicht abgebrochen werden."
-
-#~ msgid "Localization data too long."
-#~ msgstr "Lokalisierungsdatei zu lang."
-
-#~ msgid "Localization data corrupt."
-#~ msgstr "Lokalisierungsdaten fehlerhaft."
-
-#~ msgid "Unsupported command."
-#~ msgstr "Nicht unterstütztes Kommando."
-
-#~ msgid "Other command executing."
-#~ msgstr "Ein anderes Kommando wird bereits ausgeführt."
-
-#~ msgid "Command order error."
-#~ msgstr "Fehler in Kommandoreihenfolge."
-
-#~ msgid "Unknown error."
-#~ msgstr "Unbekannter Fehler."
-
-#~ msgid ""
-#~ "The camera has just sent an error that has not yet been discovered. "
-#~ "Please report the following to <gphoto-devel@gphoto.org> with additional "
-#~ "information how you got this error: (0x%x,0x%x). Thank you very much!"
-#~ msgstr ""
-#~ "Diese Kamera hat gerade einen unbekannten Fehlercode geschickt. Bitte "
-#~ "berichten sie folgenden Fehlercode an <gphoto-devel@gphoto.org> mit "
-#~ "weiteren Information, wie dieser Fehler aufgetreten ist: (0x%x, 0x%x). "
-#~ "Vielen Dank!"
-
-#~ msgid ""
-#~ "Model:\t\t\tMinolta Dimage V (%s)\n"
-#~ "Hardware Revision:\t%s\n"
-#~ "Firmware Revision:\t%s\n"
-#~ msgstr ""
-#~ "Modell:\t\t\tMinolta Dimage V (%s)\n"
-#~ "Hardware-Revision:\t%s\n"
-#~ "Firmware-Revision:\t%s\n"
-
-#~ msgid ""
-#~ "Host Mode:\t\t%s\n"
-#~ "Exposure Correction:\t%s\n"
-#~ "Exposure Data:\t\t%d\n"
-#~ "Date Valid:\t\t%s\n"
-#~ "Date:\t\t\t%d/%02d/%02d %02d:%02d:%02d\n"
-#~ "Self Timer Set:\t\t%s\n"
-#~ "Quality Setting:\t%s\n"
-#~ "Play/Record Mode:\t%s\n"
-#~ "Card ID Valid:\t\t%s\n"
-#~ "Card ID:\t\t%d\n"
-#~ "Flash Mode:\t\t"
-#~ msgstr ""
-#~ "Host-Modus:\t\t%s\n"
-#~ "Belichtungskorrektur:\t%s\n"
-#~ "Belichtungsdaten:\t%d\n"
-#~ "Datum gültig:\t\t%s\n"
-#~ "Datum:\t\t\t%d/%02d/%02d %02d:%02d:%02d\n"
-#~ "Selbstauslöser gesetzt:\t%s\n"
-#~ "Qualität:\t\t%s\n"
-#~ "Wiedergabe/Aufnahme:\t%s\n"
-#~ "Karten-ID gültig:\t%s\n"
-#~ "Karten-ID:\t\t%d\n"
-#~ "Blitzmodus:\t\t"
-
-#~ msgid "Remote"
-#~ msgstr "Entfernt"
-
-#~ msgid "Local"
-#~ msgstr "Lokal"
-
-#~ msgid "Fine"
-#~ msgstr "Fein"
-
-#~ msgid "Standard"
-#~ msgstr "Standard"
-
-#~ msgid "Record"
-#~ msgstr "Aufnahme"
-
-#~ msgid "Play"
-#~ msgstr "Wiedergabe"
-
-#~ msgid "Automatic\n"
-#~ msgstr "Automatisch\n"
-
-#~ msgid "Force Flash\n"
-#~ msgstr "Erzwinge Blitz\n"
-
-#~ msgid "Prohibit Flash\n"
-#~ msgstr "Verbiete Blitz\n"
-
-#~ msgid "Invalid Value ( %d )\n"
-#~ msgstr "Ungültiger Wert ( %d )\n"
-
-#~ msgid ""
-#~ "Battery Level:\t\t%s\n"
-#~ "Number of Images:\t%d\n"
-#~ "Minimum Capacity Left:\t%d\n"
-#~ "Busy:\t\t\t%s\n"
-#~ "Flash Charging:\t\t%s\n"
-#~ "Lens Status:\t\t"
-#~ msgstr ""
-#~ "Batteriepegel:\t\t%s\n"
-#~ "Anzahl der Bilder:\t%d\n"
-#~ "Min verbl. Kapazität:   %d\n"
-#~ "Beschäftigt:\t\t%s\n"
-#~ "Blitz ladend:\t\t%s\n"
-#~ "Linsenstatus:\t\t"
-
-#~ msgid "Not Full"
-#~ msgstr "Nicht voll"
-
-#~ msgid "Full"
-#~ msgstr "Voll"
-
-#~ msgid "Busy"
-#~ msgstr "Beschäftigt"
-
-#~ msgid "Idle"
-#~ msgstr "Nicht beschäftigt"
-
-#~ msgid "Charging"
-#~ msgstr "Ladend"
-
-#~ msgid "Ready"
-#~ msgstr "Bereit"
-
-#~ msgid "Normal\n"
-#~ msgstr "Normal\n"
-
-#~ msgid "Lens direction does not match flash light\n"
-#~ msgstr "Linsenrichtung paßt nicht zum Blitz\n"
-
-#~ msgid "Lens is not connected\n"
-#~ msgstr "Linse nicht angeschlossen\n"
-
-#~ msgid "Bad value for lens status %d\n"
-#~ msgstr "Falscher Wert für Linsenstatus %d\n"
-
-#~ msgid "Card Status:\t\t"
-#~ msgstr "Kartenstatus:\t\t"
-
-#~ msgid "Write-protected"
-#~ msgstr "Schreibgeschützt"
-
-#~ msgid "Unsuitable card"
-#~ msgstr "Nicht passende Karte"
-
-#~ msgid "Bade value for card status %d"
-#~ msgstr "Falscher Wert für Kartenstatus %d"
-
-#~ msgid ""
-#~ "Minolta Dimage V Camera Library\n"
-#~ "%s\n"
-#~ "Gus Hartmann <gphoto@gus-the-cat.org>\n"
-#~ "Special thanks to Minolta for the spec."
-#~ msgstr ""
-#~ "Minolta Dimage V Kamera-Bibliothek\n"
-#~ "%s\n"
-#~ "Gus Hartmann <gphoto@gus-the-cat.org>\n"
-#~ "Besonderen Dank an Minolta für die Spezifikation."
-
-#~ msgid "coolshot library v"
-#~ msgstr "coolshot-Bibliothek v"
-
-#~ msgid ""
-#~ "\n"
-#~ "Chris Pinkham <cpinkham@infi.net>\n"
-#~ "Support for Panasonic Coolshot digital cameras\n"
-#~ "based on reverse engineering serial protocol.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Chris Pinkham <cpinkham@infi.net>\n"
-#~ "Unterstützung für Panasonic Coolshot digital Digitalkameras\n"
-#~ "basierend auf einer Rückentwicklung des seriellen Protokolls.\n"
-#~ "\n"
-
-#~ msgid "Disconnecting camera."
-#~ msgstr "Schließe Verbindung zu Kamera."
-
-#~ msgid "Downloading image %s."
-#~ msgstr "Lade Bild »%s« herunter."
-
-#~ msgid "Uploading image: %s."
-#~ msgstr "Lade Bild »%s« hoch."
-
-#~ msgid ""
-#~ "File size is %i bytes. The size of the largest file possible to upload "
-#~ "is: %i bytes."
-#~ msgstr ""
-#~ "Dateigröße ist %i bytes. Größtmögliche Datei für das Hochladen ist %i "
-#~ "bytes."
-
-#~ msgid "Uploading..."
-#~ msgstr "Lade Bild hoch..."
-
-#~ msgid "Deleting image %s."
-#~ msgstr "Lösche Bild »%s«."
-
-#~ msgid ""
-#~ "Panasonic DC1000 gPhoto library\n"
-#~ "Mariusz Zynel <mariusz@mizar.org>\n"
-#~ "\n"
-#~ "Based on dc1000 program written by\n"
-#~ "Fredrik Roubert <roubert@df.lth.se> and\n"
-#~ "Galen Brooks <galen@nine.com>."
-#~ msgstr ""
-#~ "Panasonic DC1000 gPhoto-Bibliothek\n"
-#~ "Mariusz Zynel <mariusz@mizar.org>\n"
-#~ "\n"
-#~ "Basierend auf dem dc1000-Programm von\n"
-#~ "Fredrik Roubert <roubert@df.lth.se> und\n"
-#~ "Galen Brooks <galen@nine.com>."
-
-#~ msgid "Downloading %s."
-#~ msgstr "Lade »%s« herunter."
-
-#~ msgid ""
-#~ "Panasonic DC1580 gPhoto library\n"
-#~ "Mariusz Zynel <mariusz@mizar.org>\n"
-#~ "\n"
-#~ "Based on dc1000 program written by\n"
-#~ "Fredrik Roubert <roubert@df.lth.se> and\n"
-#~ "Galen Brooks <galen@nine.com>."
-#~ msgstr ""
-#~ "Panasonic DC1580 gPhoto-Bibliothek\n"
-#~ "Mariusz Zynel <mariusz@mizar.org>\n"
-#~ "\n"
-#~ "Basierend auf dem dc1000-Programm von\n"
-#~ "Fredrik Roubert <roubert@df.lth.se> und\n"
-#~ "Galen Brooks <galen@nine.com>."
-
-#~ msgid "Downloading '%s'..."
-#~ msgstr "Lade »%s« herunter..."
-
-#~ msgid ""
-#~ "Panasonic PV-L859-K/PV-L779-K Palmcorder\n"
-#~ "\n"
-#~ "Panasonic introduced image capturing technology called PHOTOSHOT for the "
-#~ "first time to this series of Palmcorders.  Images are stored in JPEG "
-#~ "format on an internal flashcard and can be transfered to a computer "
-#~ "through the built-in serial port.  Images are saved in one of two "
-#~ "resolutions; NORMAL is 320x240 and FINE is 640x480.  The CCD device which "
-#~ "captures the images from the lens is only 300K and thus produces only low "
-#~ "quality pictures."
-#~ msgstr ""
-#~ "Panasonic PV-L859-K/PV-L779-K Palmcorder\n"
-#~ "\n"
-#~ "Panasonic hat Bildaufnahme (genannt PHOTOSHOT) zum ersten Mal in\n"
-#~ "dieser Serie von Palmcordern implementiert.  Bilder sind im\n"
-#~ "JPEG-Format auf einer internen Flashkarte gespeichert und können\n"
-#~ "über den seriellen Port zum Computer übertragen werden.  Bilder sind\n"
-#~ "iin zwei Formaten gespeichert: NORMAL ist 320x240 und FINE ist\n"
-#~ "640x480.  Das CCD, welches die Bilder von der Linse aufnimmt, hat\n"
-#~ "nur 300K Pixel und produziert so nur Bilder mit niedriger Qualität."
-
-#~ msgid ""
-#~ "Known problems:\n"
-#~ "\n"
-#~ "If communications problems occur, reset the camera and restart the "
-#~ "application.  The driver is not robust enough yet to recover from these "
-#~ "situations, especially if a problem occurs and the camera is not properly "
-#~ "shutdown at speeds faster than 9600."
-#~ msgstr ""
-#~ "Bekannte Probleme:\n"
-#~ "\n"
-#~ "Wenn Kommunikationsfehler auftreten, setzen Sie die Kamera zurück\n"
-#~ "und starten Sie die Anwendung neu. Der Treiber ist noch nicht robust\n"
-#~ "genug, um solche Situationen zu überstehen, besonders, wenn die\n"
-#~ "Kamera bei Problemen nicht ordnungsgemäß ausgeschaltet wurde und die\n"
-#~ "Datenrate über 9600 bps liegt."
-
-#~ msgid ""
-#~ "Panasonic PV-L859-K/PV-L779-K Palmcorder Driver\n"
-#~ "Andrew Selkirk <aselkirk@mailandnews.com>"
-#~ msgstr ""
-#~ "Panasonic PV-L859-K/PV-L779-K Palmcorder-Treiber\n"
-#~ "Andrew Selkirk <aselkirk@mailandnews.com>"
-
-#~ msgid "Image Quality"
-#~ msgstr "Bildqualität"
-
-#~ msgid "Image Size"
-#~ msgstr "Bildgröße"
-
-#~ msgid "Flash Setting"
-#~ msgstr "Blitzeinstellungen"
-
-#~ msgid "LCD"
-#~ msgstr "LCD"
-
-#~ msgid "Auto Power Off (minutes)"
-#~ msgstr "Autom. Abschaltung (in Minuten)"
-
-#~ msgid "Information"
-#~ msgstr "Informationen"
-
-#~ msgid "normal"
-#~ msgstr "normal"
-
-#~ msgid "fine"
-#~ msgstr "fein"
-
-#~ msgid "superfine"
-#~ msgstr "superfein"
-
-#~ msgid "auto"
-#~ msgstr "auto"
-
-#~ msgid "on"
-#~ msgstr "an"
-
-#~ msgid "off"
-#~ msgstr "aus"
-
-#~ msgid "play"
-#~ msgstr "Wiedergabe"
-
-#~ msgid "record"
-#~ msgstr "Aufnahme"
-
-#~ msgid "menu"
-#~ msgstr "Menü"
-
-#~ msgid "battery"
-#~ msgstr "Batterie "
-
-#~ msgid "a/c adaptor"
-#~ msgstr "Netzadapter "
-
-#~ msgid "9600"
-#~ msgstr "9600"
-
-#~ msgid "19200"
-#~ msgstr "19200"
-
-#~ msgid "38400"
-#~ msgstr "38400"
-
-#~ msgid "57600"
-#~ msgstr "57600"
-
-#~ msgid "115200"
-#~ msgstr "115200"
-
-#~ msgid "VGA (640x480)"
-#~ msgstr "VGA (640x480)"
-
-#~ msgid "XGA (1024x768"
-#~ msgstr "XGA (1024x768"
-
-#~ msgid "Received unexpected header (%i)"
-#~ msgstr "Unerwarteten Header erhalten (%i)"
-
-#~ msgid "Received unexpected response"
-#~ msgstr "Unerwartete Antwort erhalten"
-
-#~ msgid "Checksum error"
-#~ msgstr "Prüfsummenfehler"
-
-#~ msgid "The camera did not accept the command."
-#~ msgstr "Die Kamera hat das Kommando nicht akzeptiert."
-
-#~ msgid "The camera sent more bytes than expected (%i)"
-#~ msgstr "Die Kamera sendete mehr Bytes als erwartet (%i)"
-
-#~ msgid ""
-#~ "Requested information about picture %i (= 0x%x), but got information "
-#~ "about picture %i back"
-#~ msgstr ""
-#~ "Forderte Informationen über Bild %i (= 0x%x) an, erhielt jedoch "
-#~ "Informationen über Bild %i"
-
-#~ msgid ""
-#~ "%i bytes of an unknown image format have been received. Please write "
-#~ "<gphoto-devel@gphoto.org> for assistance."
-#~ msgstr ""
-#~ "%i Bytes eines unbekannten Bildformates erhalten. Bitte schreiben Sie an "
-#~ "<gphoto-devel@gphoto.org> (auf Englisch) für Unterstützung."
-
-#~ msgid "Camera Configuration"
-#~ msgstr "Kamera-Konfiguration"
-
-#~ msgid "How long will it take until the camera powers off?"
-#~ msgstr "Wie lange soll es dauern, bis die Kamera abschaltet?"
-
-#~ msgid "Image"
-#~ msgstr "Bild"
-
-#~ msgid ""
-#~ "Date: %i/%02i/%02i %02i:%02i:%02i\n"
-#~ "Pictures taken: %i\n"
-#~ "Free pictures: %i\n"
-#~ "Software version: %s\n"
-#~ "Baudrate: %s\n"
-#~ "Memory: %i megabytes\n"
-#~ "Camera mode: %s\n"
-#~ "Image quality: %s\n"
-#~ "Flash setting: %s\n"
-#~ "Information: %s\n"
-#~ "Timer: %s\n"
-#~ "LCD: %s\n"
-#~ "Auto power off: %i minutes\n"
-#~ "Power source: %s"
-#~ msgstr ""
-#~ "Datum: %i/%02i/%02i %02i:%02i:%02i\n"
-#~ "Aufgenommene Bilder: %i\n"
-#~ "Verbleibende Aufnahmen: %i\n"
-#~ "Software-Version: %s\n"
-#~ "Baudrate: %s\n"
-#~ "Speicher: %i Megabytes\n"
-#~ "Kameramodus: %s\n"
-#~ "Bildqualität: %s\n"
-#~ "Blitzeinstellung: %s\n"
-#~ "Information: %s\n"
-#~ "Timer: %s\n"
-#~ "LCD: %s\n"
-#~ "Automat. Ausschalten: %i Minuten\n"
-#~ "Stromquelle: %s"
-
-#~ msgid "The requested port type (%i) is not supported by this driver."
-#~ msgstr ""
-#~ "Der angeforderte Port-Typ (%i) wird von diesem Treiber nicht unterstützt."
-
-#~ msgid "PTP Undefined Error"
-#~ msgstr "PTP- Undefinierter Fehler"
-
-#~ msgid "PTP OK!"
-#~ msgstr "PTP-OK!"
-
-#~ msgid "PTP General Error"
-#~ msgstr "PTP-Allgemeiner Fehler"
-
-#~ msgid "PTP Session Not Open"
-#~ msgstr "PTP-Sitzung nicht geöffnet"
-
-#~ msgid "PTP Invalid Transaction ID"
-#~ msgstr "PTP-Fehlerhafte Transaktions-ID"
-
-#~ msgid "PTP Operation Not Supported"
-#~ msgstr "PTP-Operation nicht unterstützt"
-
-#~ msgid "PTP Parameter Not Supported"
-#~ msgstr "PTP-Parameter nicht unterstützt"
-
-#~ msgid "PTP Incomplete Transfer"
-#~ msgstr "PTP-Unvollständiger Transfer"
-
-#~ msgid "PTP Invalid Storage ID"
-#~ msgstr "PTP-Fehlerhafte Storage-ID"
-
-#~ msgid "PTP Invalid Object Handle"
-#~ msgstr "PTP-Ungültiges Object Handle"
-
-#~ msgid "PTP Device Prop Not Supported"
-#~ msgstr "PTP-Geräteeigenschaft nicht unterstützt"
-
-#~ msgid "PTP Invalid Object Format Code"
-#~ msgstr "PTP-Ungültiger Object Formatcode"
-
-#~ msgid "PTP Store Full"
-#~ msgstr "PTP-Speicher voll"
-
-#~ msgid "PTP Object Write Protected"
-#~ msgstr "PTP-Objekt schreibgeschützt"
-
-#~ msgid "PTP Store Read Only"
-#~ msgstr "PTP-Speicher-schreibgeschützt"
-
-#~ msgid "PTP Access Denied"
-#~ msgstr "PTP-Zugriff verweigert"
-
-#~ msgid "PTP No Thumbnail Present"
-#~ msgstr "PTP-Kein Thumbnail vorhanden"
-
-#~ msgid "PTP Self Test Failed"
-#~ msgstr "PTP-Selbsttest fehlgeschlagen"
-
-#~ msgid "PTP Partial Deletion"
-#~ msgstr "PTP-Partiell gelöscht"
-
-#~ msgid "PTP Store Not Available"
-#~ msgstr "PTP- Speicher nicht verfügbar"
-
-#~ msgid "PTP Specification By Format Unsupported"
-#~ msgstr "PTP- Spezifikation durch Format nicht unterstützt"
-
-#~ msgid "PTP No Valid Object Info"
-#~ msgstr "PTP-Keine gültige Object Information"
-
-#~ msgid "PTP Invalid Code Format"
-#~ msgstr "PTP-Ungültiges Codeformat"
-
-#~ msgid "PTP Unknown Vendor Code"
-#~ msgstr "PTP-Unbekannter Händlercode"
-
-#~ msgid "PTP Capture Already Terminated"
-#~ msgstr "PTP-Aufnahme bereits beendet"
-
-#~ msgid "PTP Device Bus"
-#~ msgstr "PTP-Device Bus"
-
-#~ msgid "PTP Invalid Parent Object"
-#~ msgstr "PTP-Ungültiges Vaterobjekt"
-
-#~ msgid "PTP Invalid Device Prop Format"
-#~ msgstr "PTP-Ungültiges Geräteeigenschaften Format"
-
-#~ msgid "PTP Invalid Device Prop Value"
-#~ msgstr "PTP-Ungültiger Geräteeigenschaftswert"
-
-#~ msgid "PTP Invalid Parameter"
-#~ msgstr "PTP-Ungültiger Parameter"
-
-#~ msgid "PTP Session Already Opened"
-#~ msgstr "PTP- Sitzung bereits geöffnet."
-
-#~ msgid "PTP Transaction Canceled"
-#~ msgstr "PTP-Transaktion abgebrochen"
-
-#~ msgid "PTP Specification Of Destination Unsupported"
-#~ msgstr "PTP-Spezifikation des Zieles nicht unterstützt"
-
-#~ msgid "PTP EK Filename Required"
-#~ msgstr "PTP-EK-Filename erforderlich"
-
-#~ msgid "PTP EK Filename Conflicts"
-#~ msgstr "PTP-EK Filenamenskonflikt"
-
-#~ msgid "PTP EK Filename Invalid"
-#~ msgstr "PTP-EK-Filename ungültig"
-
-#~ msgid "PTP I/O error"
-#~ msgstr "PTP-Ein/Ausgabefehler"
-
-#~ msgid "PTP Error: bad parameter"
-#~ msgstr "PTP- Fehler: Ungültiger Parameter"
-
-#~ msgid "PTP Protocol error, data expected"
-#~ msgstr "PTP- Protokollfehler: Daten erwartet"
-
-#~ msgid "PTP Protocol error, response expected"
-#~ msgstr "PTP-Protokollfehler: Antwort erwartet"
-
-#~ msgid "Written by Mariusz Woloszyn <emsi@ipartners.pl>. Enjoy!"
-#~ msgstr "Entwickelt von Mariusz Woloszyn <emsi@ipartners.pl>. Viel Spass!"
-
-#~ msgid "PTP is implemented for USB cameras only."
-#~ msgstr "PTP- Ist nur für USB Kameras implementiert."
-
-#~ msgid "Unknown"
-#~ msgstr "Unbekannt"
-
-#~ msgid ""
-#~ "Camera model: %s\n"
-#~ "Camera ID: %s\n"
-#~ "Memory: %d byte(s) of %d available\n"
-#~ "Camera time: %s\n"
-#~ msgstr ""
-#~ "Kameramodell: %s\n"
-#~ "Kamera ID: %s\n"
-#~ "Speicherplatz: %d Byte(s) von %d frei\n"
-#~ "Kamerazeit: %s\n"
-
-#~ msgid "Speed %i is not supported!"
-#~ msgstr "Aufnahmegeschwindigkeit %i wird nicht unterstützt!"
-
-#~ msgid ""
-#~ "Expected %i, got %i. Please report this error to <gphoto-devel@gphoto."
-#~ "org>."
-#~ msgstr ""
-#~ "%i erwartet, %i erhalten. Bitte kontaktieren Sie <gphoto-devel@gphoto."
-#~ "org> (auf Englisch)."
-
-#~ msgid ""
-#~ "Expected %i bytes, got %i. Please report this error to <gphoto-"
-#~ "devel@gphoto.org>."
-#~ msgstr ""
-#~ "%i Bytes erwartet, %i erhalten. Bitte kontaktieren Sie <gphoto-"
-#~ "devel@gphoto.org> (auf Englisch)."
-
-#~ msgid ""
-#~ "We expected 0x%x but received 0x%x. Please contact <gphoto-devel@gphoto."
-#~ "org>."
-#~ msgstr ""
-#~ "Wir haben 0x%x erwartet, aber 0x%x erhalten. Bitte kontaktieren Sie "
-#~ "<gphoto-devel@gphoto.org> mit diesen und möglichen weiteren "
-#~ "Debuginformationen (auf Englisch)."
-
-#~ msgid ""
-#~ "Bad characters (0x%x, 0x%x). Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "Fehlerhafte Zeichen (0x%x, 0x%x). Bitte kontaktieren Sie <gphoto-"
-#~ "devel@gphoto.org> (auf Englisch)."
-
-#~ msgid ""
-#~ "Camera busy. If the problem persists, please contact <gphoto-devel@gphoto."
-#~ "org>."
-#~ msgstr ""
-#~ "Kamera beschäftigt. Wenn dieses Problem länger auftritt, kontaktieren Sie "
-#~ "bitte <gphoto-devel@gphoto.org> (auf Englisch)."
-
-#~ msgid ""
-#~ "The Samsung digimax 800k driver has been written by James McKenzie "
-#~ "<james@fishsoup.dhs.org> for gphoto. Lutz Mueller <lutz@users.sourceforge."
-#~ "net> ported it to gphoto2. Marcus Meissner <marcus@jet.franken.de> fixed "
-#~ "and enhanced the port."
-#~ msgstr ""
-#~ "Der Samsung digimax 800k-Treiber wurde von James McKenzie <james@fishsoup."
-#~ "dhs.org> für gphoto geschrieben. Lutz Müller <lutz@users.sourceforge.net> "
-#~ "portierte den Treiber nach gphoto2. Marcus Meißner <marcus@jet.franken."
-#~ "de> vollendete und verbesserte die Portierung."
-
-#~ msgid "The file to be uploaded has a null length"
-#~ msgstr "Die hochzuladende Datei hat eine Größe von null Bytes"
-
-#~ msgid "Not enough memory available on the memory card"
-#~ msgstr "Nicht genügend Speicherplatz auf der Karte vorhanden"
-
-#~ msgid "Cannot retrieve the name of the folder containing the pictures"
-#~ msgstr "Kann den Namen des Verzeichnisses mit den Bildern nicht bekommen"
-
-#~ msgid "Upload is supported into the '%s' folder only"
-#~ msgstr "Hochladen ist nur in das Verzeichnis »%s« unterstützt"
-
-#~ msgid "Picture Settings"
-#~ msgstr "Bildeinstellungen"
-
-#~ msgid "High"
-#~ msgstr "Hoch"
-
-#~ msgid "Best"
-#~ msgstr "Beste"
-
-#~ msgid "%i (unknown)"
-#~ msgstr "%i (unbekannt)"
-
-#~ msgid "Shutter Speed (microseconds, 0 auto)"
-#~ msgstr "Belichtungszeit (Mikrosekunden, 0 automatisch)"
-
-#~ msgid "Aperture"
-#~ msgstr "Blende"
-
-#~ msgid "Low"
-#~ msgstr "Niedrig"
-
-#~ msgid "Medium"
-#~ msgstr "Mittel"
-
-#~ msgid "Color Mode"
-#~ msgstr "Farbmodus"
-
-#~ msgid "Black/White"
-#~ msgstr "Schwarz/Weiß"
-
-#~ msgid "Sepia"
-#~ msgstr "Sepia"
-
-#~ msgid "White Board"
-#~ msgstr "White Board-Effekt"
-
-#~ msgid "Black Board"
-#~ msgstr "Black Board-Effekt"
-
-#~ msgid "Flash Mode"
-#~ msgstr "Blitzmodus"
-
-#~ msgid "Force"
-#~ msgstr "Immer"
-
-#~ msgid "Red-eye Reduction"
-#~ msgstr "Rote-Augen-Vermeidung"
-
-#~ msgid "Slow Sync"
-#~ msgstr "Langsame Sync"
-
-#~ msgid "Brightness/Contrast"
-#~ msgstr "Helligkeit/Kontrast"
-
-#~ msgid "Bright+"
-#~ msgstr "Hell+"
-
-#~ msgid "Bright-"
-#~ msgstr "Hell-"
-
-#~ msgid "Contrast+"
-#~ msgstr "Kontrast+"
-
-#~ msgid "Contrast-"
-#~ msgstr "Kontrast-"
-
-#~ msgid "White Balance"
-#~ msgstr "Weißabgleich"
-
-#~ msgid "Skylight"
-#~ msgstr "Tageslicht"
-
-#~ msgid "Fluorescent"
-#~ msgstr "Kunstlicht - Fluoreszenzlampe"
-
-#~ msgid "Tungsten"
-#~ msgstr "Kunstlicht - Glühlampe"
-
-#~ msgid "Cloudy"
-#~ msgstr "Wolkig"
-
-#~ msgid "Lens Mode"
-#~ msgstr "Objektivmodus"
-
-#~ msgid "Macro"
-#~ msgstr "Makro"
-
-#~ msgid "Infinity/Fish-eye"
-#~ msgstr "Unendlich/Fischauge"
-
-# Translation thanks to Martin Kroeker. [Colin]
-#~ msgid "Spot Metering Mode"
-#~ msgstr "Spotmessung"
-
-#~ msgid "Zoom"
-#~ msgstr "Zoom"
-
-#~ msgid "1x"
-#~ msgstr "1x"
-
-#~ msgid "1.6x"
-#~ msgstr "1.6x"
-
-#~ msgid "2x"
-#~ msgstr "2x"
-
-#~ msgid "2.5x"
-#~ msgstr "2.5x"
-
-#~ msgid "Camera Settings"
-#~ msgstr "Kameraeinstellungen"
-
-#~ msgid "Auto Off (host) (in seconds)"
-#~ msgstr "Autom. Abschaltung (am PC) (in Sekunden)"
-
-#~ msgid ""
-#~ "How long will it take until the camera powers off when connected to the "
-#~ "computer?"
-#~ msgstr ""
-#~ "Wie lange soll es dauern, bis die Kamera abschaltet, wenn sie an den "
-#~ "Computer angeschlossen ist?"
-
-#~ msgid "Auto Off (field) (in seconds)"
-#~ msgstr "Autom. Abschaltung (nicht am PC) (in Sekunden)"
-
-#~ msgid ""
-#~ "How long will it take until the camera powers off when not connected to "
-#~ "the computer?"
-#~ msgstr ""
-#~ "Wie lange soll es dauern, bis die Kamera abschaltet, wenn sie nicht an "
-#~ "den Computer angeschlossen ist?"
-
-#~ msgid "LCD Brightness"
-#~ msgstr "LCD-Helligkeit"
-
-#~ msgid "LCD Auto Off (in seconds)"
-#~ msgstr "Autom. Abschaltung des LCD (in Sekunden)"
-
-#~ msgid "Shot Settings"
-#~ msgstr "Aufnahme-Einstellungen"
-
-#~ msgid "F2"
-#~ msgstr "F2"
-
-#~ msgid "F2.3"
-#~ msgstr "F2.3"
-
-#~ msgid "F2.8"
-#~ msgstr "F2.8"
-
-#~ msgid "F4"
-#~ msgstr "F4"
-
-#~ msgid "F5.6"
-#~ msgstr "F5.6"
-
-#~ msgid "F8"
-#~ msgstr "F8"
-
-#~ msgid "Custom"
-#~ msgstr "Benutzerdefiniert"
-
-#~ msgid "SuperFine"
-#~ msgstr "Superfein"
-
-#~ msgid "HyPict"
-#~ msgstr "HyPict"
-
-#~ msgid "color"
-#~ msgstr "farbig"
-
-#~ msgid "black & white"
-#~ msgstr "schwarz/weiß"
-
-#~ msgid "Korean"
-#~ msgstr "Koreanisch"
-
-#~ msgid "English"
-#~ msgstr "Englisch"
-
-#~ msgid "French"
-#~ msgstr "Französisch"
-
-#~ msgid "German"
-#~ msgstr "Deutsch"
-
-#~ msgid "Italian"
-#~ msgstr "Italienisch"
-
-#~ msgid "Japanese"
-#~ msgstr "Japanisch"
-
-#~ msgid "Spanish"
-#~ msgstr "Spanisch"
-
-#~ msgid "Portugese"
-#~ msgstr "Portugiesisch"
-
-#~ msgid "NO MEMORY CARD PRESENT\n"
-#~ msgstr "Keine Speicherkarte vorhanden\n"
-
-#~ msgid "%sCamera Model: %s\n"
-#~ msgstr "%sKameramodell: %s\n"
-
-#~ msgid "%sManufacturer: %s\n"
-#~ msgstr "%sHersteller: %s\n"
-
-#~ msgid "%sCamera ID: %s\n"
-#~ msgstr "%sKamera-ID: %s\n"
-
-#~ msgid "%sSerial Number: %s\n"
-#~ msgstr "%sSeriennummer: %s\n"
-
-#~ msgid "%sSoftware Rev.: %s\n"
-#~ msgstr "%sSoftware-Revision: %s\n"
-
-# Haesslich [Colin]
-#~ msgid "%sFrames Taken: %i\n"
-#~ msgstr "%sAufgenommene Bilder: %i\n"
-
-# Haesslich... [Colin]
-#~ msgid "%sFrames Left: %i\n"
-#~ msgstr "%sVerbleibende Bilder: %i\n"
-
-#~ msgid "%sBattery Life: %i\n"
-#~ msgstr "%sBatterielebensdauer: %i\n"
-
-#~ msgid "%sMemory Left: %i bytes\n"
-#~ msgstr "%sVerbleibender Speicher: %i bytes\n"
-
-#~ msgid "%sDate: %s\n"
-#~ msgstr "%sDatum: %s\n"
-
-#~ msgid ""
-#~ "Some notes about Epson cameras:\n"
-#~ "- Some parameters are not controllable remotely:\n"
-#~ "  * zoom\n"
-#~ "  * focus\n"
-#~ "  * custom white balance setup\n"
-#~ "- Configuration has been reverse-engineered with\n"
-#~ "  a PhotoPC 3000z, if your camera acts differently\n"
-#~ "  please send a mail to <gphoto-devel@gphoto.org> (in English)\n"
-#~ msgstr ""
-#~ "Einige Kommentare über Epson-Kameras:\n"
-#~ "- einige Parameter sind nicht fernsteuerbar:\n"
-#~ "  * Zoom\n"
-#~ "  * Fokus\n"
-#~ "  * Benutzer-Weißabgleich\n"
-#~ "- Die Konfiguration wurde mit einer PhotoPC 3000z rückentwickelt.\n"
-#~ "  Wenn Ihre Kamera anders reagiert, dann senden Sie bitte\n"
-#~ "  eine Mail an <gphoto-devel@gphoto.org> (auf Englisch).\n"
-
-#~ msgid ""
-#~ "Some notes about Olympus cameras (and others?):\n"
-#~ "(1) Camera Configuration:\n"
-#~ "    A value of 0 will take the default one (auto).\n"
-#~ "(2) Olympus C-3040Z (and possibly also the C-2040Z\n"
-#~ "    and others) have a USB PC Control mode. In order\n"
-#~ "    to use this mode, the camera must be switched \n"
-#~ "    into 'USB PC control mode'. To get to the menu \n"
-#~ "    for switching modes, open the memory card access\n"
-#~ "    door and then press and hold both of the menu \n"
-#~ "    buttons until the camera control menu appears.\n"
-#~ "    Set it to ON."
-#~ msgstr ""
-#~ "Einige Bemerkungen:\n"
-#~ "(1) Kamera-Konfiguration:\n"
-#~ "    Ein Wert von 0 verwendet die Vorgabe (Auto).\n"
-#~ "(2) Olympus C-3040Z (und möglicherweise die C-2040Z\n"
-#~ "    und andere) haben einen USB-Kontrollmodus. Um \n"
-#~ "    diesen Modus zu benutzen, muss die Kamera auf \n"
-#~ "    »USB PC control mode« geschaltet sein. Um zum Menü\n"
-#~ "    für diese Einstellung zu gelangen, öffnen sie die\n"
-#~ "    Klappe für die Speicherkarte und halten Sie beide\n"
-#~ "    Menütasten gedrückt, bis das Kontrollmenü erscheint.\n"
-#~ "    Schalten Sie es auf »ON«."
-
-# Ist "Freigabe" richtig? [Colin]
-#~ msgid ""
-#~ "sierra SPARClite library\n"
-#~ "Scott Fritzinger <scottf@unr.edu>\n"
-#~ "Support for sierra-based digital cameras\n"
-#~ "including Olympus, Nikon, Epson, and others.\n"
-#~ "\n"
-#~ "Thanks to Data Engines (www.dataengines.com)\n"
-#~ "for the use of their Olympus C-3030Z for USB\n"
-#~ "support implementation."
-#~ msgstr ""
-#~ "sierra SPARClite-Bibliothek\n"
-#~ "Scott Fritzinger <scottf@unr.edu>\n"
-#~ "Unterstützung für Sierra-basierte Digitalkameras\n"
-#~ "incl. Olympus, Nikon, Epson, und andere.\n"
-#~ "\n"
-#~ "Dank an Data Engines (www.dataengines.com) für die\n"
-#~ "Freigabe ihrer Olympus C-3030Z for USB-Implementierung."
-
-#~ msgid "Cannot retrieve the battery capacity"
-#~ msgstr "Kann die Batteriekapazität nicht bekommen"
-
-#~ msgid ""
-#~ "The battery level of the camera is too low (%d%%). The operation is "
-#~ "aborted."
-#~ msgstr ""
-#~ "Der Batteriestand der Kamera ist zu niedrig (%d%%). Befehl wird "
-#~ "abgebrochen."
-
-#~ msgid "Cannot retrieve the available memory left"
-#~ msgstr "Kann verbleibenden Speicherplatz nicht abfragen"
-
-#~ msgid "Camera refused 3 times to keep a connection open."
-#~ msgstr "Kamera hat 3 Versuche die Verbindung offen zu halten abgelehnt."
-
-#~ msgid "The first byte received (0x%x) is not valid."
-#~ msgstr "Das erste empfangene Byte (0x%x) ist nicht gültig."
-
-#~ msgid ""
-#~ "Transmission of packet timed out even after %i retries. Please contact "
-#~ "<gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "Time-Out für Übertragung des Datenpakets nach %i Versuchen. \n"
-#~ "Bitte kontaktieren Sie <gphoto-devel@gphoto.org> (auf Englisch)."
-
-#~ msgid "Could not transmit packet even after several retries."
-#~ msgstr "Konnte Paket auch nach mehreren Versuchen nicht senden."
-
-#~ msgid ""
-#~ "Packet got rejected by camera. Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "Datenpaket wurde von der Kamera abgelehnt. Bitte kontaktieren Sie <gphoto-"
-#~ "devel@gphoto.org> (auf Englisch)."
-
-#~ msgid ""
-#~ "Could not transmit packet (error code %i). Please contact <gphoto-"
-#~ "devel@gphoto.org>."
-#~ msgstr ""
-#~ "Konnte Datenpaket nicht übertragen (Fehlercode %i).\n"
-#~ "Bitte kontaktieren Sie <gphoto-devel@gphoto.org> (auf Englisch)."
-
-#~ msgid "Transmission timed out even after 2 retries. Giving up..."
-#~ msgstr "Time-Out für Übertragung auch noch 2 Versuchen. Gebe auf..."
-
-#~ msgid ""
-#~ "Got unexpected result 0x%x. Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "Unerwartetes Resultat (Fehlercode 0x%x) erhalten. Bitte kontaktieren Sie "
-#~ "<gphoto-devel@gphoto.org> (auf Englisch)."
-
-#~ msgid ""
-#~ "Received unexpected answer (%i). Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "Unerwartete Antwort (Fehlercode %i) erhalten. Bitte kontaktieren Sie "
-#~ "<gphoto-devel@gphoto.org> (auf Englisch)."
-
-#~ msgid "Could not get register %i. Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "Konnte Register %i nicht holen. Bitte kontaktieren Sie <gphoto-"
-#~ "devel@gphoto.org> (auf Englisch)."
-
-#~ msgid "Too many retries failed."
-#~ msgstr "Zu viele Versuche misslungen."
-
-#~ msgid "Sending data..."
-#~ msgstr "Sende Daten..."
-
-#~ msgid ""
-#~ "Could not get string register %i. Please contact <gphoto-devel@gphoto."
-#~ "org>."
-#~ msgstr ""
-#~ "Konnte String-Register %i nicht lesen. \n"
-#~ "Bitte kontaktieren Sie <gphoto-devel@gphoto.org> (auf Englisch)."
-
-#~ msgid "Expected 32 bytes, got %i. Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "32 Bytes erwartet, %i erhalten. Bitte kontaktieren Sie <gphoto-"
-#~ "devel@gphoto.org> (auf Englisch)."
-
-#~ msgid "Not implemented!"
-#~ msgstr "Nicht implementiert!"
-
-#~ msgid ""
-#~ "Sony DSC-F1 Digital Camera Support\n"
-#~ "M. Adam Kendall <joker@penguinpub.com>\n"
-#~ "Based on the chotplay CLI interface from\n"
-#~ "Ken-ichi Hayashi\n"
-#~ "Gphoto2 port by Bart van Leeuwen <bart@netage.nl>"
-#~ msgstr ""
-#~ "Sony DSC-F1 Digitalkamera-Unterstützung\n"
-#~ "M. Adam Kendall <joker@penguinpub.com>\n"
-#~ "Basierend auf dem chotplay CLI-Interface von\n"
-#~ "Ken-ichi Hayashi\n"
-#~ "Gphoto2-Portierung von Bart van Leeuwen <bart@netage.nl>"
-
-#~ msgid ""
-#~ "Sony DSC-F55/505 gPhoto library\n"
-#~ "Supports Sony MSAC-SR1 and Memory Stick used by DCR-PC100\n"
-#~ "Originally written by Mark Davies <mdavies@dial.pipex.com>\n"
-#~ "gPhoto2 port by Raymond Penners <raymond@dotsphinx.com>"
-#~ msgstr ""
-#~ "Sony DSC-F55/505 gPhoto Bibliothek\n"
-#~ "Unterstützt Sony MSAC-SR1 und Memory Stick von DCR-PC100\n"
-#~ "Erste Implementation durch Mark Davies <mdavies@dial.pipex.com>\n"
-#~ "gPhoto2 Portierung durch Raymond Penners <raymond@dotsphinx.com>"
-
-#~ msgid "Bad exposure (not enough light probably)"
-#~ msgstr "Fehlbelichtung (wahrscheinlich nicht genug Licht)"
-
-#~ msgid "Information for STV0680 based camera:\n"
-#~ msgstr "Informationen für STV0680-basierte Kamera:\n"
-
-#~ msgid "Firmware Revision: %d.%d\n"
-#~ msgstr "Firmware-Revision: %d.%d\n"
-
-#~ msgid "ASIC Revision: %d.%d\n"
-#~ msgstr "ASIC-Revision: %d.%d\n"
-
-#~ msgid "Sensor ID: %d.%d\n"
-#~ msgstr "Sensor-ID: %d.%d\n"
-
-#~ msgid "Camera is configured for lights flickering with %dHz.\n"
-#~ msgstr "Die Kamera ist für Kunstlicht mit %dHz konfiguriert.\n"
-
-#~ msgid "Memory in camera: %d Mbit.\n"
-#~ msgstr "Speicher in Kamera: %d Mbit.\n"
-
-#~ msgid "Camera supports Thumbnails.\n"
-#~ msgstr "Kamera unterstützt Vorschaubilder.\n"
-
-#~ msgid "Camera supports Video.\n"
-#~ msgstr "Kamera unterstützt Video.\n"
-
-#~ msgid "Camera pictures are monochrome.\n"
-#~ msgstr "Kamerabilder sind monochrom.\n"
-
-#~ msgid "Camera has memory.\n"
-#~ msgstr "Kamera hat Speicher.\n"
-
-#~ msgid "Camera supports videoformats: "
-#~ msgstr "Kamera unterstützt folgende Videoformate: "
-
-#~ msgid "Vendor ID: %02x%02x\n"
-#~ msgstr "Hersteller-ID: %02x%02x\n"
-
-#~ msgid "Product ID: %02x%02x\n"
-#~ msgstr "Produkt-ID: %02x%02x\n"
-
-#~ msgid "Number of Images: %d\n"
-#~ msgstr "Anzahl der Bilder: %d\n"
-
-#~ msgid "Maximum number of Images: %d\n"
-#~ msgstr "Maximale Anzahl der Bilder: %d\n"
-
-#~ msgid "Image width: %d\n"
-#~ msgstr "Bildbreite: %d\n"
-
-#~ msgid "Image height: %d\n"
-#~ msgstr "Bildhöhe: %d\n"
-
-#~ msgid "Image size: %d\n"
-#~ msgstr "Bildgröße: %d\n"
-
-#~ msgid "Thumbnail width: %d\n"
-#~ msgstr "Vorschaubildbreite: %d\n"
-
-#~ msgid "Thumbnail height: %d\n"
-#~ msgstr "Vorschaubildhöhe: %d\n"
-
-#~ msgid "Thumbnail size: %d\n"
-#~ msgstr "Vorschaubildgröße: %d\n"
-
-#~ msgid ""
-#~ "STV0680\n"
-#~ "Adam Harrison <adam@antispin.org>\n"
-#~ "Driver for cameras using the STV0680 processor ASIC.\n"
-#~ "Protocol reverse engineered using CommLite Beta 5\n"
-#~ "Carsten Weinholz <c.weinholz@netcologne.de>\n"
-#~ "Extended for Aiptek PenCam and other STM USB Dual-mode cameras."
-#~ msgstr ""
-#~ "STV0680\n"
-#~ "Adam Harrison <adam@antispin.org>\n"
-#~ "Treiber für Kameras mit dem STV0680-ASIC.\n"
-#~ "Rückentwicklung des Protokolls mit CommLite Beta 5\n"
-#~ "Carsten Weinholz <c.weinholz@netcologne.de>\n"
-#~ "Erweitert für Aiptek PenCam und andere STM USB Dual-Mode-Kameras."
-
-#~ msgid "An error occurred in the io-library ('%s'): %s"
-#~ msgstr "Ein Fehler trat in der IO-Bibliothek auf (»%s«): %s"
-
-#~ msgid "No additional information available."
-#~ msgstr "Keine zusätzlichen Informationen verfügbar."
-
-#~ msgid "Could not detect any camera"
-#~ msgstr "Konnte keine Kamera finden"
-
-#~ msgid "You have to set the port prior initialization of the camera."
-#~ msgstr ""
-#~ "Sie müssen einen Port setzen, bevor Sie die Kamera initialisieren können"
-
-#~ msgid "Could not load required camera driver '%s' (%s)."
-#~ msgstr "Konnte erforderlichen Kameratreiber »%s« (%s) nicht laden."
-
-#~ msgid "Could not load required camera driver '%s'."
-#~ msgstr "Konnte erforderlichen Kameratreiber »%s« nicht laden."
-
-#~ msgid "Camera driver '%s' is missing the 'camera_init' function."
-#~ msgstr "Kameratreiber »%s« hat keine Funktion »camera_init«."
-
-#~ msgid "This camera does not offer any configuration options."
-#~ msgstr "Diese Kamera bietet keine Konfigurationsoptionen."
-
-#~ msgid "This camera does not support setting configuration options."
-#~ msgstr "Diese Kamera unterstützt kein Setzen von Konfigurationsoptionen."
-
-#~ msgid "This camera does not support summaries."
-#~ msgstr "Diese Kamera unterstützt keine Zusammenfassung."
-
-#~ msgid "This camera does not offer a manual."
-#~ msgstr "Für diese Kamera existiert kein Handbuch."
-
-#~ msgid "This camera does not provide information about the driver."
-#~ msgstr "Diese Kamera liefert keine Information über den Treiber."
-
-#~ msgid "This camera can not capture."
-#~ msgstr "Diese Kamera kann keine Aufnahme machen."
-
-#~ msgid "This camera can not capture previews."
-#~ msgstr "Diese Kamera kann keine Vorschaubilder machen."
-
-#~ msgid "The path '%s' is not absolute."
-#~ msgstr "Die Pfadangabe »%s« ist nicht absolut."
-
-#~ msgid "Could not append folder '%s' as this folder already exists."
-#~ msgstr ""
-#~ "Konnte Verzeichnis »%s« nicht anhängen, das dieses Verzeichnis bereits "
-#~ "existiert."
-
-#~ msgid "Could not find folder '%s'."
-#~ msgstr "Konnte Verzeichnis »%s« nicht finden."
-
-#~ msgid "Folder '%s' does not contain a folder '%s'."
-#~ msgstr "Verzeichnis »%s« enthält kein Verzeichnis »%s«."
-
-#~ msgid ""
-#~ "Could not append '%s' to folder '%s' because this file already exists."
-#~ msgstr ""
-#~ "Konnte »%s« nicht an Verzeichnis »%s« anhängen, das diese Datei bereits "
-#~ "existiert."
-
-#~ msgid ""
-#~ "You have been trying to delete '%s' from folder '%s', but the filesystem "
-#~ "does not support deletion of files."
-#~ msgstr ""
-#~ "Sie versuchen, »%s« aus dem Verzeichnis »%s« zu löschen, aber das "
-#~ "Dateisystem unterstützt kein Löschen von Dateien."
-
-#~ msgid "There are still files in folder '%s' that you are trying to remove."
-#~ msgstr ""
-#~ "Im Verzeichnis »%s«, das Sie zu Löschen versuchen, befinden sich immer "
-#~ "noch Dateien."
-
-#~ msgid ""
-#~ "There are still subfolders in folder '%s' that you are trying to remove."
-#~ msgstr ""
-#~ "Im Verzeichnis »%s«, das Sie zu Löschen versuchen, befinden sich immer "
-#~ "noch Unterverzeichnisse."
-
-#~ msgid "The filesystem does not support upload of files."
-#~ msgstr "Das Dateisystem unterstützt kein Hochladen von Dateien."
-
-#~ msgid ""
-#~ "Folder '%s' does only contain %i files, but you requested a file with "
-#~ "number %i."
-#~ msgstr ""
-#~ "Verzeichnis »%s« enthält nur %i Dateien, aber Sie verlangten eine Datei "
-#~ "mit der Nummer %i."
-
-#~ msgid "File '%s' could not be found in folder '%s'."
-#~ msgstr "Datei »%s« konnte nicht im Verzeichnis »%s« gefunden werden."
-
-#~ msgid "Could not find file '%s'."
-#~ msgstr "Konnte Datei »%s« nicht finden."
-
-#~ msgid "The filesystem doesn't support getting files"
-#~ msgstr "Das Dateisystem unterstützt kein Holen von Dateien."
-
-#~ msgid "Unknown file type %i."
-#~ msgstr "Unbekannter Dateityp %i."
-
-#~ msgid "Downloading '%s' from folder '%s'..."
-#~ msgstr "Lade »%s« aus Verzeichnis »%s«..."
-
-#~ msgid "The filesystem doesn't support getting file information"
-#~ msgstr "Das Dateisystem unterstützt das Holen von Dateiinformationen nicht"
-
-#~ msgid "The filesystem doesn't support setting file information"
-#~ msgstr "Das Dateisystem unterstützt das Setzen von Dateiinformationen nicht"
-
-#~ msgid "Read-only file attributes like width and height can not be changed."
-#~ msgstr ""
-#~ "\"Nur-Lesen\"-Dateiattribute wie Höhe und Breite können nicht geändert "
-#~ "werden."
-
-#~ msgid "Loading camera drivers from '%s'..."
-#~ msgstr "Lade Kamertreiber von »%s«..."
-
-#~ msgid "Could not open '%s'"
-#~ msgstr "Konnte »%s« nicht öffnen"
-
-#~ msgid "Could not find any driver for '%s'"
-#~ msgstr "Konnte keinen Treiber für »%s« finden."
-
-#~ msgid "Corrupted data"
-#~ msgstr "Korrupte Daten"
-
-#~ msgid "File exists"
-#~ msgstr "Datei existiert bereits"
-
-#~ msgid "Unknown model"
-#~ msgstr "Unbekanntes Modell"
-
-#~ msgid "Directory not found"
-#~ msgstr "Verzeichnis nicht gefunden"
-
-#~ msgid "File not found"
-#~ msgstr "Datei nicht gefunden"
-
-#~ msgid "Directory exists"
-#~ msgstr "Verzeichnis existiert bereits"
-
-#~ msgid "Path not absolute"
-#~ msgstr "Pfadangabe nicht absolut"
-
-#~ msgid "Unknown camera library error"
-#~ msgstr "Unbekannter Fehler des Kamera-Treibers"
-
-#~ msgid "Unknown error"
-#~ msgstr "Unbekannter Fehler"
-
-#~ msgid "Authors"
-#~ msgstr "Autoren"
-
-#~ msgid "License"
-#~ msgstr "Lizenz"
-
-#~ msgid "Could not open '"
-#~ msgstr "Konnte nicht öffnen '"
-
-#~ msgid "/COPYING'. Please verify your installation."
-#~ msgstr "/COPYING'. Bitte überprüfen Sie ihre Installation."
-
-#~ msgid "Guessed port name. Using port '%s' from now on."
-#~ msgstr "Vermutlich meinen Sie Port »%s«, dieser wird von nun an verwendet."
-
-#~ msgid "No Manual Available"
-#~ msgstr "Handbuch nicht verfügbar"
-
-#~ msgid ""
-#~ "\n"
-#~ "Errors occuring beyond this point are 'expected' on OS/2\n"
-#~ "investigation pending\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Fehler nach dieser Zeile werden 'erwartet' auf OS/2.\n"
-#~ "wird untersucht\n"
-
-#~ msgid "Sorry this function not implemented.."
-#~ msgstr "Diese Funktion ist nicht implementiert."
-
-#~ msgid "Sorry, nothing to configure.."
-#~ msgstr "Es gibt nichts zu konfigurieren."
-
-#~ msgid "Sorry, taking pictures is not implemented.."
-#~ msgstr "Das Machen von Aufnahmen ist nicht implementiert."
-
-#~ msgid "Couldn't open camera.\n"
-#~ msgstr "Konnte keine Kamera öffnen.\n"
-
-#~ msgid "Error opening camera\n"
-#~ msgstr "Fehler beim Öffnen der Kamera.\n"
-
-#~ msgid "Picture number is too large.\n"
-#~ msgstr "Bildnummer zu groß\n"
-
-#~ msgid ""
-#~ "Sony DSC-F1 Digital Camera Support\n"
-#~ "M. Adam Kendall <joker@penguinpub.com>\n"
-#~ "\n"
-#~ "Based on the chotplay CLI interface from\n"
-#~ "Ken-ichi Hayashi\n"
-#~ "\n"
-#~ "This lib may not work. YMMV\n"
-#~ msgstr ""
-#~ "Sony DSC-F1 Digitalkamera-Unterstützung\n"
-#~ "M. Adam Kendall <joker@penguinpub.com>\n"
-#~ "Basierend auf dem chotplay CLI-Interface von\n"
-#~ "Ken-ichi Hayashi\n"
-#~ "Diese Bibliothek funktioniert möglicherweise nicht.\n"
-
-#~ msgid "Error opening camera.\n"
-#~ msgstr "Fehler beim Öffnen der Kamera.\n"
-
-#~ msgid "Unavaliable"
-#~ msgstr "Nicht verfügbar"
-
-#~ msgid "Could not obtain directory listing"
-#~ msgstr "Konnte Verzeichnisliste nicht bekommen"
-
-#~ msgid "Turn off recursion"
-#~ msgstr "Schalte Rekursion aus"
-
-#~ msgid ""
-#~ "Recursion is now default and the use of --recurse or -R is now "
-#~ "deprecated.\n"
-#~ msgstr ""
-#~ "Rekursion ist nun die Vorgabe und die Verwendung von --recurse oder -R "
-#~ "ist veraltet.\n"
-
-#~ msgid "Focusing error"
-#~ msgstr "Fokussierungsfehler"
-
-#~ msgid "Iris error"
-#~ msgstr "Blendenfehler"
-
-#~ msgid "Strobe error"
-#~ msgstr "Strobe-Fehler"
-
-#~ msgid "EEPROM checksum error"
-#~ msgstr "EEPROM-Prüfsummenfehler"
-
-#~ msgid "Internal error (1)"
-#~ msgstr "Interner Fehler (1)"
-
-#~ msgid "Internal error (2)"
-#~ msgstr "Interner Fehler (2)"
-
-#~ msgid "No card present"
-#~ msgstr "Keine Karte vorhanden"
-
-#~ msgid "Card not supported"
-#~ msgstr "Karte nicht unterstützt"
-
-#~ msgid "Card removed during access"
-#~ msgstr "Karte wurde während des Zugriffs entfernt"
-
-#~ msgid "Image number not valid"
-#~ msgstr "Bildnummer nicht gültig"
-
-#~ msgid "Card can not be written"
-#~ msgstr "Karte kann nicht geschrieben werden"
-
-#~ msgid "Card is write protected"
-#~ msgstr "Karte ist schreibgeschützt"
-
-#~ msgid "No space left on card"
-#~ msgstr "Kein Platz mehr auf der Karte verfügbar"
-
-#~ msgid "No image erased as image protected"
-#~ msgstr "Kein Bild gelöscht, da das Bild geschützt ist"
-
-#~ msgid "Light too dark"
-#~ msgstr "Licht zu dunkel"
-
-#~ msgid "Autofocus error"
-#~ msgstr "Autofokus-Fehler"
-
-#~ msgid "System error"
-#~ msgstr "Systemfehler"
-
-#~ msgid "Illegal parameter"
-#~ msgstr "Ungültiger Parameter"
-
-#~ msgid "Command can not be cancelled"
-#~ msgstr "Befehl kann nicht abgebrochen werden"
-
-#~ msgid "Localization data excess"
-#~ msgstr "Lokalisierungsdaten-überschuß"
-
-#~ msgid "Localization data corrupt"
-#~ msgstr "Lokalisierungsdaten beschädigt"
-
-#~ msgid "Other command executing"
-#~ msgstr "Ein anderer Befehl wird gerade ausgeführt"
-
-#~ msgid "Command order error"
-#~ msgstr "Fehler bei der Befehlsreihenfolge"
-
-#~ msgid ""
-#~ "The camera is not able to execute this command. Please report this error "
-#~ "to <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "Die Kamera kann diesen Befehl nicht ausführen. \n"
-#~ "Bitte melden Sie diesen Fehler (auf Englisch) an <gphoto-devel@gphoto."
-#~ "org>."
-
-#~ msgid "Transmitting data..."
-#~ msgstr "Übertrage Daten..."
-
-#~ msgid ""
-#~ "Could not set string register %i. Please contact <gphoto-devel@gphoto."
-#~ "org>."
-#~ msgstr ""
-#~ "Konnte String-Register %i nicht setzen. \n"
-#~ "Bitte kontaktieren Sie <gphoto-devel@gphoto.org> (auf Englisch)."
-
-#~ msgid "Getting Image Info"
-#~ msgstr "Lade Bild-Informationen"
-
-#~ msgid "Loading Image"
-#~ msgstr "Lade Bild"
-
-#~ msgid "Retransmitting"
-#~ msgstr "Übertrage erneut"
-
-#~ msgid "Setting speed to %i baud..."
-#~ msgstr "Setze Datenrate auf %i Baud..."
-
-#~ msgid "Name too long, max is 30 characters!"
-#~ msgstr "Name zu lang, maximal 30 Zeichen!"
-
-#~ msgid "You need to set a port prior trying to set the speed"
-#~ msgstr "Sie müssen einen Port setzen, bevor Sie die Datenrate setzen können"
-
-#~ msgid "You can specify a speed only with serial ports"
-#~ msgstr "Nur mit seriellen Ports können Sie eine Datenrate setzen"
-
-#~ msgid "No error description available"
-#~ msgstr "Fehlerbeschreibung nicht verfügbar"
-
-#~ msgid "Recursively descend through folders"
-#~ msgstr "Steige rekursiv in Verzeichnisse hinab"
-
-#~ msgid "Manual Not Implemented Yet"
-#~ msgstr "Handbuch noch nicht implementiert"
-
-#~ msgid "Comparing %s to %s\n"
-#~ msgstr "Vergleiche %s mit %s\n"
-
-#~ msgid "Numbers are %d and %d\n"
-#~ msgstr "Zahlen sind %d und %d\n"
-
-#~ msgid "Base 1 is %s and base 2 is %s\n"
-#~ msgstr "Basis 1 ist %s und Basis 2 ist %s\n"
-
-#~ msgid "Before sort:\n"
-#~ msgstr "Vor dem Sortieren:\n"
-
-#~ msgid "After sort:\n"
-#~ msgstr "Nach dem Sortieren:\n"
-
-#~ msgid "Power"
-#~ msgstr "Power"
-
-#~ msgid "Debug"
-#~ msgstr "Debug"
-
-#~ msgid "Manual Not Available"
-#~ msgstr "Handbuch nicht verfügbar"
-
-#~ msgid "Only root directory is supported"
-#~ msgstr "Nur das Wurzelverzeichnis (»/«) ist unterstützt"
-
-#~ msgid "No summary available."
-#~ msgstr "Zusammenfassung nicht verfügbar."
-
-#~ msgid "Summary not available."
-#~ msgstr "Zusammenfassung nicht verfügbar."
-
-#~ msgid "Wrong percentage: %f"
-#~ msgstr "Falsche Prozentangabe: %f"
-
-#~ msgid "Initializing camera..."
-#~ msgstr "Initialisiere Kamera..."
-
-#~ msgid "Initializing '%s'..."
-#~ msgstr "Initialisiere »%s«..."
-
-#~ msgid "Deleting all files in '%s'..."
-#~ msgstr "Lösche alle Dateien in »%s«..."
-
-#~ msgid "Getting info for '%s' in folder '%s'..."
-#~ msgstr "Hole Information für »%s« im Verzeichnis »%s«..."
-
-#~ msgid "Getting '%s' from folder '%s'..."
-#~ msgstr "Hole Information für »%s« aus Verzeichnis »%s«..."
-
-#~ msgid "Removing folder '%s' from folder '%s'..."
-#~ msgstr "Lösche Verzeichnis »%s« aus Verzeichnis »%s«..."
-
-#~ msgid ""
-#~ "The following message is the last internal error message.\n"
-#~ "This message may currently still be unrelated to the real error:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Die folgende Meldung ist die letzte interne Fehlermeldung.\n"
-#~ "Die Meldung muß im Moment noch nichts mit dem tatsächlichen Fehler zu tun "
-#~ "haben:\n"
-#~ "\n"
-#~ "%s\n"
-#~ "\n"
-
-#~ msgid "No response"
-#~ msgstr "Keine Antwort"
-
-#~ msgid ""
-#~ "\n"
-#~ "Exiting gPhoto...\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Beende gPhoto...\n"
-
-#~ msgid "(power low)"
-#~ msgstr "(Ladung niedrig)"
-
-#~ msgid "Power: camera unavailable"
-#~ msgstr "Power: Kamera nicht verfügbar"
-
-#~ msgid "Internal Memory"
-#~ msgstr "Interner Speicher"
-
-#~ msgid "No summary information."
-#~ msgstr "Keine Zusammenfassung."
-
-#~ msgid "For debugging messages, please use the --debug option.\n"
-#~ msgstr "Für Debug-Meldungen verwenden Sie bitte die Option »--debug«.\n"
-
-#~ msgid "Debug level"
-#~ msgstr "Debuglevel"
-
-#~ msgid "Dump data by packets to stderr"
-#~ msgstr "Schreibe Daten Paketen entsprechend auf stderr"
-
-#~ msgid "Name too long, could not store it!"
-#~ msgstr "Name zu lang, konnte nicht speichern!"
-
-#~ msgid "The camera does not offer any configuration options for folders"
-#~ msgstr "Diese Kamera bietet keine Konfigurationsoptionen für Verzeichnisse"
-
-#~ msgid "The camera does not support setting configuration options on folders"
-#~ msgstr ""
-#~ "Diese Kamera unterstützt das Setzen von Konfigurationsoptionen für "
-#~ "Verzeichnisse nicht"
-
-#~ msgid "This camera does not offer configuration options for files"
-#~ msgstr "Diese Kamera bietet keine Konfigurationsoptionen für Dateien"
-
-#~ msgid "This camera does not support setting configuration options on files"
-#~ msgstr ""
-#~ "Diese Kamera unterstützt das Setzen von Konfigurationsoptionen für "
-#~ "Dateien nicht"
-
-#~ msgid "I/O problem"
-#~ msgstr "I/O-Problem"
-
-#~ msgid "Could not detect any camera. Please specify a model."
-#~ msgstr "Konnte keine Kamera finden. Bitte geben Sie ein Modell an."
-
-#~ msgid "Unknown model!"
-#~ msgstr "Unbekanntes Modell!"
-
-#~ msgid "No summary information yet"
-#~ msgstr "Noch keine Übersichtsinformationen"
-
-#~ msgid "This is not an error..."
-#~ msgstr "Dies ist kein Fehler..."
-
-#~ msgid "This is a dc3200 specific error."
-#~ msgstr "Dies ist ein dc3200-spezifischer Fehler."
-
-#~ msgid "Initializing camera %s"
-#~ msgstr "Initialisiere Kamera %s"
-
-#~ msgid "Bad conditions"
-#~ msgstr "Schlechte Verhältnisse"
-
-#~ msgid "unknown (%i"
-#~ msgstr "(unbekannt %i"
-
-#~ msgid "Bad parameters"
-#~ msgstr "Ungültige Parameter"
-
-#~ msgid "Insufficient memory"
-#~ msgstr "Nicht genügend Speicher"
-
-#~ msgid "Unsupported operation"
-#~ msgstr "Operation nicht unterstützt"
-
-#~ msgid "No cameras were detected"
-#~ msgstr "Keine Kameras gefunden"
-
-#~ msgid "Noncritical error (deprecated error message!)"
-#~ msgstr "Nicht-kritischer Fehler"

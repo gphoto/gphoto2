@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.0rc2\n"
-"POT-Creation-Date: 2002-07-29 00:47+0200\n"
+"POT-Creation-Date: 2002-11-20 19:11+0100\n"
 "PO-Revision-Date: 2002-06-22 01:18+0900\n"
 "Last-Translator: Takeshi Aihana <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
@@ -15,165 +15,360 @@ msgstr ""
 "Content-Type: text/plain; charset=euc-jp\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gphoto2/actions.c:75
+#: gphoto2/actions.c:117
+#, fuzzy, c-format
+msgid "Number of files in folder '%s': %i\n"
+msgstr "フォルダ %s 内のファイルの数: %i\n"
+
+#: gphoto2/actions.c:136
 #, c-format
 msgid "There are no folders in folder '%s'."
 msgstr "フォルダ '%s' の中にフォルダはありません。"
 
-#: gphoto2/actions.c:79
+#: gphoto2/actions.c:140
 #, c-format
 msgid "There is one folder in folder '%s':"
 msgstr "フォルダ '%s' の中にフォルダが一つあります:"
 
-#: gphoto2/actions.c:83
+#: gphoto2/actions.c:144
 #, c-format
 msgid "There are %i folders in folder '%s':"
 msgstr "%i 個のフォルダがフォルダ '%s' の中にあります:"
 
-#: gphoto2/actions.c:109 gphoto2/foreach.c:250
+#: gphoto2/actions.c:170 gphoto2/foreach.c:283
 #, c-format
 msgid "There are no files in folder '%s'."
 msgstr "フォルダ '%s' の中にファイルはありません。"
 
-#: gphoto2/actions.c:113
+#: gphoto2/actions.c:175
 #, c-format
 msgid "There is one file in folder '%s':"
 msgstr "フォルダ '%s' の中にファイルが一つあります:"
 
-#: gphoto2/actions.c:117
+#: gphoto2/actions.c:180
 #, c-format
 msgid "There are %i files in folder '%s':"
 msgstr "%i 個のファイルがフォルダ '%s' の中にあります:"
 
-#: gphoto2/actions.c:138
+#: gphoto2/actions.c:201
 #, c-format
 msgid "Information on file '%s' (folder '%s'):\n"
 msgstr "ファイル '%s' (フォルダ '%s') の情報:\n"
 
-#: gphoto2/actions.c:140
+#: gphoto2/actions.c:203
 msgid "File:\n"
 msgstr "ファイル:\n"
 
-#: gphoto2/actions.c:142 gphoto2/actions.c:176 gphoto2/actions.c:192
+#: gphoto2/actions.c:205 gphoto2/actions.c:239 gphoto2/actions.c:255
 msgid "  None available.\n"
 msgstr " 使用不可です。\n"
 
-#: gphoto2/actions.c:145
+#: gphoto2/actions.c:208
 #, c-format
 msgid "  Name:        '%s'\n"
 msgstr "  名前:        '%s'\n"
 
-#: gphoto2/actions.c:147 gphoto2/actions.c:179
+#: gphoto2/actions.c:210 gphoto2/actions.c:242
 #, c-format
 msgid "  Mime type:   '%s'\n"
 msgstr "  MIME 型:     '%s'\n"
 
-#: gphoto2/actions.c:149 gphoto2/actions.c:181
+#: gphoto2/actions.c:212 gphoto2/actions.c:244
 #, c-format
 msgid "  Size:        %li byte(s)\n"
 msgstr "  サイズ:      %li バイト\n"
 
-#: gphoto2/actions.c:151 gphoto2/actions.c:183
+#: gphoto2/actions.c:214 gphoto2/actions.c:246
 #, c-format
 msgid "  Width:       %i pixel(s)\n"
 msgstr "  横:          %i ピクセル\n"
 
-#: gphoto2/actions.c:153 gphoto2/actions.c:185
+#: gphoto2/actions.c:216 gphoto2/actions.c:248
 #, c-format
 msgid "  Height:      %i pixel(s)\n"
 msgstr "  縦:          %i ピクセル\n"
 
-#: gphoto2/actions.c:155 gphoto2/actions.c:187
+#: gphoto2/actions.c:218 gphoto2/actions.c:250
 #, c-format
 msgid "  Downloaded:  %s\n"
 msgstr " ダウンロード済:  %s\n"
 
-#: gphoto2/actions.c:156 gphoto2/actions.c:188 gphoto2/actions.c:200
-#: gphoto2/main.c:379 gphoto2/main.c:381 gphoto2/main.c:400 gphoto2/main.c:402
-#: gphoto2/main.c:404 gphoto2/main.c:406
+#: gphoto2/actions.c:219 gphoto2/actions.c:251 gphoto2/actions.c:263
+#: gphoto2/actions.c:560 gphoto2/actions.c:562 gphoto2/actions.c:579
+#: gphoto2/actions.c:582 gphoto2/actions.c:585 gphoto2/actions.c:588
 msgid "yes"
 msgstr "はい"
 
-#: gphoto2/actions.c:156 gphoto2/actions.c:188 gphoto2/actions.c:200
-#: gphoto2/main.c:379 gphoto2/main.c:381 gphoto2/main.c:400 gphoto2/main.c:402
-#: gphoto2/main.c:404 gphoto2/main.c:406
+#: gphoto2/actions.c:219 gphoto2/actions.c:251 gphoto2/actions.c:263
+#: gphoto2/actions.c:560 gphoto2/actions.c:562 gphoto2/actions.c:579
+#: gphoto2/actions.c:582 gphoto2/actions.c:585 gphoto2/actions.c:588
 msgid "no"
 msgstr "いいえ"
 
-#: gphoto2/actions.c:158
+#: gphoto2/actions.c:221
 msgid "  Permissions: "
 msgstr "  権限: "
 
-#: gphoto2/actions.c:161
+#: gphoto2/actions.c:224
 msgid "read/delete"
 msgstr "読み込み/削除"
 
-#: gphoto2/actions.c:163
+#: gphoto2/actions.c:226
 msgid "read"
 msgstr "読み込み"
 
-#: gphoto2/actions.c:165
+#: gphoto2/actions.c:228
 msgid "delete"
 msgstr "削除"
 
-#: gphoto2/actions.c:167
+#: gphoto2/actions.c:230
 msgid "none"
 msgstr "なし"
 
-#: gphoto2/actions.c:171
+#: gphoto2/actions.c:234
 #, c-format
 msgid "  Time:        %s"
 msgstr "  時間:        %s"
 
-#: gphoto2/actions.c:174
+#: gphoto2/actions.c:237
 msgid "Thumbnail:\n"
 msgstr "サムネイル:\n"
 
-#: gphoto2/actions.c:190
+#: gphoto2/actions.c:253
 msgid "Audio data:\n"
 msgstr "オーディオデータ:\n"
 
-#: gphoto2/actions.c:195
+#: gphoto2/actions.c:258
 #, c-format
 msgid "  Mime type:  '%s'\n"
 msgstr "  MIME 型:    '%s'\n"
 
-#: gphoto2/actions.c:197
+#: gphoto2/actions.c:260
 #, c-format
 msgid "  Size:       %li byte(s)\n"
 msgstr "  サイズ:     %li バイト\n"
 
-#: gphoto2/actions.c:199
+#: gphoto2/actions.c:262
 #, c-format
 msgid "  Downloaded: %s\n"
 msgstr " ダウンロード済: %s\n"
 
-#: gphoto2/actions.c:331
+#: gphoto2/actions.c:393
 msgid "Could not parse EXIF data."
 msgstr "EXIF データを解析できませんでした。"
 
-#: gphoto2/actions.c:335
+#: gphoto2/actions.c:397
 msgid "EXIF tags:"
 msgstr "EXIF タグ:"
 
-#: gphoto2/actions.c:338
+#: gphoto2/actions.c:400
 msgid "Tag"
 msgstr "タグ"
 
-#: gphoto2/actions.c:340
+#: gphoto2/actions.c:402
 msgid "Value"
 msgstr "値"
 
-#: gphoto2/actions.c:361
+#: gphoto2/actions.c:423
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
 msgstr "EXIF データにサムネイルがあります (%i バイト)。"
 
-#: gphoto2/actions.c:370
+#: gphoto2/actions.c:432
 msgid "gphoto2 has been compiled without EXIF support."
 msgstr "この gphoto2 は EXIF をサポートしていません。"
 
-#: gphoto2/foreach.c:229
+#: gphoto2/actions.c:450
+#, c-format
+msgid "Number of supported cameras: %i\n"
+msgstr "サポートしているカメラの数: %i\n"
+
+#: gphoto2/actions.c:452
+msgid "Supported cameras:\n"
+msgstr "サポートするカメラ:\n"
+
+#: gphoto2/actions.c:465
+#, c-format
+msgid "\t\"%s\" (TESTING)\n"
+msgstr "\t\"%s\" (テスト)\n"
+
+#: gphoto2/actions.c:468
+#, c-format
+msgid "\t\"%s\" (EXPERIMENTAL)\n"
+msgstr "\t\"%s\" (開発向け)\n"
+
+#: gphoto2/actions.c:473
+#, c-format
+msgid "\t\"%s\"\n"
+msgstr "\t\"%s\"\n"
+
+#: gphoto2/actions.c:501
+#, c-format
+msgid "Devices found: %i\n"
+msgstr "検出したデバイス数: %i\n"
+
+#: gphoto2/actions.c:502
+msgid ""
+"Path                             Description\n"
+"--------------------------------------------------------------\n"
+msgstr ""
+"パス名                           説明\n"
+"--------------------------------------------------------------\n"
+
+#: gphoto2/actions.c:540 gphoto2/actions.c:545
+#, c-format
+msgid "%-30s %-16s\n"
+msgstr "%-30s %-16s\n"
+
+#: gphoto2/actions.c:540
+msgid "Model"
+msgstr "型式"
+
+#: gphoto2/actions.c:540
+msgid "Port"
+msgstr "ポート"
+
+#: gphoto2/actions.c:541
+msgid "----------------------------------------------------------\n"
+msgstr "----------------------------------------------------------\n"
+
+#: gphoto2/actions.c:558
+#, c-format
+msgid "Abilities for camera             : %s\n"
+msgstr "カメラの性能                     : %s\n"
+
+#: gphoto2/actions.c:559
+#, c-format
+msgid "Serial port support              : %s\n"
+msgstr "シリアルポートのサポート         : %s\n"
+
+#: gphoto2/actions.c:561
+#, c-format
+msgid "USB support                      : %s\n"
+msgstr "USB サポート                     : %s\n"
+
+#: gphoto2/actions.c:564
+msgid "Transfer speeds supported        :\n"
+msgstr "サポートする転送スピード         :\n"
+
+#: gphoto2/actions.c:566
+#, c-format
+msgid "                                 : %i\n"
+msgstr "                                 : %i\n"
+
+#: gphoto2/actions.c:569
+msgid "Capture choices                  :\n"
+msgstr "キャプチャの選択                 :\n"
+
+#: gphoto2/actions.c:571
+msgid "                                 : Image\n"
+msgstr "                                 : 画像\n"
+
+#: gphoto2/actions.c:573
+msgid "                                 : Video\n"
+msgstr "                                 : ビデオ\n"
+
+#: gphoto2/actions.c:575
+msgid "                                 : Audio\n"
+msgstr "                                 : オーディオ\n"
+
+#: gphoto2/actions.c:577
+msgid "                                 : Preview\n"
+msgstr "                                 : プレビュー\n"
+
+#: gphoto2/actions.c:578
+#, c-format
+msgid "Configuration support            : %s\n"
+msgstr "セッティングのサポート           : %s\n"
+
+#: gphoto2/actions.c:580
+#, c-format
+msgid "Delete files on camera support   : %s\n"
+msgstr "カメラ内のファイル削除のサポート : %s\n"
+
+#: gphoto2/actions.c:583
+#, c-format
+msgid "File preview (thumbnail) support : %s\n"
+msgstr "プレビューのサポート             : %s\n"
+
+#: gphoto2/actions.c:586
+#, c-format
+msgid "File upload support              : %s\n"
+msgstr "File upload support              : %s\n"
+
+#: gphoto2/actions.c:603
+#, c-format
+msgid ""
+"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
+"colon so I am going to guess what you mean."
+msgstr ""
+"ポートは 'serial:/dev/ttyS0' または 'USB:' のようですが、'%s' はコロン ':' が"
+"ないので適用することができません。"
+
+#: gphoto2/actions.c:642
+#, c-format
+msgid ""
+"The port you specified ('%s') can not be found. Please specify one of the "
+"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
+"(i.e. with prefix 'serial:' or 'usb:')."
+msgstr ""
+"指定したポート ('%s') が見つかりません。'gphoto2 --list-ports' で示されるポー"
+"トの一つを指定して、ポート名のスペルが正しいか確認して下さい (接頭子 "
+"'serial:' または 'usb:')。"
+
+#: gphoto2/actions.c:680
+#, fuzzy
+msgid "About the camera driver:"
+msgstr "カメラのドライバ情報"
+
+#: gphoto2/actions.c:694
+#, fuzzy
+msgid "Camera summary:"
+msgstr ""
+"カメラのサマリ:\n"
+"%s\n"
+
+#: gphoto2/actions.c:708
+#, fuzzy
+msgid "Camera manual:"
+msgstr ""
+"カメラのマニュアル:\n"
+"%s\n"
+
+#: gphoto2/actions.c:724
+msgid "You can only specify speeds for serial ports."
+msgstr ""
+
+#: gphoto2/actions.c:775
+#, c-format
+msgid ""
+"gphoto2 %s\n"
+"\n"
+"Copyright (C) 2000-2002 Lutz Mueller and others\n"
+"%s\n"
+"gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
+"redistribute copies of gphoto2 under the terms of the GNU General Public\n"
+"License. For more information about these matters, see the files named "
+"COPYING.\n"
+"\n"
+"This version of gphoto2 is using the following software versions and "
+"options:\n"
+msgstr ""
+
+#: gphoto2/actions.c:788
+msgid "OS/2 port by Bart van Leeuwen\n"
+msgstr "Bart van Leeuwen : OS/2 のポーティング担当\n"
+
+#: gphoto2/actions.c:902
+#, fuzzy
+msgid ""
+"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
+"MAILING LIST:"
+msgstr ""
+"[メーリングリストにデバッグメッセージを送信する場合は、必ず次の行を挿入して下"
+"さい]:"
+
+#: gphoto2/foreach.c:262
 #, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
@@ -184,7 +379,7 @@ msgstr ""
 "中にはないか、またはサブフォルダのようです。まず最初にファイル一覧から正しい"
 "番号を取得して下さい。"
 
-#: gphoto2/foreach.c:255
+#: gphoto2/foreach.c:288
 #, c-format
 msgid ""
 "Bad file number. You specified %i, but there is only 1 file available in '%"
@@ -193,7 +388,7 @@ msgstr ""
 "ファイル番号がおかしいです。%i を指定しましたが、1個のファイルしか '%s' の中"
 "にありません。"
 
-#: gphoto2/foreach.c:262
+#: gphoto2/foreach.c:295
 #, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
@@ -247,335 +442,191 @@ msgstr "はい"
 msgid "No"
 msgstr "いいえ"
 
-#: gphoto2/main.c:198
+#: gphoto2/main.c:183 gphoto2/main.c:1475
 msgid "Turn on debugging"
 msgstr "デバッグを有効にする"
 
-#: gphoto2/main.c:200
+#: gphoto2/main.c:184 gphoto2/main.c:1477
 msgid "Quiet output (default=verbose)"
 msgstr "簡易出力 (デフォルト=詳細)"
 
-#. Display and die actions
-#: gphoto2/main.c:204
+#: gphoto2/main.c:188 gphoto2/main.c:1481
 msgid "Display version and exit"
 msgstr "バージョン情報を表示して終了する"
 
-#: gphoto2/main.c:205
+#: gphoto2/main.c:189
 msgid "Displays this help screen"
 msgstr "このヘルプを表示する"
 
-#: gphoto2/main.c:206
+#: gphoto2/main.c:190 gphoto2/main.c:1483
 msgid "List supported camera models"
 msgstr "サポートしているカメラ型式の一覧"
 
-#: gphoto2/main.c:207
-msgid "usb.usermap script (dflt=\"usbcam\")"
-msgstr "usb.usermap スクリプト (dflt=\"usbcam\")"
-
-#: gphoto2/main.c:208
-msgid "Create output for usb.usermap"
-msgstr "usb.usermap 形式の出力を作成する"
-
-#: gphoto2/main.c:209
+#: gphoto2/main.c:191 gphoto2/main.c:1485
 msgid "List supported port devices"
 msgstr "サポートしているポート・デバイスの一覧を表示する"
 
-#: gphoto2/main.c:210
+#: gphoto2/main.c:192 gphoto2/main.c:1487
 msgid "Send file to stdout"
 msgstr "標準出力にファイルを送出する"
 
-#: gphoto2/main.c:211
+#: gphoto2/main.c:193 gphoto2/main.c:1489
 msgid "Print filesize before data"
 msgstr "データの前にファイルサイズを出力する"
 
-#: gphoto2/main.c:212
+#: gphoto2/main.c:194 gphoto2/main.c:1491
 msgid "List auto-detected cameras"
 msgstr "自動検出したカメラの一覧を表示する"
 
-#. Settings needed for camera functions
-#: gphoto2/main.c:215
+#: gphoto2/main.c:197 gphoto2/main.c:1493
 msgid "Specify port device"
 msgstr "ポート・デバイスを指定する"
 
-#: gphoto2/main.c:216
+#: gphoto2/main.c:198 gphoto2/main.c:1495
 msgid "Specify serial transfer speed"
 msgstr "シリアル転送スピードを指定する"
 
-#: gphoto2/main.c:217
+#: gphoto2/main.c:199 gphoto2/main.c:1497
 msgid "Specify camera model"
 msgstr "カメラの型式を指定して下さい"
 
-#: gphoto2/main.c:218
+#: gphoto2/main.c:200 gphoto2/main.c:1499
 msgid "Specify a filename"
 msgstr "ファイル名を指定する"
 
-#: gphoto2/main.c:219
+#: gphoto2/main.c:201 gphoto2/main.c:1501
 msgid "(expert only) Override USB IDs"
 msgstr "USB ID の上書き (エキスパート向け)"
 
-#. Actions that depend on settings
-#: gphoto2/main.c:222
+#: gphoto2/main.c:204 gphoto2/main.c:1503
 msgid "Display camera abilities"
 msgstr "カメラの性能を表示する"
 
-#: gphoto2/main.c:223
+#: gphoto2/main.c:205 gphoto2/main.c:1505
 msgid "Specify camera folder (default=\"/\")"
 msgstr "カメラのフォルダを指定する (デフォルト=\"/\")"
 
-#: gphoto2/main.c:224
+#: gphoto2/main.c:206 gphoto2/main.c:1507
 msgid "Recursion (default for download)"
 msgstr "再帰する (デフォルト=ダウンロード)"
 
-#: gphoto2/main.c:225
+#: gphoto2/main.c:207 gphoto2/main.c:1509
 msgid "No recursion (default for deletion)"
 msgstr "再帰しない (デフォルト=削除)"
 
-#: gphoto2/main.c:226
+#: gphoto2/main.c:208 gphoto2/main.c:1511
 msgid "List folders in folder"
 msgstr "フォルダの一覧"
 
-#: gphoto2/main.c:227
+#: gphoto2/main.c:209 gphoto2/main.c:1513
 msgid "List files in folder"
 msgstr "フォルダ内のファイル一覧"
 
-#: gphoto2/main.c:228 gphoto2/main.c:229
+#: gphoto2/main.c:210 gphoto2/main.c:211
 msgid "name"
 msgstr "名前"
 
-#: gphoto2/main.c:228
+#: gphoto2/main.c:210 gphoto2/main.c:1515
 msgid "Create a directory"
 msgstr "ディレクトリの作成"
 
-#: gphoto2/main.c:229
+#: gphoto2/main.c:211 gphoto2/main.c:1517
 msgid "Remove a directory"
 msgstr "ディレクトリの削除"
 
-#: gphoto2/main.c:230
+#: gphoto2/main.c:212 gphoto2/main.c:1519
 msgid "Display number of files"
 msgstr "ファイル数の表示"
 
-#: gphoto2/main.c:231
+#: gphoto2/main.c:213 gphoto2/main.c:1521
 msgid "Get files given in range"
 msgstr "指定した範囲でファイルの取得"
 
-#: gphoto2/main.c:232
+#: gphoto2/main.c:214 gphoto2/main.c:1523
 msgid "Get all files from folder"
 msgstr "フォルダから全てのファイルの取得"
 
-#: gphoto2/main.c:233
+#: gphoto2/main.c:215 gphoto2/main.c:1525
 msgid "Get thumbnails given in range"
 msgstr "指定した範囲でサムネイルの取得"
 
-#: gphoto2/main.c:234
+#: gphoto2/main.c:216 gphoto2/main.c:1528
 msgid "Get all thumbnails from folder"
 msgstr "フォルダから全てのサムネイルの取得"
 
-#: gphoto2/main.c:235
+#: gphoto2/main.c:217 gphoto2/main.c:1531
 msgid "Get raw data given in range"
 msgstr "指定した範囲で生データの取得"
 
-#: gphoto2/main.c:236
+#: gphoto2/main.c:218 gphoto2/main.c:1534
 msgid "Get all raw data from folder"
 msgstr "フォルダから全ての生データの取得"
 
-#: gphoto2/main.c:237
+#: gphoto2/main.c:219 gphoto2/main.c:1537
 msgid "Get audio data given in range"
 msgstr "指定したオーディオデータの取得"
 
-#: gphoto2/main.c:238
+#: gphoto2/main.c:220 gphoto2/main.c:1540
 msgid "Get all audio data from folder"
 msgstr "フォルダからオーディオデータの取得"
 
-#: gphoto2/main.c:239
+#: gphoto2/main.c:221 gphoto2/main.c:1542
 msgid "Delete files given in range"
 msgstr "指定した範囲でファイルの削除"
 
-#: gphoto2/main.c:240
+#: gphoto2/main.c:222 gphoto2/main.c:1544
 msgid "Delete all files in folder"
 msgstr "フォルダの中のファイルを削除"
 
-#: gphoto2/main.c:241
+#: gphoto2/main.c:223 gphoto2/main.c:1546
 msgid "Upload a file to camera"
 msgstr "ファイルをカメラにアップロード"
 
-#: gphoto2/main.c:243
+#: gphoto2/main.c:225 gphoto2/main.c:1549
 msgid "Configure"
 msgstr "設定"
 
-#: gphoto2/main.c:245
+#: gphoto2/main.c:227 gphoto2/main.c:1553
 msgid "Capture a quick preview"
 msgstr "キャプチャの簡易プレビュー"
 
-#: gphoto2/main.c:246
+#: gphoto2/main.c:228 gphoto2/main.c:1555
 msgid "Capture an image"
 msgstr "画像のキャプチャ"
 
-#: gphoto2/main.c:247
+#: gphoto2/main.c:229
 msgid "Capture a movie "
 msgstr "映像のキャプチャ"
 
-#: gphoto2/main.c:248
+#: gphoto2/main.c:230 gphoto2/main.c:1559
 msgid "Capture an audio clip"
 msgstr "オーディオのキャプチャ"
 
-#: gphoto2/main.c:250 gphoto2/shell.c:130
+#: gphoto2/main.c:232 gphoto2/main.c:1562 gphoto2/shell.c:131
 msgid "Show EXIF information"
 msgstr "EXIF 情報の表示"
 
-#: gphoto2/main.c:252 gphoto2/shell.c:126
+#: gphoto2/main.c:234 gphoto2/main.c:1565 gphoto2/shell.c:127
 msgid "Show info"
 msgstr "情報の表示"
 
-#: gphoto2/main.c:253
+#: gphoto2/main.c:235
 msgid "Summary of camera status"
 msgstr "カメラ状態のサマリ"
 
-#: gphoto2/main.c:254
+#: gphoto2/main.c:236
 msgid "Camera driver manual"
 msgstr "カメラのドライバのマニュアル"
 
-#: gphoto2/main.c:255
+#: gphoto2/main.c:237
 msgid "About the camera driver"
 msgstr "カメラのドライバ情報"
 
-#: gphoto2/main.c:256
+#: gphoto2/main.c:238 gphoto2/main.c:1573
 msgid "gPhoto shell"
 msgstr "gPhoto シェル"
 
-#: gphoto2/main.c:347 gphoto2/main.c:352
-#, c-format
-msgid "%-30s %-16s\n"
-msgstr "%-30s %-16s\n"
-
-#: gphoto2/main.c:347
-msgid "Model"
-msgstr "型式"
-
-#: gphoto2/main.c:347
-msgid "Port"
-msgstr "ポート"
-
-#: gphoto2/main.c:348
-msgid "----------------------------------------------------------\n"
-msgstr "----------------------------------------------------------\n"
-
-#: gphoto2/main.c:365
-msgid "You need to specify a camera model"
-msgstr "カメラの型式を指定して下さい"
-
-#. Output a parsing friendly abilities table. Split on ":"
-#: gphoto2/main.c:376
-#, c-format
-msgid "Abilities for camera             : %s\n"
-msgstr "カメラの性能                     : %s\n"
-
-#: gphoto2/main.c:378
-#, c-format
-msgid "Serial port support              : %s\n"
-msgstr "シリアルポートのサポート         : %s\n"
-
-#: gphoto2/main.c:380
-#, c-format
-msgid "USB support                      : %s\n"
-msgstr "USB サポート                     : %s\n"
-
-#: gphoto2/main.c:383
-msgid "Transfer speeds supported        :\n"
-msgstr "サポートする転送スピード         :\n"
-
-#: gphoto2/main.c:386
-#, c-format
-msgid "                                 : %i\n"
-msgstr "                                 : %i\n"
-
-#: gphoto2/main.c:390
-msgid "Capture choices                  :\n"
-msgstr "キャプチャの選択                 :\n"
-
-#: gphoto2/main.c:392
-msgid "                                 : Image\n"
-msgstr "                                 : 画像\n"
-
-#: gphoto2/main.c:394
-msgid "                                 : Video\n"
-msgstr "                                 : ビデオ\n"
-
-#: gphoto2/main.c:396
-msgid "                                 : Audio\n"
-msgstr "                                 : オーディオ\n"
-
-#: gphoto2/main.c:398
-msgid "                                 : Preview\n"
-msgstr "                                 : プレビュー\n"
-
-#: gphoto2/main.c:399
-#, c-format
-msgid "Configuration support            : %s\n"
-msgstr "セッティングのサポート           : %s\n"
-
-#: gphoto2/main.c:401
-#, c-format
-msgid "Delete files on camera support   : %s\n"
-msgstr "カメラ内のファイル削除のサポート : %s\n"
-
-#: gphoto2/main.c:403
-#, c-format
-msgid "File preview (thumbnail) support : %s\n"
-msgstr "プレビューのサポート             : %s\n"
-
-#: gphoto2/main.c:405
-#, c-format
-msgid "File upload support              : %s\n"
-msgstr "File upload support              : %s\n"
-
-#: gphoto2/main.c:425
-#, c-format
-msgid "Number of supported cameras: %i\n"
-msgstr "サポートしているカメラの数: %i\n"
-
-#: gphoto2/main.c:426
-msgid "Supported cameras:\n"
-msgstr "サポートするカメラ:\n"
-
-#: gphoto2/main.c:437
-#, c-format
-msgid "\t\"%s\" (TESTING)\n"
-msgstr "\t\"%s\" (テスト)\n"
-
-#: gphoto2/main.c:440
-#, c-format
-msgid "\t\"%s\" (EXPERIMENTAL)\n"
-msgstr "\t\"%s\" (開発向け)\n"
-
-#: gphoto2/main.c:444
-#, c-format
-msgid "\t\"%s\"\n"
-msgstr "\t\"%s\"\n"
-
-#: gphoto2/main.c:544
-#, c-format
-msgid "Devices found: %i\n"
-msgstr "検出したデバイス数: %i\n"
-
-#: gphoto2/main.c:545
-msgid ""
-"Path                             Description\n"
-"--------------------------------------------------------------\n"
-msgstr ""
-"パス名                           説明\n"
-"--------------------------------------------------------------\n"
-
-#. User didn't specify the port type; try to guess it
-#: gphoto2/main.c:582
-#, c-format
-msgid ""
-"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
-"colon so I am going to guess what you mean."
-msgstr ""
-"ポートは 'serial:/dev/ttyS0' または 'USB:' のようですが、'%s' はコロン ':' が"
-"ないので適用することができません。"
-
-#: gphoto2/main.c:633
+#: gphoto2/main.c:365 gphoto2/main.c:1206
 msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
 "c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
@@ -583,111 +634,204 @@ msgstr ""
 "検出された USB デバイスを使用するために a:b=c:d という書式を使用して下さい。"
 "a, b, c, d は '0x' で始まる 16 進の数値にして下さい。\n"
 
-#: gphoto2/main.c:664
-msgid ""
-"ALWAYS INCLUDE THE FOLLOWING LINE WHEN SENDING DEBUG MESSAGES TO THE MAILING "
-"LIST:"
+#: gphoto2/main.c:488
+msgid "Jan"
 msgstr ""
-"[メーリングリストにデバッグメッセージを送信する場合は、必ず次の行を挿入して下"
-"さい]:"
 
-#: gphoto2/main.c:783
+#: gphoto2/main.c:488
+msgid "January"
+msgstr ""
+
+#: gphoto2/main.c:489
+msgid "Feb"
+msgstr ""
+
+#: gphoto2/main.c:489
+msgid "February"
+msgstr ""
+
+#: gphoto2/main.c:490
+#, fuzzy
+msgid "Mar"
+msgstr "マクロ"
+
+#: gphoto2/main.c:490
+#, fuzzy
+msgid "March"
+msgstr "マクロ"
+
+#: gphoto2/main.c:491
+msgid "Apr"
+msgstr ""
+
+#: gphoto2/main.c:491
+msgid "April"
+msgstr ""
+
+#: gphoto2/main.c:492
+msgid "May"
+msgstr ""
+
+#: gphoto2/main.c:493
+msgid "Jun"
+msgstr ""
+
+#: gphoto2/main.c:493
+msgid "June"
+msgstr ""
+
+#: gphoto2/main.c:494
+msgid "Jul"
+msgstr ""
+
+#: gphoto2/main.c:494
+msgid "July"
+msgstr ""
+
+#: gphoto2/main.c:495
+msgid "Aug"
+msgstr ""
+
+#: gphoto2/main.c:495
+#, fuzzy
+msgid "August"
+msgstr "自動"
+
+#: gphoto2/main.c:496
+#, fuzzy
+msgid "Sep"
+msgstr "セピア"
+
+#: gphoto2/main.c:496
+msgid "September"
+msgstr ""
+
+#: gphoto2/main.c:497
+msgid "Oct"
+msgstr ""
+
+#: gphoto2/main.c:497
+msgid "October"
+msgstr ""
+
+#: gphoto2/main.c:498
+#, fuzzy
+msgid "Nov"
+msgstr "いいえ"
+
+#: gphoto2/main.c:498
+msgid "November"
+msgstr ""
+
+#: gphoto2/main.c:499
+msgid "Dec"
+msgstr ""
+
+#: gphoto2/main.c:499
+msgid "December"
+msgstr ""
+
+#: gphoto2/main.c:506
+msgid "Sun"
+msgstr ""
+
+#: gphoto2/main.c:506
+msgid "Sunday"
+msgstr ""
+
+#: gphoto2/main.c:507
+#, fuzzy
+msgid "Mon"
+msgstr "ON"
+
+#: gphoto2/main.c:507
+msgid "Monday"
+msgstr ""
+
+#: gphoto2/main.c:508
+msgid "Tue"
+msgstr ""
+
+#: gphoto2/main.c:508
+msgid "Tuesday"
+msgstr ""
+
+#: gphoto2/main.c:509
+#, fuzzy
+msgid "Wed"
+msgstr "赤"
+
+#: gphoto2/main.c:509
+msgid "Wednesday"
+msgstr ""
+
+#: gphoto2/main.c:510
+msgid "Thu"
+msgstr ""
+
+#: gphoto2/main.c:510
+msgid "Thursday"
+msgstr ""
+
+#: gphoto2/main.c:511
+msgid "Fri"
+msgstr ""
+
+#: gphoto2/main.c:511
+msgid "Friday"
+msgstr ""
+
+#: gphoto2/main.c:512
+msgid "Sat"
+msgstr ""
+
+#: gphoto2/main.c:512
+msgid "Saturday"
+msgstr ""
+
+#: gphoto2/main.c:569
 #, c-format
-msgid "Number of files in folder %s: %i\n"
-msgstr "フォルダ %s 内のファイルの数: %i\n"
+msgid "You cannot use '%n' in combination with non-persistent files!"
+msgstr ""
 
-#: gphoto2/main.c:817
+#: gphoto2/main.c:592
 #, c-format
-msgid "Using filename '%s'..."
-msgstr "ファイル名 '%s' の使用中..."
+msgid "The filename provided by the camera ('%s') does not contain a suffix!"
+msgstr ""
 
-#: gphoto2/main.c:844
+#: gphoto2/main.c:668
+#, c-format
+msgid "Invalid format '%s' (error at position %i)."
+msgstr ""
+
+#: gphoto2/main.c:715
 #, c-format
 msgid "File %s exists. Overwrite? [y|n] "
 msgstr "ファイル %s は存在します。上書きしますか？ [y|n] "
 
-#: gphoto2/main.c:855
+#: gphoto2/main.c:726
 msgid "Specify new filename? [y|n] "
 msgstr "新しいファイル名を指定しますか？ [y|n] "
 
-#: gphoto2/main.c:864
+#: gphoto2/main.c:735
 msgid "Enter new filename: "
 msgstr "新しいファイル名: "
 
-#: gphoto2/main.c:869
+#: gphoto2/main.c:740
 #, c-format
 msgid "Saving file as %s\n"
 msgstr "ファイルを %s で保存します\n"
 
-#: gphoto2/main.c:873
-#, c-format
-msgid "Can not save file as %s"
-msgstr "ファイルを %s で保存できません"
-
-#: gphoto2/main.c:1101
+#: gphoto2/main.c:932
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "新しいファイルの格納場所: %s%s%s\n"
 
-#: gphoto2/main.c:1159
-#, c-format
-msgid ""
-"Camera Summary:\n"
-"%s\n"
-msgstr ""
-"カメラのサマリ:\n"
-"%s\n"
-
-#: gphoto2/main.c:1171
-#, c-format
-msgid ""
-"Camera Manual:\n"
-"%s\n"
-msgstr ""
-"カメラのマニュアル:\n"
-"%s\n"
-
-#: gphoto2/main.c:1183
-#, c-format
-msgid ""
-"About the library:\n"
-"%s\n"
-msgstr ""
-"ライブラリ情報:\n"
-"%s\n"
-
-#: gphoto2/main.c:1344
-msgid "Please specify a model."
-msgstr "型式を指定して下さい。"
-
-#: gphoto2/main.c:1372
-#, c-format
-msgid ""
-"The port you specified ('%s') can not be found. Please specify one of the "
-"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
-"(i.e. with prefix 'serial:' or 'usb:')."
-msgstr ""
-"指定したポート ('%s') が見つかりません。'gphoto2 --list-ports' で示されるポー"
-"トの一つを指定して、ポート名のスペルが正しいか確認して下さい (接頭子 "
-"'serial:' または 'usb:')。"
-
-#: gphoto2/main.c:1389
-msgid "Please specify a port."
-msgstr "ポートを一つ指定して下さい。"
-
-#: gphoto2/main.c:1441
-msgid "*** Error ***              \n"
-msgstr "*** エラー ***             \n"
-
-#: gphoto2/main.c:1606
-msgid "Press any key to continue.\n"
-msgstr "何かキーを押すと続行します。\n"
-
-#: gphoto2/main.c:1661
+#: gphoto2/main.c:1064
 msgid "ERROR: "
 msgstr "エラー: "
 
-#: gphoto2/main.c:1684
+#: gphoto2/main.c:1087
 msgid ""
 "\n"
 "Aborting...\n"
@@ -695,11 +839,11 @@ msgstr ""
 "\n"
 "停止中...\n"
 
-#: gphoto2/main.c:1690
+#: gphoto2/main.c:1093
 msgid "Aborted.\n"
 msgstr "停止しました。\n"
 
-#: gphoto2/main.c:1695
+#: gphoto2/main.c:1098
 msgid ""
 "\n"
 "Cancelling...\n"
@@ -707,36 +851,25 @@ msgstr ""
 "\n"
 "キャンセル中...\n"
 
-#: gphoto2/main.c:1742
-msgid ""
-"gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
-"location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
-msgstr ""
-"OS/2 向けの gPhoto2 では環境変数 ${CAMLIBS} にカメラ・ライブラリへのパスを設"
-"定する必要があります。(例) SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+#: gphoto2/main.c:1305
+#, fuzzy
+msgid "gphoto2 has been compiled without support for CDK."
+msgstr "この gphoto2 は EXIF をサポートしていません。"
 
-#: gphoto2/main.c:1752
-msgid ""
-"gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
-"location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-msgstr ""
-"OS/2 向けの gPhoto2 では環境変数 ${IOLIBS} にカメラの I/O ライブラリへのパス"
-"に設定する必要があります。(例) SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-
-#: gphoto2/main.c:1793
+#: gphoto2/main.c:1418
 msgid "Operation cancelled.\n"
 msgstr "操作がキャンセルされました。\n"
 
-#: gphoto2/main.c:1796
-#, c-format
+#: gphoto2/main.c:1422
+#, fuzzy, c-format
 msgid ""
-"*** Error ('%s') ***       \n"
+"*** Error (%i: '%s') ***       \n"
 "\n"
 msgstr ""
 "*** エラー ('%s') ***      \n"
 "\n"
 
-#: gphoto2/main.c:1802
+#: gphoto2/main.c:1426
 msgid ""
 "For debugging messages, please use the --debug option.\n"
 "Debugging messages may help finding a solution to your problem.\n"
@@ -753,27 +886,76 @@ msgstr ""
 "以下のように gphoto2 を起動して下さい:\n"
 "\n"
 
-#: gphoto2/options.c:193
-#, c-format
-msgid ""
-"gPhoto (v%s) - Cross-platform digital camera library.\n"
-"Copyright (C) 2000-2002 Scott Fritzinger and others\n"
-"%sLicensed under the Library GNU Public License (LGPL).\n"
+#: gphoto2/main.c:1479
+msgid "Overwrite files without asking."
 msgstr ""
-"gPhoto (v%s) - Cross-platform ディジタルカメラ・ライブラリ。\n"
-"Copyright (C) 2000-2002 Scott Fritzinger 他\n"
-"Library GNU 公有使用許諾契約書 (LGPL) 下の %sライセンス了承済み\n"
+
+#: gphoto2/main.c:1493
+msgid "path"
+msgstr ""
+
+#: gphoto2/main.c:1495
+msgid "speed"
+msgstr ""
+
+#: gphoto2/main.c:1497
+#, fuzzy
+msgid "model"
+msgstr "型式"
+
+#: gphoto2/main.c:1499
+#, fuzzy
+msgid "filename"
+msgstr "ファイン"
+
+#: gphoto2/main.c:1501
+msgid "usbid"
+msgstr ""
+
+#: gphoto2/main.c:1505
+msgid "folder"
+msgstr ""
+
+#: gphoto2/main.c:1557
+#, fuzzy
+msgid "Capture a movie"
+msgstr "映像のキャプチャ"
+
+#: gphoto2/main.c:1567
+msgid "Show summary"
+msgstr ""
+
+#: gphoto2/main.c:1569
+#, fuzzy
+msgid "Show camera driver manual"
+msgstr "カメラのドライバのマニュアル"
+
+#: gphoto2/main.c:1571
+#, fuzzy
+msgid "About the camera driver manual"
+msgstr "カメラのドライバ情報"
+
+#: gphoto2/main.c:1796
+msgid ""
+"gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
+"location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+msgstr ""
+"OS/2 向けの gPhoto2 では環境変数 ${CAMLIBS} にカメラ・ライブラリへのパスを設"
+"定する必要があります。(例) SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+
+#: gphoto2/main.c:1806
+msgid ""
+"gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
+"location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
+msgstr ""
+"OS/2 向けの gPhoto2 では環境変数 ${IOLIBS} にカメラの I/O ライブラリへのパス"
+"に設定する必要があります。(例) SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
 
 #: gphoto2/options.c:199
-msgid "OS/2 port by Bart van Leeuwen\n"
-msgstr "Bart van Leeuwen : OS/2 のポーティング担当\n"
-
-#: gphoto2/options.c:214
 msgid "Usage:\n"
 msgstr "用法:\n"
 
-#. Make this 79 characters long. Some languages need the space.
-#: gphoto2/options.c:217
+#: gphoto2/options.c:202
 msgid ""
 "Short/long options (& argument)        Description\n"
 "--------------------------------------------------------------------------------\n"
@@ -781,17 +963,12 @@ msgstr ""
 "オプション (含む引数)                  説明\n"
 "--------------------------------------------------------------------------------\n"
 
-#. The format line is made translatable so that some
-#. languages can make the table a bit tighter. Make
-#. sure you only use 79 characters (since #80 is
-#. needed for the line break).
-#: gphoto2/options.c:242
+#: gphoto2/options.c:227
 #, c-format
 msgid "%-38s %s\n"
 msgstr "%-38s %s\n"
 
-#. Make this 79 characters long. Some languages need the space.
-#: gphoto2/options.c:247
+#: gphoto2/options.c:232
 msgid ""
 "--------------------------------------------------------------------------------\n"
 "[Use double-quotes around arguments]        [Picture numbers begin with one "
@@ -859,2437 +1036,121 @@ msgstr ""
 msgid "*** Error (%i: '%s') ***"
 msgstr "*** エラー (%i: '%s') ***"
 
-#: gphoto2/shell.c:115
+#: gphoto2/shell.c:116
 msgid "Change to a directory on the camera"
 msgstr "カメラ上でディレクトリを変更します"
 
-#: gphoto2/shell.c:116 gphoto2/shell.c:118
+#: gphoto2/shell.c:117 gphoto2/shell.c:119
 msgid "directory"
 msgstr "ディレクトリ"
 
-#: gphoto2/shell.c:117
+#: gphoto2/shell.c:118
 msgid "Change to a directory on the local drive"
 msgstr "ローカルディスク上でディレクトリを変更します"
 
-#: gphoto2/shell.c:119 gphoto2/shell.c:137 gphoto2/shell.c:138
+#: gphoto2/shell.c:120 gphoto2/shell.c:138 gphoto2/shell.c:139
 msgid "Exit the gPhoto shell"
 msgstr "gPhoto シェルを終了します"
 
-#: gphoto2/shell.c:120
+#: gphoto2/shell.c:121
 msgid "Download a file"
 msgstr "ファイルのダウンロード"
 
-#: gphoto2/shell.c:120 gphoto2/shell.c:123 gphoto2/shell.c:125
-#: gphoto2/shell.c:127 gphoto2/shell.c:128 gphoto2/shell.c:131
+#: gphoto2/shell.c:121 gphoto2/shell.c:124 gphoto2/shell.c:126
+#: gphoto2/shell.c:128 gphoto2/shell.c:129 gphoto2/shell.c:132
 msgid "[directory/]filename"
 msgstr "[ディレクトリ/]ファイル名"
 
-#: gphoto2/shell.c:122
+#: gphoto2/shell.c:123
 msgid "Download a thumbnail"
 msgstr "サムネイルのダウンロード"
 
-#: gphoto2/shell.c:124
+#: gphoto2/shell.c:125
 msgid "Download raw data"
 msgstr "生データのダウンロード"
 
-#: gphoto2/shell.c:128
+#: gphoto2/shell.c:129
 msgid "Delete"
 msgstr "削除"
 
-#: gphoto2/shell.c:133 gphoto2/shell.c:139
+#: gphoto2/shell.c:134 gphoto2/shell.c:140
 msgid "Displays command usage"
 msgstr "コマンドの用法を表示する"
 
-#: gphoto2/shell.c:134 gphoto2/shell.c:139
+#: gphoto2/shell.c:135 gphoto2/shell.c:140
 msgid "[command]"
 msgstr "[コマンド]"
 
-#: gphoto2/shell.c:135
+#: gphoto2/shell.c:136
 msgid "List the contents of the current directory"
 msgstr "このディレクトリの一覧を表示します"
 
-#: gphoto2/shell.c:136
+#: gphoto2/shell.c:137
 msgid "[directory/]"
 msgstr "[ディレクトリ/]"
 
-#: gphoto2/shell.c:418
+#: gphoto2/shell.c:423
 msgid "Invalid command."
 msgstr "コマンドが正しくありません。"
 
-#: gphoto2/shell.c:427
+#: gphoto2/shell.c:432
 #, c-format
 msgid "The command '%s' requires an argument."
 msgstr "コマンド '%s' には引数が必要です。"
 
-#: gphoto2/shell.c:480
+#: gphoto2/shell.c:485
 msgid "Invalid path."
 msgstr "パス名が正しくありません。"
 
-#: gphoto2/shell.c:526
+#: gphoto2/shell.c:531
 msgid "Could not find home directory."
 msgstr "ホーム・ディレクトリが見つかりませんでした。"
 
-#: gphoto2/shell.c:534
+#: gphoto2/shell.c:539
 #, c-format
 msgid "Could not change to local directory '%s'."
 msgstr "ローカルのディレクトリ '%s' に移動できませんでした。"
 
-#: gphoto2/shell.c:537
+#: gphoto2/shell.c:542
 #, c-format
 msgid "Local directory now '%s'."
 msgstr "現在のローカルディレクトリは '%s' です。"
 
-#: gphoto2/shell.c:568
+#: gphoto2/shell.c:577
 #, c-format
 msgid "Remote directory now '%s'."
 msgstr "現在のリモートのディレクトリは '%s' です。"
 
-#: gphoto2/shell.c:729
+#: gphoto2/shell.c:732
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
 msgstr ""
 "コマンド '%s' が見つかりませんでした。'help' で利用可能なコマンド一覧を表示し"
 "ます。"
 
-#. Print the command's syntax.
-#: gphoto2/shell.c:736
+#: gphoto2/shell.c:739
 #, c-format
 msgid "Help on \"%s\":"
 msgstr "\"%s\" のヘルプ:"
 
-#: gphoto2/shell.c:738
+#: gphoto2/shell.c:741
 msgid "Usage:"
 msgstr "用法:"
 
-#: gphoto2/shell.c:742
+#: gphoto2/shell.c:745
 msgid "Description:"
 msgstr "説明:"
 
-#: gphoto2/shell.c:744
+#: gphoto2/shell.c:747
 msgid "* Arguments in brackets [] are optional"
 msgstr "* [] 内の引数はオプションです。"
 
-#. No command specified. Print command listing.
-#: gphoto2/shell.c:765
+#: gphoto2/shell.c:768
 msgid "Available commands:"
 msgstr "利用可能なコマンド:"
 
-#: gphoto2/shell.c:770
+#: gphoto2/shell.c:773
 msgid "To get help on a particular command, type in 'help command-name'."
 msgstr ""
 "特定のコマンドに対するヘルプを表示する場合は 'help コマンド名' と入力して下さ"
 "い。"
-
-#~ msgid "Number of pictures: %d"
-#~ msgstr "写真の数: %d"
-
-#~ msgid ""
-#~ "Agfa CL18\n"
-#~ "Vince Weaver <vince@deater.net>\n"
-#~ msgstr ""
-#~ "Agfa CL18\n"
-#~ "Vince Weaver <vince@deater.net>\n"
-
-#~ msgid ""
-#~ "Number of pictures: %i\n"
-#~ "Firmware Version: %s"
-#~ msgstr ""
-#~ "写真の数: %i\n"
-#~ "ファームウェア・バージョン: %s"
-
-#~ msgid ""
-#~ "Barbie/HotWheels/WWF\n"
-#~ "Scott Fritzinger <scottf@unr.edu>\n"
-#~ "Andreas Meyer <ahm@spies.com>\n"
-#~ "Pete Zaitcev <zaitcev@metabyte.com>\n"
-#~ "\n"
-#~ "Reverse engineering of image data by:\n"
-#~ "Jeff Laing <jeffl@SPATIALinfo.com>\n"
-#~ "\n"
-#~ "Implemented using documents found on\n"
-#~ "the web. Permission given by Vision."
-#~ msgstr ""
-#~ "Barbie/HotWheels/WWF\n"
-#~ "Scott Fritzinger <scottf@unr.edu>\n"
-#~ "Andreas Meyer <ahm@spies.com>\n"
-#~ "Pete Zaitcev <zaitcev@metabyte.com>\n"
-#~ "\n"
-#~ "画像データのリバースエンジニアリング担当:\n"
-#~ "Jeff Laing <jeffl@SPATIALinfo.com>\n"
-#~ "\n"
-#~ "WEB 上に実装済みの使用方法のドキュメント\n"
-#~ "があります。Vison の承諾済み。"
-
-#~ msgid ""
-#~ "Name '%s' (%i characters) too long (%i chars), maximal 30 characters are "
-#~ "allowed."
-#~ msgstr ""
-#~ "名前 '%s' (%i 個の文字) は長すぎます (%i 個の文字)。最大 30 文字まで有効で"
-#~ "す。"
-
-#~ msgid "File protected."
-#~ msgstr "ファイルが保護されています。"
-
-#~ msgid ""
-#~ "For the A50, 115200 may not be faster than 57600\n"
-#~ "Folders are NOT supported\n"
-#~ "if you experience a lot of transmissions errors, try to have you computer "
-#~ "as idle as possible (ie: no disk activity)"
-#~ msgstr ""
-#~ "A50 や 115200 だと 576000 よりも遅くなります。\n"
-#~ "フォルダはサポートしていません。\n"
-#~ "たくさんのトランスミッション・エラーが発生した場合は、アイドル中のコン"
-#~ "ピュータで可能な限り待ってみて下さい。(ディスクアクセスしない)"
-
-#~ msgid "Camera unavailable"
-#~ msgstr "カメラが無効です"
-
-#~ msgid "Switching Camera Off"
-#~ msgstr "カメラを OFF にします"
-
-#~ msgid "Error capturing image"
-#~ msgstr "画像のキャプチャ中にエラー"
-
-#~ msgid "Could not get disk name: %s"
-#~ msgstr "ディスク名を取得することが出来ませんでした: %s"
-
-#~ msgid "No reason available"
-#~ msgstr "使用不可の理由"
-
-#~ msgid "Could not get disk info: %s"
-#~ msgstr "ディスク情報を取得することが出来ませんでした: %s"
-
-#~ msgid ""
-#~ "  Drive %s\n"
-#~ "  %11s bytes total\n"
-#~ "  %11s bytes available"
-#~ msgstr ""
-#~ "  ドライブ %s\n"
-#~ "  合計 %11s バイト\n"
-#~ "  %11s バイト有効"
-
-#~ msgid "AC adapter"
-#~ msgstr "AC アダプタ"
-
-#~ msgid "on battery"
-#~ msgstr "バッテリ容量"
-
-#~ msgid "power OK"
-#~ msgstr "電源 ○"
-
-#~ msgid "power bad"
-#~ msgstr "電源 ×"
-
-#~ msgid "not available: %s"
-#~ msgstr "使用不可: %s"
-
-#~ msgid "%s (host time %s%i seconds)"
-#~ msgstr "%s (host 時間 %s%i 秒)"
-
-#~ msgid ""
-#~ "\n"
-#~ "Camera identification:\n"
-#~ "  Model: %s\n"
-#~ "  Owner: %s\n"
-#~ "\n"
-#~ "Power status: %s\n"
-#~ "\n"
-#~ "Flash disk information:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "Time: %s\n"
-#~ msgstr ""
-#~ "\n"
-#~ "カメラの情報:\n"
-#~ "  型式: %s\n"
-#~ "  所有者: %s\n"
-#~ "\n"
-#~ "電源: %s\n"
-#~ "\n"
-#~ "フラッシュディスク情報:\n"
-#~ "%s\n"
-#~ "\n"
-#~ "時刻: %s\n"
-
-#~ msgid ""
-#~ "Canon PowerShot series driver by\n"
-#~ "Wolfgang G. Reissnegger,\n"
-#~ "Werner Almesberger,\n"
-#~ "Edouard Lafargue,\n"
-#~ "Philippe Marzouk,\n"
-#~ "A5 additions by Ole W. Saastad\n"
-#~ "Holger Klemm\n"
-#~ msgstr ""
-#~ "Cannon PowerShot シリーズのドライバ。\n"
-#~ "Wolfgang G.Reissnegger 氏、\n"
-#~ "Werner Almesberger 氏、\n"
-#~ "Edouard Lafargue 氏、\n"
-#~ "Philippe Marzouk 氏が提供\n"
-#~ "A5 追加は Ole W. Saastad\n"
-#~ "Holger Klemm\n"
-
-#~ msgid "Error deleting file"
-#~ msgstr "ファイルの削除中にエラー"
-
-#~ msgid "Error deleting associated thumbnail file"
-#~ msgstr "共有サムネイルの削除中にエラー"
-
-#~ msgid ""
-#~ "Speeds greater than 57600 are not supported for uploading to this camera"
-#~ msgstr "このカメラにスピード 57600 以上でアップロードすることはできません"
-
-#~ msgid "Could not get flash drive letter"
-#~ msgstr "フラッシュドライブを取得することが出来ませんでした"
-
-#~ msgid ""
-#~ "Could not upload, no free folder name available!\n"
-#~ "999CANON folder name exists and has an AUT_9999.JPG picture in it."
-#~ msgstr ""
-#~ "アップロードできませんでした。使われていないフォルダ名がありません！\n"
-#~ "フォルダ 999CANON は既に存在しており、画像 AUT_9999.JPG がその中にありま"
-#~ "す。"
-
-#~ msgid "Could not create \\DCIM directory."
-#~ msgstr "\\DCIM ディレクトリを作成することが出来ませんでした"
-
-#~ msgid "Could not create destination directory."
-#~ msgstr "対象となるディレクトリを作成することが出来ませんでした"
-
-#~ msgid "Camera and Driver Configuration"
-#~ msgstr "カメラとドライバの設定"
-
-#~ msgid "Camera"
-#~ msgstr "カメラ"
-
-#~ msgid "Camera Model (readonly)"
-#~ msgstr "カメラの型式 (読み取りのみ)"
-
-#~ msgid "Owner name"
-#~ msgstr "所有者の名前"
-
-#~ msgid "Date and Time (readonly)"
-#~ msgstr "日付と時刻 (読み取りのみ)"
-
-#~ msgid "Error"
-#~ msgstr "エラー"
-
-#~ msgid "Unavailable"
-#~ msgstr "使用不可"
-
-#~ msgid "Set camera date to PC date"
-#~ msgstr "カメラの日付を PC の日付にセットします"
-
-#~ msgid "Firmware revision (readonly)"
-#~ msgstr "ファームウェアのリビジョン (読み取りのみ)"
-
-#~ msgid "Power (readonly)"
-#~ msgstr "電源 (読み取りのみ)"
-
-#~ msgid "Driver"
-#~ msgstr "ドライバ"
-
-#~ msgid "List all files"
-#~ msgstr "全ファイルの一覧"
-
-#~ msgid "Keep filename on upload"
-#~ msgstr "アップロード時にファイル名を保持する"
-
-#~ msgid "Owner name changed"
-#~ msgstr "所有者が変更されました"
-
-#~ msgid "could not change owner name"
-#~ msgstr "所有者の名前を変更することが出来ませんでした"
-
-#~ msgid "time set"
-#~ msgstr "時刻のセット"
-
-#~ msgid "could not set time"
-#~ msgstr "時刻をセットすることが出来ませんでした"
-
-#~ msgid "Unsupported port type %i = 0x%x given. Initialization impossible."
-#~ msgstr ""
-#~ "未サポートのポートの種類 %i = 0x%x が指定されました。初期化できません。"
-
-#~ msgid "Battery exhausted, camera off."
-#~ msgstr "バッテリが消耗しました。カメラを OFF にします。"
-
-#~ msgid "ERROR: unexpected message"
-#~ msgstr "エラー: 予期しないメッセージ"
-
-#~ msgid "ERROR: message overrun"
-#~ msgstr "エラー: メッセージのオーバーラン"
-
-#~ msgid "ERROR: out of sequence."
-#~ msgstr "エラー: シーケンスを越えました。"
-
-#~ msgid "ERROR: unexpected packet type."
-#~ msgstr "エラー: 予期しないパケットの種類です。"
-
-#~ msgid "ERROR: message format error."
-#~ msgstr "エラー: メッセージ書式のエラーです。"
-
-#~ msgid "ERROR: unexpected message2."
-#~ msgstr "エラー: 予期しないメッセージ 2 です。"
-
-#~ msgid "Uploading file..."
-#~ msgstr "ファイルのアップロード中..."
-
-#~ msgid "Getting file..."
-#~ msgstr "ファイルの取得中..."
-
-#~ msgid "Error changing speed."
-#~ msgstr "スピード変更でエラーが発生しました。"
-
-#~ msgid "Resetting protocol..."
-#~ msgstr "プロトコルの再設定..."
-
-#~ msgid "Camera OK.\n"
-#~ msgstr "カメラは OK です。\n"
-
-#~ msgid "Looking for camera ..."
-#~ msgstr "カメラの検出中..."
-
-#~ msgid "Trying to contact camera..."
-#~ msgstr "カメラと通信中..."
-
-#~ msgid "Communication error 1"
-#~ msgstr "通信エラー 1"
-
-#~ msgid "No response from camera"
-#~ msgstr "カメラから反応がありません"
-
-#~ msgid "Unrecognized response"
-#~ msgstr "認識できない反応です"
-
-#~ msgid "Bad EOT"
-#~ msgstr "おかしな EOT"
-
-#~ msgid "Communication error 2"
-#~ msgstr "通信エラー 2"
-
-#~ msgid "Communication error 3"
-#~ msgstr "通信エラー 3"
-
-#~ msgid "Changing speed... wait..."
-#~ msgstr "スピードの変更中... 少々お待ち下さい..."
-
-#~ msgid "Error changing speed"
-#~ msgstr "スピード変更でエラー"
-
-#~ msgid "Error waiting ACK during initialization retrying"
-#~ msgstr "再初期化中の ACK 待機でエラー"
-
-#~ msgid "Error waiting ACK during initialization"
-#~ msgstr "初期化中の ACK 待機でエラー"
-
-#~ msgid "Connected to camera"
-#~ msgstr "カメラに接続済み"
-
-#~ msgid "Getting thumbnail..."
-#~ msgstr "サムネイルの取得中..."
-
-#~ msgid "Could not apply USB settings"
-#~ msgstr "USB 設定を適用することが出来ませんでした"
-
-#~ msgid "Camera not ready, multiple 'Identify camera' requests failed: %s"
-#~ msgstr ""
-#~ "カメラの準備ができていません。複数回 \"カメラ情報\" 要求が失敗しました: %s"
-
-#~ msgid "Camera not ready, could not lock camera keys: %s"
-#~ msgstr "カメラの準備ができていません。カメラのキーをロックできません: %s"
-
-#~ msgid "Receiving data..."
-#~ msgstr "データの受信中..."
-
-#~ msgid ""
-#~ "File was too big. You may have to turn your camera off and back on before "
-#~ "uploading more files."
-#~ msgstr ""
-#~ "ファイルが大きすぎます。お使いのカメラの電源を OFF にして、ファイルをアッ"
-#~ "プロードする前に戻して下さい。"
-
-#~ msgid "Detected a '%s'."
-#~ msgstr "'%s' を検出しました。"
-
-#~ msgid "Unsupported image type"
-#~ msgstr "サポートしていない画像の種類"
-
-#~ msgid ""
-#~ "Digita\n"
-#~ "Johannes Erdfelt <johannes@erdfelt.com>"
-#~ msgstr ""
-#~ "Digita gPhoto ライブラリ\n"
-#~ "Johannes Erdfelt <johannes@erdfelt.com>"
-
-#~ msgid ""
-#~ "Only root folder is supported - you requested a file listing for folder '%"
-#~ "s'."
-#~ msgstr ""
-#~ "ルートのフォルダのみサポートしています - フォルダ '%s' のファイル一覧を要"
-#~ "求しました。"
-
-#~ msgid "Problem getting number of images"
-#~ msgstr "画像の番号の取得中に問題が発生しました"
-
-#~ msgid "Image type is not supported"
-#~ msgstr "画像の種類がサポートされていません"
-
-#~ msgid "Problem getting image information"
-#~ msgstr "画像情報の取得中に問題が発生しました"
-
-#~ msgid "Capture type is not supported"
-#~ msgstr "キャプチャの種類がサポートされていません"
-
-#~ msgid " (battery is %d%% full)"
-#~ msgstr " (バッテリ容量: 残り %d%%)"
-
-#~ msgid ""
-#~ "Dimera 3500 ver. %s %d/%d %d:%d\n"
-#~ "%d pictures used of approximately %d (high res) or %d (low res)\n"
-#~ "Camera features: %s, %s, %s, %s\n"
-#~ "Flash is %s, is %s and is %s\n"
-#~ "Resolution is set to %s\n"
-#~ "Camera is %s powered%s\n"
-#~ msgstr ""
-#~ "Dimera 3500 バージョン %s %d/%d %d:%d\n"
-#~ "約 %d 個の写真: %d (高解像度) または %d (低解像度)\n"
-#~ "カメラの機能: %s, %s, %s, %s\n"
-#~ "フラッシュの有無: %s, (%s と %s)\n"
-#~ "解像度: %s\n"
-#~ "カメラは %s (電源%s)\n"
-
-#~ msgid "Flash"
-#~ msgstr "フラッシュあり"
-
-#~ msgid "NO Flash"
-#~ msgstr "フラッシュなし"
-
-#~ msgid "Dual Iris"
-#~ msgstr "デュアル Iris あり"
-
-#~ msgid "NO Dual Iris"
-#~ msgstr "デュアル Iris なし"
-
-#~ msgid "Resolution Switch"
-#~ msgstr "解像度切替えあり"
-
-#~ msgid "NO Resolution Switch"
-#~ msgstr "解像度切替えなし"
-
-#~ msgid "NO Power Light"
-#~ msgstr "電源ランプなし"
-
-#~ msgid "ON"
-#~ msgstr "ON"
-
-#~ msgid "OFF"
-#~ msgstr "OFF"
-
-#~ msgid "ready"
-#~ msgstr "準備完了"
-
-#~ msgid "NOT ready"
-#~ msgstr "準備未完了"
-
-#~ msgid "in fill mode"
-#~ msgstr "Fill モードあり"
-
-#~ msgid "NOT in fill mode"
-#~ msgstr "Fill モードなし"
-
-#~ msgid "low (320x240)"
-#~ msgstr "低 (320 x 240)"
-
-#~ msgid "high (640x480)"
-#~ msgstr "高 (640 x 480)"
-
-#~ msgid "externally"
-#~ msgstr "外部"
-
-#~ msgid "internally"
-#~ msgstr "内部"
-
-#~ msgid ""
-#~ "* Image glitches or problems communicating are\n"
-#~ "  often caused by a low battery.\n"
-#~ "* Images captured remotely on this camera are stored\n"
-#~ "  in temporary RAM and not in the flash memory card.\n"
-#~ "* Exposure control when capturing all images is\n"
-#~ "  automatically set by the capture preview function.\n"
-#~ "* Image quality is currently lower than it could be.\n"
-#~ msgstr ""
-#~ "* 画像の欠損や通信上の問題は\n"
-#~ "  ほとんどの場合バッテリー不足が原因です。\n"
-#~ "* このカメラでリモートでキャプチャされた画像は\n"
-#~ "  フラッシュメモリ・カードではなく一時的に RAM 上に保存されています。\n"
-#~ "* 全画像のキャプチャ中の露出の制御はキャプチャ・プレビュー機能によって\n"
-#~ "  自動的にセットされます。\n"
-#~ "* 画像の品質は今のところ可能なレベルよりも低いものになっています。\n"
-
-#~ msgid ""
-#~ "gPhoto2 Mustek VDC-3500/Relisys Dimera 3500\n"
-#~ "This software was created with the\n"
-#~ "help of proprietary information belonging\n"
-#~ "to StarDot Technologies.\n"
-#~ "\n"
-#~ "Author:\n"
-#~ "  Brian Beattie  <URL:http://www.beattie-home.net>\n"
-#~ "Contributors:\n"
-#~ "  Chuck Homic <chuck@vvisions.com>\n"
-#~ "     Converting raw camera images to RGB\n"
-#~ "  Dan Fandrich <dan@coneharvesters.com>\n"
-#~ "     Information on protocol, raw image format,\n"
-#~ "     gphoto2 port\n"
-#~ msgstr ""
-#~ "gPhoto2 Mustek VDC-3500/Relisys Dimera 3500\n"
-#~ "このソフトウェアは StarDot Technologies 社が\n"
-#~ "所有権をもつ情報から作成されました。\n"
-#~ "\n"
-#~ "作者:\n"
-#~ "  Brian Beattie  <URL:http://www.beattie-home.net>\n"
-#~ "協力者:\n"
-#~ "  Chuck Homic <chuck@vvisions.com\n"
-#~ "     カメラの生画像を RGB に変換する処理担当\n"
-#~ "  Dan Fandrich <dan@coneharvesters.com>\n"
-#~ "     プロトコルの情報、生画像の形式、\n"
-#~ "     gPhoto2 への移植担当\n"
-
-#~ msgid "Problem reading image from flash"
-#~ msgstr "フラッシュカードから画像の読み込み中に問題が発生しました"
-
-#~ msgid "Out of memory"
-#~ msgstr "メモリがありません"
-
-#~ msgid "Downloading image..."
-#~ msgstr "画像のダウンロード中..."
-
-#~ msgid "Problem downloading image"
-#~ msgstr "画像のダウンロード中に問題が発生しました"
-
-#~ msgid "User canceled download"
-#~ msgstr "ユーザによってダウンロードが取り消されました"
-
-#~ msgid "Problem taking live image"
-#~ msgstr "リアルタイム画像の取得中に問題が発生しました"
-
-#~ msgid "Problem opening port"
-#~ msgstr "ポートを開いている最中に問題が発生しました"
-
-#~ msgid "Problem resetting camera"
-#~ msgstr "カメラの再設定中に問題が発生しました"
-
-#~ msgid "Problem setting camera communication speed"
-#~ msgstr "カメラの通信速度の設定中に問題が発生しました"
-
-#~ msgid "Looks like a modem, not a camera"
-#~ msgstr "カメラではなく、モデムのようです"
-
-#~ msgid "Listing files in '%s'..."
-#~ msgstr "'%s' にあるファイル一覧を作成中..."
-
-#~ msgid "Could not get information about '%s' (%m)."
-#~ msgstr "'%s' (%m) の情報を取得することが出来ませんでした。"
-
-#~ msgid "Could not follow the link '%s' (%m)."
-#~ msgstr "リンク '%s' (%m) を参照することが出来ませんでした。"
-
-#~ msgid "Listing folders in '%s'..."
-#~ msgstr "'%s' にあるフォルダ一覧の作成中..."
-
-#~ msgid "Could not get information about '%s' in '%s' (%m)."
-#~ msgstr ""
-#~ "'%s' ('%s' の中にある) (%m) の情報を取得することが出来ませんでした。"
-
-#~ msgid "Could not follow the link '%s' in '%s' (%m)."
-#~ msgstr ""
-#~ "'%s' ('%s' の中にある) (%m) のリンクを参照することが出来ませんでした。"
-
-#~ msgid "Could not change time of file '%s' in '%s' (%m)."
-#~ msgstr ""
-#~ "ファイル '%s' ('%s' の中にある) (%m) の時刻を変更することが出来ませんでし"
-#~ "た。"
-
-#~ msgid "Could not open '%s'."
-#~ msgstr "'%s' を開くことが出来ませんでした。"
-
-#~ msgid "Directory Browse"
-#~ msgstr "ディレクトリの参照"
-
-#~ msgid "View hidden directories"
-#~ msgstr "隠しディレクトリ(.XXX)の表示"
-
-#~ msgid ""
-#~ "The Directory Browse \"camera\" lets you index photos on your hard drive."
-#~ msgstr ""
-#~ "ディレクトリ参照 \"camera\" はコンピュータ上の写真の目録を作成します。"
-
-#~ msgid ""
-#~ "Directory Browse Mode - written by Scott Fritzinger <scottf@unr.edu>."
-#~ msgstr ""
-#~ "ディレクトリ参照モード - Scott Fritzinger <scottf@unr.edu> 氏の提供。"
-
-#~ msgid "Could not delete file '%s' in folder '%s' (error code %i: %m)."
-#~ msgstr ""
-#~ "ファイル '%s' (フォルダ '%s' の中にある) を削除することが出来ませんでした "
-#~ "(エラーコード %i:%m)。"
-
-#~ msgid "The camera sent only %i byte(s), but we need at least %i."
-#~ msgstr ""
-#~ "カメラが %i バイトのみ送信しましたが、必要なバイト数は少なくとも %i です。"
-
-#~ msgid "Could not contact camera."
-#~ msgstr "カメラに接続することが出来ませんでした。"
-
-#~ msgid "Received unexpected data (0x%02x, 0x%02x)."
-#~ msgstr "予期しないデータを受け取りました (0x%02x, 0x%02x)。"
-
-#~ msgid "Wrong escape sequence: expected 0x%02x, got 0x%02x."
-#~ msgstr ""
-#~ "エスケープ・シーケンスが間違っています: 0x%02x なのに 0x%02x を受け取りま"
-#~ "した。"
-
-#~ msgid "Bad data - got 0x%02x, expected 0x%02x."
-#~ msgstr "データがおかしいです - 0x%02x を取得しました (期待値: 0x%02x)"
-
-#~ msgid "Bad data - got 0x%02x, expected 0x%02x or 0x%02x."
-#~ msgstr ""
-#~ "データがおかしいです - 0x%02x を取得しました (期待値: 0x%02x または 0x%"
-#~ "02x)"
-
-#~ msgid "Bad checksum - got 0x%02x, expected 0x%02x."
-#~ msgstr "チェックサムがおかしいです - 0x%02x を取得しました (期待値: 0x%02x)"
-
-#~ msgid "Camera rejected the command."
-#~ msgstr "カメラがコマンドを受け付けませんでした。"
-
-#~ msgid "Camera reset itself."
-#~ msgstr "カメラがリセットしました。"
-
-#~ msgid "Camera sent unexpected byte 0x%02x."
-#~ msgstr "カメラが予期しないバイト 0x%02x を送信してきました。"
-
-#~ msgid "Downloading..."
-#~ msgstr "ダウンロード中..."
-
-#~ msgid "Could not allocate %i byte(s) for downloading the thumbnail."
-#~ msgstr ""
-#~ "サムネイルをダウンロードするのに必要な %i バイトを確保することが出来ません"
-#~ "でした。"
-
-#~ msgid "Could not allocate %i byte(s) for downloading the picture."
-#~ msgstr ""
-#~ "画像をダウンロードするのに必要な %i バイトを確保することが出来ませんでし"
-#~ "た。"
-
-#~ msgid "The camera does not accept '%s' as filename."
-#~ msgstr "カメラはファイル名として '%s' を受け付けませんでした。"
-
-#~ msgid "Could not initialize upload (camera responded with 0x%02x)."
-#~ msgstr ""
-#~ "アップロードを初期化することが出来ませんでした (カメラからの応答: 0x%"
-#~ "02x)。"
-
-#~ msgid "The camera does not support speed %i."
-#~ msgstr "カメラはスピード %i をサポートしていません。"
-
-#~ msgid "Could not set speed to %i (camera responded with %i)."
-#~ msgstr "スピードを %i にセットできませんでした (カメラからの応答: %i)。"
-
-#~ msgid ""
-#~ "Matthew G. Martin\n"
-#~ "Based on fujiplay by Thierry Bousch <bousch@topo.math.u-psud.fr>\n"
-#~ msgstr ""
-#~ "Matthew G. Martin 氏\n"
-#~ "Thierry Bousch <bousch@topo.math.u-psud.fr> 作の fujiplay がベースです。\n"
-
-#~ msgid "Bit rate %i is not supported."
-#~ msgstr "ビットレート %i はサポートされていません。"
-
-#~ msgid "Configuration for your FUJI camera"
-#~ msgstr "FUJI カメラの設定"
-
-#~ msgid "Date & Time"
-#~ msgstr "日付と時間"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Version: "
-#~ msgstr "バージョン: "
-
-#~ msgid "Model: "
-#~ msgstr "型式: "
-
-#~ msgid "Available memory: "
-#~ msgstr "有効なメモリ: "
-
-#~ msgid "jamcam library v"
-#~ msgstr "jamcam ライブラリ Ver"
-
-#~ msgid " "
-#~ msgstr " "
-
-#~ msgid ""
-#~ "\n"
-#~ "Chris Pinkham <cpinkham@infi.net>\n"
-#~ "Support for KBGear JamCam v2.0 & v3.0 digital cameras\n"
-#~ "based on reverse engineering serial protocol.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Chris Pinkham <cpinkham@infi.net>\n"
-#~ "Reverse Engineering serial protocol をベースにした\n"
-#~ "KBGear JamCam v2.0 & v3.0 ディジタルカメラのサポート\n"
-#~ "\n"
-
-#~ msgid "Downloading data..."
-#~ msgstr "データのダウンロード中..."
-
-#~ msgid "Downloading thumbnail..."
-#~ msgstr "サムネイルのダウンロード中..."
-
-#~ msgid ""
-#~ "The JD11 camera works rather well with this driver.\n"
-#~ "An RS232 interface @ 115 kbit is required for image transfer.\n"
-#~ "The driver allows you to get\n"
-#~ "\n"
-#~ "   - thumbnails (64x48 PGM format)\n"
-#~ "   - full images (640x480 PPM format)\n"
-#~ msgstr ""
-#~ "このドライバの向上よりは JD11 カメラ関係の作業を担当。\n"
-#~ "RS232 インタフェース @ 115 kbit は画像転送で必要です。\n"
-#~ "このドライバの適用範囲:\n"
-#~ "\n"
-#~ "   - サムネイル (64x48 PGM フォーマット)\n"
-#~ "   - 画像 (640x480 PPM フォーマット)\n"
-
-#~ msgid ""
-#~ "JD11\n"
-#~ "Marcus Meissner <marcus@jet.franken.de>\n"
-#~ "Driver for the Jenoptik JD11 camera.\n"
-#~ "Protocol reverse engineered using WINE and IDA."
-#~ msgstr ""
-#~ "JD11\n"
-#~ "Marcus Meissner <marcus@jet.franken.de>\n"
-#~ "Jenoptik JD11 カメラ用のドライバ担当。\n"
-#~ "WINE と IDA を使用してリバースエンジニアされたプロトコル。"
-
-#~ msgid "Other Settings"
-#~ msgstr "その他の設定"
-
-#~ msgid "Bulb Exposure Time"
-#~ msgstr "バルブ露出時間"
-
-#~ msgid "Color Settings"
-#~ msgstr "色の設定"
-
-#~ msgid "Red"
-#~ msgstr "赤"
-
-#~ msgid "Green"
-#~ msgstr "緑"
-
-#~ msgid "Blue"
-#~ msgstr "青"
-
-#~ msgid "CompactFlash Card"
-#~ msgstr "コンパクトフラッシュ・カード"
-
-#~ msgid ""
-#~ "The Kodak DC120 camera uses the KDC file format for storing images. If "
-#~ "you want to view the images you download from your camera, you will need "
-#~ "to download the \"kdc2tiff\" program. It is available from http://"
-#~ "kdc2tiff.sourceforge.net"
-#~ msgstr ""
-#~ "Kodak DC120 カメラは画像を保存するのに KDC ファイル形式を使用します。カメ"
-#~ "ラからダウンロードして画像を表示する場合は、\"kdc2tiff\" プログラムを "
-#~ "http://kdc2tiff.sourceforge.net から入手する必要があります。"
-
-#~ msgid ""
-#~ "Kodak DC120 Camera Library\n"
-#~ "Scott Fritzinger <scottf@gphoto.net>\n"
-#~ "Camera Library for the Kodak DC120 camera.\n"
-#~ "(by popular demand)."
-#~ msgstr ""
-#~ "Kodak DC120 カメラ・ライブラリ\n"
-#~ "Scott Fritzinger <scottf@gphoto.net>\n"
-#~ "Kodak DC120 カメラ用のライブラリ\n"
-#~ "(やっと普及したので)"
-
-#~ msgid "Getting data..."
-#~ msgstr "データの取得中..."
-
-#~ msgid "Waiting for completion..."
-#~ msgstr "完了するのを待っています..."
-
-#~ msgid "Model: Kodak %s\n"
-#~ msgstr "型式: Kodak %s\n"
-
-#~ msgid "Firmware version: %d.%02d\n"
-#~ msgstr "ファームウェアのリビジョン: %d.%02d\n"
-
-#~ msgid "Battery status: %s, AC Adapter: %s\n"
-#~ msgstr "電源: %s  AC アダプタ: %s\n"
-
-#~ msgid "Number of pictures: %d\n"
-#~ msgstr "写真の数: %d\n"
-
-#~ msgid "Space remaining: High: %d, Medium: %d, Low: %d\n"
-#~ msgstr "残り空き容量: 高: %d 中: %d, 低: %d\n"
-
-#~ msgid "Memory card status (%d): %s\n"
-#~ msgstr "メモリカードの状態 (%d): %s\n"
-
-#~ msgid "Total pictures captured: %d, Flashes fired: %d\n"
-#~ msgstr "キャプチャした写真の合計: %d フラッシュの発光数: %d\n"
-
-#~ msgid ""
-#~ "Kodak DC240 Camera Library\n"
-#~ "Scott Fritzinger <scottf@gphoto.net> and Hubert Figuiere "
-#~ "<hfiguiere@teaser.fr>\n"
-#~ "Camera Library for the Kodak DC240, DC280, DC3400 and DC5000 cameras.\n"
-#~ "Rewritten and updated for gPhoto2."
-#~ msgstr ""
-#~ "Kodak DC240 カメラ・ライブラリ\n"
-#~ "Scott Fritzinger <scottf@gphoto.net> と Hubert Figuiere <hfiguiere@teaser."
-#~ "fr>\n"
-#~ "Kodak DC240, DC280, DC3400 and DC5000 カメラ用のライブラリ担当。\n"
-#~ "gPhoto2 向けに書き直しと更新。"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Weak"
-#~ msgstr "弱い"
-
-#~ msgid "Empty"
-#~ msgstr "空"
-
-#~ msgid "Invalid"
-#~ msgstr "不正"
-
-#~ msgid "Not used"
-#~ msgstr "未使用"
-
-#~ msgid "In use"
-#~ msgstr "使用中"
-
-#~ msgid "Card is open"
-#~ msgstr "カードが空いています"
-
-#~ msgid "Card is not open"
-#~ msgstr "カードが閉まっています"
-
-#~ msgid "Card is not formatted"
-#~ msgstr "カードがフォーマットされていません"
-
-#~ msgid "No card"
-#~ msgstr "カードがありません"
-
-#~ msgid ""
-#~ "There is currently an operation in progress. This camera only supports "
-#~ "one operation at a time. Please wait until the current operation has "
-#~ "finished."
-#~ msgstr ""
-#~ "現在操作が進行中です。このカメラのみ同時に一つの操作をサポートしています。"
-#~ "現在の操作が終了するまでお待ち下さい。"
-
-#~ msgid "camera inactive for > 9 seconds, re-initing.\n"
-#~ msgstr "カメラが 9 秒以上動作していません。再初期化します。\n"
-
-#~ msgid ""
-#~ "Known problems:\n"
-#~ "\n"
-#~ "1. If the Kodak DC3200 does not receive a command at least every 10 "
-#~ "seconds, it will time out, and will have to be re-initialized. If you "
-#~ "notice the camera does not respond, simply re-select the camera. This "
-#~ "will cause it to reinitialize."
-#~ msgstr ""
-#~ "既知の問題:\n"
-#~ "\n"
-#~ "1. Kodak DC3200 が最低 10 秒間隔でコマンドを受信しなかったら、タイムアウト"
-#~ "しているので、再初期化する必要があります。カメラに反応がなかったら、カメラ"
-#~ "を再選択するだけでよいでが、この場合も再初期化して下さい。"
-
-#~ msgid ""
-#~ "Kodak DC3200 Driver\n"
-#~ "Donn Morrison <dmorriso@gulf.uvic.ca>\n"
-#~ "\n"
-#~ "Questions and comments appreciated."
-#~ msgstr ""
-#~ "Kodak DC3200 ドライバ\n"
-#~ "Donn Morrison <dmorriso@gulf.uvic.ca>\n"
-#~ "\n"
-#~ "質問やコメントは大歓迎です。"
-
-#~ msgid "%s"
-#~ msgstr "%s"
-
-#~ msgid "Getting file list..."
-#~ msgstr "ファイル一覧の取得中..."
-
-#~ msgid "Testing different speeds..."
-#~ msgstr "異なるスピードでテスト中..."
-
-#~ msgid ""
-#~ "The camera could not be contacted. Please make sure it is conntected to "
-#~ "the computer and turned on."
-#~ msgstr ""
-#~ "カメラと通信できませんでした。コンピュータに接続してから電源を投入して下さ"
-#~ "い。"
-
-#~ msgid "%i pictures could not be deleted because they are protected"
-#~ msgstr ""
-#~ "書き込み保護がかかっている %i 個の写真を削除することが出来ませんでした"
-
-#~ msgid ""
-#~ "Model: %s\n"
-#~ "Serial Number: %s,\n"
-#~ "Hardware Version: %i.%i\n"
-#~ "Software Version: %i.%i\n"
-#~ "Testing Software Version: %i.%i\n"
-#~ "Name: %s,\n"
-#~ "Manufacturer: %s\n"
-#~ msgstr ""
-#~ "型式: %s\n"
-#~ "シリアル番号: %s\n"
-#~ "ハードウェア・バージョン: %i.%i\n"
-#~ "ソフトウェア・バージョン: %i.%i\n"
-#~ "テスト用ソフトウェア・バージョン: %i.%i\n"
-#~ "名称: %s\n"
-#~ "製造元: %s\n"
-
-#~ msgid ""
-#~ "Konica library\n"
-#~ "Lutz Mueller <lutz@users.sourceforge.net>\n"
-#~ "Support for all Konica and several HP cameras."
-#~ msgstr ""
-#~ "Konica ライブラリ\n"
-#~ "Lutz Mueller <lutz@users.sourceforge.net>\n"
-#~ "Konika 全機種と幾つかの HP カメラのサポート担当。"
-
-#~ msgid "Getting configuration..."
-#~ msgstr "設定の取得中..."
-
-#~ msgid "Konica Configuration"
-#~ msgstr "Konica の設定"
-
-#~ msgid "Persistent Settings"
-#~ msgstr "全機種に共通な設定"
-
-#~ msgid "Date and Time"
-#~ msgstr "日付と時間"
-
-#~ msgid "Beep"
-#~ msgstr "ビープ音"
-
-#~ msgid "On"
-#~ msgstr "ON"
-
-#~ msgid "Off"
-#~ msgstr "OFF"
-
-#~ msgid "Shall the camera beep when taking a picture?"
-#~ msgstr "写真を撮る時にカメラのビープ音を鳴らしますか？"
-
-#~ msgid "Self Timer Time"
-#~ msgstr "セルフタイマーの時間"
-
-#~ msgid "Auto Off Time"
-#~ msgstr "自動 OFF 時間"
-
-#~ msgid "Slide Show Interval"
-#~ msgstr "スライドショーの表示間隔"
-
-#~ msgid "Resolution"
-#~ msgstr "解像度"
-
-#~ msgid "Low (576 x 436)"
-#~ msgstr "低 (576 x 436)"
-
-#~ msgid "Medium (1152 x 872)"
-#~ msgstr "中 (1152 x 872)"
-
-#~ msgid "High (1152 x 872)"
-#~ msgstr "高 (1152 x 872)"
-
-#~ msgid "Localization"
-#~ msgstr "日本語化"
-
-#~ msgid "Language"
-#~ msgstr "言語"
-
-#~ msgid "None selected"
-#~ msgstr "何も選択されていません"
-
-#~ msgid "TV Output Format"
-#~ msgstr "TV 出力の形式"
-
-#~ msgid "NTSC"
-#~ msgstr "NTSC"
-
-#~ msgid "PAL"
-#~ msgstr "PAL"
-
-#~ msgid "Do not display TV menu"
-#~ msgstr "TV メニューを表示しない"
-
-#~ msgid "Date Format"
-#~ msgstr "データ形式"
-
-#~ msgid "Month/Day/Year"
-#~ msgstr "月/日/年"
-
-#~ msgid "Day/Month/Year"
-#~ msgstr "日/月/年"
-
-#~ msgid "Year/Month/Day"
-#~ msgstr "年/月/日"
-
-#~ msgid "Session-persistent Settings"
-#~ msgstr "全機種に共通なセッションの設定"
-
-#~ msgid "On, red-eye reduction"
-#~ msgstr "ON, Red-Eye 減少"
-
-#~ msgid "Auto"
-#~ msgstr "自動"
-
-#~ msgid "Auto, red-eye reduction"
-#~ msgstr "自動, Red-Eye 減少"
-
-#~ msgid "Exposure"
-#~ msgstr "露出"
-
-#~ msgid "Focus"
-#~ msgstr "フォーカス"
-
-#~ msgid "Fixed"
-#~ msgstr "固定"
-
-#~ msgid "Volatile Settings"
-#~ msgstr "Volatile の設定"
-
-#~ msgid "Self Timer"
-#~ msgstr "セルフタイマ"
-
-#~ msgid "Self Timer (only next picture)"
-#~ msgstr "セルフタイマ (次の写真のみ)"
-
-#~ msgid "Normal"
-#~ msgstr "標準"
-
-#~ msgid "Self Timer (next picture only)"
-#~ msgstr "セルフタイマ (次の写真のみ)"
-
-#~ msgid "Could not find localization data at '%s'"
-#~ msgstr "'%s' に日本語データが見つかりませんでした"
-
-#~ msgid "Localization file too long!"
-#~ msgstr "ローカライズファイルが長すぎます！"
-
-#~ msgid "Focusing error."
-#~ msgstr "フォーカスのエラーです。"
-
-#~ msgid "Iris error."
-#~ msgstr "アイリスのエラーです。"
-
-#~ msgid "Strobe error."
-#~ msgstr "ストローブのエラーです。"
-
-#~ msgid "EEPROM checksum error."
-#~ msgstr "EEPROM チェックサム・エラーです。"
-
-#~ msgid "Internal error (1)."
-#~ msgstr "内部エラー (1) です。"
-
-#~ msgid "Internal error (2)."
-#~ msgstr "内部エラー (2) です。"
-
-#~ msgid "No card present."
-#~ msgstr "カードがありません。"
-
-#~ msgid "Card not supported."
-#~ msgstr "カードをサポートしていません。"
-
-#~ msgid "Card removed during access."
-#~ msgstr "カードがアクセス中に抜き取られました。"
-
-#~ msgid "Image number not valid."
-#~ msgstr "画像の番号が正しくありません。"
-
-#~ msgid "Card can not be written."
-#~ msgstr "カードに書き込めません。"
-
-#~ msgid "Card is write protected."
-#~ msgstr "カードへの書き込み保護が有効です。"
-
-#~ msgid "No space left on card."
-#~ msgstr "カードに残り容量がありません。"
-
-#~ msgid "Image protected."
-#~ msgstr "画像が保護されています。"
-
-#~ msgid "Light too dark."
-#~ msgstr "フラッシュが暗すぎます。"
-
-#~ msgid "Autofocus error."
-#~ msgstr "自動フォーカスのエラーです。"
-
-#~ msgid "System error."
-#~ msgstr "システムのエラーです。"
-
-#~ msgid "Illegal parameter."
-#~ msgstr "不正なパラメータです。"
-
-#~ msgid "Command can not be cancelled."
-#~ msgstr "コマンドはキャンセルできません。"
-
-#~ msgid "Localization data too long."
-#~ msgstr "日本語データが長すぎます。"
-
-#~ msgid "Localization data corrupt."
-#~ msgstr "日本語データがおかしいです。"
-
-#~ msgid "Unsupported command."
-#~ msgstr "サポートしていないコマンドです。"
-
-#~ msgid "Other command executing."
-#~ msgstr "他のコマンドの実行が中止されました。"
-
-#~ msgid "Command order error."
-#~ msgstr "コマンドの実行順でエラーです。"
-
-#~ msgid "Unknown error."
-#~ msgstr "エラーを特定できません。"
-
-#~ msgid ""
-#~ "The camera has just sent an error that has not yet been discovered. "
-#~ "Please report the following to <gphoto-devel@gphoto.org> with additional "
-#~ "information how you got this error: (0x%x,0x%x). Thank you very much!"
-#~ msgstr ""
-#~ "カメラが不明なエラーを返してきました。このエラー (0x%x,0x%x) を再現する方"
-#~ "法をバグ・レポートとして <gphoto-devel@gphoto.org> に報告して下さい。ご協"
-#~ "力に感謝します！"
-
-#~ msgid ""
-#~ "Model:\t\t\tMinolta Dimage V (%s)\n"
-#~ "Hardware Revision:\t%s\n"
-#~ "Firmware Revision:\t%s\n"
-#~ msgstr ""
-#~ "型式:\t\t\tMinolta Dimage V (%s)\n"
-#~ "ハードウェア・リビジョン:\t%s\n"
-#~ "ファームウェア・リビジョン:\t%s\n"
-
-#~ msgid ""
-#~ "Host Mode:\t\t%s\n"
-#~ "Exposure Correction:\t%s\n"
-#~ "Exposure Data:\t\t%d\n"
-#~ "Date Valid:\t\t%s\n"
-#~ "Date:\t\t\t%d/%02d/%02d %02d:%02d:%02d\n"
-#~ "Self Timer Set:\t\t%s\n"
-#~ "Quality Setting:\t%s\n"
-#~ "Play/Record Mode:\t%s\n"
-#~ "Card ID Valid:\t\t%s\n"
-#~ "Card ID:\t\t%d\n"
-#~ "Flash Mode:\t\t"
-#~ msgstr ""
-#~ "ホストモード:\t%s\n"
-#~ "露出の取得:\t\t%s\n"
-#~ "露出データ:\t\t%d\n"
-#~ "データ整合:\t\t%s\n"
-#~ "日付:\t\t\t%d/%02d/%02d %02d:%02d:%02d\n"
-#~ "セルフタイマー:\t%s\n"
-#~ "解像度の設定:\t%s\n"
-#~ "再生/記録モード:%s\n"
-#~ "カードID整合:\t%s\n"
-#~ "カードID:\t\t%d\n"
-#~ "フラッシュモード:"
-
-#~ msgid "Remote"
-#~ msgstr "リモート"
-
-#~ msgid "Local"
-#~ msgstr "ローカル"
-
-#~ msgid "Fine"
-#~ msgstr "ファイン"
-
-#~ msgid "Standard"
-#~ msgstr "標準"
-
-#~ msgid "Record"
-#~ msgstr "記録"
-
-#~ msgid "Play"
-#~ msgstr "再生"
-
-#~ msgid "Automatic\n"
-#~ msgstr "自動\n"
-
-#~ msgid "Force Flash\n"
-#~ msgstr "強制発光\n"
-
-#~ msgid "Prohibit Flash\n"
-#~ msgstr "発光禁止\n"
-
-#~ msgid "Invalid Value ( %d )\n"
-#~ msgstr "おかしな値 ( %d)\n"
-
-#~ msgid ""
-#~ "Battery Level:\t\t%s\n"
-#~ "Number of Images:\t%d\n"
-#~ "Minimum Capacity Left:\t%d\n"
-#~ "Busy:\t\t\t%s\n"
-#~ "Flash Charging:\t\t%s\n"
-#~ "Lens Status:\t\t"
-#~ msgstr ""
-#~ "バッテリレベル:\t%s\n"
-#~ "画像の番号:\t\t%d\n"
-#~ "残り容量:\t\t%d\n"
-#~ "動作モード:\t\t%s\n"
-#~ "フラッシュ充電:\t%s\n"
-#~ "レンズの状態:\t"
-
-#~ msgid "Not Full"
-#~ msgstr "使用中"
-
-#~ msgid "Full"
-#~ msgstr "フル充電"
-
-#~ msgid "Busy"
-#~ msgstr "動作中"
-
-#~ msgid "Idle"
-#~ msgstr "アイドル中"
-
-#~ msgid "Charging"
-#~ msgstr "充電中"
-
-#~ msgid "Ready"
-#~ msgstr "準備 OK"
-
-#~ msgid "Normal\n"
-#~ msgstr "標準\n"
-
-#~ msgid "Lens direction does not match flash light\n"
-#~ msgstr "レンズの向きがフラッシュの方向と同じではありません\n"
-
-#~ msgid "Lens is not connected\n"
-#~ msgstr "レンズがついていません\n"
-
-#~ msgid "Bad value for lens status %d\n"
-#~ msgstr "レンズの状態がおかしいです %d\n"
-
-#~ msgid "Card Status:\t\t"
-#~ msgstr "カードの状態:\t"
-
-#~ msgid "Write-protected"
-#~ msgstr "書き込み保護つき"
-
-#~ msgid "Unsuitable card"
-#~ msgstr "サポートしないカード"
-
-#~ msgid "Bade value for card status %d"
-#~ msgstr "カード %d の状態がおかしい値"
-
-#~ msgid ""
-#~ "Minolta Dimage V Camera Library\n"
-#~ "%s\n"
-#~ "Gus Hartmann <gphoto@gus-the-cat.org>\n"
-#~ "Special thanks to Minolta for the spec."
-#~ msgstr ""
-#~ "Minolta Dimage V gPhoto ライブラリ\n"
-#~ "%s\n"
-#~ "Gus Hartmann <gphoto@gus-the-cat.org>\n"
-#~ "ミノルタ(株) からの仕様提供に感謝します。"
-
-#~ msgid "coolshot library v"
-#~ msgstr "coolshot ライブラリ Ver"
-
-#~ msgid ""
-#~ "\n"
-#~ "Chris Pinkham <cpinkham@infi.net>\n"
-#~ "Support for Panasonic Coolshot digital cameras\n"
-#~ "based on reverse engineering serial protocol.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Chris Pinkham <cpinkham@infi.net>\n"
-#~ "Reverse Engineering Serial プロトコルをベースにした\n"
-#~ "Panasonic 製 Coolshot ディジタルカメラのサポート担当。\n"
-#~ "\n"
-
-#~ msgid "Disconnecting camera."
-#~ msgstr "カメラとの接続が切れています。"
-
-#~ msgid "Downloading image %s."
-#~ msgstr "画像 %s のダウンロード中です。"
-
-#~ msgid "Uploading image: %s."
-#~ msgstr "画像 %s のアップロード中です。"
-
-#~ msgid ""
-#~ "File size is %i bytes. The size of the largest file possible to upload "
-#~ "is: %i bytes."
-#~ msgstr "ファイルサイズは %i バイトです。アップロード可能なサイズ: %i バイト"
-
-#~ msgid "Uploading..."
-#~ msgstr "アップロード中..."
-
-#~ msgid "Deleting image %s."
-#~ msgstr "画像 %s を削除します。"
-
-#~ msgid ""
-#~ "Panasonic DC1000 gPhoto library\n"
-#~ "Mariusz Zynel <mariusz@mizar.org>\n"
-#~ "\n"
-#~ "Based on dc1000 program written by\n"
-#~ "Fredrik Roubert <roubert@df.lth.se> and\n"
-#~ "Galen Brooks <galen@nine.com>."
-#~ msgstr ""
-#~ "Panasonic DC1000 gPhoto ライブラリ\n"
-#~ "Mariusz Zynel <mariusz@mizar.org>\n"
-#~ "\n"
-#~ "Fredrik Roubert 氏 <roubert@df.lth.se> と\n"
-#~ "Galen Brooks 氏 <galen@nine.com> が\n"
-#~ "作成した dc1000 プログラムがベースです。"
-
-#~ msgid "Downloading %s."
-#~ msgstr "%s のダウンロード中です。"
-
-#~ msgid ""
-#~ "Panasonic DC1580 gPhoto library\n"
-#~ "Mariusz Zynel <mariusz@mizar.org>\n"
-#~ "\n"
-#~ "Based on dc1000 program written by\n"
-#~ "Fredrik Roubert <roubert@df.lth.se> and\n"
-#~ "Galen Brooks <galen@nine.com>."
-#~ msgstr ""
-#~ "Panasonic DC1580 gPhoto ライブラリ\n"
-#~ "Mariusz Zynel <mariusz@mizar.org>\n"
-#~ "\n"
-#~ "Fredrik Roubert 氏 <roubert@df.lth.se> と\n"
-#~ "Galen Brooks 氏 <galen@nine.com> が\n"
-#~ "作成した dc1000 プログラムがベースです。"
-
-#~ msgid "Downloading '%s'..."
-#~ msgstr "'%s' のダウンロード中..."
-
-#~ msgid ""
-#~ "Panasonic PV-L859-K/PV-L779-K Palmcorder\n"
-#~ "\n"
-#~ "Panasonic introduced image capturing technology called PHOTOSHOT for the "
-#~ "first time to this series of Palmcorders.  Images are stored in JPEG "
-#~ "format on an internal flashcard and can be transfered to a computer "
-#~ "through the built-in serial port.  Images are saved in one of two "
-#~ "resolutions; NORMAL is 320x240 and FINE is 640x480.  The CCD device which "
-#~ "captures the images from the lens is only 300K and thus produces only low "
-#~ "quality pictures."
-#~ msgstr ""
-#~ "Panasonic PV-L859-K/PV-L779-K Palmcorder\n"
-#~ "\n"
-#~ "Panasonic は Palmcorder シリーズで PHOTOSHOT と呼ばれる画像キャプチャ技術"
-#~ "をはじめて紹介しました。画像は内蔵のフラッシュカードに JPEG 形式で格納さ"
-#~ "れ、内蔵シリアルポートでパソコンに画像を転送することが可能です。画像の保存"
-#~ "形式は二つあります; '標準' は 320x240 'ファイン' は 640x480 です。動画を"
-#~ "キャプチャする CCD デバイスは 300K のみで、低解像度の写真のみ提供します。"
-
-#~ msgid ""
-#~ "Known problems:\n"
-#~ "\n"
-#~ "If communications problems occur, reset the camera and restart the "
-#~ "application.  The driver is not robust enough yet to recover from these "
-#~ "situations, especially if a problem occurs and the camera is not properly "
-#~ "shutdown at speeds faster than 9600."
-#~ msgstr ""
-#~ "既知の問題:\n"
-#~ "\n"
-#~ "通信エラーが発生した場合、カメラの電源をリセットしてアプリケーションを再起"
-#~ "動して下さい。ドライバはこのような状態から復活できるほどしっかりした作りに"
-#~ "なっていません。特に問題が発生した場合はカメラは通信速度 9600 よりも高い状"
-#~ "態で強制終了することはありません。"
-
-#~ msgid ""
-#~ "Panasonic PV-L859-K/PV-L779-K Palmcorder Driver\n"
-#~ "Andrew Selkirk <aselkirk@mailandnews.com>"
-#~ msgstr ""
-#~ "Panasonic PV-L859-K/PV-L779-K Palmcorder ドライバ\n"
-#~ "Andrew Selkirk <aselkirk@mailandnews.com>"
-
-#~ msgid "Image Quality"
-#~ msgstr "画像の品質"
-
-#~ msgid "Image Size"
-#~ msgstr "画像サイズ"
-
-#~ msgid "Flash Setting"
-#~ msgstr "フラッシュの設定"
-
-#~ msgid "LCD"
-#~ msgstr "液晶モニタ"
-
-#~ msgid "Auto Power Off (minutes)"
-#~ msgstr "自動パワーオフ (分後)"
-
-#~ msgid "Information"
-#~ msgstr "情報"
-
-#~ msgid "normal"
-#~ msgstr "標準"
-
-#~ msgid "fine"
-#~ msgstr "ファイン"
-
-#~ msgid "superfine"
-#~ msgstr "スーパーファイン"
-
-#~ msgid "auto"
-#~ msgstr "自動"
-
-#~ msgid "on"
-#~ msgstr "ON"
-
-#~ msgid "off"
-#~ msgstr "OFF"
-
-#~ msgid "play"
-#~ msgstr "再生"
-
-#~ msgid "record"
-#~ msgstr "記録"
-
-#~ msgid "menu"
-#~ msgstr "メニュー"
-
-#~ msgid "battery"
-#~ msgstr "バッテリ"
-
-#~ msgid "a/c adaptor"
-#~ msgstr "電源アダプタ"
-
-#~ msgid "9600"
-#~ msgstr "9600"
-
-#~ msgid "19200"
-#~ msgstr "19200"
-
-#~ msgid "38400"
-#~ msgstr "38400"
-
-#~ msgid "57600"
-#~ msgstr "57600"
-
-#~ msgid "115200"
-#~ msgstr "115200"
-
-#~ msgid "VGA (640x480)"
-#~ msgstr "VGA (640 x 480)"
-
-#~ msgid "XGA (1024x768"
-#~ msgstr "XGA (1024x768"
-
-#~ msgid "Received unexpected header (%i)"
-#~ msgstr "不明なヘッダを受け取りました (%i)"
-
-#~ msgid "Received unexpected response"
-#~ msgstr "予期しない反応を受け取りました"
-
-#~ msgid "Checksum error"
-#~ msgstr "チェックサム・エラー"
-
-#~ msgid "The camera did not accept the command."
-#~ msgstr "カメラはコマンドを受け付けませんでした。"
-
-#~ msgid "The camera sent more bytes than expected (%i)"
-#~ msgstr "カメラが予期しないサイズ以上を送信しました (%i)"
-
-#~ msgid ""
-#~ "Requested information about picture %i (= 0x%x), but got information "
-#~ "about picture %i back"
-#~ msgstr ""
-#~ "写真 %i についての情報 (= 0x%x) を要求しましたが、写真 %i の情報を取得しま"
-#~ "した"
-
-#~ msgid ""
-#~ "%i bytes of an unknown image format have been received. Please write "
-#~ "<gphoto-devel@gphoto.org> for assistance."
-#~ msgstr ""
-#~ "%i バイトの不明な画像形式を受け取りました。<gphoto-devel@gphoto.org> まで"
-#~ "連絡して下さい。"
-
-#~ msgid "Camera Configuration"
-#~ msgstr "カメラの設定"
-
-#~ msgid "How long will it take until the camera powers off?"
-#~ msgstr "カメラをパワーオフするまでの時間を指定して下さい。"
-
-#~ msgid "Image"
-#~ msgstr "画像"
-
-#~ msgid ""
-#~ "Date: %i/%02i/%02i %02i:%02i:%02i\n"
-#~ "Pictures taken: %i\n"
-#~ "Free pictures: %i\n"
-#~ "Software version: %s\n"
-#~ "Baudrate: %s\n"
-#~ "Memory: %i megabytes\n"
-#~ "Camera mode: %s\n"
-#~ "Image quality: %s\n"
-#~ "Flash setting: %s\n"
-#~ "Information: %s\n"
-#~ "Timer: %s\n"
-#~ "LCD: %s\n"
-#~ "Auto power off: %i minutes\n"
-#~ "Power source: %s"
-#~ msgstr ""
-#~ "日付: %i/%02i/%02i %02i:%02i:%02i\n"
-#~ "記録した写真数: %i\n"
-#~ "残りの記録可能数: %i\n"
-#~ "ソフトウェア・バージョン: %s\n"
-#~ "Baudrate: %s\n"
-#~ "残りメモリ: %i Mバイト\n"
-#~ "カメラ・モード: %s\n"
-#~ "画像の品質: %s\n"
-#~ "フラッシュの設定: %s\n"
-#~ "情報: %s\n"
-#~ "タイマー: %s\n"
-#~ "液晶モニタ: %s\n"
-#~ "自動パワーオフ: %i 分後\n"
-#~ "電源元: %s"
-
-#~ msgid "The requested port type (%i) is not supported by this driver."
-#~ msgstr "このドライバでは要求したポート型式 (%i) をサポートしていません。"
-
-#~ msgid "PTP Undefined Error"
-#~ msgstr "PTP の不明なエラー"
-
-#~ msgid "PTP OK!"
-#~ msgstr "PTP OK!"
-
-#~ msgid "PTP General Error"
-#~ msgstr "PTP の一般的なエラー"
-
-#~ msgid "PTP Session Not Open"
-#~ msgstr "PTP のセッションが開かれていません"
-
-#~ msgid "PTP Invalid Transaction ID"
-#~ msgstr "PTP の不正なトランザクション ID"
-
-#~ msgid "PTP Operation Not Supported"
-#~ msgstr "サポートされていない PTP 操作"
-
-#~ msgid "PTP Parameter Not Supported"
-#~ msgstr "サポートされていない PTP パラメータ"
-
-#~ msgid "PTP Incomplete Transfer"
-#~ msgstr "PTP の転送が完了していません"
-
-#~ msgid "PTP Invalid Storage ID"
-#~ msgstr "PTP の不正なストレージ ID"
-
-#~ msgid "PTP Invalid Object Handle"
-#~ msgstr "PTP 不正なオブジェクト操作"
-
-#~ msgid "PTP Device Prop Not Supported"
-#~ msgstr "サポートされていない PTP デバイス Prop"
-
-#~ msgid "PTP Invalid Object Format Code"
-#~ msgstr "PTP の不正なオブジェクト書式コード"
-
-#~ msgid "PTP Store Full"
-#~ msgstr "PTP の空き容量がありません"
-
-#~ msgid "PTP Object Write Protected"
-#~ msgstr "PTP オブジェクトへの書き込み保護が有効です"
-
-#~ msgid "PTP Store Read Only"
-#~ msgstr "PTP は読み込み専用です"
-
-#~ msgid "PTP Access Denied"
-#~ msgstr "PTP へのアクセスが拒否されました"
-
-#~ msgid "PTP No Thumbnail Present"
-#~ msgstr "PTP にはサムネイルがありません"
-
-#~ msgid "PTP Self Test Failed"
-#~ msgstr "PTP の自己診断に失敗しました"
-
-#~ msgid "PTP Partial Deletion"
-#~ msgstr "PTP の部分的な削除"
-
-#~ msgid "PTP Store Not Available"
-#~ msgstr "PTP に格納できません"
-
-#~ msgid "PTP Specification By Format Unsupported"
-#~ msgstr "サポートしていない PTP 書式の指定"
-
-#~ msgid "PTP No Valid Object Info"
-#~ msgstr "PTP の不正なオブジェクト情報"
-
-#~ msgid "PTP Invalid Code Format"
-#~ msgstr "PTP の不正なコード書式"
-
-#~ msgid "PTP Unknown Vendor Code"
-#~ msgstr "PTP の不明なベンダーコードです"
-
-#~ msgid "PTP Capture Already Terminated"
-#~ msgstr "PTP のキャプチャは中断しました"
-
-#~ msgid "PTP Device Bus"
-#~ msgstr "PTP のデバイス・バス"
-
-#~ msgid "PTP Invalid Parent Object"
-#~ msgstr "PTP 不正なオブジェクト"
-
-#~ msgid "PTP Invalid Device Prop Format"
-#~ msgstr "PTP の不正なデバイス Prop 書式"
-
-#~ msgid "PTP Invalid Device Prop Value"
-#~ msgstr "PTP の不正なデバイス Prop 値"
-
-#~ msgid "PTP Invalid Parameter"
-#~ msgstr "PTP の不正なパラメータ"
-
-#~ msgid "PTP Session Already Opened"
-#~ msgstr "PTP のセッションはオープンしています"
-
-#~ msgid "PTP Transaction Canceled"
-#~ msgstr "PTP トランザクションがキャンセルされました"
-
-#~ msgid "PTP Specification Of Destination Unsupported"
-#~ msgstr "サポートしていない PTP 転送先の指定"
-
-#~ msgid "PTP EK Filename Required"
-#~ msgstr "PTP EK ファイル名が必要です"
-
-#~ msgid "PTP EK Filename Conflicts"
-#~ msgstr "PTP EK ファイル名が重複しています"
-
-#~ msgid "PTP EK Filename Invalid"
-#~ msgstr "PTP EK 不正なファイル名です"
-
-#~ msgid "PTP I/O error"
-#~ msgstr "PTP I/O エラーです"
-
-#~ msgid "PTP Error: bad parameter"
-#~ msgstr "PTP エラー: パラメータが正しくありません"
-
-#~ msgid "PTP Protocol error, data expected"
-#~ msgstr "PTP プロトコル・エラー (期待値: データ)"
-
-#~ msgid "PTP Protocol error, response expected"
-#~ msgstr "PTP プロトコル・エラー (期待値: 応答)"
-
-#~ msgid "Written by Mariusz Woloszyn <emsi@ipartners.pl>. Enjoy!"
-#~ msgstr "Mariusz Woloszyn 氏 <emsi@ipartners.pl> が担当しました。Enjoy!"
-
-#~ msgid "PTP is implemented for USB cameras only."
-#~ msgstr "PTP は USB カメラのみサポートしています。"
-
-#~ msgid "Unknown"
-#~ msgstr "不明"
-
-#~ msgid ""
-#~ "Camera model: %s\n"
-#~ "Camera ID: %s\n"
-#~ "Memory: %d byte(s) of %d available\n"
-#~ "Camera time: %s\n"
-#~ msgstr ""
-#~ "Camera 型式: %s\n"
-#~ "Camera ID: %s\n"
-#~ "メモリ: 有効 %d バイト (合計 %d バイト)\n"
-#~ "時刻: %s\n"
-
-#~ msgid "Speed %i is not supported!"
-#~ msgstr "スピード %i はサポートされていません！"
-
-#~ msgid ""
-#~ "Expected %i, got %i. Please report this error to <gphoto-devel@gphoto."
-#~ "org>."
-#~ msgstr ""
-#~ "%i を期待しましたが、%i を受け取りました。<gphoto-devel@gphoto.org> に連絡"
-#~ "して下さい。"
-
-#~ msgid ""
-#~ "Expected %i bytes, got %i. Please report this error to <gphoto-"
-#~ "devel@gphoto.org>."
-#~ msgstr ""
-#~ "%i バイトを期待しましたが、%i バイトを受け取りました。<gphoto-"
-#~ "devel@gphoto.org> に連絡して下さい。"
-
-#~ msgid ""
-#~ "We expected 0x%x but received 0x%x. Please contact <gphoto-devel@gphoto."
-#~ "org>."
-#~ msgstr ""
-#~ "0x%x を期待しましたが、0x%x を受け取りました。<gphoto-devel@gphoto.org> に"
-#~ "連絡して下さい。"
-
-#~ msgid ""
-#~ "Bad characters (0x%x, 0x%x). Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "おかしな文字 (0x%x, 0x%x) です。<gphoto-devel@gphoto.org> に連絡して下さ"
-#~ "い。"
-
-#~ msgid ""
-#~ "Camera busy. If the problem persists, please contact <gphoto-devel@gphoto."
-#~ "org>."
-#~ msgstr ""
-#~ "カメラがビジーです。この状態が長く続いた場合は <gphoto-devel@gphoto.org> "
-#~ "に連絡して下さい。"
-
-#~ msgid ""
-#~ "The Samsung digimax 800k driver has been written by James McKenzie "
-#~ "<james@fishsoup.dhs.org> for gphoto. Lutz Mueller <lutz@users.sourceforge."
-#~ "net> ported it to gphoto2. Marcus Meissner <marcus@jet.franken.de> fixed "
-#~ "and enhanced the port."
-#~ msgstr ""
-#~ "サムソン digimax 800k 向けの gPhoto2 用ドライバは James Mckenzie 氏 "
-#~ "<james@fishsoup.dhs.org> が開発を担当しました。Lutz Mueller <lutz@users."
-#~ "sourceforge.net> 氏はそれを gphoto2 向けに実装し直しました。Marcus "
-#~ "Meissner 氏 <marcus@jet.franken.de> 氏はバグフィックスと拡張機能を担当しま"
-#~ "した。"
-
-#~ msgid "The file to be uploaded has a null length"
-#~ msgstr "アップロードしたファイルのサイズが NULL です"
-
-#~ msgid "Not enough memory available on the memory card"
-#~ msgstr "メモリカードに空き容量がありません"
-
-#~ msgid "Cannot retrieve the name of the folder containing the pictures"
-#~ msgstr "写真を格納するフォルダ名が取得できません"
-
-#~ msgid "Upload is supported into the '%s' folder only"
-#~ msgstr "フォルダ '%s' へのアップロードのみサポートしています"
-
-#~ msgid "Picture Settings"
-#~ msgstr "写真の設定"
-
-#~ msgid "High"
-#~ msgstr "高い"
-
-#~ msgid "Best"
-#~ msgstr "ベスト"
-
-#~ msgid "%i (unknown)"
-#~ msgstr "%i (不明)"
-
-#~ msgid "Shutter Speed (microseconds, 0 auto)"
-#~ msgstr "シャッター速度 (マイクロ秒, 0:自動)"
-
-#~ msgid "Aperture"
-#~ msgstr "絞り"
-
-#~ msgid "Low"
-#~ msgstr "低"
-
-#~ msgid "Medium"
-#~ msgstr "中"
-
-#~ msgid "Color Mode"
-#~ msgstr "カラーモード"
-
-#~ msgid "Black/White"
-#~ msgstr "モノクロ"
-
-#~ msgid "Sepia"
-#~ msgstr "セピア"
-
-#~ msgid "White Board"
-#~ msgstr "白板"
-
-#~ msgid "Black Board"
-#~ msgstr "黒板"
-
-#~ msgid "Flash Mode"
-#~ msgstr "フラッシュモード"
-
-#~ msgid "Force"
-#~ msgstr "強制発光"
-
-#~ msgid "Red-eye Reduction"
-#~ msgstr "赤目軽減発光"
-
-#~ msgid "Slow Sync"
-#~ msgstr "スローシンクロ"
-
-#~ msgid "Brightness/Contrast"
-#~ msgstr "明るさ/コントラスト"
-
-#~ msgid "Bright+"
-#~ msgstr "明るさ(+)"
-
-#~ msgid "Bright-"
-#~ msgstr "明るさ(-)"
-
-#~ msgid "Contrast+"
-#~ msgstr "コントラスト(+)"
-
-#~ msgid "Contrast-"
-#~ msgstr "コントラスト(-)"
-
-#~ msgid "White Balance"
-#~ msgstr "ホワイトバランス"
-
-#~ msgid "Skylight"
-#~ msgstr "晴天"
-
-#~ msgid "Fluorescent"
-#~ msgstr "蛍光灯"
-
-#~ msgid "Tungsten"
-#~ msgstr "電球"
-
-#~ msgid "Cloudy"
-#~ msgstr "曇天"
-
-#~ msgid "Lens Mode"
-#~ msgstr "レンズモード"
-
-#~ msgid "Macro"
-#~ msgstr "マクロ"
-
-#~ msgid "Infinity/Fish-eye"
-#~ msgstr "∞/フラッシュアイ"
-
-#~ msgid "Spot Metering Mode"
-#~ msgstr "スポット測光モード"
-
-#~ msgid "Zoom"
-#~ msgstr "ズーム"
-
-#~ msgid "1x"
-#~ msgstr "x1"
-
-#~ msgid "1.6x"
-#~ msgstr "x1.6"
-
-#~ msgid "2x"
-#~ msgstr "x2"
-
-#~ msgid "2.5x"
-#~ msgstr "x2.5"
-
-#~ msgid "Camera Settings"
-#~ msgstr "カメラの設定"
-
-#~ msgid "Auto Off (host) (in seconds)"
-#~ msgstr "自動パワーオフ (host) (秒後)"
-
-#~ msgid ""
-#~ "How long will it take until the camera powers off when connected to the "
-#~ "computer?"
-#~ msgstr "コンピュータに接続した時に自動的にパワーオフするまでの時間です"
-
-#~ msgid "Auto Off (field) (in seconds)"
-#~ msgstr "自動パワーオフ (屋外) (秒後)"
-
-#~ msgid ""
-#~ "How long will it take until the camera powers off when not connected to "
-#~ "the computer?"
-#~ msgstr "屋外で自動的にパワーオフするまでの時間です"
-
-#~ msgid "LCD Brightness"
-#~ msgstr "液晶モニタの明るさ"
-
-#~ msgid "LCD Auto Off (in seconds)"
-#~ msgstr "液晶モニタの自動オフ (秒後)"
-
-#~ msgid "Shot Settings"
-#~ msgstr "ショットの設定"
-
-#~ msgid "F2"
-#~ msgstr "F2"
-
-#~ msgid "F2.3"
-#~ msgstr "F2.3"
-
-#~ msgid "F2.8"
-#~ msgstr "F2.8"
-
-#~ msgid "F4"
-#~ msgstr "F4"
-
-#~ msgid "F5.6"
-#~ msgstr "F5.6"
-
-#~ msgid "F8"
-#~ msgstr "F8"
-
-#~ msgid "Custom"
-#~ msgstr "カスタム"
-
-#~ msgid "SuperFine"
-#~ msgstr "スーパーファイン"
-
-#~ msgid "HyPict"
-#~ msgstr "高解像度"
-
-#~ msgid "color"
-#~ msgstr "色彩"
-
-#~ msgid "black & white"
-#~ msgstr "モノクロ"
-
-#~ msgid "Korean"
-#~ msgstr "韓国語"
-
-#~ msgid "English"
-#~ msgstr "英語"
-
-#~ msgid "French"
-#~ msgstr "フランス語"
-
-#~ msgid "German"
-#~ msgstr "ドイツ語"
-
-#~ msgid "Italian"
-#~ msgstr "イタリア語"
-
-#~ msgid "Japanese"
-#~ msgstr "日本語"
-
-#~ msgid "Spanish"
-#~ msgstr "スペイン語"
-
-#~ msgid "Portugese"
-#~ msgstr "ポルトガル語"
-
-#~ msgid "NO MEMORY CARD PRESENT\n"
-#~ msgstr "[メモリカードがありません]\n"
-
-#~ msgid "%sCamera Model: %s\n"
-#~ msgstr "%sカメラの型式: %s\n"
-
-#~ msgid "%sManufacturer: %s\n"
-#~ msgstr "%s製造: %s\n"
-
-#~ msgid "%sCamera ID: %s\n"
-#~ msgstr "%sカメラID: %s\n"
-
-#~ msgid "%sSerial Number: %s\n"
-#~ msgstr "%sシリアル番号: %s\n"
-
-#~ msgid "%sSoftware Rev.: %s\n"
-#~ msgstr "%sソフトウェア・リビジョン: %s\n"
-
-#~ msgid "%sFrames Taken: %i\n"
-#~ msgstr "%sフレーム数: %i\n"
-
-#~ msgid "%sFrames Left: %i\n"
-#~ msgstr "%s残りフレーム数: %i\n"
-
-#~ msgid "%sBattery Life: %i\n"
-#~ msgstr "%sバッテリーの寿命: %i\n"
-
-#~ msgid "%sMemory Left: %i bytes\n"
-#~ msgstr "%sメモリの空き容量: %i バイト\n"
-
-#~ msgid "%sDate: %s\n"
-#~ msgstr "%s日付: %s\n"
-
-#~ msgid ""
-#~ "Some notes about Epson cameras:\n"
-#~ "- Some parameters are not controllable remotely:\n"
-#~ "  * zoom\n"
-#~ "  * focus\n"
-#~ "  * custom white balance setup\n"
-#~ "- Configuration has been reverse-engineered with\n"
-#~ "  a PhotoPC 3000z, if your camera acts differently\n"
-#~ "  please send a mail to <gphoto-devel@gphoto.org> (in English)\n"
-#~ msgstr ""
-#~ "Epson 製 カメラについて:\n"
-#~ "- 以下のパラメータはリモートで制御できません:\n"
-#~ "  * ズーム\n"
-#~ "  * フォーカス\n"
-#~ "  * ホワイト・バランスのカスタム設定\n"
-#~ "- 設定は PhotoPC 3000z でリバースエンジニアされました。\n"
-#~ "  お使いのカメラがおかしな動きをした場合は\n"
-#~ "  <gphoto-devel@gphoto.org> (英語で) まで連絡して下さい。\n"
-
-#~ msgid ""
-#~ "Some notes about Olympus cameras (and others?):\n"
-#~ "(1) Camera Configuration:\n"
-#~ "    A value of 0 will take the default one (auto).\n"
-#~ "(2) Olympus C-3040Z (and possibly also the C-2040Z\n"
-#~ "    and others) have a USB PC Control mode. In order\n"
-#~ "    to use this mode, the camera must be switched \n"
-#~ "    into 'USB PC control mode'. To get to the menu \n"
-#~ "    for switching modes, open the memory card access\n"
-#~ "    door and then press and hold both of the menu \n"
-#~ "    buttons until the camera control menu appears.\n"
-#~ "    Set it to ON."
-#~ msgstr ""
-#~ "Olympus カメラの注意事項 (他のカメラも？):\n"
-#~ "(1) カメラの設定\n"
-#~ "    値を '0' にするとデフォルト値 (自動) が使用されます。\n"
-#~ "(2) Olympus C-3040Z (含む C-2040Z とその他) には \n"
-#~ "    USB PC 制御モードがあります。 このモードを使用するには\n"
-#~ "    カメラ側で 'USB PC 制御モード' に切り替える必要があります。\n"
-#~ "    メニューでモードを切り替えるには、メモリカードの\n"
-#~ "    アクセス・カバーを開いて、カメラのコントロールメニューが\n"
-#~ "    表示されるまでメニューボタンを押したままにして下さい。\n"
-#~ "    それから 'USB PC 制御モード' を ON にして下さい。"
-
-#~ msgid ""
-#~ "sierra SPARClite library\n"
-#~ "Scott Fritzinger <scottf@unr.edu>\n"
-#~ "Support for sierra-based digital cameras\n"
-#~ "including Olympus, Nikon, Epson, and others.\n"
-#~ "\n"
-#~ "Thanks to Data Engines (www.dataengines.com)\n"
-#~ "for the use of their Olympus C-3030Z for USB\n"
-#~ "support implementation."
-#~ msgstr ""
-#~ "Sierra SPARClite ライブラリ\n"
-#~ "Scott Fritzinger <scottf@unr.edu>\n"
-#~ "Olymus, Nikon, Epson 他を含む\n"
-#~ "Sierra ベースのデジタルカメラのサポート担当\n"
-#~ "\n"
-#~ "Olymus C-3030Z の USB サポートの実装では\n"
-#~ "Data Engines 氏 (www.dataengines.com)\n"
-#~ "に感謝します。"
-
-#~ msgid "Cannot retrieve the battery capacity"
-#~ msgstr "バッテリ容量を取得することができません"
-
-#~ msgid ""
-#~ "The battery level of the camera is too low (%d%%). The operation is "
-#~ "aborted."
-#~ msgstr "カメラのバッテリ残量が低すぎます (%d%%)。操作を中止します。"
-
-#~ msgid "Cannot retrieve the available memory left"
-#~ msgstr "有効なメモリ残量を取得できません。"
-
-#~ msgid "Camera refused 3 times to keep a connection open."
-#~ msgstr "接続を保持するのに３回失敗しました。"
-
-#~ msgid "The first byte received (0x%x) is not valid."
-#~ msgstr "最初に受け取ったデータ (0x%x) は無効です。"
-
-#~ msgid ""
-#~ "Transmission of packet timed out even after %i retries. Please contact "
-#~ "<gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "パケットを %i 回送信しましたが、タイムアウトしました。<gphoto-"
-#~ "devel@gphoto.org> に連絡して下さい。"
-
-#~ msgid "Could not transmit packet even after several retries."
-#~ msgstr "リトライ後もパケット送信が出来ませんでした。"
-
-#~ msgid ""
-#~ "Packet got rejected by camera. Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "パケットがカメラに拒否されました。<gphoto-devel@gphoto.org> に連絡して下さ"
-#~ "い。"
-
-#~ msgid ""
-#~ "Could not transmit packet (error code %i). Please contact <gphoto-"
-#~ "devel@gphoto.org>."
-#~ msgstr ""
-#~ "パケットを送信できませんでした (エラーコード %i)。<gphoto-devel@gphoto."
-#~ "org> に連絡して下さい。"
-
-#~ msgid "Transmission timed out even after 2 retries. Giving up..."
-#~ msgstr "二回再送しましたがタイムアウトしました。終了します..."
-
-#~ msgid ""
-#~ "Got unexpected result 0x%x. Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "予期しない結果 0x%x を受け取りました。<gphoto-devel@gphoto.org> に連絡して"
-#~ "下さい。"
-
-#~ msgid ""
-#~ "Received unexpected answer (%i). Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "予期しない結果 (%i) を受け取りました。<gphoto-devel@gphoto.org> に連絡して"
-#~ "下さい。"
-
-#~ msgid "Could not get register %i. Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "レジスタ %i を取得できません。<gphoto-devel@gphoto.org> に連絡して下さい。"
-
-#~ msgid "Too many retries failed."
-#~ msgstr "リトライに失敗しました。"
-
-#~ msgid "Sending data..."
-#~ msgstr "データの送信中..."
-
-#~ msgid ""
-#~ "Could not get string register %i. Please contact <gphoto-devel@gphoto."
-#~ "org>."
-#~ msgstr ""
-#~ "string 型レジスタ %i を取得できませんでした。<gphoto-devel@gphoto.org> に"
-#~ "連絡して下さい。"
-
-#~ msgid "Expected 32 bytes, got %i. Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr ""
-#~ "32 バイトを期待しましたが、%i バイトを受け取りました。<gphoto-"
-#~ "devel@gphoto.org> に連絡して下さい。"
-
-#~ msgid "Not implemented!"
-#~ msgstr "未だ実装されていません！"
-
-#~ msgid ""
-#~ "Sony DSC-F1 Digital Camera Support\n"
-#~ "M. Adam Kendall <joker@penguinpub.com>\n"
-#~ "Based on the chotplay CLI interface from\n"
-#~ "Ken-ichi Hayashi\n"
-#~ "Gphoto2 port by Bart van Leeuwen <bart@netage.nl>"
-#~ msgstr ""
-#~ "SONY DSC-F1 デジタルカメラのサポート担当\n"
-#~ "M. Adam Kendall <joker@penguinpub.com>\n"
-#~ "Kenichi Hayashi 氏から chotplay CLI \n"
-#~ "インタフェース部を提供して貰いました\n"
-#~ "Gphoto2 実装の担当は Bart van Leeuwen <bart@netage.nl>"
-
-#~ msgid ""
-#~ "Sony DSC-F55/505 gPhoto library\n"
-#~ "Supports Sony MSAC-SR1 and Memory Stick used by DCR-PC100\n"
-#~ "Originally written by Mark Davies <mdavies@dial.pipex.com>\n"
-#~ "gPhoto2 port by Raymond Penners <raymond@dotsphinx.com>"
-#~ msgstr ""
-#~ "Sony DSC-F55/505 gPhoto ライブラリ\n"
-#~ "Sony MSAC-SR1 と DCR-PC100 が使用するメモリ・ステックのサポート\n"
-#~ "Mark Davies 氏 <mdavies@dial.pipex.com> が作成したものがベースです。\n"
-#~ "gPhoto2 へのポーティングは Raymond Penners 氏 <raymond@dotsphinx.com> が担"
-#~ "当しました。"
-
-#~ msgid "Bad exposure (not enough light probably)"
-#~ msgstr "露出がおかしいです (おそらくフラッシュが十分ではありません)"
-
-#~ msgid "Information for STV0680 based camera:\n"
-#~ msgstr "STV0680 ベースのカメラ情報:\n"
-
-#~ msgid "Firmware Revision: %d.%d\n"
-#~ msgstr "ファームウェア・リビジョン: %d.%d\n"
-
-#~ msgid "ASIC Revision: %d.%d\n"
-#~ msgstr "ASIC リビジョン: %d.%d\n"
-
-#~ msgid "Sensor ID: %d.%d\n"
-#~ msgstr "センサ ID: %d.%d\n"
-
-#~ msgid "Camera is configured for lights flickering with %dHz.\n"
-#~ msgstr "カメラのフラッシュ設定は %dHz です。\n"
-
-#~ msgid "Memory in camera: %d Mbit.\n"
-#~ msgstr "カメラ内蔵メモリ: %d Mビット\n"
-
-#~ msgid "Camera supports Thumbnails.\n"
-#~ msgstr "サムネイル形式をサポートしています。\n"
-
-#~ msgid "Camera supports Video.\n"
-#~ msgstr "ビデオ形式をサポートしています。\n"
-
-#~ msgid "Camera pictures are monochrome.\n"
-#~ msgstr "白黒です。\n"
-
-#~ msgid "Camera has memory.\n"
-#~ msgstr "メモリを内蔵しています。\n"
-
-#~ msgid "Camera supports videoformats: "
-#~ msgstr "サポート済みのビデオ形式:"
-
-#~ msgid "Vendor ID: %02x%02x\n"
-#~ msgstr "ベンダー ID: %02x%02x\n"
-
-#~ msgid "Product ID: %02x%02x\n"
-#~ msgstr "製品 ID: %02x%02x\n"
-
-#~ msgid "Number of Images: %d\n"
-#~ msgstr "写真の数: %d\n"
-
-#~ msgid "Maximum number of Images: %d\n"
-#~ msgstr "画像の最大数: %d\n"
-
-#~ msgid "Image width: %d\n"
-#~ msgstr "画像の幅: %d\n"
-
-#~ msgid "Image height: %d\n"
-#~ msgstr "画像の高さ: %d\n"
-
-#~ msgid "Image size: %d\n"
-#~ msgstr "画像サイズ: %d\n"
-
-#~ msgid "Thumbnail width: %d\n"
-#~ msgstr "サムネイルの幅: %d\n"
-
-#~ msgid "Thumbnail height: %d\n"
-#~ msgstr "サムネイルの高さ: %d\n"
-
-#~ msgid "Thumbnail size: %d\n"
-#~ msgstr "サムネイルのサイズ: %d\n"
-
-#~ msgid ""
-#~ "STV0680\n"
-#~ "Adam Harrison <adam@antispin.org>\n"
-#~ "Driver for cameras using the STV0680 processor ASIC.\n"
-#~ "Protocol reverse engineered using CommLite Beta 5\n"
-#~ "Carsten Weinholz <c.weinholz@netcologne.de>\n"
-#~ "Extended for Aiptek PenCam and other STM USB Dual-mode cameras."
-#~ msgstr ""
-#~ "STV0680\n"
-#~ "Adam Harrison <adam@antispin.org>\n"
-#~ "STV0680 (プロセッサ ASIC 搭載) を使用するカメラのドライバ担当。\n"
-#~ "CommLite Beta 5 の Protocol Reverse Engineered は\n"
-#~ "Carsten Weinholz <c.weinholz@netcologne.de> 氏が担当。\n"
-#~ "Aiptek PenCam の拡張とその他の STM USB Dual-mode カメラを担当。"
-
-#~ msgid "An error occurred in the io-library ('%s'): %s"
-#~ msgstr "I/O ライブラリ ('%s') でエラーが発生しました: %s"
-
-#~ msgid "No additional information available."
-#~ msgstr "有効な追加情報はありません。"
-
-#~ msgid "Could not detect any camera"
-#~ msgstr "カメラを検出することが出来ませんでした"
-
-#~ msgid "You have to set the port prior initialization of the camera."
-#~ msgstr "カメラの初期化を行う前に先にポートをセットして下さい。"
-
-#~ msgid "Could not load required camera driver '%s' (%s)."
-#~ msgstr "必要なカメラのドライバ '%s' (%s) が読み込めませんでした。"
-
-#~ msgid "Could not load required camera driver '%s'."
-#~ msgstr "指定したカメラのドライバ '%s' を読み込めませんでした。"
-
-#~ msgid "Camera driver '%s' is missing the 'camera_init' function."
-#~ msgstr "カメラのドライバ '%s' には 'camera_init' 関数がありません。"
-
-#~ msgid "This camera does not offer any configuration options."
-#~ msgstr "このカメラではいくつかのオプションをサポートしていません。"
-
-#~ msgid "This camera does not support setting configuration options."
-#~ msgstr "このカメラでは設定したいくつかのオプションをサポートしていません。"
-
-#~ msgid "This camera does not support summaries."
-#~ msgstr "このカメラはサマリをサポートしていません。"
-
-#~ msgid "This camera does not offer a manual."
-#~ msgstr "このカメラはマニュアルをサポートしていません。"
-
-#~ msgid "This camera does not provide information about the driver."
-#~ msgstr "このカメラはドライバ情報を提供していません。"
-
-#~ msgid "This camera can not capture."
-#~ msgstr "このカメラではキャプチャできません。"
-
-#~ msgid "This camera can not capture previews."
-#~ msgstr "このカメラはキャプチャのプレビューができません。"
-
-#~ msgid "The path '%s' is not absolute."
-#~ msgstr "パス名 '%s' が無効です。"
-
-#~ msgid "Could not append folder '%s' as this folder already exists."
-#~ msgstr ""
-#~ "フォルダ '%s' が既に存在しているので追加することが出来ませんでした。"
-
-#~ msgid "Could not find folder '%s'."
-#~ msgstr "フォルダ '%s' が見つかりませんでした。"
-
-#~ msgid "Folder '%s' does not contain a folder '%s'."
-#~ msgstr "フォルダ '%s' の中にフォルダ '%s' がありません。"
-
-#~ msgid ""
-#~ "Could not append '%s' to folder '%s' because this file already exists."
-#~ msgstr ""
-#~ "ファイル '%s' が既に存在しているのでフォルダ '%s' に追加することが出来ませ"
-#~ "んでした。"
-
-#~ msgid ""
-#~ "You have been trying to delete '%s' from folder '%s', but the filesystem "
-#~ "does not support deletion of files."
-#~ msgstr ""
-#~ "'%s' をフォルダ '%s' から削除しようとしましたが、ファイルシステムはファイ"
-#~ "ルの削除をサポートしていません。"
-
-#~ msgid "There are still files in folder '%s' that you are trying to remove."
-#~ msgstr "削除しようとしたフォルダ '%s' の中にファイルが存在しています。"
-
-#~ msgid ""
-#~ "There are still subfolders in folder '%s' that you are trying to remove."
-#~ msgstr "削除しようとしたフォルダ '%s' の中にサブフォルダが存在します。"
-
-#~ msgid "The filesystem does not support upload of files."
-#~ msgstr "ファイルシステムではファイルのアップロードをサポートしていません。"
-
-#~ msgid ""
-#~ "Folder '%s' does only contain %i files, but you requested a file with "
-#~ "number %i."
-#~ msgstr ""
-#~ "フォルダ '%s' には %i 個のファイルがありますが、要求した番号は %i です。"
-
-#~ msgid "File '%s' could not be found in folder '%s'."
-#~ msgstr "ファイル '%s' がフォルダ '%s' の中にありません。"
-
-#~ msgid "Could not find file '%s'."
-#~ msgstr "ファイル '%s' が見つかりませんでした。"
-
-#~ msgid "The filesystem doesn't support getting files"
-#~ msgstr "ファイルシステムはこの形式のファイル取得をサポートしていません。"
-
-#~ msgid "Unknown file type %i."
-#~ msgstr "不明なファイル形式 %i です。"
-
-#~ msgid "Downloading '%s' from folder '%s'..."
-#~ msgstr "'%s' をフォルダ '%s' からダウンロード中..."
-
-#~ msgid "The filesystem doesn't support getting file information"
-#~ msgstr "ファイルシステムはこの形式のファイル情報取得をサポートしていません"
-
-#~ msgid "The filesystem doesn't support setting file information"
-#~ msgstr ""
-#~ "ファイルシステムはこの形式のファイル情報の設定をサポートしていません"
-
-#~ msgid "Read-only file attributes like width and height can not be changed."
-#~ msgstr ""
-#~ "ファイルの幅と高さなどの読み込み専用属性を変更することはできません。"
-
-#~ msgid "Loading camera drivers from '%s'..."
-#~ msgstr "'%s' からカメラのドライバを読み込み中..."
-
-#~ msgid "Could not open '%s'"
-#~ msgstr "'%s' を開くことが出来ませんでした"
-
-#~ msgid "Could not find any driver for '%s'"
-#~ msgstr "'%s' 用のドライバが見つかりませんでした"
-
-#~ msgid "Corrupted data"
-#~ msgstr "おかしなデータ"
-
-#~ msgid "File exists"
-#~ msgstr "ファイルが存在します"
-
-#~ msgid "Unknown model"
-#~ msgstr "不明な型式"
-
-#~ msgid "Directory not found"
-#~ msgstr "ディレクトリがみつかりません"
-
-#~ msgid "File not found"
-#~ msgstr "ファイルがみつかりません"
-
-#~ msgid "Directory exists"
-#~ msgstr "ディレクトリが存在します"
-
-#~ msgid "Path not absolute"
-#~ msgstr "パス名が無効です"
-
-#~ msgid "Unknown camera library error"
-#~ msgstr "カメラライブラリの不明なエラー"
-
-#~ msgid "Unknown error"
-#~ msgstr "不明なエラー"
-
-#~ msgid "Authors"
-#~ msgstr "作者"
-
-#~ msgid "License"
-#~ msgstr "ライセンス"
-
-#~ msgid "Could not open '"
-#~ msgstr "COPYING ファイルが開けませんでした。"
-
-#~ msgid "/COPYING'. Please verify your installation."
-#~ msgstr "インストールを確認して下さい。"

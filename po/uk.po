@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gphoto\n"
-"POT-Creation-Date: 2002-07-29 00:47+0200\n"
+"POT-Creation-Date: 2002-11-20 19:11+0100\n"
 "PO-Revision-Date: 2000-06-27 16:33+0200\n"
 "Last-Translator: Yuri Syrota <rasta@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <ru@li.org>\n"
@@ -13,177 +13,361 @@ msgstr ""
 "Content-Type: text/plain; charset=koi8-u\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: gphoto2/actions.c:75
+#: gphoto2/actions.c:117
+#, fuzzy, c-format
+msgid "Number of files in folder '%s': %i\n"
+msgstr "Нове зображення #%03i"
+
+#: gphoto2/actions.c:136
 #, fuzzy, c-format
 msgid "There are no folders in folder '%s'."
 msgstr ""
 "Не вдалося в╕дкрити:\n"
 "%s"
 
-#: gphoto2/actions.c:79
+#: gphoto2/actions.c:140
 #, fuzzy, c-format
 msgid "There is one folder in folder '%s':"
 msgstr ""
 "Не вдалося в╕дкрити:\n"
 "%s"
 
-#: gphoto2/actions.c:83
+#: gphoto2/actions.c:144
 #, c-format
 msgid "There are %i folders in folder '%s':"
 msgstr ""
 
-#: gphoto2/actions.c:109 gphoto2/foreach.c:250
+#: gphoto2/actions.c:170 gphoto2/foreach.c:283
 #, fuzzy, c-format
 msgid "There are no files in folder '%s'."
 msgstr ""
 "Не вдалося в╕дкрити:\n"
 "%s"
 
-#: gphoto2/actions.c:113
+#: gphoto2/actions.c:175
 #, fuzzy, c-format
 msgid "There is one file in folder '%s':"
 msgstr ""
 "Не вдалося в╕дкрити:\n"
 "%s"
 
-#: gphoto2/actions.c:117
+#: gphoto2/actions.c:180
 #, c-format
 msgid "There are %i files in folder '%s':"
 msgstr ""
 
-#: gphoto2/actions.c:138
+#: gphoto2/actions.c:201
 #, c-format
 msgid "Information on file '%s' (folder '%s'):\n"
 msgstr ""
 
-#: gphoto2/actions.c:140
+#: gphoto2/actions.c:203
 msgid "File:\n"
 msgstr ""
 
-#: gphoto2/actions.c:142 gphoto2/actions.c:176 gphoto2/actions.c:192
+#: gphoto2/actions.c:205 gphoto2/actions.c:239 gphoto2/actions.c:255
 #, fuzzy
 msgid "  None available.\n"
 msgstr "Не доступно"
 
-#: gphoto2/actions.c:145
+#: gphoto2/actions.c:208
 #, c-format
 msgid "  Name:        '%s'\n"
 msgstr ""
 
-#: gphoto2/actions.c:147 gphoto2/actions.c:179
+#: gphoto2/actions.c:210 gphoto2/actions.c:242
 #, c-format
 msgid "  Mime type:   '%s'\n"
 msgstr ""
 
-#: gphoto2/actions.c:149 gphoto2/actions.c:181
+#: gphoto2/actions.c:212 gphoto2/actions.c:244
 #, c-format
 msgid "  Size:        %li byte(s)\n"
 msgstr ""
 
-#: gphoto2/actions.c:151 gphoto2/actions.c:183
+#: gphoto2/actions.c:214 gphoto2/actions.c:246
 #, c-format
 msgid "  Width:       %i pixel(s)\n"
 msgstr ""
 
-#: gphoto2/actions.c:153 gphoto2/actions.c:185
+#: gphoto2/actions.c:216 gphoto2/actions.c:248
 #, c-format
 msgid "  Height:      %i pixel(s)\n"
 msgstr ""
 
-#: gphoto2/actions.c:155 gphoto2/actions.c:187
+#: gphoto2/actions.c:218 gphoto2/actions.c:250
 #, fuzzy, c-format
 msgid "  Downloaded:  %s\n"
 msgstr "Прийом завершено."
 
-#: gphoto2/actions.c:156 gphoto2/actions.c:188 gphoto2/actions.c:200
-#: gphoto2/main.c:379 gphoto2/main.c:381 gphoto2/main.c:400 gphoto2/main.c:402
-#: gphoto2/main.c:404 gphoto2/main.c:406
+#: gphoto2/actions.c:219 gphoto2/actions.c:251 gphoto2/actions.c:263
+#: gphoto2/actions.c:560 gphoto2/actions.c:562 gphoto2/actions.c:579
+#: gphoto2/actions.c:582 gphoto2/actions.c:585 gphoto2/actions.c:588
 #, fuzzy
 msgid "yes"
 msgstr "Так"
 
-#: gphoto2/actions.c:156 gphoto2/actions.c:188 gphoto2/actions.c:200
-#: gphoto2/main.c:379 gphoto2/main.c:381 gphoto2/main.c:400 gphoto2/main.c:402
-#: gphoto2/main.c:404 gphoto2/main.c:406
+#: gphoto2/actions.c:219 gphoto2/actions.c:251 gphoto2/actions.c:263
+#: gphoto2/actions.c:560 gphoto2/actions.c:562 gphoto2/actions.c:579
+#: gphoto2/actions.c:582 gphoto2/actions.c:585 gphoto2/actions.c:588
 msgid "no"
 msgstr ""
 
-#: gphoto2/actions.c:158
+#: gphoto2/actions.c:221
 msgid "  Permissions: "
 msgstr ""
 
-#: gphoto2/actions.c:161
+#: gphoto2/actions.c:224
 msgid "read/delete"
 msgstr ""
 
-#: gphoto2/actions.c:163
+#: gphoto2/actions.c:226
 #, fuzzy
 msgid "read"
 msgstr "Створити"
 
-#: gphoto2/actions.c:165
+#: gphoto2/actions.c:228
 msgid "delete"
 msgstr ""
 
-#: gphoto2/actions.c:167
+#: gphoto2/actions.c:230
 #, fuzzy
 msgid "none"
 msgstr "Виконано."
 
-#: gphoto2/actions.c:171
+#: gphoto2/actions.c:234
 #, c-format
 msgid "  Time:        %s"
 msgstr ""
 
-#: gphoto2/actions.c:174
+#: gphoto2/actions.c:237
 msgid "Thumbnail:\n"
 msgstr ""
 
-#: gphoto2/actions.c:190
+#: gphoto2/actions.c:253
 msgid "Audio data:\n"
 msgstr ""
 
-#: gphoto2/actions.c:195
+#: gphoto2/actions.c:258
 #, c-format
 msgid "  Mime type:  '%s'\n"
 msgstr ""
 
-#: gphoto2/actions.c:197
+#: gphoto2/actions.c:260
 #, c-format
 msgid "  Size:       %li byte(s)\n"
 msgstr ""
 
-#: gphoto2/actions.c:199
+#: gphoto2/actions.c:262
 #, fuzzy, c-format
 msgid "  Downloaded: %s\n"
 msgstr "Прийом завершено."
 
-#: gphoto2/actions.c:331
+#: gphoto2/actions.c:393
 msgid "Could not parse EXIF data."
 msgstr ""
 
-#: gphoto2/actions.c:335
+#: gphoto2/actions.c:397
 msgid "EXIF tags:"
 msgstr ""
 
-#: gphoto2/actions.c:338
+#: gphoto2/actions.c:400
 msgid "Tag"
 msgstr ""
 
-#: gphoto2/actions.c:340
+#: gphoto2/actions.c:402
 msgid "Value"
 msgstr ""
 
-#: gphoto2/actions.c:361
+#: gphoto2/actions.c:423
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
 msgstr ""
 
-#: gphoto2/actions.c:370
+#: gphoto2/actions.c:432
 msgid "gphoto2 has been compiled without EXIF support."
 msgstr ""
 
-#: gphoto2/foreach.c:229
+#: gphoto2/actions.c:450
+#, c-format
+msgid "Number of supported cameras: %i\n"
+msgstr ""
+
+#: gphoto2/actions.c:452
+msgid "Supported cameras:\n"
+msgstr ""
+
+#: gphoto2/actions.c:465
+#, c-format
+msgid "\t\"%s\" (TESTING)\n"
+msgstr ""
+
+#: gphoto2/actions.c:468
+#, c-format
+msgid "\t\"%s\" (EXPERIMENTAL)\n"
+msgstr ""
+
+#: gphoto2/actions.c:473
+#, c-format
+msgid "\t\"%s\"\n"
+msgstr ""
+
+#: gphoto2/actions.c:501
+#, c-format
+msgid "Devices found: %i\n"
+msgstr ""
+
+#: gphoto2/actions.c:502
+msgid ""
+"Path                             Description\n"
+"--------------------------------------------------------------\n"
+msgstr ""
+
+#: gphoto2/actions.c:540 gphoto2/actions.c:545
+#, c-format
+msgid "%-30s %-16s\n"
+msgstr ""
+
+#: gphoto2/actions.c:540
+msgid "Model"
+msgstr ""
+
+#: gphoto2/actions.c:540
+#, fuzzy
+msgid "Port"
+msgstr "Порт:"
+
+#: gphoto2/actions.c:541
+msgid "----------------------------------------------------------\n"
+msgstr ""
+
+#: gphoto2/actions.c:558
+#, c-format
+msgid "Abilities for camera             : %s\n"
+msgstr ""
+
+#: gphoto2/actions.c:559
+#, c-format
+msgid "Serial port support              : %s\n"
+msgstr ""
+
+#: gphoto2/actions.c:561
+#, c-format
+msgid "USB support                      : %s\n"
+msgstr ""
+
+#: gphoto2/actions.c:564
+msgid "Transfer speeds supported        :\n"
+msgstr ""
+
+#: gphoto2/actions.c:566
+#, c-format
+msgid "                                 : %i\n"
+msgstr ""
+
+#: gphoto2/actions.c:569
+msgid "Capture choices                  :\n"
+msgstr ""
+
+#: gphoto2/actions.c:571
+msgid "                                 : Image\n"
+msgstr ""
+
+#: gphoto2/actions.c:573
+#, fuzzy
+msgid "                                 : Video\n"
+msgstr "\t-n                    показати к╕льк╕сть зображень\n"
+
+#: gphoto2/actions.c:575
+msgid "                                 : Audio\n"
+msgstr ""
+
+#: gphoto2/actions.c:577
+msgid "                                 : Preview\n"
+msgstr ""
+
+#: gphoto2/actions.c:578
+#, c-format
+msgid "Configuration support            : %s\n"
+msgstr ""
+
+#: gphoto2/actions.c:580
+#, c-format
+msgid "Delete files on camera support   : %s\n"
+msgstr ""
+
+#: gphoto2/actions.c:583
+#, c-format
+msgid "File preview (thumbnail) support : %s\n"
+msgstr ""
+
+#: gphoto2/actions.c:586
+#, c-format
+msgid "File upload support              : %s\n"
+msgstr ""
+
+#: gphoto2/actions.c:603
+#, c-format
+msgid ""
+"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
+"colon so I am going to guess what you mean."
+msgstr ""
+
+#: gphoto2/actions.c:642
+#, c-format
+msgid ""
+"The port you specified ('%s') can not be found. Please specify one of the "
+"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
+"(i.e. with prefix 'serial:' or 'usb:')."
+msgstr ""
+
+#: gphoto2/actions.c:680
+msgid "About the camera driver:"
+msgstr ""
+
+#: gphoto2/actions.c:694
+#, fuzzy
+msgid "Camera summary:"
+msgstr ""
+"Зведення %s:\n"
+"%s"
+
+#: gphoto2/actions.c:708
+#, fuzzy
+msgid "Camera manual:"
+msgstr "Модель камери:"
+
+#: gphoto2/actions.c:724
+msgid "You can only specify speeds for serial ports."
+msgstr ""
+
+#: gphoto2/actions.c:775
+#, c-format
+msgid ""
+"gphoto2 %s\n"
+"\n"
+"Copyright (C) 2000-2002 Lutz Mueller and others\n"
+"%s\n"
+"gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
+"redistribute copies of gphoto2 under the terms of the GNU General Public\n"
+"License. For more information about these matters, see the files named "
+"COPYING.\n"
+"\n"
+"This version of gphoto2 is using the following software versions and "
+"options:\n"
+msgstr ""
+
+#: gphoto2/actions.c:788
+msgid "OS/2 port by Bart van Leeuwen\n"
+msgstr ""
+
+#: gphoto2/actions.c:902
+msgid ""
+"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
+"MAILING LIST:"
+msgstr ""
+
+#: gphoto2/foreach.c:262
 #, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
@@ -191,14 +375,14 @@ msgid ""
 "listing first."
 msgstr ""
 
-#: gphoto2/foreach.c:255
+#: gphoto2/foreach.c:288
 #, c-format
 msgid ""
 "Bad file number. You specified %i, but there is only 1 file available in '%"
 "s'."
 msgstr ""
 
-#: gphoto2/foreach.c:262
+#: gphoto2/foreach.c:295
 #, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
@@ -254,483 +438,429 @@ msgstr "Так"
 msgid "No"
 msgstr "Н╕"
 
-#: gphoto2/main.c:198
+#: gphoto2/main.c:183 gphoto2/main.c:1475
 msgid "Turn on debugging"
 msgstr ""
 
-#: gphoto2/main.c:200
+#: gphoto2/main.c:184 gphoto2/main.c:1477
 msgid "Quiet output (default=verbose)"
 msgstr ""
 
-#. Display and die actions
-#: gphoto2/main.c:204
+#: gphoto2/main.c:188 gphoto2/main.c:1481
 msgid "Display version and exit"
 msgstr ""
 
-#: gphoto2/main.c:205
+#: gphoto2/main.c:189
 #, fuzzy
 msgid "Displays this help screen"
 msgstr "\t-h                    показати цей дов╕дковий екран\n"
 
-#: gphoto2/main.c:206
+#: gphoto2/main.c:190 gphoto2/main.c:1483
 msgid "List supported camera models"
 msgstr ""
 
-#: gphoto2/main.c:207
-msgid "usb.usermap script (dflt=\"usbcam\")"
-msgstr ""
-
-#: gphoto2/main.c:208
-msgid "Create output for usb.usermap"
-msgstr ""
-
-#: gphoto2/main.c:209
+#: gphoto2/main.c:191 gphoto2/main.c:1485
 msgid "List supported port devices"
 msgstr ""
 
-#: gphoto2/main.c:210
+#: gphoto2/main.c:192 gphoto2/main.c:1487
 msgid "Send file to stdout"
 msgstr ""
 
-#: gphoto2/main.c:211
+#: gphoto2/main.c:193 gphoto2/main.c:1489
 msgid "Print filesize before data"
 msgstr ""
 
-#: gphoto2/main.c:212
+#: gphoto2/main.c:194 gphoto2/main.c:1491
 msgid "List auto-detected cameras"
 msgstr ""
 
-#. Settings needed for camera functions
-#: gphoto2/main.c:215
+#: gphoto2/main.c:197 gphoto2/main.c:1493
 msgid "Specify port device"
 msgstr ""
 
-#: gphoto2/main.c:216
+#: gphoto2/main.c:198 gphoto2/main.c:1495
 msgid "Specify serial transfer speed"
 msgstr ""
 
-#: gphoto2/main.c:217
+#: gphoto2/main.c:199 gphoto2/main.c:1497
 #, fuzzy
 msgid "Specify camera model"
 msgstr "Модель камери:"
 
-#: gphoto2/main.c:218
+#: gphoto2/main.c:200 gphoto2/main.c:1499
 msgid "Specify a filename"
 msgstr ""
 
-#: gphoto2/main.c:219
+#: gphoto2/main.c:201 gphoto2/main.c:1501
 msgid "(expert only) Override USB IDs"
 msgstr ""
 
-#. Actions that depend on settings
-#: gphoto2/main.c:222
+#: gphoto2/main.c:204 gphoto2/main.c:1503
 msgid "Display camera abilities"
 msgstr ""
 
-#: gphoto2/main.c:223
+#: gphoto2/main.c:205 gphoto2/main.c:1505
 msgid "Specify camera folder (default=\"/\")"
 msgstr ""
 
-#: gphoto2/main.c:224
+#: gphoto2/main.c:206 gphoto2/main.c:1507
 #, fuzzy
 msgid "Recursion (default for download)"
 msgstr "Н╕чего не вибрано для прийому."
 
-#: gphoto2/main.c:225
+#: gphoto2/main.c:207 gphoto2/main.c:1509
 msgid "No recursion (default for deletion)"
 msgstr ""
 
-#: gphoto2/main.c:226
+#: gphoto2/main.c:208 gphoto2/main.c:1511
 msgid "List folders in folder"
 msgstr ""
 
-#: gphoto2/main.c:227
+#: gphoto2/main.c:209 gphoto2/main.c:1513
 msgid "List files in folder"
 msgstr ""
 
-#: gphoto2/main.c:228 gphoto2/main.c:229
+#: gphoto2/main.c:210 gphoto2/main.c:211
 msgid "name"
 msgstr ""
 
-#: gphoto2/main.c:228
+#: gphoto2/main.c:210 gphoto2/main.c:1515
 msgid "Create a directory"
 msgstr ""
 
-#: gphoto2/main.c:229
+#: gphoto2/main.c:211 gphoto2/main.c:1517
 msgid "Remove a directory"
 msgstr ""
 
-#: gphoto2/main.c:230
+#: gphoto2/main.c:212 gphoto2/main.c:1519
 #, fuzzy
 msgid "Display number of files"
 msgstr "Не вдалось отримати к╕лькост╕ зображень"
 
-#: gphoto2/main.c:231
+#: gphoto2/main.c:213 gphoto2/main.c:1521
 msgid "Get files given in range"
 msgstr ""
 
-#: gphoto2/main.c:232
+#: gphoto2/main.c:214 gphoto2/main.c:1523
 msgid "Get all files from folder"
 msgstr ""
 
-#: gphoto2/main.c:233
+#: gphoto2/main.c:215 gphoto2/main.c:1525
 msgid "Get thumbnails given in range"
 msgstr ""
 
-#: gphoto2/main.c:234
+#: gphoto2/main.c:216 gphoto2/main.c:1528
 msgid "Get all thumbnails from folder"
 msgstr ""
 
-#: gphoto2/main.c:235
+#: gphoto2/main.c:217 gphoto2/main.c:1531
 msgid "Get raw data given in range"
 msgstr ""
 
-#: gphoto2/main.c:236
+#: gphoto2/main.c:218 gphoto2/main.c:1534
 msgid "Get all raw data from folder"
 msgstr ""
 
-#: gphoto2/main.c:237
+#: gphoto2/main.c:219 gphoto2/main.c:1537
 msgid "Get audio data given in range"
 msgstr ""
 
-#: gphoto2/main.c:238
+#: gphoto2/main.c:220 gphoto2/main.c:1540
 msgid "Get all audio data from folder"
 msgstr ""
 
-#: gphoto2/main.c:239
+#: gphoto2/main.c:221 gphoto2/main.c:1542
 msgid "Delete files given in range"
 msgstr ""
 
-#: gphoto2/main.c:240
+#: gphoto2/main.c:222 gphoto2/main.c:1544
 msgid "Delete all files in folder"
 msgstr ""
 
-#: gphoto2/main.c:241
+#: gphoto2/main.c:223 gphoto2/main.c:1546
 msgid "Upload a file to camera"
 msgstr ""
 
-#: gphoto2/main.c:243
+#: gphoto2/main.c:225 gphoto2/main.c:1549
 #, fuzzy
 msgid "Configure"
 msgstr "П╕дтвердити"
 
-#: gphoto2/main.c:245
+#: gphoto2/main.c:227 gphoto2/main.c:1553
 msgid "Capture a quick preview"
 msgstr ""
 
-#: gphoto2/main.c:246
+#: gphoto2/main.c:228 gphoto2/main.c:1555
 #, fuzzy
 msgid "Capture an image"
 msgstr "В╕дкрити зображення"
 
-#: gphoto2/main.c:247
+#: gphoto2/main.c:229
 msgid "Capture a movie "
 msgstr ""
 
-#: gphoto2/main.c:248
+#: gphoto2/main.c:230 gphoto2/main.c:1559
 msgid "Capture an audio clip"
 msgstr ""
 
-#: gphoto2/main.c:250 gphoto2/shell.c:130
+#: gphoto2/main.c:232 gphoto2/main.c:1562 gphoto2/shell.c:131
 msgid "Show EXIF information"
 msgstr ""
 
-#: gphoto2/main.c:252 gphoto2/shell.c:126
+#: gphoto2/main.c:234 gphoto2/main.c:1565 gphoto2/shell.c:127
 msgid "Show info"
 msgstr ""
 
-#: gphoto2/main.c:253
+#: gphoto2/main.c:235
 msgid "Summary of camera status"
 msgstr ""
 
-#: gphoto2/main.c:254
+#: gphoto2/main.c:236
 #, fuzzy
 msgid "Camera driver manual"
 msgstr "Модель камери:"
 
-#: gphoto2/main.c:255
+#: gphoto2/main.c:237
 msgid "About the camera driver"
 msgstr ""
 
-#: gphoto2/main.c:256
+#: gphoto2/main.c:238 gphoto2/main.c:1573
 #, fuzzy
 msgid "gPhoto shell"
 msgstr "Пов╕домлення gPhoto"
 
-#: gphoto2/main.c:347 gphoto2/main.c:352
-#, c-format
-msgid "%-30s %-16s\n"
-msgstr ""
-
-#: gphoto2/main.c:347
-msgid "Model"
-msgstr ""
-
-#: gphoto2/main.c:347
-#, fuzzy
-msgid "Port"
-msgstr "Порт:"
-
-#: gphoto2/main.c:348
-msgid "----------------------------------------------------------\n"
-msgstr ""
-
-#: gphoto2/main.c:365
-msgid "You need to specify a camera model"
-msgstr ""
-
-#. Output a parsing friendly abilities table. Split on ":"
-#: gphoto2/main.c:376
-#, c-format
-msgid "Abilities for camera             : %s\n"
-msgstr ""
-
-#: gphoto2/main.c:378
-#, c-format
-msgid "Serial port support              : %s\n"
-msgstr ""
-
-#: gphoto2/main.c:380
-#, c-format
-msgid "USB support                      : %s\n"
-msgstr ""
-
-#: gphoto2/main.c:383
-msgid "Transfer speeds supported        :\n"
-msgstr ""
-
-#: gphoto2/main.c:386
-#, c-format
-msgid "                                 : %i\n"
-msgstr ""
-
-#: gphoto2/main.c:390
-msgid "Capture choices                  :\n"
-msgstr ""
-
-#: gphoto2/main.c:392
-msgid "                                 : Image\n"
-msgstr ""
-
-#: gphoto2/main.c:394
-#, fuzzy
-msgid "                                 : Video\n"
-msgstr "\t-n                    показати к╕льк╕сть зображень\n"
-
-#: gphoto2/main.c:396
-msgid "                                 : Audio\n"
-msgstr ""
-
-#: gphoto2/main.c:398
-msgid "                                 : Preview\n"
-msgstr ""
-
-#: gphoto2/main.c:399
-#, c-format
-msgid "Configuration support            : %s\n"
-msgstr ""
-
-#: gphoto2/main.c:401
-#, c-format
-msgid "Delete files on camera support   : %s\n"
-msgstr ""
-
-#: gphoto2/main.c:403
-#, c-format
-msgid "File preview (thumbnail) support : %s\n"
-msgstr ""
-
-#: gphoto2/main.c:405
-#, c-format
-msgid "File upload support              : %s\n"
-msgstr ""
-
-#: gphoto2/main.c:425
-#, c-format
-msgid "Number of supported cameras: %i\n"
-msgstr ""
-
-#: gphoto2/main.c:426
-msgid "Supported cameras:\n"
-msgstr ""
-
-#: gphoto2/main.c:437
-#, c-format
-msgid "\t\"%s\" (TESTING)\n"
-msgstr ""
-
-#: gphoto2/main.c:440
-#, c-format
-msgid "\t\"%s\" (EXPERIMENTAL)\n"
-msgstr ""
-
-#: gphoto2/main.c:444
-#, c-format
-msgid "\t\"%s\"\n"
-msgstr ""
-
-#: gphoto2/main.c:544
-#, c-format
-msgid "Devices found: %i\n"
-msgstr ""
-
-#: gphoto2/main.c:545
-msgid ""
-"Path                             Description\n"
-"--------------------------------------------------------------\n"
-msgstr ""
-
-#. User didn't specify the port type; try to guess it
-#: gphoto2/main.c:582
-#, c-format
-msgid ""
-"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
-"colon so I am going to guess what you mean."
-msgstr ""
-
-#: gphoto2/main.c:633
+#: gphoto2/main.c:365 gphoto2/main.c:1206
 msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
 "c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
 msgstr ""
 
-#: gphoto2/main.c:664
-msgid ""
-"ALWAYS INCLUDE THE FOLLOWING LINE WHEN SENDING DEBUG MESSAGES TO THE MAILING "
-"LIST:"
+#: gphoto2/main.c:488
+msgid "Jan"
 msgstr ""
 
-#: gphoto2/main.c:783
-#, fuzzy, c-format
-msgid "Number of files in folder %s: %i\n"
-msgstr "Нове зображення #%03i"
+#: gphoto2/main.c:488
+msgid "January"
+msgstr ""
 
-#: gphoto2/main.c:817
+#: gphoto2/main.c:489
+msgid "Feb"
+msgstr ""
+
+#: gphoto2/main.c:489
+msgid "February"
+msgstr ""
+
+#: gphoto2/main.c:490
+msgid "Mar"
+msgstr ""
+
+#: gphoto2/main.c:490
+msgid "March"
+msgstr ""
+
+#: gphoto2/main.c:491
+msgid "Apr"
+msgstr ""
+
+#: gphoto2/main.c:491
+msgid "April"
+msgstr ""
+
+#: gphoto2/main.c:492
+msgid "May"
+msgstr ""
+
+#: gphoto2/main.c:493
+msgid "Jun"
+msgstr ""
+
+#: gphoto2/main.c:493
+msgid "June"
+msgstr ""
+
+#: gphoto2/main.c:494
+msgid "Jul"
+msgstr ""
+
+#: gphoto2/main.c:494
+msgid "July"
+msgstr ""
+
+#: gphoto2/main.c:495
+msgid "Aug"
+msgstr ""
+
+#: gphoto2/main.c:495
+msgid "August"
+msgstr ""
+
+#: gphoto2/main.c:496
+msgid "Sep"
+msgstr ""
+
+#: gphoto2/main.c:496
+msgid "September"
+msgstr ""
+
+#: gphoto2/main.c:497
+msgid "Oct"
+msgstr ""
+
+#: gphoto2/main.c:497
+msgid "October"
+msgstr ""
+
+#: gphoto2/main.c:498
+#, fuzzy
+msgid "Nov"
+msgstr "Н╕"
+
+#: gphoto2/main.c:498
+msgid "November"
+msgstr ""
+
+#: gphoto2/main.c:499
+msgid "Dec"
+msgstr ""
+
+#: gphoto2/main.c:499
+msgid "December"
+msgstr ""
+
+#: gphoto2/main.c:506
+msgid "Sun"
+msgstr ""
+
+#: gphoto2/main.c:506
+msgid "Sunday"
+msgstr ""
+
+#: gphoto2/main.c:507
+msgid "Mon"
+msgstr ""
+
+#: gphoto2/main.c:507
+msgid "Monday"
+msgstr ""
+
+#: gphoto2/main.c:508
+msgid "Tue"
+msgstr ""
+
+#: gphoto2/main.c:508
+msgid "Tuesday"
+msgstr ""
+
+#: gphoto2/main.c:509
+msgid "Wed"
+msgstr ""
+
+#: gphoto2/main.c:509
+msgid "Wednesday"
+msgstr ""
+
+#: gphoto2/main.c:510
+msgid "Thu"
+msgstr ""
+
+#: gphoto2/main.c:510
+msgid "Thursday"
+msgstr ""
+
+#: gphoto2/main.c:511
+msgid "Fri"
+msgstr ""
+
+#: gphoto2/main.c:511
+msgid "Friday"
+msgstr ""
+
+#: gphoto2/main.c:512
+msgid "Sat"
+msgstr ""
+
+#: gphoto2/main.c:512
+msgid "Saturday"
+msgstr ""
+
+#: gphoto2/main.c:569
 #, c-format
-msgid "Using filename '%s'..."
+msgid "You cannot use '%n' in combination with non-persistent files!"
 msgstr ""
 
-#: gphoto2/main.c:844
+#: gphoto2/main.c:592
+#, c-format
+msgid "The filename provided by the camera ('%s') does not contain a suffix!"
+msgstr ""
+
+#: gphoto2/main.c:668
+#, c-format
+msgid "Invalid format '%s' (error at position %i)."
+msgstr ""
+
+#: gphoto2/main.c:715
 #, fuzzy, c-format
 msgid "File %s exists. Overwrite? [y|n] "
 msgstr "Файл %s ╕сну╓. Переписати?"
 
-#: gphoto2/main.c:855
+#: gphoto2/main.c:726
 msgid "Specify new filename? [y|n] "
 msgstr ""
 
-#: gphoto2/main.c:864
+#: gphoto2/main.c:735
 msgid "Enter new filename: "
 msgstr ""
 
-#: gphoto2/main.c:869
+#: gphoto2/main.c:740
 #, c-format
 msgid "Saving file as %s\n"
 msgstr ""
 
-#: gphoto2/main.c:873
-#, c-format
-msgid "Can not save file as %s"
-msgstr ""
-
-#: gphoto2/main.c:1101
+#: gphoto2/main.c:932
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr ""
 
-#: gphoto2/main.c:1159
-#, fuzzy, c-format
-msgid ""
-"Camera Summary:\n"
-"%s\n"
-msgstr ""
-"Зведення %s:\n"
-"%s"
-
-#: gphoto2/main.c:1171
-#, fuzzy, c-format
-msgid ""
-"Camera Manual:\n"
-"%s\n"
-msgstr "Модель камери:"
-
-#: gphoto2/main.c:1183
-#, c-format
-msgid ""
-"About the library:\n"
-"%s\n"
-msgstr ""
-
-#: gphoto2/main.c:1344
-msgid "Please specify a model."
-msgstr ""
-
-#: gphoto2/main.c:1372
-#, c-format
-msgid ""
-"The port you specified ('%s') can not be found. Please specify one of the "
-"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
-"(i.e. with prefix 'serial:' or 'usb:')."
-msgstr ""
-
-#: gphoto2/main.c:1389
-msgid "Please specify a port."
-msgstr ""
-
-#: gphoto2/main.c:1441
-msgid "*** Error ***              \n"
-msgstr ""
-
-#: gphoto2/main.c:1606
-msgid "Press any key to continue.\n"
-msgstr ""
-
-#: gphoto2/main.c:1661
+#: gphoto2/main.c:1064
 msgid "ERROR: "
 msgstr ""
 
-#: gphoto2/main.c:1684
+#: gphoto2/main.c:1087
 msgid ""
 "\n"
 "Aborting...\n"
 msgstr ""
 
-#: gphoto2/main.c:1690
+#: gphoto2/main.c:1093
 msgid "Aborted.\n"
 msgstr ""
 
-#: gphoto2/main.c:1695
+#: gphoto2/main.c:1098
 #, fuzzy
 msgid ""
 "\n"
 "Cancelling...\n"
 msgstr "Стира╓ться %i...\n"
 
-#: gphoto2/main.c:1742
-msgid ""
-"gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
-"location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+#: gphoto2/main.c:1305
+msgid "gphoto2 has been compiled without support for CDK."
 msgstr ""
 
-#: gphoto2/main.c:1752
-msgid ""
-"gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
-"location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-msgstr ""
-
-#: gphoto2/main.c:1793
+#: gphoto2/main.c:1418
 #, fuzzy
 msgid "Operation cancelled.\n"
 msgstr "Прийом в╕дм╕нено."
 
-#: gphoto2/main.c:1796
+#: gphoto2/main.c:1422
 #, c-format
 msgid ""
-"*** Error ('%s') ***       \n"
+"*** Error (%i: '%s') ***       \n"
 "\n"
 msgstr ""
 
-#: gphoto2/main.c:1802
+#: gphoto2/main.c:1426
 msgid ""
 "For debugging messages, please use the --debug option.\n"
 "Debugging messages may help finding a solution to your problem.\n"
@@ -740,40 +870,81 @@ msgid ""
 "\n"
 msgstr ""
 
-#: gphoto2/options.c:193
-#, c-format
+#: gphoto2/main.c:1479
+msgid "Overwrite files without asking."
+msgstr ""
+
+#: gphoto2/main.c:1493
+msgid "path"
+msgstr ""
+
+#: gphoto2/main.c:1495
+msgid "speed"
+msgstr ""
+
+#: gphoto2/main.c:1497
+msgid "model"
+msgstr ""
+
+#: gphoto2/main.c:1499
+msgid "filename"
+msgstr ""
+
+#: gphoto2/main.c:1501
+msgid "usbid"
+msgstr ""
+
+#: gphoto2/main.c:1505
+msgid "folder"
+msgstr ""
+
+#: gphoto2/main.c:1557
+#, fuzzy
+msgid "Capture a movie"
+msgstr "В╕дкрити зображення"
+
+#: gphoto2/main.c:1567
+msgid "Show summary"
+msgstr ""
+
+#: gphoto2/main.c:1569
+#, fuzzy
+msgid "Show camera driver manual"
+msgstr "Модель камери:"
+
+#: gphoto2/main.c:1571
+#, fuzzy
+msgid "About the camera driver manual"
+msgstr "Модель камери:"
+
+#: gphoto2/main.c:1796
 msgid ""
-"gPhoto (v%s) - Cross-platform digital camera library.\n"
-"Copyright (C) 2000-2002 Scott Fritzinger and others\n"
-"%sLicensed under the Library GNU Public License (LGPL).\n"
+"gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
+"location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+msgstr ""
+
+#: gphoto2/main.c:1806
+msgid ""
+"gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
+"location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
 msgstr ""
 
 #: gphoto2/options.c:199
-msgid "OS/2 port by Bart van Leeuwen\n"
-msgstr ""
-
-#: gphoto2/options.c:214
 msgid "Usage:\n"
 msgstr ""
 
-#. Make this 79 characters long. Some languages need the space.
-#: gphoto2/options.c:217
+#: gphoto2/options.c:202
 msgid ""
 "Short/long options (& argument)        Description\n"
 "--------------------------------------------------------------------------------\n"
 msgstr ""
 
-#. The format line is made translatable so that some
-#. languages can make the table a bit tighter. Make
-#. sure you only use 79 characters (since #80 is
-#. needed for the line break).
-#: gphoto2/options.c:242
+#: gphoto2/options.c:227
 #, c-format
 msgid "%-38s %s\n"
 msgstr ""
 
-#. Make this 79 characters long. Some languages need the space.
-#: gphoto2/options.c:247
+#: gphoto2/options.c:232
 msgid ""
 "--------------------------------------------------------------------------------\n"
 "[Use double-quotes around arguments]        [Picture numbers begin with one "
@@ -827,1081 +998,127 @@ msgstr ""
 msgid "*** Error (%i: '%s') ***"
 msgstr ""
 
-#: gphoto2/shell.c:115
+#: gphoto2/shell.c:116
 msgid "Change to a directory on the camera"
 msgstr ""
 
-#: gphoto2/shell.c:116 gphoto2/shell.c:118
+#: gphoto2/shell.c:117 gphoto2/shell.c:119
 #, fuzzy
 msgid "directory"
 msgstr "Каталог виводу:"
 
-#: gphoto2/shell.c:117
+#: gphoto2/shell.c:118
 msgid "Change to a directory on the local drive"
 msgstr ""
 
-#: gphoto2/shell.c:119 gphoto2/shell.c:137 gphoto2/shell.c:138
+#: gphoto2/shell.c:120 gphoto2/shell.c:138 gphoto2/shell.c:139
 #, fuzzy
 msgid "Exit the gPhoto shell"
 msgstr "Пов╕домлення gPhoto"
 
-#: gphoto2/shell.c:120
+#: gphoto2/shell.c:121
 #, fuzzy
 msgid "Download a file"
 msgstr "Прийняти вибран╕ зображення"
 
-#: gphoto2/shell.c:120 gphoto2/shell.c:123 gphoto2/shell.c:125
-#: gphoto2/shell.c:127 gphoto2/shell.c:128 gphoto2/shell.c:131
+#: gphoto2/shell.c:121 gphoto2/shell.c:124 gphoto2/shell.c:126
+#: gphoto2/shell.c:128 gphoto2/shell.c:129 gphoto2/shell.c:132
 msgid "[directory/]filename"
 msgstr ""
 
-#: gphoto2/shell.c:122
+#: gphoto2/shell.c:123
 #, fuzzy
 msgid "Download a thumbnail"
 msgstr "Прийом зупинено."
 
-#: gphoto2/shell.c:124
+#: gphoto2/shell.c:125
 #, fuzzy
 msgid "Download raw data"
 msgstr "Прийом завершено."
 
-#: gphoto2/shell.c:128
+#: gphoto2/shell.c:129
 msgid "Delete"
 msgstr ""
 
-#: gphoto2/shell.c:133 gphoto2/shell.c:139
+#: gphoto2/shell.c:134 gphoto2/shell.c:140
 msgid "Displays command usage"
 msgstr ""
 
-#: gphoto2/shell.c:134 gphoto2/shell.c:139
+#: gphoto2/shell.c:135 gphoto2/shell.c:140
 msgid "[command]"
 msgstr ""
 
-#: gphoto2/shell.c:135
+#: gphoto2/shell.c:136
 msgid "List the contents of the current directory"
 msgstr ""
 
-#: gphoto2/shell.c:136
+#: gphoto2/shell.c:137
 msgid "[directory/]"
 msgstr ""
 
-#: gphoto2/shell.c:418
+#: gphoto2/shell.c:423
 msgid "Invalid command."
 msgstr ""
 
-#: gphoto2/shell.c:427
+#: gphoto2/shell.c:432
 #, c-format
 msgid "The command '%s' requires an argument."
 msgstr ""
 
-#: gphoto2/shell.c:480
+#: gphoto2/shell.c:485
 msgid "Invalid path."
 msgstr ""
 
-#: gphoto2/shell.c:526
+#: gphoto2/shell.c:531
 #, fuzzy
 msgid "Could not find home directory."
 msgstr ""
 "Не вдалося в╕дкрити:\n"
 "%s"
 
-#: gphoto2/shell.c:534
+#: gphoto2/shell.c:539
 #, fuzzy, c-format
 msgid "Could not change to local directory '%s'."
 msgstr ""
 "Не вдалося в╕дкрити:\n"
 "%s"
 
-#: gphoto2/shell.c:537
+#: gphoto2/shell.c:542
 #, c-format
 msgid "Local directory now '%s'."
 msgstr ""
 
-#: gphoto2/shell.c:568
+#: gphoto2/shell.c:577
 #, c-format
 msgid "Remote directory now '%s'."
 msgstr ""
 
-#: gphoto2/shell.c:729
+#: gphoto2/shell.c:732
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
 msgstr ""
 
-#. Print the command's syntax.
-#: gphoto2/shell.c:736
+#: gphoto2/shell.c:739
 #, c-format
 msgid "Help on \"%s\":"
 msgstr ""
 
-#: gphoto2/shell.c:738
+#: gphoto2/shell.c:741
 msgid "Usage:"
 msgstr ""
 
-#: gphoto2/shell.c:742
+#: gphoto2/shell.c:745
 msgid "Description:"
 msgstr ""
 
-#: gphoto2/shell.c:744
+#: gphoto2/shell.c:747
 msgid "* Arguments in brackets [] are optional"
 msgstr ""
 
-#. No command specified. Print command listing.
-#: gphoto2/shell.c:765
+#: gphoto2/shell.c:768
 msgid "Available commands:"
 msgstr ""
 
-#: gphoto2/shell.c:770
+#: gphoto2/shell.c:773
 msgid "To get help on a particular command, type in 'help command-name'."
 msgstr ""
-
-#, fuzzy
-#~ msgid "Number of pictures: %d"
-#~ msgstr "Нове зображення #%03i"
-
-#, fuzzy
-#~ msgid "Error capturing image"
-#~ msgstr "В╕дкрити зображення"
-
-#, fuzzy
-#~ msgid "Could not get disk name: %s"
-#~ msgstr "Не вдалось отримати перегляд"
-
-#, fuzzy
-#~ msgid "No reason available"
-#~ msgstr "Не доступно"
-
-#, fuzzy
-#~ msgid "Could not get disk info: %s"
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "not available: %s"
-#~ msgstr "Не доступно"
-
-#, fuzzy
-#~ msgid "Could not get flash drive letter"
-#~ msgstr "Не вдалось в╕дновити #%i"
-
-#, fuzzy
-#~ msgid "Camera and Driver Configuration"
-#~ msgstr "Конф╕гурац╕я камери"
-
-#, fuzzy
-#~ msgid "Camera"
-#~ msgstr "Жива камера!"
-
-#, fuzzy
-#~ msgid "Camera Model (readonly)"
-#~ msgstr "Модель камери:"
-
-#, fuzzy
-#~ msgid "Unavailable"
-#~ msgstr "Не доступно"
-
-#, fuzzy
-#~ msgid "time set"
-#~ msgstr "Скасувати"
-
-#, fuzzy
-#~ msgid "could not set time"
-#~ msgstr "Не вдалось зберегти #%i"
-
-#, fuzzy
-#~ msgid "ERROR: unexpected message"
-#~ msgstr "ПОМИЛКА: не вдалось стерти зображення.\n"
-
-#, fuzzy
-#~ msgid "ERROR: out of sequence."
-#~ msgstr "ПОМИЛКА: не вдалось зберегти зображення.\n"
-
-#, fuzzy
-#~ msgid "ERROR: unexpected message2."
-#~ msgstr "ПОМИЛКА: не вдалось стерти зображення.\n"
-
-#, fuzzy
-#~ msgid "Uploading file..."
-#~ msgstr "Масштаб зображення 50%..."
-
-#, fuzzy
-#~ msgid "Getting file..."
-#~ msgstr "Отримання покажчика..."
-
-#, fuzzy
-#~ msgid "Getting thumbnail..."
-#~ msgstr "Отримання м╕н╕атюри %i..."
-
-#, fuzzy
-#~ msgid "Could not apply USB settings"
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Problem getting number of images"
-#~ msgstr "Не вдалось отримати к╕лькост╕ зображень"
-
-#, fuzzy
-#~ msgid "Image type is not supported"
-#~ msgstr "Збереження покажчика ще не п╕дтриму╓ться"
-
-#, fuzzy
-#~ msgid "Capture type is not supported"
-#~ msgstr "Збереження покажчика ще не п╕дтриму╓ться"
-
-#, fuzzy
-#~ msgid "Downloading image..."
-#~ msgstr "Прийом зупинено."
-
-#, fuzzy
-#~ msgid "Problem downloading image"
-#~ msgstr "Прийом завершено."
-
-#, fuzzy
-#~ msgid "Problem taking live image"
-#~ msgstr "Отримання живого зображення..."
-
-#, fuzzy
-#~ msgid "Could not get information about '%s' (%m)."
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Could not follow the link '%s' (%m)."
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Could not open '%s'."
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid ""
-#~ "Directory Browse Mode - written by Scott Fritzinger <scottf@unr.edu>."
-#~ msgstr ""
-#~ "Авторське право (C) 1998-2000 Scott Fritzinger <scottf@unr.edu>\n"
-#~ "\n"
-
-#, fuzzy
-#~ msgid "Could not contact camera."
-#~ msgstr "Не вдалось отримати зображення."
-
-#, fuzzy
-#~ msgid "Camera reset itself."
-#~ msgstr "Налаштування кольор╕в"
-
-#, fuzzy
-#~ msgid "Downloading..."
-#~ msgstr "Прийом завершено."
-
-#, fuzzy
-#~ msgid "The camera does not support speed %i."
-#~ msgstr "Збереження покажчика ще не п╕дтриму╓ться"
-
-#, fuzzy
-#~ msgid "Bit rate %i is not supported."
-#~ msgstr "Збереження покажчика ще не п╕дтриму╓ться"
-
-#, fuzzy
-#~ msgid "Downloading data..."
-#~ msgstr "Прийом завершено."
-
-#, fuzzy
-#~ msgid "Downloading thumbnail..."
-#~ msgstr "Прийом зупинено."
-
-#, fuzzy
-#~ msgid "Other Settings"
-#~ msgstr "Налаштування кольор╕в"
-
-#, fuzzy
-#~ msgid "Color Settings"
-#~ msgstr "Налаштування кольор╕в"
-
-#, fuzzy
-#~ msgid "Getting data..."
-#~ msgstr "Отримання покажчика..."
-
-#, fuzzy
-#~ msgid "Number of pictures: %d\n"
-#~ msgstr "Нове зображення #%03i"
-
-#~ msgid "OK"
-#~ msgstr "Гаразд"
-
-#, fuzzy
-#~ msgid "Card is not open"
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Card is not formatted"
-#~ msgstr "Збереження покажчика ще не п╕дтриму╓ться"
-
-#, fuzzy
-#~ msgid "Getting file list..."
-#~ msgstr "Отримання м╕н╕атюри %i..."
-
-#, fuzzy
-#~ msgid "Getting configuration..."
-#~ msgstr "Конф╕гурац╕я камери"
-
-#, fuzzy
-#~ msgid "Konica Configuration"
-#~ msgstr "Конф╕гурац╕я камери"
-
-#, fuzzy
-#~ msgid "Beep"
-#~ msgstr "Лишити"
-
-#, fuzzy
-#~ msgid "Volatile Settings"
-#~ msgstr "Налаштування кольор╕в"
-
-#, fuzzy
-#~ msgid "Card not supported."
-#~ msgstr "Збереження покажчика ще не п╕дтриму╓ться"
-
-#, fuzzy
-#~ msgid "Card can not be written."
-#~ msgstr "Збереження покажчика ще не п╕дтриму╓ться"
-
-#, fuzzy
-#~ msgid "Card is write protected."
-#~ msgstr "Збереження покажчика ще не п╕дтриму╓ться"
-
-#, fuzzy
-#~ msgid "Downloading image %s."
-#~ msgstr "Прийом зупинено."
-
-#, fuzzy
-#~ msgid "Uploading image: %s."
-#~ msgstr "Масштаб зображення 50%..."
-
-#, fuzzy
-#~ msgid "Uploading..."
-#~ msgstr "Масштаб зображення 50%..."
-
-#, fuzzy
-#~ msgid "Deleting image %s."
-#~ msgstr "Стерто вс╕ зображення."
-
-#, fuzzy
-#~ msgid "Downloading %s."
-#~ msgstr "Прийом завершено."
-
-#, fuzzy
-#~ msgid "Downloading '%s'..."
-#~ msgstr "Прийом завершено."
-
-#, fuzzy
-#~ msgid "Image Size"
-#~ msgstr "Покажчик зображень"
-
-#, fuzzy
-#~ msgid "Flash Setting"
-#~ msgstr "Налаштування кольор╕в"
-
-#, fuzzy
-#~ msgid "play"
-#~ msgstr "Застосувати"
-
-#~ msgid "Camera Configuration"
-#~ msgstr "Конф╕гурац╕я камери"
-
-#, fuzzy
-#~ msgid "Image"
-#~ msgstr "Покажчик зображень"
-
-#, fuzzy
-#~ msgid "PTP Parameter Not Supported"
-#~ msgstr "Збереження покажчика ще не п╕дтриму╓ться"
-
-#, fuzzy
-#~ msgid "PTP Store Not Available"
-#~ msgstr "Не доступно"
-
-#, fuzzy
-#~ msgid "PTP Transaction Canceled"
-#~ msgstr "Прийом в╕дм╕нено."
-
-#, fuzzy
-#~ msgid "Speed %i is not supported!"
-#~ msgstr "Збереження покажчика ще не п╕дтриму╓ться"
-
-#, fuzzy
-#~ msgid ""
-#~ "Expected %i, got %i. Please report this error to <gphoto-devel@gphoto."
-#~ "org>."
-#~ msgstr "Пов╕домляйте про помилки за адресою gphoto-devel@gphoto.org.\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Expected %i bytes, got %i. Please report this error to <gphoto-"
-#~ "devel@gphoto.org>."
-#~ msgstr "Пов╕домляйте про помилки за адресою gphoto-devel@gphoto.org.\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "We expected 0x%x but received 0x%x. Please contact <gphoto-devel@gphoto."
-#~ "org>."
-#~ msgstr "Пов╕домляйте про помилки за адресою gphoto-devel@gphoto.org.\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Bad characters (0x%x, 0x%x). Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr "Пов╕домляйте про помилки за адресою gphoto-devel@gphoto.org.\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Camera busy. If the problem persists, please contact <gphoto-devel@gphoto."
-#~ "org>."
-#~ msgstr "Пов╕домляйте про помилки за адресою gphoto-devel@gphoto.org.\n"
-
-#, fuzzy
-#~ msgid "Picture Settings"
-#~ msgstr "Налаштування кольор╕в"
-
-#, fuzzy
-#~ msgid "High"
-#~ msgstr "Висота:"
-
-#, fuzzy
-#~ msgid "Best"
-#~ msgstr "Скасувати"
-
-#, fuzzy
-#~ msgid "Color Mode"
-#~ msgstr "Кольори"
-
-#, fuzzy
-#~ msgid "Camera Settings"
-#~ msgstr "Налаштування кольор╕в"
-
-#, fuzzy
-#~ msgid "Shot Settings"
-#~ msgstr "Налаштування кольор╕в"
-
-#, fuzzy
-#~ msgid "color"
-#~ msgstr "Кольори"
-
-#, fuzzy
-#~ msgid "%sCamera Model: %s\n"
-#~ msgstr "Модель камери:"
-
-#, fuzzy
-#~ msgid ""
-#~ "Packet got rejected by camera. Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr "Пов╕домляйте про помилки за адресою gphoto-devel@gphoto.org.\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Got unexpected result 0x%x. Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr "Пов╕домляйте про помилки за адресою gphoto-devel@gphoto.org.\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "Received unexpected answer (%i). Please contact <gphoto-devel@gphoto.org>."
-#~ msgstr "Пов╕домляйте про помилки за адресою gphoto-devel@gphoto.org.\n"
-
-#, fuzzy
-#~ msgid "Sending data..."
-#~ msgstr "Отримання покажчика..."
-
-#, fuzzy
-#~ msgid "Not implemented!"
-#~ msgstr "%s ще не реал╕зовано"
-
-#, fuzzy
-#~ msgid "No additional information available."
-#~ msgstr "Не доступно"
-
-#, fuzzy
-#~ msgid "Could not detect any camera"
-#~ msgstr "Не вдалось отримати зображення."
-
-#, fuzzy
-#~ msgid "Could not load required camera driver '%s' (%s)."
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Could not load required camera driver '%s'."
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "This camera does not offer any configuration options."
-#~ msgstr "Нема╓ параметр╕в конф╕гурац╕╖."
-
-#, fuzzy
-#~ msgid "Could not find folder '%s'."
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Folder '%s' does not contain a folder '%s'."
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "File '%s' could not be found in folder '%s'."
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Could not find file '%s'."
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Downloading '%s' from folder '%s'..."
-#~ msgstr "Прийом зупинено."
-
-#, fuzzy
-#~ msgid "Could not open '%s'"
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Could not open '"
-#~ msgstr ""
-#~ "Не вдалося в╕дкрити:\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Settings"
-#~ msgstr "Налаштування кольор╕в"
-
-#, fuzzy
-#~ msgid "No Manual Available"
-#~ msgstr "Не доступно"
-
-#, fuzzy
-#~ msgid "Sorry, nothing to configure.."
-#~ msgstr "Конф╕гурац╕я камери"
-
-#, fuzzy
-#~ msgid "Couldn't open camera.\n"
-#~ msgstr "Не вдалось отримати зображення."
-
-#, fuzzy
-#~ msgid "Getting Image Info"
-#~ msgstr "Отримання зображення #%i..."
-
-#, fuzzy
-#~ msgid "Loading Image"
-#~ msgstr "Надрукувати зображення"
-
-#, fuzzy
-#~ msgid "Setting speed to %i baud..."
-#~ msgstr "Отримання покажчика..."
-
-#, fuzzy
-#~ msgid "Transmitting data..."
-#~ msgstr "Отримання покажчика..."
-
-#, fuzzy
-#~ msgid "Power"
-#~ msgstr "Порт:"
-
-#, fuzzy
-#~ msgid "No summary available."
-#~ msgstr "Не доступно"
-
-#, fuzzy
-#~ msgid "Summary not available."
-#~ msgstr "Не доступно"
-
-#, fuzzy
-#~ msgid "Getting summary..."
-#~ msgstr "Отримання зображення #%i..."
-
-#~ msgid "Mail image needs to be implemented!"
-#~ msgstr "Поштове зображення мусить бути реал╕зовано!"
-
-#~ msgid "Taking picture..."
-#~ msgstr "Отримання зображення..."
-
-#~ msgid "Deleting ALL pictures."
-#~ msgstr "Стирання ВС╤Х зображень."
-
-#~ msgid "Deleting selected pictures..."
-#~ msgstr "Стирання вибраних зображень..."
-
-#~ msgid "Nothing selected to be deleted."
-#~ msgstr "Н╕чого не вибрано для стирання."
-
-#~ msgid "Are you sure you want to DELETE the selected images?"
-#~ msgstr "Ви впевнен╕, що хочете СТЕРТИ вибран╕ зображення?"
-
-#~ msgid "Are you sure you want to DELETE all the images from memory?"
-#~ msgstr "Ви впевнен╕, що хочете СТЕРТИ вс╕ зображення з пам'ят╕?"
-
-#~ msgid "Filename prefix:"
-#~ msgstr "Преф╕кс назви файлу:"
-
-#~ msgid "Saving Image #%03i..."
-#~ msgstr "Збереження зображення #%03i..."
-
-#~ msgid "Saving Thumbnail #%03i..."
-#~ msgstr "Збереження м╕н╕атюри #%03i..."
-
-#~ msgid "%s-thumbnail-%03i"
-#~ msgstr "%s-м╕н╕атюри-%03i"
-
-#~ msgid "Done. Images saved in %s"
-#~ msgstr "Виконано. Зображення збережен╕ в %s"
-
-#~ msgid "%s/gphoto-image-%03i.jpg"
-#~ msgstr "%s/gphoto-image-%03i.jpg"
-
-#~ msgid "Select model/port..."
-#~ msgstr "Вибрать модель/порт..."
-
-#~ msgid ""
-#~ "\n"
-#~ "gPhoto user(s) that reported this model:\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Користувач gPhoto, що пов╕домив про цю модель:\n"
-
-#~ msgid "Save"
-#~ msgstr "Зберегти"
-
-#~ msgid "Error: failed to open %s"
-#~ msgstr "Помилка: не вдалось в╕дкрити %s"
-
-#~ msgid "Missing Serial Device Permissions"
-#~ msgstr "В╕дсутн╕ права на посл╕довний порт"
-
-#~ msgid "Please check the permissions (see the manual)."
-#~ msgstr "Будь ласка, перев╕рте права (подив╕ться в кер╕вництво)."
-
-#~ msgid "Opened %s."
-#~ msgstr "В╕дкрито %s."
-
-#~ msgid "Could not open $HOME/.gphoto/gphotorc for writing."
-#~ msgstr "Не вдалося в╕дкрити $HOME/.gphoto/gphotorc для запису."
-
-#~ msgid "Could not open $HOME/.gphoto/gphotorc for writing.\n"
-#~ msgstr "Не вдалося в╕дкрити $HOME/.gphoto/gphotorc для запису.\n"
-
-#~ msgid ""
-#~ "Version Information-------------------Current Version: %sNew features all "
-#~ "over the place. Please seethe ChangeLog for more information.As always, "
-#~ "report bugs gphoto-devel@gphoto.orgThanx much."
-#~ msgstr ""
-#~ "╤нформац╕я про верс╕ю-------------------Поточна верс╕я: %sНов╕ "
-#~ "можливост╕! Дивиться докладн╕ше в ChangeLog. Пов╕домляйте про помилки на "
-#~ "адресу gphoto-devel@gphoto.org. Дяку╓мо."
-
-#~ msgid "User's Manual"
-#~ msgstr "Кер╕вництво користувача"
-
-#~ msgid ""
-#~ "This program is free software; you can redistribute it and/or modifyit "
-#~ "under the terms of the GNU General Public License as published bythe Free "
-#~ "Software Foundation; either version 2 of the License, or(at your option) "
-#~ "any later version.This program is distributed in the hope that it will be "
-#~ "useful,but WITHOUT ANY WARRANTY; without even the implied warranty "
-#~ "ofMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See theGNU "
-#~ "General Public License for more details.You should have received a copy "
-#~ "of the GNU General Public Licensealong with this program; if not, write "
-#~ "to the Free SoftwareFoundation, Inc., 675 Mass Ave, Cambridge, MA 02139, "
-#~ "USA.See http://www.gnu.org for more details on the GNU project."
-#~ msgstr ""
-#~ "Це в╕льна програма, ви можете розповсюджувати ╕/або модиф╕кувати ╖╖ на "
-#~ "умовах GNU General Public License, опубл╕ковано╖ Free Software Foundation "
-#~ "верс╕╖ 2 чи п╕зн╕шо╖ (з вашого огляду). Ця програма розповсюджу╓ться в "
-#~ "розрахунку на те, що вона буде потр╕бною, аде БЕЗ БУДЬ-ЯКИХ ╫АРАНТ╤Й, в "
-#~ "том числ╕ без типово╖ гарант╕╖ КОМЕРЦ╤ЙНО╥ Ц╤ННОСТ╤ чи ПОТР╤БНОСТ╤ ДЛЯ "
-#~ "БУДЬ-ЯКИХ Ц╤ЛЕЙ. Див╕ться GNU General Public License для подробиць. Ви "
-#~ "мали отримати коп╕ю GNU General Public License разом з ц╕╓ю програмою. "
-#~ "Якщо це не так, напиш╕ть в Free Software Foundation Inc. за адресою: 675 "
-#~ "Mass Ave, Cambridge, MA 02139, USA. В╕дв╕дайте http://www.gnu.org, щоб "
-#~ "взнати детальн╕ше про пороект GNU."
-
-#~ msgid "Picture #%i\n"
-#~ msgstr "Зображення #%i\n"
-
-#~ msgid "num_pictures_taken is %d\n"
-#~ msgstr "num_pictures_taken - %d\n"
-
-#~ msgid "Done getting index."
-#~ msgstr "Покажчик отримано."
-
-#~ msgid "Getting Image #%03i..."
-#~ msgstr "Отримання зображення #%03i..."
-
-#~ msgid "Getting Thumbnail #%03i..."
-#~ msgstr "Отримання м╕н╕атюри #%03i..."
-
-#~ msgid "Save all opened images"
-#~ msgstr "Зберегти вс╕ в╕дкрит╕ зображення"
-
-#~ msgid "Save Image(s)..."
-#~ msgstr "Зберегти зображення..."
-
-#~ msgid "Open Image..."
-#~ msgstr "В╕дкрити зображення..."
-
-#~ msgid "Can't print the index yet."
-#~ msgstr "Ще неможливо надрукувати покажчик."
-
-#~ msgid "Print Image..."
-#~ msgstr "Друк зображення..."
-
-#~ msgid "Print Command:"
-#~ msgstr "Команда друку:"
-
-#~ msgid "Print"
-#~ msgstr "Друкувати"
-
-#~ msgid "Now spooling..."
-#~ msgstr "В╕дправлення в чергу..."
-
-#~ msgid "Spooling done. Printing may take a minute."
-#~ msgstr "Завдання в╕дправлено. Друк може продовжуватись дек╕лька хвилин."
-
-#~ msgid "Can't modify the index colors."
-#~ msgstr "Неможливо модиф╕кувати кольори покажчика."
-
-#~ msgid "Can't scale the index."
-#~ msgstr "Неможливо масштабувати покажчик."
-
-#~ msgid "Resize Image..."
-#~ msgstr "Зм╕нити розм╕р зображення..."
-
-#~ msgid "Width:"
-#~ msgstr "Ширина:"
-
-#~ msgid "Resize"
-#~ msgstr "Зм╕нити розм╕р"
-
-#~ msgid "Can't manipulate the index."
-#~ msgstr "Невозможно ман╕пулювати покажчиком."
-
-#~ msgid "Can't scale the index!"
-#~ msgstr "Неможливо масштабувати покажчик!"
-
-#~ msgid "Scaling image by 200%..."
-#~ msgstr "Масштаб зображення 200%..."
-
-#~ msgid "Post-Processing Options"
-#~ msgstr "Параметри подальшо╖ обробки"
-
-#~ msgid "Enable post-processing"
-#~ msgstr "Дозволити подальшу обробку"
-
-#~ msgid "Post-processing command-line:"
-#~ msgstr "Команда для подальшо╖ обробки:"
-
-#~ msgid "http://www.gphoto.org/help.php3"
-#~ msgstr "http://www.gphoto.org/help.php3"
-
-#~ msgid "http://www.gphoto.org/"
-#~ msgstr "http://www.gphoto.org/"
-
-#~ msgid "http://www.gphoto.org/feedback.php3"
-#~ msgstr "http://www.gphoto.org/feedback.php3"
-
-#~ msgid "http://www.gphoto.org/news.php3"
-#~ msgstr "http://www.gphoto.org/news.php3"
-
-#~ msgid "http://www.gphoto.org/download.php3"
-#~ msgstr "http://www.gphoto.org/download.php3"
-
-#~ msgid "http://www.gphoto.org/cameras.php3"
-#~ msgstr "http://www.gphoto.org/cameras.php3"
-
-#~ msgid "http://www.gphoto.org/supporting.php3"
-#~ msgstr "http://www.gphoto.org/supporting.php3"
-
-#~ msgid "http://www.gphoto.org/lists.php3"
-#~ msgstr "http://www.gphoto.org/lists.php3"
-
-#~ msgid "http://www.gphoto.org/team.php3"
-#~ msgstr "http://www.gphoto.org/team.php3"
-
-#~ msgid "http://www.gphoto.org/themes.php3"
-#~ msgstr "http://www.gphoto.org/themes.php3"
-
-#~ msgid "http://www.gphoto.org/links.php3"
-#~ msgstr "http://www.gphoto.org/links.php3"
-
-#~ msgid "http://www.gphoto.org/todo.php3"
-#~ msgstr "http://www.gphoto.org/todo.php3"
-
-#~ msgid "gPhoto %s (%s) - the GNU digital camera application\n"
-#~ msgstr "gPhoto %s (%s) - програма GNU для роботи з цифровою камерою\n"
-
-#~ msgid "Usage: gphoto [-h] [-c] [-n] [-s # filename] [-t # filename]\n"
-#~ msgstr ""
-#~ "Використання: gphoto [-h] [-c] [-n] [-s # назва_файлу] [-t # "
-#~ "назва_файлу]\n"
-
-#~ msgid "              [-d #] [-p filename] [-l filename]\n"
-#~ msgstr "              [-d #] [-p назва_файлу] [-l назва_файлу]\n"
-
-#~ msgid "\t-c                    display camera summary\n"
-#~ msgstr "\t-c                    показати зведення камери\n"
-
-#~ msgid "\t-s # filename         save image # as filename\n"
-#~ msgstr ""
-#~ "\t-s # назва_файлу      зберегти зображення з вказаним номером у файл╕ з "
-#~ "вказаною назвою\n"
-
-#~ msgid "\t-t # filename         save thumbnail # as filename\n"
-#~ msgstr ""
-#~ "\t-t # назва_файлу      зберегти м╕н╕атюру з вказаним номером у файл╕ з "
-#~ "вказаною назвою\n"
-
-#~ msgid "\t-d #                  delete image # from camera\n"
-#~ msgstr ""
-#~ "\t-d #                  видалити вказаний номер зображення з камери\n"
-
-#~ msgid "\t-p filename           take picture and save as filename\n"
-#~ msgstr ""
-#~ "\t-p назва_файлу               отримати зображення ╕ зберегти його з "
-#~ "вказаною назвою\n"
-
-#~ msgid ""
-#~ "\t-l filename           save live preview as filename\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\t-l назва_файлу         зберегти live preview з вказаною назвою\n"
-#~ "\n"
-
-#~ msgid "gPhoto is free GNU software; you can redistribute it and/or\n"
-#~ msgstr ""
-#~ "gPhoto - в╕льне програмне забезпечення GNU; ви можете разповсюджувати\n"
-
-#~ msgid "modify it under the terms of the GNU General Public License \n"
-#~ msgstr "╕/або зм╕нювати його на умовах GNU General Public License \n"
-
-#~ msgid "as published by the Free Software Foundation; either version \n"
-#~ msgstr "опубл╕ковано╖ Фондом В╕льного програмного забезпечення; л╕ценз╕╖\n"
-
-#~ msgid "2 of the License, or any later version.  Visit gphoto/COPYING\n"
-#~ msgstr "верс╕╖ 2 чи б╕льш п╕зньо╖. Див╕ться gphoto/COPYING\n"
-
-#~ msgid ""
-#~ "in the source distribution to read the GNU GPL license terms.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "в поставц╕ для ознайомлення з умовами л╕ценз╕╖ GNU GPL.\n"
-#~ "\n"
-
-#~ msgid "See http://www.gphoto.org for the latest news and updates.\n"
-#~ msgstr "Останн╕ новини та поновлення шукайте на http://www.gphoto.org\n"
-
-#~ msgid "%i\n"
-#~ msgstr "%i\n"
-
-#~ msgid "ERROR: could not get image.\n"
-#~ msgstr "ПОМИЛКА: не вдалось отримати зображення.\n"
-
-#~ msgid "ERROR: 'filename' not specified.\n"
-#~ msgstr "ПОМИЛКА: не вказано назви файлу.\n"
-
-#~ msgid "ERROR: '#' and 'filename' not specified.\n"
-#~ msgstr "ПОМИЛКА: не вказан╕ \"#\" та назви файлу'\n"
-
-#~ msgid "ERROR: '#' not specified.\n"
-#~ msgstr "ПОМИЛКА: не вказано \"#\".\n"
-
-#~ msgid "ERROR: filename not specified.\n"
-#~ msgstr "ПОМИЛКА: не вказано назви файлу.\n"
-
-#~ msgid "Taking picture...\n"
-#~ msgstr "Отримання зображення...\n"
-
-#~ msgid "ERROR: could not take the picture.\n"
-#~ msgstr "ПОМИЛКА: не вдалось отримати зображення.\n"
-
-#~ msgid "Saving the new image (# %i) as %s: "
-#~ msgstr "Збереження нового зображення (# %i) як %s: "
-
-#~ msgid ""
-#~ "\n"
-#~ "ERROR: could not get image.\n"
-#~ msgstr ""
-#~ "\n"
-#~ "ПОМИЛКА: не вдалось отримати зображення.\n"
-
-#~ msgid "gPhoto release %s was brought to you by"
-#~ msgstr "gPhoto верс╕╖ %s було створено для вас"
-
-#~ msgid "Web Page"
-#~ msgstr "Web-стор╕нка"
-
-#~ msgid "Previous"
-#~ msgstr "Назад"
-
-#~ msgid "Next"
-#~ msgstr "Дал╕"
-
-#~ msgid "Close"
-#~ msgstr "Закрити"
-
-#~ msgid ""
-#~ "The gPhoto AUTHORS file appears to be missing!\n"
-#~ "\t      There should be a file called "
-#~ msgstr "Файл gPhoto AUTHORS зда╓ться з╕псовано!"
-
-#~ msgid "Select an Output Directory..."
-#~ msgstr "Виб╕р каталогу виводу..."
-
-#~ msgid "Gallery Name:"
-#~ msgstr "Назва галере╖:"
-
-#~ msgid "Change..."
-#~ msgstr "Зм╕нити..."
-
-#~ msgid "Export file as *.shtml?"
-#~ msgstr "Експортувати файл как *.shtml?"
-
-#~ msgid "Set table border width to zero for thumbnails?"
-#~ msgstr "Встановити для м╕н╕атюри ширину рамки таблиц╕ в нуль?"
-
-#~ msgid ""
-#~ "Set image border width to zero? (so you don't see the link colors...)"
-#~ msgstr ""
-#~ "Встановити ширину рамки зображення в нуль? (так що ви не побачите "
-#~ "пов'язаних кольор╕в...)"
-
-#~ msgid "You must select a theme!"
-#~ msgstr "Необх╕дно вибрати тему!"
-
-#~ msgid "Getting Thumbnail #%i..."
-#~ msgstr "Отримання м╕н╕атюри #%i..."
-
-#~ msgid "<a href=\"picture-%03i.html\">Click Me<\\/a>"
-#~ msgstr "<a href=\"picture-%03i.html\">Натисни<\\/a>"
-
-#~ msgid "thumbnail-%03i.%s"
-#~ msgstr "thumbnail-%03i.%s"
-
-#~ msgid "<img alt=\"%03i\" src=\"picture-%03i.%s\">"
-#~ msgstr "<img alt=\"%03i\" src=\"picture-%03i.%s\">"
-
-#~ msgid "picture-%03i.%s"
-#~ msgstr "picture-%03i.%s"
-
-#~ msgid "picture-%03i.html"
-#~ msgstr "picture-%03i.html"
-
-#~ msgid "%spicture-%03i.html"
-#~ msgstr "%spicture-%03i.html"
-
-#~ msgid "Loaded file:%s%s in %s"
-#~ msgstr "Завантажено файл:%s%s в %s"
-
-#~ msgid "Gallery saved in: %s"
-#~ msgstr "Галерею збережено в: %s"
-
-#~ msgid "Color Adjustment"
-#~ msgstr "П╕дб╕р кольору"
-
-#~ msgid "gPhoto - Color Adjustment"
-#~ msgstr "gPhoto - П╕дб╕р кольору"
-
-#~ msgid "Gray Controls"
-#~ msgstr "Р╕вень с╕рого"
-
-#~ msgid "Red Controls"
-#~ msgstr "Р╕вень червоного"
-
-#~ msgid "Green Controls"
-#~ msgstr "Р╕вень зеленого"
-
-#~ msgid "Blue Controls"
-#~ msgstr "Р╕вень синього"
-
-#~ msgid "Colour Modifications:"
-#~ msgstr "Модиф╕кац╕╖ кольор╕в:"
-
-#~ msgid "Reset all the color changes to normal values"
-#~ msgstr "Скасувати вс╕ зм╕ни кольору на звичан╕ значення"
-
-#~ msgid "Always Apply"
-#~ msgstr "Завжди застосовувати"
-
-#~ msgid "Update Picture"
-#~ msgstr "Поновити малюнок"
-
-#~ msgid "Take Picture"
-#~ msgstr "Отримати малюнок"
-
-#~ msgid ""
-#~ "\n"
-#~ "Launching Gnome Bugbuddy...\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Запуск Gnome Bugbuddy...\n"
-
-#~ msgid "gPhoto %s - the GNU digital camera application"
-#~ msgstr "gPhoto %s - програма GNU для роботи з цифровою камерою"
-
-#~ msgid "Save Opened Image(s)"
-#~ msgstr "Зберегти в╕дкрит╕ зображення"
-
-#~ msgid "Close Image"
-#~ msgstr "Закрити зображення"
-
-#~ msgid "Previous page"
-#~ msgstr "Попередня стор╕нка"
-
-#~ msgid "Next page"
-#~ msgstr "Наступна стор╕нка"
-
-#~ msgid "Download Thumbnail Index"
-#~ msgstr "Прийняти покажчик м╕н╕атюр"
-
-#~ msgid "Download Empty Index"
-#~ msgstr "Прийняти порожн╕й покажчик"
-
-#~ msgid "Delete Selected Images"
-#~ msgstr "Стерти вибран╕ зображення"
-
-#~ msgid "Halt Download"
-#~ msgstr "Зупинити прийом"
-
-#~ msgid "Rotate Clockwise"
-#~ msgstr "Повернуть за годинниковою"
-
-#~ msgid "Rotate Counter-Clockwise"
-#~ msgstr "Повернути проти годинниково╖"
-
-#~ msgid "Flip Horizontal"
-#~ msgstr "В╕дзеркалити горизонтально"
-
-#~ msgid "Flip Vertical"
-#~ msgstr "В╕дзеркалити вертикально"
-
-#~ msgid "Help"
-#~ msgstr "Дов╕дка"
-
-#~ msgid "Exit gPhoto"
-#~ msgstr "Вийти з gPhoto"
-
-#~ msgid "load_image_mem: could not load image\n"
-#~ msgstr "load_image_mem: не вдалось завантажити зображення\n"
-
-#~ msgid "Fork failed. Exiting. \n"
-#~ msgstr "Не вдалось запустити процес-нащадок. Вих╕д.\n"
