@@ -701,93 +701,234 @@ OPTION_CALLBACK (num_files)
         return (GP_OK);
 }
 
+static struct {
+	CameraFileType type;
+	const char *prefix;
+} PrefixTable[] = {
+	{GP_FILE_TYPE_NORMAL, ""},
+	{GP_FILE_TYPE_PREVIEW, "thumb_"},
+	{GP_FILE_TYPE_RAW, "raw_"},
+	{GP_FILE_TYPE_AUDIO, "audio_"},
+	{0, NULL}
+};
+
+static struct {
+	const char *s;
+	const char *l;
+} MonthTable[] = {
+	{N_("Jan"), N_("January")},
+	{N_("Feb"), N_("February")},
+	{N_("Mar"), N_("March")},
+	{N_("Apr"), N_("April")},
+	{N_("May"), N_("May")},
+	{N_("Jun"), N_("June")},
+	{N_("Jul"), N_("July")},
+	{N_("Aug"), N_("August")},
+	{N_("Sep"), N_("September")},
+	{N_("Oct"), N_("October")},
+	{N_("Nov"), N_("November")},
+	{N_("Dec"), N_("December")}
+};
+
+static struct {
+	const char *s;
+	const char *l;
+} WeekdayTable[] = {
+	{N_("Mon"), N_("Monday")},
+	{N_("Tue"), N_("Tuesday")},
+	{N_("Wed"), N_("Wednesday")},
+	{N_("Thu"), N_("Thursday")},
+	{N_("Fri"), N_("Friday")},
+	{N_("Sat"), N_("Saturday")},
+	{N_("Sun"), N_("Sunday")}
+};
+
 static int
-save_camera_file_to_file (CameraFile *file, CameraFileType type)
+get_path_for_file (CameraFile *file, char **path)
 {
-        char ofile[1024], ofolder[1024], buf[1024], c[1024];
-        int result;
-        char *f;
-        const char *name;
-	unsigned int num = 1;
+	unsigned int i;
+	int n;
+	char *p, b[1024];
+	const char *name, *prefix;
+	CameraFileType type;
+	time_t t;
+	struct tm *tm;
 
-        /* Determine the folder and filename */
-        strcpy (ofile, "");
-        strcpy (ofolder, "");
+	if (!file || !path)
+		return (GP_ERROR_BAD_PARAMETERS);
 
-        if (strcmp (glob_filename, "")) {
-                if (strchr (glob_filename, '/')) {              /* Check if they specified an output dir */
-                        f = strrchr(glob_filename, '/');
-                        strcpy (buf, f+1);                       /* Get the filename */
-                        sprintf (ofile, buf, num++);
-                        *f = 0;
-                        strcpy (ofolder, glob_filename);      /* Get the folder */
-                        strcat (ofolder, "/");
-                        *f = '/';
-                } else {                                        /* If not, subst and set */
-                        sprintf (ofile, glob_filename, num++);
-                }
-        } else {
-                gp_file_get_name (file, &name);
-		strcat (ofile, name);
-		gp_log (GP_LOG_DEBUG, "gphoto2", _("Using filename '%s'..."),
-			ofile);
-        }
+	*path = NULL;
+	CR (gp_file_get_name (file, &name));
+	CR (gp_file_get_mtime (file, &t));
+	tm = localtime (&t);
 
-        switch (type) {
-        case GP_FILE_TYPE_PREVIEW:
-                snprintf (buf, sizeof (buf), "%sthumb_%s", ofolder, ofile);
-                break;
-        case GP_FILE_TYPE_NORMAL:
-		snprintf (buf, sizeof (buf), "%s%s", ofolder, ofile);
-                break;
-        case GP_FILE_TYPE_RAW:
-                snprintf (buf, sizeof (buf), "%sraw_%s", ofolder, ofile);
-                break;
-	case GP_FILE_TYPE_AUDIO:
-		snprintf (buf, sizeof (buf), "%saudio_%s", ofolder, ofile);
-		break;
-        default:
-                return (GP_ERROR_NOT_SUPPORTED);
-        }
-        if (!glob_quiet) {
-                while (GP_SYSTEM_IS_FILE(buf)) {
-			if (glob_quiet)
+	/*
+	 * If the user didn't specify a filename, use the original name 
+	 * (and prefix).
+	 */
+	if (!strcmp (glob_filename, "")) {
+		CR (gp_file_get_type (file, &type));
+		for (i = 0; PrefixTable[i].prefix; i++)
+			if (PrefixTable[i].type == type)
+				break;
+		prefix = (PrefixTable[i].prefix ? PrefixTable[i].prefix :
+						  "unknown_");
+		*path = malloc (strlen (prefix) + strlen (name) + 1);
+		if (!*path)
+			return (GP_ERROR_NO_MEMORY);
+		strcpy (*path, prefix);
+		strcat (*path, name);
+		return (GP_OK);
+	}
+
+	/* The user did specify a filename. Use it. */
+	b[sizeof (b) - 1] = '\0';
+	for (i = 0; i < strlen (glob_filename); i++) {
+		if (glob_filename[i] == '%') {
+			switch (glob_filename[++i]) {
+			case 'n':
+
+				/* Get the number of the file */
+				n = gp_filesystem_number (glob_camera->fs,
+					glob_folder, name, glob_context);
+				if (n < 0) {
+					free (*path);
+					*path = NULL;
+					return (n);
+				}
+				snprintf (b, sizeof (b), "%i", n + 1);
 				break;
 
+			case 'a':
+				snprintf (b, sizeof (b), "%s",
+					  WeekdayTable[tm->tm_wday].s);
+				break;
+			case 'A':
+				snprintf (b, sizeof (b), "%s",
+					  WeekdayTable[tm->tm_wday].l);
+				break;
+			case 'b':
+				snprintf (b, sizeof (b), "%s",
+					  MonthTable[tm->tm_mon].s);
+				break;
+			case 'B':
+				snprintf (b, sizeof (b), "%s",
+					  MonthTable[tm->tm_mon].l);
+				break;
+			case 'd':
+				snprintf (b, sizeof (b), "%02i", tm->tm_mday);
+				break;
+			case 'H':
+			case 'k':
+				snprintf (b, sizeof (b), "%02i", tm->tm_hour);
+				break;
+			case 'I':
+			case 'l':
+				snprintf (b, sizeof (b), "%02i",
+					  tm->tm_hour % 12);
+				break;
+			case 'j':
+				snprintf (b, sizeof (b), "%03i", tm->tm_yday);
+				break;
+			case 'm':
+				snprintf (b, sizeof (b), "%02i", tm->tm_mon);
+				break;
+			case 'M':
+				snprintf (b, sizeof (b), "%02i", tm->tm_min);
+				break;
+			case 'S':
+				snprintf (b, sizeof (b), "%02i", tm->tm_sec);
+				break;
+			case 'y':
+				snprintf (b, sizeof (b), "%02i", tm->tm_year);
+				break;
+			case 'Y':
+				snprintf (b, sizeof (b), "%i",
+					  tm->tm_year + 1900);
+				break;
+			case '%':
+				strcpy (b, "%");
+				break;
+			default:
+				free (*path);
+				*path = NULL;
+				gp_context_error (glob_context,
+					_("Invalid format '%s' (error at "
+					  "position %i)."), glob_filename,
+					i + 1);
+				return (GP_ERROR_BAD_PARAMETERS);
+			}
+		} else {
+			b[0] = glob_filename[i];
+			b[1] = '\0';
+		}
+
+		p = *path ? realloc (*path, strlen (*path) + strlen (b) + 1) :
+			    malloc (strlen (b) + 1);
+		if (!p) {
+			free (*path);
+			*path = NULL;
+			return (GP_ERROR_NO_MEMORY);
+		}
+		if (*path) {
+			*path = p;
+			strcat (*path, b);
+		} else {
+			*path = p;
+			strcpy (*path, b);
+		}
+	}
+
+	return (GP_OK);
+}
+
+static int
+save_camera_file_to_file (CameraFile *file)
+{
+	char *path = NULL, p[1024], c[1024];
+	CameraFileType type;
+
+	CR (gp_file_get_type (file, &type));
+
+	CR (get_path_for_file (file, &path));
+	strncpy (p, path, sizeof (p) - 1);
+	p[sizeof (p) - 1] = '\0';
+	free (path);
+
+        if (!glob_quiet) {
+                while (GP_SYSTEM_IS_FILE (p)) {
 			do {
-				putchar('\007');
-				printf(_("File %s exists. Overwrite? [y|n] "),buf);
-				fflush(stdout);
-				fgets(c, 1023, stdin);
+				putchar ('\007');
+				printf (_("File %s exists. Overwrite? [y|n] "),
+					p);
+				fflush (stdout);
+				fgets (c, sizeof (c) - 1, stdin);
 			} while ((c[0]!='y')&&(c[0]!='Y')&&
 				 (c[0]!='n')&&(c[0]!='N'));
 
 			if ((c[0]=='y') || (c[0]=='Y'))
 				break;
 
-
 			do { 
-				printf(_("Specify new filename? [y|n] "));
-				fflush(stdout); 
-				fgets(c, 1023, stdin);
+				printf (_("Specify new filename? [y|n] "));
+				fflush (stdout); 
+				fgets (c, sizeof (c) - 1, stdin);
 			} while ((c[0]!='y')&&(c[0]!='Y')&&
 				 (c[0]!='n')&&(c[0]!='N'));
 
 			if (!((c[0]=='y') || (c[0]=='Y')))
 				return (GP_OK);
 
-			printf(_("Enter new filename: "));
-			fflush(stdout);
-			fgets(buf, 1023, stdin);
-			buf[strlen(buf)-1]=0;
+			printf (_("Enter new filename: "));
+			fflush (stdout);
+			fgets (p, sizeof (p) - 1, stdin);
+			p[strlen (p) - 1]=0;
                 }
-                printf(_("Saving file as %s\n"), buf);
+                printf (_("Saving file as %s\n"), p);
         }
+	CR (gp_file_save (file, p));
 
-        if ((result = gp_file_save(file, buf)) != GP_OK)
-                cli_error_print(_("Can not save file as %s"), buf);
-
-        return (result);
+	return (GP_OK);
 }
 
 int
@@ -815,7 +956,7 @@ save_file_to_file (Camera *camera, GPContext *context, const char *folder,
                 return (GP_OK);
         }
 
-        res = save_camera_file_to_file (file, type);
+        res = save_camera_file_to_file (file);
 
         gp_file_unref (file);
 
@@ -1053,7 +1194,7 @@ OPTION_CALLBACK (capture_preview)
 		return (result);
 	}
 
-	result = save_camera_file_to_file (file, GP_FILE_TYPE_NORMAL);
+	result = save_camera_file_to_file (file);
 	if (result < 0) {
 		gp_file_unref (file);
 		return (result);
