@@ -26,6 +26,8 @@
 
 static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 {
+	/* we could also compute/parse the short strings from the long
+	   ones, but the current method is easier for now :-) */
 	static const char *verb[] = {
 		VERSION,
 		HAVE_CC " (C compiler used)",
