@@ -882,12 +882,13 @@ debug_func (GPLogLevel level, const char *domain, const char *format,
 	    va_list args, void *data)
 {
 	struct timeval tv;
+	long sec, usec;
 
 	gettimeofday (&tv,NULL);
-	fprintf (stderr, "%li.%06li %s(%i): ",
-		 tv.tv_sec - glob_tv_zero.tv_sec,
-		 (1000000 + tv.tv_usec - glob_tv_zero.tv_usec) % 1000000,
-		 domain, level);
+	sec = tv.tv_sec  - glob_tv_zero.tv_sec;
+	usec = tv.tv_usec - glob_tv_zero.tv_usec;
+	if (usec < 0) {sec--; usec += 1000000L;}
+	fprintf (stderr, "%li.%06li %s(%i): ", sec, usec, domain, level);
 	vfprintf (stderr, format, args);
 	fprintf (stderr, "\n");
 }
