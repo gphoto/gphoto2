@@ -290,7 +290,7 @@ get_path_for_id (GPParams *p, const char *base_folder,
 				gp_context_error (p->context,
 					_("Bad file number. "
 					"You specified %i, but there are only "
-					"%i files available in '%s'."
+					"%i files available in '%s'. "
 					"Please obtain a valid file number "
 					"from a file listing first."), id + 1,
 					gp_list_count (list), base_folder);

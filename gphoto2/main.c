@@ -1039,7 +1039,7 @@ capture_generic (CameraCaptureType type, const char *name)
 
 		result = delete_file_action (&p, path.name);
 		if (result != GP_OK) {
-			cli_error_print ( _("Count not delete image."));
+			cli_error_print ( _("Could not delete image."));
 			return (result);
 		}
 
@@ -1639,7 +1639,7 @@ main (int argc, char **argv)
 		{"quiet", '\0', POPT_ARG_NONE, NULL, ARG_QUIET,
 		 N_("Quiet output (default=verbose)"), NULL},
 		{"force-overwrite", '\0', POPT_ARG_NONE, NULL,
-		 ARG_FORCE_OVERWRITE, N_("Overwrite files without asking.")},
+		 ARG_FORCE_OVERWRITE, N_("Overwrite files without asking")},
 		{"version", 'v', POPT_ARG_NONE, NULL, ARG_VERSION,
 		 N_("Display version and exit"), NULL},
 		{"list-cameras", '\0', POPT_ARG_NONE, NULL, ARG_LIST_CAMERAS,
