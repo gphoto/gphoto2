@@ -735,24 +735,24 @@ int
 camera_file_exists (Camera *camera, GPContext *context, const char *folder,
 		    const char *filename, CameraFileType type)
 {
-  CameraFileInfo info;
-  CR (gp_camera_file_get_info (camera, folder, filename, &info, context));
-  switch (type) {
-  case GP_FILE_TYPE_AUDIO:
-    return(info.audio.fields != 0);
-    break;
-  case GP_FILE_TYPE_PREVIEW:
-    return(info.preview.fields != 0);
-    break;
-  case GP_FILE_TYPE_RAW:
-  case GP_FILE_TYPE_NORMAL:
-    return(info.file.fields != 0);
-    break;
-  default:
-    gp_context_error (context, "Unknown file type in camera_file_exists: %d", type);
-    return FALSE;
-    break;
-  }
+	CameraFileInfo info;
+	CR (gp_camera_file_get_info (camera, folder, filename, &info, context));
+	switch (type) {
+	case GP_FILE_TYPE_AUDIO:
+		return(info.audio.fields != 0);
+		break;
+	case GP_FILE_TYPE_PREVIEW:
+		return(info.preview.fields != 0);
+		break;
+	case GP_FILE_TYPE_RAW:
+	case GP_FILE_TYPE_NORMAL:
+		return(info.file.fields != 0);
+		break;
+	default:
+		gp_context_error (context, "Unknown file type in camera_file_exists: %d", type);
+		return FALSE;
+		break;
+	}
 }
 
 int

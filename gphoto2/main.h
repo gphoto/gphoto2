@@ -46,8 +46,8 @@ struct _Option {
 void 	cli_error_print(char *format, ...);
 
 int	camera_file_exists (Camera *camera, GPContext *context,
-			   const char *folder, const char *filename,
-			   CameraFileType type);
+			    const char *folder, const char *filename,
+			    CameraFileType type);
 int	save_file_to_file (Camera *camera, GPContext *context,
 			   const char *folder, const char *filename,
 			   CameraFileType type);
