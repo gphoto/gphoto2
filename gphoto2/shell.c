@@ -137,7 +137,7 @@ struct _ShellFunctionTable {
 	{"q", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"quit", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"?", shell_help, N_("Displays command usage"), N_("[command]"), 0},
-	{"", NULL, NULL, NULL}
+	{"", NULL, NULL, NULL, 0}
 };
 
 /* Local globals */
