@@ -1011,6 +1011,8 @@ get_config_action (GPParams *p, const char *name) {
 	ret = gp_camera_get_config (p->camera, &rootconfig, p->context);
 	if (ret != GP_OK) return ret;
 	ret = gp_widget_get_child_by_name (rootconfig, name, &child);
+	if (ret != GP_OK) 
+		ret = gp_widget_get_child_by_label (rootconfig, name, &child);
 	if (ret != GP_OK) {
 		char		*part, *s, *newname;
 
@@ -1029,6 +1031,8 @@ get_config_action (GPParams *p, const char *name) {
 			if (s)
 				*s='\0';
 			ret = gp_widget_get_child_by_name (child, part, &tmp);
+			if (ret != GP_OK)
+				ret = gp_widget_get_child_by_label (child, part, &tmp);
 			if (ret != GP_OK)
 				break;
 			child = tmp;
