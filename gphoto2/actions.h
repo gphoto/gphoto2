@@ -35,6 +35,7 @@ int save_file_action      (GPParams *, const char *filename);
 int save_thumbnail_action (GPParams *, const char *filename);
 int save_raw_action       (GPParams *, const char *filename);
 int save_audio_action     (GPParams *, const char *filename);
+int save_all_audio_action (GPParams *, const char *filename);
 int save_exif_action      (GPParams *, const char *filename);
 int delete_file_action    (GPParams *, const char *filename);
 

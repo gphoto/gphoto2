@@ -322,7 +322,7 @@ save_audio_action (GPParams *p, const char *filename)
 }
 
 int
-sav save_all_audio_action (GPParams *p, const char *filename)
+save_all_audio_action (GPParams *p, const char *filename)
 {
 	/* not every file has an associated audio file */
 	if (camera_file_exists(p->camera, p->context, p->folder, filename,
