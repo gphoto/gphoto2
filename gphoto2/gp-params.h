@@ -39,7 +39,7 @@ struct _GPParams {
 	char *filename;
 
 	unsigned int cols;
-	char quiet, force;
+	char quiet, force_overwrite;
 
 	ForEachFlags flags;
 

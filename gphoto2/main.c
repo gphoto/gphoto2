@@ -736,7 +736,7 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 	free (path);
 
         if (!p.quiet) {
-                while (!p.force && GP_SYSTEM_IS_FILE (s)) {
+                while (!p.force_overwrite && GP_SYSTEM_IS_FILE (s)) {
 			do {
 				putchar ('\007');
 				printf (_("File %s exists. Overwrite? [y|n] "),
@@ -1146,7 +1146,7 @@ typedef enum {
 	ARG_DELETE_FILE,
 	ARG_FILENAME,
 	ARG_FOLDER,
-	ARG_FORCE,
+	ARG_FORCE_OVERWRITE,
 	ARG_GET_ALL_AUDIO_DATA,
 	ARG_GET_ALL_FILES,
 	ARG_GET_ALL_RAW_DATA,
@@ -1260,7 +1260,7 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 			params->p.r = set_folder_action (&p, arg);
 			break;
 		case ARG_FORCE:
-			p.force = 1;
+			p.force_overwrite = 1;
 			break;
 		case ARG_MODEL:
 			gp_log (GP_LOG_DEBUG, "main", "Processing 'model' "
@@ -1502,8 +1502,8 @@ main (int argc, char **argv)
 		 N_("Turn on debugging"), NULL},
 		{"quiet", '\0', POPT_ARG_NONE, NULL, ARG_QUIET,
 		 N_("Quiet output (default=verbose)"), NULL},
-		{"force", '\0', POPT_ARG_NONE, NULL, ARG_FORCE,
-		 N_("Overwrite files without asking.")},
+		{"force-overwrite", '\0', POPT_ARG_NONE, NULL,
+		 ARG_FORCE_OVERWRITE, N_("Overwrite files without asking.")},
 		{"version", 'v', POPT_ARG_NONE, NULL, ARG_VERSION,
 		 N_("Display version and exit"), NULL},
 		{"list-cameras", '\0', POPT_ARG_NONE, NULL, ARG_LIST_CAMERAS,
