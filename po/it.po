@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the gphoto2 package.
 # Marco Colombo <m.colombo@ed.ac.uk>, 2005.
 #
+# FIXME: toggle???
 msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-02-08 10:33+0100\n"
-"PO-Revision-Date: 2005-02-02 21:27+0000\n"
+"PO-Revision-Date: 2005-02-07 20:37+0000\n"
 "Last-Translator: Marco Colombo <m.colombo@ed.ac.uk>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -402,7 +403,7 @@ msgstr "Port su OS/2 di Bart van Leeuwen\n"
 #: gphoto2/actions.c:933
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
-msgstr ""
+msgstr "Id vendor/prodotto USB 0x%x/0x%x cambiato in 0x%x0x%x"
 
 #: gphoto2/actions.c:984
 msgid ""
@@ -422,35 +423,40 @@ msgstr "%s è stato compilato con le seguente opzioni:"
 msgid "%s not found in configuration tree."
 msgstr "%s non trovato nell'albero di configurazione."
 
+# FIXME
 #: gphoto2/actions.c:1138
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
-msgstr ""
+msgstr "Recupero del valore del widget di testo %s non riuscito."
 
+# FIXME
 #: gphoto2/actions.c:1155
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
-msgstr ""
+msgstr "Recupero dei valori del widget di intervallo %s non riuscito."
 
 #: gphoto2/actions.c:1167
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr ""
 
+# FIXME
 #: gphoto2/actions.c:1179
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
-msgstr ""
+msgstr "Recupero dei vaolri del widget di data/ora %s non riuscito."
 
+# FIXME
 #: gphoto2/actions.c:1209
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
-msgstr ""
+msgstr "Recupero dei valori del radio widget %s non riuscito."
 
+# FIXME
 #: gphoto2/actions.c:1250
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
-msgstr ""
+msgstr "Impostazione del valore del widget di testo %s a %s non riuscita."
 
 #: gphoto2/actions.c:1260
 #, c-format
@@ -462,10 +468,11 @@ msgstr "Il valore %s fornito non è un valore in virgola mobile."
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr "Il valore %f fornito non è nell'intervallo %f - %f."
 
+# FIXME
 #: gphoto2/actions.c:1271
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
-msgstr ""
+msgstr "Impostazione del valore del widget di intervallo %s a %f non riuscita."
 
 # FIXME: femminile?
 #: gphoto2/actions.c:1280
@@ -485,11 +492,10 @@ msgstr "acceso"
 msgid "true"
 msgstr "vero"
 
-# FIXME: toggle???
 #: gphoto2/actions.c:1291
-#, fuzzy, c-format
+#, c-format
 msgid "The passed value %s is not a valid toggle value."
-msgstr "Il valore %s fornito non è un valido valore di ???."
+msgstr ""
 
 #: gphoto2/actions.c:1297
 #, c-format
@@ -501,18 +507,22 @@ msgstr ""
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr "Il valore %s fornito non è né un orario valido né un intero."
 
+# FIXME
 #: gphoto2/actions.c:1317
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr ""
+"Impostazione del nuovo orario del widget di data/ora %s a %s non riuscita."
 
+# FIXME
 #: gphoto2/actions.c:1354
 #, c-format
 msgid "Choice %s not found within list of choices."
-msgstr ""
+msgstr "La scelta %s non si trova nell'elenco delle scelte possibili."
 
+# FIXME
 #: gphoto2/actions.c:1362
-#, fuzzy, c-format
+#, c-format
 msgid "The %s widget is not configurable."
 msgstr "Il widget %s non è configurabile."
 
@@ -520,6 +530,8 @@ msgstr "Il widget %s non è configurabile."
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr ""
+"Impostazione del nuovo valore di configurazione %s per la voce %s non "
+"riuscita."
 
 #: gphoto2/foreach.c:254
 #, c-format
@@ -541,7 +553,7 @@ msgstr ""
 "Numero di file non valido. È stato indicato %i, ma c'è solo 1 file "
 "disponibile in \"%s\"."
 
-# FIXME UPSTREAM
+# FIXME UPSTREAM: space before "Please"
 #: gphoto2/foreach.c:291
 #, fuzzy, c-format
 msgid ""
@@ -648,7 +660,6 @@ msgstr "Stampa la dimensione dei file prima dei dati"
 msgid "List auto-detected cameras"
 msgstr "Elenca le fotocamere riconosciute automaticamente"
 
-# FIXME
 #: gphoto2/main.c:181 gphoto2/main.c:1656
 msgid "Specify port device"
 msgstr "Specifica il dispositivo di porta"
@@ -1295,78 +1306,78 @@ msgid "To get help on a particular command, type in 'help command-name'."
 msgstr ""
 "Per ricevere aiuto su un particolare comando, digitare \"help nome-comando\"."
 
-#~ msgid "Jan"
-#~ msgstr "Gen"
+msgid "Jan"
+msgstr "Gen"
 
-#~ msgid "January"
-#~ msgstr "Gennaio"
+msgid "January"
+msgstr "Gennaio"
 
-#~ msgid "Feb"
-#~ msgstr "Feb"
+msgid "Feb"
+msgstr "Feb"
 
-#~ msgid "February"
-#~ msgstr "Febbraio"
+msgid "February"
+msgstr "Febbraio"
 
-#~ msgid "Mar"
-#~ msgstr "Mar"
+msgid "Mar"
+msgstr "Mar"
 
-#~ msgid "March"
-#~ msgstr "Marzo"
+msgid "March"
+msgstr "Marzo"
 
-#~ msgid "Apr"
-#~ msgstr "Apr"
+msgid "Apr"
+msgstr "Apr"
 
-#~ msgid "April"
-#~ msgstr "Aprile"
+msgid "April"
+msgstr "Aprile"
 
-#~ msgid "May"
-#~ msgstr "Mag"
+msgid "May"
+msgstr "Mag"
 
-#~ msgid "Jun"
-#~ msgstr "Giu"
+msgid "Jun"
+msgstr "Giu"
 
-#~ msgid "June"
-#~ msgstr "Giugno"
+msgid "June"
+msgstr "Giugno"
 
-#~ msgid "Jul"
-#~ msgstr "Lug"
+msgid "Jul"
+msgstr "Lug"
 
-#~ msgid "July"
-#~ msgstr "Luglio"
+msgid "July"
+msgstr "Luglio"
 
-#~ msgid "Aug"
-#~ msgstr "Ago"
+msgid "Aug"
+msgstr "Ago"
 
-#~ msgid "August"
-#~ msgstr "Agosto"
+msgid "August"
+msgstr "Agosto"
 
-#~ msgid "Sep"
-#~ msgstr "Set"
+msgid "Sep"
+msgstr "Set"
 
-#~ msgid "September"
-#~ msgstr "Settembre"
+msgid "September"
+msgstr "Settembre"
 
-#~ msgid "Oct"
-#~ msgstr "Ott"
+msgid "Oct"
+msgstr "Ott"
 
-#~ msgid "October"
-#~ msgstr "Ottobre"
+msgid "October"
+msgstr "Ottobre"
 
 #, fuzzy
-#~ msgid "Nov"
-#~ msgstr "No"
+msgid "Nov"
+msgstr "No"
 
-#~ msgid "November"
-#~ msgstr "Novembre"
+msgid "November"
+msgstr "Novembre"
 
-#~ msgid "Dec"
-#~ msgstr "Dic"
+msgid "Dec"
+msgstr "Dic"
 
-#~ msgid "December"
-#~ msgstr "Dicembre"
+msgid "December"
+msgstr "Dicembre"
 
-#~ msgid "Sun"
-#~ msgstr "Dom"
+msgid "Sun"
+msgstr "Dom"
 
-#~ msgid "Sunday"
-#~ msgstr "Domenica"
+msgid "Sunday"
+msgstr "Domenica"
