@@ -270,7 +270,7 @@ GPParams p;
 
 OPTION_CALLBACK(help)
 {
-        usage ();
+        usage (&p);
         exit (EXIT_SUCCESS);
 
         return GP_OK;
@@ -1847,7 +1847,7 @@ e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"));
         /* Peek ahead: Make sure we were called correctly */
         if ((argc == 1) || (verify_options (argc, argv) != GP_OK)) {
                 if (!p.quiet)
-                        usage ();
+                        usage (&p);
                 exit (EXIT_FAILURE);
         }
 

@@ -189,13 +189,13 @@ execute_options (int argc, char **argv) {
 }
 
 void
-usage (void)
+usage (GPParams *params)
 {
         int x=0;
         char buf[128], s[5], l[24], a[16];
 
 	/* Standard licensing stuff */
-	print_version_action ();
+	print_version_action (params);
         printf (_("Usage:\n"));
 
 	/* Make this 79 characters long. Some languages need the space. */

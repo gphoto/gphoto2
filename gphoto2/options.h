@@ -21,9 +21,11 @@
 #ifndef __OPTIONS_H__
 #define __OPTIONS_H__
 
+#include <gp-params.h>
+
 int option_is_present (char *op, int argc, char **argv);
 int verify_options (int argc, char **argv);
 int execute_options (int argc, char **argv);
-void usage (void);
+void usage (GPParams *params);
 
 #endif /* __OPTIONS_H__ */
