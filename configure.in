@@ -1,7 +1,7 @@
 AC_PREREQ(2.50)
 AC_INIT(gphoto2/main.c)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gphoto2, 2.1.2dev2)
+AM_INIT_AUTOMAKE(gphoto2, 2.1.2dev3)
 AM_MAINTAINER_MODE
 
 dnl ---------------------------------------------------------------------------
@@ -23,6 +23,12 @@ dnl ---------------------------------------------------------------------------
 dnl Check for libgphoto2
 dnl ---------------------------------------------------------------------------
 PKG_CHECK_MODULES(GP, libgphoto2 >= 2.1.1)
+AC_MSG_CHECKING([for gp_library_version in libgphoto2])
+AC_CHECK_LIB(gphoto2, gp_library_version, [
+AC_MSG_RESULT(yes)
+], [
+AC_MSG_ERROR([Sorry, you need at least release 2.1.1 of libgphoto2])
+])
 AC_SUBST(GP_LIBS)
 AC_SUBST(GP_CFLAGS)
 
