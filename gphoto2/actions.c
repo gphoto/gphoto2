@@ -762,7 +762,7 @@ print_version_action (GPParams *p)
 	int n;
 	printf (_("gphoto2 %s\n"
 		  "\n"
-		  "Copyright (c) 2000-2002 Lutz Mueller and others\n"
+		  "Copyright (c) 2000-2003 Lutz Mueller and others\n"
 		  "%s"
 		  "\n"
 		  "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
