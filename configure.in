@@ -89,9 +89,10 @@ fi
 
 
 dnl ---------------------------------------------------------------------------
-dnl CDK: If you would like to access the camera's configuration using
-dnl      gphoto2, the command-line frontend, you need this. Old versions
-dnl      of CDK don't include fscale, therefore check for it here.
+dnl CDK: If you would like to interactively access the camera's configuration
+dnl      using gphoto2, the command-line frontend, you need CDK. For pure
+dnl      command-line access to the config, you don't need CDK, though.
+dnl      Old versions of CDK don't include fscale, therefore check for it here.
 dnl ---------------------------------------------------------------------------
 cdk_msg="no (http://dickey.his.com/cdk/cdk.html)"
 try_cdk=true
