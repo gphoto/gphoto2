@@ -489,7 +489,7 @@ show_range (CmdConfig *cmd_config, CameraWidget *range)
 
 	CHECK (gp_widget_get_range (range, &min, &max, &increment));
 
-	if (!get_digits (increment))
+	if (!get_digits (increment) && !get_digits (min) && !get_digits (max))
 		return (show_range_int (cmd_config, range));
 	else
 		return (show_range_float (cmd_config, range));
