@@ -73,27 +73,27 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 #ifdef HAVE_EXIF
 		"exif",
 #else
-		"exif",
+		"no exif",
 #endif
 #ifdef HAVE_CDK
 		"cdk",
 #else
-		"cdk",
+		"no cdk",
 #endif
 #ifdef HAVE_AA
 		"aa",
 #else
-		"aa",
+		"no aa",
 #endif
 #ifdef HAVE_JPEG
 		"jpeg",
 #else
-		"jpeg",
+		"no jpeg",
 #endif
 #ifdef HAVE_RL
 		"readline",
 #else
-		"readline",
+		"no readline",
 #endif
 		NULL
 	};
