@@ -19,10 +19,9 @@
  */
 
 #include "config.h"
+#include "version.h"
 
 #include <stdlib.h>
-
-#include "version.h"
 
 static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 {
@@ -107,10 +106,3 @@ const module_version module_versions[] = {
 	{ "libgphoto2_port", gp_port_library_version },
 	{ NULL, NULL }
 };
-
-/*
- * Local Variables:
- * c-file-style:"linux"
- * indent-tabs-mode:t
- * End:
- */

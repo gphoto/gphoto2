@@ -19,32 +19,13 @@
  */
 
 #include "config.h"
+#include "i18n.h"
+#include "main.h"
 #include "range.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
-#include "main.h"
-
-#ifdef ENABLE_NLS
-#  include <libintl.h>
-#  undef _
-#  define _(String) dgettext (PACKAGE, String)
-#  ifdef gettext_noop
-#    define N_(String) gettext_noop (String)
-#  else
-#    define N_(String) (String)
-#  endif
-#else
-#  define textdomain(String) (String)
-#  define gettext(String) (String)
-#  define dgettext(Domain,Message) (Message)
-#  define dcgettext(Domain,Message,Type) (Message)
-#  define bindtextdomain(Domain,Directory) (Domain)
-#  define _(String) (String)
-#  define N_(String) (String)
-#endif
 
 /* 
   str_grab_nat() - Grab positive decimal integer (natural number) from str 

@@ -1,9 +1,8 @@
-
 #ifndef __GLOBALS_H__
 #define __GLOBALS_H__
 
 #ifndef HAVE_POPT
-#  include <main.h>
+#  include "main.h"
 #endif
 
 extern char             glob_cancel;

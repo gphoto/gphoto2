@@ -19,6 +19,10 @@
  */
 
 #include "config.h"
+#include "actions.h"
+#include "globals.h"
+#include "i18n.h"
+#include "main.h"
 #include "shell.h"
 
 #include <ctype.h>
@@ -29,29 +33,6 @@
 #ifdef HAVE_RL
 #  include <readline/readline.h>
 #  include <readline/history.h>
-#endif
-
-#include "main.h"
-#include "actions.h"
-#include "globals.h"
-
-#ifdef ENABLE_NLS
-#  include <libintl.h>
-#  undef _
-#  define _(String) dgettext (PACKAGE, String)
-#  ifdef gettext_noop
-#    define N_(String) gettext_noop (String)
-#  else
-#    define N_(String) (String)
-#  endif
-#else
-#  define textdomain(String) (String)
-#  define gettext(String) (String)
-#  define dgettext(Domain,Message) (Message)
-#  define dcgettext(Domain,Message,Type) (Message)
-#  define bindtextdomain(Domain,Directory) (Domain)
-#  define _(String) (String)
-#  define N_(String) (String)
 #endif
 
 #ifndef MAX

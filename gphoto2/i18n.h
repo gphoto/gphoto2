@@ -1,6 +1,6 @@
-/* version.h
+/* i18n.h
  *
- * Copyright (C) 2002 Hans Ulrich Niedermann <gp@n-dimensional.de
+ * Copyright (C) 2001 Lutz Müller <lutz@users.sourceforge.net>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,17 +18,26 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __VERSION_H__
-#define __VERSION_H__
+#ifndef __I18N_H__
+#define __I18N_H__
 
-/* for detailed version message */
-#include <gphoto2/gphoto2-version.h>
+#ifdef ENABLE_NLS
+#  include <libintl.h>
+#  undef _
+#  define _(String) dgettext (GETTEXT_PACKAGE, String)
+#  ifdef gettext_noop
+#    define N_(String) gettext_noop (String)
+#  else
+#    define N_(String) (String)
+#  endif
+#else
+#  define textdomain(String) (String)
+#  define gettext(String) (String)
+#  define dgettext(Domain,Message) (Message)
+#  define dcgettext(Domain,Message,Type) (Message)
+#  define bindtextdomain(Domain,Directory) (Domain)
+#  define _(String) (String)
+#  define N_(String) (String)
+#endif
 
-typedef struct {
-	char *name;
-	GPVersionFunc version_func;
-} module_version;
-
-extern const module_version module_versions[];
-
-#endif /* __VERSION_H__ */
+#endif /* __I18N_H__ */
