@@ -622,7 +622,7 @@ action_camera_set_port (Camera *camera, const char *port)
 
 	/* Create the list of ports and load it. */
 	r = gp_port_info_list_new (&il);
-	if (!r)
+	if (r < 0)
 		return (r);
 	r = gp_port_info_list_load (il);
 	if (r < 0) {
