@@ -873,7 +873,7 @@ OPTION_CALLBACK (get_audio_data)
 
 OPTION_CALLBACK (get_all_audio_data)
 {
-	CR (for_each_file (&p, save_audio_action));
+	CR (for_each_file (&p, save_all_audio_action));
 
 	return (GP_OK);
 }
@@ -1332,7 +1332,7 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 					delete_file_action, arg);
 		break;
 	case ARG_GET_ALL_AUDIO_DATA:
-		params->p.r = for_each_file (&p, save_audio_action);
+		params->p.r = for_each_file (&p, save_all_audio_action);
 		break;
 	case ARG_GET_ALL_FILES:
 		params->p.r = for_each_file (&p, save_file_action);

@@ -317,12 +317,20 @@ save_raw_action (GPParams *p, const char *filename)
 int
 save_audio_action (GPParams *p, const char *filename)
 {
-  if (camera_file_exists(p->camera, p->context, p->folder, filename,
-				   GP_FILE_TYPE_AUDIO))
-    return (save_file_to_file (p->camera, p->context, p->folder, filename,
-			       GP_FILE_TYPE_AUDIO));
-  else
-    return GP_OK;
+	return (save_file_to_file (p->camera, p->context, p->folder, filename,
+				   GP_FILE_TYPE_AUDIO));
+}
+
+int
+sav save_all_audio_action (GPParams *p, const char *filename)
+{
+	/* not every file has an associated audio file */
+	if (camera_file_exists(p->camera, p->context, p->folder, filename,
+			       GP_FILE_TYPE_AUDIO))
+		return (save_file_to_file (p->camera, p->context, p->folder, filename,
+					   GP_FILE_TYPE_AUDIO));
+	else
+		return GP_OK;
 }
 
 int
