@@ -2,7 +2,7 @@
 
 # We need to add the source files to the list because sometimes 
 # people without aalib or cdk make dist.
-EXTRA_DIST = makefile.os2				\
+EXTRA_DIST = \
 	gphoto2-cmd-config.c gphoto2-cmd-config.h	\
 	gphoto2-cmd-capture.c gphoto2-cmd-capture.h
 
