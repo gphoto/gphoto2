@@ -92,7 +92,7 @@ for_each_folder (GPParams *p, FolderAction action)
 		CR (count = gp_list_count (&list));
 
 		if (p->flags & FOR_EACH_FLAGS_REVERSE) {
-			for (i = count - 1; i >= 0; i++) {
+			for (i = count - 1; i >= 0; i--) {
 				CR (gp_list_get_name (&list, i, &name));
 				orig_folder = p->folder;
 				p->folder = malloc (strlen (orig_folder) + 1
