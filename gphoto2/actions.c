@@ -1308,14 +1308,14 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 	case GP_WIDGET_WINDOW:
 	case GP_WIDGET_SECTION:
 	case GP_WIDGET_BUTTON:
-		gp_context_error (p->context, _("The %s widget is not configurable.\n"), name);
+		gp_context_error (p->context, _("The %s widget is not configurable."), name);
 		ret = GP_ERROR_BAD_PARAMETERS;
 		break;
 	}
 	if (ret == GP_OK) {
 		ret = gp_camera_set_config (p->camera, rootconfig, p->context);
 		if (ret != GP_OK)
-			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s.\n"), value, name);
+			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s."), value, name);
 	}
 	gp_widget_free (rootconfig);
 	return (ret);
