@@ -1,6 +1,6 @@
 /* actions.c
  *
- * Copyright (C) 2002 Lutz Müller <lutz@users.sourceforge.net>
+ * Copyright © 2002 Lutz Müller <lutz@users.sourceforge.net>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -755,7 +755,7 @@ print_version_action (GPParams *p)
 	int n;
 	printf (_("gphoto2 %s\n"
 		  "\n"
-		  "Copyright (C) 2000-2002 Lutz Mueller and others\n"
+		  "Copyright © 2000-2002 Lutz Mueller and others\n"
 		  "%s"
 		  "\n"
 		  "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"

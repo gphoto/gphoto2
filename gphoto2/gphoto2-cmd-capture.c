@@ -1,6 +1,6 @@
 /* gphoto2-cmd-capture.c
  *
- * Copyright (C) 2001 Lutz Müller <urc8@rz.uni-karlsruhe.de>
+ * Copyright © 2001 Lutz Müller <urc8@rz.uni-karlsruhe.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -56,7 +56,7 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 	params = aa_getrenderparams ();
 	contrast = params->contrast;
 	bright = params->bright;
-	aa_hidecursor (c);
+	aa_hidecursor ©;
 
 	result = gp_camera_capture_preview (camera, file, context);
 	if (result < 0)
@@ -69,7 +69,7 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 
 		gp_file_get_data_and_size (file, &data, &size);
 		gp_file_get_mime_type (file, &type);
-		bitmap = aa_image (c);
+		bitmap = aa_image ©;
 
 #ifdef HAVE_JPEG
 		if (!strcmp (type, GP_MIME_JPEG)) {
@@ -90,7 +90,7 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 			gp_file_save (file, tempname);
 			f = fopen (tempname, "rb");
 			if (!f) {
-				aa_close (c);
+				aa_close ©;
 				return (GP_ERROR);
 			}
 
@@ -102,8 +102,8 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 			jpeg_read_header (&cinfo, TRUE);
 			while (cinfo.scale_denom) {
 				jpeg_calc_output_dimensions (&cinfo);
-				if ((aa_imgwidth (c) >= cinfo.output_width) &&
-				    (aa_imgheight (c) >= cinfo.output_height))
+				if ((aa_imgwidth © >= cinfo.output_width) &&
+				    (aa_imgheight © >= cinfo.output_height))
 					break;
 				cinfo.scale_denom *= 2;
 			}
@@ -111,11 +111,11 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 				gp_log (GP_LOG_DEBUG, "gphoto2", "Screen "
 					"too small.");
 				jpeg_destroy_decompress (&cinfo);
-				aa_close (c);
+				aa_close ©;
 				return (GP_OK);
 			}
 			gp_log (GP_LOG_DEBUG, "gphoto2", "AA: (w,h) = (%i,%i)",
-				aa_imgwidth (c), aa_imgheight (c));
+				aa_imgwidth ©, aa_imgheight ©);
 			jpeg_start_decompress (&cinfo);
 			gp_log (GP_LOG_DEBUG, "gphoto2", "JPEG: (w,h) = "
 				"(%i,%i)", cinfo.output_width,
@@ -129,7 +129,7 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 				lptr = lines;
 				for (i = 0; i < cinfo.rec_outbuf_height; i++) {
 					*lptr++ = dptr;
-					dptr += aa_imgwidth (c);
+					dptr += aa_imgwidth ©;
 				}
 				jpeg_read_scanlines (&cinfo, lines,
 						cinfo.rec_outbuf_height);
@@ -146,13 +146,13 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 #endif
 		{
 			/* Silently skip the preview */
-			aa_close (c);
+			aa_close ©;
 			return (GP_OK);
 		}
 
 		aa_render (c, params, 0, 0,
-			aa_scrwidth (c), aa_scrheight (c));
-		aa_flush (c);
+			aa_scrwidth ©, aa_scrheight ©);
+		aa_flush ©;
 		
 		event = aa_getevent (c, 0);
 		switch (event) {
@@ -182,8 +182,8 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 			params->contrast = contrast;
 			break;
 		case AA_RESIZE:
-			aa_resize (c);
-			aa_flush (c);
+			aa_resize ©;
+			aa_flush ©;
 			break;
 		case AA_NONE:
 		case 32:
@@ -191,22 +191,22 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 			result = gp_camera_capture_preview (camera, file,
 							    context);
 			if (result < 0) {
-				aa_close (c);
+				aa_close ©;
 				return (result);
 			}
 			break;
 		case 305:
 			/* ESC */
-			aa_close (c);
+			aa_close ©;
 			gp_context_error (context, _("Operation cancelled"));
 			return (GP_ERROR_CANCEL);
 		default:
-			aa_close (c);
+			aa_close ©;
 			return (GP_OK);
 		}
 	}
 
-	aa_close (c);
+	aa_close ©;
 
 	return (GP_OK);
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2002 Lutz Müller <lutz@users.sourceforge.net>
+ * Copyright © 2002 Lutz Müller <lutz@users.sourceforge.net>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -693,7 +693,7 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 				printf (_("File %s exists. Overwrite? [y|n] "),
 					s);
 				fflush (stdout);
-				fgets (c, sizeof (c) - 1, stdin);
+				fgets (c, sizeof © - 1, stdin);
 			} while ((c[0]!='y')&&(c[0]!='Y')&&
 				 (c[0]!='n')&&(c[0]!='N'));
 
@@ -703,7 +703,7 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 			do { 
 				printf (_("Specify new filename? [y|n] "));
 				fflush (stdout); 
-				fgets (c, sizeof (c) - 1, stdin);
+				fgets (c, sizeof © - 1, stdin);
 			} while ((c[0]!='y')&&(c[0]!='Y')&&
 				 (c[0]!='n')&&(c[0]!='N'));
 
