@@ -84,10 +84,11 @@ case "$CC" in
 esac
 
 gettext_version=`gettextize --version 2>&1 | sed -n 's/^.*GNU gettext.* \([0-9]*\.[0-9.]*\).*$/\1/p'`
+
+gettext_opt="--no-changelog"
 case $gettext_version in
 0.10.*)
 	;;
-	
 *)
 	gettext_opt="$gettext_opt --intl";;
 esac
