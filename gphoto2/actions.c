@@ -25,6 +25,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* we need these for timestamps of debugging messages */
+#include <time.h>
+#include <sys/time.h>
+
 #include <gphoto2/gphoto2-port-log.h>
 #include <gphoto2/gphoto2-setting.h>
 
@@ -834,6 +838,52 @@ override_usbids_action (GPParams *p, int usb_vendor, int usb_product,
 	}
 	gp_abilities_list_free (p->abilities_list);
 	p->abilities_list = al;
+
+	return (GP_OK);
+}
+
+/* time zero for debug log time stamps */
+struct timeval glob_tv_zero = { 0, 0 };
+
+static void
+debug_func (GPLogLevel level, const char *domain, const char *format,
+	    va_list args, void *data)
+{
+	struct timeval tv;
+
+	gettimeofday (&tv,NULL);
+	fprintf (stderr, "%li.%06li %s(%i): ",
+		 tv.tv_sec - glob_tv_zero.tv_sec,
+		 (1000000 + tv.tv_usec - glob_tv_zero.tv_usec) % 1000000,
+		 domain, level);
+	vfprintf (stderr, format, args);
+	fprintf (stderr, "\n");
+}
+
+int
+debug_action (GPParams *p)
+{
+	gettimeofday (&glob_tv_zero, NULL);
+
+	CR (p->debug_func_id = gp_log_add_func (GP_LOG_ALL, debug_func, NULL));
+	gp_log (GP_LOG_DEBUG, "main", _("ALWAYS INCLUDE THE FOLLOWING LINE "
+					"WHEN SENDING DEBUG MESSAGES TO THE "
+					"MAILING LIST:"));
+	gp_log (GP_LOG_DEBUG, "main", PACKAGE " " VERSION);
+	gp_log (GP_LOG_DEBUG, "main", PACKAGE
+		" has been compiled with the following options:");
+#ifdef HAVE_POPT
+	gp_log (GP_LOG_DEBUG, "main",
+		" + popt (for handling command-line parameters)");
+#endif
+#ifdef HAVE_EXIF
+	gp_log (GP_LOG_DEBUG, "main",
+		" + exif (for displaying EXIF information)");
+#endif
+#ifdef HAVE_CDK
+	gp_log (GP_LOG_DEBUG, "main",
+		" + cdk (for accessing configuration options)");
+#endif
 
 	return (GP_OK);
 }

@@ -44,10 +44,6 @@
 #  include <pthread.h>
 #endif
 
-/* we need these for timestamps of debugging messages */
-#include <time.h>
-#include <sys/time.h>
-
 #ifndef WIN32
 #  include <signal.h>
 #endif
@@ -378,33 +374,9 @@ OPTION_CALLBACK (usbid)
 	return (GP_OK);
 }
 
-#endif
-
-/* time zero for debug log time stamps */
-struct timeval glob_tv_zero = { 0, 0 };
-
-static void
-debug_func (GPLogLevel level, const char *domain, const char *format,
-	    va_list args, void *data)
-{
-	struct timeval tv;
-	gettimeofday (&tv,NULL);
-	fprintf (stderr, "%li.%06li %s(%i): ", 
-		 tv.tv_sec - glob_tv_zero.tv_sec, 
-		 (1000000 + tv.tv_usec - glob_tv_zero.tv_usec) % 1000000,
-		 domain, level);
-	vfprintf (stderr, format, args);
-	fprintf (stderr, "\n");
-}
-
-#ifndef HAVE_POPT
-
 OPTION_CALLBACK (debug)
 {
-	glob_debug = gp_log_add_func (GP_LOG_ALL, debug_func, NULL);
-	gp_log (GP_LOG_DEBUG, "main", _("ALWAYS INCLUDE THE FOLLOWING LINE "
-		"WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"));
-	gp_log (GP_LOG_DEBUG, "main", PACKAGE " " VERSION);
+	CR (debug_action (&p));
 
 	return (GP_OK);
 }
@@ -1642,18 +1614,11 @@ main (int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	if (params.p.q.found) {
-		gp_log_add_func (GP_LOG_ALL, debug_func, NULL);
-		gp_log (GP_LOG_DEBUG, "main",
-			_("ALWAYS INCLUDE THE FOLLOWING LINE "
-			  "WHEN SENDING DEBUG MESSAGES TO THE "
-			  "MAILING LIST:"));
-		gp_log (GP_LOG_DEBUG, "main", PACKAGE " " VERSION);
-		glob_debug = 1;
+		CR_MAIN (debug_action (&p));
 	}
 #endif
 
 	/* Initialize. */
-	gettimeofday (&glob_tv_zero, NULL);
 #ifdef HAVE_PTHREAD
 	gp_camera_set_timeout_funcs (p.camera, start_timeout_func,
 				     stop_timeout_func, NULL);

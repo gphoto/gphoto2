@@ -268,6 +268,8 @@ gp_params_init (GPParams *p)
 
 	gp_abilities_list_new (&p->abilities_list);
 	gp_abilities_list_load (p->abilities_list, p->context);
+
+	p->debug_func_id = -1;
 }
 
 void

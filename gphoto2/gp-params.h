@@ -44,6 +44,8 @@ struct _GPParams {
 	ForEachFlags flags;
 
 	CameraAbilitiesList *abilities_list;
+
+	int debug_func_id;
 };
 
 void gp_params_init (GPParams *params);

@@ -66,5 +66,6 @@ int set_filename_action    (GPParams *, const char *filename);
 int print_version_action   (GPParams *);
 int override_usbids_action (GPParams *, int usb_vendor, int usb_product, 
 			    int usb_vendor_modified, int usb_product_modified);
+int debug_action           (GPParams *);
 
 #endif /* __ACTIONS_H__ */
