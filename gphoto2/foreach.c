@@ -22,12 +22,12 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include <gphoto2-port-log.h>
 
 #include "main.h"
 #include "actions.h"
-#include "globals.h"
 #include "range.h"
 
 #ifdef ENABLE_NLS
@@ -54,26 +54,36 @@
 
 #define GP_MODULE "frontend"
 
+static struct {
+	FolderAction *action;
+	const char *name;
+} FolderActions[] = {
+	{delete_all_action, "Delete all Files"},
+	{list_files_action, "List Files"},
+	{list_folders_action, "List Folders"},
+	{num_files_action, "Number of Files"},
+	{NULL, NULL}
+};
+
 int
-for_each_folder (ForEachParams *p, FolderAction action)
+for_each_folder (GPParams *p, FolderAction action)
 {
 	CameraList list;
-	int	i, count;
+	int r, i, count;
 	const char *name;
-	char path[1024];
-	ActionParams ap;
-	ForEachParams fp;
+	char *orig_folder;
 
-	memcpy (&fp, p, sizeof (ForEachParams));
-	fp.folder = path;
-
-	/* Initialize the action parameters */
-	ap.camera = p->camera;
-	ap.context = p->context;
-	ap.folder = p->folder;
+	if (!p)
+		return (GP_ERROR_BAD_PARAMETERS);
 
 	/* Execute the action for this folder. */
-	CR (action (&ap));
+	for (i = 0; FolderActions[i].name; i++)
+		if (FolderActions[i].action == action)
+			break;
+	gp_log (GP_LOG_DEBUG, "foreach",
+		"Executing action '%s' for folder '%s'.",
+		FolderActions[i].name, p->folder);
+	CR (action (p));
 
 	/* If recursion is requested, descend into subfolders. */
 	if (p->flags & FOR_EACH_FLAGS_RECURSE) {
@@ -84,20 +94,40 @@ for_each_folder (ForEachParams *p, FolderAction action)
 		if (p->flags & FOR_EACH_FLAGS_REVERSE) {
 			for (i = count - 1; i >= 0; i++) {
 				CR (gp_list_get_name (&list, i, &name));
-				strncpy (path, p->folder, sizeof (path));
-				if (path[strlen (path) - 1] != '/')
-					strncat (path, "/", sizeof (path));
-				strncat (path, name, sizeof (path));
-				CR (for_each_folder (&fp, action));
+				orig_folder = p->folder;
+				p->folder = malloc (strlen (orig_folder) + 1
+						    + strlen (name) + 1);
+				if (!p->folder) {
+					p->folder = orig_folder;
+					return (GP_ERROR_NO_MEMORY);
+				}
+				strcpy (p->folder, orig_folder);
+				if (p->folder[strlen (p->folder) - 1] != '/')
+					strcat (p->folder, "/");
+				strcat (p->folder, name);
+				r = for_each_folder (p, action);
+				free (p->folder);
+				p->folder = orig_folder;
+				CR (r);
 			}
 		} else {
 			for (i = 0; i < count; i++) {
 				CR (gp_list_get_name (&list, i, &name));
-				strncpy (path, p->folder, sizeof (path));
-				if (path[strlen (path) - 1] != '/')
-					strncat (path, "/", sizeof (path));
-				strncat (path, name, sizeof (path));
-				CR (for_each_folder (&fp, action));
+				orig_folder = p->folder;
+				p->folder = malloc (strlen (orig_folder) + 1
+						    + strlen (name) + 1);
+				if (!p->folder) {
+					p->folder = orig_folder;
+					return (GP_ERROR_NO_MEMORY);
+				}
+				strcpy (p->folder, orig_folder);
+				if (p->folder[strlen (p->folder) - 1] != '/')
+					strcat (p->folder, "/");
+				strcat (p->folder, name);
+				r = for_each_folder (p, action);
+				free (p->folder);
+				p->folder = orig_folder;
+				CR (r);
 			}
 		}
 	}
@@ -106,22 +136,12 @@ for_each_folder (ForEachParams *p, FolderAction action)
 }
 
 int
-for_each_file (ForEachParams *p, FileAction action)
+for_each_file (GPParams *p, FileAction action)
 {
 	CameraList list;
 	int i, count;
 	const char *name;
 	char path[1024];
-	ActionParams ap;
-	ForEachParams fp;
-
-	memcpy (&fp, p, sizeof (ForEachParams));
-	fp.folder = path;
-
-	/* Initialize the action parameters */
-	ap.camera = p->camera;
-	ap.context = p->context;
-	ap.folder = p->folder;
 
 	/* Iterate on all files */
 	CR (gp_camera_folder_list_files (p->camera, p->folder, &list,
@@ -130,12 +150,12 @@ for_each_file (ForEachParams *p, FileAction action)
 	if (p->flags & FOR_EACH_FLAGS_REVERSE) {
 		for (i = count - 1; 0 <= i; i--) {
 			CR (gp_list_get_name (&list, i, &name));
-			CR (action (&ap, name));
+			CR (action (p, name));
 		}
 	} else {
 		for (i = 0; i < count; i++) {
 			CR (gp_list_get_name (&list, i, &name));
-			CR (action (&ap, name));
+			CR (action (p, name));
 		}
 	}
 
@@ -150,7 +170,7 @@ for_each_file (ForEachParams *p, FileAction action)
 			if (path[strlen (path) - 1] != '/')
 				strncat (path, "/", sizeof (path));
 			strncat (path, name, sizeof (path));
-			CR (for_each_file (&fp, action));
+			CR (for_each_file (p, action));
 		}
 	}
 
@@ -161,7 +181,7 @@ for_each_file (ForEachParams *p, FileAction action)
 #define MAX_FILE_LEN   1024
 
 static int
-get_path_for_id_rec (ForEachParams *p,
+get_path_for_id_rec (GPParams *p,
 		     const char *base_folder, unsigned int id,
 		     unsigned int *base_id, char *folder,
 		     char *filename)
@@ -211,7 +231,7 @@ get_path_for_id_rec (ForEachParams *p,
 }
 
 static int
-get_path_for_id (ForEachParams *p, const char *base_folder,
+get_path_for_id (GPParams *p, const char *base_folder,
 		 unsigned int id, char *folder, char *filename)
 {
 	int r;
@@ -226,7 +246,7 @@ get_path_for_id (ForEachParams *p, const char *base_folder,
                                          filename);
                 switch (r) {
                 case GP_ERROR_FRONTEND_BAD_ID:
-                        gp_context_error (glob_context, _("Bad file number. "
+                        gp_context_error (p->context, _("Bad file number. "
                                 "You specified %i, but there are only %i "
                                 "files available in '%s' or its subfolders. "
                                 "Please obtain a valid file number from "
@@ -275,22 +295,16 @@ get_path_for_id (ForEachParams *p, const char *base_folder,
 }
 
 int
-for_each_file_in_range (ForEachParams *p, FileAction action,
+for_each_file_in_range (GPParams *p, FileAction action,
 			const char *range)
 {
 	char	index[MAX_IMAGE_NUMBER];
 	int 	i, max = 0;
 	char ffolder[MAX_FOLDER_LEN], ffile[MAX_FILE_LEN];
-	ActionParams ap;
 
 	memset(index, 0, MAX_IMAGE_NUMBER);
 
-	/* Initialize the action parameters */
-	ap.camera = p->camera;
-	ap.context = p->context;
-	ap.folder = ffolder;
-
-	CR (parse_range (range, index, glob_context));
+	CR (parse_range (range, index, p->context));
 
 	for (max = MAX_IMAGE_NUMBER - 1; !index[max]; max--);
 	
@@ -299,7 +313,7 @@ for_each_file_in_range (ForEachParams *p, FileAction action,
 			if (index[i]) {
 				CR (get_path_for_id (p, p->folder,
 					(unsigned int) i, ffolder, ffile));
-				CR (action (&ap, ffile));
+				CR (action (p, ffile));
 			}
 	} else {
 		unsigned int count;
@@ -317,7 +331,7 @@ for_each_file_in_range (ForEachParams *p, FileAction action,
 				CR (get_path_for_id (p, p->folder,
 					(unsigned int) i - count,
 					ffolder, ffile));
-				CR (action (&ap, ffile));
+				CR (action (p, ffile));
 				if (action == delete_file_action)
 					count++;
 			}

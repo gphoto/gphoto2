@@ -1,3 +1,10 @@
+2002-10-17  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/gp-params.[c,h]: New. Simplifies passing around parameters.
+	* gphoto2/main.c: New --force parameter.
+	* gphoto2/foreach.[c,h]:
+	* gphoto2/actions.[c,h]: Adjust to above changes.
+
 2002-10-08  Lutz Müller <lutz@users.sourceforge.net>
 
 	* gphoto2/actions.c: "!result" should have been "result < 0". I 

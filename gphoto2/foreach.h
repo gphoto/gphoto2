@@ -24,25 +24,12 @@
 #include <gphoto2-camera.h>
 #include <gphoto2-list.h>
 
-#include "actions.h"
+#include <actions.h>
+#include <gp-params.h>
 
-typedef enum _ForEachFlags ForEachFlags;
-enum _ForEachFlags {
-	FOR_EACH_FLAGS_RECURSE = 1 << 0,
-	FOR_EACH_FLAGS_REVERSE = 1 << 1
-};
-
-typedef struct _ForEachParams ForEachParams;
-struct _ForEachParams {
-	Camera *camera;
-	GPContext *context;
-	const char *folder;
-	ForEachFlags flags;
-};
-
-int for_each_folder         (ForEachParams *, FolderAction action);
-int for_each_file           (ForEachParams *, FileAction action);
-int for_each_file_in_range  (ForEachParams *, FileAction action,
+int for_each_folder         (GPParams *, FolderAction action);
+int for_each_file           (GPParams *, FileAction action);
+int for_each_file_in_range  (GPParams *, FileAction action,
 			     const char *range);
 
 #endif /* __FOREACH_H__ */

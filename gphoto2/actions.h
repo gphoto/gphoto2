@@ -24,52 +24,47 @@
 #include <gphoto2-camera.h>
 #include <gphoto2-context.h>
 
-typedef struct _ActionParams ActionParams;
-struct _ActionParams {
-	Camera *camera;
-	GPContext *context;
-	const char *folder;
-};
+#include <gp-params.h>
 
 /* Image actions */
-typedef int FileAction    (ActionParams *params, const char *filename);
-int print_file_action     (ActionParams *params, const char *filename);
-int print_exif_action     (ActionParams *params, const char *filename);
-int print_info_action     (ActionParams *params, const char *filename);
-int save_file_action      (ActionParams *params, const char *filename);
-int save_thumbnail_action (ActionParams *params, const char *filename);
-int save_raw_action       (ActionParams *params, const char *filename);
-int save_audio_action     (ActionParams *params, const char *filename);
-int save_exif_action      (ActionParams *params, const char *filename);
-int delete_file_action    (ActionParams *params, const char *filename);
+typedef int FileAction    (GPParams *, const char *filename);
+int print_file_action     (GPParams *, const char *filename);
+int print_exif_action     (GPParams *, const char *filename);
+int print_info_action     (GPParams *, const char *filename);
+int save_file_action      (GPParams *, const char *filename);
+int save_thumbnail_action (GPParams *, const char *filename);
+int save_raw_action       (GPParams *, const char *filename);
+int save_audio_action     (GPParams *, const char *filename);
+int save_exif_action      (GPParams *, const char *filename);
+int delete_file_action    (GPParams *, const char *filename);
 
 /* Folder actions */
-typedef int FolderAction  (ActionParams *params);
-int delete_all_action     (ActionParams *params);
-int list_files_action     (ActionParams *params);
-int list_folders_action   (ActionParams *params);
-int num_files_action      (ActionParams *params);
+typedef int FolderAction  (GPParams *);
+int delete_all_action     (GPParams *);
+int list_files_action     (GPParams *);
+int list_folders_action   (GPParams *);
+int num_files_action      (GPParams *);
 
-/* Camera actions */
-int action_camera_about           (Camera *);
-int action_camera_summary         (Camera *);
-int action_camera_manual          (Camera *);
-int action_camera_set_port        (Camera *, const char *port);
-int action_camera_set_speed       (Camera *, unsigned int speed);
-int action_camera_set_model       (Camera *, const char *model);
-int action_camera_show_abilities  (Camera *);
-int action_camera_upload_file     (Camera *, const char *folder,
+/* GPParams *actions */
+int action_camera_about           (GPParams *);
+int action_camera_summary         (GPParams *);
+int action_camera_manual          (GPParams *);
+int action_camera_set_port        (GPParams *, const char *port);
+int action_camera_set_speed       (GPParams *, unsigned int speed);
+int action_camera_set_model       (GPParams *, const char *model);
+int action_camera_show_abilities  (GPParams *);
+int action_camera_upload_file     (GPParams *, const char *folder,
 				   const char *path);
-int action_camera_capture_preview (Camera *);
+int action_camera_capture_preview (GPParams *);
 
 /* Other actions */
-int list_cameras_action    (void);
-int list_ports_action      (void);
-int auto_detect_action     (void);
-int set_folder_action      (const char *folder);
-int set_filename_action    (const char *filename);
-int print_version_action   (void);
-int override_usbids_action (int usb_vendor,          int usb_product, 
+int list_cameras_action    (GPParams *);
+int list_ports_action      (GPParams *);
+int auto_detect_action     (GPParams *);
+int set_folder_action      (GPParams *, const char *folder);
+int set_filename_action    (GPParams *, const char *filename);
+int print_version_action   (GPParams *);
+int override_usbids_action (GPParams *, int usb_vendor, int usb_product, 
 			    int usb_vendor_modified, int usb_product_modified);
 
 #endif /* __ACTIONS_H__ */

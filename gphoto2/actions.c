@@ -29,7 +29,6 @@
 #include <gphoto2/gphoto2-setting.h>
 
 #include "main.h"
-#include "globals.h"
 
 #ifdef HAVE_AA
 #  include "gphoto2-cmd-capture.h"
@@ -62,13 +61,13 @@
 #define CRU(result,file) {int r=(result); if (r<0) {gp_file_unref(file);return r;}}
 
 int
-delete_all_action (ActionParams *p)
+delete_all_action (GPParams *p)
 {
 	return (gp_camera_folder_delete_all (p->camera, p->folder, p->context));
 }
 
 int
-action_camera_upload_file (Camera *camera, const char *folder, const char *path)
+action_camera_upload_file (GPParams *p, const char *folder, const char *path)
 {
 	CameraFile *file;
 	int res;
@@ -83,23 +82,23 @@ action_camera_upload_file (Camera *camera, const char *folder, const char *path)
 	}
 
 	/* Check if the user specified a filename */
-	if (glob_filename && strcmp (glob_filename, "")) {
-		res = gp_file_set_name (file, glob_filename);
+	if (p->filename && strcmp (p->filename, "")) {
+		res = gp_file_set_name (file, p->filename);
 		if (res < 0) {
 			gp_file_unref (file);
 			return (res);
 		}
 	}
 
-	res = gp_camera_folder_put_file (camera, folder, file,
-					 glob_context);
+	res = gp_camera_folder_put_file (p->camera, folder, file,
+					 p->context);
 	gp_file_unref (file);
 
 	return (res);
 }
 
 int
-num_files_action (ActionParams *p)
+num_files_action (GPParams *p)
 {
 	CameraList list;
 	int n;
@@ -107,7 +106,7 @@ num_files_action (ActionParams *p)
 	CR (gp_camera_folder_list_files (p->camera, p->folder,
 					 &list, p->context));
 	CR (n = gp_list_count (&list));
-	if (glob_quiet)
+	if (p->quiet)
 		fprintf (stdout, "%i\n", n);
 	else
 		fprintf (stdout, _("Number of files in "
@@ -117,7 +116,7 @@ num_files_action (ActionParams *p)
 }
 
 int
-list_folders_action (ActionParams *p)
+list_folders_action (GPParams *p)
 {
 	CameraList list;
 	int count;
@@ -151,7 +150,7 @@ list_folders_action (ActionParams *p)
 }
 
 int
-list_files_action (ActionParams *p)
+list_files_action (GPParams *p)
 {
 	CameraList list;
 	int count;
@@ -163,17 +162,19 @@ list_files_action (ActionParams *p)
 	CR (count = gp_list_count (&list));
 	switch (count) {
 	case 0:
-		printf (_("There are no files in folder '%s'."), p->folder);
-		printf ("\n");
+		fprintf (stdout, _("There are no files in folder '%s'."),
+			 p->folder);
+		fputc ('\n', stdout);
 		break;
 	case 1:
-		printf (_("There is one file in folder '%s':"), p->folder);
-		printf ("\n");
+		fprintf (stdout, _("There is one file in folder '%s':"),
+			 p->folder);
+		fputc ('\n', stdout);
 		break;
 	default:
-		printf (_("There are %i files in folder '%s':"), count,
-			p->folder);
-		printf ("\n");
+		fprintf (stdout, _("There are %i files in folder '%s':"),
+			 count, p->folder);
+		fputc ('\n', stdout);
 		break;
 	}
 	for (i = 0; i < count; i++) {
@@ -185,7 +186,7 @@ list_files_action (ActionParams *p)
 }
 
 int
-print_info_action (ActionParams *p, const char *filename)
+print_info_action (GPParams *p, const char *filename)
 {
 	CameraFileInfo info;
 
@@ -261,11 +262,11 @@ print_info_action (ActionParams *p, const char *filename)
 }
 
 int
-print_file_action (ActionParams *p, const char *filename)
+print_file_action (GPParams *p, const char *filename)
 {
 	static int x=0;
 
-	if (glob_quiet)
+	if (p->quiet)
 		printf ("\"%s\"\n", filename);
 	else {
 		CameraFileInfo info;
@@ -294,42 +295,42 @@ print_file_action (ActionParams *p, const char *filename)
 }
 
 int
-save_file_action (ActionParams *p, const char *filename)
+save_file_action (GPParams *p, const char *filename)
 {
 	return (save_file_to_file (p->camera, p->context, p->folder, filename,
 				   GP_FILE_TYPE_NORMAL));
 }
 
 int
-save_exif_action (ActionParams *p, const char *filename)
+save_exif_action (GPParams *p, const char *filename)
 {
 	return (save_file_to_file (p->camera, p->context, p->folder, filename,
 				   GP_FILE_TYPE_EXIF));
 }
 
 int
-save_thumbnail_action (ActionParams *p, const char *filename)
+save_thumbnail_action (GPParams *p, const char *filename)
 {
 	return (save_file_to_file (p->camera, p->context, p->folder, filename,
 				   GP_FILE_TYPE_PREVIEW));
 }
 
 int
-save_raw_action (ActionParams *p, const char *filename)
+save_raw_action (GPParams *p, const char *filename)
 {
 	return (save_file_to_file (p->camera, p->context, p->folder, filename,
 				   GP_FILE_TYPE_RAW));
 }
 
 int
-save_audio_action (ActionParams *p, const char *filename)
+save_audio_action (GPParams *p, const char *filename)
 {
 	return (save_file_to_file (p->camera, p->context, p->folder, filename,
 				   GP_FILE_TYPE_AUDIO));
 }
 
 int
-delete_file_action (ActionParams *p, const char *filename)
+delete_file_action (GPParams *p, const char *filename)
 {
 	return (gp_camera_file_delete (p->camera, p->folder, filename,
 				       p->context));
@@ -366,7 +367,7 @@ print_hline (void)
 #endif
 
 int
-print_exif_action (ActionParams *p, const char *filename)
+print_exif_action (GPParams *p, const char *filename)
 {
 #ifdef HAVE_EXIF
         CameraFile *file;
@@ -384,8 +385,7 @@ print_exif_action (ActionParams *p, const char *filename)
         ed = exif_data_new_from_data (data, size);
         gp_file_unref (file);
         if (!ed) {
-                gp_context_error (glob_context,
-				  _("Could not parse EXIF data."));
+                gp_context_error (p->context, _("Could not parse EXIF data."));
                 return (GP_ERROR);
         }
 
@@ -424,22 +424,22 @@ print_exif_action (ActionParams *p, const char *filename)
 
         return (GP_OK);
 #else
-	gp_context_error (glob_context, _("gphoto2 has been compiled without "
+	gp_context_error (p->context, _("gphoto2 has been compiled without "
 		"EXIF support."));
 	return (GP_ERROR_NOT_SUPPORTED);
 #endif
 }
 
 int
-list_cameras_action (void)
+list_cameras_action (GPParams *p)
 {
 	int r = GP_OK, n, i;
 	CameraAbilities a;
 
-	r = gp_abilities_list_count (glob_abilities_list);
+	r = gp_abilities_list_count (p->abilities_list);
 	if (r < 0)
 		return (r);
-	if (glob_quiet)
+	if (p->quiet)
 		fprintf (stdout, "%i\n", r);
 	else {
 		fprintf (stdout, _("Number of supported "
@@ -448,11 +448,11 @@ list_cameras_action (void)
 	}
 	n = r;
 	for (i = 0; i < n; i++) {
-		r = gp_abilities_list_get_abilities (glob_abilities_list,
+		r = gp_abilities_list_get_abilities (p->abilities_list,
 						     i, &a);
 		if (r < 0)
 			break;
-		if (glob_quiet)
+		if (p->quiet)
 			fprintf (stdout, "%s\n", a.model);
 		else
 			switch (a.status) {
@@ -474,7 +474,7 @@ list_cameras_action (void)
 }
 
 int
-list_ports_action (void)
+list_ports_action (GPParams *p)
 {
 	GPPortInfoList *list;
 	GPPortInfo info;
@@ -492,7 +492,7 @@ list_ports_action (void)
 		return (count);
 	}
 
-	if (!glob_quiet) {
+	if (!p->quiet) {
 		printf(_("Devices found: %i\n"), count);
 		printf(_("Path                             Description\n"
 			"--------------------------------------------------------------\n"));
@@ -514,7 +514,7 @@ list_ports_action (void)
 }
 
 int
-auto_detect_action (void)
+auto_detect_action (GPParams *p)
 {
 	int x, count;
         CameraList list;
@@ -523,10 +523,10 @@ auto_detect_action (void)
         const char *name, *value;
 
         gp_abilities_list_new (&al);
-        gp_abilities_list_load (al, glob_context);
+        gp_abilities_list_load (al, p->context);
         gp_port_info_list_new (&il);
         gp_port_info_list_load (il);
-        gp_abilities_list_detect (al, il, &list, glob_context);
+        gp_abilities_list_detect (al, il, &list, p->context);
         gp_abilities_list_free (al);
         gp_port_info_list_free (il);
 
@@ -544,12 +544,12 @@ auto_detect_action (void)
 }
 
 int
-action_camera_show_abilities (Camera *camera)
+action_camera_show_abilities (GPParams *p)
 {
 	CameraAbilities a;
 	int i;
 
-	CR (gp_camera_get_abilities (camera, &a));
+	CR (gp_camera_get_abilities (p->camera, &a));
 	printf (_("Abilities for camera             : %s\n"), a.model);
 	printf (_("Serial port support              : %s\n"),
 		(a.port & GP_PORT_SERIAL) ? _("yes"):_("no"));
@@ -586,7 +586,7 @@ action_camera_show_abilities (Camera *camera)
 }
 
 int
-action_camera_set_port (Camera *camera, const char *port)
+action_camera_set_port (GPParams *params, const char *port)
 {
 	GPPortInfoList *il;
 	int p, r;
@@ -657,7 +657,7 @@ action_camera_set_port (Camera *camera, const char *port)
 		return (r);
 
 	/* Set the port of our camera. */
-	r = gp_camera_set_port_info (camera, info);
+	r = gp_camera_set_port_info (params->camera, info);
 	if (r < 0)
 		return (r);
 	gp_setting_set ("gphoto2", "port", info.path);
@@ -666,11 +666,11 @@ action_camera_set_port (Camera *camera, const char *port)
 }
 
 int
-action_camera_about (Camera *camera)
+action_camera_about (GPParams *params)
 {
 	CameraText text;
 
-	CR (gp_camera_get_about (camera, &text, glob_context));
+	CR (gp_camera_get_about (params->camera, &text, params->context));
 	
 	fprintf (stdout, _("About the camera driver:"));
 	fputc ('\n', stdout);
@@ -680,11 +680,11 @@ action_camera_about (Camera *camera)
 }
 
 int
-action_camera_summary (Camera *camera)
+action_camera_summary (GPParams *params)
 {
 	CameraText text;
 
-	CR (gp_camera_get_summary (camera, &text, glob_context));
+	CR (gp_camera_get_summary (params->camera, &text, params->context));
 
 	fprintf (stdout, _("Camera summary:"));
 	fputc ('\n', stdout);
@@ -694,11 +694,11 @@ action_camera_summary (Camera *camera)
 }
 
 int
-action_camera_manual (Camera *camera)
+action_camera_manual (GPParams *params)
 {
 	CameraText text;
 
-	CR (gp_camera_get_manual (camera, &text, glob_context));
+	CR (gp_camera_get_manual (params->camera, &text, params->context));
 
 	fprintf (stdout, _("Camera manual:"));
 	fputc ('\n', stdout);
@@ -708,14 +708,14 @@ action_camera_manual (Camera *camera)
 }
 
 int
-action_camera_set_speed (Camera *camera, unsigned int speed)
+action_camera_set_speed (GPParams *p, unsigned int speed)
 {
 	GPPortInfo info;
 
 	/* Make sure we've got a serial port. */
-	CR (gp_camera_get_port_info (camera, &info));
+	CR (gp_camera_get_port_info (p->camera, &info));
 	if (info.type != GP_PORT_SERIAL) {
-		if (!glob_quiet) {
+		if (!p->quiet) {
 			fprintf (stderr, _("You can only specify speeds for "
 					   "serial ports."));
 			fputc ('\n', stderr);
@@ -724,53 +724,53 @@ action_camera_set_speed (Camera *camera, unsigned int speed)
 	}
 
 	/* Set the speed. */
-	CR (gp_camera_set_port_speed (camera, speed));
+	CR (gp_camera_set_port_speed (p->camera, speed));
 
 	return (GP_OK);
 }
 
 int
-action_camera_set_model (Camera *camera, const char *model)
+action_camera_set_model (GPParams *p, const char *model)
 {
 	CameraAbilities a;
 	int m;
 
-	CR (m = gp_abilities_list_lookup_model (glob_abilities_list, model));
-	CR (gp_abilities_list_get_abilities (glob_abilities_list, m, &a));
-	CR (gp_camera_set_abilities (camera, a));
+	CR (m = gp_abilities_list_lookup_model (p->abilities_list, model));
+	CR (gp_abilities_list_get_abilities (p->abilities_list, m, &a));
+	CR (gp_camera_set_abilities (p->camera, a));
 	gp_setting_set ("gphoto2", "model", a.model);
 
 	return (GP_OK);
 }
 
 int
-set_folder_action (const char *folder)
+set_folder_action (GPParams *p, const char *folder)
 {
-	if (glob_folder)
-		free (glob_folder);
-	glob_folder = malloc (sizeof (char) * (strlen (folder) + 1));
-	if (!glob_folder)
+	if (p->folder)
+		free (p->folder);
+	p->folder = malloc (sizeof (char) * (strlen (folder) + 1));
+	if (!p->folder)
 		return (GP_ERROR_NO_MEMORY);
-	strcpy (glob_folder, folder);
+	strcpy (p->folder, folder);
 
 	return (GP_OK);
 }
 
 int
-set_filename_action (const char *filename)
+set_filename_action (GPParams *p, const char *filename)
 {
-	if (glob_filename)
-		free (glob_filename);
-	glob_filename = malloc (sizeof (char) * (strlen (filename) + 1));
-	if (!glob_filename)
+	if (p->filename)
+		free (p->filename);
+	p->filename = malloc (sizeof (char) * (strlen (filename) + 1));
+	if (!p->filename)
 		return (GP_ERROR_NO_MEMORY);
-	strcpy (glob_filename, filename);
+	strcpy (p->filename, filename);
 
 	return (GP_OK);
 }
 
 int
-print_version_action (void)
+print_version_action (GPParams *p)
 {
 	printf (_("gPhoto (v%s) - Cross-platform digital camera library.\n"
 		  "Copyright (C) 2000-2002 Scott Fritzinger and others\n"
@@ -788,16 +788,16 @@ print_version_action (void)
 }
 
 int
-action_camera_capture_preview (Camera *camera)
+action_camera_capture_preview (GPParams *p)
 {
 	CameraFile *file;
 	int r;
 
 	CR (gp_file_new (&file));
 #ifdef HAVE_AA
-	r = gp_cmd_capture_preview (camera, file, glob_context);
+	r = gp_cmd_capture_preview (p->camera, file, p->context);
 #else
-	r = gp_camera_capture_preview (camera, file, glob_context);
+	r = gp_camera_capture_preview (p->camera, file, p->context);
 #endif
 	if (r < 0) {
 		gp_file_unref (file);
@@ -813,7 +813,7 @@ action_camera_capture_preview (Camera *camera)
 }
 
 int
-override_usbids_action (int usb_vendor, int usb_product,
+override_usbids_action (GPParams *p, int usb_vendor, int usb_product,
 			int usb_vendor_modified, int usb_product_modified)
 {
 	CameraAbilitiesList *al = NULL;
@@ -822,9 +822,9 @@ override_usbids_action (int usb_vendor, int usb_product,
 
 	CR (gp_abilities_list_new (&al));
 
-	n = gp_abilities_list_count (glob_abilities_list);
+	n = gp_abilities_list_count (p->abilities_list);
 	for (i = 0; i < n; i++) {
-		r = gp_abilities_list_get_abilities (glob_abilities_list, i,
+		r = gp_abilities_list_get_abilities (p->abilities_list, i,
 						     &a);
 		if (r < 0)
 			continue;
@@ -840,8 +840,8 @@ override_usbids_action (int usb_vendor, int usb_product,
 		}
 		gp_abilities_list_append (al, a);
 	}
-	gp_abilities_list_free (glob_abilities_list);
-	glob_abilities_list = al;
+	gp_abilities_list_free (p->abilities_list);
+	p->abilities_list = al;
 
 	return (GP_OK);
 }
