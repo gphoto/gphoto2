@@ -29,7 +29,11 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 	   ones, but the current method is easier for now :-) */
 	static const char *verb[] = {
 		VERSION,
+#ifdef HAVE_CC
 		HAVE_CC " (C compiler used)",
+#else
+		"unknown (C compiler used)",
+#endif
 #ifdef HAVE_POPT
 		"popt (for handling command-line parameters)",
 #else
@@ -64,7 +68,11 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 	};
 	static const char *shrt[] = {
 		VERSION,
+#ifdef HAVE_CC
 		HAVE_CC,
+#else
+		"unknown cc",
+#endif
 #ifdef HAVE_POPT
 		"popt",
 #else
