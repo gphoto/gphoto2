@@ -45,7 +45,7 @@ int list_files_action     (GPParams *);
 int list_folders_action   (GPParams *);
 int num_files_action      (GPParams *);
 
-/* GPParams *actions */
+/* Camera actions */
 int action_camera_about           (GPParams *);
 int action_camera_summary         (GPParams *);
 int action_camera_manual          (GPParams *);
