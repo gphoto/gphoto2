@@ -1548,12 +1548,16 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 			p->p.r = set_folder_action (arg);
 			break;
 		case ARG_MODEL:
+			gp_log (GP_LOG_DEBUG, "main", "Processing 'model' "
+				"option ('%s')...", arg);
 			p->p.r = action_camera_set_model (glob_camera, arg);
 			break;
 		case ARG_NO_RECURSE:
 			glob_flags &= ~FOR_EACH_FLAGS_RECURSE;
 			break;
 		case ARG_PORT:
+			gp_log (GP_LOG_DEBUG, "main", "Processing 'port' "
+				"option ('%s')...", arg);
 			p->p.r = action_camera_set_port (glob_camera, arg);
 			break;
 		case ARG_QUIET:
@@ -1563,7 +1567,8 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 			glob_flags |= FOR_EACH_FLAGS_RECURSE;
 			break;
 		case ARG_SPEED:
-			p->p.r = action_camera_set_speed (glob_camera, atoi (arg));
+			p->p.r = action_camera_set_speed (glob_camera,
+							  atoi (arg));
 			break;
 		case ARG_STDOUT:
 			glob_quiet = 1;
@@ -1815,6 +1820,17 @@ report_failure (int result, int argc, char **argv)
 	}
 }
 
+#define CR_MAIN(result)					\
+{							\
+	int r = (result);				\
+							\
+	if (r < 0) {					\
+		report_failure (r, argc, argv);		\
+		free_globals ();			\
+		return (EXIT_FAILURE);			\
+	}						\
+}
+
 int
 main (int argc, char **argv)
 {
@@ -1925,9 +1941,9 @@ main (int argc, char **argv)
 		 N_("gPhoto shell"), NULL},
 		POPT_TABLEEND
 	};
-#else
-	CameraAbilities a;
 #endif
+	CameraAbilities a;
+	GPPortInfo info;
 	int result = GP_OK;
 
 	/* For translation */
@@ -1963,7 +1979,7 @@ main (int argc, char **argv)
 	while ((result = poptGetNextOpt (ctx)) >= 0);
 	if (result == POPT_ERROR_BADOPT) {
 		poptPrintUsage (ctx, stderr, 0);
-		exit (EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	}
 	if (params.p.q.found) {
 		gp_log_add_func (GP_LOG_ALL, debug_func, NULL);
@@ -1989,12 +2005,7 @@ main (int argc, char **argv)
 	params.type = CALLBACK_PARAMS_TYPE_INITIALIZE;
 	poptResetContext (ctx);
 	while ((params.p.r >= 0) && (poptGetNextOpt (ctx) >= 0));
-	if (params.p.r < 0) {
-		gp_log (GP_LOG_DEBUG, "main", "Initialization failed.");
-		report_failure (params.p.r, argc, argv);
-		free_globals ();
-		return (EXIT_FAILURE);
-	}
+	CR_MAIN (params.p.r);
 #endif
 
 #ifdef HAVE_POPT
@@ -2007,6 +2018,8 @@ main (int argc, char **argv)
 #endif
 
 	/* If we need a camera, make sure we've got one. */
+	CR_MAIN (gp_camera_get_abilities (glob_camera, &a));
+	CR_MAIN (gp_camera_get_port_info (glob_camera, &info));
 #ifdef HAVE_POPT
 	params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	params.p.q.found = 0;
@@ -2037,10 +2050,10 @@ main (int argc, char **argv)
 	CHECK_OPT (ARG_SHOW_INFO);
 	CHECK_OPT (ARG_SUMMARY);
 	CHECK_OPT (ARG_UPLOAD_FILE);
-	if (params.p.q.found) {
+	if (params.p.q.found &&
+	    (!strcmp (a.model, "") || (info.type == GP_PORT_NONE))) {
 #else
-	gp_camera_get_abilities (glob_camera, &a);
-	if (!strcmp (a.model, "")) {
+	if (!strcmp (a.model, "") || (info.type == GP_PORT_NONE)) {
 #endif
 		int count;
 		const char *model = NULL, *path = NULL;
@@ -2048,36 +2061,44 @@ main (int argc, char **argv)
 		GPPortInfoList *il;
 		char buf[1024];
 
-		CR (gp_port_info_list_new (&il));
-		gp_port_info_list_load (il);
-		gp_abilities_list_detect (glob_abilities_list, il,
-					  &list, glob_context);
-		count = gp_list_count (&list);
+		gp_log (GP_LOG_DEBUG, "main", "The user has not specified "
+			"both a model and a port. Try to figure them out.");
+
+		CR_MAIN (gp_port_info_list_new (&il));
+		CR_MAIN (gp_port_info_list_load (il));
+		CR_MAIN (gp_abilities_list_detect (glob_abilities_list, il,
+						   &list, glob_context));
+		CR_MAIN (count = gp_list_count (&list));
                 if (count == 1) {
 
                         /* Exactly one camera detected */
-                        gp_list_get_name (&list, 0, &model);
-                        gp_list_get_value (&list, 0, &path);
-			action_camera_set_model (glob_camera, model);
-			action_camera_set_port (glob_camera, path);
+			CR_MAIN (gp_list_get_name (&list, 0, &model));
+			CR_MAIN (gp_list_get_value (&list, 0, &path));
+			CR_MAIN (action_camera_set_model (glob_camera, model));
+			CR_MAIN (action_camera_set_port (glob_camera, path));
 
                 } else if (!count) {
 
-                        /* No camera detected. Have a look at the settings */
+			/*
+			 * No camera detected. Have a look at the settings.
+			 * Ignore errors here.
+			 */
                         if (gp_setting_get ("gphoto2", "model", buf) >= 0)
 				action_camera_set_model (glob_camera, buf);
+			if (gp_setting_get ("gphoto2", "port", buf) >= 0)
+				action_camera_set_port (glob_camera, buf);
 
 		} else {
 
                         /* More than one camera detected */
                         /*FIXME: Let the user choose from the list!*/
-                        CR (gp_list_get_name (&list, 0, &model));
-                        CR (gp_list_get_value (&list, 0, &path));
-			action_camera_set_model (glob_camera, model);
-			action_camera_set_port (glob_camera, path);
+			CR_MAIN (gp_list_get_name (&list, 0, &model));
+			CR_MAIN (gp_list_get_value (&list, 0, &path));
+			CR_MAIN (action_camera_set_model (glob_camera, model));
+			CR_MAIN (action_camera_set_port (glob_camera, path));
                 }
 
-		gp_port_info_list_free (il);
+		CR_MAIN (gp_port_info_list_free (il));
         }
 
 	/*
@@ -2135,11 +2156,7 @@ main (int argc, char **argv)
 	poptResetContext (ctx);
 	params.p.r = GP_OK;
 	while ((params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
-	if (params.p.r < 0) {
-		report_failure (params.p.r, argc, argv);
-		free_globals ();
-		return (EXIT_FAILURE);
-	}
+	CR_MAIN (params.p.r);
 #else
         /* Count the number of command-line options we have */
         while ((strlen(option[glob_option_count].short_id) > 0) ||
@@ -2187,16 +2204,11 @@ e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"));
 		char model[1024];
 		result = gp_setting_get ("gphoto2", "model", model);
 		if (result >= 0)
-			action_camera_set_model (glob_camera, model);
+			CR_MAIN (action_camera_set_model (glob_camera, model));
 	}
 
 	/* Now actually do something. */
-	result = execute_options (argc, argv);
-        if (result < 0) {
-		report_failure (result, argc, argv);
-		free_globals ();
-		return (EXIT_FAILURE);
-	}
+	CR_MAIN (execute_options (argc, argv));
 
 #endif
 
