@@ -70,8 +70,8 @@ for_each_folder (GPParams *p, FolderAction action)
 {
 	CameraList list;
 	int r, i, count;
-	const char *name;
-	char *orig_folder;
+	const char *name = NULL;
+	char *f = NULL;
 
 	if (!p)
 		return (GP_ERROR_BAD_PARAMETERS);
@@ -85,50 +85,51 @@ for_each_folder (GPParams *p, FolderAction action)
 		FolderActions[i].name, p->folder);
 	CR (action (p));
 
-	/* If recursion is requested, descend into subfolders. */
-	if (p->flags & FOR_EACH_FLAGS_RECURSE) {
-		CR (gp_camera_folder_list_folders (p->camera, p->folder, &list,
-						   p->context));
-		CR (count = gp_list_count (&list));
+	/* If no recursion is requested, we are done. */
+	if (!(p->flags & FOR_EACH_FLAGS_RECURSE))
+		return GP_OK;
 
-		if (p->flags & FOR_EACH_FLAGS_REVERSE) {
-			for (i = count - 1; i >= 0; i--) {
-				CR (gp_list_get_name (&list, i, &name));
-				orig_folder = p->folder;
-				p->folder = malloc (strlen (orig_folder) + 1
-						    + strlen (name) + 1);
-				if (!p->folder) {
-					p->folder = orig_folder;
-					return (GP_ERROR_NO_MEMORY);
-				}
-				strcpy (p->folder, orig_folder);
-				if (p->folder[strlen (p->folder) - 1] != '/')
-					strcat (p->folder, "/");
-				strcat (p->folder, name);
-				r = for_each_folder (p, action);
-				free (p->folder);
-				p->folder = orig_folder;
-				CR (r);
+	/* Recursion requested. Descend into subfolders. */
+	CR (gp_camera_folder_list_folders (p->camera, p->folder, &list,
+					   p->context));
+	CR (count = gp_list_count (&list)); 
+	if (p->flags & FOR_EACH_FLAGS_REVERSE) {
+		for (i = count - 1; i >= 0; i--) {
+			CR (gp_list_get_name (&list, i, &name));
+			f = p->folder;
+			p->folder = malloc (sizeof (char) *
+				(strlen (f) + 1 + strlen (name) + 1));
+			if (!p->folder) {
+				p->folder = f;
+				return (GP_ERROR_NO_MEMORY);
 			}
-		} else {
-			for (i = 0; i < count; i++) {
-				CR (gp_list_get_name (&list, i, &name));
-				orig_folder = p->folder;
-				p->folder = malloc (strlen (orig_folder) + 1
-						    + strlen (name) + 1);
-				if (!p->folder) {
-					p->folder = orig_folder;
-					return (GP_ERROR_NO_MEMORY);
-				}
-				strcpy (p->folder, orig_folder);
-				if (p->folder[strlen (p->folder) - 1] != '/')
-					strcat (p->folder, "/");
-				strcat (p->folder, name);
-				r = for_each_folder (p, action);
-				free (p->folder);
-				p->folder = orig_folder;
-				CR (r);
+			strcpy (p->folder, f);
+			if (p->folder[strlen (p->folder) - 1] != '/')
+				strcat (p->folder, "/");
+			strcat (p->folder, name);
+			r = for_each_folder (p, action);
+			free (p->folder);
+			p->folder = f;
+			CR (r);
+		}
+	} else {
+		for (i = 0; i < count; i++) {
+			CR (gp_list_get_name (&list, i, &name));
+			f = p->folder;
+			p->folder = malloc (sizeof (char) * 
+				(strlen (f) + 1 + strlen (name) + 1));
+			if (!p->folder) {
+				p->folder = f;
+				return (GP_ERROR_NO_MEMORY);
 			}
+			strcpy (p->folder, f);
+			if (p->folder[strlen (p->folder) - 1] != '/')
+				strcat (p->folder, "/");
+			strcat (p->folder, name);
+			r = for_each_folder (p, action);
+			free (p->folder);
+			p->folder = f;
+			CR (r);
 		}
 	}
 
@@ -139,9 +140,9 @@ int
 for_each_file (GPParams *p, FileAction action)
 {
 	CameraList list;
-	int i, count;
-	const char *name;
-	char path[1024];
+	int i, count, r;
+	const char *name = NULL;
+	char *f = NULL;
 
 	/* Iterate on all files */
 	CR (gp_camera_folder_list_files (p->camera, p->folder, &list,
@@ -159,19 +160,31 @@ for_each_file (GPParams *p, FileAction action)
 		}
 	}
 
-	/* If recursion is requested, descend into subfolders. */
-	if (p->flags & FOR_EACH_FLAGS_RECURSE) {
-		CR (gp_camera_folder_list_folders (p->camera, p->folder,
-						   &list, p->context));
-		CR (count = gp_list_count (&list));
-		for (i = 0; i < count; i++) {
-			CR (gp_list_get_name (&list, i, &name));
-			strncpy (path, p->folder, sizeof (path));
-			if (path[strlen (path) - 1] != '/')
-				strncat (path, "/", sizeof (path));
-			strncat (path, name, sizeof (path));
-			CR (for_each_file (p, action));
+	/* If no recursion is requested, we are done. */
+	if (!(p->flags & FOR_EACH_FLAGS_RECURSE))
+		return (GP_OK);
+
+	/* Recursion requested. Descend into subfolders. */
+	CR (gp_camera_folder_list_folders (p->camera, p->folder,
+					   &list, p->context));
+	CR (count = gp_list_count (&list));
+	for (i = 0; i < count; i++) {
+		CR (gp_list_get_name (&list, i, &name));
+		f = p->folder;
+		p->folder = malloc (sizeof (char) *
+				(strlen (f) + 1 + strlen (name) + 1));
+		if (!p->folder) {
+			p->folder = f;
+			return (GP_ERROR_NO_MEMORY);
 		}
+		strcpy (p->folder, f);
+		if (p->folder[strlen (p->folder) - 1] != '/')
+			strcat (p->folder, "/");
+		strcat (p->folder, name);
+		r = for_each_file (p, action);
+		free (p->folder);
+		p->folder = f;
+		CR (r);
 	}
 
 	return (GP_OK);

@@ -734,6 +734,7 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 	strncpy (s, path, sizeof (s) - 1);
 	s[sizeof (s) - 1] = '\0';
 	free (path);
+	path = NULL;
 
         if (!p.quiet) {
                 while (!p.force_overwrite && GP_SYSTEM_IS_FILE (s)) {
@@ -1718,7 +1719,7 @@ main (int argc, char **argv)
 		int count;
 		const char *model = NULL, *path = NULL;
 		CameraList list;
-		GPPortInfoList *il;
+		GPPortInfoList *il = NULL;
 		char buf[1024];
 
 		gp_log (GP_LOG_DEBUG, "main", "The user has not specified "

@@ -476,7 +476,7 @@ list_cameras_action (GPParams *p)
 int
 list_ports_action (GPParams *p)
 {
-	GPPortInfoList *list;
+	GPPortInfoList *list = NULL;
 	GPPortInfo info;
 	int x, count, result = GP_OK;
 
@@ -518,9 +518,9 @@ auto_detect_action (GPParams *p)
 {
 	int x, count;
         CameraList list;
-        CameraAbilitiesList *al;
-        GPPortInfoList *il;
-        const char *name, *value;
+        CameraAbilitiesList *al = NULL;
+        GPPortInfoList *il = NULL;
+        const char *name = NULL, *value = NULL;
 
         gp_abilities_list_new (&al);
         gp_abilities_list_load (al, p->context);
@@ -588,7 +588,7 @@ action_camera_show_abilities (GPParams *p)
 int
 action_camera_set_port (GPParams *params, const char *port)
 {
-	GPPortInfoList *il;
+	GPPortInfoList *il = NULL;
 	int p, r;
 	GPPortInfo info;
 	char verified_port[1024];
@@ -748,12 +748,8 @@ set_folder_action (GPParams *p, const char *folder)
 {
 	if (p->folder)
 		free (p->folder);
-	p->folder = malloc (sizeof (char) * (strlen (folder) + 1));
-	if (!p->folder)
-		return (GP_ERROR_NO_MEMORY);
-	strcpy (p->folder, folder);
-
-	return (GP_OK);
+	p->folder = strdup (folder);
+	return (p->folder ? GP_OK: GP_ERROR_NO_MEMORY);
 }
 
 int
@@ -761,12 +757,8 @@ set_filename_action (GPParams *p, const char *filename)
 {
 	if (p->filename)
 		free (p->filename);
-	p->filename = malloc (sizeof (char) * (strlen (filename) + 1));
-	if (!p->filename)
-		return (GP_ERROR_NO_MEMORY);
-	strcpy (p->filename, filename);
-
-	return (GP_OK);
+	p->filename = strdup (filename);
+	return (p->filename ? GP_OK: GP_ERROR_NO_MEMORY);
 }
 
 int

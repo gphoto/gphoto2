@@ -1,3 +1,10 @@
+2002-11-05  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/actions.c:
+	* gphoto2/foreach.c:
+	* gphoto2/main.c: While trying to hunt down a bug: Initialize some
+	  variables, set them to NULL after free, etc.
+
 2002-11-04  Lutz Müller <lutz@users.sourceforge.net>
 
 	* gphoto2/foreach.c: Fix for-loop.
