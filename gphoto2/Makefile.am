@@ -5,7 +5,7 @@
 EXTRA_DIST = \
 	gphoto2-cmd-config.c gphoto2-cmd-config.h	\
 	gphoto2-cmd-capture.c gphoto2-cmd-capture.h	\
-	options.c options.h
+	i18n.h options.c options.h
 
 bin_PROGRAMS = gphoto2
 
