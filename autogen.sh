@@ -70,6 +70,14 @@ fail() {
     DIE=1
 }
 
+(pkg-config --version) < /dev/null > /dev/null 2>&1 || {
+	echo
+	echo "**Error**: You must have \`pkg-config installed."
+	echo "Download the appropriate package for your distribution,"
+	echo "or get the source tarball at http://www.freedesktop.org/software/pkgconfig/"
+	DIE=1
+}
+
 if test "$DIE" -eq 1; then
     exit 1
 fi
