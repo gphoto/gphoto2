@@ -23,12 +23,20 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+#include <gphoto2/gphoto2-port-log.h>
+#include <gphoto2/gphoto2-setting.h>
 
 #include "main.h"
 #include "globals.h"
 
+#ifdef HAVE_AA
+#  include "gphoto2-cmd-capture.h"
+#endif
+
 #ifdef HAVE_EXIF
-#include <libexif/exif-data.h>
+#  include <libexif/exif-data.h>
 #endif
 
 #ifdef ENABLE_NLS
@@ -57,6 +65,55 @@ int
 delete_all_action (ActionParams *p)
 {
 	return (gp_camera_folder_delete_all (p->camera, p->folder, p->context));
+}
+
+int
+action_camera_upload_file (Camera *camera, const char *folder, const char *path)
+{
+	CameraFile *file;
+	int res;
+
+	gp_log (GP_LOG_DEBUG, "main", "Uploading file...");
+
+	CR (gp_file_new (&file));
+	res = gp_file_open (file, path);
+	if (res < 0) {
+		gp_file_unref (file);
+		return (res);
+	}
+
+	/* Check if the user specified a filename */
+	if (glob_filename && strcmp (glob_filename, "")) {
+		res = gp_file_set_name (file, glob_filename);
+		if (res < 0) {
+			gp_file_unref (file);
+			return (res);
+		}
+	}
+
+	res = gp_camera_folder_put_file (camera, folder, file,
+					 glob_context);
+	gp_file_unref (file);
+
+	return (res);
+}
+
+int
+num_files_action (ActionParams *p)
+{
+	CameraList list;
+	int n;
+
+	CR (gp_camera_folder_list_files (p->camera, p->folder,
+					 &list, p->context));
+	CR (n = gp_list_count (&list));
+	if (glob_quiet)
+		fprintf (stdout, "%i\n", n);
+	else
+		fprintf (stdout, _("Number of files in "
+				   "folder '%s': %i\n"), p->folder, n);
+
+	return (GP_OK);
 }
 
 int
@@ -371,4 +428,420 @@ print_exif_action (ActionParams *p, const char *filename)
 		"EXIF support."));
 	return (GP_ERROR_NOT_SUPPORTED);
 #endif
+}
+
+int
+list_cameras_action (void)
+{
+	int r = GP_OK, n, i;
+	CameraAbilities a;
+
+	r = gp_abilities_list_count (glob_abilities_list);
+	if (r < 0)
+		return (r);
+	if (glob_quiet)
+		fprintf (stdout, "%i\n", r);
+	else {
+		fprintf (stdout, _("Number of supported "
+					"cameras: %i\n"), r);
+		fprintf (stdout, _("Supported cameras:\n"));
+	}
+	n = r;
+	for (i = 0; i < n; i++) {
+		r = gp_abilities_list_get_abilities (glob_abilities_list,
+						     i, &a);
+		if (r < 0)
+			break;
+		if (glob_quiet)
+			fprintf (stdout, "%s\n", a.model);
+		else
+			switch (a.status) {
+			case GP_DRIVER_STATUS_TESTING:
+				printf (_("\t\"%s\" (TESTING)\n"), a.model);
+				break;
+			case GP_DRIVER_STATUS_EXPERIMENTAL:
+				printf (_("\t\"%s\" (EXPERIMENTAL)\n"),
+					a.model);
+				break;
+			case GP_DRIVER_STATUS_PRODUCTION:
+			default:
+				printf (_("\t\"%s\"\n"), a.model);
+				break;
+			}
+	}
+
+	return (r);
+}
+
+int
+list_ports_action (void)
+{
+	GPPortInfoList *list;
+	GPPortInfo info;
+	int x, count, result = GP_OK;
+
+	CR (gp_port_info_list_new (&list));
+	result = gp_port_info_list_load (list);
+	if (result < 0) {
+		gp_port_info_list_free (list);
+		return (result);
+	}
+	count = gp_port_info_list_count (list);
+	if (count < 0) {
+		gp_port_info_list_free (list);
+		return (count);
+	}
+
+	if (!glob_quiet) {
+		printf(_("Devices found: %i\n"), count);
+		printf(_("Path                             Description\n"
+			"--------------------------------------------------------------\n"));
+	} else
+		printf("%i\n", count);
+
+	/* Now list the ports */
+	for (x = 0; x < count; x++) {
+		result = gp_port_info_list_get_info (list, x, &info);
+		if (result < 0)
+			break;
+		printf ("%-32s %-32s\n", info.path, info.name);
+	}
+
+	gp_port_info_list_free (list);
+
+	return (result);
+
+}
+
+int
+auto_detect_action (void)
+{
+	int x, count;
+        CameraList list;
+        CameraAbilitiesList *al;
+        GPPortInfoList *il;
+        const char *name, *value;
+
+        gp_abilities_list_new (&al);
+        gp_abilities_list_load (al, glob_context);
+        gp_port_info_list_new (&il);
+        gp_port_info_list_load (il);
+        gp_abilities_list_detect (al, il, &list, glob_context);
+        gp_abilities_list_free (al);
+        gp_port_info_list_free (il);
+
+        CR (count = gp_list_count (&list));
+
+        printf(_("%-30s %-16s\n"), _("Model"), _("Port"));
+        printf(_("----------------------------------------------------------\n"));
+        for (x = 0; x < count; x++) {
+                CR (gp_list_get_name  (&list, x, &name));
+                CR (gp_list_get_value (&list, x, &value));
+                printf(_("%-30s %-16s\n"), name, value);
+        }
+
+        return GP_OK;
+}
+
+int
+action_camera_show_abilities (Camera *camera)
+{
+	CameraAbilities a;
+	int i;
+
+	CR (gp_camera_get_abilities (camera, &a));
+	printf (_("Abilities for camera             : %s\n"), a.model);
+	printf (_("Serial port support              : %s\n"),
+		(a.port & GP_PORT_SERIAL) ? _("yes"):_("no"));
+	printf (_("USB support                      : %s\n"),
+		(a.port & GP_PORT_USB) ? _("yes"):_("no"));
+	if (a.speed[0] != 0) {
+		printf (_("Transfer speeds supported        :\n"));
+		for (i = 0; a.speed[i]; i++)
+			printf (_("                                 : %i\n"),
+				a.speed[i]);
+	}
+	printf (_("Capture choices                  :\n"));
+	if (a.operations & GP_OPERATION_CAPTURE_IMAGE)
+		printf (_("                                 : Image\n"));
+	if (a.operations & GP_OPERATION_CAPTURE_VIDEO)
+		printf (_("                                 : Video\n"));
+	if (a.operations & GP_OPERATION_CAPTURE_AUDIO)
+		printf (_("                                 : Audio\n"));
+	if (a.operations & GP_OPERATION_CAPTURE_PREVIEW)
+		printf (_("                                 : Preview\n"));
+	printf (_("Configuration support            : %s\n"),
+		(a.operations & GP_OPERATION_CONFIG) ? _("yes"):_("no"));
+	printf (_("Delete files on camera support   : %s\n"),
+		(a.file_operations & GP_FILE_OPERATION_DELETE) ?
+							_("yes"):_("no"));
+	printf (_("File preview (thumbnail) support : %s\n"),
+		(a.file_operations & GP_FILE_OPERATION_PREVIEW) ? 
+							_("yes"):_("no"));
+	printf (_("File upload support              : %s\n"),
+		(a.folder_operations & GP_FOLDER_OPERATION_PUT_FILE) ?
+							_("yes"):_("no"));
+
+	return (GP_OK);
+}
+
+int
+action_camera_set_port (Camera *camera, const char *port)
+{
+	GPPortInfoList *il;
+	int p, r;
+	GPPortInfo info;
+	char verified_port[1024];
+
+	verified_port[sizeof (verified_port) - 1] = '\0';
+	if (!strchr (port, ':')) {
+		gp_log (GP_LOG_DEBUG, "main", _("Ports must look like "
+			"'serial:/dev/ttyS0' or 'usb:', but '%s' is "
+			"missing a colon so I am going to guess what you "
+			"mean."), port);
+		if (!strcmp (port, "usb")) {
+			strncpy (verified_port, "usb:",
+				 sizeof (verified_port) - 1);
+		} else if (strncmp (port, "/dev/", 5) == 0) {
+			strncpy (verified_port, "serial:",
+				 sizeof (verified_port) - 1);
+			strncat (verified_port, port,
+				 sizeof (verified_port)
+				 	- strlen (verified_port) - 1);
+		} else if (strncmp (port, "/proc/", 6) == 0) {
+			strncpy (verified_port, "usb:",
+				 sizeof (verified_port) - 1);
+			strncat (verified_port, port,
+				 sizeof (verified_port)
+				 	- strlen (verified_port) - 1);
+		}
+		gp_log (GP_LOG_DEBUG, "main", "Guessed port name. Using port "
+			"'%s' from now on.", verified_port);
+	} else
+		strncpy (verified_port, port, sizeof (verified_port) - 1);
+
+	/* Create the list of ports and load it. */
+	r = gp_port_info_list_new (&il);
+	if (!r)
+		return (r);
+	r = gp_port_info_list_load (il);
+	if (r < 0) {
+		gp_port_info_list_free (il);
+		return (r);
+	}
+
+	/* Search our port in the list. */
+	p = gp_port_info_list_lookup_path (il, verified_port);
+	switch (p) {
+	case GP_ERROR_UNKNOWN_PORT:
+		fprintf (stderr, _("The port you specified "
+			"('%s') can not be found. Please "
+			"specify one of the ports found by "
+			"'gphoto2 --list-ports' and make "
+			"sure the spelling is correct "
+			"(i.e. with prefix 'serial:' or 'usb:')."),
+				verified_port);
+		break;
+	default:
+		break;
+	}
+	if (p < 0) {
+		gp_port_info_list_free (il);
+		return (p);
+	}
+
+	/* Get info about our port. */
+	r = gp_port_info_list_get_info (il, p, &info);
+	gp_port_info_list_free (il);
+	if (r < 0)
+		return (r);
+
+	/* Set the port of our camera. */
+	r = gp_camera_set_port_info (camera, info);
+	if (r < 0)
+		return (r);
+	gp_setting_set ("gphoto2", "port", info.path);
+
+	return (GP_OK);
+}
+
+int
+action_camera_about (Camera *camera)
+{
+	CameraText text;
+
+	CR (gp_camera_get_about (camera, &text, glob_context));
+	
+	fprintf (stdout, _("About the camera driver:"));
+	fputc ('\n', stdout);
+	fprintf (stdout, "%s\n", _(text.text));
+
+	return (GP_OK);
+}
+
+int
+action_camera_summary (Camera *camera)
+{
+	CameraText text;
+
+	CR (gp_camera_get_summary (camera, &text, glob_context));
+
+	fprintf (stdout, _("Camera summary:"));
+	fputc ('\n', stdout);
+	fprintf (stdout, "%s\n", _(text.text));
+
+	return (GP_OK);
+}
+
+int
+action_camera_manual (Camera *camera)
+{
+	CameraText text;
+
+	CR (gp_camera_get_manual (camera, &text, glob_context));
+
+	fprintf (stdout, _("Camera manual:"));
+	fputc ('\n', stdout);
+	fprintf (stdout, "%s\n", _(text.text));
+
+	return (GP_OK);
+}
+
+int
+action_camera_set_speed (Camera *camera, unsigned int speed)
+{
+	GPPortInfo info;
+
+	/* Make sure we've got a serial port. */
+	CR (gp_camera_get_port_info (camera, &info));
+	if (info.type != GP_PORT_SERIAL) {
+		if (!glob_quiet) {
+			fprintf (stderr, _("You can only specify speeds for "
+					   "serial ports."));
+			fputc ('\n', stderr);
+		}
+		return (GP_ERROR_BAD_PARAMETERS);
+	}
+
+	/* Set the speed. */
+	CR (gp_camera_set_port_speed (camera, speed));
+
+	return (GP_OK);
+}
+
+int
+action_camera_set_model (Camera *camera, const char *model)
+{
+	CameraAbilities a;
+	int m;
+
+	CR (m = gp_abilities_list_lookup_model (glob_abilities_list, model));
+	CR (gp_abilities_list_get_abilities (glob_abilities_list, m, &a));
+	CR (gp_camera_set_abilities (camera, a));
+	gp_setting_set ("gphoto2", "model", a.model);
+
+	return (GP_OK);
+}
+
+int
+set_folder_action (const char *folder)
+{
+	if (glob_folder)
+		free (glob_folder);
+	glob_folder = malloc (sizeof (char) * (strlen (folder) + 1));
+	if (!glob_folder)
+		return (GP_ERROR_NO_MEMORY);
+	strcpy (glob_folder, folder);
+
+	return (GP_OK);
+}
+
+int
+set_filename_action (const char *filename)
+{
+	if (glob_filename)
+		free (glob_filename);
+	glob_filename = malloc (sizeof (char) * (strlen (filename) + 1));
+	if (!glob_filename)
+		return (GP_ERROR_NO_MEMORY);
+	strcpy (glob_filename, filename);
+
+	return (GP_OK);
+}
+
+int
+print_version_action (void)
+{
+	printf (_("gPhoto (v%s) - Cross-platform digital camera library.\n"
+		  "Copyright (C) 2000-2002 Scott Fritzinger and others\n"
+		  "%s"
+		  "Licensed under the Library GNU Public License (LGPL).\n"),
+			VERSION,
+#ifdef OS2
+			_("OS/2 port by Bart van Leeuwen\n")
+#else
+			""
+#endif
+			);
+
+	return (GP_OK);
+}
+
+int
+action_camera_capture_preview (Camera *camera)
+{
+	CameraFile *file;
+	int r;
+
+	CR (gp_file_new (&file));
+#ifdef HAVE_AA
+	r = gp_cmd_capture_preview (camera, file, glob_context);
+#else
+	r = gp_camera_capture_preview (camera, file, glob_context);
+#endif
+	if (r < 0) {
+		gp_file_unref (file);
+		return (r);
+	}
+
+	r = save_camera_file_to_file (NULL, file);
+	gp_file_unref (file);
+	if (r < 0) 
+		return (r);
+
+	return (GP_OK);
+}
+
+int
+override_usbids_action (int usb_vendor, int usb_product,
+			int usb_vendor_modified, int usb_product_modified)
+{
+	CameraAbilitiesList *al = NULL;
+	int r, n, i;
+	CameraAbilities a;
+
+	CR (gp_abilities_list_new (&al));
+
+	n = gp_abilities_list_count (glob_abilities_list);
+	for (i = 0; i < n; i++) {
+		r = gp_abilities_list_get_abilities (glob_abilities_list, i,
+						     &a);
+		if (r < 0)
+			continue;
+		if ((a.usb_vendor  == usb_vendor) &&
+		    (a.usb_product == usb_product)) {
+			gp_log (GP_LOG_DEBUG, "main",
+				"Overriding USB vendor/product id "
+				"0x%x/0x%x with 0x%x/0x%x",
+				a.usb_vendor, a.usb_product,
+				usb_vendor_modified, usb_product_modified);
+			a.usb_vendor  = usb_vendor_modified;
+			a.usb_product = usb_product_modified;
+		}
+		gp_abilities_list_append (al, a);
+	}
+	gp_abilities_list_free (glob_abilities_list);
+	glob_abilities_list = al;
+
+	return (GP_OK);
 }

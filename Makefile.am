@@ -15,3 +15,7 @@ dist-hook:
 dist-bzip2:
 	-chmod -R a+r $(distdir)
 	-tar -c --bzip2 -h -o -f $(distdir).tar.bz2 $(distdir)
+
+ACLOCAL_AMFLAGS = -I m4
+
+EXTRA_DIST = config.rpath

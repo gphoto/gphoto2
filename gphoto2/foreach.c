@@ -275,7 +275,8 @@ get_path_for_id (ForEachParams *p, const char *base_folder,
 }
 
 int
-for_each_file_in_range (ForEachParams *p, FileAction action, char *range)
+for_each_file_in_range (ForEachParams *p, FileAction action,
+			const char *range)
 {
 	char	index[MAX_IMAGE_NUMBER];
 	int 	i, max = 0;

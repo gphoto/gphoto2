@@ -256,6 +256,30 @@ AC_SUBST(AA_LIBS)
 AC_SUBST(AA_CFLAGS)
 
 dnl ---------------------------------------------------------------------------
+dnl popt.h: Simplifies handling of command-line options enormously.
+dnl ---------------------------------------------------------------------------
+popt_msg="no (Note that popt will be mandatory in the future!)"
+try_popt=true
+have_popt=false
+AC_ARG_WITH(popt, [  --without-popt            Don't use popt.h],
+	if test "x${withval}" = "xno"; then
+		try_popt=false
+		popt_msg="no (not requested)"
+	fi
+)
+if $try_popt; then
+	AC_CHECK_HEADER(popt.h, [
+		POPT_CFLAGS=""
+		POPT_LIBS="-lpopt"
+		have_popt=true
+		popt_msg=yes
+		AC_DEFINE(HAVE_POPT,,[whether we use popt])])
+fi
+AM_CONDITIONAL(HAVE_POPT, $have_popt)
+AC_SUBST(POPT_LIBS)
+AC_SUBST(POPT_CFLAGS)
+
+dnl ---------------------------------------------------------------------------
 dnl readline: Readline is pretty cool - it allows you to use <tab> to complete
 dnl           commands in the gphoto2 shell or to use <up> or <down> to 
 dnl           navigate through the history.
@@ -317,5 +341,6 @@ Configuration (gphoto2):
         EXIF support:              $exif_msg
         readline support:          $rl_msg
         pthread support:           $pthread_msg
+	popt support:              $popt_msg
 "
 

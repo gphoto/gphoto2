@@ -79,6 +79,7 @@
 
 
 static Camera *camera = NULL;
+static char cwd[1024];
 
 /* Forward declarations */
 static int shell_cd            (Camera *, const char *);
@@ -170,15 +171,15 @@ shell_read_line (void)
 	if (glob_quiet)
 		snprintf (prompt, sizeof (prompt), SHELL_PROMPT, "\0", "\0");
 	else {
-		if (strlen (glob_cwd) > 25) {
+		if (strlen (cwd) > 25) {
 			strncpy (buf, "...", sizeof (buf));
-			strncat (buf, &glob_cwd[strlen (glob_cwd) - 22],
+			strncat (buf, &cwd[strlen (cwd) - 22],
 				 sizeof (buf));
 			snprintf (prompt, sizeof (prompt), SHELL_PROMPT, buf,
 				  glob_folder);
 		} else
 			snprintf (prompt, sizeof (prompt), SHELL_PROMPT,
-				  glob_cwd, glob_folder);
+				  cwd, glob_folder);
 	}
 #ifdef HAVE_RL
 	line = readline (prompt);
@@ -390,6 +391,9 @@ shell_prompt (Camera *c)
 	/* The stupid readline functions need that global variable. */
 	camera = c;
 
+	if (!getcwd (cwd, 1023))
+		strcpy (cwd, "./");
+
 #ifdef HAVE_RL
 	rl_attempted_completion_function = shell_completion_function;
 	rl_completion_append_character = '\0';
@@ -528,7 +532,7 @@ shell_lcd (Camera *camera, const char *arg)
 		}
 		strcpy (new_cwd, getenv ("HOME"));
 	} else
-		shell_construct_path (glob_cwd, arg, new_cwd, NULL);
+		shell_construct_path (cwd, arg, new_cwd, NULL);
 
 	if (chdir (new_cwd) < 0) {
 		cli_error_print (_("Could not change to "
@@ -536,7 +540,7 @@ shell_lcd (Camera *camera, const char *arg)
 	} else {
 		printf (_("Local directory now '%s'."), new_cwd);
 		printf ("\n");
-		strcpy (glob_cwd, new_cwd);
+		strcpy (cwd, new_cwd);
 	}
 
 	return (GP_OK);
@@ -564,6 +568,10 @@ shell_cd (Camera *camera, const char *arg)
 
 	CHECK (gp_camera_folder_list_folders (camera, folder, &list,
 					      glob_context));
+	free (glob_folder);
+	glob_folder = malloc (sizeof (char) * (strlen (folder) + 1));
+	if (!glob_folder)
+		return (GP_ERROR_NO_MEMORY);
 	strcpy (glob_folder, folder);
 	printf (_("Remote directory now '%s'."), glob_folder);
 	printf ("\n");

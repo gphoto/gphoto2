@@ -48,5 +48,28 @@ typedef int FolderAction  (ActionParams *params);
 int delete_all_action     (ActionParams *params);
 int list_files_action     (ActionParams *params);
 int list_folders_action   (ActionParams *params);
+int num_files_action      (ActionParams *params);
+
+/* Camera actions */
+int action_camera_about           (Camera *);
+int action_camera_summary         (Camera *);
+int action_camera_manual          (Camera *);
+int action_camera_set_port        (Camera *, const char *port);
+int action_camera_set_speed       (Camera *, unsigned int speed);
+int action_camera_set_model       (Camera *, const char *model);
+int action_camera_show_abilities  (Camera *);
+int action_camera_upload_file     (Camera *, const char *folder,
+				   const char *path);
+int action_camera_capture_preview (Camera *);
+
+/* Other actions */
+int list_cameras_action    (void);
+int list_ports_action      (void);
+int auto_detect_action     (void);
+int set_folder_action      (const char *folder);
+int set_filename_action    (const char *filename);
+int print_version_action   (void);
+int override_usbids_action (int usb_vendor,          int usb_product, 
+			    int usb_vendor_modified, int usb_product_modified);
 
 #endif /* __ACTIONS_H__ */

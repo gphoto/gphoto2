@@ -25,6 +25,7 @@
 
 #include "main.h"
 #include "globals.h"
+#include "actions.h"
 
 #ifdef ENABLE_NLS
 #  include <libintl.h>
@@ -188,29 +189,13 @@ execute_options (int argc, char **argv) {
 }
 
 void
-print_version (void)
-{
-	printf (_("gPhoto (v%s) - Cross-platform digital camera library.\n"
-		  "Copyright (C) 2000-2002 Scott Fritzinger and others\n"
-		  "%s"
-		  "Licensed under the Library GNU Public License (LGPL).\n"),
-		  VERSION,
-#ifdef OS2
-		  _("OS/2 port by Bart van Leeuwen\n")
-#else
-		  ""
-#endif
-		  );
-}
-
-void
 usage (void)
 {
         int x=0;
         char buf[128], s[5], l[24], a[16];
 
 	/* Standard licensing stuff */
-	print_version ();
+	print_version_action ();
         printf (_("Usage:\n"));
 
 	/* Make this 79 characters long. Some languages need the space. */

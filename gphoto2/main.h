@@ -21,6 +21,7 @@
 #ifndef __MAIN_H__
 #define __MAIN_H__
 
+#include <gphoto2-file.h>
 #include <gphoto2-camera.h>
 
 #define OPTION_CALLBACK(_a)             int _a (char *arg)
@@ -47,7 +48,6 @@ void 	cli_error_print(char *format, ...);
 int	save_file_to_file (Camera *camera, GPContext *context,
 			   const char *folder, const char *filename,
 			   CameraFileType type);
-
-int 	get_file_common (char *arg, CameraFileType type);
+int save_camera_file_to_file (const char *folder, CameraFile *file);
 
 #endif /* __MAIN_H__ */

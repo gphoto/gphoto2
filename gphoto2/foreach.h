@@ -43,6 +43,6 @@ struct _ForEachParams {
 int for_each_folder         (ForEachParams *, FolderAction action);
 int for_each_file           (ForEachParams *, FileAction action);
 int for_each_file_in_range  (ForEachParams *, FileAction action,
-			     char *range);
+			     const char *range);
 
 #endif /* __FOREACH_H__ */
