@@ -25,7 +25,7 @@
 #include <math.h>
 
 #include <gphoto2-widget.h>
-#include <cdk.h>
+#include <cdk/cdk.h>
 
 #ifdef ENABLE_NLS
 #  include <libintl.h>
