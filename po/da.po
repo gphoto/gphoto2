@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2003-03-08 20:07+0100\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -537,10 +537,10 @@ msgstr ""
 "i '%s'."
 
 #: gphoto2/foreach.c:291
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "Fejlagtigt filnummer. Du specificerede %i, men der er kun %i filer "
 "tilgængelige i '%s'. Skaf venligst et gyldigt filnummer fra en filliste "
@@ -910,8 +910,9 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Ny fil er på stedet %s%s%s på kameraet\n"
 
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
-msgstr ""
+#, fuzzy
+msgid "Could not delete image."
+msgstr "Kunne ikke sætte konfiguration:"
 
 #: gphoto2/main.c:1056
 #, fuzzy
@@ -986,7 +987,8 @@ msgstr ""
 "gphoto2 som følger:\n"
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "Overskriv filer uden at spørge."
 
 #: gphoto2/main.c:1656

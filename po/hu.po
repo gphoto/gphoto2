@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2003-10-13 18:52+0200\n"
 "Last-Translator: Mihály Gyulai <gyulai@fbi.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -536,10 +536,10 @@ msgstr ""
 "s'."
 
 #: gphoto2/foreach.c:291
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "Hibás a fájlok száma. %i-t adtál meg, de csak %i hozzáférhetõ fájl van itt: "
 "'%s'. A fájlok számát a fájlok listájából tudhatod meg."
@@ -908,8 +908,9 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Az új fájl helye a kamerában: %s%s%s\n"
 
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
-msgstr ""
+#, fuzzy
+msgid "Could not delete image."
+msgstr "Nem tudom beállítani a konfigurációt:"
 
 #: gphoto2/main.c:1056
 #, fuzzy
@@ -984,7 +985,8 @@ msgstr ""
 "gphoto-t:\n"
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "Fájlok felülírása kérdezés nélkül."
 
 #: gphoto2/main.c:1656

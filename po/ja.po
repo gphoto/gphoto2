@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.1rc2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2002-11-25 08:16+0900\n"
 "Last-Translator: Takeshi Aihana <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
@@ -537,10 +537,10 @@ msgstr ""
 "にありません。"
 
 #: gphoto2/foreach.c:291
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "ファイル番号がおかしいです。%i を指定ましたが、%i 個のファイルしか '%s' の中"
 "にありません。まず最初にファイル一覧から正しい番号を取得して下さい。"
@@ -910,8 +910,9 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr "新しいファイルの格納場所: %s%s%s\n"
 
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
-msgstr ""
+#, fuzzy
+msgid "Could not delete image."
+msgstr "設定を有効にすることが出来ませんでした:"
 
 #: gphoto2/main.c:1056
 #, fuzzy
@@ -989,7 +990,8 @@ msgstr ""
 "\n"
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "ファイルの上書きで問い合わせない。"
 
 #: gphoto2/main.c:1656

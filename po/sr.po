@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2004-03-18 00:30-0500\n"
 "Last-Translator: Aleksandar Jelenak <jelenak@netlinkplus.net>\n"
 "Language-Team: Serbian <gnu@prevod.org>\n"
@@ -532,10 +532,10 @@ msgstr ""
 "Лош број датотеке. Задали сте %i, а доступна је само 1 датотека у „%s“."
 
 #: gphoto2/foreach.c:291
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "Лош број датотеке. Задали сте %i, а доступно је свега %i датотека у „%s“. "
 "Сазнајте прво тачан број из списка датотека."
@@ -904,8 +904,9 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Нова датотека је на месту „%s%s%s“ у камери\n"
 
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
-msgstr ""
+#, fuzzy
+msgid "Could not delete image."
+msgstr "Нисам могао да поставим подешавање:"
 
 #: gphoto2/main.c:1056
 #, fuzzy
@@ -981,7 +982,8 @@ msgstr ""
 "\n"
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "Пребриши датотеке без питања."
 
 #: gphoto2/main.c:1656

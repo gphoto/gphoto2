@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2005-01-02 03:49+0300\n"
 "Last-Translator: Вячеслав Диконов (Vyacheslav Dikonov) <slava@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -537,10 +537,10 @@ msgstr ""
 "находится лишь 1 файл."
 
 #: gphoto2/foreach.c:291
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "Неверное число файлов. Было задано  %1$i, но в папке '%3$s' находится лишь  %"
 "2$i файл(ов). Правильное число можно узнать из списка файлов."
@@ -906,7 +906,8 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Удаляется файл %s%s%s в фотоаппарате\n"
 
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
+#, fuzzy
+msgid "Could not delete image."
 msgstr "Невозможно удалить изображение"
 
 #: gphoto2/main.c:1056
@@ -982,7 +983,8 @@ msgstr ""
 "\n"
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "Перезаписывать файлы не спрашивая."
 
 #: gphoto2/main.c:1656

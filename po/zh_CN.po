@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2002-11-21 09:26+0800\n"
 "Last-Translator: Wang Li <charles@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -609,10 +609,10 @@ msgstr "错误的文件编号。您给出 %i，但在“%s”中只有一个文�
 
 # frontends/command-line/foreach.c:240
 #: gphoto2/foreach.c:291
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "错误的文件编号。您给出 %1$i，但在“%3$s”中只有 %2$i 个文件。请首先从文件列表中"
 "获取一个合法的文件编号。"
@@ -1058,9 +1058,11 @@ msgstr ""
 msgid "Deleting file %s%s%s on the camera\n"
 msgstr "新文件在相机中 %s%s%s 处\n"
 
+# frontends/command-line/gphoto2-cmd-config.c:73
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
-msgstr ""
+#, fuzzy
+msgid "Could not delete image."
+msgstr "无法设置配置："
 
 # frontends/command-line/gphoto2-cmd-config.c:73
 #: gphoto2/main.c:1056
@@ -1145,7 +1147,8 @@ msgstr ""
 "\n"
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "在不查询的情况下覆盖文件。"
 
 #: gphoto2/main.c:1656

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2003-10-21 13:48+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -533,10 +533,10 @@ msgstr ""
 "soubor."
 
 #: gphoto2/foreach.c:291
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "Špatné číslo souboru. Zadali jste %1$i, ale v '%3$s' je k dispozici jen '%2"
 "$i' souborů. Nejdříve prosím získejte ze seznamu souborů platné číslo "
@@ -906,8 +906,9 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Nový soubor je na fotoaparátu v umístění %s%s%s\n"
 
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
-msgstr ""
+#, fuzzy
+msgid "Could not delete image."
+msgstr "Nemohu nastavit konfiguraci:"
 
 #: gphoto2/main.c:1056
 #, fuzzy
@@ -983,7 +984,8 @@ msgstr ""
 "\n"
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "Přepisovat soubory bez ptaní."
 
 #: gphoto2/main.c:1656

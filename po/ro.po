@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2-2.1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2003-10-10 12:00-0500\n"
 "Last-Translator: Laurentiu Buzdugan <buzdugan@voyager.net>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -538,10 +538,10 @@ msgstr ""
 "s'."
 
 #: gphoto2/foreach.c:291
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "Numãr fiºiere incorect. Aþi specificat %i, dar existã numai %i fiºiere în '%"
 "s'. Vã rugãm obþineþi un numãr de fiºiere valid folosind comanda ls."
@@ -910,8 +910,9 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Noul fiºier este în locaþia %s%s%s în aparatul foto\n"
 
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
-msgstr ""
+#, fuzzy
+msgid "Could not delete image."
+msgstr "Nu am putut seta configuraþia:"
 
 #: gphoto2/main.c:1056
 #, fuzzy
@@ -986,7 +987,8 @@ msgstr ""
 "vã rugãm rulaþi gphoto2 astfel:\n"
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "Suprascrie fiºiere fãrã a întreba."
 
 #: gphoto2/main.c:1656

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2004-08-21 14:31+0100\n"
 "Last-Translator: Julie Vermeersch <julie@lambda1.be>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -537,10 +537,10 @@ msgstr ""
 "bestandbeschikbaar in '%s'."
 
 #: gphoto2/foreach.c:291
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "Slecht bestandsaantal. U heeft %i gespecificeerd, maar er zijn maar %i "
 "bestanden beschikbaarin '%s'. Bemachtig eerst een geldig bestandsaantal van "
@@ -911,8 +911,9 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Nieuw bestand is op locatie %s%s%s op de camera\n"
 
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
-msgstr ""
+#, fuzzy
+msgid "Could not delete image."
+msgstr "Kon de configuratie niet instellen:"
 
 #: gphoto2/main.c:1056
 #, fuzzy
@@ -989,7 +990,8 @@ msgstr ""
 "\n"
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "Bestanden overschrijven zonder te vragen."
 
 #: gphoto2/main.c:1656

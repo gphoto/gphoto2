@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2004-07-09 23:27+0200\n"
 "Last-Translator: Matti Pöllä <mpo@iki.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -538,10 +538,10 @@ msgstr ""
 "sisältää vain yhden tiedoston."
 
 #: gphoto2/foreach.c:291
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "Virheellinen tiedoston numero. Määritit numeron %i, mutta vain %i tiedostoa "
 "on\n"
@@ -912,8 +912,9 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Uusi tiedosto sijaitsee kamerassa paikassa %s%s%s\n"
 
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
-msgstr ""
+#, fuzzy
+msgid "Could not delete image."
+msgstr "Asetusten päivitys epäonistui:"
 
 #: gphoto2/main.c:1056
 #, fuzzy
@@ -989,7 +990,8 @@ msgstr ""
 "\n"
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "Ylikirjoita tiedostot kysymättä."
 
 #: gphoto2/main.c:1656

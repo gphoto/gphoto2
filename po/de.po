@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2005-01-09 19:54+0100\n"
 "Last-Translator: Marcus Meissner\n"
 "Language-Team:  <de@li.org>\n"
@@ -314,7 +314,8 @@ msgstr "                                 : Bildvorschau\n"
 
 #: gphoto2/actions.c:651
 #, c-format
-msgid "                                 : Capture not supported by the driver\n"
+msgid ""
+"                                 : Capture not supported by the driver\n"
 msgstr ""
 "                                 : Aufnahme wird nicht durch Treiber "
 "unterstützt\n"
@@ -548,13 +549,14 @@ msgstr ""
 msgid ""
 "Bad file number. You specified %i, but there is only 1 file available in '%"
 "s'."
-msgstr "Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
+msgstr ""
+"Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
 
 #: gphoto2/foreach.c:291
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur %i Dateien in »%"
 "s«. Bite holen Sie zuerst eine gültige Dateinummer aus einer Dateiliste."
@@ -847,7 +849,8 @@ msgstr ""
 #: gphoto2/main.c:604
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr "Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
+msgstr ""
+"Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
 
 #: gphoto2/main.c:654
 #, c-format
@@ -922,7 +925,8 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Lösche Datei %s%s%s auf der Kamera\n"
 
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
+#, fuzzy
+msgid "Could not delete image."
 msgstr "Konnte Bild nicht löschen."
 
 #: gphoto2/main.c:1056
@@ -998,7 +1002,8 @@ msgstr ""
 "\n"
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "Dateien ohne Nachfragen überschreiben."
 
 #: gphoto2/main.c:1656
@@ -1291,4 +1296,3 @@ msgid "To get help on a particular command, type in 'help command-name'."
 msgstr ""
 "Um Hilfe zu einem bestimmten Befehl zu erhalten, verwenden Sie »help "
 "Befehlsname«."
-

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2004-05-11 13:19+0200\n"
 "Last-Translator: Quique <quique@sindominio.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -542,10 +542,10 @@ msgstr ""
 "fichero en «%s»."
 
 #: gphoto2/foreach.c:291
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "Número de fichero incorrecto. Ha indicado %i, pero sólo hay %i ficheros "
 "disponibles en «%s». Por favor, obtenga antes un número de fichero válido de "
@@ -918,8 +918,9 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr "El nuevo fichero está en la ubicación %s%s%s en la cámara\n"
 
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
-msgstr ""
+#, fuzzy
+msgid "Could not delete image."
+msgstr "No se puede aplicar la configuración:"
 
 #: gphoto2/main.c:1056
 #, fuzzy
@@ -997,7 +998,8 @@ msgstr ""
 "\n"
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "Sobreescribir los ficheros sin preguntar."
 
 #: gphoto2/main.c:1656

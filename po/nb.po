@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto 0.4.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-09 19:53+0100\n"
+"POT-Creation-Date: 2005-02-08 10:33+0100\n"
 "PO-Revision-Date: 2000-04-11 10:12+02:00\n"
 "Last-Translator: Kjartan Maraas <kmaraas@online.no>\n"
 "Language-Team: Norwegian <i18n-nb@lister.ping.uio.no>\n"
@@ -524,7 +524,7 @@ msgstr ""
 #, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 
 #: gphoto2/gp-params.c:59
@@ -900,8 +900,9 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr ""
 
 #: gphoto2/main.c:1042
-msgid "Count not delete image."
-msgstr ""
+#, fuzzy
+msgid "Could not delete image."
+msgstr "Kamerakonfigurasjon"
 
 #: gphoto2/main.c:1056
 #, fuzzy
@@ -965,7 +966,7 @@ msgid ""
 msgstr ""
 
 #: gphoto2/main.c:1642
-msgid "Overwrite files without asking."
+msgid "Overwrite files without asking"
 msgstr ""
 
 #: gphoto2/main.c:1656
