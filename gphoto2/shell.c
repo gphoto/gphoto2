@@ -54,7 +54,7 @@
 		} else {					\
 			printf (_("*** Error (%i: '%s') ***"),	\
 				r, gp_result_as_string (r));	\
-			printf ("\n");				\
+			putchar ('\n');				\
 		}						\
 	}							\
 }
@@ -150,7 +150,7 @@ shell_read_line (void)
 {
 	char prompt[70], buf[1024], *line, *tmp;
 
-	if (p->quiet)
+	if (p->flags & FLAGS_QUIET)
 		snprintf (prompt, sizeof (prompt), SHELL_PROMPT, "\0", "\0");
 	else {
 		if (strlen (cwd) > 25) {
@@ -433,7 +433,7 @@ shell_prompt (GPParams *params)
 		if (func[x].arg_required && !shell_arg_count (arg)) {
 			printf (_("The command '%s' requires "
 				  "an argument."), cmd);
-			printf ("\n");
+			putchar ('\n');
 			continue;
 		}
 
@@ -542,7 +542,7 @@ shell_lcd (Camera *camera, const char *arg)
 				   "local directory '%s'."), new_cwd);
 	} else {
 		printf (_("Local directory now '%s'."), new_cwd);
-		printf ("\n");
+		putchar ('\n');
 		strcpy (cwd, new_cwd);
 	}
 
@@ -580,7 +580,7 @@ shell_cd (Camera *camera, const char *arg)
 		return (GP_ERROR_NO_MEMORY);
 	strcpy (p->folder, folder);
 	printf (_("Remote directory now '%s'."), p->folder);
-	printf ("\n");
+	putchar ('\n');
 	return (GP_OK);
 }
 
@@ -603,39 +603,39 @@ shell_ls (Camera *camera, const char *arg)
 	CL (gp_camera_folder_list_folders (p->camera, folder, list,
 					      p->context), list);
 
-	if (p->quiet)
+	if (p->flags & FLAGS_QUIET)
 		printf ("%i\n", gp_list_count (list));
 
 	for (x = 1; x <= gp_list_count (list); x++) {
 		CL (gp_list_get_name (list, x - 1, &name), list);
-		if (p->quiet)
+		if (p->flags & FLAGS_QUIET)
 			printf ("%s\n", name);
 		else {
 			sprintf (buf, "%s/", name);
 			printf ("%-20s", buf);
 			if (y++ % 4 == 0)
-				printf("\n");
+				putchar ('\n');
 		}
 	}
 
 	CL (gp_camera_folder_list_files (p->camera, folder, list,
 					    p->context), list);
 
-	if (p->quiet)
+	if (p->flags & FLAGS_QUIET)
 		printf("%i\n", gp_list_count(list));
 
 	for (x = 1; x <= gp_list_count (list); x++) {
 		gp_list_get_name (list, x - 1, &name);
-		if (p->quiet)
+		if (p->flags & FLAGS_QUIET)
 			printf ("%s\n", name);
-		   else {
+		else {
 			printf ("%-20s", name);
 			if (y++ % 4 == 0)
-				printf("\n");
+				putchar ('\n');
 		}
 	}
-	if ((!p->quiet) && (y % 4 != 1))
-		printf("\n");
+	if ((p->flags & FLAGS_QUIET) == 0 && (y % 4 != 1))
+		putchar ('\n');
 
 	gp_list_free (list);
 	return (GP_OK);
@@ -737,7 +737,7 @@ shell_help_command (Camera *camera, const char *arg)
 	if (!func[x].function) {
 		printf (_("Command '%s' not found. Use 'help' to get a "
 			"list of available commands."), arg_cmd);
-		printf ("\n");
+		putchar ('\n');
 		return (GP_OK);
 	}
 
@@ -745,13 +745,12 @@ shell_help_command (Camera *camera, const char *arg)
 	printf (_("Help on \"%s\":"), func[x].command);
 	printf ("\n\n");
 	printf (_("Usage:"));
-	printf (" %s %s", func[x].command,
+	printf (" %s %s\n", func[x].command,
 		func[x].description_arg ? _(func[x].description_arg) : "");
-	printf ("\n");
 	printf (_("Description:"));
 	printf ("\n\t%s\n\n", _(func[x].description));
 	printf (_("* Arguments in brackets [] are optional"));
-	printf ("\n");
+	putchar ('\n');
 	
 	return (GP_OK);
 }
@@ -772,10 +771,10 @@ shell_help (Camera *camera, const char *arg)
 
 	/* No command specified. Print command listing. */
 	printf (_("Available commands:"));
-	printf ("\n");
+	putchar ('\n');
 	for (x = 0; func[x].function; x++)
 		printf ("\t%-16s%s\n", func[x].command, _(func[x].description));
-	printf ("\n");
+	putchar ('\n');
 	printf (_("To get help on a particular command, type in "
 		"'help command-name'."));
 	printf ("\n\n");

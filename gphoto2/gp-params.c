@@ -172,17 +172,17 @@ ctx_progress_update_func (GPContext *context, unsigned int id,
         pos = MIN (width, (MIN (current / progress_states[id].target, 100.) * width) + 0.5);
 
         /* Print the progress bar */
-        fprintf (stdout, "%s |", progress_states[id].message);
+        printf ("%s |", progress_states[id].message);
         for (i = 0; i < width; i++)
-                fprintf (stdout, (i < pos) ? "-" : " ");
+                putchar ((i < pos) ? '-' : ' ');
         if (pos == width)
-                fputc ('|', stdout);
+	        putchar ('|');
         else
-                fputc (spinner[progress_states[id].count & 0x03], stdout);
+                putchar (spinner[progress_states[id].count & 0x03]);
         progress_states[id].count++;
 
-        fprintf (stdout, " %5.1f%% %9.9s\r",
-                 current / progress_states[id].target * 100., remaining);
+        printf (" %5.1f%% %9.9s\r",
+		current / progress_states[id].target * 100., remaining);
         fflush (stdout);
 }
 
@@ -198,8 +198,8 @@ ctx_progress_stop_func (GPContext *context, unsigned int id, void *data)
 
         /* Clear the progress bar. */
         for (i = 0; i < p->cols; i++)
-                fprintf (stdout, " ");
-        fprintf (stdout, "\r");
+                putchar (' ');
+        putchar ('\r');
         fflush (stdout);
 
         progress_states[id].target = 0.;
@@ -225,11 +225,11 @@ ctx_message_func (GPContext *context, const char *format, va_list args,
         int c;
 
         vprintf (format, args);
-        fprintf (stdout, "\n");
+        putchar ('\n');
 
         /* Only ask for confirmation if the user can give it. */
         if (isatty (STDOUT_FILENO) && isatty (STDIN_FILENO)) {
-                fprintf (stdout, _("Press any key to continue.\n"));
+                printf (_("Press any key to continue.\n"));
                 fflush (stdout);
                 c = fgetc (stdin);
         } else
@@ -254,7 +254,7 @@ gp_params_init (GPParams *p)
 	gp_camera_new (&p->camera);
 
 	p->cols = 79;
-	p->flags = FOR_EACH_FLAGS_RECURSE;
+	p->flags = FLAGS_RECURSE;
 
 	/* Create a context. Report progress only if users will see it. */
 	p->context = gp_context_new ();

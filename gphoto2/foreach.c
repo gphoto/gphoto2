@@ -69,7 +69,7 @@ for_each_folder (GPParams *p, FolderAction action)
 	CR (action (p));
 
 	/* If no recursion is requested, we are done. */
-	if (!(p->flags & FOR_EACH_FLAGS_RECURSE))
+	if (!(p->flags & FLAGS_RECURSE))
 		return GP_OK;
 
 	CR (gp_list_new (&list));
@@ -77,7 +77,7 @@ for_each_folder (GPParams *p, FolderAction action)
 	CL (gp_camera_folder_list_folders (p->camera, p->folder, list,
 					   p->context), list);
 	CL (count = gp_list_count (list), list); 
-	if (p->flags & FOR_EACH_FLAGS_REVERSE) {
+	if (p->flags & FLAGS_REVERSE) {
 		for (i = count - 1; i >= 0; i--) {
 			CL (gp_list_get_name (list, i, &name), list);
 			f = p->folder;
@@ -135,7 +135,7 @@ for_each_file (GPParams *p, FileAction action)
 	CR (gp_camera_folder_list_files (p->camera, p->folder, list,
 					 p->context));
 	CR (count = gp_list_count (list));
-	if (p->flags & FOR_EACH_FLAGS_REVERSE) {
+	if (p->flags & FLAGS_REVERSE) {
 		for (i = count ; i--; ) {
 			CL (gp_list_get_name (list, i, &name), list);
 			CL (action (p, name), list);
@@ -148,7 +148,7 @@ for_each_file (GPParams *p, FileAction action)
 	}
 
 	/* If no recursion is requested, we are done. */
-	if (!(p->flags & FOR_EACH_FLAGS_RECURSE)) {
+	if (!(p->flags & FLAGS_RECURSE)) {
 		gp_list_free (list);
 		return (GP_OK);
 	}
@@ -245,7 +245,7 @@ get_path_for_id (GPParams *p, const char *base_folder,
 	const char *name;
 
 	strncpy (folder, base_folder, MAX_FOLDER_LEN);
-	if (p->flags & FOR_EACH_FLAGS_RECURSE) {
+	if (p->flags & FLAGS_RECURSE) {
                 base_id = 0;
                 r = get_path_for_id_rec (p, base_folder, id, &base_id, folder,
                                          filename);
@@ -319,7 +319,7 @@ for_each_file_in_range (GPParams *p, FileAction action,
 
 	for (max = MAX_IMAGE_NUMBER - 1; !index[max]; max--);
 	
-	if (p->flags & FOR_EACH_FLAGS_REVERSE) {
+	if (p->flags & FLAGS_REVERSE) {
 		for (i = max; 0 <= i; i--)
 			if (index[i]) {
 				CR (get_path_for_id (p, p->folder,

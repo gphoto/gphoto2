@@ -25,10 +25,15 @@
 #include <gphoto2/gphoto2-abilities-list.h>
 #include <gphoto2/gphoto2-context.h>
 
-typedef enum _ForEachFlags ForEachFlags;
-enum _ForEachFlags {
-	FOR_EACH_FLAGS_RECURSE = 1 << 0,
-	FOR_EACH_FLAGS_REVERSE = 1 << 1
+typedef enum _Flags Flags;
+enum _Flags {
+	FLAGS_RECURSE		= 1 << 0,
+	FLAGS_REVERSE		= 1 << 1,
+	FLAGS_QUIET		= 1 << 2,
+	FLAGS_FORCE_OVERWRITE	= 1 << 3,
+	FLAGS_STDOUT		= 1 << 4,
+	FLAGS_STDOUT_SIZE	= 1 << 5,
+	FLAGS_NEW		= 1 << 6
 };
 
 typedef struct _GPParams GPParams;
@@ -39,9 +44,8 @@ struct _GPParams {
 	char *filename;
 
 	unsigned int cols;
-	char quiet, force_overwrite;
 
-	ForEachFlags flags;
+	Flags flags;
 
 	CameraAbilitiesList *abilities_list;
 

@@ -5,14 +5,12 @@
 #  include "main.h"
 #endif
 
-extern char             glob_cancel;
+extern char	glob_cancel;
 
-extern char *glob_folder;
+extern char	*glob_folder;
 
-extern char		glob_cwd[];
-extern int		glob_option_count;
-extern int  		glob_stdout;
-extern int  		glob_stdout_size;
+extern char	glob_cwd[];
+extern int	glob_option_count;
 
 #ifndef HAVE_POPT
 extern Option option[];

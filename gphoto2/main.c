@@ -122,6 +122,7 @@ OPTION_CALLBACK(debug);
 OPTION_CALLBACK(use_folder);
 OPTION_CALLBACK(recurse);
 OPTION_CALLBACK(no_recurse);
+OPTION_CALLBACK(new);
 OPTION_CALLBACK(use_stdout);
 OPTION_CALLBACK(use_stdout_size);
 OPTION_CALLBACK(list_folders);
@@ -188,6 +189,7 @@ Option option[] = {
 {"f", "folder",    "folder", N_("Specify camera folder (default=\"/\")"),use_folder,0},
 {"R", "recurse", "",  N_("Recursion (default for download)"), recurse, 0},
 {"", "no-recurse", "",  N_("No recursion (default for deletion)"), no_recurse, 0},
+{"", "new", "", N_("Process new files only"), new, 0},
 {"l", "list-folders",   "", N_("List folders in folder"), list_folders,   0},
 {"L", "list-files",     "", N_("List files in folder"),   list_files,     0},
 {"m", "mkdir", N_("name"),  N_("Create a directory"),     make_dir,       0},
@@ -197,7 +199,7 @@ Option option[] = {
 {"P", "get-all-files","",        N_("Get all files from folder"),   get_all_files,0},
 {"t", "get-thumbnail",  "range",  N_("Get thumbnails given in range"),  get_thumbnail,  0},
 {"T", "get-all-thumbnails","",    N_("Get all thumbnails from folder"), get_all_thumbnails,0},
-{"r", "get-raw-data", "range",    N_("Get raw data given in range"),    get_raw_data, 0},
+{"", "get-raw-data", "range",     N_("Get raw data given in range"),    get_raw_data, 0},
 {"", "get-all-raw-data", "",      N_("Get all raw data from folder"),   get_all_raw_data, 0},
 {"", "get-audio-data", "range",   N_("Get audio data given in range"),  get_audio_data, 0},
 {"", "get-all-audio-data", "",    N_("Get all audio data from folder"), get_all_audio_data, 0},
@@ -238,8 +240,6 @@ int  glob_option_count = 0;
 #endif
 
 int  glob_debug = -1;
-int  glob_stdout=0;
-int  glob_stdout_size=0;
 char glob_cancel = 0;
 int  glob_frames = 0;
 int  glob_interval = 0;
@@ -258,30 +258,25 @@ OPTION_CALLBACK(help)
 {
         usage (&p);
         exit (EXIT_SUCCESS);
-
-        return GP_OK;
 }
 
 OPTION_CALLBACK(version)
 {
 	CR (print_version_action (&p));
-
         exit (EXIT_SUCCESS);
-
-        return GP_OK;
 }
 
-OPTION_CALLBACK(use_stdout) {
-
-        p.quiet  = 1; /* implied */
-        glob_stdout = 1;
+OPTION_CALLBACK(use_stdout)
+{
+        p.flags |= FLAGS_STDOUT;
+        p.flags |= FLAGS_QUIET; /* implied */
 
         return GP_OK;
 }
 
 OPTION_CALLBACK (use_stdout_size)
 {
-        glob_stdout_size = 1;
+        p.flags |= FLAGS_STDOUT_SIZE;
         use_stdout(arg);
 
         return GP_OK;
@@ -405,7 +400,7 @@ OPTION_CALLBACK (debug)
 
 OPTION_CALLBACK(quiet)
 {
-        p.quiet=1;
+        p.flags |= FLAGS_QUIET;
 
         return (GP_OK);
 }
@@ -426,14 +421,21 @@ OPTION_CALLBACK (use_folder)
 
 OPTION_CALLBACK (recurse)
 {
-	p.flags |= FOR_EACH_FLAGS_RECURSE;
+	p.flags |= FLAGS_RECURSE;
 
         return (GP_OK);
 }
 
 OPTION_CALLBACK (no_recurse)
 {
-	p.flags &= ~FOR_EACH_FLAGS_RECURSE;
+	p.flags &= ~FLAGS_RECURSE;
+
+        return (GP_OK);
+}
+
+OPTION_CALLBACK (new)
+{
+	p.flags |= FLAGS_NEW;
 
         return (GP_OK);
 }
@@ -692,8 +694,9 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 	free (path);
 	path = NULL;
 
-        if (!p.quiet) {
-                while (!p.force_overwrite && GP_SYSTEM_IS_FILE (s)) {
+        if ((p.flags & FLAGS_QUIET) == 0) {
+                while ((p.flags & FLAGS_FORCE_OVERWRITE) == 0 &&
+		       GP_SYSTEM_IS_FILE (s)) {
 			do {
 				putchar ('\007');
 				printf (_("File %s exists. Overwrite? [y|n] "),
@@ -734,44 +737,69 @@ camera_file_exists (Camera *camera, GPContext *context, const char *folder,
 		    const char *filename, CameraFileType type)
 {
 	CameraFileInfo info;
-	CR (gp_camera_file_get_info (camera, folder, filename, &info, context));
+	CR (gp_camera_file_get_info (camera, folder, filename, &info,
+				     context));
 	switch (type) {
 	case GP_FILE_TYPE_AUDIO:
-		return(info.audio.fields != 0);
-		break;
+		return (info.audio.fields != 0);
 	case GP_FILE_TYPE_PREVIEW:
-		return(info.preview.fields != 0);
-		break;
+		return (info.preview.fields != 0);
 	case GP_FILE_TYPE_RAW:
 	case GP_FILE_TYPE_NORMAL:
-		return(info.file.fields != 0);
-		break;
+		return (info.file.fields != 0);
 	default:
 		gp_context_error (context, "Unknown file type in camera_file_exists: %d", type);
 		return FALSE;
-		break;
 	}
 }
 
 int
-save_file_to_file (Camera *camera, GPContext *context, const char *folder,
-		   const char *filename, CameraFileType type)
+save_file_to_file (Camera *camera, GPContext *context, Flags flags,
+		   const char *folder, const char *filename,
+		   CameraFileType type)
 {
         int res;
-
         CameraFile *file;
 
+	if (flags & FLAGS_NEW) {
+		CameraFileInfo info;
+		
+		CR (gp_camera_file_get_info (camera, folder, filename,
+					     &info, context));
+		switch (type) {
+		case GP_FILE_TYPE_PREVIEW:
+			if (info.preview.fields & GP_FILE_INFO_STATUS &&
+			    info.preview.status == GP_FILE_STATUS_DOWNLOADED)
+				return (GP_OK);
+			break;
+		case GP_FILE_TYPE_NORMAL:
+		case GP_FILE_TYPE_RAW:
+		case GP_FILE_TYPE_EXIF:
+			if (info.file.fields & GP_FILE_INFO_STATUS &&
+			    info.file.status == GP_FILE_STATUS_DOWNLOADED)
+				return (GP_OK);
+			break;
+		case GP_FILE_TYPE_AUDIO:
+			if (info.audio.fields & GP_FILE_INFO_STATUS &&
+			    info.audio.status == GP_FILE_STATUS_DOWNLOADED)
+				return (GP_OK);
+			break;
+		default:
+			return (GP_ERROR_NOT_SUPPORTED);
+		}
+	}
+	
         CR (gp_file_new (&file));
         CR (gp_camera_file_get (camera, folder, filename, type,
-                                          file, context));
+				file, context));
 
-        if (glob_stdout) {
+	if (flags & FLAGS_STDOUT) {
                 const char *data;
                 long int size;
 
                 CR (gp_file_get_data_and_size (file, &data, &size));
 
-                if (glob_stdout_size)
+		if (flags & FLAGS_STDOUT_SIZE)
                         printf ("%li\n", size);
                 fwrite (data, sizeof(char), size, stdout);
                 gp_file_unref (file);
@@ -800,13 +828,12 @@ get_file_common (const char *arg, CameraFileType type )
 	 * get that file.
 	 */
         if (strchr (arg, '.'))
-                return (save_file_to_file (p.camera, p.context,
+                return (save_file_to_file (p.camera, p.context, p.flags,
 					   p.folder, arg, type));
 
         switch (type) {
         case GP_FILE_TYPE_PREVIEW:
-		CR (for_each_file_in_range (&p, save_thumbnail_action,
-					    arg));
+		CR (for_each_file_in_range (&p, save_thumbnail_action, arg));
 		break;
         case GP_FILE_TYPE_NORMAL:
                 CR (for_each_file_in_range (&p, save_file_action, arg));
@@ -926,13 +953,13 @@ capture_generic (CameraCaptureType type, const char *name)
 
 	if(glob_interval) {
 		memset(&last, 0, sizeof(last));
-		if (!p.quiet)
+		if (!(p.flags & FLAGS_QUIET))
 			printf (_("Time-lapse mode enabled (interval: %ds).\n"),
 				glob_interval);
 	}
 
 	while(++frames) {
-		if (!p.quiet && glob_interval) {
+		if (!(p.flags & FLAGS_QUIET) && glob_interval) {
 			if(!glob_frames)
 				printf (_("Capturing frame #%d...\n"), frames);
 			else
@@ -951,7 +978,7 @@ capture_generic (CameraCaptureType type, const char *name)
 		 * get focus lock - it will return with *UNKNOWN* as the filename.
 		 */
 		if (glob_interval && strcmp(path.name, "*UNKNOWN*") == 0) {
-			if (!p.quiet) {
+			if (!(p.flags & FLAGS_QUIET)) {
 				printf (_("Capture failed (auto-focus problem?)...\n"));
 				sleep(1);
 				continue;
@@ -963,7 +990,7 @@ capture_generic (CameraCaptureType type, const char *name)
 		else
 			pathsep = "/";
 
-		if (p.quiet)
+		if (p.flags & FLAGS_QUIET)
 			printf ("%s%s%s\n", path.folder, pathsep, path.name);
 		else
 			printf (_("New file is in location %s%s%s on the camera\n"),
@@ -1006,7 +1033,7 @@ capture_generic (CameraCaptureType type, const char *name)
 			return (result);
 		}
 
-		if (!p.quiet)
+		if (!(p.flags & FLAGS_QUIET))
 			printf (_("Deleting file %s%s%s on the camera\n"),
 				path.folder, pathsep, path.name);
 
@@ -1029,7 +1056,7 @@ capture_generic (CameraCaptureType type, const char *name)
 			cli_error_print (_("Could not close camera connection."));
 		}
 
-		if (!p.quiet && glob_interval)
+		if (!(p.flags & FLAGS_QUIET) && glob_interval)
 			printf (_("Sleeping for %d second(s)...\n"), glob_interval);
 	
 		if(sleep(glob_interval) != 0) break;
@@ -1186,18 +1213,18 @@ signal_exit (int signo)
 {
 	/* If we already were told to cancel, abort. */
 	if (glob_cancel) {
-		if (!p.quiet)
+		if ((p.flags & FLAGS_QUIET) == 0)
 			printf (_("\nAborting...\n"));
 		if (p.camera)
 			gp_camera_unref (p.camera);
 		if (p.context)
 			gp_context_unref (p.context);
-		if (!p.quiet)
+		if ((p.flags & FLAGS_QUIET) == 0)
 			printf (_("Aborted.\n"));
 		exit (EXIT_FAILURE);
 	}
 
-        if (!p.quiet)
+	if ((p.flags & FLAGS_QUIET) == 0)
                 printf (_("\nCancelling...\n"));
 
 	glob_cancel = 1;
@@ -1243,6 +1270,7 @@ typedef enum {
 	ARG_MANUAL,
 	ARG_MKDIR,
 	ARG_MODEL,
+	ARG_NEW,
 	ARG_NO_RECURSE,
 	ARG_NUM_FILES,
 	ARG_PORT,
@@ -1312,13 +1340,11 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 				    &usb_vendor_modified,
 				    &usb_product_modified, &usb_vendor,
 				    &usb_product) != 4) {
-				fprintf (stdout, _("Use the following syntax "
-						   "a:b=c:d to treat any "
-						   "USB device detected as "
-						   "a:b as c:d instead. "
-						   "a b c d should be "
-						   "hexadecimal numbers "
-						   "beginning with '0x'.\n"));
+				printf (_("Use the following syntax a:b=c:d "
+					  "to treat any USB device detected "
+					  "as a:b as c:d instead. "
+					  "a b c d should be hexadecimal "
+					  "numbers beginning with '0x'.\n"));
 				params->p.r = GP_ERROR_BAD_PARAMETERS;
 				break;
 			}
@@ -1342,15 +1368,18 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 			params->p.r = set_folder_action (&p, arg);
 			break;
 		case ARG_FORCE_OVERWRITE:
-			p.force_overwrite = 1;
+			p.flags |= FLAGS_FORCE_OVERWRITE;
 			break;
 		case ARG_MODEL:
 			gp_log (GP_LOG_DEBUG, "main", "Processing 'model' "
 				"option ('%s')...", arg);
 			params->p.r = action_camera_set_model (&p, arg);
 			break;
+		case ARG_NEW:
+			p.flags |= FLAGS_NEW;
+			break;
 		case ARG_NO_RECURSE:
-			p.flags &= ~FOR_EACH_FLAGS_RECURSE;
+			p.flags &= ~FLAGS_RECURSE;
 			break;
 		case ARG_PORT:
 			gp_log (GP_LOG_DEBUG, "main", "Processing 'port' "
@@ -1358,17 +1387,16 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 			params->p.r = action_camera_set_port (&p, arg);
 			break;
 		case ARG_QUIET:
-			p.quiet = 1;
+			p.flags |= FLAGS_QUIET;
 			break;
 		case ARG_RECURSE:
-			p.flags |= FOR_EACH_FLAGS_RECURSE;
+			p.flags |= FLAGS_RECURSE;
 			break;
 		case ARG_SPEED:
 			params->p.r = action_camera_set_speed (&p, atoi (arg));
 			break;
 		case ARG_STDOUT:
-			p.quiet = 1;
-			glob_stdout = 1;
+			p.flags |= FLAGS_QUIET | FLAGS_STDOUT;
 			break;
 		case ARG_CAPTURE_FRAMES:
 			glob_frames = atoi(arg);
@@ -1377,9 +1405,7 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 			glob_interval = atoi(arg);
 			break;
 		case ARG_STDOUT_SIZE:
-			glob_stdout_size = 1;
-			p.quiet = 1;
-			glob_stdout = 1;
+			p.flags |= FLAGS_QUIET | FLAGS_STDOUT | FLAGS_STDOUT_SIZE;
 			break;
 		case ARG_VERSION:
 			params->p.r = print_version_action (&p);
@@ -1644,6 +1670,8 @@ main (int argc, char **argv)
 		 N_("Recursion (default for download)"), NULL},
 		{"no-recurse", '\0', POPT_ARG_NONE, NULL, ARG_NO_RECURSE,
 		 N_("No recursion (default for deletion)"), NULL},
+		{"new", '\0', POPT_ARG_NONE, NULL, ARG_NEW,
+		 N_("Process new files only"), NULL},
 		{"list-folders", 'l', POPT_ARG_NONE, NULL, ARG_LIST_FOLDERS,
 		 N_("List folders in folder"), NULL},
 		{"list-files", 'L', POPT_ARG_NONE, NULL, ARG_LIST_FILES,
@@ -1897,15 +1925,15 @@ main (int argc, char **argv)
 		poptResetContext (ctx);
 		while (poptGetNextOpt (ctx) >= 0);
 		if (!params.p.q.found)
-			p.flags &= ~FOR_EACH_FLAGS_RECURSE;
+			p.flags &= ~FLAGS_RECURSE;
 	}
 #else
 	if ((option_is_present ("delete-all-files", argc, argv) == GP_OK) ||
 	    (option_is_present ("D", argc, argv) == GP_OK)) {
 		if (option_is_present ("recurse", argc, argv) == GP_OK)
-			p.flags |= FOR_EACH_FLAGS_RECURSE;
+			p.flags |= FLAGS_RECURSE;
 		else
-			p.flags &= ~FOR_EACH_FLAGS_RECURSE;
+			p.flags &= ~FLAGS_RECURSE;
 	}
 #endif
 
@@ -1919,10 +1947,10 @@ main (int argc, char **argv)
 	poptResetContext (ctx);
 	while (poptGetNextOpt (ctx) >= 0);
 	if (params.p.q.found)
-		p.quiet = 1;
+		p.flags |= FLAGS_QUIET;
 #else
 	if (option_is_present ("q", argc, argv) == GP_OK)
-		p.quiet = 1;
+		p.flags |= FLAGS_QUIET;
 #endif
 
 	/* Go! */
@@ -1961,7 +1989,7 @@ e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"));
 
         /* Peek ahead: Make sure we were called correctly */
         if ((argc == 1) || (verify_options (argc, argv) != GP_OK)) {
-                if (!p.quiet)
+		if ((p.flags & FLAGS_QUIET) == 0)
                         usage (&p);
                 exit (EXIT_FAILURE);
         }

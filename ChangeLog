@@ -1,7 +1,15 @@
 2004-01-08  Marcus Meissner  <marcus@jet.franken.de>
 
+	* gphoto2/*.[ch]:
+	  Merged patch from Hervé Eychenne <eychenne@users.sourceforge.net>:
+	  - new flag handling, obsoleting some global ints
+	  - --new handling, check for downloaded images.
+	  - some fprintf(stdout -> printf( cleanups.
+
+2004-01-08  Marcus Meissner  <marcus@jet.franken.de>
+
 	* gphoto2/action.c, gphoto2/main.c:
-	  Implemented --set-config <name>=<value> option.
+	  - Implemented --set-config <name>=<value> option.
 
 2004-01-05  Marcus Meissner  <marcus@jet.franken.de>
 	

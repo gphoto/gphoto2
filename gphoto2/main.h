@@ -23,6 +23,7 @@
 
 #include <gphoto2-file.h>
 #include <gphoto2-camera.h>
+#include <gp-params.h>
 
 #define OPTION_CALLBACK(_a)             int _a (char *arg)
 
@@ -48,7 +49,7 @@ void 	cli_error_print(char *format, ...);
 int	camera_file_exists (Camera *camera, GPContext *context,
 			    const char *folder, const char *filename,
 			    CameraFileType type);
-int	save_file_to_file (Camera *camera, GPContext *context,
+int	save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 			   const char *folder, const char *filename,
 			   CameraFileType type);
 int save_camera_file_to_file (const char *folder, CameraFile *file);
