@@ -1,0 +1,307 @@
+AC_PREREQ(2.50)
+AC_INIT(gphoto2/main.c)
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(gphoto2, 2.1.1)
+AM_MAINTAINER_MODE
+
+dnl ---------------------------------------------------------------------------
+dnl Some programs we need
+dnl ---------------------------------------------------------------------------
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_INSTALL
+
+dnl ---------------------------------------------------------------------------
+dnl i18n support
+dnl ---------------------------------------------------------------------------
+ALL_LINGUAS="da de es fr it ja no ru sl sv uk zh_CN"
+AM_GNU_GETTEXT
+
+dnl ---------------------------------------------------------------------------
+dnl pthread: The gphoto2 shell (--shell) keeps up a connection to the 
+dnl          camera. Some cameras need to be sent keep-alive-messages
+dnl          in order to prevent a shut-down. This is what we need
+dnl          pthread for.
+dnl ---------------------------------------------------------------------------
+pthread_msg=no
+try_pthread=true
+AC_ARG_WITH(pthread, [  --without-pthread         Don't use pthread],
+        if test x$withval = xno; then
+                try_pthread=false
+        fi)
+if $try_pthread; then
+        AC_CHECK_HEADER(pthread.h, [
+                AC_CHECK_LIB(pthread, pthread_exit, [
+                    AC_DEFINE(HAVE_PTHREAD,,[Define if we use pthread.h.])
+                    pthread_msg="yes (-lpthread)"
+                    PTHREAD_LIBS="-lpthread"],[
+                    AC_CHECK_LIB(c_r, pthread_create, [ 
+                        AC_DEFINE(HAVE_PTHREAD,,[Define if we use pthread.h.])
+                        pthread_msg="yes (-pthread)"
+                        PTHREAD_LIBS="-pthread"
+                    ])
+                ])
+        ])
+fi
+AC_SUBST(PTHREAD_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl Turn on debugging and all warnings when using gcc
+dnl ---------------------------------------------------------------------------
+if test "$ac_cv_prog_gcc" = "yes"; then
+        CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
+        LDFLAGS="$LDFLAGS -g -Wall"
+fi
+
+dnl ---------------------------------------------------------------------------
+dnl CDK: If you would like to access the camera's configuration using
+dnl      gphoto2, the command-line frontend, you need this. Old versions
+dnl      of CDK don't include fscale, therefore check for it here.
+dnl ---------------------------------------------------------------------------
+cdk_msg="no (http://dickey.his.com/cdk/cdk.html)"
+try_cdk=true
+have_cdk=false
+AC_ARG_WITH(cdk,        [  --without-cdk             Don't use cdk],
+        if test x$withval = xno; then
+                try_cdk=false
+                cdk_msg="no (not requested)"
+        fi
+)
+cdk_prefix=$ac_default_prefix
+AC_ARG_WITH(cdk-prefix, [  --with-cdk-prefix=PREFIX  Location of cdk], [
+        cdk_prefix="$withval"])
+if $try_cdk; then
+        CPPFLAGS_save="$CPPFLAGS"
+        CPPFLAGS="-I$cdk_prefix/include -I$cdk_prefix/include/cdk $CPPFLAGS"
+        AC_CHECK_HEADER(cdk.h, [
+                have_cdk=true
+                CDK_CFLAGS="-I$cdk_prefix/include -I$cdk_prefix/include/cdk"
+                CDK_LIBS="-L$cdk_prefix/lib -lcdk -lncurses"
+                AC_DEFINE(HAVE_CDK,,[whether we have CDK])
+                LDFLAGS_save="$LDFLAGS"
+                LDFLAGS="$CDK_LIBS"
+                AC_CHECK_LIB(cdk, newCDKFScale, [cdk_msg="yes"], [
+                        AC_DEFINE(HAVE_CDK_20010421,,[whether we have old CDK])
+                        cdk_msg="yes (but without fscale)"]
+                )
+                LDFLAGS="$LDFLAGS_save"]
+        )
+        CPPFLAGS="$CPPFLAGS_save"
+fi
+AM_CONDITIONAL(HAVE_CDK, $have_cdk)
+AC_SUBST(CDK_CFLAGS)
+AC_SUBST(CDK_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl libjpeg: Right now, libjpeg is only used to interpret JPEG previews in
+dnl          order to feed them to aalib (see below).
+dnl ---------------------------------------------------------------------------
+jpeg_msg=no
+try_jpeg=true
+have_jpeg=false
+AC_ARG_WITH(jpeg, [  --without-jpeg            Don't use jpeg],
+        if test x$withval = xno; then
+                try_jpeg=false
+                jpeg_msg="no (not requested)"
+        fi
+)
+jpeg_prefix=$ac_default_prefix
+AC_ARG_WITH(jpeg-prefix, [  --with-jpeg-prefix=PREFIX Location of jpeg], [
+        jpeg_prefix="$withval"])
+if $try_jpeg; then
+        CPPFLAGS_save="$CPPFLAGS"
+        CPPFLAGS="-I$jpeg_prefix/include"
+        AC_CHECK_HEADER(jpeglib.h, [
+                AC_CHECK_LIB(jpeg, jpeg_read_scanlines, [
+                        have_jpeg=true
+                        jpeg_msg="yes"
+                        AC_DEFINE(HAVE_JPEG,,[whether we use libjpeg])
+                        JPEG_LIBS="-ljpeg"
+                        JPEG_CFLAGS=$CPPFLAGS
+                ], [
+                        LDFLAGS_save="$LDFLAGS"
+                        LDFLAGS="-L$jpeg_prefix/lib"
+                        AC_CHECK_LIB(jpeg, jpeg_stdio_src, [
+                                have_jpeg=true
+                                jpeg_msg="yes (in '$jpeg_prefix')"
+                                AC_DEFINE(HAVE_JPEG,,[whether we use libjpeg])
+                                JPEG_LIBS="-L$jpeg_prefix/lib -ljpeg"
+                                JPEG_CFLAGS=$CPPFLAGS
+                        ], [jpeg_msg="no (could not link)"])
+                        LDFLAGS=$LDFLAGS_save
+                ])
+        ])
+        CPPFLAGS=$CPPFLAGS_save
+fi
+AM_CONDITIONAL(HAVE_JPEG, $have_jpeg)
+AC_SUBST(JPEG_LIBS)
+AC_SUBST(JPEG_CFLAGS)
+
+dnl ---------------------------------------------------------------------------
+dnl pkg-config: pkg-config is a tool to simplify checks for libraries and
+dnl             versions. I really think this is a good thing and therefore
+dnl             use it here. However, if pkg-config is not installed,
+dnl             we offer alternative checks, too.
+dnl ---------------------------------------------------------------------------
+pkgconfig_msg="no (http://www.freedesktop.org/software/pkgconfig)"
+try_pkgconfig=true
+have_pkgconfig=false
+AC_ARG_WITH(pkgconfig, [  --without-pkgconfig       Don't use pkg-config],[
+        if test x$withval = xno; then
+                try_pkgconfig=false
+                pkgconfig_msg="no (not requested)"
+        fi])
+if $try_pkgconfig; then
+        AC_PATH_PROG(PKG_CONFIG,pkg-config)
+        if test -n "${PKG_CONFIG}"; then
+                have_pkgconfig=true
+                pkgconfig_msg="yes"
+        fi
+fi
+
+dnl ---------------------------------------------------------------------------
+dnl libexif: The CameraFilesystem can use libexif for extracting thumbnails
+dnl          out of EXIF data. Similarly, it can extract the mtime of
+dnl          a file. 
+dnl          libexif is available from
+dnl          http://www.sourceforge.net/projects/libexif
+dnl ---------------------------------------------------------------------------
+exif_msg="no (http://www.sourceforge.net/projects/libexif)"
+try_exif=true
+have_exif=false
+AC_ARG_WITH(exif, [  --without-exif            Don't use libexif],[
+        if test x$withval = xno; then
+                try_exif=false
+                exif_msg="no (not requested)"
+        fi])
+if test "x$prefix" = xNONE; then
+        exif_prefix=$ac_default_prefix
+else
+        exif_prefix=$prefix
+fi
+AC_ARG_WITH(exif-prefix, [  --with-exif-prefix=PREFIX Location of libexif],[
+        exif_prefix="$withval"]) 
+if $try_exif; then
+        if $have_pkgconfig; then
+                AC_MSG_CHECKING([for libexif])
+                if ${PKG_CONFIG} --exists libexif > /dev/null 2>&1; then
+                        EXIF_CFLAGS=`$PKG_CONFIG --cflags libexif`
+                        EXIF_LIBS=`$PKG_CONFIG --libs libexif`
+                        have_exif=true
+                        exif_msg=yes
+                        AC_DEFINE(HAVE_EXIF,,[whether we use libexif])
+                fi
+                AC_MSG_RESULT($exif_msg)
+        else
+                CPPFLAGS_save="$CPPFLAGS"
+                CPPFLAGS="-I$exif_prefix/include/libexif -I$exif_prefix/include $CPPFLAGS"
+                AC_CHECK_HEADER(exif-data.h, [
+                        EXIF_CFLAGS="-I$exif_prefix/include -I$exif_prefix/include/libexif"
+                        EXIF_LIBS="-L$exif_prefix/lib -lexif"
+                        have_exif=true
+                        exif_msg=yes
+                        AC_DEFINE(HAVE_EXIF,,[whether we use libexif])])
+        fi
+fi
+AM_CONDITIONAL(HAVE_EXIF, $have_exif)
+AC_SUBST(EXIF_CFLAGS)
+AC_SUBST(EXIF_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl aalib: gphoto2 (the frontend) has been designed as a command-line tool.
+dnl        However, life previews make only sense when you can actually 
+dnl        see the preview. This is where aalib fits in - it gives you the
+dnl        possibility to view life-previews on any console.
+dnl ---------------------------------------------------------------------------
+aa_msg="no (http://www.sourceforge.net/projects/aa-project)"
+try_aa=true
+have_aa=false
+AC_ARG_WITH(aalib, [  --without-aalib           Don't use aalib],
+        if test x$withval = xno; then
+                try_aa=false
+        fi
+)
+if $try_aa; then
+        AC_CHECK_HEADER(aalib.h,[
+                have_aa=true
+                aa_msg=yes
+                AC_DEFINE(HAVE_AA,,[whether we use aalib])
+                AC_PATH_PROG(AALIB_CONFIG,aalib-config)
+                if test -n "${AALIB_CONFIG}"; then
+                        AA_CFLAGS=`$AALIB_CONFIG --cflags`
+                        AA_LIBS=`$AALIB_CONFIG --libs`
+                else
+                        AA_LIBS="-laa"
+                fi])
+else
+        aa_msg="no (not requested)"
+fi
+AM_CONDITIONAL(HAVE_AA, $have_aa)
+AC_SUBST(AA_LIBS)
+AC_SUBST(AA_CFLAGS)
+
+dnl ---------------------------------------------------------------------------
+dnl readline: Readline is pretty cool - it allows you to use <tab> to complete
+dnl           commands in the gphoto2 shell or to use <up> or <down> to 
+dnl           navigate through the history.
+dnl ---------------------------------------------------------------------------
+rl_msg="no (cnswww.cns.cwru.edu/~chet/readline/rltop.html)"
+try_readline=true
+have_readline=false
+AC_ARG_WITH(readline, [  --without-readline        Don't use readline],
+        if test "x${withval}" = "xno"; then
+                try_readline=false
+                rl_msg="no (not requested)"
+        fi
+)
+if $try_readline; then
+        AC_CHECK_HEADER(readline/readline.h, [
+            AC_CHECK_LIB(readline, rl_completion_append_character, [
+                AC_CHECK_LIB(readline, rl_completion_matches, [
+                    have_readline=true
+                    rl_msg="yes (doesn't require explicit -lncurses)"
+                    RL_LIBS="-lreadline"
+                    RL_CFLAGS=""
+                    AC_DEFINE(HAVE_RL,,[whether we use readline])
+                ], [rl_msg="no (available version too old)"])
+            ], [
+                LDFLAGS_save="$LDFLAGS"
+                LDFLAGS="-lncurses"
+                AC_CHECK_LIB(readline, rl_completion_matches, [
+                    have_readline=true
+                    rl_msg="yes (requires explicit -lncurses)"
+                    RL_LIBS="-lreadline -lncurses"
+                    RL_CFLAGS=""
+                    AC_DEFINE(HAVE_RL,,[whether we use readline])
+                ], [rl_msg="no (couldn't link against it or version too old)"])
+                LDFLAGS="$LDFLAGS_save"
+            ])
+        ])
+fi
+AM_CONDITIONAL(HAVE_RL, $have_readline)
+AC_SUBST(RL_LIBS)
+AC_SUBST(RL_CFLAGS)
+
+AC_OUTPUT([
+Makefile
+gphoto2/Makefile
+intl/Makefile
+po/Makefile.in
+])
+
+echo "
+
+Configuration (gphoto2):
+
+        Source code location:      ${srcdir}
+        Compiler:                  ${CC}
+
+        Configuration support:     $cdk_msg
+        Preview support:           $aa_msg
+        JPEG support:              $jpeg_msg
+        pkg-config:                $pkgconfig_msg
+        EXIF support:              $exif_msg
+        readline support:          $rl_msg
+        pthread support:           $pthread_msg
+"
+
