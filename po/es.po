@@ -5,7 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2\n"
-"POT-Creation-Date: 2003-07-27 13:12+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-05 23:18+0200\n"
 "PO-Revision-Date: 2003-07-10 14:08-0300\n"
 "Last-Translator: Fabian Mandelbaum <fabman@mandrakesoft.com>\n"
 "Language-Team: Español <es@li.org>\n"
@@ -93,14 +94,14 @@ msgid "  Downloaded:  %s\n"
 msgstr "  Descargado:  %s\n"
 
 #: gphoto2/actions.c:206 gphoto2/actions.c:238 gphoto2/actions.c:250
-#: gphoto2/actions.c:548 gphoto2/actions.c:550 gphoto2/actions.c:567
-#: gphoto2/actions.c:570 gphoto2/actions.c:573 gphoto2/actions.c:576
+#: gphoto2/actions.c:549 gphoto2/actions.c:551 gphoto2/actions.c:579
+#: gphoto2/actions.c:582 gphoto2/actions.c:585 gphoto2/actions.c:588
 msgid "yes"
 msgstr "sí"
 
 #: gphoto2/actions.c:206 gphoto2/actions.c:238 gphoto2/actions.c:250
-#: gphoto2/actions.c:548 gphoto2/actions.c:550 gphoto2/actions.c:567
-#: gphoto2/actions.c:570 gphoto2/actions.c:573 gphoto2/actions.c:576
+#: gphoto2/actions.c:549 gphoto2/actions.c:551 gphoto2/actions.c:579
+#: gphoto2/actions.c:582 gphoto2/actions.c:585 gphoto2/actions.c:588
 msgid "no"
 msgstr "no"
 
@@ -231,71 +232,77 @@ msgstr "Puerto"
 msgid "----------------------------------------------------------\n"
 msgstr "----------------------------------------------------------\n"
 
-#: gphoto2/actions.c:546
+#: gphoto2/actions.c:547
 #, c-format
 msgid "Abilities for camera             : %s\n"
 msgstr "Capacidades de la cámara                : %s\n"
 
-#: gphoto2/actions.c:547
+#: gphoto2/actions.c:548
 #, c-format
 msgid "Serial port support              : %s\n"
 msgstr "Soporte de puerto serie                 : %s\n"
 
-#: gphoto2/actions.c:549
+#: gphoto2/actions.c:550
 #, c-format
 msgid "USB support                      : %s\n"
 msgstr "Soporte de puerto USB                   : %s\n"
 
-#: gphoto2/actions.c:552
+#: gphoto2/actions.c:553
 msgid "Transfer speeds supported        :\n"
 msgstr "Velocidades de transferencia soportadas :\n"
 
-#: gphoto2/actions.c:554
+#: gphoto2/actions.c:555
 #, c-format
 msgid "                                 : %i\n"
 msgstr "                                        : %i\n"
 
-#: gphoto2/actions.c:557
+#: gphoto2/actions.c:558
 msgid "Capture choices                  :\n"
 msgstr "Opciones de captura                     :\n"
 
-#: gphoto2/actions.c:559
+#: gphoto2/actions.c:560
 msgid "                                 : Image\n"
 msgstr "                                        : Imagen\n"
 
-#: gphoto2/actions.c:561
+#: gphoto2/actions.c:564
 msgid "                                 : Video\n"
 msgstr "                                        : Vídeo\n"
 
-#: gphoto2/actions.c:563
+#: gphoto2/actions.c:568
 msgid "                                 : Audio\n"
 msgstr "                                        : Audio\n"
 
-#: gphoto2/actions.c:565
+#: gphoto2/actions.c:572
 msgid "                                 : Preview\n"
 msgstr "                                        : Pre-visualización\n"
 
-#: gphoto2/actions.c:566
+#: gphoto2/actions.c:576
+#, fuzzy
+msgid ""
+"                                 : Capture not supported by the driver\n"
+msgstr "                                        : Pre-visualización\n"
+
+#: gphoto2/actions.c:578
 #, c-format
 msgid "Configuration support            : %s\n"
 msgstr "Soporte de configuración                : %s\n"
 
-#: gphoto2/actions.c:568
+#: gphoto2/actions.c:580
 #, c-format
 msgid "Delete files on camera support   : %s\n"
 msgstr "Soporte de borrado de archivo en cámara : %s\n"
 
-#: gphoto2/actions.c:571
+#: gphoto2/actions.c:583
 #, c-format
 msgid "File preview (thumbnail) support : %s\n"
 msgstr "Soporte de diapositivas                 : %s\n"
 
-#: gphoto2/actions.c:574
+#: gphoto2/actions.c:586
 #, c-format
 msgid "File upload support              : %s\n"
 msgstr "Soporte de envío de archivos            : %s\n"
 
-#: gphoto2/actions.c:591
+#: gphoto2/actions.c:603
 #, c-format
 msgid ""
 "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
@@ -304,7 +311,7 @@ msgstr ""
 "Los puertos deben lucir como «serial:/dev/ttyS0» o «usb:», pero falta un «:» "
 "en '%s' por lo que voy a intentar adivinar lo que quiso decir."
 
-#: gphoto2/actions.c:630
+#: gphoto2/actions.c:642
 #, c-format
 msgid ""
 "The port you specified ('%s') can not be found. Please specify one of the "
@@ -316,23 +323,23 @@ msgstr ""
 "asegúrese que la sintaxis es correcta (es decir, con el prefijo 'serial:' o "
 "'usb:'.)"
 
-#: gphoto2/actions.c:668
+#: gphoto2/actions.c:680
 msgid "About the camera driver:"
 msgstr "Acerca del controlador de la cámara:"
 
-#: gphoto2/actions.c:682
+#: gphoto2/actions.c:694
 msgid "Camera summary:"
 msgstr "Resumen de la cámara:"
 
-#: gphoto2/actions.c:696
+#: gphoto2/actions.c:708
 msgid "Camera manual:"
 msgstr "Manual de la cámara:"
 
-#: gphoto2/actions.c:712
+#: gphoto2/actions.c:724
 msgid "You can only specify speeds for serial ports."
 msgstr "Sólo puede especificar velocidades para puertos serie."
 
-#: gphoto2/actions.c:763
+#: gphoto2/actions.c:775
 #, c-format
 msgid ""
 "gphoto2 %s\n"
@@ -360,11 +367,11 @@ msgstr ""
 "Esta versión de gphoto2 está utilizando las siguientes versiones y opciones "
 "de software:\n"
 
-#: gphoto2/actions.c:776
+#: gphoto2/actions.c:788
 msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "Portado a OS/2 por Bart van Leeuwen\n"
 
-#: gphoto2/actions.c:890
+#: gphoto2/actions.c:903
 msgid ""
 "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
 "MAILING LIST:"
@@ -442,32 +449,32 @@ msgstr "Salir"
 msgid "Back"
 msgstr "Regresar"
 
-#: gphoto2/gphoto2-cmd-config.c:253
+#: gphoto2/gphoto2-cmd-config.c:254
 msgid "Time: "
 msgstr "Hora: "
 
-#: gphoto2/gphoto2-cmd-config.c:312 gphoto2/gphoto2-cmd-config.c:340
-#: gphoto2/gphoto2-cmd-config.c:400 gphoto2/gphoto2-cmd-config.c:463
+#: gphoto2/gphoto2-cmd-config.c:313 gphoto2/gphoto2-cmd-config.c:341
+#: gphoto2/gphoto2-cmd-config.c:401 gphoto2/gphoto2-cmd-config.c:464
 msgid "Value: "
 msgstr "Valor: "
 
-#: gphoto2/gphoto2-cmd-config.c:362
+#: gphoto2/gphoto2-cmd-config.c:363
 msgid "Yes"
 msgstr "Sí"
 
-#: gphoto2/gphoto2-cmd-config.c:362
+#: gphoto2/gphoto2-cmd-config.c:363
 msgid "No"
 msgstr "No"
 
-#: gphoto2/main.c:161 gphoto2/main.c:1461
+#: gphoto2/main.c:161 gphoto2/main.c:1462
 msgid "Turn on debugging"
 msgstr "Activar la depuración"
 
-#: gphoto2/main.c:162 gphoto2/main.c:1463
+#: gphoto2/main.c:162 gphoto2/main.c:1464
 msgid "Quiet output (default=verbose)"
 msgstr "Salida silenciosa (por defecto=verbosa)"
 
-#: gphoto2/main.c:166 gphoto2/main.c:1467
+#: gphoto2/main.c:166 gphoto2/main.c:1468
 msgid "Display version and exit"
 msgstr "Mostrar la versión y salir"
 
@@ -475,67 +482,67 @@ msgstr "Mostrar la versión y salir"
 msgid "Displays this help screen"
 msgstr "Muestra esta pantalla de ayuda"
 
-#: gphoto2/main.c:168 gphoto2/main.c:1469
+#: gphoto2/main.c:168 gphoto2/main.c:1470
 msgid "List supported camera models"
 msgstr "Lista los modelos de cámara soportados"
 
-#: gphoto2/main.c:169 gphoto2/main.c:1471
+#: gphoto2/main.c:169 gphoto2/main.c:1472
 msgid "List supported port devices"
 msgstr "Lista los tipos de puerto soportados"
 
-#: gphoto2/main.c:170 gphoto2/main.c:1473
+#: gphoto2/main.c:170 gphoto2/main.c:1474
 msgid "Send file to stdout"
 msgstr "Enviar archivo a la salida estándar"
 
-#: gphoto2/main.c:171 gphoto2/main.c:1475
+#: gphoto2/main.c:171 gphoto2/main.c:1476
 msgid "Print filesize before data"
 msgstr "Mostrar el tamaño del archivo antes que los datos"
 
-#: gphoto2/main.c:172 gphoto2/main.c:1477
+#: gphoto2/main.c:172 gphoto2/main.c:1478
 msgid "List auto-detected cameras"
 msgstr "Listar las cámaras detectadas automáticamente"
 
-#: gphoto2/main.c:175 gphoto2/main.c:1479
+#: gphoto2/main.c:175 gphoto2/main.c:1480
 msgid "Specify port device"
 msgstr "Especificar el puerto del dispositivo"
 
-#: gphoto2/main.c:176 gphoto2/main.c:1481
+#: gphoto2/main.c:176 gphoto2/main.c:1482
 msgid "Specify serial transfer speed"
 msgstr "Especificar la velocidad de transferencia serie"
 
-#: gphoto2/main.c:177 gphoto2/main.c:1483
+#: gphoto2/main.c:177 gphoto2/main.c:1484
 msgid "Specify camera model"
 msgstr "Especificar el modelo de la cámara"
 
-#: gphoto2/main.c:178 gphoto2/main.c:1485
+#: gphoto2/main.c:178 gphoto2/main.c:1486
 msgid "Specify a filename"
 msgstr "Especificar un nombre de archivo"
 
-#: gphoto2/main.c:179 gphoto2/main.c:1487
+#: gphoto2/main.c:179 gphoto2/main.c:1488
 msgid "(expert only) Override USB IDs"
 msgstr "(sólo expertos) Ignorar los IDs de USB"
 
-#: gphoto2/main.c:182 gphoto2/main.c:1489
+#: gphoto2/main.c:182 gphoto2/main.c:1490
 msgid "Display camera abilities"
 msgstr "Mostrar las capacidades de la cámara"
 
-#: gphoto2/main.c:183 gphoto2/main.c:1491
+#: gphoto2/main.c:183 gphoto2/main.c:1492
 msgid "Specify camera folder (default=\"/\")"
 msgstr "Especificar la carpeta (por defecto=\"/\")"
 
-#: gphoto2/main.c:184 gphoto2/main.c:1493
+#: gphoto2/main.c:184 gphoto2/main.c:1494
 msgid "Recursion (default for download)"
 msgstr "Recursión (por defecto para la descarga)"
 
-#: gphoto2/main.c:185 gphoto2/main.c:1495
+#: gphoto2/main.c:185 gphoto2/main.c:1496
 msgid "No recursion (default for deletion)"
 msgstr "Sin recursión (por defecto para el borrado)"
 
-#: gphoto2/main.c:186 gphoto2/main.c:1497
+#: gphoto2/main.c:186 gphoto2/main.c:1498
 msgid "List folders in folder"
 msgstr "Listar las carpetas en la carpeta"
 
-#: gphoto2/main.c:187 gphoto2/main.c:1499
+#: gphoto2/main.c:187 gphoto2/main.c:1500
 msgid "List files in folder"
 msgstr "Listar lso archivos en la carpeta"
 
@@ -543,71 +550,71 @@ msgstr "Listar lso archivos en la carpeta"
 msgid "name"
 msgstr "nombre"
 
-#: gphoto2/main.c:188 gphoto2/main.c:1501
+#: gphoto2/main.c:188 gphoto2/main.c:1502
 msgid "Create a directory"
 msgstr "Crear un directorio"
 
-#: gphoto2/main.c:189 gphoto2/main.c:1503
+#: gphoto2/main.c:189 gphoto2/main.c:1504
 msgid "Remove a directory"
 msgstr "Eliminar un directorio"
 
-#: gphoto2/main.c:190 gphoto2/main.c:1505
+#: gphoto2/main.c:190 gphoto2/main.c:1506
 msgid "Display number of files"
 msgstr "Mostrar la cantidad de archivos"
 
-#: gphoto2/main.c:191 gphoto2/main.c:1507
+#: gphoto2/main.c:191 gphoto2/main.c:1508
 msgid "Get files given in range"
 msgstr "Obtener los archivos del intervalo"
 
-#: gphoto2/main.c:192 gphoto2/main.c:1509
+#: gphoto2/main.c:192 gphoto2/main.c:1510
 msgid "Get all files from folder"
 msgstr "Obtener todos los archivos de la carpeta"
 
-#: gphoto2/main.c:193 gphoto2/main.c:1511
+#: gphoto2/main.c:193 gphoto2/main.c:1512
 msgid "Get thumbnails given in range"
 msgstr "Ontener las diapositivas del intervalo"
 
-#: gphoto2/main.c:194 gphoto2/main.c:1514
+#: gphoto2/main.c:194 gphoto2/main.c:1515
 msgid "Get all thumbnails from folder"
 msgstr "Obtener todas las diapositivas de la carpeta"
 
-#: gphoto2/main.c:195 gphoto2/main.c:1517
+#: gphoto2/main.c:195 gphoto2/main.c:1518
 msgid "Get raw data given in range"
 msgstr "Obtener los datos \"en crudo\" del intervalo"
 
-#: gphoto2/main.c:196 gphoto2/main.c:1520
+#: gphoto2/main.c:196 gphoto2/main.c:1521
 msgid "Get all raw data from folder"
 msgstr "Obtener los datos \"en crudo\" de la carpeta"
 
-#: gphoto2/main.c:197 gphoto2/main.c:1523
+#: gphoto2/main.c:197 gphoto2/main.c:1524
 msgid "Get audio data given in range"
 msgstr "Obtener los datos de audio del intervalo"
 
-#: gphoto2/main.c:198 gphoto2/main.c:1526
+#: gphoto2/main.c:198 gphoto2/main.c:1527
 msgid "Get all audio data from folder"
 msgstr "Obtener todos los datos de audio de la carpeta"
 
-#: gphoto2/main.c:199 gphoto2/main.c:1528
+#: gphoto2/main.c:199 gphoto2/main.c:1529
 msgid "Delete files given in range"
 msgstr "Borrar los archivos del intervalo"
 
-#: gphoto2/main.c:200 gphoto2/main.c:1530
+#: gphoto2/main.c:200 gphoto2/main.c:1531
 msgid "Delete all files in folder"
 msgstr "Borrar todos los archivos de la carpeta"
 
-#: gphoto2/main.c:201 gphoto2/main.c:1532
+#: gphoto2/main.c:201 gphoto2/main.c:1533
 msgid "Upload a file to camera"
 msgstr "Enviar un archivo a la cámara"
 
-#: gphoto2/main.c:203 gphoto2/main.c:1535
+#: gphoto2/main.c:203 gphoto2/main.c:1536
 msgid "Configure"
 msgstr "Configurar"
 
-#: gphoto2/main.c:205 gphoto2/main.c:1539
+#: gphoto2/main.c:205 gphoto2/main.c:1540
 msgid "Capture a quick preview"
 msgstr "Capturar una pre-visualización"
 
-#: gphoto2/main.c:206 gphoto2/main.c:1541
+#: gphoto2/main.c:206 gphoto2/main.c:1542
 msgid "Capture an image"
 msgstr "Capturar una imagen"
 
@@ -615,15 +622,15 @@ msgstr "Capturar una imagen"
 msgid "Capture a movie "
 msgstr "Capturar una película "
 
-#: gphoto2/main.c:208 gphoto2/main.c:1545
+#: gphoto2/main.c:208 gphoto2/main.c:1546
 msgid "Capture an audio clip"
 msgstr "Capturar un clip de audio"
 
-#: gphoto2/main.c:210 gphoto2/main.c:1548 gphoto2/shell.c:113
+#: gphoto2/main.c:210 gphoto2/main.c:1549 gphoto2/shell.c:113
 msgid "Show EXIF information"
 msgstr "Mostrar la información EXIF"
 
-#: gphoto2/main.c:212 gphoto2/main.c:1551 gphoto2/shell.c:109
+#: gphoto2/main.c:212 gphoto2/main.c:1552 gphoto2/shell.c:109
 msgid "Show info"
 msgstr "Mostrar información"
 
@@ -639,11 +646,11 @@ msgstr "Manual del controlador de la cámara"
 msgid "About the camera driver"
 msgstr "Acerca del controlador de la cámara"
 
-#: gphoto2/main.c:216 gphoto2/main.c:1559
+#: gphoto2/main.c:216 gphoto2/main.c:1560
 msgid "gPhoto shell"
 msgstr "Intérprete gPhoto"
 
-#: gphoto2/main.c:343 gphoto2/main.c:1192
+#: gphoto2/main.c:343 gphoto2/main.c:1193
 msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
 "c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
@@ -835,16 +842,16 @@ msgstr "Ingrese el nombre de archivo nuevo: "
 msgid "Saving file as %s\n"
 msgstr "Guardando archivo como %s\n"
 
-#: gphoto2/main.c:918
+#: gphoto2/main.c:919
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "El archivo nuevo está en la ubicación %s%s%s en la cámara\n"
 
-#: gphoto2/main.c:1050
+#: gphoto2/main.c:1051
 msgid "ERROR: "
 msgstr "ERROR: "
 
-#: gphoto2/main.c:1073
+#: gphoto2/main.c:1074
 msgid ""
 "\n"
 "Aborting...\n"
@@ -852,11 +859,11 @@ msgstr ""
 "\n"
 "Abandonando...\n"
 
-#: gphoto2/main.c:1079
+#: gphoto2/main.c:1080
 msgid "Aborted.\n"
 msgstr "Abandonado.\n"
 
-#: gphoto2/main.c:1084
+#: gphoto2/main.c:1085
 msgid ""
 "\n"
 "Cancelling...\n"
@@ -864,15 +871,15 @@ msgstr ""
 "\n"
 "Cancelando...\n"
 
-#: gphoto2/main.c:1291
+#: gphoto2/main.c:1292
 msgid "gphoto2 has been compiled without support for CDK."
 msgstr "gphoto2 ha sido compilado sin soporte para CDK."
 
-#: gphoto2/main.c:1404
+#: gphoto2/main.c:1405
 msgid "Operation cancelled.\n"
 msgstr "Operación cancelada.\n"
 
-#: gphoto2/main.c:1408
+#: gphoto2/main.c:1409
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -881,7 +888,7 @@ msgstr ""
 "*** Error (%i: '%s') ***       \n"
 "\n"
 
-#: gphoto2/main.c:1412
+#: gphoto2/main.c:1413
 msgid ""
 "For debugging messages, please use the --debug option.\n"
 "Debugging messages may help finding a solution to your problem.\n"
@@ -899,51 +906,51 @@ msgstr ""
 "por favor ejecute gphoto2 como sigue:\n"
 "\n"
 
-#: gphoto2/main.c:1465
+#: gphoto2/main.c:1466
 msgid "Overwrite files without asking."
 msgstr "Sobreescribir archivos sin preguntar."
 
-#: gphoto2/main.c:1479
+#: gphoto2/main.c:1480
 msgid "path"
 msgstr "ruta"
 
-#: gphoto2/main.c:1481
+#: gphoto2/main.c:1482
 msgid "speed"
 msgstr "velocidad"
 
-#: gphoto2/main.c:1483
+#: gphoto2/main.c:1484
 msgid "model"
 msgstr "modelo"
 
-#: gphoto2/main.c:1485
+#: gphoto2/main.c:1486
 msgid "filename"
 msgstr "nombre de archivo"
 
-#: gphoto2/main.c:1487
+#: gphoto2/main.c:1488
 msgid "usbid"
 msgstr "usbid"
 
-#: gphoto2/main.c:1491
+#: gphoto2/main.c:1492
 msgid "folder"
 msgstr "carpeta"
 
-#: gphoto2/main.c:1543
+#: gphoto2/main.c:1544
 msgid "Capture a movie"
 msgstr "Capturar una película"
 
-#: gphoto2/main.c:1553
+#: gphoto2/main.c:1554
 msgid "Show summary"
 msgstr "Mostrar resumen"
 
-#: gphoto2/main.c:1555
+#: gphoto2/main.c:1556
 msgid "Show camera driver manual"
 msgstr "Mostrar manual del controlador de la cámara"
 
-#: gphoto2/main.c:1557
+#: gphoto2/main.c:1558
 msgid "About the camera driver manual"
 msgstr "Acerca del manual del controlador de la cámara"
 
-#: gphoto2/main.c:1784
+#: gphoto2/main.c:1785
 msgid ""
 "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
 "location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
@@ -952,7 +959,7 @@ msgstr ""
 "la ubicación de las bibliotecas de soporte de las cámaras. Por ejemplo SET "
 "CAMLIBS=C:\\GPHOTO2\\CAM\n"
 
-#: gphoto2/main.c:1794
+#: gphoto2/main.c:1795
 msgid ""
 "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
 "location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
