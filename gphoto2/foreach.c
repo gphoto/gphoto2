@@ -32,8 +32,8 @@
 #include <gphoto2-port-log.h>
 
 #define GP_ERROR_FRONTEND_BAD_ID -10000
-#define CR(result) {int r=(result); if(r<0) return(r);}
-#define CL(result,list) {int r=(result); if(r<0) {gp_list_free(list);return(r);}}
+#define CR(result) {int __r=(result); if(__r<0) return(__r);}
+#define CL(result,list) {int __r=(result); if(__r<0) {gp_list_free(list);return(__r);}}
 
 #define GP_MODULE "frontend"
 

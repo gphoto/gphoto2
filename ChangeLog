@@ -1,3 +1,12 @@
+2003-02-01  Patrick Mansfield <patmans@users.sourceforge.net>
+
+	* foreach.c: Change the CR and CL macro to use "__r" versus "r",
+	  so the result we want to actually check is not hidden by a new
+	  declaration of 'r'. Specifically for_each_file_in_range never
+	  noticed an error of GP_ERROR_NOT_SUPPORTED. actions.c and
+	  shell.c have no problem (i.e. they don't use the variable 'r' in
+	  any functions).
+
 2002-11-08  Hans Ulrich Niedermann <gp@n-dimensional.de>
 
 	* configure.in: 2.1.1dev7
