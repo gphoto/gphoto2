@@ -146,13 +146,14 @@ static int
 show_date (CmdConfig *cmd_config, CameraWidget *date)
 {
 	CDKCALENDAR *calendar = NULL;
-	int time, day, month, year, selection;
+	int day, month, year, selection;
+	time_t time;
 	struct tm *date_info;
 	const char *label;
 	char title[1024];
 
 	gp_widget_get_value (date, &time);
-	date_info = localtime ((time_t *) &time);
+	date_info = localtime (&time);
 
 	/* Month in CDK starts with 1 */
 	day = date_info->tm_mday;
@@ -176,7 +177,7 @@ show_date (CmdConfig *cmd_config, CameraWidget *date)
 	selection = activateCDKCalendar (calendar, 0);
 
 	if (calendar->exitType == vNORMAL) {
-		date_info = localtime ((time_t *) &time);
+		date_info = localtime (&time);
 
 		/* Month in CDK starts with 1 */
 		date_info->tm_mday = calendar->day;
@@ -243,7 +244,7 @@ show_time (CmdConfig *cmd_config, CameraWidget *date)
 	CDKENTRY *entry = NULL;
 	const char *label, *info;
 	char title[1024], time_string[9];
-	int time;
+	time_t time;
 	struct tm *date_info;
 
 	gp_widget_get_label (date, &label);
@@ -256,7 +257,7 @@ show_time (CmdConfig *cmd_config, CameraWidget *date)
 		return (GP_ERROR);
 
 	gp_widget_get_value (date, &time);
-	date_info = localtime ((time_t *) &time);
+	date_info = localtime (&time);
 	snprintf (time_string, sizeof (time_string), "%2i:%02i:%02i",
 		  date_info->tm_hour, date_info->tm_min, date_info->tm_sec);
 	setCDKEntryValue (entry, time_string);
@@ -265,7 +266,7 @@ show_time (CmdConfig *cmd_config, CameraWidget *date)
 
 	info = activateCDKEntry (entry, 0);
 	if (entry->exitType == vNORMAL) {
-		date_info = localtime ((time_t *) &time);
+		date_info = localtime (&time);
 		sscanf (info, "%d:%d:%d", &date_info->tm_hour,
 			&date_info->tm_min, &date_info->tm_sec);
 		time = mktime (date_info);
