@@ -36,7 +36,7 @@ struct _Option {
         int     required;
 };
 
-#define MAX_IMAGE_NUMBER                1024
+#define MAX_IMAGE_NUMBER                16384
 
 #ifdef WIN32
 #include <io.h>
