@@ -497,37 +497,6 @@ static struct {
 	{0, NULL}
 };
 
-static struct {
-	const char *s;
-	const char *l;
-} MonthTable[] = {
-	{N_("Jan"), N_("January")},
-	{N_("Feb"), N_("February")},
-	{N_("Mar"), N_("March")},
-	{N_("Apr"), N_("April")},
-	{N_("May"), N_("May")},
-	{N_("Jun"), N_("June")},
-	{N_("Jul"), N_("July")},
-	{N_("Aug"), N_("August")},
-	{N_("Sep"), N_("September")},
-	{N_("Oct"), N_("October")},
-	{N_("Nov"), N_("November")},
-	{N_("Dec"), N_("December")}
-};
-
-static struct {
-	const char *s;
-	const char *l;
-} WeekdayTable[] = {
-	{N_("Sun"), N_("Sunday")},
-	{N_("Mon"), N_("Monday")},
-	{N_("Tue"), N_("Tuesday")},
-	{N_("Wed"), N_("Wednesday")},
-	{N_("Thu"), N_("Thursday")},
-	{N_("Fri"), N_("Friday")},
-	{N_("Sat"), N_("Saturday")}
-};
-
 #undef  MIN
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
 
@@ -633,55 +602,26 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 				break;
 
 			case 'a':
-				snprintf (b, sizeof (b), "%s",
-					  WeekdayTable[tm->tm_wday].s);
-				break;
 			case 'A':
-				snprintf (b, sizeof (b), "%s",
-					  WeekdayTable[tm->tm_wday].l);
-				break;
 			case 'b':
-				snprintf (b, sizeof (b), "%s",
-					  MonthTable[tm->tm_mon].s);
-				break;
 			case 'B':
-				snprintf (b, sizeof (b), "%s",
-					  MonthTable[tm->tm_mon].l);
-				break;
 			case 'd':
-				snprintf (b, sizeof (b), "%02i", tm->tm_mday);
-				break;
 			case 'H':
-				snprintf (b, sizeof (b), "%02i", tm->tm_hour);
-				break;
 			case 'k':
-				snprintf (b, sizeof (b), "%i", tm->tm_hour);
-				break;
 			case 'I':
-				snprintf (b, sizeof (b), "%02i", hour12);
-				break;
 			case 'l':
-				snprintf (b, sizeof (b), "%i", hour12);
-				break;
 			case 'j':
-				snprintf (b, sizeof (b), "%03i", tm->tm_yday + 1);
-				break;
 			case 'm':
-				snprintf (b, sizeof (b), "%02i", tm->tm_mon + 1);
-				break;
 			case 'M':
-				snprintf (b, sizeof (b), "%02i", tm->tm_min);
-				break;
 			case 'S':
-				snprintf (b, sizeof (b), "%02i", tm->tm_sec);
-				break;
 			case 'y':
-				snprintf (b, sizeof (b), "%02i", tm->tm_year % 100);
-				break;
 			case 'Y':
-				snprintf (b, sizeof (b), "%i",
-					  tm->tm_year + 1900);
-				break;
+				{
+					char fmt[3] = { '%', '\0', '\0' };
+					fmt[1] = p.filename[i]; /* the letter of this 'case' */
+					strftime(b, sizeof (b), fmt, tm);
+					break;
+				}
 			case '%':
 				strcpy (b, "%");
 				break;
