@@ -70,5 +70,6 @@ int override_usbids_action (GPParams *, int usb_vendor, int usb_product,
 int debug_action           (GPParams *);
 int list_config_action     (GPParams *);
 int get_config_action      (GPParams *, const char *name);
+int set_config_action      (GPParams *, const char *name, const char *value);
 
 #endif /* __ACTIONS_H__ */

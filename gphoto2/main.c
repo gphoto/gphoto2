@@ -151,6 +151,7 @@ OPTION_CALLBACK(make_dir);
 OPTION_CALLBACK(remove_dir);
 OPTION_CALLBACK(list_config);
 OPTION_CALLBACK(get_config);
+OPTION_CALLBACK(set_config);
 
 /* 2) Add an entry in the option table                          */
 /*    ----------------------------------------------------------------- */
@@ -208,6 +209,7 @@ Option option[] = {
 #endif
 {"", "list-config", "", N_("List the configuration tree"),    list_config, 0},
 {"", "get-config", "name", N_("Get a configuration variable"),    get_config, 0},
+{"", "set-config", "name", N_("Set a configuration variable"),    set_config, 0},
 {"F" , "frames", "count", N_("Set number of frames to capture (default=infinite)"), capture_frames, 0},
 {"I" , "interval", "seconds", N_("Set capture interval in seconds"), capture_interval, 0},
 {"" , "capture-preview", "", N_("Capture a quick preview"), capture_preview, 0},
@@ -312,6 +314,24 @@ OPTION_CALLBACK(get_config)
 	CR (get_config_action (&p, arg));
 
         return (GP_OK);
+}
+
+OPTION_CALLBACK(set_config)
+{
+        char *name, *value;
+	int ret;
+
+	if (strchr (arg, '=') == NULL)
+		return GP_ERROR_BAD_PARAMETERS;
+	name = strdup (arg);
+        if (!name) 
+		return GP_ERROR_NO_MEMORY;
+	value = strchr (name,'=');
+	*value = '\0';
+	value++;
+	ret = set_config_action (&p, name, value);
+	free (name);
+	return ret;
 }
 
 OPTION_CALLBACK(list_config)
@@ -1212,6 +1232,7 @@ typedef enum {
 	ARG_GET_ALL_THUMBNAILS,
 	ARG_GET_AUDIO_DATA,
 	ARG_GET_CONFIG,
+	ARG_SET_CONFIG,
 	ARG_GET_FILE,
 	ARG_GET_RAW_DATA,
 	ARG_GET_THUMBNAIL,
@@ -1502,6 +1523,21 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 	case ARG_GET_CONFIG:
 		params->p.r = get_config_action (&p, arg);
 		break;
+	case ARG_SET_CONFIG: {
+		char *name, *value;
+
+		if (strchr (arg, '=') == NULL) {
+			params->p.r = GP_ERROR_BAD_PARAMETERS;
+			break;
+		}
+		name  = strdup (arg);
+		value = strchr (name, '=');
+		*value = '\0';
+		value++;
+		params->p.r = set_config_action (&p, name, value);
+		free (name);
+		break;
+	}
 	default:
 		break;
 	};
@@ -1653,6 +1689,8 @@ main (int argc, char **argv)
 		 N_("List configuration tree"), NULL},
 		{"get-config", '\0', POPT_ARG_STRING, NULL, ARG_GET_CONFIG,
 		 N_("Get configuration value"), NULL},
+		{"set-config", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG,
+		 N_("Set configuration value"), NULL},
 		{"capture-preview", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_PREVIEW,
 		 N_("Capture a quick preview"), NULL},

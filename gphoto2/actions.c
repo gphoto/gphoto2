@@ -18,6 +18,9 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#define _XOPEN_SOURCE	/* strptime proto, but this hides other prototypes */
+#define _GNU_SOURCE	/* get all the other prototypes */
+
 #include "config.h"
 #include "actions.h"
 #include "i18n.h"
@@ -28,7 +31,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* we need these for timestamps of debugging messages */
 #include <time.h>
 #include <sys/time.h>
 
@@ -1001,18 +1003,15 @@ list_config_action (GPParams *p) {
 	return (GP_OK);
 }
 
-int
-get_config_action (GPParams *p, const char *name) {
-	CameraWidget *rootconfig,*child;
+static int
+_find_widget_by_name (GPParams *p, const char *name, CameraWidget **child, CameraWidget **rootconfig) {
 	int	ret;
-	const char *label;
-	CameraWidgetType	type;
 
-	ret = gp_camera_get_config (p->camera, &rootconfig, p->context);
+	ret = gp_camera_get_config (p->camera, rootconfig, p->context);
 	if (ret != GP_OK) return ret;
-	ret = gp_widget_get_child_by_name (rootconfig, name, &child);
+	ret = gp_widget_get_child_by_name (*rootconfig, name, child);
 	if (ret != GP_OK) 
-		ret = gp_widget_get_child_by_label (rootconfig, name, &child);
+		ret = gp_widget_get_child_by_label (*rootconfig, name, child);
 	if (ret != GP_OK) {
 		char		*part, *s, *newname;
 
@@ -1020,7 +1019,7 @@ get_config_action (GPParams *p, const char *name) {
 		if (!newname)
 			return GP_ERROR_NO_MEMORY;
 
-		child = rootconfig;
+		*child = *rootconfig;
 		part = newname;
 		while (part[0] == '/')
 			part++;
@@ -1030,12 +1029,12 @@ get_config_action (GPParams *p, const char *name) {
 			s = strchr (part,'/');
 			if (s)
 				*s='\0';
-			ret = gp_widget_get_child_by_name (child, part, &tmp);
+			ret = gp_widget_get_child_by_name (*child, part, &tmp);
 			if (ret != GP_OK)
-				ret = gp_widget_get_child_by_label (child, part, &tmp);
+				ret = gp_widget_get_child_by_label (*child, part, &tmp);
 			if (ret != GP_OK)
 				break;
-			child = tmp;
+			*child = tmp;
 			if (!s) /* end of path */
 				break;
 			part = s+1;
@@ -1045,11 +1044,25 @@ get_config_action (GPParams *p, const char *name) {
 		if (s) { /* if we have stuff left over, we failed */
 			gp_context_error (p->context, _("%s not found in configuration tree.\n"), newname);
 			free (newname);
-			gp_widget_free (rootconfig);
+			gp_widget_free (*rootconfig);
 			return GP_ERROR;
 		}
 		free (newname);
 	}
+	return GP_OK;
+}
+
+int
+get_config_action (GPParams *p, const char *name) {
+	CameraWidget *rootconfig,*child;
+	int	ret;
+	const char *label;
+	CameraWidgetType	type;
+
+	ret = _find_widget_by_name (p, name, &child, &rootconfig);
+	if (ret != GP_OK)
+		return ret;
+
 	ret = gp_widget_get_type (child, &type);
 	if (ret != GP_OK) {
 		gp_widget_free (rootconfig);
@@ -1105,18 +1118,22 @@ get_config_action (GPParams *p, const char *name) {
 		break;
 	}
 	case GP_WIDGET_DATE:  {		/* int			*/
-		int	t;
+		int	ret, t;
 		time_t	xtime;
+		struct tm *xtm;
+		char	timebuf[200];
 
 		ret = gp_widget_get_value (child, &t);
-		if (ret == GP_OK) {
-			printf ("Type: DATE\n");
-			printf ("Current: %d\n",t);
-			xtime = t;
-			printf ("Printable: %s\n",ctime (&xtime));
-		} else {
+		if (ret != GP_OK) {
 			gp_context_error (p->context, _("Failed to retrieve values of date/time widget %s.\n"), name);
+			break;
 		}
+		xtime = t;
+		xtm = localtime (&xtime);
+		ret = strftime (timebuf, sizeof(timebuf), "%c", xtm);
+		printf ("Type: DATE\n");
+		printf ("Current: %d\n", t);
+		printf ("Printable: %s\n", timebuf);
 		break;
 	}
 	case GP_WIDGET_MENU:
@@ -1151,4 +1168,155 @@ get_config_action (GPParams *p, const char *name) {
 	}
 	gp_widget_free (rootconfig);
 	return (GP_OK);
+}
+
+int
+set_config_action (GPParams *p, const char *name, const char *value) {
+	CameraWidget *rootconfig,*child;
+	int	ret;
+	const char *label;
+	CameraWidgetType	type;
+
+	ret = _find_widget_by_name (p, name, &child, &rootconfig);
+	if (ret != GP_OK)
+		return ret;
+
+	ret = gp_widget_get_type (child, &type);
+	if (ret != GP_OK) {
+		gp_widget_free (rootconfig);
+		return ret;
+	}
+	ret = gp_widget_get_label (child, &label);
+	if (ret != GP_OK) {
+		gp_widget_free (rootconfig);
+		return ret;
+	}
+
+	switch (type) {
+	case GP_WIDGET_TEXT: {		/* char *		*/
+		ret = gp_widget_set_value (child, value);
+		if (ret != GP_OK)
+			gp_context_error (p->context, _("Failed to set the value of text widget %s to %s.\n"), name, value);
+		break;
+	}
+	case GP_WIDGET_RANGE: {	/* float		*/
+		float	f,t,b,s;
+
+		ret = gp_widget_get_range (child, &b, &t, &s);
+		if (ret != GP_OK)
+			break;
+		if (!sscanf (value, "%f", &f)) {
+			gp_context_error (p->context, _("The passed value %s is not a floating point value.\n"), value);
+			ret = GP_ERROR_BAD_PARAMETERS;
+			break;
+		}
+		if ((f < b) || (f > t)) {
+			gp_context_error (p->context, _("The passed value %f is not within the expected range %f - %f\n"), f, b, t);
+			ret = GP_ERROR_BAD_PARAMETERS;
+			break;
+		}
+		ret = gp_widget_set_value (child, &f);
+		if (ret != GP_OK)
+			gp_context_error (p->context, _("Failed to set the value of range widget %s to %f.\n"), name, f);
+		break;
+	}
+	case GP_WIDGET_TOGGLE: {	/* int		*/
+		int	t;
+
+		t = 2;
+		if (	strcasecmp (value, "off")	|| strcasecmp (value, "no")	||
+			strcasecmp (value, "false")	|| strcmp (value, "0")		||
+			strcasecmp (value, _("off"))	|| strcasecmp (value, _("no"))	||
+			strcasecmp (value, _("false"))
+		)
+			t = 0;
+		if (	strcasecmp (value, "on")	|| strcasecmp (value, "yes")	||
+			strcasecmp (value, "true")	|| strcmp (value, "0")		||
+			strcasecmp (value, _("on"))	|| strcasecmp (value, _("yes"))	||
+			strcasecmp (value, _("true"))
+		)
+			t = 1;
+		if (t == 2) {
+			gp_context_error (p->context, _("The passed value %s is not a valid toggle value.\n"), value);
+			ret = GP_ERROR_BAD_PARAMETERS;
+			break;
+		}
+		ret = gp_widget_set_value (child, &t);
+		if (ret != GP_OK)
+			gp_context_error (p->context, _("Failed to set values %s of toggle widget %s.\n"), value, name);
+		break;
+	}
+	case GP_WIDGET_DATE:  {		/* int			*/
+		int	t = -1;
+		struct tm xtm;
+
+#ifdef HAVE_STRPTIME
+		if (strptime (value, "%c", &xtm) || strptime (value, "%Ec", &xtm))
+			t = mktime (&xtm);
+#endif
+		if (t == -1) {
+			if (!sscanf (value, "%d", &t)) {
+				gp_context_error (p->context, _("The passed value %s is neither a valid time nor an integer.\n"), value);
+				ret = GP_ERROR_BAD_PARAMETERS;
+				break;
+			}
+		}
+		ret = gp_widget_set_value (child, &t);
+		if (ret != GP_OK)
+			gp_context_error (p->context, _("Failed to set new time of date/time widget %s to %s.\n"), name, value);
+		break;
+	}
+	case GP_WIDGET_MENU:
+	case GP_WIDGET_RADIO: { /* char *		*/
+		int cnt, i;
+
+		cnt = gp_widget_count_choices (child);
+		if (cnt < GP_OK) {
+			ret = cnt;
+			break;
+		}
+		ret = GP_ERROR_BAD_PARAMETERS;
+		for ( i=0; i<cnt; i++) {
+			const char *choice;
+
+			ret = gp_widget_get_choice (child, i, &choice);
+			if (ret != GP_OK)
+				continue;
+			if (!strcmp (choice, value)) {
+				ret = gp_widget_set_value (child, value);
+				break;
+			}
+		}
+		if (i != cnt)
+			break;
+
+		if (sscanf (value, "%d", &i)) {
+			if ((i>= 0) && (i < cnt)) {
+				const char *choice;
+
+				ret = gp_widget_get_choice (child, i, &choice);
+				if (ret == GP_OK)
+					ret = gp_widget_set_value (child, choice);
+				break;
+			}
+		}
+		gp_context_error (p->context, _("Choice %s not found within list of choices.\n"), value);
+		break;
+	}
+
+	/* ignore: */
+	case GP_WIDGET_WINDOW:
+	case GP_WIDGET_SECTION:
+	case GP_WIDGET_BUTTON:
+		gp_context_error (p->context, _("The %s widget is not configurable.\n"), name);
+		ret = GP_ERROR_BAD_PARAMETERS;
+		break;
+	}
+	if (ret == GP_OK) {
+		ret = gp_camera_set_config (p->camera, rootconfig, p->context);
+		if (ret != GP_OK)
+			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s.\n"), value, name);
+	}
+	gp_widget_free (rootconfig);
+	return (ret);
 }
