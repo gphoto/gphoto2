@@ -79,10 +79,10 @@ AC_ARG_WITH(cdk-prefix, [  --with-cdk-prefix=PREFIX  Location of cdk], [
         cdk_prefix="$withval"])
 if $try_cdk; then
         CPPFLAGS_save="$CPPFLAGS"
-        CPPFLAGS="-I$cdk_prefix/include -I$cdk_prefix/include/cdk $CPPFLAGS"
-        AC_CHECK_HEADER(cdk.h, [
+        CPPFLAGS="-I$cdk_prefix/include $CPPFLAGS"
+        AC_CHECK_HEADER(cdk/cdk.h, [
                 have_cdk=true
-                CDK_CFLAGS="-I$cdk_prefix/include -I$cdk_prefix/include/cdk"
+                CDK_CFLAGS="-I$cdk_prefix/include"
                 CDK_LIBS="-L$cdk_prefix/lib -lcdk -lncurses"
                 AC_DEFINE(HAVE_CDK,,[whether we have CDK])
                 LDFLAGS_save="$LDFLAGS"
@@ -300,9 +300,7 @@ AC_SUBST(RL_CFLAGS)
 AC_OUTPUT([
 Makefile
 gphoto2/Makefile
-intl/Makefile
 doc/Makefile
-po/Makefile.in
 ])
 
 echo "
