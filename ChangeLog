@@ -1,3 +1,10 @@
+2003-12-11  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Patch by Andreas Burmester <a.burmester@hamburg.de>:
+
+	* gphoto2/gp-params.c: Only use 79 columns so that the screen doesn't
+	  get messed up on terminals with 80 columns and line wrap.
+
 2003-12-09  Hubert Figuiere  <hfiguiere@teaser.fr>
 
 	* configure.in: required version is 2.1.2 because of gp_library_version

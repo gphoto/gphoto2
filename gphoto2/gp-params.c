@@ -241,7 +241,7 @@ gp_params_init (GPParams *p)
 
 	gp_camera_new (&p->camera);
 
-	p->cols = 80;
+	p->cols = 79;
 	p->flags = FOR_EACH_FLAGS_RECURSE;
 
 	/* Create a context. Report progress only if users will see it. */
