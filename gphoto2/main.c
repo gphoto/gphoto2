@@ -1,5 +1,4 @@
-/* $Id$
- *
+/*
  * Copyright (C) 2002 Lutz Müller <lutz@users.sourceforge.net>
  *
  * This library is free software; you can redistribute it and/or
