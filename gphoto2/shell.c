@@ -148,7 +148,7 @@ shell_arg_count (const char *args)
 static char *
 shell_read_line (void)
 {
-	char prompt[70], buf[1024], *line;
+	char prompt[70], buf[1024], *line, *tmp;
 
 	if (p->quiet)
 		snprintf (prompt, sizeof (prompt), SHELL_PROMPT, "\0", "\0");
@@ -167,13 +167,17 @@ shell_read_line (void)
 	line = readline (prompt);
 	if (line)
 		add_history (line);
+	else
+		return (NULL);      
 #else
 	line = malloc (1024);
 	if (!line)
 		return (NULL);
 	printf (SHELL_PROMPT, prompt, p->folder);
 	fflush(stdout);
-	fgets (line, 1023, stdin);
+	tmp = fgets (line, 1023, stdin);
+	if (tmp == NULL)
+		return (NULL);
 	line[strlen (line) - 1] = '\0'; 
 #endif
 	return (line);
