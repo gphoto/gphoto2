@@ -28,6 +28,7 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 {
 	static const char *verb[] = {
 		VERSION,
+		HAVE_CC " (C compiler used)",
 #ifdef HAVE_POPT
 		"popt (for handling command-line parameters)",
 #else
