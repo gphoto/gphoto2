@@ -1042,7 +1042,7 @@ _find_widget_by_name (GPParams *p, const char *name, CameraWidget **child, Camer
 				part++;
 		}
 		if (s) { /* if we have stuff left over, we failed */
-			gp_context_error (p->context, _("%s not found in configuration tree.\n"), newname);
+			gp_context_error (p->context, _("%s not found in configuration tree."), newname);
 			free (newname);
 			gp_widget_free (*rootconfig);
 			return GP_ERROR;
@@ -1084,7 +1084,7 @@ get_config_action (GPParams *p, const char *name) {
 			printf ("Type: TEXT\n"); /* parsed by scripts, no i18n */
 			printf ("Current: %s\n",txt);
 		} else {
-			gp_context_error (p->context, _("Failed to retrieve value of text widget %s.\n"), name);
+			gp_context_error (p->context, _("Failed to retrieve value of text widget %s."), name);
 		}
 		break;
 	}
@@ -1101,7 +1101,7 @@ get_config_action (GPParams *p, const char *name) {
 			printf ("Top: %g\n", t);	/* parsed by scripts, no i18n */
 			printf ("Step: %g\n", s);	/* parsed by scripts, no i18n */
 		} else {
-			gp_context_error (p->context, _("Failed to retrieve values of range widget %s.\n"), name);
+			gp_context_error (p->context, _("Failed to retrieve values of range widget %s."), name);
 		}
 		break;
 	}
@@ -1113,7 +1113,7 @@ get_config_action (GPParams *p, const char *name) {
 			printf ("Type: TOGGLE\n");
 			printf ("Current: %d\n",t);
 		} else {
-			gp_context_error (p->context, _("Failed to retrieve values of toggle widget %s.\n"), name);
+			gp_context_error (p->context, _("Failed to retrieve values of toggle widget %s."), name);
 		}
 		break;
 	}
@@ -1125,7 +1125,7 @@ get_config_action (GPParams *p, const char *name) {
 
 		ret = gp_widget_get_value (child, &t);
 		if (ret != GP_OK) {
-			gp_context_error (p->context, _("Failed to retrieve values of date/time widget %s.\n"), name);
+			gp_context_error (p->context, _("Failed to retrieve values of date/time widget %s."), name);
 			break;
 		}
 		xtime = t;
@@ -1155,7 +1155,7 @@ get_config_action (GPParams *p, const char *name) {
 				printf ("Choice: %d %s\n", i, choice);
 			}
 		} else {
-			gp_context_error (p->context, _("Failed to retrieve values of radio widget %s.\n"), name);
+			gp_context_error (p->context, _("Failed to retrieve values of radio widget %s."), name);
 		}
 		break;
 	}
@@ -1196,7 +1196,7 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 	case GP_WIDGET_TEXT: {		/* char *		*/
 		ret = gp_widget_set_value (child, value);
 		if (ret != GP_OK)
-			gp_context_error (p->context, _("Failed to set the value of text widget %s to %s.\n"), name, value);
+			gp_context_error (p->context, _("Failed to set the value of text widget %s to %s."), name, value);
 		break;
 	}
 	case GP_WIDGET_RANGE: {	/* float		*/
@@ -1206,18 +1206,18 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 		if (ret != GP_OK)
 			break;
 		if (!sscanf (value, "%f", &f)) {
-			gp_context_error (p->context, _("The passed value %s is not a floating point value.\n"), value);
+			gp_context_error (p->context, _("The passed value %s is not a floating point value."), value);
 			ret = GP_ERROR_BAD_PARAMETERS;
 			break;
 		}
 		if ((f < b) || (f > t)) {
-			gp_context_error (p->context, _("The passed value %f is not within the expected range %f - %f\n"), f, b, t);
+			gp_context_error (p->context, _("The passed value %f is not within the expected range %f - %f."), f, b, t);
 			ret = GP_ERROR_BAD_PARAMETERS;
 			break;
 		}
 		ret = gp_widget_set_value (child, &f);
 		if (ret != GP_OK)
-			gp_context_error (p->context, _("Failed to set the value of range widget %s to %f.\n"), name, f);
+			gp_context_error (p->context, _("Failed to set the value of range widget %s to %f."), name, f);
 		break;
 	}
 	case GP_WIDGET_TOGGLE: {	/* int		*/
@@ -1237,13 +1237,13 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 		)
 			t = 1;
 		if (t == 2) {
-			gp_context_error (p->context, _("The passed value %s is not a valid toggle value.\n"), value);
+			gp_context_error (p->context, _("The passed value %s is not a valid toggle value."), value);
 			ret = GP_ERROR_BAD_PARAMETERS;
 			break;
 		}
 		ret = gp_widget_set_value (child, &t);
 		if (ret != GP_OK)
-			gp_context_error (p->context, _("Failed to set values %s of toggle widget %s.\n"), value, name);
+			gp_context_error (p->context, _("Failed to set values %s of toggle widget %s."), value, name);
 		break;
 	}
 	case GP_WIDGET_DATE:  {		/* int			*/
@@ -1256,14 +1256,14 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 #endif
 		if (t == -1) {
 			if (!sscanf (value, "%d", &t)) {
-				gp_context_error (p->context, _("The passed value %s is neither a valid time nor an integer.\n"), value);
+				gp_context_error (p->context, _("The passed value %s is neither a valid time nor an integer."), value);
 				ret = GP_ERROR_BAD_PARAMETERS;
 				break;
 			}
 		}
 		ret = gp_widget_set_value (child, &t);
 		if (ret != GP_OK)
-			gp_context_error (p->context, _("Failed to set new time of date/time widget %s to %s.\n"), name, value);
+			gp_context_error (p->context, _("Failed to set new time of date/time widget %s to %s."), name, value);
 		break;
 	}
 	case GP_WIDGET_MENU:
@@ -1300,7 +1300,7 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 				break;
 			}
 		}
-		gp_context_error (p->context, _("Choice %s not found within list of choices.\n"), value);
+		gp_context_error (p->context, _("Choice %s not found within list of choices."), value);
 		break;
 	}
 
