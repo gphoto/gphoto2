@@ -118,8 +118,8 @@ do
     ( sed -e 's#\(^SUBDIRS.*\) intl#\1#' Makefile.am >Makefile.am.new \
     && mv Makefile.am.new Makefile.am )
 
-    echo "Running gettextize --copy $gettext_opt"
-    gettextize --copy $gettext_opt || fail
+    echo "Running gettextize $gettext_opt"
+    gettextize $gettext_opt || fail
     if test -f po/Makevars.template
     then
 	cp po/Makevars.template po/Makevars
