@@ -1755,7 +1755,7 @@ main (int argc, char **argv)
 
 	/* For translation */
 	setlocale (LC_ALL, "");
-        bindtextdomain (PACKAGE, GPHOTO2_LOCALEDIR);
+        bindtextdomain (PACKAGE, LOCALEDIR);
         textdomain (PACKAGE);
 
 	/* Create the global variables. */

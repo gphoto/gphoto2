@@ -42,7 +42,7 @@
 #  include "gphoto2-cmd-capture.h"
 #endif
 
-#ifdef HAVE_EXIF
+#ifdef HAVE_LIBEXIF
 #  include <libexif/exif-data.h>
 #endif
 
@@ -397,7 +397,7 @@ delete_file_action (GPParams *p, const char *filename)
 				       p->context));
 }
 
-#ifdef HAVE_EXIF
+#ifdef HAVE_LIBEXIF
 static void
 show_ifd (ExifContent *content)
 {
@@ -408,7 +408,7 @@ show_ifd (ExifContent *content)
                 e = content->entries[i];
                 printf ("%-20.20s", exif_tag_get_name (e->tag));
                 printf ("|");
-#ifdef HAVE_EXIF_0_6_9
+#ifdef HAVE_LIBEXIF_LOG
 		{char b[1024];
 		printf ("%-59.59s", exif_entry_get_value (e, b, sizeof (b)));
 		}
@@ -436,12 +436,12 @@ print_hline (void)
 int
 print_exif_action (GPParams *p, const char *filename)
 {
-#ifdef HAVE_EXIF
+#ifdef HAVE_LIBEXIF
         CameraFile *file;
         const char *data;
         unsigned long size;
         ExifData *ed;
-#ifdef HAVE_EXIF_0_5_4
+#ifdef HAVE_LIBEXIF_IFD
 	unsigned int i;
 #endif
 
@@ -464,7 +464,7 @@ print_exif_action (GPParams *p, const char *filename)
         printf ("%-59.59s", _("Value"));
         putchar ('\n');
         print_hline ();
-#ifdef HAVE_EXIF_0_5_4
+#ifdef HAVE_LIBEXIF_IFD
 	for (i = 0; i < EXIF_IFD_COUNT; i++)
 		if (ed->ifd[i])
 			show_ifd (ed->ifd[i]);
@@ -1103,6 +1103,23 @@ _find_widget_by_name (GPParams *p, const char *name, CameraWidget **child, Camer
 	return GP_OK;
 }
 
+/* From the strftime(3) man page:
+ * BUGS
+ *     Some buggy versions of gcc complain about the use of %c: warning:
+ *     %c yields only last 2 digits of year in some  locales.
+ *     Of course programmers are encouraged to use %c, it gives the
+ *     preferred date and time representation. One meets all kinds of
+ *     strange obfuscations to circumvent this gcc problem. A relatively
+ *     clean one is to add an intermediate function
+ */
+
+static inline size_t
+my_strftime(char *s, size_t max, const char *fmt, const struct tm *tm) {
+	return strftime(s, max, fmt, tm);
+}
+
+
+
 int
 get_config_action (GPParams *p, const char *name) {
 	CameraWidget *rootconfig,*child;
@@ -1181,7 +1198,7 @@ get_config_action (GPParams *p, const char *name) {
 		}
 		xtime = t;
 		xtm = localtime (&xtime);
-		ret = strftime (timebuf, sizeof(timebuf), "%c", xtm);
+		ret = my_strftime (timebuf, sizeof(timebuf), "%c", xtm);
 		printf ("Type: DATE\n");
 		printf ("Current: %d\n", t);
 		printf ("Printable: %s\n", timebuf);

@@ -21,7 +21,7 @@
 #ifndef __GPHOTO2_CMD_CAPTURE_H__
 #define __GPHOTO2_CMD_CAPTURE_H__
 
-#include <gphoto2-camera.h>
+#include <gphoto2/gphoto2-camera.h>
 
 int gp_cmd_capture_preview (Camera *camera, CameraFile *file,
 			    GPContext *context);

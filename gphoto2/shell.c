@@ -148,7 +148,10 @@ shell_arg_count (const char *args)
 static char *
 shell_read_line (void)
 {
-	char prompt[70], buf[1024], *line, *tmp;
+	char prompt[70], buf[1024], *line;
+#ifndef HAVE_RL
+	char *tmp;
+#endif
 
 	if (p->flags & FLAGS_QUIET)
 		snprintf (prompt, sizeof (prompt), SHELL_PROMPT, "\0", "\0");

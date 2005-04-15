@@ -9,14 +9,6 @@ EXTRA_DIST = \
 
 bin_PROGRAMS = gphoto2
 
-INCLUDES =						\
-	-DGPHOTO2_LOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(top_srcdir)					\
-	-I$(top_srcdir)/intl				\
-	-I$(top_srcdir)/gphoto2				\
-	$(CDK_CFLAGS) $(GP_CFLAGS) $(AA_CFLAGS)		\
-	$(EXIF_CFLAGS) $(RL_CFLAGS) $(POPT_CFLAGS)
-
 if HAVE_CDK
 CDK_FILES = gphoto2-cmd-config.c gphoto2-cmd-config.h
 else
@@ -50,6 +42,12 @@ gphoto2_SOURCES = 		\
 
 #gphoto2_LDFLAGS = -export-dynamic
 
+gphoto2_CFLAGS =					\
+	$(AM_CPPFLAGS) $(CPPFLAGS)			\
+	$(CDK_CFLAGS) $(LIBGPHOTO2_CFLAGS) $(AA_CFLAGS)	\
+	$(LIBEXIF_CFLAGS) $(RL_CFLAGS) $(POPT_CFLAGS)
+
+
 gphoto2_LDADD =								\
 	$(CDK_LIBS) $(AA_LIBS) $(JPEG_LIBS) $(PTHREAD_LIBS)		\
-	$(EXIF_LIBS) $(INTLLIBS) $(RL_LIBS) $(GP_LIBS) $(POPT_LIBS)
+	$(LIBEXIF_LIBS) $(INTLLIBS) $(RL_LIBS) $(LIBGPHOTO2_LIBS) $(POPT_LIBS)
