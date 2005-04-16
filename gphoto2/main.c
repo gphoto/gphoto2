@@ -102,7 +102,7 @@ OPTION_CALLBACK(abilities);
 #ifdef HAVE_CDK
 OPTION_CALLBACK(config);
 #endif
-#ifdef HAVE_EXIF
+#ifdef HAVE_LIBEXIF
 OPTION_CALLBACK(show_exif);
 #endif
 OPTION_CALLBACK(show_info);
@@ -218,7 +218,7 @@ Option option[] = {
 {"" , "capture-image",  "",  N_("Capture an image"),        capture_image,   0},
 {"" , "capture-movie",  "",  N_("Capture a movie "),        capture_movie,   0},
 {"" , "capture-sound",  "",  N_("Capture an audio clip"),   capture_sound,   0},
-#ifdef HAVE_EXIF
+#ifdef HAVE_LIBEXIF
 {"", "show-exif", "range",   N_("Show EXIF information"), show_exif, 0},
 #endif
 {"", "show-info", "range",   N_("Show info"), show_info, 0},
@@ -482,7 +482,7 @@ OPTION_CALLBACK(show_info)
 	return (for_each_file_in_range (&p, print_info_action, arg));
 }
 
-#ifdef HAVE_EXIF
+#ifdef HAVE_LIBEXIF
 OPTION_CALLBACK(show_exif)
 {
 	/*
@@ -1732,7 +1732,7 @@ main (int argc, char **argv)
 		 ARG_CAPTURE_MOVIE, N_("Capture a movie"), NULL},
 		{"capture-sound", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_SOUND, N_("Capture an audio clip"), NULL},
-#ifdef HAVE_EXIF
+#ifdef HAVE_LIBEXIF
 		{"show-exif", '\0', POPT_ARG_STRING, NULL, ARG_SHOW_EXIF,
 		 N_("Show EXIF information"), NULL},
 #endif

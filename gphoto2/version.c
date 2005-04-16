@@ -39,7 +39,7 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 #else
 		"no popt (for handling command-line parameters)",
 #endif
-#ifdef HAVE_EXIF
+#ifdef HAVE_LIBEXIF
 		"exif (for displaying EXIF information)",
 #else
 		"no exif (for displaying EXIF information)",
@@ -78,7 +78,7 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 #else
 		"no popt",
 #endif
-#ifdef HAVE_EXIF
+#ifdef HAVE_LIBEXIF
 		"exif",
 #else
 		"no exif",

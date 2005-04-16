@@ -75,7 +75,7 @@ static int shell_help          (Camera *, const char *);
 static int shell_ls            (Camera *, const char *);
 static int shell_exit          (Camera *, const char *);
 static int shell_show_info     (Camera *, const char *);
-#ifdef HAVE_EXIF
+#ifdef HAVE_LIBEXIF
 static int shell_show_exif     (Camera *, const char *);
 #endif
 
@@ -109,7 +109,7 @@ struct _ShellFunctionTable {
 	{"show-info", shell_show_info, N_("Show info"),
 	 N_("[directory/]filename"), 1},
 	{"delete", shell_del, N_("Delete"), N_("[directory/]filename"), 1},
-#ifdef HAVE_EXIF
+#ifdef HAVE_LIBEXIF
 	{"show-exif", shell_show_exif, N_("Show EXIF information"),
 	 N_("[directory/]filename"), 1},
 #endif
@@ -698,7 +698,7 @@ shell_del (Camera *camera, const char *arg)
 	return (GP_OK);
 }
 
-#ifdef HAVE_EXIF
+#ifdef HAVE_LIBEXIF
 static int
 shell_show_exif (Camera *camera, const char *arg)
 {
