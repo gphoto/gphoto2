@@ -33,10 +33,17 @@ dnl AC_STRUCT_TIMEZONE
 GP_CONFIG_MSG([Features])
 
 
+# ----------------------------------------------------------------------
+# References to external resources (web sites, mailing listes, etc.)
+# ----------------------------------------------------------------------
+
+GP_REFERENCES()dnl
+
+
 dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
-GP_GETTEXT_HACK([],[Lutz Müller and others])
+GP_GETTEXT_HACK([],[Lutz Müller and others],[${MAIL_GPHOTO_TRANSLATION}])
 ALL_LINGUAS="az cs da de en_GB es fi fr hu it ja nb nl pt_BR ro ru rw sk sl sr sv uk zh_CN"
 AM_GNU_GETTEXT_VERSION([0.14.1])
 AM_GNU_GETTEXT([external])
