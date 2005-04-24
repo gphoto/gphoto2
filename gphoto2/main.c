@@ -569,7 +569,8 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 	b[sizeof (b) - 1] = '\0';
 	for (i = 0; i < strlen (p.filename); i++) {
 		if (p.filename[i] == '%') {
-			switch (p.filename[++i]) {
+			i++;
+			switch (p.filename[i]) {
 			case 'n':
 
 				/*
