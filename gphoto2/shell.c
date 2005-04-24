@@ -133,11 +133,11 @@ shell_arg_count (const char *args)
 	int x=0, in_arg=0, count=0;
 	
 	while (x < strlen (args)) {
-		if ((!isspace(args[x])) && (!in_arg)) {
+		if ((!isspace((int)(args[x]))) && (!in_arg)) {
 			in_arg = 1;
 			count++;
 		}
-		if ((isspace(args[x])) && (in_arg))
+		if ((isspace((int)(args[x]))) && (in_arg))
 			in_arg = 0;
 		x++;
 	}
@@ -195,13 +195,13 @@ shell_arg (const char *args, int arg_num, char *arg)
 		return (GP_ERROR);
 
 	while (x < strlen(args)) {				/* Edge-triggered */
-		if ((!isspace(args[x])) && (!in_arg)) {
+		if ((!isspace((int)(args[x]))) && (!in_arg)) {
 			in_arg = 1;
 			if (count == arg_num)
 				copy = 1;
 			count++;
 		}
-		if ((isspace(args[x])) && (in_arg)) {
+		if ((isspace((int)(args[x]))) && (in_arg)) {
 			copy = 0;
 			in_arg = 0;
 		}
