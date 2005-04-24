@@ -569,7 +569,52 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 	b[sizeof (b) - 1] = '\0';
 	for (i = 0; i < strlen (p.filename); i++) {
 		if (p.filename[i] == '%') {
+			char padding = '0'; /* default padding character */
+			int precision = 0;  /* default: no padding */
 			i++;
+			/* determine padding character */
+			switch (p.filename[i]) {
+			  /* case ' ':
+			   * spaces are not supported everywhere, so we
+			   * restrict ourselves to padding with zeros.
+			   */
+			case '0':
+				padding = p.filename[i];
+				precision = 1; /* do padding */
+				i++;
+				break;
+			}
+			/* determine padding width */
+			if (isdigit((int)p.filename[i])) {
+				char *cp;
+				long int _prec;
+				_prec = strtol(&p.filename[i],
+					       &cp, 10);
+				if (_prec < 1) 
+					precision = 1;
+				else if (_prec > 20)
+					precision = 20;
+				else
+					precision = _prec;
+				if (*cp != 'n') {
+					/* make sure this is %n */
+					gp_context_error (p.context,
+						  _("Zero padding numbers "
+						    "in file names is only "
+						    "possible with %%n."));
+					return GP_ERROR_BAD_PARAMETERS;
+				}
+				/* go to first non-digit character */
+				i += (cp - &p.filename[i]);
+			} else if (precision && ( p.filename[i] != 'n')) {
+				gp_context_error (p.context,
+					  _("You cannot use %%n "
+					    "zero padding "
+					    "without a "
+					    "precision value!"
+					    ));
+				return GP_ERROR_BAD_PARAMETERS;
+			}
 			switch (p.filename[i]) {
 			case 'n':
 
@@ -591,11 +636,19 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 					*path = NULL;
 					return (n);
 				}
-				snprintf (b, sizeof (b), "%i", n + 1);
+				if (precision > 1) {
+					char padfmt[16];
+					strcpy(padfmt, "%!.*i");
+					padfmt[1] = padding;
+					snprintf (b, sizeof (b), padfmt,
+						  precision, n + 1);
+				} else {
+					snprintf (b, sizeof (b), "%i",
+						  n + 1);
+				}
 				break;
 
 			case 'C':
-
 				/* Get the suffix of the original name */
 				s = strrchr (name, '.');
 				if (!s) {
