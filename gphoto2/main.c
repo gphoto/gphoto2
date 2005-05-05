@@ -39,6 +39,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <unistd.h>
+#include <ctype.h>
 #include <locale.h>
 
 #ifdef HAVE_POPT
