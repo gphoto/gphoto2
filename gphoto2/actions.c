@@ -844,6 +844,12 @@ int
 print_version_action (GPParams *p)
 {
 	int n;
+	const char *port_message =
+#ifdef OS2
+			_("OS/2 port by Bart van Leeuwen\n");
+#else
+			"";
+#endif
 	printf (_("gphoto2 %s\n"
 		  "\n"
 		  "Copyright (c) 2000-2004 Lutz Mueller and others\n"
@@ -854,13 +860,8 @@ print_version_action (GPParams *p)
 		  "License. For more information about these matters, see the files named COPYING.\n"
 		  "\n"
 		  "This version of gphoto2 is using the following software versions and options:\n"),
-
 		VERSION,
-#ifdef OS2
-			_("OS/2 port by Bart van Leeuwen\n")
-#else
-			""
-#endif
+		port_message
 		);
 
 	for (n = 0; module_versions[n].name != NULL; n++) {
