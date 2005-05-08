@@ -30,6 +30,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
+
 #ifdef HAVE_RL
 #  include <readline/readline.h>
 #  include <readline/history.h>
@@ -413,12 +417,14 @@ shell_prompt (GPParams *params)
 			fflush(stdout);
 			break;
 		}
+#ifdef HAVE_UNISTD_H
 		if (!isatty(fileno(stdin))) {
-			/* if non-interactive, the command has not been printed yet, so
-			 * we do that here */
+			/* if non-interactive input, the command has not been
+			 * printed yet, so we do that here */
 			printf("%s\n", line);
 			fflush(stdout);
 		}
+#endif
 
 		/* If we don't have any command, start from the beginning */
 		if (shell_arg_count (line) <= 0) {
