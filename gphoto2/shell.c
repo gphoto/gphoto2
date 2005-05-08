@@ -407,8 +407,18 @@ shell_prompt (GPParams *params)
 
 	while (!shell_done && !glob_cancel) {
 		line = shell_read_line ();
-		if (!line)
-			continue;
+		if (line ==  NULL) {
+			/* quit shell on EOF or input error */
+			printf("\n");
+			fflush(stdout);
+			break;
+		}
+		if (!isatty(fileno(stdin))) {
+			/* if non-interactive, the command has not been printed yet, so
+			 * we do that here */
+			printf("%s\n", line);
+			fflush(stdout);
+		}
 
 		/* If we don't have any command, start from the beginning */
 		if (shell_arg_count (line) <= 0) {
