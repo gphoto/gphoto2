@@ -751,7 +751,7 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 
         if ((p.flags & FLAGS_QUIET) == 0) {
                 while ((p.flags & FLAGS_FORCE_OVERWRITE) == 0 &&
-		       GP_SYSTEM_IS_FILE (s)) {
+		       gp_system_is_file (s)) {
 			do {
 				putchar ('\007');
 				printf (_("File %s exists. Overwrite? [y|n] "),
