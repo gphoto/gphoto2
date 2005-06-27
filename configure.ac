@@ -59,7 +59,7 @@ dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
 GP_GETTEXT_HACK([],[Lutz Müller and others],[${MAIL_GPHOTO_TRANSLATION}])
-ALL_LINGUAS="az cs da de en_GB es eu fi fr hu it ja nb nl pt_BR ro ru rw sk sl sr sv uk zh_CN zh_TW"
+ALL_LINGUAS="az cs da de en_GB es eu fi fr hu it ja nb nl pt_BR ro ru rw sk sl sr sv uk vi zh_CN zh_TW"
 AM_GNU_GETTEXT_VERSION([0.14.1])
 AM_GNU_GETTEXT([external])
 AM_PO_SUBDIRS()
