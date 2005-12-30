@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-11 17:45+0200\n"
+"Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2005-09-25 12:28+0200\n"
 "PO-Revision-Date: 2005-05-11 18:05+0200\n"
 "Last-Translator: Hizkuntza Politikarako Sailburuordetza <hizkpol@ej-gv.es>\n"
 "Language-Team:  <itzulpena@euskalgnu.org>\n"
@@ -18,210 +18,212 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "\n"
 
-#: ../gphoto2/actions.c:101
+#: gphoto2/actions.c:124
 #, c-format
 msgid "Number of files in folder '%s': %i\n"
 msgstr "'%s' karpetako fitxategi-kopurua: %i\n"
 
-#: ../gphoto2/actions.c:122
+#: gphoto2/actions.c:145
 #, c-format
 msgid "There are no folders in folder '%s'."
 msgstr "Ez dago karpetarik '%s' karpetan."
 
-#: ../gphoto2/actions.c:126
+#: gphoto2/actions.c:149
 #, c-format
 msgid "There is one folder in folder '%s':"
 msgstr "Karpeta bat dago '%s' karpetan:"
 
-#: ../gphoto2/actions.c:130
+#: gphoto2/actions.c:153
 #, c-format
 msgid "There are %i folders in folder '%s':"
 msgstr "%i karpeta daude '%s' karpetan:"
 
-#: ../gphoto2/actions.c:157 ../gphoto2/foreach.c:277
+#: gphoto2/actions.c:196 gphoto2/foreach.c:277
 #, c-format
 msgid "There are no files in folder '%s'."
 msgstr "Ez dago fitxategirik '%s' karpetan."
 
-#: ../gphoto2/actions.c:162
+#: gphoto2/actions.c:200
 #, c-format
 msgid "There is one file in folder '%s':"
 msgstr "Fitxategi bat dago '%s' karpetan:"
 
-#: ../gphoto2/actions.c:167
+#: gphoto2/actions.c:204
 #, c-format
 msgid "There are %i files in folder '%s':"
 msgstr "%i fitxategi daude '%s' karpetan:"
 
-#: ../gphoto2/actions.c:188
+#: gphoto2/actions.c:225
 #, c-format
 msgid "Information on file '%s' (folder '%s'):\n"
 msgstr "'%s' fitxategiari buruzko informazioa ('%s' karpeta):\n"
 
-#: ../gphoto2/actions.c:190
+#: gphoto2/actions.c:227
 #, c-format
 msgid "File:\n"
 msgstr "Fitxategia:\n"
 
-#: ../gphoto2/actions.c:192 ../gphoto2/actions.c:226 ../gphoto2/actions.c:242
+#: gphoto2/actions.c:229 gphoto2/actions.c:263 gphoto2/actions.c:279
 #, c-format
 msgid "  None available.\n"
 msgstr "  Bat ere ez erabilgarri.\n"
 
-#: ../gphoto2/actions.c:195
+#: gphoto2/actions.c:232
 #, c-format
 msgid "  Name:        '%s'\n"
 msgstr "  Izena:        '%s'\n"
 
-#: ../gphoto2/actions.c:197 ../gphoto2/actions.c:229
+#: gphoto2/actions.c:234 gphoto2/actions.c:266
 #, c-format
 msgid "  Mime type:   '%s'\n"
 msgstr "  MIME mota:   '%s'\n"
 
-#: ../gphoto2/actions.c:199 ../gphoto2/actions.c:231
+#: gphoto2/actions.c:236 gphoto2/actions.c:268
 #, c-format
 msgid "  Size:        %li byte(s)\n"
 msgstr "  Tamaina:        %li byte\n"
 
-#: ../gphoto2/actions.c:201 ../gphoto2/actions.c:233
+#: gphoto2/actions.c:238 gphoto2/actions.c:270
 #, c-format
 msgid "  Width:       %i pixel(s)\n"
 msgstr "  Zabalera:       %i pixel\n"
 
-#: ../gphoto2/actions.c:203 ../gphoto2/actions.c:235
+#: gphoto2/actions.c:240 gphoto2/actions.c:272
 #, c-format
 msgid "  Height:      %i pixel(s)\n"
 msgstr "  Altuera:       %i pixel\n"
 
-#: ../gphoto2/actions.c:205 ../gphoto2/actions.c:237
+#: gphoto2/actions.c:242 gphoto2/actions.c:274
 #, c-format
 msgid "  Downloaded:  %s\n"
 msgstr "  Deskargatuta:  %s\n"
 
-#: ../gphoto2/actions.c:206 ../gphoto2/actions.c:238 ../gphoto2/actions.c:250
-#: ../gphoto2/actions.c:567 ../gphoto2/actions.c:569 ../gphoto2/actions.c:597
-#: ../gphoto2/actions.c:600 ../gphoto2/actions.c:603 ../gphoto2/actions.c:606
+#: gphoto2/actions.c:243 gphoto2/actions.c:275 gphoto2/actions.c:287
+#: gphoto2/actions.c:624 gphoto2/actions.c:626 gphoto2/actions.c:654
+#: gphoto2/actions.c:657 gphoto2/actions.c:660 gphoto2/actions.c:663
+#: gphoto2/actions.c:1304
 msgid "yes"
 msgstr "bai"
 
-#: ../gphoto2/actions.c:206 ../gphoto2/actions.c:238 ../gphoto2/actions.c:250
-#: ../gphoto2/actions.c:567 ../gphoto2/actions.c:569 ../gphoto2/actions.c:597
-#: ../gphoto2/actions.c:600 ../gphoto2/actions.c:603 ../gphoto2/actions.c:606
+#: gphoto2/actions.c:243 gphoto2/actions.c:275 gphoto2/actions.c:287
+#: gphoto2/actions.c:624 gphoto2/actions.c:626 gphoto2/actions.c:654
+#: gphoto2/actions.c:657 gphoto2/actions.c:660 gphoto2/actions.c:663
+#: gphoto2/actions.c:1298
 msgid "no"
 msgstr "ez"
 
-#: ../gphoto2/actions.c:208
+#: gphoto2/actions.c:245
 #, c-format
 msgid "  Permissions: "
 msgstr "  Baimenak: "
 
-#: ../gphoto2/actions.c:211
+#: gphoto2/actions.c:248
 #, c-format
 msgid "read/delete"
 msgstr "irakurri/ezabatu"
 
-#: ../gphoto2/actions.c:213
+#: gphoto2/actions.c:250
 #, c-format
 msgid "read"
 msgstr "irakurri"
 
-#: ../gphoto2/actions.c:215
+#: gphoto2/actions.c:252
 #, c-format
 msgid "delete"
 msgstr "ezabatu"
 
-#: ../gphoto2/actions.c:217
+#: gphoto2/actions.c:254
 #, c-format
 msgid "none"
 msgstr "bat ere ez"
 
-#: ../gphoto2/actions.c:221
+#: gphoto2/actions.c:258
 #, c-format
 msgid "  Time:        %s"
 msgstr "  Denbora:        %s"
 
-#: ../gphoto2/actions.c:224
+#: gphoto2/actions.c:261
 #, c-format
 msgid "Thumbnail:\n"
 msgstr "Koadro txikia:\n"
 
-#: ../gphoto2/actions.c:240
+#: gphoto2/actions.c:277
 #, c-format
 msgid "Audio data:\n"
 msgstr "Audio-datuak:\n"
 
-#: ../gphoto2/actions.c:245
+#: gphoto2/actions.c:282
 #, c-format
 msgid "  Mime type:  '%s'\n"
 msgstr "  MIME mota:   '%s'\n"
 
-#: ../gphoto2/actions.c:247
+#: gphoto2/actions.c:284
 #, c-format
 msgid "  Size:       %li byte(s)\n"
 msgstr "  Tamaina:        %li byte\n"
 
-#: ../gphoto2/actions.c:249
+#: gphoto2/actions.c:286
 #, c-format
 msgid "  Downloaded: %s\n"
 msgstr "  Deskargatuta:  %s\n"
 
-#: ../gphoto2/actions.c:398
+#: gphoto2/actions.c:455
 msgid "Could not parse EXIF data."
 msgstr "Ezin izan dira EXIF datuak analizatu."
 
-#: ../gphoto2/actions.c:402
+#: gphoto2/actions.c:459
 #, c-format
 msgid "EXIF tags:"
 msgstr "EXIF etiketak:"
 
-#: ../gphoto2/actions.c:405
+#: gphoto2/actions.c:462
 msgid "Tag"
 msgstr "Etiketa"
 
-#: ../gphoto2/actions.c:407
+#: gphoto2/actions.c:464
 msgid "Value"
 msgstr "Balioa"
 
-#: ../gphoto2/actions.c:428
+#: gphoto2/actions.c:485
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
 msgstr "EXIF datuek koadro txiki bat dute (%i byte)."
 
-#: ../gphoto2/actions.c:437
+#: gphoto2/actions.c:494
 msgid "gphoto2 has been compiled without EXIF support."
 msgstr "gphoto2 EXIFen euskarririk gabe konpilatu da."
 
-#: ../gphoto2/actions.c:455
+#: gphoto2/actions.c:512
 #, c-format
 msgid "Number of supported cameras: %i\n"
 msgstr "Onartzen diren kameren kopurua: %i\n"
 
-#: ../gphoto2/actions.c:457
+#: gphoto2/actions.c:513
 #, c-format
 msgid "Supported cameras:\n"
 msgstr "Onartzen diren kamerak:\n"
 
-#: ../gphoto2/actions.c:470
+#: gphoto2/actions.c:526
 #, c-format
 msgid "\t\"%s\" (TESTING)\n"
 msgstr "\t\"%s\" (PROBA)\n"
 
-#: ../gphoto2/actions.c:473
+#: gphoto2/actions.c:529
 #, c-format
 msgid "\t\"%s\" (EXPERIMENTAL)\n"
 msgstr "\t\"%s\" (ESPERIMENTALA)\n"
 
-#: ../gphoto2/actions.c:478
+#: gphoto2/actions.c:534
 #, c-format
 msgid "\t\"%s\"\n"
 msgstr "\t\"%s\"\n"
 
-#: ../gphoto2/actions.c:506
+#: gphoto2/actions.c:564
 #, c-format
 msgid "Devices found: %i\n"
 msgstr "Aurkitutako gailuak: %i\n"
 
-#: ../gphoto2/actions.c:507
+#: gphoto2/actions.c:565
 #, c-format
 msgid ""
 "Path                             Description\n"
@@ -230,100 +232,102 @@ msgstr ""
 "Bidea                             Azalpena\n"
 "--------------------------------------------------------------\n"
 
-#: ../gphoto2/actions.c:546 ../gphoto2/actions.c:551
+#: gphoto2/actions.c:603 gphoto2/actions.c:608
 #, c-format
 msgid "%-30s %-16s\n"
 msgstr "%-30s %-16s\n"
 
-#: ../gphoto2/actions.c:546
+#: gphoto2/actions.c:603
 msgid "Model"
 msgstr "Modeloa"
 
-#: ../gphoto2/actions.c:546
+#: gphoto2/actions.c:603
 msgid "Port"
 msgstr "Ataka"
 
-#: ../gphoto2/actions.c:547
+#: gphoto2/actions.c:604
 #, c-format
 msgid "----------------------------------------------------------\n"
 msgstr "----------------------------------------------------------\n"
 
-#: ../gphoto2/actions.c:565
+#: gphoto2/actions.c:622
 #, c-format
 msgid "Abilities for camera             : %s\n"
 msgstr "Kameraren ahalmenak             : %s\n"
 
-#: ../gphoto2/actions.c:566
+#: gphoto2/actions.c:623
 #, c-format
 msgid "Serial port support              : %s\n"
 msgstr "Serieko atakaren euskarria              : %s\n"
 
-#: ../gphoto2/actions.c:568
+#: gphoto2/actions.c:625
 #, c-format
 msgid "USB support                      : %s\n"
 msgstr "USB atakaren euskarria                      : %s\n"
 
-#: ../gphoto2/actions.c:571
+#: gphoto2/actions.c:628
 #, c-format
 msgid "Transfer speeds supported        :\n"
 msgstr "Onartzen diren transferentzia-abiadurak        :\n"
 
-#: ../gphoto2/actions.c:573
+#: gphoto2/actions.c:630
 #, c-format
 msgid "                                 : %i\n"
 msgstr "                                 : %i\n"
 
-#: ../gphoto2/actions.c:576
+#: gphoto2/actions.c:633
 #, c-format
 msgid "Capture choices                  :\n"
 msgstr "Kapturatze-aukerak                  :\n"
 
-#: ../gphoto2/actions.c:578
+#: gphoto2/actions.c:635
 #, c-format
 msgid "                                 : Image\n"
 msgstr "                                 : Irudia\n"
 
-#: ../gphoto2/actions.c:582
+#: gphoto2/actions.c:639
 #, c-format
 msgid "                                 : Video\n"
 msgstr "                                 : Bideoa\n"
 
-#: ../gphoto2/actions.c:586
+#: gphoto2/actions.c:643
 #, c-format
 msgid "                                 : Audio\n"
 msgstr "                                 : Audioa\n"
 
-#: ../gphoto2/actions.c:590
+#: gphoto2/actions.c:647
 #, c-format
 msgid "                                 : Preview\n"
 msgstr "                                 : Aurrebista\n"
 
-#: ../gphoto2/actions.c:594
+#: gphoto2/actions.c:651
 #, c-format
-msgid "                                 : Capture not supported by the driver\n"
-msgstr "                                 : Kontrolatzaileak ez du kaptura onartzen\n"
+msgid ""
+"                                 : Capture not supported by the driver\n"
+msgstr ""
+"                                 : Kontrolatzaileak ez du kaptura onartzen\n"
 
-#: ../gphoto2/actions.c:596
+#: gphoto2/actions.c:653
 #, c-format
 msgid "Configuration support            : %s\n"
 msgstr "Konfiguratzeko euskarria            : %s\n"
 
-#: ../gphoto2/actions.c:598
+#: gphoto2/actions.c:655
 #, c-format
 msgid "Delete files on camera support   : %s\n"
 msgstr "Kamerako fitxategiak ezabatzeko euskarria   : %s\n"
 
-#: ../gphoto2/actions.c:601
+#: gphoto2/actions.c:658
 #, c-format
 msgid "File preview (thumbnail) support : %s\n"
 msgstr "Fitxategiak (koadro txikiak) aurreikusteko euskarria : %s\n"
 
-#: ../gphoto2/actions.c:604
+#: gphoto2/actions.c:661
 #, c-format
 msgid "File upload support              : %s\n"
 msgstr "Fitxategiak kargatzeko euskarria              : %s\n"
 
-#: ../gphoto2/actions.c:621
+#: gphoto2/actions.c:678
 #, c-format
 msgid ""
 "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
@@ -332,7 +336,7 @@ msgstr ""
 "Atakek 'serial:/dev/ttyS0' edo 'usb:' itxura izan behar dute, baina '%s'(e)k "
 "bi puntu falta ditu; beraz, zer esan nahi duen asmatzen saiatuko naiz."
 
-#: ../gphoto2/actions.c:660
+#: gphoto2/actions.c:717
 #, c-format
 msgid ""
 "The port you specified ('%s') can not be found. Please specify one of the "
@@ -343,27 +347,31 @@ msgstr ""
 "ek aurkitutako ataketako bat eta ziurtatu ondo idatzita dagoela (hau da, "
 "'serial:' edo 'usb:' aurrizkiekin)."
 
-#: ../gphoto2/actions.c:698
+#: gphoto2/actions.c:755
 #, c-format
 msgid "About the camera driver:"
 msgstr "Kamera-kontrolatzaileari buruz:"
 
-#: ../gphoto2/actions.c:712
+#: gphoto2/actions.c:768
 #, c-format
 msgid "Camera summary:"
 msgstr "Kameraren laburpena:"
 
-#: ../gphoto2/actions.c:726
+#: gphoto2/actions.c:781
 #, c-format
 msgid "Camera manual:"
 msgstr "Kameraren eskuliburua:"
 
-#: ../gphoto2/actions.c:742
+#: gphoto2/actions.c:796
 #, c-format
 msgid "You can only specify speeds for serial ports."
 msgstr "Serieko ataketarako abiadurak baino ezin dituzu adierazi."
 
-#: ../gphoto2/actions.c:793
+#: gphoto2/actions.c:849
+msgid "OS/2 port by Bart van Leeuwen\n"
+msgstr "OS/2 ataka Bart van Leeuwen-en eskutik\n"
+
+#: gphoto2/actions.c:853
 #, c-format
 msgid ""
 "gphoto2 %s\n"
@@ -391,58 +399,127 @@ msgstr ""
 "Gphoto2-ren bertsio honek hurrengo software-bertsioak eta -aukerak "
 "erabiltzen ditu:\n"
 
-#: ../gphoto2/actions.c:806
-msgid "OS/2 port by Bart van Leeuwen\n"
-msgstr "OS/2 ataka Bart van Leeuwen-en eskutik\n"
-
-#: ../gphoto2/actions.c:880
+#: gphoto2/actions.c:934
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
-msgstr "Hornitzailaren/produktuaren USB 0x%x/0x%x IDa 0x%x/0x%x-kin gainidazten"
+msgstr ""
+"Hornitzailaren/produktuaren USB 0x%x/0x%x IDa 0x%x/0x%x-kin gainidazten"
 
-#: ../gphoto2/actions.c:931
+#: gphoto2/actions.c:985
 msgid ""
 "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
 "MAILING LIST:"
 msgstr "JARRI BETI LERRO HAUEK ARAZKETA-MEZUAK POSTA-ZERRENDARA BIDALTZEAN:"
 
-#: ../gphoto2/actions.c:946
+#: gphoto2/actions.c:1000
 #, c-format
 msgid "%s has been compiled with the following options:"
 msgstr "%s honeko aukerekin konpilatu da:"
 
-#. if we have stuff left over, we failed
-#: ../gphoto2/actions.c:1042
-#, c-format
-msgid "%s not found in configuration tree.\n"
+#: gphoto2/actions.c:1097
+#, fuzzy, c-format
+msgid "%s not found in configuration tree."
 msgstr "%s ez da konfigurazio-zuhatitzean aurkitu.\n"
 
-#: ../gphoto2/actions.c:1070
-#, c-format
-msgid "Failed to retrieve value of text widget %s.\n"
+#: gphoto2/actions.c:1156
+#, fuzzy, c-format
+msgid "Failed to retrieve value of text widget %s."
 msgstr "Huts egin du %s testu-trepetaren balioa eskuratzean.\n"
 
-#: ../gphoto2/actions.c:1087
-#, c-format
-msgid "Failed to retrieve values of range widget %s.\n"
+#: gphoto2/actions.c:1173
+#, fuzzy, c-format
+msgid "Failed to retrieve values of range widget %s."
 msgstr "Huts egin du %s barrutia trepetaren balioa eskuratzean.\n"
 
-#: ../gphoto2/actions.c:1099
-#, c-format
-msgid "Failed to retrieve values of toggle widget %s.\n"
+#: gphoto2/actions.c:1185
+#, fuzzy, c-format
+msgid "Failed to retrieve values of toggle widget %s."
 msgstr "Huts egin du %s txandakatze-trepetaren balioa eskuratzean.\n"
 
-#: ../gphoto2/actions.c:1114
-#, c-format
-msgid "Failed to retrieve values of date/time widget %s.\n"
+#: gphoto2/actions.c:1197
+#, fuzzy, c-format
+msgid "Failed to retrieve values of date/time widget %s."
 msgstr "Huts egin du %s data-/ordu-trepetaren balioa eskuratzean.\n"
 
-#: ../gphoto2/actions.c:1137
-#, c-format
-msgid "Failed to retrieve values of radio widget %s.\n"
+#: gphoto2/actions.c:1227
+#, fuzzy, c-format
+msgid "Failed to retrieve values of radio widget %s."
 msgstr "Huts egin du %s aukera-trepetaren balioa eskuratzean.\n"
 
-#: ../gphoto2/foreach.c:254
+#: gphoto2/actions.c:1268
+#, fuzzy, c-format
+msgid "Failed to set the value of text widget %s to %s."
+msgstr "Huts egin du %s testu-trepetaren balioa eskuratzean.\n"
+
+#: gphoto2/actions.c:1278
+#, c-format
+msgid "The passed value %s is not a floating point value."
+msgstr ""
+
+#: gphoto2/actions.c:1283
+#, c-format
+msgid "The passed value %f is not within the expected range %f - %f."
+msgstr ""
+
+#: gphoto2/actions.c:1289
+#, fuzzy, c-format
+msgid "Failed to set the value of range widget %s to %f."
+msgstr "Huts egin du %s barrutia trepetaren balioa eskuratzean.\n"
+
+#: gphoto2/actions.c:1298
+msgid "off"
+msgstr ""
+
+#: gphoto2/actions.c:1299
+#, fuzzy
+msgid "false"
+msgstr "Balioa"
+
+#: gphoto2/actions.c:1304
+#, fuzzy
+msgid "on"
+msgstr "al."
+
+#: gphoto2/actions.c:1305
+msgid "true"
+msgstr ""
+
+#: gphoto2/actions.c:1309
+#, c-format
+msgid "The passed value %s is not a valid toggle value."
+msgstr ""
+
+#: gphoto2/actions.c:1315
+#, fuzzy, c-format
+msgid "Failed to set values %s of toggle widget %s."
+msgstr "Huts egin du %s txandakatze-trepetaren balioa eskuratzean.\n"
+
+#: gphoto2/actions.c:1328
+#, c-format
+msgid "The passed value %s is neither a valid time nor an integer."
+msgstr ""
+
+#: gphoto2/actions.c:1335
+#, fuzzy, c-format
+msgid "Failed to set new time of date/time widget %s to %s."
+msgstr "Huts egin du %s data-/ordu-trepetaren balioa eskuratzean.\n"
+
+#: gphoto2/actions.c:1372
+#, c-format
+msgid "Choice %s not found within list of choices."
+msgstr ""
+
+#: gphoto2/actions.c:1380
+#, c-format
+msgid "The %s widget is not configurable."
+msgstr ""
+
+#: gphoto2/actions.c:1387
+#, fuzzy, c-format
+msgid "Failed to set new configuration value %s for configuration entry %s."
+msgstr "Huts egin du %s aukera-trepetaren balioa eskuratzean.\n"
+
+#: gphoto2/foreach.c:254
 #, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
@@ -453,7 +530,7 @@ msgstr ""
 "daude '%s'(e)n edo haren azpikarpetetan. Lehenbizi, lortu baliozko fitxategi-"
 "zenbaki bat fitxategi-zerrendatik."
 
-#: ../gphoto2/foreach.c:283
+#: gphoto2/foreach.c:283
 #, c-format
 msgid ""
 "Bad file number. You specified %i, but there is only 1 file available in '%"
@@ -462,281 +539,286 @@ msgstr ""
 "Fitxategi-zenbaki okerra. %i adierazi duzu, baina fitxategi bakarra dago "
 "erabilgarri '%s'(e)n."
 
-#: ../gphoto2/foreach.c:291
-#, c-format
+#: gphoto2/foreach.c:291
+#, fuzzy, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
+"'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
 "Fitxategi-zenbaki okerra. %i adierazi duzu, baina %i fitxategi bakarrik "
 "daude erabilgarri '%s'(e)n. Lehenbizi, lortu baliozko fitxategi-zenbaki bat "
 "fitxategi-zerrendatik."
 
-#: ../gphoto2/gp-params.c:59
+#: gphoto2/gp-params.c:59
 #, c-format
 msgid "*** Error ***              \n"
 msgstr "*** Errorea ***              \n"
 
-#: ../gphoto2/gp-params.c:232
+#: gphoto2/gp-params.c:232
 #, c-format
 msgid "Press any key to continue.\n"
 msgstr "Sakatu edozein tekla jarraitzeko.\n"
 
-#: ../gphoto2/gp-params.c:249
+#: gphoto2/gp-params.c:249
 #, c-format
 msgid "Not enough memory."
 msgstr "Ez dago behar adina memoria."
 
-#: ../gphoto2/gphoto2-cmd-capture.c:201
+#: gphoto2/gphoto2-cmd-capture.c:201
 msgid "Operation cancelled"
 msgstr "Eragiketa bertan behera utzi da"
 
-#: ../gphoto2/gphoto2-cmd-config.c:55
+#: gphoto2/gphoto2-cmd-config.c:55
 msgid "</B/24>Continue"
 msgstr "</B/24>Jarraitu"
 
-#: ../gphoto2/gphoto2-cmd-config.c:55
+#: gphoto2/gphoto2-cmd-config.c:55
 msgid "</B16>Cancel"
 msgstr "</B16>Utzi"
 
-#: ../gphoto2/gphoto2-cmd-config.c:61
+#: gphoto2/gphoto2-cmd-config.c:61
 msgid "<C></5>Error"
 msgstr "<C></5>Errorea"
 
-#: ../gphoto2/gphoto2-cmd-config.c:63
+#: gphoto2/gphoto2-cmd-config.c:63
 msgid "Could not set configuration:"
 msgstr "Ezin izan da konfigurazioa ezarri:"
 
-#: ../gphoto2/gphoto2-cmd-config.c:107
+#: gphoto2/gphoto2-cmd-config.c:107
 msgid "Exit"
 msgstr "Irten"
 
-#: ../gphoto2/gphoto2-cmd-config.c:109
+#: gphoto2/gphoto2-cmd-config.c:109
 msgid "Back"
 msgstr "Atzera"
 
-#: ../gphoto2/gphoto2-cmd-config.c:254
+#: gphoto2/gphoto2-cmd-config.c:254
 msgid "Time: "
 msgstr "Denbora: "
 
-#: ../gphoto2/gphoto2-cmd-config.c:313 ../gphoto2/gphoto2-cmd-config.c:341
-#: ../gphoto2/gphoto2-cmd-config.c:400 ../gphoto2/gphoto2-cmd-config.c:463
+#: gphoto2/gphoto2-cmd-config.c:313 gphoto2/gphoto2-cmd-config.c:341
+#: gphoto2/gphoto2-cmd-config.c:400 gphoto2/gphoto2-cmd-config.c:463
 msgid "Value: "
 msgstr "Balioa: "
 
-#: ../gphoto2/gphoto2-cmd-config.c:362
+#: gphoto2/gphoto2-cmd-config.c:362
 msgid "Yes"
 msgstr "Bai"
 
-#: ../gphoto2/gphoto2-cmd-config.c:362
+#: gphoto2/gphoto2-cmd-config.c:362
 msgid "No"
 msgstr "Ez"
 
-#. Settings needed for formatting output
-#: ../gphoto2/main.c:165 ../gphoto2/main.c:1636
+#: gphoto2/main.c:168 gphoto2/main.c:1693
 msgid "Turn on debugging"
 msgstr "Aktibatu arazketa"
 
-#: ../gphoto2/main.c:166 ../gphoto2/main.c:1638
+#: gphoto2/main.c:169 gphoto2/main.c:1695
 msgid "Quiet output (default=verbose)"
 msgstr "Irteera isila (lehenetsia=xehatua)"
 
-#. Display and die actions
-#: ../gphoto2/main.c:170 ../gphoto2/main.c:1642
+#: gphoto2/main.c:173 gphoto2/main.c:1699
 msgid "Display version and exit"
 msgstr "Bistaratu bertsioa eta irten"
 
-#: ../gphoto2/main.c:171
+#: gphoto2/main.c:174
 msgid "Displays this help screen"
 msgstr "Laguntza-pantaila hau bistaratzen du"
 
-#: ../gphoto2/main.c:172 ../gphoto2/main.c:1644
+#: gphoto2/main.c:175 gphoto2/main.c:1701
 msgid "List supported camera models"
 msgstr "Erakutsi onartutako kamera-modeloen zerrenda"
 
-#: ../gphoto2/main.c:173 ../gphoto2/main.c:1646
+#: gphoto2/main.c:176 gphoto2/main.c:1703
 msgid "List supported port devices"
 msgstr "Erakutsi onartutako ataka-gailuen zerrenda"
 
-#: ../gphoto2/main.c:174 ../gphoto2/main.c:1648
+#: gphoto2/main.c:177 gphoto2/main.c:1705
 msgid "Send file to stdout"
 msgstr "Bidali fitxategia irteera estandarrera"
 
-#: ../gphoto2/main.c:175 ../gphoto2/main.c:1650
+#: gphoto2/main.c:178 gphoto2/main.c:1707
 msgid "Print filesize before data"
 msgstr "Inprimatu fitxategi-tamaina datuen aurretik"
 
-#: ../gphoto2/main.c:176 ../gphoto2/main.c:1652
+#: gphoto2/main.c:179 gphoto2/main.c:1709
 msgid "List auto-detected cameras"
 msgstr "Erakutsi automatikoki detektatutako kameren zerrenda"
 
-#. Settings needed for camera functions
-#: ../gphoto2/main.c:179 ../gphoto2/main.c:1654
+#: gphoto2/main.c:182 gphoto2/main.c:1711
 msgid "Specify port device"
 msgstr "Zehaztu ataka-gailua"
 
-#: ../gphoto2/main.c:180 ../gphoto2/main.c:1656
+#: gphoto2/main.c:183 gphoto2/main.c:1713
 msgid "Specify serial transfer speed"
 msgstr "Zehaztu serieko transferentzia-abiadura"
 
-#: ../gphoto2/main.c:181 ../gphoto2/main.c:1658
+#: gphoto2/main.c:184 gphoto2/main.c:1715
 msgid "Specify camera model"
 msgstr "Zehaztu kamera-modeloa"
 
-#: ../gphoto2/main.c:182 ../gphoto2/main.c:1660
+#: gphoto2/main.c:185 gphoto2/main.c:1717
 msgid "Specify a filename"
 msgstr "Zehaztu fitxategi-izen bat"
 
-#: ../gphoto2/main.c:183 ../gphoto2/main.c:1662
+#: gphoto2/main.c:186 gphoto2/main.c:1719
 msgid "(expert only) Override USB IDs"
 msgstr "(adituak soilik) Ez ikusi egin USBren IDei"
 
-#. Actions that depend on settings
-#: ../gphoto2/main.c:186 ../gphoto2/main.c:1664
+#: gphoto2/main.c:189 gphoto2/main.c:1721
 msgid "Display camera abilities"
 msgstr "Bistaratu kameraren ahalmenak"
 
-#: ../gphoto2/main.c:187 ../gphoto2/main.c:1666
+#: gphoto2/main.c:190 gphoto2/main.c:1723
 msgid "Specify camera folder (default=\"/\")"
 msgstr "Zehaztu kameraren karpeta (lehenetsia=\"/\")"
 
-#: ../gphoto2/main.c:188 ../gphoto2/main.c:1668
+#: gphoto2/main.c:191 gphoto2/main.c:1725
 msgid "Recursion (default for download)"
 msgstr "Errekurtsioa (lehenetsia deskargatzeko)"
 
-#: ../gphoto2/main.c:189 ../gphoto2/main.c:1670
+#: gphoto2/main.c:192 gphoto2/main.c:1727
 msgid "No recursion (default for deletion)"
 msgstr "Errekurtsiorik ez (lehenetsia ezabatzeko)"
 
-#: ../gphoto2/main.c:190 ../gphoto2/main.c:1672
+#: gphoto2/main.c:193 gphoto2/main.c:1729
+msgid "Process new files only"
+msgstr ""
+
+#: gphoto2/main.c:194 gphoto2/main.c:1731
 msgid "List folders in folder"
 msgstr "Erakutsi karpeten zerrenda karpetan"
 
-#: ../gphoto2/main.c:191 ../gphoto2/main.c:1674
+#: gphoto2/main.c:195 gphoto2/main.c:1733
 msgid "List files in folder"
 msgstr "Erakutsi fitxategien zerrenda karpetan"
 
-#: ../gphoto2/main.c:192 ../gphoto2/main.c:193
+#: gphoto2/main.c:196 gphoto2/main.c:197
 msgid "name"
 msgstr "izena"
 
-#: ../gphoto2/main.c:192 ../gphoto2/main.c:1676
+#: gphoto2/main.c:196 gphoto2/main.c:1735
 msgid "Create a directory"
 msgstr "Sortu direktorio bat"
 
-#: ../gphoto2/main.c:193 ../gphoto2/main.c:1678
+#: gphoto2/main.c:197 gphoto2/main.c:1737
 msgid "Remove a directory"
 msgstr "Kendu direktorio bat"
 
-#: ../gphoto2/main.c:194 ../gphoto2/main.c:1680
+#: gphoto2/main.c:198 gphoto2/main.c:1739
 msgid "Display number of files"
 msgstr "Bistaratu fitxategi-kopurua"
 
-#: ../gphoto2/main.c:195 ../gphoto2/main.c:1682
+#: gphoto2/main.c:199 gphoto2/main.c:1741
 msgid "Get files given in range"
 msgstr "Eskuratu bitarteko fitxategiak"
 
-#: ../gphoto2/main.c:196 ../gphoto2/main.c:1684
+#: gphoto2/main.c:200 gphoto2/main.c:1743
 msgid "Get all files from folder"
 msgstr "Eskuratu karpetako fitxategi guztiak"
 
-#: ../gphoto2/main.c:197 ../gphoto2/main.c:1686
+#: gphoto2/main.c:201 gphoto2/main.c:1745
 msgid "Get thumbnails given in range"
 msgstr "Eskuratu bitarteko koadro txikiak"
 
-#: ../gphoto2/main.c:198 ../gphoto2/main.c:1689
+#: gphoto2/main.c:202 gphoto2/main.c:1748
 msgid "Get all thumbnails from folder"
 msgstr "Eskuratu karpetako koadro txiki guztiak"
 
-#: ../gphoto2/main.c:199 ../gphoto2/main.c:1692
+#: gphoto2/main.c:203 gphoto2/main.c:1751
 msgid "Get raw data given in range"
 msgstr "Eskuratu bitarteko formaturik gabeko datuak"
 
-#: ../gphoto2/main.c:200 ../gphoto2/main.c:1695
+#: gphoto2/main.c:204 gphoto2/main.c:1754
 msgid "Get all raw data from folder"
 msgstr "Eskuratu karpetako formaturik gabeko datu guztiak"
 
-#: ../gphoto2/main.c:201 ../gphoto2/main.c:1698
+#: gphoto2/main.c:205 gphoto2/main.c:1757
 msgid "Get audio data given in range"
 msgstr "Eskuratu bitarteko audio-datuak"
 
-#: ../gphoto2/main.c:202 ../gphoto2/main.c:1701
+#: gphoto2/main.c:206 gphoto2/main.c:1760
 msgid "Get all audio data from folder"
 msgstr "Eskuratu karpetako audio-datu guztiak"
 
-#: ../gphoto2/main.c:203 ../gphoto2/main.c:1703
+#: gphoto2/main.c:207 gphoto2/main.c:1762
 msgid "Delete files given in range"
 msgstr "Ezabatu bitarteko fitxategiak"
 
-#: ../gphoto2/main.c:204 ../gphoto2/main.c:1705
+#: gphoto2/main.c:208 gphoto2/main.c:1764
 msgid "Delete all files in folder"
 msgstr "Ezabatu karpetako fitxategi guztiak"
 
-#: ../gphoto2/main.c:205 ../gphoto2/main.c:1707
+#: gphoto2/main.c:209 gphoto2/main.c:1766
 msgid "Upload a file to camera"
 msgstr "Kargatu fitxategi bat kameran"
 
-#: ../gphoto2/main.c:207 ../gphoto2/main.c:1710
+#: gphoto2/main.c:211 gphoto2/main.c:1769
 msgid "Configure"
 msgstr "Konfiguratu"
 
-#: ../gphoto2/main.c:209
+#: gphoto2/main.c:213
 msgid "List the configuration tree"
 msgstr "Konfigurazio-zuhaitzaren zerrenda"
 
-#: ../gphoto2/main.c:210
+#: gphoto2/main.c:214
 msgid "Get a configuration variable"
 msgstr "Lortu konfigurazio aldagaia"
 
-#: ../gphoto2/main.c:211 ../gphoto2/main.c:1720
+#: gphoto2/main.c:215
+#, fuzzy
+msgid "Set a configuration variable"
+msgstr "Lortu konfigurazio aldagaia"
+
+#: gphoto2/main.c:216 gphoto2/main.c:1781
 msgid "Set number of frames to capture (default=infinite)"
 msgstr "Ezarri kapturatu beharreko fotograma-kopurua (lehenetsia=infinitua)"
 
-#: ../gphoto2/main.c:212 ../gphoto2/main.c:1722
+#: gphoto2/main.c:217 gphoto2/main.c:1783
 msgid "Set capture interval in seconds"
 msgstr "Ezarri kapturatze tartea segundotan"
 
-#: ../gphoto2/main.c:213 ../gphoto2/main.c:1718
+#: gphoto2/main.c:218 gphoto2/main.c:1779
 msgid "Capture a quick preview"
 msgstr "Kapturatu aurrebista bat"
 
-#: ../gphoto2/main.c:214 ../gphoto2/main.c:1724
+#: gphoto2/main.c:219 gphoto2/main.c:1785
 msgid "Capture an image"
 msgstr "Kapturatu irudi bat"
 
-#: ../gphoto2/main.c:215
+#: gphoto2/main.c:220
 msgid "Capture a movie "
 msgstr "Kapturatu film bat "
 
-#: ../gphoto2/main.c:216 ../gphoto2/main.c:1728
+#: gphoto2/main.c:221 gphoto2/main.c:1789
 msgid "Capture an audio clip"
 msgstr "Kapturatu audio-klip bat"
 
-#: ../gphoto2/main.c:218 ../gphoto2/main.c:1731 ../gphoto2/shell.c:113
+#: gphoto2/main.c:223 gphoto2/main.c:1792 gphoto2/shell.c:117
 msgid "Show EXIF information"
 msgstr "Erakutsi EXIF informazioa"
 
-#: ../gphoto2/main.c:220 ../gphoto2/main.c:1734 ../gphoto2/shell.c:109
+#: gphoto2/main.c:225 gphoto2/main.c:1795 gphoto2/shell.c:113
 msgid "Show info"
 msgstr "Erakutsi informazioa"
 
-#: ../gphoto2/main.c:221
+#: gphoto2/main.c:226
 msgid "Summary of camera status"
 msgstr "Kameraren egoeraren laburpena"
 
-#: ../gphoto2/main.c:222
+#: gphoto2/main.c:227
 msgid "Camera driver manual"
 msgstr "Kamera-kontrolatzailearen eskuliburua"
 
-#: ../gphoto2/main.c:223
+#: gphoto2/main.c:228
 msgid "About the camera driver"
 msgstr "Kamera-kontrolatzaileari buruz"
 
-#: ../gphoto2/main.c:224 ../gphoto2/main.c:1742
+#: gphoto2/main.c:229 gphoto2/main.c:1803
 msgid "gPhoto shell"
 msgstr "gPhoto shell-a"
 
-#: ../gphoto2/main.c:367 ../gphoto2/main.c:1354
+#: gphoto2/main.c:383 gphoto2/main.c:1398
 #, c-format
 msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
@@ -746,259 +828,119 @@ msgstr ""
 "tratatzeko. a b c d elementuek hasieran '0x'duten zenbaki hamaseitarrak izan "
 "behar dute.\n"
 
-#: ../gphoto2/main.c:504
-msgid "Jan"
-msgstr "Urt."
+#: gphoto2/main.c:603
+#, c-format
+msgid "Zero padding numbers in file names is only possible with %%n."
+msgstr ""
 
-#: ../gphoto2/main.c:504
-msgid "January"
-msgstr "urtarrila"
+#: gphoto2/main.c:612
+#, fuzzy, c-format
+msgid "You cannot use %%n zero padding without a precision value!"
+msgstr ""
+"Ezin duzu '%%n' erabili iraunkorrak ez diren fitxategiekin konbinatuta!"
 
-#: ../gphoto2/main.c:505
-msgid "Feb"
-msgstr "Ots."
-
-#: ../gphoto2/main.c:505
-msgid "February"
-msgstr "otsaila"
-
-#: ../gphoto2/main.c:506
-msgid "Mar"
-msgstr "Mar."
-
-#: ../gphoto2/main.c:506
-msgid "March"
-msgstr "martxoa"
-
-#: ../gphoto2/main.c:507
-msgid "Apr"
-msgstr "Apr."
-
-#: ../gphoto2/main.c:507
-msgid "April"
-msgstr "apirila"
-
-#: ../gphoto2/main.c:508
-msgid "May"
-msgstr "Mai."
-
-#: ../gphoto2/main.c:509
-msgid "Jun"
-msgstr "Eka."
-
-#: ../gphoto2/main.c:509
-msgid "June"
-msgstr "ekaina"
-
-#: ../gphoto2/main.c:510
-msgid "Jul"
-msgstr "Uzt."
-
-#: ../gphoto2/main.c:510
-msgid "July"
-msgstr "uztaila"
-
-#: ../gphoto2/main.c:511
-msgid "Aug"
-msgstr "Abu."
-
-#: ../gphoto2/main.c:511
-msgid "August"
-msgstr "abuztua"
-
-#: ../gphoto2/main.c:512
-msgid "Sep"
-msgstr "Ira."
-
-#: ../gphoto2/main.c:512
-msgid "September"
-msgstr "iraila"
-
-#: ../gphoto2/main.c:513
-msgid "Oct"
-msgstr "Urr."
-
-#: ../gphoto2/main.c:513
-msgid "October"
-msgstr "urria"
-
-#: ../gphoto2/main.c:514
-msgid "Nov"
-msgstr "Aza."
-
-#: ../gphoto2/main.c:514
-msgid "November"
-msgstr "azaroa"
-
-#: ../gphoto2/main.c:515
-msgid "Dec"
-msgstr "Abe."
-
-#: ../gphoto2/main.c:515
-msgid "December"
-msgstr "abendua"
-
-#: ../gphoto2/main.c:522
-msgid "Sun"
-msgstr "ig."
-
-#: ../gphoto2/main.c:522
-msgid "Sunday"
-msgstr "igandea"
-
-#: ../gphoto2/main.c:523
-msgid "Mon"
-msgstr "al."
-
-#: ../gphoto2/main.c:523
-msgid "Monday"
-msgstr "astelehena"
-
-#: ../gphoto2/main.c:524
-msgid "Tue"
-msgstr "as."
-
-#: ../gphoto2/main.c:524
-msgid "Tuesday"
-msgstr "asteartea"
-
-#: ../gphoto2/main.c:525
-msgid "Wed"
-msgstr "az."
-
-#: ../gphoto2/main.c:525
-msgid "Wednesday"
-msgstr "asteazkena"
-
-#: ../gphoto2/main.c:526
-msgid "Thu"
-msgstr "og."
-
-#: ../gphoto2/main.c:526
-msgid "Thursday"
-msgstr "osteguna"
-
-#: ../gphoto2/main.c:527
-msgid "Fri"
-msgstr "or."
-
-#: ../gphoto2/main.c:527
-msgid "Friday"
-msgstr "ostirala"
-
-#: ../gphoto2/main.c:528
-msgid "Sat"
-msgstr "lr."
-
-#: ../gphoto2/main.c:528
-msgid "Saturday"
-msgstr "larunbata"
-
-#: ../gphoto2/main.c:590
+#: gphoto2/main.c:628
 #, c-format
 msgid "You cannot use '%%n' in combination with non-persistent files!"
-msgstr "Ezin duzu '%%n' erabili iraunkorrak ez diren fitxategiekin konbinatuta!"
+msgstr ""
+"Ezin duzu '%%n' erabili iraunkorrak ez diren fitxategiekin konbinatuta!"
 
-#: ../gphoto2/main.c:613
+#: gphoto2/main.c:659
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
 msgstr "Kamerak ('%s') emandako fitxategi-izenak ez du atzizkirik!"
 
-#: ../gphoto2/main.c:692
+#: gphoto2/main.c:709
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
 msgstr "'%s' formatu baliogabea (errorea %i kokalekuan)."
 
-#: ../gphoto2/main.c:739
+#: gphoto2/main.c:757
 #, c-format
 msgid "File %s exists. Overwrite? [y|n] "
 msgstr "%s fitxategia badago. Gainidatzi? [y|n] "
 
-#: ../gphoto2/main.c:750
+#: gphoto2/main.c:768
 #, c-format
 msgid "Specify new filename? [y|n] "
 msgstr "Fitxategi-izen berria zehaztu? [y|n] "
 
-#: ../gphoto2/main.c:759
+#: gphoto2/main.c:777
 #, c-format
 msgid "Enter new filename: "
 msgstr "Sartu fitxategi-izen berria: "
 
-#: ../gphoto2/main.c:764
+#: gphoto2/main.c:782
 #, c-format
 msgid "Saving file as %s\n"
 msgstr "Fitxategia honela gordetzen: %s\n"
 
-#: ../gphoto2/main.c:970
+#: gphoto2/main.c:1012
 #, c-format
 msgid "Time-lapse mode enabled (interval: %ds).\n"
 msgstr "Denbora-etena modua gaituta (tartea: %ds).\n"
 
-#: ../gphoto2/main.c:977
+#: gphoto2/main.c:1019
 #, c-format
 msgid "Capturing frame #%d...\n"
 msgstr "#%d fotograma kapturatzen...\n"
 
-#: ../gphoto2/main.c:979
+#: gphoto2/main.c:1021
 #, c-format
 msgid "Capturing frame #%d/%d...\n"
 msgstr "#%d/%d fotograma kapturatzen...\n"
 
-#: ../gphoto2/main.c:986
+#: gphoto2/main.c:1028
 msgid "Could not capture."
 msgstr "Ezin izan da kapturatu."
 
-#: ../gphoto2/main.c:995
+#: gphoto2/main.c:1037
 #, c-format
 msgid "Capture failed (auto-focus problem?)...\n"
 msgstr "Huts egin du kapturatzean (auto-enfokatze arazoa?)...\n"
 
-#: ../gphoto2/main.c:1009
+#: gphoto2/main.c:1051
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "Fitxategi berria %s%s%s kokapenean dago kameran\n"
 
-#: ../gphoto2/main.c:1019
+#: gphoto2/main.c:1061
 msgid "Could not set folder."
 msgstr "Ezin izan da karpeta ezarri."
 
-#: ../gphoto2/main.c:1037
+#: gphoto2/main.c:1079
 msgid "Could not get image."
 msgstr "Ezin izan da argazkia eskuratu."
 
-#. Buggy libcanon.so?
-#. * Can happen if this was the first capture after a
-#. * CF card format, or during a directory roll-over,
-#. * ie: CANON100 -> CANON101
-#.
-#: ../gphoto2/main.c:1044
+#: gphoto2/main.c:1086
 msgid "Buggy libcanon.so?"
 msgstr "libcanon.so akatsduna?"
 
-#: ../gphoto2/main.c:1050
+#: gphoto2/main.c:1092
 #, c-format
 msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Kamerako %s%s%s fitxategia ezabatzen\n"
 
-#: ../gphoto2/main.c:1055
-msgid "Count not delete image."
+#: gphoto2/main.c:1097
+#, fuzzy
+msgid "Could not delete image."
 msgstr "Ezin da argazkia ezabatu."
 
-#: ../gphoto2/main.c:1069
+#: gphoto2/main.c:1111
 msgid "Could not close camera connection."
 msgstr "Ezin izan da kameraren konexioa itxi."
 
-#: ../gphoto2/main.c:1073
+#: gphoto2/main.c:1115
 #, c-format
 msgid "Sleeping for %d second(s)...\n"
 msgstr "%d segundo lotan...\n"
 
-#: ../gphoto2/main.c:1207
+#: gphoto2/main.c:1249
 #, c-format
 msgid "ERROR: "
 msgstr "ERROREA: "
 
-#: ../gphoto2/main.c:1230
+#: gphoto2/main.c:1272
 #, c-format
 msgid ""
 "\n"
@@ -1007,12 +949,12 @@ msgstr ""
 "\n"
 "Abortatzen...\n"
 
-#: ../gphoto2/main.c:1236
+#: gphoto2/main.c:1278
 #, c-format
 msgid "Aborted.\n"
 msgstr "Abortatu da.\n"
 
-#: ../gphoto2/main.c:1241
+#: gphoto2/main.c:1283
 #, c-format
 msgid ""
 "\n"
@@ -1021,16 +963,16 @@ msgstr ""
 "\n"
 "Bertan behera uzten...\n"
 
-#: ../gphoto2/main.c:1459
+#: gphoto2/main.c:1501
 msgid "gphoto2 has been compiled without support for CDK."
 msgstr "gphoto2 CDKren euskarririk gabe konpilatu da."
 
-#: ../gphoto2/main.c:1579
+#: gphoto2/main.c:1636
 #, c-format
 msgid "Operation cancelled.\n"
 msgstr "Eragiketa bertan behera utzi da.\n"
 
-#: ../gphoto2/main.c:1583
+#: gphoto2/main.c:1640
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -1039,7 +981,7 @@ msgstr ""
 "*** Errorea (%i: '%s') ***       \n"
 "\n"
 
-#: ../gphoto2/main.c:1587
+#: gphoto2/main.c:1644
 #, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
@@ -1056,67 +998,73 @@ msgstr ""
 "honela gphoto2:\n"
 "\n"
 
-#: ../gphoto2/main.c:1640
-msgid "Overwrite files without asking."
+#: gphoto2/main.c:1697
+#, fuzzy
+msgid "Overwrite files without asking"
 msgstr "Gainidatzi fitxategiak galdetu gabe."
 
-#: ../gphoto2/main.c:1654
+#: gphoto2/main.c:1711
 msgid "path"
 msgstr "bidea"
 
-#: ../gphoto2/main.c:1656
+#: gphoto2/main.c:1713
 msgid "speed"
 msgstr "abiadura "
 
-#: ../gphoto2/main.c:1658
+#: gphoto2/main.c:1715
 msgid "model"
 msgstr "modeloa"
 
-#: ../gphoto2/main.c:1660
+#: gphoto2/main.c:1717
 msgid "filename"
 msgstr "fitxategi-izena"
 
-#: ../gphoto2/main.c:1662
+#: gphoto2/main.c:1719
 msgid "usbid"
 msgstr "usbid"
 
-#: ../gphoto2/main.c:1666
+#: gphoto2/main.c:1723
 msgid "folder"
 msgstr "karpeta"
 
-#: ../gphoto2/main.c:1713
+#: gphoto2/main.c:1772
 msgid "List configuration tree"
 msgstr "Konfigurazio-zuhaitzaren zerrenda"
 
-#: ../gphoto2/main.c:1715
+#: gphoto2/main.c:1774
 msgid "Get configuration value"
 msgstr "Lortu konfigurazio-balioa"
 
-#: ../gphoto2/main.c:1720
+#: gphoto2/main.c:1776
+#, fuzzy
+msgid "Set configuration value"
+msgstr "Lortu konfigurazio-balioa"
+
+#: gphoto2/main.c:1781
 msgid "count"
 msgstr "Zenbatu"
 
-#: ../gphoto2/main.c:1722
+#: gphoto2/main.c:1783
 msgid "seconds"
 msgstr "segundo"
 
-#: ../gphoto2/main.c:1726
+#: gphoto2/main.c:1787
 msgid "Capture a movie"
 msgstr "Kapturatu film bat"
 
-#: ../gphoto2/main.c:1736
+#: gphoto2/main.c:1797
 msgid "Show summary"
 msgstr "Erakutsi laburpena"
 
-#: ../gphoto2/main.c:1738
+#: gphoto2/main.c:1799
 msgid "Show camera driver manual"
 msgstr "Erakutsi kamera-kontrolatzailearen eskuliburua"
 
-#: ../gphoto2/main.c:1740
+#: gphoto2/main.c:1801
 msgid "About the camera driver manual"
 msgstr "Kamera-kontrolatzailearen eskuliburuari buruz"
 
-#: ../gphoto2/main.c:1967
+#: gphoto2/main.c:2028
 #, c-format
 msgid ""
 "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
@@ -1125,7 +1073,7 @@ msgstr ""
 "gPhoto2 OS/2an erabiltzeko, CAMLIBS ingurune-balioa kamerako liburutegietan "
 "ezarri behar duzu. Adib, SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
 
-#: ../gphoto2/main.c:1977
+#: gphoto2/main.c:2038
 #, c-format
 msgid ""
 "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
@@ -1134,13 +1082,12 @@ msgstr ""
 "gPhoto2 OS/2an erabiltzeko, IOLIBS ingurune-balioa io liburutegietan ezarri "
 "behar duzu. Adib, SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
 
-#: ../gphoto2/options.c:181
+#: gphoto2/options.c:181
 #, c-format
 msgid "Usage:\n"
 msgstr "Erabilera:\n"
 
-#. Make this 79 characters long. Some languages need the space.
-#: ../gphoto2/options.c:184
+#: gphoto2/options.c:184
 #, c-format
 msgid ""
 "Short/long options (& argument)        Description\n"
@@ -1149,17 +1096,12 @@ msgstr ""
 "Aukera laburrak/luzeak (& argumentua)        Azalpena\n"
 "--------------------------------------------------------------------------------\n"
 
-#. The format line is made translatable so that some
-#. languages can make the table a bit tighter. Make
-#. sure you only use 79 characters (since #80 is
-#. needed for the line break).
-#: ../gphoto2/options.c:209
+#: gphoto2/options.c:209
 #, c-format
 msgid "%-38s %s\n"
 msgstr "%-38s %s\n"
 
-#. Make this 79 characters long. Some languages need the space.
-#: ../gphoto2/options.c:214
+#: gphoto2/options.c:214
 #, c-format
 msgid ""
 "--------------------------------------------------------------------------------\n"
@@ -1170,7 +1112,7 @@ msgstr ""
 "[Erabili komatxoak argumentuen inguruan]        [Irudi-zenbakiak (1)]-ekin "
 "hasten dira\n"
 
-#: ../gphoto2/range.c:103 ../gphoto2/range.c:157
+#: gphoto2/range.c:103 gphoto2/range.c:157
 #, c-format
 msgid ""
 "%s\n"
@@ -1179,7 +1121,7 @@ msgstr ""
 "%s\n"
 "Irudi-IDek zero baino handiagoak izan behar dute."
 
-#: ../gphoto2/range.c:109 ../gphoto2/range.c:163
+#: gphoto2/range.c:109 gphoto2/range.c:163
 #, c-format
 msgid ""
 "%s\n"
@@ -1188,7 +1130,7 @@ msgstr ""
 "%s\n"
 " %i irudi-IDa handiegia da."
 
-#: ../gphoto2/range.c:125
+#: gphoto2/range.c:125
 #, c-format
 msgid ""
 "%s\n"
@@ -1197,7 +1139,7 @@ msgstr ""
 "%s\n"
 "Bitarteak',' ikurren bidez bereizi behar dira."
 
-#: ../gphoto2/range.c:139
+#: gphoto2/range.c:139
 #, c-format
 msgid ""
 "%s\n"
@@ -1206,7 +1148,7 @@ msgstr ""
 "%s\n"
 "Bitarteek zenbaki batekin hasi behar dute."
 
-#: ../gphoto2/range.c:179
+#: gphoto2/range.c:179
 #, c-format
 msgid ""
 "%s\n"
@@ -1215,7 +1157,7 @@ msgstr ""
 "%s\n"
 " '%c' ustekabeko karakterea."
 
-#: ../gphoto2/range.c:202
+#: gphoto2/range.c:202
 #, c-format
 msgid ""
 "%s\n"
@@ -1225,132 +1167,238 @@ msgstr ""
 "Beheranzko bitarteak ez dira onartzen. %i eta %i arteko bitartea zehaztu "
 "duzu."
 
-#: ../gphoto2/shell.c:55
+#: gphoto2/shell.c:59
 #, c-format
 msgid "*** Error (%i: '%s') ***"
 msgstr "*** Errorea (%i: '%s') ***"
 
-#: ../gphoto2/shell.c:98
+#: gphoto2/shell.c:102
 msgid "Change to a directory on the camera"
 msgstr "Aldatu kamerako direktorio batera"
 
-#: ../gphoto2/shell.c:99 ../gphoto2/shell.c:101
+#: gphoto2/shell.c:103 gphoto2/shell.c:105
 msgid "directory"
 msgstr "direktorioa"
 
-#: ../gphoto2/shell.c:100
+#: gphoto2/shell.c:104
 msgid "Change to a directory on the local drive"
 msgstr "Aldatu unitate lokaleko direktorio batera"
 
-#: ../gphoto2/shell.c:102 ../gphoto2/shell.c:120 ../gphoto2/shell.c:121
+#: gphoto2/shell.c:106 gphoto2/shell.c:124 gphoto2/shell.c:125
 msgid "Exit the gPhoto shell"
 msgstr "Irten gPhoto shell-etik"
 
-#: ../gphoto2/shell.c:103
+#: gphoto2/shell.c:107
 msgid "Download a file"
 msgstr "Deskargatu fitxategi bat"
 
-#: ../gphoto2/shell.c:103 ../gphoto2/shell.c:106 ../gphoto2/shell.c:108
-#: ../gphoto2/shell.c:110 ../gphoto2/shell.c:111 ../gphoto2/shell.c:114
+#: gphoto2/shell.c:107 gphoto2/shell.c:110 gphoto2/shell.c:112
+#: gphoto2/shell.c:114 gphoto2/shell.c:115 gphoto2/shell.c:118
 msgid "[directory/]filename"
 msgstr "[direktorioa/]fitxategi-izena"
 
-#: ../gphoto2/shell.c:105
+#: gphoto2/shell.c:109
 msgid "Download a thumbnail"
 msgstr "Deskargatu koadro txiki bat"
 
-#: ../gphoto2/shell.c:107
+#: gphoto2/shell.c:111
 msgid "Download raw data"
 msgstr "Deskargatu formaturik gabeko datuak"
 
-#: ../gphoto2/shell.c:111
+#: gphoto2/shell.c:115
 msgid "Delete"
 msgstr "Ezabatu"
 
-#: ../gphoto2/shell.c:116 ../gphoto2/shell.c:122
+#: gphoto2/shell.c:120 gphoto2/shell.c:126
 msgid "Displays command usage"
 msgstr "Bistaratu komandoen erabilera"
 
-#: ../gphoto2/shell.c:117 ../gphoto2/shell.c:122
+#: gphoto2/shell.c:121 gphoto2/shell.c:126
 msgid "[command]"
 msgstr "[komandoa]"
 
-#: ../gphoto2/shell.c:118
+#: gphoto2/shell.c:122
 msgid "List the contents of the current directory"
 msgstr "Egin uneko direktorioaren edukien zerrenda"
 
-#: ../gphoto2/shell.c:119
+#: gphoto2/shell.c:123
 msgid "[directory/]"
 msgstr "[direktorioa/]"
 
-#: ../gphoto2/shell.c:425
+#: gphoto2/shell.c:444
 msgid "Invalid command."
 msgstr "Komando baliogabea."
 
-#: ../gphoto2/shell.c:434
+#: gphoto2/shell.c:453
 #, c-format
 msgid "The command '%s' requires an argument."
 msgstr "'%s' komandoak argumentu bat behar du."
 
-#: ../gphoto2/shell.c:487
+#: gphoto2/shell.c:506
 msgid "Invalid path."
 msgstr "Bide baliogabea."
 
-#: ../gphoto2/shell.c:533
+#: gphoto2/shell.c:552
 msgid "Could not find home directory."
 msgstr "Ezin izan da aurkitu etxeko direktorioa."
 
-#: ../gphoto2/shell.c:541
+#: gphoto2/shell.c:560
 #, c-format
 msgid "Could not change to local directory '%s'."
 msgstr "Ezin izan da '%s' direktorio lokala aldatu."
 
-#: ../gphoto2/shell.c:544
+#: gphoto2/shell.c:563
 #, c-format
 msgid "Local directory now '%s'."
 msgstr "Orain direktorio lokala '%s' da."
 
-#: ../gphoto2/shell.c:582
+#: gphoto2/shell.c:601
 #, c-format
 msgid "Remote directory now '%s'."
 msgstr "Orain urruneko direktorioa '%s' da."
 
-#: ../gphoto2/shell.c:738
+#: gphoto2/shell.c:757
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
 msgstr ""
 "'%s' komandoa ez da aurkitu. Erabili 'help' erabilgarri dauden komandoen "
 "zerrenda lortzeko."
 
-#. Print the command's syntax.
-#: ../gphoto2/shell.c:745
+#: gphoto2/shell.c:764
 #, c-format
 msgid "Help on \"%s\":"
 msgstr "\"%s\"(r)i buruzko laguntza:"
 
-#: ../gphoto2/shell.c:747
+#: gphoto2/shell.c:766
 #, c-format
 msgid "Usage:"
 msgstr "Erabilera:"
 
-#: ../gphoto2/shell.c:751
+#: gphoto2/shell.c:769
 #, c-format
 msgid "Description:"
 msgstr "Azalpena:"
 
-#: ../gphoto2/shell.c:753
+#: gphoto2/shell.c:771
 #, c-format
 msgid "* Arguments in brackets [] are optional"
 msgstr "* Kortxete [] arteko argumentuak hautazkoak dira"
 
-#. No command specified. Print command listing.
-#: ../gphoto2/shell.c:774
+#: gphoto2/shell.c:792
 #, c-format
 msgid "Available commands:"
 msgstr "Erabilgarri dauden komandoak:"
 
-#: ../gphoto2/shell.c:779
+#: gphoto2/shell.c:797
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
-msgstr "Komando jakin bati buruzko laguntza eskuratzeko, idatzi'help komando_izena'."
+msgstr ""
+"Komando jakin bati buruzko laguntza eskuratzeko, idatzi'help komando_izena'."
 
+#~ msgid "Jan"
+#~ msgstr "Urt."
+
+#~ msgid "January"
+#~ msgstr "urtarrila"
+
+#~ msgid "Feb"
+#~ msgstr "Ots."
+
+#~ msgid "February"
+#~ msgstr "otsaila"
+
+#~ msgid "Mar"
+#~ msgstr "Mar."
+
+#~ msgid "March"
+#~ msgstr "martxoa"
+
+#~ msgid "Apr"
+#~ msgstr "Apr."
+
+#~ msgid "April"
+#~ msgstr "apirila"
+
+#~ msgid "May"
+#~ msgstr "Mai."
+
+#~ msgid "Jun"
+#~ msgstr "Eka."
+
+#~ msgid "June"
+#~ msgstr "ekaina"
+
+#~ msgid "Jul"
+#~ msgstr "Uzt."
+
+#~ msgid "July"
+#~ msgstr "uztaila"
+
+#~ msgid "Aug"
+#~ msgstr "Abu."
+
+#~ msgid "August"
+#~ msgstr "abuztua"
+
+#~ msgid "Sep"
+#~ msgstr "Ira."
+
+#~ msgid "September"
+#~ msgstr "iraila"
+
+#~ msgid "Oct"
+#~ msgstr "Urr."
+
+#~ msgid "October"
+#~ msgstr "urria"
+
+#~ msgid "Nov"
+#~ msgstr "Aza."
+
+#~ msgid "November"
+#~ msgstr "azaroa"
+
+#~ msgid "Dec"
+#~ msgstr "Abe."
+
+#~ msgid "December"
+#~ msgstr "abendua"
+
+#~ msgid "Sun"
+#~ msgstr "ig."
+
+#~ msgid "Sunday"
+#~ msgstr "igandea"
+
+#~ msgid "Monday"
+#~ msgstr "astelehena"
+
+#~ msgid "Tue"
+#~ msgstr "as."
+
+#~ msgid "Tuesday"
+#~ msgstr "asteartea"
+
+#~ msgid "Wed"
+#~ msgstr "az."
+
+#~ msgid "Wednesday"
+#~ msgstr "asteazkena"
+
+#~ msgid "Thu"
+#~ msgstr "og."
+
+#~ msgid "Thursday"
+#~ msgstr "osteguna"
+
+#~ msgid "Fri"
+#~ msgstr "or."
+
+#~ msgid "Friday"
+#~ msgstr "ostirala"
+
+#~ msgid "Sat"
+#~ msgstr "lr."
+
+#~ msgid "Saturday"
+#~ msgstr "larunbata"
