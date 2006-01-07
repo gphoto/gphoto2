@@ -228,7 +228,7 @@ GP_CHECK_LIBRARY([LIBEXIF],[libexif],[>= 0.3.2],
                           [whether libexif has exif-ifd.h (>= 0.5.3)])dnl
         ])
 	CPPFLAGS="$CPPFLAGS_save"
-])
+],[],[default-on])
 
 
 dnl ---------------------------------------------------------------------------
