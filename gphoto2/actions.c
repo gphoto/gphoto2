@@ -140,21 +140,11 @@ list_folders_action (GPParams *p)
 	CL (gp_camera_folder_list_folders (p->camera, p->folder, list,
 					   p->context), list);
 	CL (count = gp_list_count (list), list);
-	switch (count) {
-        case 0:
-                printf (_("There are no folders in folder '%s'."), p->folder);
-                putchar ('\n');
-                break;
-        case 1:
-                printf (_("There is one folder in folder '%s':"), p->folder);
-                putchar ('\n');
-                break;
-        default:
-                printf (_("There are %i folders in folder '%s':"),
-			 count, p->folder);
-                putchar ('\n');
-                break;
-	}
+        printf(ngettext(
+		"There is %d folder in folder '%s'.\n", 
+		"There are %d folders in folder '%s'.\n",
+		count
+	), count, p->folder);
 	for (i = 0; i < count; i++) {
 		CL (gp_list_get_name (list, i, &name), list);
 		printf (" - %s\n", name);
@@ -190,22 +180,15 @@ list_files_action (GPParams *p)
 	}
 	else
 	  filecount = count;
-
-	switch (filecount) {
-	case 0:
-		printf (_("There are no files in folder '%s'."), p->folder);
-                putchar ('\n');
-		break;
-	case 1:
-		printf (_("There is one file in folder '%s':"), p->folder);
-                putchar ('\n');
-		break;
-	default:
-		printf (_("There are %i files in folder '%s':"),
-			filecount, p->folder);
-                putchar ('\n');
-		break;
-	}
+        if (filecount == 0) { /* 0 is weird still, despite ngettext() */
+	   printf(_("There is no file in folder '%s'.\n"), p->folder);
+        } else {
+	   printf(ngettext(
+		"There is %d file in folder '%s'.\n",
+		"There are %d files in folder '%s'.\n",
+		filecount
+	   ), filecount, p->folder);
+        }
 	for (i = 0; i < count; i++) {
 		CL (gp_list_get_name (list, i, &name), list);
 		CL (print_file_action (p, name), list);
