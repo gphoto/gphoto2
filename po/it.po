@@ -1,15 +1,15 @@
 # Italian messages for gphoto2.
-# Copyright (C) 2005 Free Software Foundation, Inc.
+# Copyright (C) 2005, 2006 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gphoto2 package.
-# Marco Colombo <m.colombo@ed.ac.uk>, 2005.
+# Marco Colombo <m.colombo@ed.ac.uk>, 2005, 2006.
 #
 # FIXME: toggle???
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.1.6rc1\n"
+"Project-Id-Version: gphoto2 2.1.99\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2005-09-25 12:28+0200\n"
-"PO-Revision-Date: 2005-04-14 10:26+0100\n"
+"POT-Creation-Date: 2006-01-01 18:15-0500\n"
+"PO-Revision-Date: 2006-01-09 16:11+0000\n"
 "Last-Translator: Marco Colombo <m.colombo@ed.ac.uk>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -303,8 +303,7 @@ msgstr "                                 : Anteprima\n"
 
 #: gphoto2/actions.c:651
 #, c-format
-msgid ""
-"                                 : Capture not supported by the driver\n"
+msgid "                                 : Capture not supported by the driver\n"
 msgstr "                                 : Cattura non gestita dal driver\n"
 
 #: gphoto2/actions.c:653
@@ -330,23 +329,15 @@ msgstr "Caricamento file su fotocamera   : %s\n"
 
 #: gphoto2/actions.c:678
 #, c-format
-msgid ""
-"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
-"colon so I am going to guess what you mean."
-msgstr ""
-"Le porte sono qualcosa come \"serial:/dev/ttyS0\" o \"usb:\", ma in \"%s\" "
-"manca un \":\". Verrà tentato di indovinare cosa si intende."
+msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
+msgstr "Le porte sono qualcosa come \"serial:/dev/ttyS0\" o \"usb:\", ma in \"%s\" manca un \":\". Verrà tentato di indovinare cosa si intende."
 
 #: gphoto2/actions.c:717
 #, c-format
-msgid ""
-"The port you specified ('%s') can not be found. Please specify one of the "
-"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
-"(i.e. with prefix 'serial:' or 'usb:')."
+msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
 msgstr ""
 "La porta specificata (\"%s\") non è stata trovata. Indicare una delle porte\n"
-"trovate da \"gphoto2 --list-ports\" e assicurarsi che la sintassi sia "
-"corretta\n"
+"trovate da \"gphoto2 --list-ports\" e assicurarsi che la sintassi sia corretta\n"
 "(cioè usando il prefisso \"serial:\" o \"usb:\")."
 
 #: gphoto2/actions.c:755
@@ -382,20 +373,16 @@ msgid ""
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
-"License. For more information about these matters, see the files named "
-"COPYING.\n"
+"License. For more information about these matters, see the files named COPYING.\n"
 "\n"
-"This version of gphoto2 is using the following software versions and "
-"options:\n"
+"This version of gphoto2 is using the following software versions and options:\n"
 msgstr ""
 "gphoto2 %s\n"
 "\n"
 "Copyright (c) 2000-2004 Lutz Mueller e altri\n"
 "%s\n"
-"gphoto2 è distribuito senza ALCUNA GARANZIA, negli estremi permessi dalla "
-"legge.\n"
-"È possibile distribuire copie di gphoto2 secondo i termini della GNU "
-"General\n"
+"gphoto2 è distribuito senza ALCUNA GARANZIA, negli estremi permessi dalla legge.\n"
+"È possibile distribuire copie di gphoto2 secondo i termini della GNU General\n"
 "Public License. Per ulteriori informazioni, consultare il file COPYING.\n"
 "\n"
 "Questa versione di gphoto2 utilizza il seguente software:\n"
@@ -406,12 +393,8 @@ msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Id vendor/prodotto USB 0x%x/0x%x cambiato in 0x%x0x%x"
 
 #: gphoto2/actions.c:985
-msgid ""
-"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
-"MAILING LIST:"
-msgstr ""
-"INCLUDERE SEMPRE LE RIGHE SEGUENTI QUANDO SI SPEDISCONO MESSAGGI DI DEBUG "
-"ALLA MAILING LIST:"
+msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
+msgstr "INCLUDERE SEMPRE LE RIGHE SEGUENTI QUANDO SI SPEDISCONO MESSAGGI DI DEBUG ALLA MAILING LIST:"
 
 #: gphoto2/actions.c:1000
 #, c-format
@@ -512,8 +495,7 @@ msgstr "Il valore %s fornito non è né un orario valido né un intero."
 #: gphoto2/actions.c:1335
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
-msgstr ""
-"Impostazione del nuovo orario del widget di data/ora %s a %s non riuscita."
+msgstr "Impostazione del nuovo orario del widget di data/ora %s a %s non riuscita."
 
 # FIXME
 #: gphoto2/actions.c:1372
@@ -530,39 +512,22 @@ msgstr "Il widget %s non è configurabile."
 #: gphoto2/actions.c:1387
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
-msgstr ""
-"Impostazione del nuovo valore di configurazione %s per la voce %s non "
-"riuscita."
+msgstr "Impostazione del nuovo valore di configurazione %s per la voce %s non riuscita."
 
 #: gphoto2/foreach.c:254
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there are only %i files available in "
-"'%s' or its subfolders. Please obtain a valid file number from a file "
-"listing first."
-msgstr ""
-"Numero di file non valido. È stato indicato %i, ma ci sono solo %i file "
-"disponibili in \"%s\" o nelle sue sottocartelle. Scegliere un numero di file "
-"valido dall'elenco dei file."
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
+msgstr "Numero di file non valido. È stato indicato %i, ma ci sono solo %i file disponibili in \"%s\" o nelle sue sottocartelle. Scegliere un numero di file valido dall'elenco dei file."
 
 #: gphoto2/foreach.c:283
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there is only 1 file available in '%"
-"s'."
-msgstr ""
-"Numero di file non valido. È stato indicato %i, ma c'è solo 1 file "
-"disponibile in \"%s\"."
+msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
+msgstr "Numero di file non valido. È stato indicato %i, ma c'è solo 1 file disponibile in \"%s\"."
 
 #: gphoto2/foreach.c:291
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there are only %i files available in "
-"'%s'. Please obtain a valid file number from a file listing first."
-msgstr ""
-"Numero di file non valido. È stato indicato %i, ma ci sono solo %i file "
-"disponibili in \"%s\". Scegliere un numero di file valido dall'elenco dei "
-"file."
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
+msgstr "Numero di file non valido. È stato indicato %i, ma ci sono solo %i file disponibili in \"%s\". Scegliere un numero di file valido dall'elenco dei file."
 
 #: gphoto2/gp-params.c:59
 #, c-format
@@ -837,23 +802,20 @@ msgstr "Shell di gPhoto"
 
 #: gphoto2/main.c:383 gphoto2/main.c:1398
 #, c-format
-msgid ""
-"Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
-"c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
-msgstr ""
-"Usare la sintassi \"a:b=c:d\" per trattare come \"c:d\" ogni dispositivo USB "
-"rilevato come \"a:b\". a b c d sono numeri esadecimali che iniziano con \"0x"
-"\".\n"
+msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
+msgstr "Usare la sintassi \"a:b=c:d\" per trattare come \"c:d\" ogni dispositivo USB rilevato come \"a:b\". a b c d sono numeri esadecimali che iniziano con \"0x\".\n"
 
+# FIXME
 #: gphoto2/main.c:603
 #, c-format
 msgid "Zero padding numbers in file names is only possible with %%n."
-msgstr ""
+msgstr "Il riempimento con zeri nei nomi di file è possibile solo con %%n."
 
+# FIXME
 #: gphoto2/main.c:612
-#, fuzzy, c-format
+#, c-format
 msgid "You cannot use %%n zero padding without a precision value!"
-msgstr "Non è possibile usare \"%%n\" con file non persistenti!"
+msgstr "Non è possibile usare riempimento con zeri %%n senza un valore di precisione!"
 
 #: gphoto2/main.c:628
 #, c-format
@@ -863,8 +825,7 @@ msgstr "Non è possibile usare \"%%n\" con file non persistenti!"
 #: gphoto2/main.c:659
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr ""
-"Il nome di file fornito dalla fotocamera (\"%s\") non contiene un suffisso!"
+msgstr "Il nome di file fornito dalla fotocamera (\"%s\") non contiene un suffisso!"
 
 #: gphoto2/main.c:709
 #, c-format
@@ -1082,22 +1043,13 @@ msgstr "Informazioni sul manuale del driver della fotocamera"
 
 #: gphoto2/main.c:2028
 #, c-format
-msgid ""
-"gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
-"location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
-msgstr ""
-"gPhoto2 per OS/2 richiede che la variabile d'ambiente CAMLIBS venga "
-"impostata con la posizione delle librerie della fotocamera, es. SET "
-"CAMLIBS=C:\\GPHOTO2\\CAM\n"
+msgid "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+msgstr "gPhoto2 per OS/2 richiede che la variabile d'ambiente CAMLIBS venga impostata con la posizione delle librerie della fotocamera, es. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
 
 #: gphoto2/main.c:2038
 #, c-format
-msgid ""
-"gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
-"location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-msgstr ""
-"gPhoto2 per OS/2 richiede che la variabile d'ambiente IOLIBS sia impostata "
-"alla posizione delle librerie di I/O, es: SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
+msgid "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
+msgstr "gPhoto2 per OS/2 richiede che la variabile d'ambiente IOLIBS sia impostata alla posizione delle librerie di I/O, es: SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
 
 #: gphoto2/options.c:181
 #, c-format
@@ -1123,12 +1075,10 @@ msgstr "%-38s %s\n"
 #, c-format
 msgid ""
 "--------------------------------------------------------------------------------\n"
-"[Use double-quotes around arguments]        [Picture numbers begin with one "
-"(1)]\n"
+"[Use double-quotes around arguments]        [Picture numbers begin with one (1)]\n"
 msgstr ""
 "--------------------------------------------------------------------------------\n"
-"[Usare virgolette \" per gli argomenti]      [Numeri di immagini partono da "
-"1]\n"
+"[Usare virgolette \" per gli argomenti]      [Numeri di immagini partono da 1]\n"
 
 #: gphoto2/range.c:103 gphoto2/range.c:157
 #, c-format
@@ -1183,8 +1133,7 @@ msgid ""
 "Decreasing ranges are not allowed. You specified a range from %i to %i."
 msgstr ""
 "%s\n"
-"Intervalli decrescenti non permessi. È stato indicato un intervallo da %i a %"
-"i."
+"Intervalli decrescenti non permessi. È stato indicato un intervallo da %i a %i."
 
 #: gphoto2/shell.c:59
 #, c-format
@@ -1279,9 +1228,7 @@ msgstr "La directory remota è ora \"%s\"."
 #: gphoto2/shell.c:757
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
-msgstr ""
-"Comando \"%s\" non trovato. Usare \"help\" per l'elenco dei comandi "
-"disponibili."
+msgstr "Comando \"%s\" non trovato. Usare \"help\" per l'elenco dei comandi disponibili."
 
 #: gphoto2/shell.c:764
 #, c-format
@@ -1311,5 +1258,4 @@ msgstr "Comandi disponibili:"
 #: gphoto2/shell.c:797
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
-msgstr ""
-"Per ricevere aiuto su un particolare comando, digitare \"help nome-comando\"."
+msgstr "Per ricevere aiuto su un particolare comando, digitare \"help nome-comando\"."
