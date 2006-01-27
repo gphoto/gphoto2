@@ -635,9 +635,12 @@ action_camera_show_abilities (GPParams *p)
 	}
 	printf (_("Configuration support            : %s\n"),
 		(a.operations & GP_OPERATION_CONFIG) ? _("yes"):_("no"));
-	printf (_("Delete files on camera support   : %s\n"),
+	printf (_("Delete selected files on camera  : %s\n"),
 		(a.file_operations & GP_FILE_OPERATION_DELETE) ?
 							_("yes"):_("no"));
+        printf (_("Delete all files on camera       : %s\n"),
+        	(a.folder_operations & GP_FOLDER_OPERATION_DELETE_ALL) ?
+                					_("yes"):_("no"));
 	printf (_("File preview (thumbnail) support : %s\n"),
 		(a.file_operations & GP_FILE_OPERATION_PREVIEW) ? 
 							_("yes"):_("no"));
