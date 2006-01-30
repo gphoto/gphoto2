@@ -1005,7 +1005,10 @@ capture_generic (CameraCaptureType type, const char *name)
 	CameraFilePath path, last;
 	char *pathsep;
 	int result, frames = 0;
+	time_t next_pic_time;
+	int waittime;
 
+	next_pic_time = time (NULL) + glob_interval;
 	if(glob_interval) {
 		memset(&last, 0, sizeof(last));
 		if (!(p.flags & FLAGS_QUIET))
@@ -1072,7 +1075,14 @@ capture_generic (CameraCaptureType type, const char *name)
 		 * a San Disk Ultra II CF).  May need to be increased for RAW
 		 * images...  I don't think this is the correct way to do this.
 		 */
+
+		/* Marcus Meissner: Fix the camera driver to only return from
+		 * camera_capture() when you know it is done ...
+		 * Otherwise other drivers suffer.
+		 */
+#if 0
 		sleep(2);
+#endif
 
 		result = get_file_common (path.name, GP_FILE_TYPE_NORMAL);
 		if (result != GP_OK) {
@@ -1103,6 +1113,12 @@ capture_generic (CameraCaptureType type, const char *name)
 		 */
 		if(glob_frames && frames == glob_frames) break;
 
+#if 0
+		/* Marcus Meissner: Before you enable this, try to fix the
+		 * camera driver first! camera_exit is NOT necessary for
+		 * 2 captures in a row!
+		 */
+
 		/* Without this, it seems that the second capture always fails.
 		 * That is probably obvious...  for me it was trial n' error.
 		 */
@@ -1110,11 +1126,17 @@ capture_generic (CameraCaptureType type, const char *name)
 		if (result != GP_OK) {
 			cli_error_print (_("Could not close camera connection."));
 		}
-
-		if (!(p.flags & FLAGS_QUIET) && glob_interval)
-			printf (_("Sleeping for %d second(s)...\n"), glob_interval);
-	
-		if(sleep(glob_interval) != 0) break;
+#endif
+		waittime = next_pic_time - time (NULL);
+		if (waittime > 0) {
+			if (!(p.flags & FLAGS_QUIET) && glob_interval)
+				printf (_("Sleeping for %d second(s)...\n"), glob_interval);
+			sleep (waittime);
+		} else {
+			if (!(p.flags & FLAGS_QUIET) && glob_interval)
+				printf (_("not sleeping (%d seconds behind schedule)\n"), - waittime);
+		}
+		next_pic_time += glob_interval;
 	}
 
 	return (GP_OK);
