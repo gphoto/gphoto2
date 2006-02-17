@@ -1,3 +1,10 @@
+2006-02-17  Marcus Meissner  <marcus@jet.franken.de>
+	
+	* gphoto2/actions.c: Fixed --port handling 
+	  when supplying regexp matched devices, by
+	  keeping the GPPortInfoList* over the gphoto2 
+	  runtime.
+
 2006-01-27  Theodore Kilgore  <kilgota@auburn.edu>
 
 	* gphoto2/actions.c: added an entry for "Delete all" to 
