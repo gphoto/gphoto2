@@ -48,7 +48,7 @@ struct _GPParams {
 	Flags flags;
 
 	CameraAbilitiesList *abilities_list;
-
+	GPPortInfoList *portinfo_list;
 	int debug_func_id;
 };
 

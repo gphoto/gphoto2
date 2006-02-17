@@ -83,7 +83,6 @@ action_camera_upload_file (GPParams *p, const char *folder, const char *path)
 	res = gp_camera_folder_put_file (p->camera, folder, file,
 					 p->context);
 	gp_file_unref (file);
-
 	return (res);
 }
 
@@ -522,24 +521,38 @@ list_cameras_action (GPParams *p)
 	return (r);
 }
 
-int
-list_ports_action (GPParams *p)
-{
+static void
+_get_portinfo_list (GPParams *p) {
+	int count, result;
 	GPPortInfoList *list = NULL;
-	GPPortInfo info;
-	int x, count, result = GP_OK;
 
-	CR (gp_port_info_list_new (&list));
+	if (p->portinfo_list)
+		return;
+
+	if (gp_port_info_list_new (&list) < GP_OK)
+		return;
 	result = gp_port_info_list_load (list);
 	if (result < 0) {
 		gp_port_info_list_free (list);
-		return (result);
+		return;
 	}
 	count = gp_port_info_list_count (list);
 	if (count < 0) {
 		gp_port_info_list_free (list);
-		return (count);
+		return;
 	}
+	p->portinfo_list = list;
+	return;
+}
+
+int
+list_ports_action (GPParams *p)
+{
+	GPPortInfo info;
+	int x, count, result = GP_OK;
+
+	_get_portinfo_list (p);
+	count = gp_port_info_list_count (p->portinfo_list);
 
 	if (p->flags & FLAGS_QUIET)
 		printf("%i\n", count);
@@ -551,14 +564,11 @@ list_ports_action (GPParams *p)
 
 	/* Now list the ports */
 	for (x = 0; x < count; x++) {
-		result = gp_port_info_list_get_info (list, x, &info);
+		result = gp_port_info_list_get_info (p->portinfo_list, x, &info);
 		if (result < 0)
 			break;
 		printf ("%-32s %-32s\n", info.path, info.name);
 	}
-
-	gp_port_info_list_free (list);
-
 	return (result);
 
 }
@@ -569,17 +579,16 @@ auto_detect_action (GPParams *p)
 	int x, count;
         CameraList *list;
         CameraAbilitiesList *al = NULL;
-        GPPortInfoList *il = NULL;
         const char *name = NULL, *value = NULL;
+
+	_get_portinfo_list (p);
+	count = gp_port_info_list_count (p->portinfo_list);
 
 	CR (gp_list_new (&list));
         gp_abilities_list_new (&al);
         gp_abilities_list_load (al, p->context);
-        gp_port_info_list_new (&il);
-        gp_port_info_list_load (il);
-        gp_abilities_list_detect (al, il, list, p->context);
+        gp_abilities_list_detect (al, p->portinfo_list, list, p->context);
         gp_abilities_list_free (al);
-        gp_port_info_list_free (il);
 
         CL (count = gp_list_count (list), list);
 
@@ -654,7 +663,6 @@ action_camera_show_abilities (GPParams *p)
 int
 action_camera_set_port (GPParams *params, const char *port)
 {
-	GPPortInfoList *il = NULL;
 	int p, r;
 	GPPortInfo info;
 	char verified_port[1024];
@@ -687,17 +695,12 @@ action_camera_set_port (GPParams *params, const char *port)
 		strncpy (verified_port, port, sizeof (verified_port) - 1);
 
 	/* Create the list of ports and load it. */
-	r = gp_port_info_list_new (&il);
-	if (r < 0)
-		return (r);
-	r = gp_port_info_list_load (il);
-	if (r < 0) {
-		gp_port_info_list_free (il);
-		return (r);
-	}
+	_get_portinfo_list (params);
 
 	/* Search our port in the list. */
-	p = gp_port_info_list_lookup_path (il, verified_port);
+	/* NOTE: This call can modify "il" for regexp matches! */
+	p = gp_port_info_list_lookup_path (params->portinfo_list, verified_port);
+
 	switch (p) {
 	case GP_ERROR_UNKNOWN_PORT:
 		fprintf (stderr, _("The port you specified "
@@ -711,14 +714,9 @@ action_camera_set_port (GPParams *params, const char *port)
 	default:
 		break;
 	}
-	if (p < 0) {
-		gp_port_info_list_free (il);
-		return (p);
-	}
 
 	/* Get info about our port. */
-	r = gp_port_info_list_get_info (il, p, &info);
-	gp_port_info_list_free (il);
+	r = gp_port_info_list_get_info (params->portinfo_list, p, &info);
 	if (r < 0)
 		return (r);
 
@@ -727,7 +725,6 @@ action_camera_set_port (GPParams *params, const char *port)
 	if (r < 0)
 		return (r);
 	gp_setting_set ("gphoto2", "port", info.path);
-
 	return (GP_OK);
 }
 
