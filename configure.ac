@@ -5,7 +5,7 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4m])
 AM_INIT_AUTOMAKE([gnu 1.8 dist-bzip2])
 
-# FIXME: The "m4m" stuff will need work with SVN.
+# FIXME: The "m4m" stuff will need work with SVN. Really!
 if test ! -d "$srcdir/m4m"; then
 AC_MSG_ERROR([
 You are missing the m4m/ directory in your top
