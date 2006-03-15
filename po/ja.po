@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.1rc2\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2005-09-25 12:28+0200\n"
+"POT-Creation-Date: 2006-03-14 20:34+0100\n"
 "PO-Revision-Date: 2002-11-25 08:16+0900\n"
 "Last-Translator: Takeshi Aihana <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
@@ -16,212 +16,201 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gphoto2/actions.c:124
+#: gphoto2/actions.c:123
 #, c-format
 msgid "Number of files in folder '%s': %i\n"
 msgstr "フォルダ '%s' 内のファイルの数: %i\n"
 
-#: gphoto2/actions.c:145
-#, c-format
-msgid "There are no folders in folder '%s'."
-msgstr "フォルダ '%s' の中にフォルダはありません。"
+#: gphoto2/actions.c:143
+#, fuzzy, c-format
+msgid "There is %d folder in folder '%s'.\n"
+msgid_plural "There are %d folders in folder '%s'.\n"
+msgstr[0] "フォルダ '%s' の中にフォルダが一つあります:"
+msgstr[1] "フォルダ '%s' の中にフォルダが一つあります:"
 
-#: gphoto2/actions.c:149
-#, c-format
-msgid "There is one folder in folder '%s':"
-msgstr "フォルダ '%s' の中にフォルダが一つあります:"
-
-#: gphoto2/actions.c:153
-#, c-format
-msgid "There are %i folders in folder '%s':"
-msgstr "%i 個のフォルダがフォルダ '%s' の中にあります:"
-
-#: gphoto2/actions.c:196 gphoto2/foreach.c:277
-#, c-format
-msgid "There are no files in folder '%s'."
-msgstr "フォルダ '%s' の中にファイルはありません。"
-
-#: gphoto2/actions.c:200
-#, c-format
-msgid "There is one file in folder '%s':"
+#: gphoto2/actions.c:183
+#, fuzzy, c-format
+msgid "There is no file in folder '%s'.\n"
 msgstr "フォルダ '%s' の中にファイルが一つあります:"
 
-#: gphoto2/actions.c:204
-#, c-format
-msgid "There are %i files in folder '%s':"
-msgstr "%i 個のファイルがフォルダ '%s' の中にあります:"
+#: gphoto2/actions.c:186
+#, fuzzy, c-format
+msgid "There is %d file in folder '%s'.\n"
+msgid_plural "There are %d files in folder '%s'.\n"
+msgstr[0] "フォルダ '%s' の中にファイルが一つあります:"
+msgstr[1] "フォルダ '%s' の中にファイルが一つあります:"
 
-#: gphoto2/actions.c:225
+#: gphoto2/actions.c:207
 #, c-format
 msgid "Information on file '%s' (folder '%s'):\n"
 msgstr "ファイル '%s' (フォルダ '%s') の情報:\n"
 
-#: gphoto2/actions.c:227
+#: gphoto2/actions.c:209
 #, c-format
 msgid "File:\n"
 msgstr "ファイル:\n"
 
-#: gphoto2/actions.c:229 gphoto2/actions.c:263 gphoto2/actions.c:279
+#: gphoto2/actions.c:211 gphoto2/actions.c:245 gphoto2/actions.c:261
 #, c-format
 msgid "  None available.\n"
 msgstr " 使用不可です。\n"
 
-#: gphoto2/actions.c:232
+#: gphoto2/actions.c:214
 #, c-format
 msgid "  Name:        '%s'\n"
 msgstr "  名前:        '%s'\n"
 
-#: gphoto2/actions.c:234 gphoto2/actions.c:266
+#: gphoto2/actions.c:216 gphoto2/actions.c:248
 #, c-format
 msgid "  Mime type:   '%s'\n"
 msgstr "  MIME 型:     '%s'\n"
 
-#: gphoto2/actions.c:236 gphoto2/actions.c:268
+#: gphoto2/actions.c:218 gphoto2/actions.c:250
 #, c-format
 msgid "  Size:        %li byte(s)\n"
 msgstr "  サイズ:      %li バイト\n"
 
-#: gphoto2/actions.c:238 gphoto2/actions.c:270
+#: gphoto2/actions.c:220 gphoto2/actions.c:252
 #, c-format
 msgid "  Width:       %i pixel(s)\n"
 msgstr "  横:          %i ピクセル\n"
 
-#: gphoto2/actions.c:240 gphoto2/actions.c:272
+#: gphoto2/actions.c:222 gphoto2/actions.c:254
 #, c-format
 msgid "  Height:      %i pixel(s)\n"
 msgstr "  縦:          %i ピクセル\n"
 
-#: gphoto2/actions.c:242 gphoto2/actions.c:274
+#: gphoto2/actions.c:224 gphoto2/actions.c:256
 #, c-format
 msgid "  Downloaded:  %s\n"
 msgstr " ダウンロード済:  %s\n"
 
-#: gphoto2/actions.c:243 gphoto2/actions.c:275 gphoto2/actions.c:287
-#: gphoto2/actions.c:624 gphoto2/actions.c:626 gphoto2/actions.c:654
-#: gphoto2/actions.c:657 gphoto2/actions.c:660 gphoto2/actions.c:663
-#: gphoto2/actions.c:1304
+#: gphoto2/actions.c:225 gphoto2/actions.c:257 gphoto2/actions.c:269
+#: gphoto2/actions.c:616 gphoto2/actions.c:618 gphoto2/actions.c:646
+#: gphoto2/actions.c:649 gphoto2/actions.c:652 gphoto2/actions.c:655
+#: gphoto2/actions.c:658 gphoto2/actions.c:1287
 msgid "yes"
 msgstr "はい"
 
-#: gphoto2/actions.c:243 gphoto2/actions.c:275 gphoto2/actions.c:287
-#: gphoto2/actions.c:624 gphoto2/actions.c:626 gphoto2/actions.c:654
-#: gphoto2/actions.c:657 gphoto2/actions.c:660 gphoto2/actions.c:663
-#: gphoto2/actions.c:1298
+#: gphoto2/actions.c:225 gphoto2/actions.c:257 gphoto2/actions.c:269
+#: gphoto2/actions.c:616 gphoto2/actions.c:618 gphoto2/actions.c:646
+#: gphoto2/actions.c:649 gphoto2/actions.c:652 gphoto2/actions.c:655
+#: gphoto2/actions.c:658 gphoto2/actions.c:1281
 msgid "no"
 msgstr "いいえ"
 
-#: gphoto2/actions.c:245
+#: gphoto2/actions.c:227
 #, c-format
 msgid "  Permissions: "
 msgstr "  権限: "
 
-#: gphoto2/actions.c:248
+#: gphoto2/actions.c:230
 #, c-format
 msgid "read/delete"
 msgstr "読み込み/削除"
 
-#: gphoto2/actions.c:250
+#: gphoto2/actions.c:232
 #, c-format
 msgid "read"
 msgstr "読み込み"
 
-#: gphoto2/actions.c:252
+#: gphoto2/actions.c:234
 #, c-format
 msgid "delete"
 msgstr "削除"
 
-#: gphoto2/actions.c:254
+#: gphoto2/actions.c:236
 #, c-format
 msgid "none"
 msgstr "なし"
 
-#: gphoto2/actions.c:258
+#: gphoto2/actions.c:240
 #, c-format
 msgid "  Time:        %s"
 msgstr "  時間:        %s"
 
-#: gphoto2/actions.c:261
+#: gphoto2/actions.c:243
 #, c-format
 msgid "Thumbnail:\n"
 msgstr "サムネイル:\n"
 
-#: gphoto2/actions.c:277
+#: gphoto2/actions.c:259
 #, c-format
 msgid "Audio data:\n"
 msgstr "オーディオデータ:\n"
 
-#: gphoto2/actions.c:282
+#: gphoto2/actions.c:264
 #, c-format
 msgid "  Mime type:  '%s'\n"
 msgstr "  MIME 型:    '%s'\n"
 
-#: gphoto2/actions.c:284
+#: gphoto2/actions.c:266
 #, c-format
 msgid "  Size:       %li byte(s)\n"
 msgstr "  サイズ:     %li バイト\n"
 
-#: gphoto2/actions.c:286
+#: gphoto2/actions.c:268
 #, c-format
 msgid "  Downloaded: %s\n"
 msgstr " ダウンロード済: %s\n"
 
-#: gphoto2/actions.c:455
+#: gphoto2/actions.c:437
 msgid "Could not parse EXIF data."
 msgstr "EXIF データを解析できませんでした。"
 
-#: gphoto2/actions.c:459
+#: gphoto2/actions.c:441
 #, c-format
 msgid "EXIF tags:"
 msgstr "EXIF タグ:"
 
-#: gphoto2/actions.c:462
+#: gphoto2/actions.c:444
 msgid "Tag"
 msgstr "タグ"
 
-#: gphoto2/actions.c:464
+#: gphoto2/actions.c:446
 msgid "Value"
 msgstr "値"
 
-#: gphoto2/actions.c:485
+#: gphoto2/actions.c:467
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
 msgstr "EXIF データにサムネイルがあります (%i バイト)。"
 
-#: gphoto2/actions.c:494
+#: gphoto2/actions.c:476
 msgid "gphoto2 has been compiled without EXIF support."
 msgstr "この gphoto2 は EXIF をサポートしていません。"
 
-#: gphoto2/actions.c:512
+#: gphoto2/actions.c:494
 #, c-format
 msgid "Number of supported cameras: %i\n"
 msgstr "サポートしているカメラの数: %i\n"
 
-#: gphoto2/actions.c:513
+#: gphoto2/actions.c:495
 #, c-format
 msgid "Supported cameras:\n"
 msgstr "サポートするカメラ:\n"
 
-#: gphoto2/actions.c:526
+#: gphoto2/actions.c:508
 #, c-format
 msgid "\t\"%s\" (TESTING)\n"
 msgstr "\t\"%s\" (テスト)\n"
 
-#: gphoto2/actions.c:529
+#: gphoto2/actions.c:511
 #, c-format
 msgid "\t\"%s\" (EXPERIMENTAL)\n"
 msgstr "\t\"%s\" (開発向け)\n"
 
-#: gphoto2/actions.c:534
+#: gphoto2/actions.c:516
 #, c-format
 msgid "\t\"%s\"\n"
 msgstr "\t\"%s\"\n"
 
-#: gphoto2/actions.c:564
+#: gphoto2/actions.c:560
 #, c-format
 msgid "Devices found: %i\n"
 msgstr "検出したデバイス数: %i\n"
 
-#: gphoto2/actions.c:565
+#: gphoto2/actions.c:561
 #, c-format
 msgid ""
 "Path                             Description\n"
@@ -230,101 +219,106 @@ msgstr ""
 "パス名                           説明\n"
 "--------------------------------------------------------------\n"
 
-#: gphoto2/actions.c:603 gphoto2/actions.c:608
+#: gphoto2/actions.c:595 gphoto2/actions.c:600
 #, c-format
 msgid "%-30s %-16s\n"
 msgstr "%-30s %-16s\n"
 
-#: gphoto2/actions.c:603
+#: gphoto2/actions.c:595
 msgid "Model"
 msgstr "型式"
 
-#: gphoto2/actions.c:603
+#: gphoto2/actions.c:595
 msgid "Port"
 msgstr "ポート"
 
-#: gphoto2/actions.c:604
+#: gphoto2/actions.c:596
 #, c-format
 msgid "----------------------------------------------------------\n"
 msgstr "----------------------------------------------------------\n"
 
-#: gphoto2/actions.c:622
+#: gphoto2/actions.c:614
 #, c-format
 msgid "Abilities for camera             : %s\n"
 msgstr "カメラの性能                     : %s\n"
 
-#: gphoto2/actions.c:623
+#: gphoto2/actions.c:615
 #, c-format
 msgid "Serial port support              : %s\n"
 msgstr "シリアルポートのサポート         : %s\n"
 
-#: gphoto2/actions.c:625
+#: gphoto2/actions.c:617
 #, c-format
 msgid "USB support                      : %s\n"
 msgstr "USB サポート                     : %s\n"
 
-#: gphoto2/actions.c:628
+#: gphoto2/actions.c:620
 #, c-format
 msgid "Transfer speeds supported        :\n"
 msgstr "サポートする転送スピード         :\n"
 
-#: gphoto2/actions.c:630
+#: gphoto2/actions.c:622
 #, c-format
 msgid "                                 : %i\n"
 msgstr "                                 : %i\n"
 
-#: gphoto2/actions.c:633
+#: gphoto2/actions.c:625
 #, c-format
 msgid "Capture choices                  :\n"
 msgstr "キャプチャの選択                 :\n"
 
-#: gphoto2/actions.c:635
+#: gphoto2/actions.c:627
 #, c-format
 msgid "                                 : Image\n"
 msgstr "                                 : 画像\n"
 
-#: gphoto2/actions.c:639
+#: gphoto2/actions.c:631
 #, c-format
 msgid "                                 : Video\n"
 msgstr "                                 : ビデオ\n"
 
-#: gphoto2/actions.c:643
+#: gphoto2/actions.c:635
 #, c-format
 msgid "                                 : Audio\n"
 msgstr "                                 : オーディオ\n"
 
-#: gphoto2/actions.c:647
+#: gphoto2/actions.c:639
 #, c-format
 msgid "                                 : Preview\n"
 msgstr "                                 : プレビュー\n"
 
-#: gphoto2/actions.c:651
+#: gphoto2/actions.c:643
 #, fuzzy, c-format
 msgid ""
 "                                 : Capture not supported by the driver\n"
 msgstr "                                 : プレビュー\n"
 
-#: gphoto2/actions.c:653
+#: gphoto2/actions.c:645
 #, c-format
 msgid "Configuration support            : %s\n"
 msgstr "セッティングのサポート           : %s\n"
 
-#: gphoto2/actions.c:655
-#, c-format
-msgid "Delete files on camera support   : %s\n"
+#: gphoto2/actions.c:647
+#, fuzzy, c-format
+msgid "Delete selected files on camera  : %s\n"
 msgstr "カメラ内のファイル削除のサポート : %s\n"
 
-#: gphoto2/actions.c:658
+#: gphoto2/actions.c:650
+#, fuzzy, c-format
+msgid "Delete all files on camera       : %s\n"
+msgstr "カメラ内のファイル削除のサポート : %s\n"
+
+#: gphoto2/actions.c:653
 #, c-format
 msgid "File preview (thumbnail) support : %s\n"
 msgstr "プレビューのサポート             : %s\n"
 
-#: gphoto2/actions.c:661
+#: gphoto2/actions.c:656
 #, c-format
 msgid "File upload support              : %s\n"
 msgstr "File upload support              : %s\n"
 
-#: gphoto2/actions.c:678
+#: gphoto2/actions.c:672
 #, c-format
 msgid ""
 "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
@@ -333,7 +327,7 @@ msgstr ""
 "ポートは 'serial:/dev/ttyS0' または 'USB:' のようですが、'%s' はコロン ':' が"
 "ないので適用することができません。"
 
-#: gphoto2/actions.c:717
+#: gphoto2/actions.c:706
 #, c-format
 msgid ""
 "The port you specified ('%s') can not be found. Please specify one of the "
@@ -344,31 +338,31 @@ msgstr ""
 "トの一つを指定して、ポート名のスペルが正しいか確認して下さい (接頭子 "
 "'serial:' または 'usb:')。"
 
-#: gphoto2/actions.c:755
+#: gphoto2/actions.c:738
 #, c-format
 msgid "About the camera driver:"
 msgstr "カメラのドライバ情報"
 
-#: gphoto2/actions.c:768
+#: gphoto2/actions.c:751
 #, c-format
 msgid "Camera summary:"
 msgstr "カメラのサマリ:"
 
-#: gphoto2/actions.c:781
+#: gphoto2/actions.c:764
 #, c-format
 msgid "Camera manual:"
 msgstr "カメラのマニュアル:"
 
-#: gphoto2/actions.c:796
+#: gphoto2/actions.c:779
 #, c-format
 msgid "You can only specify speeds for serial ports."
 msgstr "シリアルポートの転送速度のみ指定することが可能です。"
 
-#: gphoto2/actions.c:849
+#: gphoto2/actions.c:832
 msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "Bart van Leeuwen : OS/2 のポーティング担当\n"
 
-#: gphoto2/actions.c:853
+#: gphoto2/actions.c:836
 #, fuzzy, c-format
 msgid ""
 "gphoto2 %s\n"
@@ -395,12 +389,12 @@ msgstr ""
 "このバージョンの gphoto2 は次のソフトウェア・バージョンとオプションを使用しま"
 "す:\n"
 
-#: gphoto2/actions.c:934
+#: gphoto2/actions.c:917
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr ""
 
-#: gphoto2/actions.c:985
+#: gphoto2/actions.c:968
 msgid ""
 "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
 "MAILING LIST:"
@@ -408,110 +402,110 @@ msgstr ""
 "メーリングリストにデバッグメッセージを送信する場合は、必ず次の行を挿入して下"
 "さい:"
 
-#: gphoto2/actions.c:1000
+#: gphoto2/actions.c:983
 #, c-format
 msgid "%s has been compiled with the following options:"
 msgstr ""
 
-#: gphoto2/actions.c:1097
+#: gphoto2/actions.c:1080
 #, fuzzy, c-format
 msgid "%s not found in configuration tree."
 msgstr "設定を有効にすることが出来ませんでした:"
 
-#: gphoto2/actions.c:1156
+#: gphoto2/actions.c:1139
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1173
+#: gphoto2/actions.c:1156
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1185
+#: gphoto2/actions.c:1168
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1197
+#: gphoto2/actions.c:1180
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1227
+#: gphoto2/actions.c:1210
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1268
+#: gphoto2/actions.c:1251
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr ""
 
-#: gphoto2/actions.c:1278
+#: gphoto2/actions.c:1261
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr ""
 
-#: gphoto2/actions.c:1283
+#: gphoto2/actions.c:1266
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr ""
 
-#: gphoto2/actions.c:1289
+#: gphoto2/actions.c:1272
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr ""
 
-#: gphoto2/actions.c:1298
+#: gphoto2/actions.c:1281
 msgid "off"
 msgstr ""
 
-#: gphoto2/actions.c:1299
+#: gphoto2/actions.c:1282
 #, fuzzy
 msgid "false"
 msgstr "値"
 
-#: gphoto2/actions.c:1304
+#: gphoto2/actions.c:1287
 #, fuzzy
 msgid "on"
 msgstr "月"
 
-#: gphoto2/actions.c:1305
+#: gphoto2/actions.c:1288
 msgid "true"
 msgstr ""
 
-#: gphoto2/actions.c:1309
+#: gphoto2/actions.c:1292
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
 msgstr ""
 
-#: gphoto2/actions.c:1315
+#: gphoto2/actions.c:1298
 #, c-format
 msgid "Failed to set values %s of toggle widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1328
+#: gphoto2/actions.c:1311
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr ""
 
-#: gphoto2/actions.c:1335
+#: gphoto2/actions.c:1318
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr ""
 
-#: gphoto2/actions.c:1372
+#: gphoto2/actions.c:1355
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr ""
 
-#: gphoto2/actions.c:1380
+#: gphoto2/actions.c:1363
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr ""
 
-#: gphoto2/actions.c:1387
+#: gphoto2/actions.c:1370
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr ""
@@ -526,6 +520,11 @@ msgstr ""
 "ファイル番号がおかしいです。%i を指定しましたが、%i 個のファイルしか '%s' の"
 "中にはないか、またはサブフォルダのようです。まず最初にファイル一覧から正しい"
 "番号を取得して下さい。"
+
+#: gphoto2/foreach.c:277
+#, c-format
+msgid "There are no files in folder '%s'."
+msgstr "フォルダ '%s' の中にファイルはありません。"
 
 #: gphoto2/foreach.c:283
 #, c-format
@@ -607,15 +606,15 @@ msgstr "はい"
 msgid "No"
 msgstr "いいえ"
 
-#: gphoto2/main.c:168 gphoto2/main.c:1693
+#: gphoto2/main.c:168 gphoto2/main.c:1715
 msgid "Turn on debugging"
 msgstr "デバッグを有効にする"
 
-#: gphoto2/main.c:169 gphoto2/main.c:1695
+#: gphoto2/main.c:169 gphoto2/main.c:1717
 msgid "Quiet output (default=verbose)"
 msgstr "簡易出力 (デフォルト=詳細)"
 
-#: gphoto2/main.c:173 gphoto2/main.c:1699
+#: gphoto2/main.c:173 gphoto2/main.c:1721
 msgid "Display version and exit"
 msgstr "バージョン情報を表示して終了する"
 
@@ -623,71 +622,71 @@ msgstr "バージョン情報を表示して終了する"
 msgid "Displays this help screen"
 msgstr "このヘルプを表示する"
 
-#: gphoto2/main.c:175 gphoto2/main.c:1701
+#: gphoto2/main.c:175 gphoto2/main.c:1723
 msgid "List supported camera models"
 msgstr "サポートしているカメラ型式の一覧"
 
-#: gphoto2/main.c:176 gphoto2/main.c:1703
+#: gphoto2/main.c:176 gphoto2/main.c:1725
 msgid "List supported port devices"
 msgstr "サポートしているポート・デバイスの一覧を表示する"
 
-#: gphoto2/main.c:177 gphoto2/main.c:1705
+#: gphoto2/main.c:177 gphoto2/main.c:1727
 msgid "Send file to stdout"
 msgstr "標準出力にファイルを送出する"
 
-#: gphoto2/main.c:178 gphoto2/main.c:1707
+#: gphoto2/main.c:178 gphoto2/main.c:1729
 msgid "Print filesize before data"
 msgstr "データの前にファイルサイズを出力する"
 
-#: gphoto2/main.c:179 gphoto2/main.c:1709
+#: gphoto2/main.c:179 gphoto2/main.c:1731
 msgid "List auto-detected cameras"
 msgstr "自動検出したカメラの一覧を表示する"
 
-#: gphoto2/main.c:182 gphoto2/main.c:1711
+#: gphoto2/main.c:182 gphoto2/main.c:1733
 msgid "Specify port device"
 msgstr "ポート・デバイスを指定する"
 
-#: gphoto2/main.c:183 gphoto2/main.c:1713
+#: gphoto2/main.c:183 gphoto2/main.c:1735
 msgid "Specify serial transfer speed"
 msgstr "シリアル転送スピードを指定する"
 
-#: gphoto2/main.c:184 gphoto2/main.c:1715
+#: gphoto2/main.c:184 gphoto2/main.c:1737
 msgid "Specify camera model"
 msgstr "カメラの型式を指定して下さい"
 
-#: gphoto2/main.c:185 gphoto2/main.c:1717
+#: gphoto2/main.c:185 gphoto2/main.c:1739
 msgid "Specify a filename"
 msgstr "ファイル名を指定する"
 
-#: gphoto2/main.c:186 gphoto2/main.c:1719
+#: gphoto2/main.c:186 gphoto2/main.c:1741
 msgid "(expert only) Override USB IDs"
 msgstr "USB ID の上書き (エキスパート向け)"
 
-#: gphoto2/main.c:189 gphoto2/main.c:1721
+#: gphoto2/main.c:189 gphoto2/main.c:1743
 msgid "Display camera abilities"
 msgstr "カメラの性能を表示する"
 
-#: gphoto2/main.c:190 gphoto2/main.c:1723
+#: gphoto2/main.c:190 gphoto2/main.c:1745
 msgid "Specify camera folder (default=\"/\")"
 msgstr "カメラのフォルダを指定する (デフォルト=\"/\")"
 
-#: gphoto2/main.c:191 gphoto2/main.c:1725
+#: gphoto2/main.c:191 gphoto2/main.c:1747
 msgid "Recursion (default for download)"
 msgstr "再帰する (デフォルト=ダウンロード)"
 
-#: gphoto2/main.c:192 gphoto2/main.c:1727
+#: gphoto2/main.c:192 gphoto2/main.c:1749
 msgid "No recursion (default for deletion)"
 msgstr "再帰しない (デフォルト=削除)"
 
-#: gphoto2/main.c:193 gphoto2/main.c:1729
+#: gphoto2/main.c:193 gphoto2/main.c:1751
 msgid "Process new files only"
 msgstr ""
 
-#: gphoto2/main.c:194 gphoto2/main.c:1731
+#: gphoto2/main.c:194 gphoto2/main.c:1753
 msgid "List folders in folder"
 msgstr "フォルダの一覧"
 
-#: gphoto2/main.c:195 gphoto2/main.c:1733
+#: gphoto2/main.c:195 gphoto2/main.c:1755
 msgid "List files in folder"
 msgstr "フォルダ内のファイル一覧"
 
@@ -695,63 +694,63 @@ msgstr "フォルダ内のファイル一覧"
 msgid "name"
 msgstr "名前"
 
-#: gphoto2/main.c:196 gphoto2/main.c:1735
+#: gphoto2/main.c:196 gphoto2/main.c:1757
 msgid "Create a directory"
 msgstr "ディレクトリの作成"
 
-#: gphoto2/main.c:197 gphoto2/main.c:1737
+#: gphoto2/main.c:197 gphoto2/main.c:1759
 msgid "Remove a directory"
 msgstr "ディレクトリの削除"
 
-#: gphoto2/main.c:198 gphoto2/main.c:1739
+#: gphoto2/main.c:198 gphoto2/main.c:1761
 msgid "Display number of files"
 msgstr "ファイル数の表示"
 
-#: gphoto2/main.c:199 gphoto2/main.c:1741
+#: gphoto2/main.c:199 gphoto2/main.c:1763
 msgid "Get files given in range"
 msgstr "指定した範囲でファイルの取得"
 
-#: gphoto2/main.c:200 gphoto2/main.c:1743
+#: gphoto2/main.c:200 gphoto2/main.c:1765
 msgid "Get all files from folder"
 msgstr "フォルダから全てのファイルの取得"
 
-#: gphoto2/main.c:201 gphoto2/main.c:1745
+#: gphoto2/main.c:201 gphoto2/main.c:1767
 msgid "Get thumbnails given in range"
 msgstr "指定した範囲でサムネイルの取得"
 
-#: gphoto2/main.c:202 gphoto2/main.c:1748
+#: gphoto2/main.c:202 gphoto2/main.c:1770
 msgid "Get all thumbnails from folder"
 msgstr "フォルダから全てのサムネイルの取得"
 
-#: gphoto2/main.c:203 gphoto2/main.c:1751
+#: gphoto2/main.c:203 gphoto2/main.c:1773
 msgid "Get raw data given in range"
 msgstr "指定した範囲で生データの取得"
 
-#: gphoto2/main.c:204 gphoto2/main.c:1754
+#: gphoto2/main.c:204 gphoto2/main.c:1776
 msgid "Get all raw data from folder"
 msgstr "フォルダから全ての生データの取得"
 
-#: gphoto2/main.c:205 gphoto2/main.c:1757
+#: gphoto2/main.c:205 gphoto2/main.c:1779
 msgid "Get audio data given in range"
 msgstr "指定したオーディオデータの取得"
 
-#: gphoto2/main.c:206 gphoto2/main.c:1760
+#: gphoto2/main.c:206 gphoto2/main.c:1782
 msgid "Get all audio data from folder"
 msgstr "フォルダからオーディオデータの取得"
 
-#: gphoto2/main.c:207 gphoto2/main.c:1762
+#: gphoto2/main.c:207 gphoto2/main.c:1784
 msgid "Delete files given in range"
 msgstr "指定した範囲でファイルの削除"
 
-#: gphoto2/main.c:208 gphoto2/main.c:1764
+#: gphoto2/main.c:208 gphoto2/main.c:1786
 msgid "Delete all files in folder"
 msgstr "フォルダの中のファイルを削除"
 
-#: gphoto2/main.c:209 gphoto2/main.c:1766
+#: gphoto2/main.c:209 gphoto2/main.c:1788
 msgid "Upload a file to camera"
 msgstr "ファイルをカメラにアップロード"
 
-#: gphoto2/main.c:211 gphoto2/main.c:1769
+#: gphoto2/main.c:211 gphoto2/main.c:1791
 msgid "Configure"
 msgstr "設定"
 
@@ -768,19 +767,19 @@ msgstr ""
 msgid "Set a configuration variable"
 msgstr ""
 
-#: gphoto2/main.c:216 gphoto2/main.c:1781
+#: gphoto2/main.c:216 gphoto2/main.c:1803
 msgid "Set number of frames to capture (default=infinite)"
 msgstr ""
 
-#: gphoto2/main.c:217 gphoto2/main.c:1783
+#: gphoto2/main.c:217 gphoto2/main.c:1805
 msgid "Set capture interval in seconds"
 msgstr ""
 
-#: gphoto2/main.c:218 gphoto2/main.c:1779
+#: gphoto2/main.c:218 gphoto2/main.c:1801
 msgid "Capture a quick preview"
 msgstr "キャプチャの簡易プレビュー"
 
-#: gphoto2/main.c:219 gphoto2/main.c:1785
+#: gphoto2/main.c:219 gphoto2/main.c:1807
 msgid "Capture an image"
 msgstr "画像のキャプチャ"
 
@@ -788,15 +787,15 @@ msgstr "画像のキャプチャ"
 msgid "Capture a movie "
 msgstr "映像のキャプチャ"
 
-#: gphoto2/main.c:221 gphoto2/main.c:1789
+#: gphoto2/main.c:221 gphoto2/main.c:1811
 msgid "Capture an audio clip"
 msgstr "オーディオのキャプチャ"
 
-#: gphoto2/main.c:223 gphoto2/main.c:1792 gphoto2/shell.c:117
+#: gphoto2/main.c:223 gphoto2/main.c:1814 gphoto2/shell.c:117
 msgid "Show EXIF information"
 msgstr "EXIF 情報の表示"
 
-#: gphoto2/main.c:225 gphoto2/main.c:1795 gphoto2/shell.c:113
+#: gphoto2/main.c:225 gphoto2/main.c:1817 gphoto2/shell.c:113
 msgid "Show info"
 msgstr "情報の表示"
 
@@ -812,11 +811,11 @@ msgstr "カメラのドライバのマニュアル"
 msgid "About the camera driver"
 msgstr "カメラのドライバ情報"
 
-#: gphoto2/main.c:229 gphoto2/main.c:1803
+#: gphoto2/main.c:229 gphoto2/main.c:1825
 msgid "gPhoto shell"
 msgstr "gPhoto シェル"
 
-#: gphoto2/main.c:383 gphoto2/main.c:1398
+#: gphoto2/main.c:383 gphoto2/main.c:1420
 #, c-format
 msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
@@ -870,76 +869,81 @@ msgstr "新しいファイル名: "
 msgid "Saving file as %s\n"
 msgstr "ファイルを %s で保存します\n"
 
-#: gphoto2/main.c:1012
+#: gphoto2/main.c:1015
 #, c-format
 msgid "Time-lapse mode enabled (interval: %ds).\n"
 msgstr ""
 
-#: gphoto2/main.c:1019
+#: gphoto2/main.c:1022
 #, c-format
 msgid "Capturing frame #%d...\n"
 msgstr ""
 
-#: gphoto2/main.c:1021
+#: gphoto2/main.c:1024
 #, c-format
 msgid "Capturing frame #%d/%d...\n"
 msgstr ""
 
-#: gphoto2/main.c:1028
+#: gphoto2/main.c:1031
 #, fuzzy
 msgid "Could not capture."
 msgstr "EXIF データを解析できませんでした。"
 
-#: gphoto2/main.c:1037
+#: gphoto2/main.c:1040
 #, c-format
 msgid "Capture failed (auto-focus problem?)...\n"
 msgstr ""
 
-#: gphoto2/main.c:1051
+#: gphoto2/main.c:1054
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "新しいファイルの格納場所: %s%s%s\n"
 
-#: gphoto2/main.c:1061
+#: gphoto2/main.c:1064
 #, fuzzy
 msgid "Could not set folder."
 msgstr "設定を有効にすることが出来ませんでした:"
 
-#: gphoto2/main.c:1079
+#: gphoto2/main.c:1089
 #, fuzzy
 msgid "Could not get image."
 msgstr "設定を有効にすることが出来ませんでした:"
 
-#: gphoto2/main.c:1086
+#: gphoto2/main.c:1096
 msgid "Buggy libcanon.so?"
 msgstr ""
 
-#: gphoto2/main.c:1092
+#: gphoto2/main.c:1102
 #, fuzzy, c-format
 msgid "Deleting file %s%s%s on the camera\n"
 msgstr "新しいファイルの格納場所: %s%s%s\n"
 
-#: gphoto2/main.c:1097
+#: gphoto2/main.c:1107
 #, fuzzy
 msgid "Could not delete image."
 msgstr "設定を有効にすることが出来ませんでした:"
 
-#: gphoto2/main.c:1111
+#: gphoto2/main.c:1127
 #, fuzzy
 msgid "Could not close camera connection."
 msgstr "設定を有効にすることが出来ませんでした:"
 
-#: gphoto2/main.c:1115
+#: gphoto2/main.c:1133
 #, c-format
 msgid "Sleeping for %d second(s)...\n"
 msgstr ""
 
-#: gphoto2/main.c:1249
+#: gphoto2/main.c:1137
+#, c-format
+msgid "not sleeping (%d seconds behind schedule)\n"
+msgstr ""
+
+#: gphoto2/main.c:1271
 #, c-format
 msgid "ERROR: "
 msgstr "エラー: "
 
-#: gphoto2/main.c:1272
+#: gphoto2/main.c:1294
 #, c-format
 msgid ""
 "\n"
@@ -948,12 +952,12 @@ msgstr ""
 "\n"
 "停止中...\n"
 
-#: gphoto2/main.c:1278
+#: gphoto2/main.c:1300
 #, c-format
 msgid "Aborted.\n"
 msgstr "停止しました。\n"
 
-#: gphoto2/main.c:1283
+#: gphoto2/main.c:1305
 #, c-format
 msgid ""
 "\n"
@@ -962,16 +966,16 @@ msgstr ""
 "\n"
 "キャンセル中...\n"
 
-#: gphoto2/main.c:1501
+#: gphoto2/main.c:1523
 msgid "gphoto2 has been compiled without support for CDK."
 msgstr "この gphoto2 は CDK をサポートしていません。"
 
-#: gphoto2/main.c:1636
+#: gphoto2/main.c:1658
 #, c-format
 msgid "Operation cancelled.\n"
 msgstr "操作がキャンセルされました。\n"
 
-#: gphoto2/main.c:1640
+#: gphoto2/main.c:1662
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -980,7 +984,7 @@ msgstr ""
 "*** エラー (%i: '%s') ***       \n"
 "\n"
 
-#: gphoto2/main.c:1644
+#: gphoto2/main.c:1666
 #, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
@@ -999,75 +1003,75 @@ msgstr ""
 "以下のように gphoto2 を起動して下さい:\n"
 "\n"
 
-#: gphoto2/main.c:1697
+#: gphoto2/main.c:1719
 #, fuzzy
 msgid "Overwrite files without asking"
 msgstr "ファイルの上書きで問い合わせない。"
 
-#: gphoto2/main.c:1711
+#: gphoto2/main.c:1733
 msgid "path"
 msgstr "パス名"
 
-#: gphoto2/main.c:1713
+#: gphoto2/main.c:1735
 msgid "speed"
 msgstr "転送スピード"
 
-#: gphoto2/main.c:1715
+#: gphoto2/main.c:1737
 msgid "model"
 msgstr "型式"
 
-#: gphoto2/main.c:1717
+#: gphoto2/main.c:1739
 msgid "filename"
 msgstr "ファイル名"
 
-#: gphoto2/main.c:1719
+#: gphoto2/main.c:1741
 msgid "usbid"
 msgstr "USB-ID"
 
-#: gphoto2/main.c:1723
+#: gphoto2/main.c:1745
 msgid "folder"
 msgstr "フォルダ名"
 
-#: gphoto2/main.c:1772
+#: gphoto2/main.c:1794
 #, fuzzy
 msgid "List configuration tree"
 msgstr "設定を有効にすることが出来ませんでした:"
 
-#: gphoto2/main.c:1774
+#: gphoto2/main.c:1796
 #, fuzzy
 msgid "Get configuration value"
 msgstr "設定を有効にすることが出来ませんでした:"
 
-#: gphoto2/main.c:1776
+#: gphoto2/main.c:1798
 #, fuzzy
 msgid "Set configuration value"
 msgstr "設定を有効にすることが出来ませんでした:"
 
-#: gphoto2/main.c:1781
+#: gphoto2/main.c:1803
 msgid "count"
 msgstr ""
 
-#: gphoto2/main.c:1783
+#: gphoto2/main.c:1805
 msgid "seconds"
 msgstr ""
 
-#: gphoto2/main.c:1787
+#: gphoto2/main.c:1809
 msgid "Capture a movie"
 msgstr "映像のキャプチャ"
 
-#: gphoto2/main.c:1797
+#: gphoto2/main.c:1819
 msgid "Show summary"
 msgstr "サマリの表示"
 
-#: gphoto2/main.c:1799
+#: gphoto2/main.c:1821
 msgid "Show camera driver manual"
 msgstr "カメラのドライバのマニュアルを表示する"
 
-#: gphoto2/main.c:1801
+#: gphoto2/main.c:1823
 msgid "About the camera driver manual"
 msgstr "カメラのドライバのマニュアルの情報"
 
-#: gphoto2/main.c:2028
+#: gphoto2/main.c:2050
 #, c-format
 msgid ""
 "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
@@ -1076,7 +1080,7 @@ msgstr ""
 "OS/2 向けの gPhoto2 では環境変数 ${CAMLIBS} にカメラ・ライブラリへのパスを設"
 "定する必要があります。(例) SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
 
-#: gphoto2/main.c:2038
+#: gphoto2/main.c:2060
 #, c-format
 msgid ""
 "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
@@ -1296,6 +1300,15 @@ msgid "To get help on a particular command, type in 'help command-name'."
 msgstr ""
 "特定のコマンドに対するヘルプを表示する場合は 'help コマンド名' と入力して下さ"
 "い。"
+
+#~ msgid "There are no folders in folder '%s'."
+#~ msgstr "フォルダ '%s' の中にフォルダはありません。"
+
+#~ msgid "There are %i folders in folder '%s':"
+#~ msgstr "%i 個のフォルダがフォルダ '%s' の中にあります:"
+
+#~ msgid "There are %i files in folder '%s':"
+#~ msgstr "%i 個のファイルがフォルダ '%s' の中にあります:"
 
 #~ msgid "Jan"
 #~ msgstr "1月"
