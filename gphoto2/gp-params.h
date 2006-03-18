@@ -36,6 +36,13 @@ enum _Flags {
 	FLAGS_NEW		= 1 << 6
 };
 
+typedef enum _MultiType MultiType;
+enum _MultiType {
+	MULTI_UPLOAD,
+	MULTI_DOWNLOAD,
+	MULTI_DELETE
+};
+
 typedef struct _GPParams GPParams;
 struct _GPParams {
 	Camera *camera;
@@ -51,7 +58,8 @@ struct _GPParams {
 	GPPortInfoList *portinfo_list;
 	int debug_func_id;
 
-	int is_upload;
+	MultiType	multi_type;
+	CameraFileType	download_type; /* for multi download */
 };
 
 void gp_params_init (GPParams *params);

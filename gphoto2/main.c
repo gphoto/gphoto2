@@ -757,7 +757,8 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 				printf (_("File %s exists. Overwrite? [y|n] "),
 					s);
 				fflush (stdout);
-				fgets (c, sizeof (c) - 1, stdin);
+				if (NULL == fgets (c, sizeof (c) - 1, stdin))
+					return GP_ERROR;
 			} while ((c[0]!='y')&&(c[0]!='Y')&&
 				 (c[0]!='n')&&(c[0]!='N'));
 
@@ -767,7 +768,8 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 			do { 
 				printf (_("Specify new filename? [y|n] "));
 				fflush (stdout); 
-				fgets (c, sizeof (c) - 1, stdin);
+				if (NULL == fgets (c, sizeof (c) - 1, stdin))
+					return GP_ERROR;
 			} while ((c[0]!='y')&&(c[0]!='Y')&&
 				 (c[0]!='n')&&(c[0]!='N'));
 
@@ -776,7 +778,8 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 
 			printf (_("Enter new filename: "));
 			fflush (stdout);
-			fgets (s, sizeof (s) - 1, stdin);
+			if (NULL == fgets (s, sizeof (s) - 1, stdin))
+				return GP_ERROR;
 			s[strlen (s) - 1] = 0;
                 }
                 printf (_("Saving file as %s\n"), s);
@@ -878,6 +881,7 @@ get_file_common (const char *arg, CameraFileType type )
 {
         gp_log (GP_LOG_DEBUG, "main", "Getting '%s'...", arg);
 
+	p.download_type = type; /* remember for multi download */
 	/*
 	 * If the user specified the file directly (and not a number),
 	 * get that file.
@@ -960,6 +964,7 @@ OPTION_CALLBACK (get_all_audio_data)
 
 OPTION_CALLBACK (delete_file)
 {
+	p.multi_type = MULTI_DELETE;
 	if (strchr (arg, '.'))
 		return (delete_file_action (&p, arg));
 
@@ -976,7 +981,7 @@ OPTION_CALLBACK (delete_all_files)
 OPTION_CALLBACK (upload_file)
 {
         gp_log (GP_LOG_DEBUG, "main", "Uploading file %s ...", arg);
-	p.is_upload = 1;
+	p.multi_type = MULTI_UPLOAD;
 	CR (action_camera_upload_file (&p, p.folder, arg));
         return (GP_OK);
 }
@@ -1528,7 +1533,7 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		params->p.r = for_each_folder (&p, delete_all_action);
 		break;
 	case ARG_DELETE_FILE:
-
+		p.multi_type = MULTI_DELETE;
 		/* Did the user specify a file or a range? */
 		if (strchr (arg, '.')) {
 			params->p.r = delete_file_action (&p, arg);
@@ -1550,15 +1555,19 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		params->p.r = for_each_file (&p, save_thumbnail_action);
 		break;
 	case ARG_GET_AUDIO_DATA:
+		p.multi_type = MULTI_DOWNLOAD;
 		params->p.r = get_file_common (arg, GP_FILE_TYPE_AUDIO);
 		break;
 	case ARG_GET_FILE:
+		p.multi_type = MULTI_DOWNLOAD;
 		params->p.r = get_file_common (arg, GP_FILE_TYPE_NORMAL);
 		break;
 	case ARG_GET_THUMBNAIL:
+		p.multi_type = MULTI_DOWNLOAD;
 		params->p.r = get_file_common (arg, GP_FILE_TYPE_PREVIEW);
 		break;
 	case ARG_GET_RAW_DATA:
+		p.multi_type = MULTI_DOWNLOAD;
 		params->p.r = get_file_common (arg, GP_FILE_TYPE_RAW);
 		break;
 	case ARG_LIST_CAMERAS:
@@ -1617,7 +1626,7 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		params->p.r = action_camera_summary (&p);
 		break;
 	case ARG_UPLOAD_FILE:
-		p.is_upload = 1;
+		p.multi_type = MULTI_UPLOAD;
 		params->p.r = action_camera_upload_file (&p, p.folder, arg);
 		break;
 	case ARG_LIST_CONFIG:
@@ -2037,12 +2046,33 @@ main (int argc, char **argv)
 	params.p.r = GP_OK;
 	while ((params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
 
-	if (p.is_upload) {
+	switch (p.multi_type) {
+	case MULTI_UPLOAD: {
 		const char *arg;
 
 		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
 			CR_MAIN (action_camera_upload_file (&p, p.folder, arg));
-		}	
+		}
+		break;
+	}
+	case MULTI_DELETE: {
+		const char *arg;
+
+		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
+			CR_MAIN (delete_file_action (&p, arg));
+		}
+		break;
+	}
+	case MULTI_DOWNLOAD: {
+		const char *arg;
+
+		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
+			CR_MAIN (get_file_common (arg, p.download_type ));
+		}
+		break;
+	}
+	default:
+		break;
 	}
 
 	CR_MAIN (params.p.r);
