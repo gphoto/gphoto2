@@ -72,6 +72,7 @@ static int shell_cd            (Camera *, const char *);
 static int shell_lcd           (Camera *, const char *);
 static int shell_exit          (Camera *, const char *);
 static int shell_get           (Camera *, const char *);
+static int shell_put           (Camera *, const char *);
 static int shell_get_thumbnail (Camera *, const char *);
 static int shell_get_raw       (Camera *, const char *);
 static int shell_del           (Camera *, const char *);
@@ -104,8 +105,8 @@ struct _ShellFunctionTable {
 	{"lcd", shell_lcd, N_("Change to a directory on the local drive"),
 	 N_("directory"), 1},
 	{"exit", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
-	{"get", shell_get, N_("Download a file"), N_("[directory/]filename"),
-	 1},
+	{"get", shell_get, N_("Download a file"), N_("[directory/]filename"), 1},
+	{"put", shell_put, N_("Upload a file"), N_("[directory/]filename"), 1},
 	{"get-thumbnail", shell_get_thumbnail, N_("Download a thumbnail"),
 	 N_("[directory/]filename"), 1},
 	{"get-raw", shell_get_raw, N_("Download raw data"),
@@ -732,6 +733,21 @@ shell_show_info (Camera *camera, const char *arg)
 				  print_info_action));
 
 	return (GP_OK);
+}
+
+static int
+shell_put (Camera *camera, const char *args) {
+	char arg[1024];
+	unsigned int x;
+	char dest_folder[MAX_FOLDER_LEN], dest_filename[MAX_FILE_LEN];
+
+	for (x = 0; x < shell_arg_count (args); x++) {
+		CHECK (shell_arg (args, x, arg));
+		CHECK (shell_construct_path ("/", arg, dest_folder, dest_filename));
+		CHECK (action_camera_upload_file (p, dest_folder, dest_filename));
+	}
+	
+	return (GP_OK);      
 }
 
 int
