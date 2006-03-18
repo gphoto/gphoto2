@@ -50,6 +50,8 @@ struct _GPParams {
 	CameraAbilitiesList *abilities_list;
 	GPPortInfoList *portinfo_list;
 	int debug_func_id;
+
+	int is_upload;
 };
 
 void gp_params_init (GPParams *params);

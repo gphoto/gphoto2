@@ -975,10 +975,9 @@ OPTION_CALLBACK (delete_all_files)
 
 OPTION_CALLBACK (upload_file)
 {
-        gp_log (GP_LOG_DEBUG, "main", "Uploading file...");
-
+        gp_log (GP_LOG_DEBUG, "main", "Uploading file %s ...", arg);
+	p.is_upload = 1;
 	CR (action_camera_upload_file (&p, p.folder, arg));
-
         return (GP_OK);
 }
 
@@ -1618,6 +1617,7 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		params->p.r = action_camera_summary (&p);
 		break;
 	case ARG_UPLOAD_FILE:
+		p.is_upload = 1;
 		params->p.r = action_camera_upload_file (&p, p.folder, arg);
 		break;
 	case ARG_LIST_CONFIG:
@@ -2036,6 +2036,15 @@ main (int argc, char **argv)
 	poptResetContext (ctx);
 	params.p.r = GP_OK;
 	while ((params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
+
+	if (p.is_upload) {
+		const char *arg;
+
+		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
+			CR_MAIN (action_camera_upload_file (&p, p.folder, arg));
+		}	
+	}
+
 	CR_MAIN (params.p.r);
 #else
         /* Count the number of command-line options we have */
