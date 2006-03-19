@@ -1003,7 +1003,7 @@ OPTION_CALLBACK (remove_dir)
 }
 #endif
 
-static int
+int
 capture_generic (CameraCaptureType type, const char *name)
 {
 	CameraFilePath path, last;

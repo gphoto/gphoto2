@@ -83,6 +83,10 @@ static int shell_show_info     (Camera *, const char *);
 #ifdef HAVE_LIBEXIF
 static int shell_show_exif     (Camera *, const char *);
 #endif
+static int shell_list_config   (Camera *, const char *);
+static int shell_get_config    (Camera *, const char *);
+static int shell_set_config    (Camera *, const char *);
+static int shell_capture_image (Camera *, const char *);
 
 #define MAX_FOLDER_LEN 1024
 #define MAX_FILE_LEN 1024
@@ -122,6 +126,10 @@ struct _ShellFunctionTable {
 	 N_("[command]"), 0},
 	{"ls", shell_ls, N_("List the contents of the current directory"),
 	 N_("[directory/]"), 0},
+	{"list-config", shell_list_config, N_("List configuration variables"), NULL, 0},
+	{"get-config", shell_get_config, N_("Get configuration variable"), N_("name"), 1},
+	{"set-config", shell_set_config, N_("Set configuration variable"), N_("name=value"), 1},
+	{"capture-image", shell_capture_image, N_("Capture a single image"), N_("[name]"), 0},
 	{"q", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"quit", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"?", shell_help, N_("Displays command usage"), N_("[command]"), 0},
@@ -748,6 +756,51 @@ shell_put (Camera *camera, const char *args) {
 	}
 	
 	return (GP_OK);      
+}
+
+static int
+shell_list_config (Camera *camera, const char *args) {
+	CHECK (list_config_action (p));
+	return (GP_OK);      
+}
+
+static int
+shell_get_config (Camera *camera, const char *args) {
+	char arg[1024];
+	unsigned int x;
+
+	for (x = 0; x < shell_arg_count (args); x++) {
+		CHECK (shell_arg (args, x, arg));
+		CHECK (get_config_action (p, arg));
+	}
+	return (GP_OK);      
+}
+
+static int
+shell_set_config (Camera *camera, const char *args) {
+	char arg[1024];
+	char *s,*x;
+
+	strncpy (arg, args, sizeof(arg));
+	arg[1023]='\0';
+	/* need to skip spaces */
+	x = arg; while (*x == ' ') x++;
+	if ((s=strchr(x,'='))) {
+		*s='\0';
+		return set_config_action (p, x, s+1);
+	}
+	if ((s=strchr(x,' '))) {
+		*s='\0';
+		return set_config_action (p, x, s+1);
+	}
+	fprintf (stderr, _("set-config needs a second argument.\n"));
+	return (GP_OK);      
+}
+
+static int
+shell_capture_image (Camera *camera, const char *args) {
+	while (*args==' ') args++;
+	return capture_generic (GP_CAPTURE_IMAGE, *args?args:NULL);
 }
 
 int
