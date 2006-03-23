@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.5\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2006-03-14 20:34+0100\n"
+"POT-Creation-Date: 2006-03-23 20:44+0100\n"
 "PO-Revision-Date: 2005-04-21 11:18+0800\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@pcmail.com.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -105,7 +105,7 @@ msgstr "  已下載:  %s\n"
 #: gphoto2/actions.c:225 gphoto2/actions.c:257 gphoto2/actions.c:269
 #: gphoto2/actions.c:616 gphoto2/actions.c:618 gphoto2/actions.c:646
 #: gphoto2/actions.c:649 gphoto2/actions.c:652 gphoto2/actions.c:655
-#: gphoto2/actions.c:658 gphoto2/actions.c:1287
+#: gphoto2/actions.c:658 gphoto2/actions.c:1321
 msgid "yes"
 msgstr "是"
 
@@ -117,7 +117,7 @@ msgstr "是"
 #: gphoto2/actions.c:225 gphoto2/actions.c:257 gphoto2/actions.c:269
 #: gphoto2/actions.c:616 gphoto2/actions.c:618 gphoto2/actions.c:646
 #: gphoto2/actions.c:649 gphoto2/actions.c:652 gphoto2/actions.c:655
-#: gphoto2/actions.c:658 gphoto2/actions.c:1281
+#: gphoto2/actions.c:658 gphoto2/actions.c:1315
 msgid "no"
 msgstr "否"
 
@@ -458,123 +458,123 @@ msgstr ""
 "\n"
 "這個版本的 gphoto2 使用下列軟體版本和選項:\n"
 
-#: gphoto2/actions.c:917
+#: gphoto2/actions.c:951
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "將 USB 供應商/產品 id 0x%x/0x%x 以 0x%x/0x%x 覆寫"
 
-#: gphoto2/actions.c:968
+#: gphoto2/actions.c:1002
 msgid ""
 "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
 "MAILING LIST:"
 msgstr "在將除錯資訊發送到郵遞論壇的時候總是包含下述各列:"
 
-#: gphoto2/actions.c:983
+#: gphoto2/actions.c:1017
 #, c-format
 msgid "%s has been compiled with the following options:"
 msgstr "已經利用下列選項編譯 %s:"
 
-#: gphoto2/actions.c:1080
+#: gphoto2/actions.c:1114
 #, fuzzy, c-format
 msgid "%s not found in configuration tree."
 msgstr "在樹狀設定圖中無法找到 %s。\n"
 
-#: gphoto2/actions.c:1139
+#: gphoto2/actions.c:1173
 #, fuzzy, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr "無法從文字視窗元件 %s 中取值。\n"
 
-#: gphoto2/actions.c:1156
+#: gphoto2/actions.c:1190
 #, fuzzy, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr "無法從範圍視窗元件 %s 中取值。\n"
 
-#: gphoto2/actions.c:1168
+#: gphoto2/actions.c:1202
 #, fuzzy, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr "無法從切換視窗元件 %s 中取值。\n"
 
-#: gphoto2/actions.c:1180
+#: gphoto2/actions.c:1214
 #, fuzzy, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr "無法從日期/時間視窗元件 %s 中取值。\n"
 
-#: gphoto2/actions.c:1210
+#: gphoto2/actions.c:1244
 #, fuzzy, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr "無法從單選視窗元件 %s 中取值。\n"
 
-#: gphoto2/actions.c:1251
+#: gphoto2/actions.c:1285
 #, fuzzy, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr "無法從文字視窗元件 %s 中取值。\n"
 
-#: gphoto2/actions.c:1261
+#: gphoto2/actions.c:1295
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr ""
 
-#: gphoto2/actions.c:1266
+#: gphoto2/actions.c:1300
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr ""
 
-#: gphoto2/actions.c:1272
+#: gphoto2/actions.c:1306
 #, fuzzy, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr "無法從範圍視窗元件 %s 中取值。\n"
 
-#: gphoto2/actions.c:1281
+#: gphoto2/actions.c:1315
 msgid "off"
 msgstr ""
 
 # frontends/command-line/actions.c:331
-#: gphoto2/actions.c:1282
+#: gphoto2/actions.c:1316
 #, fuzzy
 msgid "false"
 msgstr "值"
 
 # camlibs/polaroid/pdc700.c:169 camlibs/polaroid/pdc700.c:170
-#: gphoto2/actions.c:1287
+#: gphoto2/actions.c:1321
 #, fuzzy
 msgid "on"
 msgstr "週一"
 
-#: gphoto2/actions.c:1288
+#: gphoto2/actions.c:1322
 msgid "true"
 msgstr ""
 
-#: gphoto2/actions.c:1292
+#: gphoto2/actions.c:1326
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
 msgstr ""
 
-#: gphoto2/actions.c:1298
+#: gphoto2/actions.c:1332
 #, fuzzy, c-format
 msgid "Failed to set values %s of toggle widget %s."
 msgstr "無法從切換視窗元件 %s 中取值。\n"
 
-#: gphoto2/actions.c:1311
+#: gphoto2/actions.c:1345
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr ""
 
-#: gphoto2/actions.c:1318
+#: gphoto2/actions.c:1352
 #, fuzzy, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr "無法從日期/時間視窗元件 %s 中取值。\n"
 
-#: gphoto2/actions.c:1355
+#: gphoto2/actions.c:1389
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr ""
 
-#: gphoto2/actions.c:1363
+#: gphoto2/actions.c:1397
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr ""
 
-#: gphoto2/actions.c:1370
+#: gphoto2/actions.c:1404
 #, fuzzy, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr "無法從單選視窗元件 %s 中取值。\n"
@@ -695,263 +695,267 @@ msgid "No"
 msgstr "否"
 
 # frontends/command-line/main.c:187
-#: gphoto2/main.c:168 gphoto2/main.c:1715
+#: gphoto2/main.c:169 gphoto2/main.c:1735
 msgid "Turn on debugging"
 msgstr "開始除錯"
 
 # frontends/command-line/main.c:189
-#: gphoto2/main.c:169 gphoto2/main.c:1717
+#: gphoto2/main.c:170 gphoto2/main.c:1737
 msgid "Quiet output (default=verbose)"
 msgstr "少量輸出 (預設為大量)"
 
 # frontends/command-line/main.c:193
-#: gphoto2/main.c:173 gphoto2/main.c:1721
+#: gphoto2/main.c:174 gphoto2/main.c:1741
 msgid "Display version and exit"
 msgstr "顯示版本號並離開"
 
 # frontends/command-line/main.c:194
-#: gphoto2/main.c:174
+#: gphoto2/main.c:175
 msgid "Displays this help screen"
 msgstr "顯示該求助螢幕"
 
 # frontends/command-line/main.c:195
-#: gphoto2/main.c:175 gphoto2/main.c:1723
+#: gphoto2/main.c:176 gphoto2/main.c:1743
 msgid "List supported camera models"
 msgstr "列舉支援的相機型號"
 
 # frontends/command-line/main.c:197
-#: gphoto2/main.c:176 gphoto2/main.c:1725
+#: gphoto2/main.c:177 gphoto2/main.c:1745
 msgid "List supported port devices"
 msgstr "列舉支援的輸出入埠設備"
 
 # frontends/command-line/main.c:198
-#: gphoto2/main.c:177 gphoto2/main.c:1727
+#: gphoto2/main.c:178 gphoto2/main.c:1747
 msgid "Send file to stdout"
 msgstr "將檔案發送到標準輸出"
 
 # frontends/command-line/main.c:199
-#: gphoto2/main.c:178 gphoto2/main.c:1729
+#: gphoto2/main.c:179 gphoto2/main.c:1749
 msgid "Print filesize before data"
 msgstr "在資料前面列印檔案大小"
 
 # frontends/command-line/main.c:200
-#: gphoto2/main.c:179 gphoto2/main.c:1731
+#: gphoto2/main.c:180 gphoto2/main.c:1751
 msgid "List auto-detected cameras"
 msgstr "列舉可以自動檢測的相機"
 
 # frontends/command-line/main.c:203
-#: gphoto2/main.c:182 gphoto2/main.c:1733
+#: gphoto2/main.c:183 gphoto2/main.c:1753
 msgid "Specify port device"
 msgstr "指定輸出入埠設備"
 
 # frontends/command-line/main.c:204
-#: gphoto2/main.c:183 gphoto2/main.c:1735
+#: gphoto2/main.c:184 gphoto2/main.c:1755
 msgid "Specify serial transfer speed"
 msgstr "指定串行傳輸速度"
 
 # frontends/command-line/main.c:205
-#: gphoto2/main.c:184 gphoto2/main.c:1737
+#: gphoto2/main.c:185 gphoto2/main.c:1757
 msgid "Specify camera model"
 msgstr "指定相機型號"
 
 # frontends/command-line/main.c:206
-#: gphoto2/main.c:185 gphoto2/main.c:1739
+#: gphoto2/main.c:186 gphoto2/main.c:1759
 msgid "Specify a filename"
 msgstr "指定檔案名"
 
 # frontends/command-line/main.c:207
-#: gphoto2/main.c:186 gphoto2/main.c:1741
+#: gphoto2/main.c:187 gphoto2/main.c:1761
 msgid "(expert only) Override USB IDs"
 msgstr "(僅適於專家) 覆蓋 USB ID"
 
 # frontends/command-line/main.c:210
-#: gphoto2/main.c:189 gphoto2/main.c:1743
+#: gphoto2/main.c:190 gphoto2/main.c:1763
 msgid "Display camera abilities"
 msgstr "顯示相機功能"
 
 # frontends/command-line/main.c:211
-#: gphoto2/main.c:190 gphoto2/main.c:1745
+#: gphoto2/main.c:191 gphoto2/main.c:1765
 msgid "Specify camera folder (default=\"/\")"
 msgstr "指定相機資料夾 (預設為「/」)"
 
 # frontends/command-line/main.c:212
-#: gphoto2/main.c:191 gphoto2/main.c:1747
+#: gphoto2/main.c:192 gphoto2/main.c:1767
 msgid "Recursion (default for download)"
 msgstr "遞迴 (下載時預設)"
 
 # frontends/command-line/main.c:213
-#: gphoto2/main.c:192 gphoto2/main.c:1749
+#: gphoto2/main.c:193 gphoto2/main.c:1769
 msgid "No recursion (default for deletion)"
 msgstr "不遞迴 (刪除時預設)"
 
-#: gphoto2/main.c:193 gphoto2/main.c:1751
+#: gphoto2/main.c:194 gphoto2/main.c:1771
 msgid "Process new files only"
 msgstr ""
 
 # frontends/command-line/main.c:214
-#: gphoto2/main.c:194 gphoto2/main.c:1753
+#: gphoto2/main.c:195 gphoto2/main.c:1773
 msgid "List folders in folder"
 msgstr "列出資料夾中的資料夾"
 
 # frontends/command-line/main.c:215
-#: gphoto2/main.c:195 gphoto2/main.c:1755
+#: gphoto2/main.c:196 gphoto2/main.c:1775
 msgid "List files in folder"
 msgstr "列出資料夾中的檔案"
 
 # frontends/command-line/main.c:216 frontends/command-line/main.c:217
-#: gphoto2/main.c:196 gphoto2/main.c:197
+#: gphoto2/main.c:197 gphoto2/main.c:198 gphoto2/shell.c:130
 msgid "name"
 msgstr "名稱"
 
 # frontends/command-line/main.c:216
-#: gphoto2/main.c:196 gphoto2/main.c:1757
+#: gphoto2/main.c:197 gphoto2/main.c:1777
 msgid "Create a directory"
 msgstr "建立目錄"
 
 # frontends/command-line/main.c:217
-#: gphoto2/main.c:197 gphoto2/main.c:1759
+#: gphoto2/main.c:198 gphoto2/main.c:1779
 msgid "Remove a directory"
 msgstr "刪除目錄"
 
 # frontends/command-line/main.c:218
-#: gphoto2/main.c:198 gphoto2/main.c:1761
+#: gphoto2/main.c:199 gphoto2/main.c:1781
 msgid "Display number of files"
 msgstr "顯示檔案的數量"
 
 # frontends/command-line/main.c:219
-#: gphoto2/main.c:199 gphoto2/main.c:1763
+#: gphoto2/main.c:200 gphoto2/main.c:1783
 msgid "Get files given in range"
 msgstr "獲取給定範圍的檔案"
 
 # frontends/command-line/main.c:220
-#: gphoto2/main.c:200 gphoto2/main.c:1765
+#: gphoto2/main.c:201 gphoto2/main.c:1785
 msgid "Get all files from folder"
 msgstr "從資料夾中獲取所有檔案"
 
 # frontends/command-line/main.c:221
-#: gphoto2/main.c:201 gphoto2/main.c:1767
+#: gphoto2/main.c:202 gphoto2/main.c:1787
 msgid "Get thumbnails given in range"
 msgstr "獲取給定範圍的縮圖"
 
 # frontends/command-line/main.c:222
-#: gphoto2/main.c:202 gphoto2/main.c:1770
+#: gphoto2/main.c:203 gphoto2/main.c:1790
 msgid "Get all thumbnails from folder"
 msgstr "從資料夾中獲取所有縮圖"
 
 # frontends/command-line/main.c:223
-#: gphoto2/main.c:203 gphoto2/main.c:1773
+#: gphoto2/main.c:204 gphoto2/main.c:1793
 msgid "Get raw data given in range"
 msgstr "獲取給定範圍的原始資料"
 
 # frontends/command-line/main.c:224
-#: gphoto2/main.c:204 gphoto2/main.c:1776
+#: gphoto2/main.c:205 gphoto2/main.c:1796
 msgid "Get all raw data from folder"
 msgstr "從資料夾中獲取所有原始資料"
 
 # frontends/command-line/main.c:225
-#: gphoto2/main.c:205 gphoto2/main.c:1779
+#: gphoto2/main.c:206 gphoto2/main.c:1799
 msgid "Get audio data given in range"
 msgstr "獲取給定範圍的音訊資料"
 
 # frontends/command-line/main.c:226
-#: gphoto2/main.c:206 gphoto2/main.c:1782
+#: gphoto2/main.c:207 gphoto2/main.c:1802
 msgid "Get all audio data from folder"
 msgstr "從資料夾中獲取所有音訊資料"
 
 # frontends/command-line/main.c:227
-#: gphoto2/main.c:207 gphoto2/main.c:1784
+#: gphoto2/main.c:208 gphoto2/main.c:1804
 msgid "Delete files given in range"
 msgstr "刪除給定範圍中的檔案"
 
 # frontends/command-line/main.c:228
-#: gphoto2/main.c:208 gphoto2/main.c:1786
+#: gphoto2/main.c:209 gphoto2/main.c:1806
 msgid "Delete all files in folder"
 msgstr "刪除資料夾中的所有檔案"
 
 # frontends/command-line/main.c:229
-#: gphoto2/main.c:209 gphoto2/main.c:1788
+#: gphoto2/main.c:210 gphoto2/main.c:1808
 msgid "Upload a file to camera"
 msgstr "將一個檔案上載到相機"
 
 # frontends/command-line/main.c:231
-#: gphoto2/main.c:211 gphoto2/main.c:1791
+#: gphoto2/main.c:212 gphoto2/main.c:1811
 msgid "Configure"
 msgstr "配置"
 
 # frontends/command-line/gphoto2-cmd-config.c:73
-#: gphoto2/main.c:213
+#: gphoto2/main.c:214
 msgid "List the configuration tree"
 msgstr "列出樹狀設定圖"
 
-#: gphoto2/main.c:214
+#: gphoto2/main.c:215
 msgid "Get a configuration variable"
 msgstr "取得設定值"
 
-#: gphoto2/main.c:215
+#: gphoto2/main.c:216
 #, fuzzy
 msgid "Set a configuration variable"
 msgstr "取得設定值"
 
-#: gphoto2/main.c:216 gphoto2/main.c:1803
+#: gphoto2/main.c:217 gphoto2/main.c:1820
+msgid "Wait for event from camera"
+msgstr ""
+
+#: gphoto2/main.c:218 gphoto2/main.c:1825
 msgid "Set number of frames to capture (default=infinite)"
 msgstr "設定要擷取的影格數目 (預設=無限)"
 
-#: gphoto2/main.c:217 gphoto2/main.c:1805
+#: gphoto2/main.c:219 gphoto2/main.c:1827
 msgid "Set capture interval in seconds"
 msgstr "設定以秒為單位的擷取間隔"
 
 # frontends/command-line/main.c:233
-#: gphoto2/main.c:218 gphoto2/main.c:1801
+#: gphoto2/main.c:220 gphoto2/main.c:1823
 msgid "Capture a quick preview"
 msgstr "擷取一個快速預覽"
 
 # frontends/command-line/main.c:234
-#: gphoto2/main.c:219 gphoto2/main.c:1807
+#: gphoto2/main.c:221 gphoto2/main.c:1829
 msgid "Capture an image"
 msgstr "擷取一幅圖像"
 
 # frontends/command-line/main.c:235
-#: gphoto2/main.c:220
+#: gphoto2/main.c:222
 msgid "Capture a movie "
 msgstr "擷取一段電影"
 
 # frontends/command-line/main.c:236
-#: gphoto2/main.c:221 gphoto2/main.c:1811
+#: gphoto2/main.c:223 gphoto2/main.c:1833
 msgid "Capture an audio clip"
 msgstr "擷取一個音訊片段"
 
 # frontends/command-line/main.c:238 frontends/command-line/shell.c:127
-#: gphoto2/main.c:223 gphoto2/main.c:1814 gphoto2/shell.c:117
+#: gphoto2/main.c:225 gphoto2/main.c:1836 gphoto2/shell.c:122
 msgid "Show EXIF information"
 msgstr "顯示 EXIF 資訊"
 
 # frontends/command-line/main.c:240 frontends/command-line/shell.c:123
-#: gphoto2/main.c:225 gphoto2/main.c:1817 gphoto2/shell.c:113
+#: gphoto2/main.c:227 gphoto2/main.c:1839 gphoto2/shell.c:118
 msgid "Show info"
 msgstr "顯示資訊"
 
 # frontends/command-line/main.c:241
-#: gphoto2/main.c:226
+#: gphoto2/main.c:228
 msgid "Summary of camera status"
 msgstr "相機狀態概要"
 
 # frontends/command-line/main.c:242
-#: gphoto2/main.c:227
+#: gphoto2/main.c:229
 msgid "Camera driver manual"
 msgstr "相機驅動程序手冊"
 
 # frontends/command-line/main.c:243
-#: gphoto2/main.c:228
+#: gphoto2/main.c:230
 msgid "About the camera driver"
 msgstr "關於相機驅動程序"
 
 # frontends/command-line/main.c:244
-#: gphoto2/main.c:229 gphoto2/main.c:1825
+#: gphoto2/main.c:231 gphoto2/main.c:1847
 msgid "gPhoto shell"
 msgstr "gPhoto shell"
 
 # frontends/command-line/main.c:637
-#: gphoto2/main.c:383 gphoto2/main.c:1420
+#: gphoto2/main.c:385 gphoto2/main.c:1432
 #, c-format
 msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
@@ -960,134 +964,134 @@ msgstr ""
 "使用諸如 a:b=c:d 的形式將偵測為 a:b 的 USB 設備處理為 c:d。a b c d 應為以"
 "「0x」開始的十六進制數。\n"
 
-#: gphoto2/main.c:603
+#: gphoto2/main.c:610
 #, c-format
 msgid "Zero padding numbers in file names is only possible with %%n."
 msgstr ""
 
-#: gphoto2/main.c:612
+#: gphoto2/main.c:619
 #, fuzzy, c-format
 msgid "You cannot use %%n zero padding without a precision value!"
 msgstr "您不能把「%%n」與非永久檔案一起使用！"
 
-#: gphoto2/main.c:628
+#: gphoto2/main.c:635
 #, c-format
 msgid "You cannot use '%%n' in combination with non-persistent files!"
 msgstr "您不能把「%%n」與非永久檔案一起使用！"
 
-#: gphoto2/main.c:659
+#: gphoto2/main.c:666
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
 msgstr "由照相機 (「%s」) 提供的檔案名不含有後置文字！"
 
-#: gphoto2/main.c:709
+#: gphoto2/main.c:716
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
 msgstr "無效的格式「%s」(錯誤發生在 %i 位元組)。"
 
 # frontends/command-line/main.c:859
-#: gphoto2/main.c:757
+#: gphoto2/main.c:764
 #, c-format
 msgid "File %s exists. Overwrite? [y|n] "
 msgstr "檔案 %s 存在。要覆蓋？[y|n] "
 
 # frontends/command-line/main.c:870
-#: gphoto2/main.c:768
+#: gphoto2/main.c:776
 #, c-format
 msgid "Specify new filename? [y|n] "
 msgstr "指定新檔案名？[y|n]"
 
 # frontends/command-line/main.c:879
-#: gphoto2/main.c:777
+#: gphoto2/main.c:786
 #, c-format
 msgid "Enter new filename: "
 msgstr "輸入新檔案名: "
 
 # frontends/command-line/main.c:884
-#: gphoto2/main.c:782
+#: gphoto2/main.c:792
 #, c-format
 msgid "Saving file as %s\n"
 msgstr "正在將檔案另存為 %s\n"
 
-#: gphoto2/main.c:1015
+#: gphoto2/main.c:1026
 #, c-format
 msgid "Time-lapse mode enabled (interval: %ds).\n"
 msgstr "開啟曠時模式 (間隔: %d 秒)。\n"
 
-#: gphoto2/main.c:1022
+#: gphoto2/main.c:1033
 #, c-format
 msgid "Capturing frame #%d...\n"
 msgstr "擷取影格 #%d 中...\n"
 
-#: gphoto2/main.c:1024
+#: gphoto2/main.c:1035
 #, c-format
 msgid "Capturing frame #%d/%d...\n"
 msgstr "擷取影格 #%d/%d 中...\n"
 
 # frontends/command-line/actions.c:322
-#: gphoto2/main.c:1031
+#: gphoto2/main.c:1042
 msgid "Could not capture."
 msgstr "無法擷取。"
 
-#: gphoto2/main.c:1040
+#: gphoto2/main.c:1051
 #, c-format
 msgid "Capture failed (auto-focus problem?)...\n"
 msgstr "擷取失敗 (自動對焦的問題？)...\n"
 
 # frontends/command-line/main.c:1122
-#: gphoto2/main.c:1054
+#: gphoto2/main.c:1065
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "新檔案在相機中 %s%s%s 處\n"
 
 # frontends/command-line/gphoto2-cmd-config.c:73
-#: gphoto2/main.c:1064
+#: gphoto2/main.c:1075
 msgid "Could not set folder."
 msgstr "無法設定資料夾。"
 
 # frontends/command-line/gphoto2-cmd-config.c:73
-#: gphoto2/main.c:1089
+#: gphoto2/main.c:1100
 msgid "Could not get image."
 msgstr "無法取得圖像。"
 
-#: gphoto2/main.c:1096
+#: gphoto2/main.c:1107
 msgid "Buggy libcanon.so?"
 msgstr "有錯誤的 libcanon.so？"
 
 # frontends/command-line/main.c:1122
-#: gphoto2/main.c:1102
+#: gphoto2/main.c:1113
 #, c-format
 msgid "Deleting file %s%s%s on the camera\n"
 msgstr "刪除相機中 %s%s%s 檔案\n"
 
-#: gphoto2/main.c:1107
+#: gphoto2/main.c:1118
 #, fuzzy
 msgid "Could not delete image."
 msgstr "無法刪除圖像。"
 
 # frontends/command-line/gphoto2-cmd-config.c:73
-#: gphoto2/main.c:1127
+#: gphoto2/main.c:1138
 msgid "Could not close camera connection."
 msgstr "無法關閉相機連結。"
 
-#: gphoto2/main.c:1133
+#: gphoto2/main.c:1144
 #, c-format
 msgid "Sleeping for %d second(s)...\n"
 msgstr "休眠 %d 秒...\n"
 
-#: gphoto2/main.c:1137
+#: gphoto2/main.c:1148
 #, c-format
 msgid "not sleeping (%d seconds behind schedule)\n"
 msgstr ""
 
 # frontends/command-line/main.c:1614
-#: gphoto2/main.c:1271
+#: gphoto2/main.c:1282
 #, c-format
 msgid "ERROR: "
 msgstr "錯誤: "
 
 # frontends/command-line/main.c:1637
-#: gphoto2/main.c:1294
+#: gphoto2/main.c:1305
 #, c-format
 msgid ""
 "\n"
@@ -1097,13 +1101,13 @@ msgstr ""
 "正在中斷...\n"
 
 # frontends/command-line/main.c:1643
-#: gphoto2/main.c:1300
+#: gphoto2/main.c:1311
 #, c-format
 msgid "Aborted.\n"
 msgstr "已中斷。\n"
 
 # frontends/command-line/main.c:1648
-#: gphoto2/main.c:1305
+#: gphoto2/main.c:1316
 #, c-format
 msgid ""
 "\n"
@@ -1113,18 +1117,18 @@ msgstr ""
 "正在取消...\n"
 
 # frontends/command-line/actions.c:355
-#: gphoto2/main.c:1523
+#: gphoto2/main.c:1535
 msgid "gphoto2 has been compiled without support for CDK."
 msgstr "gphoto2 編譯時沒有包含對 CDK 的支援。"
 
 # frontends/command-line/main.c:1750
-#: gphoto2/main.c:1658
+#: gphoto2/main.c:1678
 #, c-format
 msgid "Operation cancelled.\n"
 msgstr "操作已取消。\n"
 
 # frontends/command-line/main.c:1753
-#: gphoto2/main.c:1662
+#: gphoto2/main.c:1682
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -1134,7 +1138,7 @@ msgstr ""
 "\n"
 
 # frontends/command-line/main.c:1759
-#: gphoto2/main.c:1666
+#: gphoto2/main.c:1686
 #, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
@@ -1151,82 +1155,82 @@ msgstr ""
 "請按以下方式執行 gphoto2:\n"
 "\n"
 
-#: gphoto2/main.c:1719
+#: gphoto2/main.c:1739
 #, fuzzy
 msgid "Overwrite files without asking"
 msgstr "在不詢問的情況下覆蓋檔案。"
 
-#: gphoto2/main.c:1733
+#: gphoto2/main.c:1753
 msgid "path"
 msgstr "路徑"
 
-#: gphoto2/main.c:1735
+#: gphoto2/main.c:1755
 msgid "speed"
 msgstr "速度"
 
 # frontends/command-line/main.c:384
-#: gphoto2/main.c:1737
+#: gphoto2/main.c:1757
 msgid "model"
 msgstr "型號"
 
 # camlibs/polaroid/pdc700.c:167
-#: gphoto2/main.c:1739
+#: gphoto2/main.c:1759
 msgid "filename"
 msgstr "檔案名"
 
-#: gphoto2/main.c:1741
+#: gphoto2/main.c:1761
 msgid "usbid"
 msgstr "USB 編號"
 
-#: gphoto2/main.c:1745
+#: gphoto2/main.c:1765
 msgid "folder"
 msgstr "資料夾"
 
 # frontends/command-line/gphoto2-cmd-config.c:73
-#: gphoto2/main.c:1794
+#: gphoto2/main.c:1814
 msgid "List configuration tree"
 msgstr "列出樹狀配置圖"
 
 # frontends/command-line/gphoto2-cmd-config.c:73
-#: gphoto2/main.c:1796
+#: gphoto2/main.c:1816
 msgid "Get configuration value"
 msgstr "取得設定值"
 
 # frontends/command-line/gphoto2-cmd-config.c:73
-#: gphoto2/main.c:1798
+#: gphoto2/main.c:1818
 #, fuzzy
 msgid "Set configuration value"
 msgstr "取得設定值"
 
-#: gphoto2/main.c:1803
+#: gphoto2/main.c:1825
 msgid "count"
 msgstr "數量"
 
-#: gphoto2/main.c:1805
+#: gphoto2/main.c:1827
 msgid "seconds"
 msgstr "秒"
 
 # frontends/command-line/main.c:235
-#: gphoto2/main.c:1809
+#: gphoto2/main.c:1831
 msgid "Capture a movie"
 msgstr "拍攝一段電影"
 
-#: gphoto2/main.c:1819
+#: gphoto2/main.c:1841
 msgid "Show summary"
 msgstr "顯示概要"
 
 # frontends/command-line/main.c:242
-#: gphoto2/main.c:1821
+#: gphoto2/main.c:1843
 msgid "Show camera driver manual"
 msgstr "顯示相機驅動程序手冊"
 
 # frontends/command-line/main.c:243
-#: gphoto2/main.c:1823
+#: gphoto2/main.c:1845
 msgid "About the camera driver manual"
 msgstr "關於相機驅動程序手冊"
 
 # frontends/command-line/main.c:1699
-#: gphoto2/main.c:2050
+#: gphoto2/main.c:2102
 #, c-format
 msgid ""
 "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
@@ -1236,7 +1240,7 @@ msgstr ""
 "CAMLIBS=C:\\GPHOTO2\\CAM\n"
 
 # frontends/command-line/main.c:1709
-#: gphoto2/main.c:2060
+#: gphoto2/main.c:2112
 #, c-format
 msgid ""
 "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
@@ -1345,151 +1349,194 @@ msgid "*** Error (%i: '%s') ***"
 msgstr "*** 錯誤 (%i: 「%s」) ***"
 
 # frontends/command-line/shell.c:112
-#: gphoto2/shell.c:102
+#: gphoto2/shell.c:107
 msgid "Change to a directory on the camera"
 msgstr "進入相機中的目錄"
 
 # frontends/command-line/shell.c:113 frontends/command-line/shell.c:115
-#: gphoto2/shell.c:103 gphoto2/shell.c:105
+#: gphoto2/shell.c:108 gphoto2/shell.c:110
 msgid "directory"
 msgstr "目錄"
 
 # frontends/command-line/shell.c:114
-#: gphoto2/shell.c:104
+#: gphoto2/shell.c:109
 msgid "Change to a directory on the local drive"
 msgstr "進入本機儲存裝置中的目錄"
 
 # frontends/command-line/shell.c:116 frontends/command-line/shell.c:134
 # frontends/command-line/shell.c:135
-#: gphoto2/shell.c:106 gphoto2/shell.c:124 gphoto2/shell.c:125
+#: gphoto2/shell.c:111 gphoto2/shell.c:133 gphoto2/shell.c:134
 msgid "Exit the gPhoto shell"
 msgstr "離開 gPhoto shell"
 
 # frontends/command-line/shell.c:117
-#: gphoto2/shell.c:107
+#: gphoto2/shell.c:112
 msgid "Download a file"
 msgstr "下載一個檔案"
 
 # frontends/command-line/shell.c:117 frontends/command-line/shell.c:120
 # frontends/command-line/shell.c:122 frontends/command-line/shell.c:124
 # frontends/command-line/shell.c:125 frontends/command-line/shell.c:128
-#: gphoto2/shell.c:107 gphoto2/shell.c:110 gphoto2/shell.c:112
-#: gphoto2/shell.c:114 gphoto2/shell.c:115 gphoto2/shell.c:118
+#: gphoto2/shell.c:112 gphoto2/shell.c:113 gphoto2/shell.c:115
+#: gphoto2/shell.c:117 gphoto2/shell.c:119 gphoto2/shell.c:120
+#: gphoto2/shell.c:123
 msgid "[directory/]filename"
 msgstr "[目錄/]檔案"
 
+# frontends/command-line/shell.c:117
+#: gphoto2/shell.c:113
+#, fuzzy
+msgid "Upload a file"
+msgstr "下載一個檔案"
+
 # frontends/command-line/shell.c:119
-#: gphoto2/shell.c:109
+#: gphoto2/shell.c:114
 msgid "Download a thumbnail"
 msgstr "下載一張縮圖"
 
 # frontends/command-line/shell.c:121
-#: gphoto2/shell.c:111
+#: gphoto2/shell.c:116
 msgid "Download raw data"
 msgstr "下載原始資料"
 
 # frontends/command-line/shell.c:125
-#: gphoto2/shell.c:115
+#: gphoto2/shell.c:120
 msgid "Delete"
 msgstr "刪除"
 
 # frontends/command-line/shell.c:130 frontends/command-line/shell.c:136
-#: gphoto2/shell.c:120 gphoto2/shell.c:126
+#: gphoto2/shell.c:125 gphoto2/shell.c:135
 msgid "Displays command usage"
 msgstr "顯示命令用法"
 
 # frontends/command-line/shell.c:131 frontends/command-line/shell.c:136
-#: gphoto2/shell.c:121 gphoto2/shell.c:126
+#: gphoto2/shell.c:126 gphoto2/shell.c:135
 msgid "[command]"
 msgstr "[命令]"
 
 # frontends/command-line/shell.c:132
-#: gphoto2/shell.c:122
+#: gphoto2/shell.c:127
 msgid "List the contents of the current directory"
 msgstr "列出目前目錄的內容"
 
 # frontends/command-line/shell.c:133
-#: gphoto2/shell.c:123
+#: gphoto2/shell.c:128
 msgid "[directory/]"
 msgstr "[目錄]"
 
+#: gphoto2/shell.c:129
+#, fuzzy
+msgid "List configuration variables"
+msgstr "取得設定值"
+
+#: gphoto2/shell.c:130
+#, fuzzy
+msgid "Get configuration variable"
+msgstr "取得設定值"
+
+#: gphoto2/shell.c:131
+#, fuzzy
+msgid "Set configuration variable"
+msgstr "取得設定值"
+
+#: gphoto2/shell.c:131
+msgid "name=value"
+msgstr ""
+
+# frontends/command-line/main.c:234
+#: gphoto2/shell.c:132
+#, fuzzy
+msgid "Capture a single image"
+msgstr "擷取一幅圖像"
+
+# frontends/command-line/main.c:216 frontends/command-line/main.c:217
+#: gphoto2/shell.c:132
+#, fuzzy
+msgid "[name]"
+msgstr "名稱"
+
 # frontends/command-line/shell.c:414
-#: gphoto2/shell.c:444
+#: gphoto2/shell.c:453
 msgid "Invalid command."
 msgstr "不正確命令。"
 
 # frontends/command-line/shell.c:423
-#: gphoto2/shell.c:453
+#: gphoto2/shell.c:462
 #, c-format
 msgid "The command '%s' requires an argument."
 msgstr "命令「%s」需要一個引數。"
 
 # frontends/command-line/shell.c:476
-#: gphoto2/shell.c:506
+#: gphoto2/shell.c:515
 msgid "Invalid path."
 msgstr "不正確路徑。"
 
 # frontends/command-line/shell.c:522
-#: gphoto2/shell.c:552
+#: gphoto2/shell.c:561
 msgid "Could not find home directory."
 msgstr "無法找到家目錄。"
 
 # frontends/command-line/shell.c:530
-#: gphoto2/shell.c:560
+#: gphoto2/shell.c:569
 #, c-format
 msgid "Could not change to local directory '%s'."
 msgstr "無法進入本地目錄「%s」。"
 
 # frontends/command-line/shell.c:533
-#: gphoto2/shell.c:563
+#: gphoto2/shell.c:572
 #, c-format
 msgid "Local directory now '%s'."
 msgstr "本地目錄為「%s」。"
 
 # frontends/command-line/shell.c:564
-#: gphoto2/shell.c:601
+#: gphoto2/shell.c:610
 #, c-format
 msgid "Remote directory now '%s'."
 msgstr "遠端目錄為「%s」。"
 
+#: gphoto2/shell.c:796
+#, c-format
+msgid "set-config needs a second argument.\n"
+msgstr ""
+
 # frontends/command-line/shell.c:743
-#: gphoto2/shell.c:757
+#: gphoto2/shell.c:826
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
 msgstr "未找到「%s」命令。用「help」獲取可用的命令列表。"
 
 # frontends/command-line/shell.c:750
-#: gphoto2/shell.c:764
+#: gphoto2/shell.c:833
 #, c-format
 msgid "Help on \"%s\":"
 msgstr "關於「%s」的求助資訊:"
 
 # frontends/command-line/shell.c:752
-#: gphoto2/shell.c:766
+#: gphoto2/shell.c:835
 #, c-format
 msgid "Usage:"
 msgstr "用法:"
 
 # frontends/command-line/shell.c:756
-#: gphoto2/shell.c:769
+#: gphoto2/shell.c:838
 #, c-format
 msgid "Description:"
 msgstr "描述:"
 
 # frontends/command-line/shell.c:758
-#: gphoto2/shell.c:771
+#: gphoto2/shell.c:840
 #, c-format
 msgid "* Arguments in brackets [] are optional"
 msgstr "* 出現在方括號 [] 中的引數是可選的"
 
 # frontends/command-line/shell.c:779
-#: gphoto2/shell.c:792
+#: gphoto2/shell.c:861
 #, c-format
 msgid "Available commands:"
 msgstr "可用的命令:"
 
 # frontends/command-line/shell.c:784
-#: gphoto2/shell.c:797
+#: gphoto2/shell.c:866
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
 msgstr "為得到特定命令的求助資訊，輸入「help 命令名」。"
