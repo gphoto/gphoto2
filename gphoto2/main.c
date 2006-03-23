@@ -154,6 +154,7 @@ OPTION_CALLBACK(remove_dir);
 OPTION_CALLBACK(list_config);
 OPTION_CALLBACK(get_config);
 OPTION_CALLBACK(set_config);
+OPTION_CALLBACK(wait_event);
 
 /* 2) Add an entry in the option table                          */
 /*    ----------------------------------------------------------------- */
@@ -213,6 +214,7 @@ Option option[] = {
 {"", "list-config", "", N_("List the configuration tree"),    list_config, 0},
 {"", "get-config", "name", N_("Get a configuration variable"),    get_config, 0},
 {"", "set-config", "name", N_("Set a configuration variable"),    set_config, 0},
+{"", "wait-event",    "",  N_("Wait for event from camera"),  wait_event,   0},
 {"F" , "frames", "count", N_("Set number of frames to capture (default=infinite)"), capture_frames, 0},
 {"I" , "interval", "seconds", N_("Set capture interval in seconds"), capture_interval, 0},
 {"" , "capture-preview", "", N_("Capture a quick preview"), capture_preview, 0},
@@ -505,6 +507,11 @@ OPTION_CALLBACK (list_files)
 OPTION_CALLBACK (num_files)
 {
 	return (num_files_action (&p));
+}
+
+OPTION_CALLBACK (wait_event)
+{
+	return (action_camera_wait_event (&p));
 }
 
 #endif
@@ -1345,6 +1352,7 @@ typedef enum {
 	ARG_GET_RAW_DATA,
 	ARG_GET_THUMBNAIL,
 	ARG_LIST_CAMERAS,
+	ARG_LIST_CONFIG,
 	ARG_LIST_FILES,
 	ARG_LIST_FOLDERS,
 	ARG_LIST_PORTS,
@@ -1368,7 +1376,7 @@ typedef enum {
 	ARG_UPLOAD_FILE,
 	ARG_USBID,
 	ARG_VERSION,
-	ARG_LIST_CONFIG
+	ARG_WAIT_EVENT,
 } Arg;
 
 typedef enum {
@@ -1650,6 +1658,9 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		free (name);
 		break;
 	}
+	case ARG_WAIT_EVENT:
+		params->p.r = action_camera_wait_event (&p);
+		break;
 	default:
 		break;
 	};
@@ -1805,6 +1816,8 @@ main (int argc, char **argv)
 		 N_("Get configuration value"), NULL},
 		{"set-config", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG,
 		 N_("Set configuration value"), NULL},
+		{"wait-event", '\0', POPT_ARG_NONE, NULL, ARG_WAIT_EVENT,
+		 N_("Wait for event from camera"), NULL},
 		{"capture-preview", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_PREVIEW,
 		 N_("Capture a quick preview"), NULL},

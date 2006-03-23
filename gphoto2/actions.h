@@ -57,6 +57,7 @@ int action_camera_show_abilities  (GPParams *);
 int action_camera_upload_file     (GPParams *, const char *folder,
 				   const char *path);
 int action_camera_capture_preview (GPParams *);
+int action_camera_wait_event (GPParams *);
 
 /* Other actions */
 int list_cameras_action    (GPParams *);
