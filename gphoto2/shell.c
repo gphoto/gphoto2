@@ -87,6 +87,7 @@ static int shell_list_config   (Camera *, const char *);
 static int shell_get_config    (Camera *, const char *);
 static int shell_set_config    (Camera *, const char *);
 static int shell_capture_image (Camera *, const char *);
+static int shell_mkdir         (Camera *, const char *);
 
 #define MAX_FOLDER_LEN 1024
 #define MAX_FILE_LEN 1024
@@ -118,6 +119,7 @@ struct _ShellFunctionTable {
 	{"show-info", shell_show_info, N_("Show info"),
 	 N_("[directory/]filename"), 1},
 	{"delete", shell_del, N_("Delete"), N_("[directory/]filename"), 1},
+	{"mkdir", shell_mkdir, N_("Create Directory"), N_("directory"), 1},
 #ifdef HAVE_LIBEXIF
 	{"show-exif", shell_show_exif, N_("Show EXIF information"),
 	 N_("[directory/]filename"), 1},
@@ -756,6 +758,13 @@ shell_put (Camera *camera, const char *args) {
 	}
 	
 	return (GP_OK);      
+}
+
+static int
+shell_mkdir (Camera *camera, const char *args) {
+	if (*args == ' ')
+		args++;
+	return gp_camera_folder_make_dir (camera, p->folder, args, p->context);
 }
 
 static int
