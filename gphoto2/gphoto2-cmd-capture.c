@@ -42,6 +42,16 @@
 #define MIN(x, y) (((x)<(y))?(x):(y))
 #endif
 
+
+#ifdef HAVE_JPEG
+static char tempname[64];
+void
+gp_capture_jpeg_exit(j_common_ptr cinfo) {
+	unlink(tempname);
+	exit(1);
+}
+#endif
+
 int
 gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 {
@@ -78,7 +88,6 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 			int i,fd;
 			unsigned char *dptr, **lptr, *lines[4];
 			FILE *f;
-			char tempname[64];
 
 			/* Create a unique temporary file to download into */
 			strcpy(tempname,"/tmp/gphoto.XXXXXX");
@@ -86,17 +95,17 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 			if (fd < 0)
 				return (GP_ERROR);
 			close(fd);
-
 			gp_file_save (file, tempname);
 			f = fopen (tempname, "rb");
 			if (!f) {
+				unlink (tempname);
 				aa_close (c);
 				return (GP_ERROR);
 			}
 
 			cinfo.err = jpeg_std_error (&pub);
-			gp_log (GP_LOG_DEBUG, "gphoto2", "Preparing "
-				"decompression...");
+			cinfo.err->error_exit = gp_capture_jpeg_exit;
+			gp_log (GP_LOG_DEBUG, "gphoto2", "Preparing decompression...");
 			jpeg_create_decompress (&cinfo);
 			jpeg_stdio_src (&cinfo, f);
 			jpeg_read_header (&cinfo, TRUE);
@@ -108,8 +117,9 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 				cinfo.scale_denom *= 2;
 			}
 			if (!cinfo.scale_denom) {
-				gp_log (GP_LOG_DEBUG, "gphoto2", "Screen "
-					"too small.");
+				gp_log (GP_LOG_DEBUG, "gphoto2", "Screen too small.");
+				fclose (f);
+				unlink (tempname);
 				jpeg_destroy_decompress (&cinfo);
 				aa_close (c);
 				return (GP_OK);
