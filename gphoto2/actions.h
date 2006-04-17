@@ -37,6 +37,7 @@ int save_raw_action       (GPParams *, const char *filename);
 int save_audio_action     (GPParams *, const char *filename);
 int save_all_audio_action (GPParams *, const char *filename);
 int save_exif_action      (GPParams *, const char *filename);
+int save_meta_action      (GPParams *, const char *filename);
 int delete_file_action    (GPParams *, const char *filename);
 
 /* Folder actions */
@@ -55,6 +56,8 @@ int action_camera_set_speed       (GPParams *, unsigned int speed);
 int action_camera_set_model       (GPParams *, const char *model);
 int action_camera_show_abilities  (GPParams *);
 int action_camera_upload_file     (GPParams *, const char *folder,
+				   const char *path);
+int action_camera_upload_metadata (GPParams *, const char *folder,
 				   const char *path);
 int action_camera_capture_preview (GPParams *);
 int action_camera_wait_event (GPParams *);

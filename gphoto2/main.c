@@ -132,6 +132,7 @@ OPTION_CALLBACK(num_files);
 OPTION_CALLBACK(get_file);
 OPTION_CALLBACK(get_all_files);
 OPTION_CALLBACK(get_thumbnail);
+OPTION_CALLBACK(get_all_metadata);
 OPTION_CALLBACK(get_all_thumbnails);
 OPTION_CALLBACK(get_raw_data);
 OPTION_CALLBACK(get_all_raw_data);
@@ -140,6 +141,7 @@ OPTION_CALLBACK(get_all_audio_data);
 OPTION_CALLBACK(delete_file);
 OPTION_CALLBACK(delete_all_files);
 OPTION_CALLBACK(upload_file);
+OPTION_CALLBACK(upload_metadata);
 OPTION_CALLBACK(capture_frames);
 OPTION_CALLBACK(capture_interval);
 OPTION_CALLBACK(capture_image);
@@ -201,6 +203,9 @@ Option option[] = {
 {"P", "get-all-files","",        N_("Get all files from folder"),   get_all_files,0},
 {"t", "get-thumbnail",  "range",  N_("Get thumbnails given in range"),  get_thumbnail,  0},
 {"T", "get-all-thumbnails","",    N_("Get all thumbnails from folder"), get_all_thumbnails,0},
+{"", "get-metadata","",    N_("Get metadata from file"), get_metadata,0},
+{"", "get-all-metadata","",    N_("Get all metadata from folder"), get_all_metadata,0},
+{"", "upload-metadata","",    N_("Upload metadata for file"), upload_metadata,0},
 {"", "get-raw-data", "range",     N_("Get raw data given in range"),    get_raw_data, 0},
 {"", "get-all-raw-data", "",      N_("Get all raw data from folder"),   get_all_raw_data, 0},
 {"", "get-audio-data", "range",   N_("Get audio data given in range"),  get_audio_data, 0},
@@ -524,6 +529,7 @@ static struct {
 	{GP_FILE_TYPE_PREVIEW, "thumb_"},
 	{GP_FILE_TYPE_RAW, "raw_"},
 	{GP_FILE_TYPE_AUDIO, "audio_"},
+	{GP_FILE_TYPE_METADATA, "meta_"},
 	{0, NULL}
 };
 
@@ -805,6 +811,8 @@ camera_file_exists (Camera *camera, GPContext *context, const char *folder,
 	CR (gp_camera_file_get_info (camera, folder, filename, &info,
 				     context));
 	switch (type) {
+	case GP_FILE_TYPE_METADATA:
+		return TRUE;
 	case GP_FILE_TYPE_AUDIO:
 		return (info.audio.fields != 0);
 	case GP_FILE_TYPE_PREVIEW:
@@ -913,6 +921,9 @@ get_file_common (const char *arg, CameraFileType type )
 	case GP_FILE_TYPE_EXIF:
 		CR (for_each_file_in_range (&p, save_exif_action, arg));
 		break;
+	case GP_FILE_TYPE_METADATA:
+		CR (for_each_file_in_range (&p, save_meta_action, arg));
+		break;
         default:
                 return (GP_ERROR_NOT_SUPPORTED);
         }
@@ -938,12 +949,24 @@ OPTION_CALLBACK (get_thumbnail)
         return (get_file_common (arg, GP_FILE_TYPE_PREVIEW));
 }
 
+OPTION_CALLBACK (get_metadata)
+{
+        return (get_file_common (arg, GP_FILE_TYPE_METADATA));
+}
+
 OPTION_CALLBACK(get_all_thumbnails)
 {
         CR (for_each_file (&p, save_thumbnail_action));
 
 	return (GP_OK);
 }
+
+OPTION_CALLBACK (get_all_metadata)
+{
+        CR (for_each_file (&p, save_metadata_action));
+	return (GP_OK);
+}
+
 
 OPTION_CALLBACK (get_raw_data)
 {
@@ -990,6 +1013,14 @@ OPTION_CALLBACK (upload_file)
         gp_log (GP_LOG_DEBUG, "main", "Uploading file %s ...", arg);
 	p.multi_type = MULTI_UPLOAD;
 	CR (action_camera_upload_file (&p, p.folder, arg));
+        return (GP_OK);
+}
+
+OPTION_CALLBACK (upload_metadata)
+{
+        gp_log (GP_LOG_DEBUG, "main", "Uploading file %s ...", arg);
+	p.multi_type = MULTI_UPLOAD_META;
+	CR (action_camera_upload_metadata (&p, p.folder, arg));
         return (GP_OK);
 }
 
@@ -1343,12 +1374,14 @@ typedef enum {
 	ARG_FORCE_OVERWRITE,
 	ARG_GET_ALL_AUDIO_DATA,
 	ARG_GET_ALL_FILES,
+	ARG_GET_ALL_METADATA,
 	ARG_GET_ALL_RAW_DATA,
 	ARG_GET_ALL_THUMBNAILS,
 	ARG_GET_AUDIO_DATA,
 	ARG_GET_CONFIG,
 	ARG_SET_CONFIG,
 	ARG_GET_FILE,
+	ARG_GET_METADATA,
 	ARG_GET_RAW_DATA,
 	ARG_GET_THUMBNAIL,
 	ARG_LIST_CAMERAS,
@@ -1374,6 +1407,7 @@ typedef enum {
 	ARG_STDOUT_SIZE,
 	ARG_SUMMARY,
 	ARG_UPLOAD_FILE,
+	ARG_UPLOAD_METADATA,
 	ARG_USBID,
 	ARG_VERSION,
 	ARG_WAIT_EVENT,
@@ -1556,6 +1590,9 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 	case ARG_GET_ALL_FILES:
 		params->p.r = for_each_file (&p, save_file_action);
 		break;
+	case ARG_GET_ALL_METADATA:
+		params->p.r = for_each_file (&p, save_meta_action);
+		break;
 	case ARG_GET_ALL_RAW_DATA:
 		params->p.r = for_each_file (&p, save_raw_action);
 		break;
@@ -1565,6 +1602,10 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 	case ARG_GET_AUDIO_DATA:
 		p.multi_type = MULTI_DOWNLOAD;
 		params->p.r = get_file_common (arg, GP_FILE_TYPE_AUDIO);
+		break;
+	case ARG_GET_METADATA:
+		p.multi_type = MULTI_DOWNLOAD;
+		params->p.r = get_file_common (arg, GP_FILE_TYPE_METADATA);
 		break;
 	case ARG_GET_FILE:
 		p.multi_type = MULTI_DOWNLOAD;
@@ -1636,6 +1677,10 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 	case ARG_UPLOAD_FILE:
 		p.multi_type = MULTI_UPLOAD;
 		params->p.r = action_camera_upload_file (&p, p.folder, arg);
+		break;
+	case ARG_UPLOAD_METADATA:
+		p.multi_type = MULTI_UPLOAD_META;
+		params->p.r = action_camera_upload_metadata (&p, p.folder, arg);
 		break;
 	case ARG_LIST_CONFIG:
 		params->p.r = list_config_action (&p);
@@ -1788,6 +1833,12 @@ main (int argc, char **argv)
 		{"get-all-thumbnails", 'T', POPT_ARG_NONE, 0,
 		 ARG_GET_ALL_THUMBNAILS,
 		 N_("Get all thumbnails from folder"), NULL},
+		{"get-metadata", '\0', POPT_ARG_STRING, NULL, ARG_GET_METADATA,
+		 N_("Get metadata given in range"), NULL},
+		{"get-all-metadata", '\0', POPT_ARG_STRING, NULL, ARG_GET_ALL_METADATA,
+		 N_("Get all metadata from folder"), NULL},
+		{"upload-metadata", '\0', POPT_ARG_STRING, NULL, ARG_UPLOAD_METADATA,
+		 N_("Upload metadata for file"), NULL},
 		{"get-raw-data", '\0', POPT_ARG_STRING, NULL,
 		 ARG_GET_RAW_DATA,
 		 N_("Get raw data given in range"), NULL},
@@ -2065,6 +2116,14 @@ main (int argc, char **argv)
 
 		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
 			CR_MAIN (action_camera_upload_file (&p, p.folder, arg));
+		}
+		break;
+	}
+	case MULTI_UPLOAD_META: {
+		const char *arg;
+
+		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
+			CR_MAIN (action_camera_upload_metadata (&p, p.folder, arg));
 		}
 		break;
 	}

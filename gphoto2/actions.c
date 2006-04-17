@@ -87,6 +87,43 @@ action_camera_upload_file (GPParams *p, const char *folder, const char *path)
 }
 
 int
+action_camera_upload_metadata (GPParams *p, const char *folder, const char *path)
+{
+	CameraFile *file;
+	int res;
+
+	gp_log (GP_LOG_DEBUG, "main", "Uploading metadata...");
+
+	CR (gp_file_new (&file));
+	res = gp_file_open (file, path);
+	if (res < 0) {
+		gp_file_unref (file);
+		return (res);
+	}
+
+	/* Check if the user specified a filename */
+	if (p->filename && strcmp (p->filename, "")) {
+		res = gp_file_set_name (file, p->filename);
+		if (res < 0) {
+			gp_file_unref (file);
+			return (res);
+		}
+	} else if (path == strstr(path, "meta_")) {
+		res = gp_file_set_name (file, path+5);
+		if (res < 0) {
+			gp_file_unref (file);
+			return (res);
+		}
+	}
+	gp_file_set_type (file, GP_FILE_TYPE_METADATA);
+
+	res = gp_camera_folder_put_file (p->camera, folder, file,
+					 p->context);
+	gp_file_unref (file);
+	return (res);
+}
+
+int
 num_files_action (GPParams *p)
 {
 	CameraList *list;
@@ -328,6 +365,13 @@ save_exif_action (GPParams *p, const char *filename)
 {
 	return (save_file_to_file (p->camera, p->context, p->flags,
 				   p->folder, filename, GP_FILE_TYPE_EXIF));
+}
+
+int
+save_meta_action (GPParams *p, const char *filename)
+{
+	return (save_file_to_file (p->camera, p->context, p->flags,
+				   p->folder, filename, GP_FILE_TYPE_METADATA));
 }
 
 int

@@ -39,6 +39,7 @@ enum _Flags {
 typedef enum _MultiType MultiType;
 enum _MultiType {
 	MULTI_UPLOAD,
+	MULTI_UPLOAD_META,
 	MULTI_DOWNLOAD,
 	MULTI_DELETE
 };
