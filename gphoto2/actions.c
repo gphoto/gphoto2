@@ -622,17 +622,13 @@ auto_detect_action (GPParams *p)
 {
 	int x, count;
         CameraList *list;
-        CameraAbilitiesList *al = NULL;
         const char *name = NULL, *value = NULL;
 
 	_get_portinfo_list (p);
 	count = gp_port_info_list_count (p->portinfo_list);
 
 	CR (gp_list_new (&list));
-        gp_abilities_list_new (&al);
-        gp_abilities_list_load (al, p->context);
-        gp_abilities_list_detect (al, p->portinfo_list, list, p->context);
-        gp_abilities_list_free (al);
+        gp_abilities_list_detect (p->abilities_list, p->portinfo_list, list, p->context);
 
         CL (count = gp_list_count (list), list);
 
