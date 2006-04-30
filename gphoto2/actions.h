@@ -76,4 +76,5 @@ int list_config_action     (GPParams *);
 int get_config_action      (GPParams *, const char *name);
 int set_config_action      (GPParams *, const char *name, const char *value);
 
+void _get_portinfo_list	(GPParams *p);
 #endif /* __ACTIONS_H__ */

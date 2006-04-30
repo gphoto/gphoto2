@@ -1639,9 +1639,6 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 				p.folder, arg, p.context);
 		break;
 	case ARG_NUM_FILES:
-		p.camera = p.camera;
-		p.folder = p.folder;
-		p.context = p.context;
 		params->p.r = num_files_action (&p);
 		break;
 	case ARG_MKDIR:
@@ -1652,7 +1649,6 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		params->p.r = shell_prompt (&p);
 		break;
 	case ARG_SHOW_EXIF:
-
 		/* Did the user specify a file or a range? */
 		if (strchr (arg, '.')) { 
 			params->p.r = print_exif_action (&p, arg); 
@@ -2009,28 +2005,42 @@ main (int argc, char **argv)
 		int count;
 		const char *model = NULL, *path = NULL;
 		CameraList *list;
-		GPPortInfoList *il = NULL;
 		char buf[1024];
+		int use_auto = 1;
 
 		gp_log (GP_LOG_DEBUG, "main", "The user has not specified "
 			"both a model and a port. Try to figure them out.");
 
-		CR_MAIN (gp_port_info_list_new (&il));
-		CR_MAIN (gp_port_info_list_load (il));
+		_get_portinfo_list(&p);
 		CR_MAIN (gp_list_new (&list)); /* no freeing below */
-		CR_MAIN (gp_abilities_list_detect (p.abilities_list, il,
+		CR_MAIN (gp_abilities_list_detect (p.abilities_list, p.portinfo_list,
 						   list, p.context));
 		CR_MAIN (count = gp_list_count (list));
                 if (count == 1) {
-
                         /* Exactly one camera detected */
 			CR_MAIN (gp_list_get_name (list, 0, &model));
 			CR_MAIN (gp_list_get_value (list, 0, &path));
-			CR_MAIN (action_camera_set_model (&p, model));
+			if (a.model[0] && strcmp(a.model,model)) {
+				CameraAbilities alt;
+				int m;
+
+				CR_MAIN (m = gp_abilities_list_lookup_model (p.abilities_list, model));
+				CR_MAIN (gp_abilities_list_get_abilities (p.abilities_list, m, &alt));
+
+				if ((a.port == GP_PORT_USB) && (alt.port == GP_PORT_USB)) {
+					if (	(a.usb_vendor  == alt.usb_vendor)  &&
+						(a.usb_product == alt.usb_product)
+					)
+						use_auto = 0;
+				}
+			}
+
+			if (use_auto) {
+				CR_MAIN (action_camera_set_model (&p, model));
+			}
 			CR_MAIN (action_camera_set_port (&p, path));
 
                 } else if (!count) {
-
 			/*
 			 * No camera detected. Have a look at the settings.
 			 * Ignore errors here.
@@ -2041,16 +2051,40 @@ main (int argc, char **argv)
 				action_camera_set_port (&p, buf);
 
 		} else {
+			/* If --camera override, search the model with the same USB ID. */
+			if (a.model[0]) {
+				int i;
+				const char *xmodel;
 
-                        /* More than one camera detected */
-                        /*FIXME: Let the user choose from the list!*/
-			CR_MAIN (gp_list_get_name (list, 0, &model));
-			CR_MAIN (gp_list_get_value (list, 0, &path));
-			CR_MAIN (action_camera_set_model (&p, model));
-			CR_MAIN (action_camera_set_port (&p, path));
+				for (i=0;i<count;i++) {
+					CameraAbilities alt;
+					int m;
+
+					gp_list_get_name (list, i, &xmodel);
+					CR_MAIN (m = gp_abilities_list_lookup_model (p.abilities_list, xmodel));
+					CR_MAIN (gp_abilities_list_get_abilities (p.abilities_list, m, &alt));
+
+					if ((a.port == GP_PORT_USB) && (alt.port == GP_PORT_USB)) {
+						if (	(a.usb_vendor  == alt.usb_vendor)  &&
+							(a.usb_product == alt.usb_product)
+						) {
+							use_auto = 0;
+							CR_MAIN (gp_list_get_value (list, i, &path));
+							CR_MAIN (action_camera_set_port (&p, path));
+							break;
+						}
+					}
+				}
+			}
+			if (use_auto) {
+				/* More than one camera detected */
+				/*FIXME: Let the user choose from the list!*/
+				CR_MAIN (gp_list_get_name (list, 0, &model));
+				CR_MAIN (gp_list_get_value (list, 0, &path));
+				CR_MAIN (action_camera_set_model (&p, model));
+				CR_MAIN (action_camera_set_port (&p, path));
+			}
                 }
-
-		CR_MAIN (gp_port_info_list_free (il));
 		gp_list_free (list);
         }
 

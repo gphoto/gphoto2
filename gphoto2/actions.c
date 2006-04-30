@@ -565,7 +565,7 @@ list_cameras_action (GPParams *p)
 	return (r);
 }
 
-static void
+void
 _get_portinfo_list (GPParams *p) {
 	int count, result;
 	GPPortInfoList *list = NULL;
