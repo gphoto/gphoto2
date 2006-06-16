@@ -1,3 +1,20 @@
+gphoto2 2.2.0
+
+  -added download and upload of metadata support. (audio players)
+  -unlink temporary file on jpeg decompression errors.
+  -added mkdir in shellmode.
+  -added a --wait-event option
+  -added list-config, get-config, set-config and capture-image shell
+  commands.
+  -added shell "put" cmd.
+  -also allow multiple arguments for download and delete.
+  -added possibility to do "-u *.mp3" or similar.
+  -keep the GPPortInfoList in the GPParms struct, so --port overrides
+  to generic/regexp port stay in the list and can be accessed.
+  -Adjusted timed capture to not wait all the time, but remove the seconds already spent.
+  -Do not do camera_exit() every time. It is not necessary if you camera driver is OK.
+  -Do not wait 2 seconds.
+
 gphoto2 2.1.99
 
   Requires libgphoto2 2.1.99 to build

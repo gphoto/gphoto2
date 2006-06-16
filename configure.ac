@@ -1,5 +1,5 @@
 AC_PREREQ(2.59)
-AC_INIT([gphoto2], [2.1.99], [gphoto-devel@lists.sourceforge.net], [gphoto2])
+AC_INIT([gphoto2], [2.2.0], [gphoto-devel@lists.sourceforge.net], [gphoto2])
 AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4m])
