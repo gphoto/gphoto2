@@ -1,5 +1,7 @@
 AC_PREREQ(2.59)
-AC_INIT([gphoto2], [2.1.99], [gphoto-devel@lists.sourceforge.net], [gphoto2])
+dnl Next stable release must be 2.2.1 or later
+dnl Bump the .1.trunk to 2.trunk etc....
+AC_INIT([gphoto2], [2.2.0.1.trunk], [gphoto-devel@lists.sourceforge.net], [gphoto2])
 AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4m])
