@@ -875,7 +875,7 @@ print_version_action (GPParams *p)
 #endif
 	printf (_("gphoto2 %s\n"
 		  "\n"
-		  "Copyright (c) 2000-2004 Lutz Mueller and others\n"
+		  "Copyright (c) 2000-%d Lutz Mueller and others\n"
 		  "%s"
 		  "\n"
 		  "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
@@ -884,6 +884,7 @@ print_version_action (GPParams *p)
 		  "\n"
 		  "This version of gphoto2 is using the following software versions and options:\n"),
 		VERSION,
+		2006, /* year of release! */
 		port_message
 		);
 
