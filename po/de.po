@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2006-06-13 21:14+0200\n"
+"POT-Creation-Date: 2006-06-19 21:33+0200\n"
 "PO-Revision-Date: 2006-03-04 15:35+0100\n"
 "Last-Translator: Marcus Meissner <marcus@jet.franken.de>\n"
 "Language-Team:  <de@li.org>\n"
@@ -93,14 +93,14 @@ msgstr "Heruntergeladen: »%s«\n"
 #: gphoto2/actions.c:262 gphoto2/actions.c:294 gphoto2/actions.c:306
 #: gphoto2/actions.c:656 gphoto2/actions.c:658 gphoto2/actions.c:686
 #: gphoto2/actions.c:689 gphoto2/actions.c:692 gphoto2/actions.c:695
-#: gphoto2/actions.c:698 gphoto2/actions.c:1361
+#: gphoto2/actions.c:698 gphoto2/actions.c:1362
 msgid "yes"
 msgstr "Ja"
 
 #: gphoto2/actions.c:262 gphoto2/actions.c:294 gphoto2/actions.c:306
 #: gphoto2/actions.c:656 gphoto2/actions.c:658 gphoto2/actions.c:686
 #: gphoto2/actions.c:689 gphoto2/actions.c:692 gphoto2/actions.c:695
-#: gphoto2/actions.c:698 gphoto2/actions.c:1355
+#: gphoto2/actions.c:698 gphoto2/actions.c:1356
 msgid "no"
 msgstr "Nein"
 
@@ -371,11 +371,11 @@ msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "OS/2-Portierung von Bart van Leeuwen\n"
 
 #: gphoto2/actions.c:876
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "gphoto2 %s\n"
 "\n"
-"Copyright (c) 2000-2004 Lutz Mueller and others\n"
+"Copyright (c) 2000-%d Lutz Mueller and others\n"
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
@@ -397,12 +397,12 @@ msgstr ""
 "Diese Version von gphoto2 benutzt die folgenden Softwareversionen und "
 "Optionen:\n"
 
-#: gphoto2/actions.c:991
+#: gphoto2/actions.c:992
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Ersetze USB Vendor/Product ID 0x%x/0x%x durch 0x%x/0x%x"
 
-#: gphoto2/actions.c:1042
+#: gphoto2/actions.c:1043
 msgid ""
 "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
 "MAILING LIST:"
@@ -410,110 +410,110 @@ msgstr ""
 "BITTE IMMER FOLGENDE ZEILE EINFÜGEN WENN DEBUG MESSAGES AN DIE MAILINGLISTE "
 "GESCHICKT WERDEN:"
 
-#: gphoto2/actions.c:1057
+#: gphoto2/actions.c:1058
 #, c-format
 msgid "%s has been compiled with the following options:"
 msgstr "%s wurde mit den folgenden Optionen übersetzt:"
 
-#: gphoto2/actions.c:1154
+#: gphoto2/actions.c:1155
 #, c-format
 msgid "%s not found in configuration tree."
 msgstr "%s wurde nicht in der Konfiguration gefunden."
 
-#: gphoto2/actions.c:1213
+#: gphoto2/actions.c:1214
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr "Konnte den Inhalt des Textfeldes %s holen."
 
-#: gphoto2/actions.c:1230
+#: gphoto2/actions.c:1231
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr "Konnte die Werte für den Bereiches %s nicht bestimmen."
 
-#: gphoto2/actions.c:1242
+#: gphoto2/actions.c:1243
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr "Konnte die möglichen Werte der Auswahl %s nicht holen."
 
-#: gphoto2/actions.c:1254
+#: gphoto2/actions.c:1255
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr "Konnte die Werte der Datum/Zeit Konfiguration %s nicht holen."
 
-#: gphoto2/actions.c:1284
+#: gphoto2/actions.c:1285
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr "Konnte die Werte der Auswahl %s nicht holen."
 
-#: gphoto2/actions.c:1325
+#: gphoto2/actions.c:1326
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr "Konnte den Inhalt des Textfeldes %s nicht auf %s setzen."
 
-#: gphoto2/actions.c:1335
+#: gphoto2/actions.c:1336
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr "Der übergebene Wert %s ist kein Fließkomma Wert."
 
-#: gphoto2/actions.c:1340
+#: gphoto2/actions.c:1341
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr "Der übergebene Wert %f ist nicht im erwarteten Bereich %f - %f."
 
-#: gphoto2/actions.c:1346
+#: gphoto2/actions.c:1347
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr "Konnte den Wert des Bereichs %s nicht auf %f setzen."
 
-#: gphoto2/actions.c:1355
+#: gphoto2/actions.c:1356
 msgid "off"
 msgstr "aus"
 
-#: gphoto2/actions.c:1356
+#: gphoto2/actions.c:1357
 msgid "false"
 msgstr "falsch"
 
-#: gphoto2/actions.c:1361
+#: gphoto2/actions.c:1362
 msgid "on"
 msgstr "an"
 
-#: gphoto2/actions.c:1362
+#: gphoto2/actions.c:1363
 msgid "true"
 msgstr "wahr"
 
-#: gphoto2/actions.c:1366
+#: gphoto2/actions.c:1367
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
 msgstr "Der übergebene Wert %s ist kein zulässige Schalterwert."
 
-#: gphoto2/actions.c:1372
+#: gphoto2/actions.c:1373
 #, c-format
 msgid "Failed to set values %s of toggle widget %s."
 msgstr "Konnte den Schalter %s nicht auf den Wert %s setzen."
 
-#: gphoto2/actions.c:1385
+#: gphoto2/actions.c:1386
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr ""
 "Der übergebene Wert %s ist kein Integer oder wurde nicht als Zeitangabe "
 "erkannt."
 
-#: gphoto2/actions.c:1392
+#: gphoto2/actions.c:1393
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr "Konnte %s nicht als neue Zeit im der Konfiguration %s setzen."
 
-#: gphoto2/actions.c:1429
+#: gphoto2/actions.c:1430
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr "Wert %s wurde nicht in der Liste möglicher Werte gefunden."
 
-#: gphoto2/actions.c:1437
+#: gphoto2/actions.c:1438
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr "Das Konfigurationssubmenü %s hat keinen änderbaren Wert."
 
-#: gphoto2/actions.c:1444
+#: gphoto2/actions.c:1445
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr "Konnte den neuen Wert %s für die Konfiguration %s nicht setzen."

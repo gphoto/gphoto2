@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto 0.4.3\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2006-06-13 21:14+0200\n"
+"POT-Creation-Date: 2006-06-19 21:33+0200\n"
 "PO-Revision-Date: 2003-01-08 23:39+0100\n"
 "Last-Translator: Stefan Björnelund <stefanb@update.uu.se>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -88,14 +88,14 @@ msgstr " Nerladdad:   %s\n"
 #: gphoto2/actions.c:262 gphoto2/actions.c:294 gphoto2/actions.c:306
 #: gphoto2/actions.c:656 gphoto2/actions.c:658 gphoto2/actions.c:686
 #: gphoto2/actions.c:689 gphoto2/actions.c:692 gphoto2/actions.c:695
-#: gphoto2/actions.c:698 gphoto2/actions.c:1361
+#: gphoto2/actions.c:698 gphoto2/actions.c:1362
 msgid "yes"
 msgstr "ja"
 
 #: gphoto2/actions.c:262 gphoto2/actions.c:294 gphoto2/actions.c:306
 #: gphoto2/actions.c:656 gphoto2/actions.c:658 gphoto2/actions.c:686
 #: gphoto2/actions.c:689 gphoto2/actions.c:692 gphoto2/actions.c:695
-#: gphoto2/actions.c:698 gphoto2/actions.c:1355
+#: gphoto2/actions.c:698 gphoto2/actions.c:1356
 msgid "no"
 msgstr "nej"
 
@@ -367,7 +367,7 @@ msgstr "OS/2-portering av Bart van Leeuwen\n"
 msgid ""
 "gphoto2 %s\n"
 "\n"
-"Copyright (c) 2000-2004 Lutz Mueller and others\n"
+"Copyright (c) 2000-%d Lutz Mueller and others\n"
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
@@ -388,12 +388,12 @@ msgstr ""
 "Denna version av gphoto2 använder följande programvaruversioner och "
 "tillval:\n"
 
-#: gphoto2/actions.c:991
+#: gphoto2/actions.c:992
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr ""
 
-#: gphoto2/actions.c:1042
+#: gphoto2/actions.c:1043
 msgid ""
 "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
 "MAILING LIST:"
@@ -401,110 +401,110 @@ msgstr ""
 "INKLUDERA ALLTID DE FÖLJANDE RADERNA NÄR DU SKICKAR AVLUSNINGS MEDELANDEN "
 "TILL POSTLISTAN:"
 
-#: gphoto2/actions.c:1057
+#: gphoto2/actions.c:1058
 #, c-format
 msgid "%s has been compiled with the following options:"
 msgstr ""
 
-#: gphoto2/actions.c:1154
+#: gphoto2/actions.c:1155
 #, fuzzy, c-format
 msgid "%s not found in configuration tree."
 msgstr "Kunde inte sätta konfiguration:"
 
-#: gphoto2/actions.c:1213
+#: gphoto2/actions.c:1214
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1230
+#: gphoto2/actions.c:1231
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1242
+#: gphoto2/actions.c:1243
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1254
+#: gphoto2/actions.c:1255
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1284
+#: gphoto2/actions.c:1285
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1325
+#: gphoto2/actions.c:1326
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr ""
 
-#: gphoto2/actions.c:1335
+#: gphoto2/actions.c:1336
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr ""
 
-#: gphoto2/actions.c:1340
+#: gphoto2/actions.c:1341
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr ""
 
-#: gphoto2/actions.c:1346
+#: gphoto2/actions.c:1347
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr ""
 
-#: gphoto2/actions.c:1355
+#: gphoto2/actions.c:1356
 msgid "off"
 msgstr ""
 
-#: gphoto2/actions.c:1356
+#: gphoto2/actions.c:1357
 #, fuzzy
 msgid "false"
 msgstr "Värde"
 
-#: gphoto2/actions.c:1361
+#: gphoto2/actions.c:1362
 #, fuzzy
 msgid "on"
 msgstr "Mån"
 
-#: gphoto2/actions.c:1362
+#: gphoto2/actions.c:1363
 msgid "true"
 msgstr ""
 
-#: gphoto2/actions.c:1366
+#: gphoto2/actions.c:1367
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
 msgstr ""
 
-#: gphoto2/actions.c:1372
+#: gphoto2/actions.c:1373
 #, c-format
 msgid "Failed to set values %s of toggle widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1385
+#: gphoto2/actions.c:1386
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr ""
 
-#: gphoto2/actions.c:1392
+#: gphoto2/actions.c:1393
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr ""
 
-#: gphoto2/actions.c:1429
+#: gphoto2/actions.c:1430
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr ""
 
-#: gphoto2/actions.c:1437
+#: gphoto2/actions.c:1438
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr ""
 
-#: gphoto2/actions.c:1444
+#: gphoto2/actions.c:1445
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr ""
