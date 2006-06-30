@@ -252,7 +252,7 @@ char glob_cancel = 0;
 int  glob_frames = 0;
 int  glob_interval = 0;
 
-GPParams p;
+GPParams gp_params;
 
 /* 4) Finally, add your callback function.                              */
 /*    ----------------------------------------------------------------- */
@@ -564,7 +564,7 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 	 * If the user didn't specify a filename, use the original name 
 	 * (and prefix).
 	 */
-	if (!p.filename || !strcmp (p.filename, "")) {
+	if (!gp_params.filename || !strcmp (gp_params.filename, "")) {
 		CR (gp_file_get_type (file, &type));
 		for (i = 0; PrefixTable[i].prefix; i++)
 			if (PrefixTable[i].type == type)
@@ -581,28 +581,28 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 
 	/* The user did specify a filename. Use it. */
 	b[sizeof (b) - 1] = '\0';
-	for (i = 0; i < strlen (p.filename); i++) {
-		if (p.filename[i] == '%') {
+	for (i = 0; i < strlen (gp_params.filename); i++) {
+		if (gp_params.filename[i] == '%') {
 			char padding = '0'; /* default padding character */
 			int precision = 0;  /* default: no padding */
 			i++;
 			/* determine padding character */
-			switch (p.filename[i]) {
+			switch (gp_params.filename[i]) {
 			  /* case ' ':
 			   * spaces are not supported everywhere, so we
 			   * restrict ourselves to padding with zeros.
 			   */
 			case '0':
-				padding = p.filename[i];
+				padding = gp_params.filename[i];
 				precision = 1; /* do padding */
 				i++;
 				break;
 			}
 			/* determine padding width */
-			if (isdigit((int)p.filename[i])) {
+			if (isdigit((int)gp_params.filename[i])) {
 				char *cp;
 				long int _prec;
-				_prec = strtol(&p.filename[i],
+				_prec = strtol(&gp_params.filename[i],
 					       &cp, 10);
 				if (_prec < 1) 
 					precision = 1;
@@ -612,16 +612,16 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 					precision = _prec;
 				if (*cp != 'n') {
 					/* make sure this is %n */
-					gp_context_error (p.context,
+					gp_context_error (gp_params.context,
 						  _("Zero padding numbers "
 						    "in file names is only "
 						    "possible with %%n."));
 					return GP_ERROR_BAD_PARAMETERS;
 				}
 				/* go to first non-digit character */
-				i += (cp - &p.filename[i]);
-			} else if (precision && ( p.filename[i] != 'n')) {
-				gp_context_error (p.context,
+				i += (cp - &gp_params.filename[i]);
+			} else if (precision && ( gp_params.filename[i] != 'n')) {
+				gp_context_error (gp_params.context,
 					  _("You cannot use %%n "
 					    "zero padding "
 					    "without a "
@@ -629,7 +629,7 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 					    ));
 				return GP_ERROR_BAD_PARAMETERS;
 			}
-			switch (p.filename[i]) {
+			switch (gp_params.filename[i]) {
 			case 'n':
 
 				/*
@@ -637,14 +637,14 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 				 * be done with persistent files!
 				 */
 				if (!folder) {
-					gp_context_error (p.context, 
+					gp_context_error (gp_params.context, 
 						_("You cannot use '%%n' "
 						  "in combination with "
 						  "non-persistent files!"));
 					return (GP_ERROR_BAD_PARAMETERS);
 				}
-				n = gp_filesystem_number (p.camera->fs,
-					folder, name, p.context);
+				n = gp_filesystem_number (gp_params.camera->fs,
+					folder, name, gp_params.context);
 				if (n < 0) {
 					free (*path);
 					*path = NULL;
@@ -668,7 +668,7 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 				if (!s) {
 					free (*path);
 					*path = NULL;
-					gp_context_error (p.context,
+					gp_context_error (gp_params.context,
 						_("The filename provided "
 						  "by the camera ('%s') "
 						  "does not contain a "
@@ -708,7 +708,7 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 			case 'Y':
 				{
 					char fmt[3] = { '%', '\0', '\0' };
-					fmt[1] = p.filename[i]; /* the letter of this 'case' */
+					fmt[1] = gp_params.filename[i]; /* the letter of this 'case' */
 					strftime(b, sizeof (b), fmt, tm);
 					break;
 				}
@@ -718,14 +718,14 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 			default:
 				free (*path);
 				*path = NULL;
-				gp_context_error (p.context,
+				gp_context_error (gp_params.context,
 					_("Invalid format '%s' (error at "
-					  "position %i)."), p.filename,
+					  "position %i)."), gp_params.filename,
 					i + 1);
 				return (GP_ERROR_BAD_PARAMETERS);
 			}
 		} else {
-			b[0] = p.filename[i];
+			b[0] = gp_params.filename[i];
 			b[1] = '\0';
 		}
 
@@ -762,8 +762,8 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 	free (path);
 	path = NULL;
 
-        if ((p.flags & FLAGS_QUIET) == 0) {
-                while ((p.flags & FLAGS_FORCE_OVERWRITE) == 0 &&
+        if ((gp_params.flags & FLAGS_QUIET) == 0) {
+                while ((gp_params.flags & FLAGS_FORCE_OVERWRITE) == 0 &&
 		       gp_system_is_file (s)) {
 			do {
 				putchar ('\007');
@@ -896,33 +896,33 @@ get_file_common (const char *arg, CameraFileType type )
 {
         gp_log (GP_LOG_DEBUG, "main", "Getting '%s'...", arg);
 
-	p.download_type = type; /* remember for multi download */
+	gp_params.download_type = type; /* remember for multi download */
 	/*
 	 * If the user specified the file directly (and not a number),
 	 * get that file.
 	 */
         if (strchr (arg, '.'))
-                return (save_file_to_file (p.camera, p.context, p.flags,
-					   p.folder, arg, type));
+                return (save_file_to_file (gp_params.camera, gp_params.context, gp_params.flags,
+					   gp_params.folder, arg, type));
 
         switch (type) {
         case GP_FILE_TYPE_PREVIEW:
-		CR (for_each_file_in_range (&p, save_thumbnail_action, arg));
+		CR (for_each_file_in_range (&gp_params, save_thumbnail_action, arg));
 		break;
         case GP_FILE_TYPE_NORMAL:
-                CR (for_each_file_in_range (&p, save_file_action, arg));
+                CR (for_each_file_in_range (&gp_params, save_file_action, arg));
 		break;
         case GP_FILE_TYPE_RAW:
-                CR (for_each_file_in_range (&p, save_raw_action, arg));
+                CR (for_each_file_in_range (&gp_params, save_raw_action, arg));
 		break;
 	case GP_FILE_TYPE_AUDIO:
-		CR (for_each_file_in_range (&p, save_audio_action, arg));
+		CR (for_each_file_in_range (&gp_params, save_audio_action, arg));
 		break;
 	case GP_FILE_TYPE_EXIF:
-		CR (for_each_file_in_range (&p, save_exif_action, arg));
+		CR (for_each_file_in_range (&gp_params, save_exif_action, arg));
 		break;
 	case GP_FILE_TYPE_METADATA:
-		CR (for_each_file_in_range (&p, save_meta_action, arg));
+		CR (for_each_file_in_range (&gp_params, save_meta_action, arg));
 		break;
         default:
                 return (GP_ERROR_NOT_SUPPORTED);
@@ -1053,13 +1053,13 @@ capture_generic (CameraCaptureType type, const char *name)
 	next_pic_time = time (NULL) + glob_interval;
 	if(glob_interval) {
 		memset(&last, 0, sizeof(last));
-		if (!(p.flags & FLAGS_QUIET))
+		if (!(gp_params.flags & FLAGS_QUIET))
 			printf (_("Time-lapse mode enabled (interval: %ds).\n"),
 				glob_interval);
 	}
 
 	while(++frames) {
-		if (!(p.flags & FLAGS_QUIET) && glob_interval) {
+		if (!(gp_params.flags & FLAGS_QUIET) && glob_interval) {
 			if(!glob_frames)
 				printf (_("Capturing frame #%d...\n"), frames);
 			else
@@ -1068,7 +1068,7 @@ capture_generic (CameraCaptureType type, const char *name)
 
 		fflush(stdout);
 
-		result =  gp_camera_capture (p.camera, type, &path, p.context);
+		result =  gp_camera_capture (gp_params.camera, type, &path, gp_params.context);
 		if (result != GP_OK) {
 			cli_error_print(_("Could not capture."));
 			return (result);
@@ -1078,7 +1078,7 @@ capture_generic (CameraCaptureType type, const char *name)
 		 * get focus lock - it will return with *UNKNOWN* as the filename.
 		 */
 		if (glob_interval && strcmp(path.name, "*UNKNOWN*") == 0) {
-			if (!(p.flags & FLAGS_QUIET)) {
+			if (!(gp_params.flags & FLAGS_QUIET)) {
 				printf (_("Capture failed (auto-focus problem?)...\n"));
 				sleep(1);
 				continue;
@@ -1090,7 +1090,7 @@ capture_generic (CameraCaptureType type, const char *name)
 		else
 			pathsep = "/";
 
-		if (p.flags & FLAGS_QUIET)
+		if (gp_params.flags & FLAGS_QUIET)
 			printf ("%s%s%s\n", path.folder, pathsep, path.name);
 		else
 			printf (_("New file is in location %s%s%s on the camera\n"),
@@ -1101,7 +1101,7 @@ capture_generic (CameraCaptureType type, const char *name)
 		if(strcmp(path.folder, last.folder)) {
 			memcpy(&last, &path, sizeof(last));
 
-			result = set_folder_action(&p, path.folder);
+			result = set_folder_action(&gp_params, path.folder);
 			if (result != GP_OK) {
 				cli_error_print(_("Could not set folder."));
 				return (result);
@@ -1140,11 +1140,11 @@ capture_generic (CameraCaptureType type, const char *name)
 			return (result);
 		}
 
-		if (!(p.flags & FLAGS_QUIET))
+		if (!(gp_params.flags & FLAGS_QUIET))
 			printf (_("Deleting file %s%s%s on the camera\n"),
 				path.folder, pathsep, path.name);
 
-		result = delete_file_action (&p, path.name);
+		result = delete_file_action (&gp_params, path.name);
 		if (result != GP_OK) {
 			cli_error_print ( _("Could not delete image."));
 			return (result);
@@ -1164,18 +1164,18 @@ capture_generic (CameraCaptureType type, const char *name)
 		/* Without this, it seems that the second capture always fails.
 		 * That is probably obvious...  for me it was trial n' error.
 		 */
-		result = gp_camera_exit (p.camera, p.context);
+		result = gp_camera_exit (gp_params.camera, gp_params.context);
 		if (result != GP_OK) {
 			cli_error_print (_("Could not close camera connection."));
 		}
 #endif
 		waittime = next_pic_time - time (NULL);
 		if (waittime > 0) {
-			if (!(p.flags & FLAGS_QUIET) && glob_interval)
+			if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
 				printf (_("Sleeping for %d second(s)...\n"), glob_interval);
 			sleep (waittime);
 		} else {
-			if (!(p.flags & FLAGS_QUIET) && glob_interval)
+			if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
 				printf (_("not sleeping (%d seconds behind schedule)\n"), - waittime);
 		}
 		next_pic_time += glob_interval;
@@ -1324,7 +1324,7 @@ signal_resize (int signo)
 
 	columns = getenv ("COLUMNS");
 	if (columns && atoi (columns))
-		p.cols = atoi (columns);
+		gp_params.cols = atoi (columns);
 }
 
 static void
@@ -1332,18 +1332,18 @@ signal_exit (int signo)
 {
 	/* If we already were told to cancel, abort. */
 	if (glob_cancel) {
-		if ((p.flags & FLAGS_QUIET) == 0)
+		if ((gp_params.flags & FLAGS_QUIET) == 0)
 			printf (_("\nAborting...\n"));
-		if (p.camera)
-			gp_camera_unref (p.camera);
-		if (p.context)
-			gp_context_unref (p.context);
-		if ((p.flags & FLAGS_QUIET) == 0)
+		if (gp_params.camera)
+			gp_camera_unref (gp_params.camera);
+		if (gp_params.context)
+			gp_context_unref (gp_params.context);
+		if ((gp_params.flags & FLAGS_QUIET) == 0)
 			printf (_("Aborted.\n"));
 		exit (EXIT_FAILURE);
 	}
 
-	if ((p.flags & FLAGS_QUIET) == 0)
+	if ((gp_params.flags & FLAGS_QUIET) == 0)
                 printf (_("\nCancelling...\n"));
 
 	glob_cancel = 1;
@@ -1471,7 +1471,7 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 				params->p.r = GP_ERROR_BAD_PARAMETERS;
 				break;
 			}
-			params->p.r = override_usbids_action (&p, usb_vendor,
+			params->p.r = override_usbids_action (&gp_params, usb_vendor,
 					usb_product, usb_vendor_modified,
 					usb_product_modified);
 			break;
@@ -1485,41 +1485,41 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 	if (params->type == CALLBACK_PARAMS_TYPE_INITIALIZE) {
 		switch (opt->val) {
 		case ARG_FILENAME:
-			params->p.r = set_filename_action (&p, arg);
+			params->p.r = set_filename_action (&gp_params, arg);
 			break;
 		case ARG_FOLDER:
-			params->p.r = set_folder_action (&p, arg);
+			params->p.r = set_folder_action (&gp_params, arg);
 			break;
 		case ARG_FORCE_OVERWRITE:
-			p.flags |= FLAGS_FORCE_OVERWRITE;
+			gp_params.flags |= FLAGS_FORCE_OVERWRITE;
 			break;
 		case ARG_MODEL:
 			gp_log (GP_LOG_DEBUG, "main", "Processing 'model' "
 				"option ('%s')...", arg);
-			params->p.r = action_camera_set_model (&p, arg);
+			params->p.r = action_camera_set_model (&gp_params, arg);
 			break;
 		case ARG_NEW:
-			p.flags |= FLAGS_NEW;
+			gp_params.flags |= FLAGS_NEW;
 			break;
 		case ARG_NO_RECURSE:
-			p.flags &= ~FLAGS_RECURSE;
+			gp_params.flags &= ~FLAGS_RECURSE;
 			break;
 		case ARG_PORT:
 			gp_log (GP_LOG_DEBUG, "main", "Processing 'port' "
 				"option ('%s')...", arg);
-			params->p.r = action_camera_set_port (&p, arg);
+			params->p.r = action_camera_set_port (&gp_params, arg);
 			break;
 		case ARG_QUIET:
-			p.flags |= FLAGS_QUIET;
+			gp_params.flags |= FLAGS_QUIET;
 			break;
 		case ARG_RECURSE:
-			p.flags |= FLAGS_RECURSE;
+			gp_params.flags |= FLAGS_RECURSE;
 			break;
 		case ARG_SPEED:
-			params->p.r = action_camera_set_speed (&p, atoi (arg));
+			params->p.r = action_camera_set_speed (&gp_params, atoi (arg));
 			break;
 		case ARG_STDOUT:
-			p.flags |= FLAGS_QUIET | FLAGS_STDOUT;
+			gp_params.flags |= FLAGS_QUIET | FLAGS_STDOUT;
 			break;
 		case ARG_CAPTURE_FRAMES:
 			glob_frames = atoi(arg);
@@ -1528,10 +1528,10 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 			glob_interval = atoi(arg);
 			break;
 		case ARG_STDOUT_SIZE:
-			p.flags |= FLAGS_QUIET | FLAGS_STDOUT | FLAGS_STDOUT_SIZE;
+			gp_params.flags |= FLAGS_QUIET | FLAGS_STDOUT | FLAGS_STDOUT_SIZE;
 			break;
 		case ARG_VERSION:
-			params->p.r = print_version_action (&p);
+			params->p.r = print_version_action (&gp_params);
 			break;
 		default:
 			break;
@@ -1541,13 +1541,13 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 
 	switch (opt->val) {
 	case ARG_ABILITIES:
-		params->p.r = action_camera_show_abilities (&p);
+		params->p.r = action_camera_show_abilities (&gp_params);
 		break;
 	case ARG_ABOUT:
-		params->p.r = action_camera_about (&p);
+		params->p.r = action_camera_about (&gp_params);
 		break;
 	case ARG_AUTO_DETECT:
-		params->p.r = auto_detect_action (&p);
+		params->p.r = auto_detect_action (&gp_params);
 		break;
 	case ARG_CAPTURE_IMAGE:
 		params->p.r = capture_generic (GP_CAPTURE_IMAGE, arg);
@@ -1556,137 +1556,134 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		params->p.r = capture_generic (GP_CAPTURE_MOVIE, arg);
 		break;
 	case ARG_CAPTURE_PREVIEW:
-		params->p.r = action_camera_capture_preview (&p);
+		params->p.r = action_camera_capture_preview (&gp_params);
 		break;
 	case ARG_CAPTURE_SOUND:
 		params->p.r = capture_generic (GP_CAPTURE_SOUND, arg);
 		break;
 	case ARG_CONFIG:
 #ifdef HAVE_CDK
-		params->p.r = gp_cmd_config (p.camera, p.context);
+		params->p.r = gp_cmd_config (gp_params.camera, gp_params.context);
 #else
-		gp_context_error (p.context,
+		gp_context_error (gp_params.context,
 				  _("gphoto2 has been compiled without "
 				    "support for CDK."));
 		params->p.r = GP_ERROR_NOT_SUPPORTED;
 #endif
 		break;
 	case ARG_DELETE_ALL_FILES:
-		params->p.r = for_each_folder (&p, delete_all_action);
+		params->p.r = for_each_folder (&gp_params, delete_all_action);
 		break;
 	case ARG_DELETE_FILE:
-		p.multi_type = MULTI_DELETE;
+		gp_params.multi_type = MULTI_DELETE;
 		/* Did the user specify a file or a range? */
 		if (strchr (arg, '.')) {
-			params->p.r = delete_file_action (&p, arg);
+			params->p.r = delete_file_action (&gp_params, arg);
 			break;
 		}
-		params->p.r = for_each_file_in_range (&p,
+		params->p.r = for_each_file_in_range (&gp_params,
 					delete_file_action, arg);
 		break;
 	case ARG_GET_ALL_AUDIO_DATA:
-		params->p.r = for_each_file (&p, save_all_audio_action);
+		params->p.r = for_each_file (&gp_params, save_all_audio_action);
 		break;
 	case ARG_GET_ALL_FILES:
-		params->p.r = for_each_file (&p, save_file_action);
+		params->p.r = for_each_file (&gp_params, save_file_action);
 		break;
 	case ARG_GET_ALL_METADATA:
-		params->p.r = for_each_file (&p, save_meta_action);
+		params->p.r = for_each_file (&gp_params, save_meta_action);
 		break;
 	case ARG_GET_ALL_RAW_DATA:
-		params->p.r = for_each_file (&p, save_raw_action);
+		params->p.r = for_each_file (&gp_params, save_raw_action);
 		break;
 	case ARG_GET_ALL_THUMBNAILS:
-		params->p.r = for_each_file (&p, save_thumbnail_action);
+		params->p.r = for_each_file (&gp_params, save_thumbnail_action);
 		break;
 	case ARG_GET_AUDIO_DATA:
-		p.multi_type = MULTI_DOWNLOAD;
+		gp_params.multi_type = MULTI_DOWNLOAD;
 		params->p.r = get_file_common (arg, GP_FILE_TYPE_AUDIO);
 		break;
 	case ARG_GET_METADATA:
-		p.multi_type = MULTI_DOWNLOAD;
+		gp_params.multi_type = MULTI_DOWNLOAD;
 		params->p.r = get_file_common (arg, GP_FILE_TYPE_METADATA);
 		break;
 	case ARG_GET_FILE:
-		p.multi_type = MULTI_DOWNLOAD;
+		gp_params.multi_type = MULTI_DOWNLOAD;
 		params->p.r = get_file_common (arg, GP_FILE_TYPE_NORMAL);
 		break;
 	case ARG_GET_THUMBNAIL:
-		p.multi_type = MULTI_DOWNLOAD;
+		gp_params.multi_type = MULTI_DOWNLOAD;
 		params->p.r = get_file_common (arg, GP_FILE_TYPE_PREVIEW);
 		break;
 	case ARG_GET_RAW_DATA:
-		p.multi_type = MULTI_DOWNLOAD;
+		gp_params.multi_type = MULTI_DOWNLOAD;
 		params->p.r = get_file_common (arg, GP_FILE_TYPE_RAW);
 		break;
 	case ARG_LIST_CAMERAS:
-		params->p.r = list_cameras_action (&p);
+		params->p.r = list_cameras_action (&gp_params);
 		break;
 	case ARG_LIST_FILES:
-		params->p.r = for_each_folder (&p, list_files_action);
+		params->p.r = for_each_folder (&gp_params, list_files_action);
 		break;
 	case ARG_LIST_FOLDERS:
-		params->p.r = for_each_folder (&p, list_folders_action);
+		params->p.r = for_each_folder (&gp_params, list_folders_action);
 		break;
 	case ARG_LIST_PORTS:
-		params->p.r = list_ports_action (&p);
+		params->p.r = list_ports_action (&gp_params);
 		break;
 	case ARG_MANUAL:
-		params->p.r = action_camera_manual (&p);
+		params->p.r = action_camera_manual (&gp_params);
 		break;
 	case ARG_RMDIR:
-		params->p.r = gp_camera_folder_remove_dir (p.camera,
-				p.folder, arg, p.context);
+		params->p.r = gp_camera_folder_remove_dir (gp_params.camera,
+				gp_params.folder, arg, gp_params.context);
 		break;
 	case ARG_NUM_FILES:
-		p.camera = p.camera;
-		p.folder = p.folder;
-		p.context = p.context;
-		params->p.r = num_files_action (&p);
+		params->p.r = num_files_action (&gp_params);
 		break;
 	case ARG_MKDIR:
-		params->p.r = gp_camera_folder_make_dir (p.camera,
-				p.folder, arg, p.context);
+		params->p.r = gp_camera_folder_make_dir (gp_params.camera,
+				gp_params.folder, arg, gp_params.context);
 		break;
 	case ARG_SHELL:
-		params->p.r = shell_prompt (&p);
+		params->p.r = shell_prompt (&gp_params);
 		break;
 	case ARG_SHOW_EXIF:
 
 		/* Did the user specify a file or a range? */
 		if (strchr (arg, '.')) { 
-			params->p.r = print_exif_action (&p, arg); 
+			params->p.r = print_exif_action (&gp_params, arg); 
 			break; 
 		} 
-		params->p.r = for_each_file_in_range (&p, 
+		params->p.r = for_each_file_in_range (&gp_params, 
 						 print_exif_action, arg); 
 		break;
 	case ARG_SHOW_INFO:
 
 		/* Did the user specify a file or a range? */
 		if (strchr (arg, '.')) {
-			params->p.r = print_info_action (&p, arg);
+			params->p.r = print_info_action (&gp_params, arg);
 			break;
 		}
-		params->p.r = for_each_file_in_range (&p,
+		params->p.r = for_each_file_in_range (&gp_params,
 						 print_info_action, arg);
 		break;
 	case ARG_SUMMARY:
-		params->p.r = action_camera_summary (&p);
+		params->p.r = action_camera_summary (&gp_params);
 		break;
 	case ARG_UPLOAD_FILE:
-		p.multi_type = MULTI_UPLOAD;
-		params->p.r = action_camera_upload_file (&p, p.folder, arg);
+		gp_params.multi_type = MULTI_UPLOAD;
+		params->p.r = action_camera_upload_file (&gp_params, gp_params.folder, arg);
 		break;
 	case ARG_UPLOAD_METADATA:
-		p.multi_type = MULTI_UPLOAD_META;
-		params->p.r = action_camera_upload_metadata (&p, p.folder, arg);
+		gp_params.multi_type = MULTI_UPLOAD_META;
+		params->p.r = action_camera_upload_metadata (&gp_params, gp_params.folder, arg);
 		break;
 	case ARG_LIST_CONFIG:
-		params->p.r = list_config_action (&p);
+		params->p.r = list_config_action (&gp_params);
 		break;
 	case ARG_GET_CONFIG:
-		params->p.r = get_config_action (&p, arg);
+		params->p.r = get_config_action (&gp_params, arg);
 		break;
 	case ARG_SET_CONFIG: {
 		char *name, *value;
@@ -1699,12 +1696,12 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		value = strchr (name, '=');
 		*value = '\0';
 		value++;
-		params->p.r = set_config_action (&p, name, value);
+		params->p.r = set_config_action (&gp_params, name, value);
 		free (name);
 		break;
 	}
 	case ARG_WAIT_EVENT:
-		params->p.r = action_camera_wait_event (&p);
+		params->p.r = action_camera_wait_event (&gp_params);
 		break;
 	default:
 		break;
@@ -1761,7 +1758,7 @@ report_failure (int result, int argc, char **argv)
 							\
 	if (r < 0) {					\
 		report_failure (r, argc, argv);		\
-		gp_params_exit (&p);			\
+		gp_params_exit (&gp_params);			\
 		return (EXIT_FAILURE);			\
 	}						\
 }
@@ -1909,7 +1906,7 @@ main (int argc, char **argv)
         textdomain (PACKAGE);
 
 	/* Create the global variables. */
-	gp_params_init (&p);
+	gp_params_init (&gp_params);
 
 	/* Figure out the width of the terminal and watch out for changes */
 	signal_resize (0);
@@ -1939,13 +1936,13 @@ main (int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	if (params.p.q.found) {
-		CR_MAIN (debug_action (&p));
+		CR_MAIN (debug_action (&gp_params));
 	}
 #endif
 
 	/* Initialize. */
 #ifdef HAVE_PTHREAD
-	gp_camera_set_timeout_funcs (p.camera, start_timeout_func,
+	gp_camera_set_timeout_funcs (gp_params.camera, start_timeout_func,
 				     stop_timeout_func, NULL);
 #endif
 #ifdef HAVE_POPT
@@ -1969,8 +1966,8 @@ main (int argc, char **argv)
 #endif
 
 	/* If we need a camera, make sure we've got one. */
-	CR_MAIN (gp_camera_get_abilities (p.camera, &a));
-	CR_MAIN (gp_camera_get_port_info (p.camera, &info));
+	CR_MAIN (gp_camera_get_abilities (gp_params.camera, &a));
+	CR_MAIN (gp_camera_get_port_info (gp_params.camera, &info));
 #ifdef HAVE_POPT
 	params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	params.p.q.found = 0;
@@ -2018,16 +2015,16 @@ main (int argc, char **argv)
 		CR_MAIN (gp_port_info_list_new (&il));
 		CR_MAIN (gp_port_info_list_load (il));
 		CR_MAIN (gp_list_new (&list)); /* no freeing below */
-		CR_MAIN (gp_abilities_list_detect (p.abilities_list, il,
-						   list, p.context));
+		CR_MAIN (gp_abilities_list_detect (gp_params.abilities_list, il,
+						   list, gp_params.context));
 		CR_MAIN (count = gp_list_count (list));
                 if (count == 1) {
 
                         /* Exactly one camera detected */
 			CR_MAIN (gp_list_get_name (list, 0, &model));
 			CR_MAIN (gp_list_get_value (list, 0, &path));
-			CR_MAIN (action_camera_set_model (&p, model));
-			CR_MAIN (action_camera_set_port (&p, path));
+			CR_MAIN (action_camera_set_model (&gp_params, model));
+			CR_MAIN (action_camera_set_port (&gp_params, path));
 
                 } else if (!count) {
 
@@ -2036,9 +2033,9 @@ main (int argc, char **argv)
 			 * Ignore errors here.
 			 */
                         if (gp_setting_get ("gphoto2", "model", buf) >= 0)
-				action_camera_set_model (&p, buf);
+				action_camera_set_model (&gp_params, buf);
 			if (gp_setting_get ("gphoto2", "port", buf) >= 0)
-				action_camera_set_port (&p, buf);
+				action_camera_set_port (&gp_params, buf);
 
 		} else {
 
@@ -2046,8 +2043,8 @@ main (int argc, char **argv)
                         /*FIXME: Let the user choose from the list!*/
 			CR_MAIN (gp_list_get_name (list, 0, &model));
 			CR_MAIN (gp_list_get_value (list, 0, &path));
-			CR_MAIN (action_camera_set_model (&p, model));
-			CR_MAIN (action_camera_set_port (&p, path));
+			CR_MAIN (action_camera_set_model (&gp_params, model));
+			CR_MAIN (action_camera_set_port (&gp_params, path));
                 }
 
 		CR_MAIN (gp_port_info_list_free (il));
@@ -2075,7 +2072,7 @@ main (int argc, char **argv)
 		poptResetContext (ctx);
 		while (poptGetNextOpt (ctx) >= 0);
 		if (!params.p.q.found)
-			p.flags &= ~FLAGS_RECURSE;
+			gp_params.flags &= ~FLAGS_RECURSE;
 	}
 #else
 	if ((option_is_present ("delete-all-files", argc, argv) == GP_OK) ||
@@ -2097,7 +2094,7 @@ main (int argc, char **argv)
 	poptResetContext (ctx);
 	while (poptGetNextOpt (ctx) >= 0);
 	if (params.p.q.found)
-		p.flags |= FLAGS_QUIET;
+		gp_params.flags |= FLAGS_QUIET;
 #else
 	if (option_is_present ("q", argc, argv) == GP_OK)
 		p.flags |= FLAGS_QUIET;
@@ -2110,12 +2107,12 @@ main (int argc, char **argv)
 	params.p.r = GP_OK;
 	while ((params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
 
-	switch (p.multi_type) {
+	switch (gp_params.multi_type) {
 	case MULTI_UPLOAD: {
 		const char *arg;
 
 		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
-			CR_MAIN (action_camera_upload_file (&p, p.folder, arg));
+			CR_MAIN (action_camera_upload_file (&gp_params, gp_params.folder, arg));
 		}
 		break;
 	}
@@ -2123,7 +2120,7 @@ main (int argc, char **argv)
 		const char *arg;
 
 		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
-			CR_MAIN (action_camera_upload_metadata (&p, p.folder, arg));
+			CR_MAIN (action_camera_upload_metadata (&gp_params, gp_params.folder, arg));
 		}
 		break;
 	}
@@ -2131,7 +2128,7 @@ main (int argc, char **argv)
 		const char *arg;
 
 		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
-			CR_MAIN (delete_file_action (&p, arg));
+			CR_MAIN (delete_file_action (&gp_params, arg));
 		}
 		break;
 	}
@@ -2139,7 +2136,7 @@ main (int argc, char **argv)
 		const char *arg;
 
 		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
-			CR_MAIN (get_file_common (arg, p.download_type ));
+			CR_MAIN (get_file_common (arg, gp_params.download_type ));
 		}
 		break;
 	}
@@ -2177,8 +2174,8 @@ e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"));
 
         /* Peek ahead: Make sure we were called correctly */
         if ((argc == 1) || (verify_options (argc, argv) != GP_OK)) {
-		if ((p.flags & FLAGS_QUIET) == 0)
-                        usage (&p);
+		if ((gp_params.flags & FLAGS_QUIET) == 0)
+                        usage (&gp_params);
                 exit (EXIT_FAILURE);
         }
 
@@ -2187,7 +2184,7 @@ e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"));
 		char port[1024];
 		result = gp_setting_get ("gphoto2", "port", port);
 		if (result >= 0)
-			action_camera_set_port (&p, port);
+			action_camera_set_port (&gp_params, port);
 	}
 
 	/* Model specified? If not, try to use the settings. */
@@ -2195,7 +2192,7 @@ e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"));
 		char model[1024];
 		result = gp_setting_get ("gphoto2", "model", model);
 		if (result >= 0)
-			CR_MAIN (action_camera_set_model (&p, model));
+			CR_MAIN (action_camera_set_model (&gp_params, model));
 	}
 
 	/* Now actually do something. */
@@ -2203,7 +2200,7 @@ e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"));
 
 #endif
 
-	gp_params_exit (&p);
+	gp_params_exit (&gp_params);
 
         return (EXIT_SUCCESS);
 }
