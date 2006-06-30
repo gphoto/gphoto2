@@ -25,18 +25,6 @@
 #include <gphoto2-camera.h>
 #include <gp-params.h>
 
-#define OPTION_CALLBACK(_a)             int _a (char *arg)
-
-typedef struct _Option Option;
-struct _Option {
-        char    short_id[3];
-        char    long_id[20];
-        char    argument[32];
-        char    description[55];
-        OPTION_CALLBACK((*execute));
-        int     required;
-};
-
 #define MAX_IMAGE_NUMBER                16384
 
 #ifdef WIN32

@@ -48,6 +48,8 @@
 # ifndef POPT_TABLEEND
 #  define POPT_TABLEEND { NULL, '\0', 0, 0, 0, NULL, NULL }
 # endif
+#else
+# error gphoto2 now REQUIRES the popt library!
 #endif
 
 #ifdef HAVE_RL
@@ -71,182 +73,6 @@
 
 #define CR(result) {int r = (result); if (r < 0) return (r);}
 
-/* Command-line option
-   -----------------------------------------------------------------------
-   this is funky and may look a little scary, but sounded cool to do.
-   it makes sense since this is just a wrapper for a functional/flow-based
-   library.
-   AFTER NOTE: whoah. gnome does something like this. cool deal :)
-
-   When the program starts it calls (in order):
-        1) verify_options() to make sure all options are valid,
-           and that any options needing an argument have one (or if they
-           need an argument, they don't have one).
-        2) (optional) option_is_present() to see if a particular option was
-           typed in the command-line. This can be used to set up something
-           before the next step.
-        3) execute_options() to actually parse the command-line and execute
-           the command-line options in order.
-
-   This might sound a little complex, but makes adding options REALLY easy,
-   and it is very flexible.
-
-   How to add a command-line option:
-*/
-
-/* 1) Add a forward-declaration here                                    */
-/*    ----------------------------------------------------------------- */
-/*    Use the OPTION_CALLBACK(function) macro.                          */
-
-#ifndef HAVE_POPT
-OPTION_CALLBACK(abilities);
-#ifdef HAVE_CDK
-OPTION_CALLBACK(config);
-#endif
-#ifdef HAVE_LIBEXIF
-OPTION_CALLBACK(show_exif);
-#endif
-OPTION_CALLBACK(show_info);
-OPTION_CALLBACK(help);
-OPTION_CALLBACK(version);
-OPTION_CALLBACK(shell);
-OPTION_CALLBACK(list_cameras);
-OPTION_CALLBACK(auto_detect);
-OPTION_CALLBACK(list_ports);
-OPTION_CALLBACK(filename);
-OPTION_CALLBACK(port);
-OPTION_CALLBACK(speed);
-OPTION_CALLBACK(usbid);
-OPTION_CALLBACK(model);
-OPTION_CALLBACK(quiet);
-OPTION_CALLBACK(debug);
-OPTION_CALLBACK(use_folder);
-OPTION_CALLBACK(recurse);
-OPTION_CALLBACK(no_recurse);
-OPTION_CALLBACK(new);
-OPTION_CALLBACK(use_stdout);
-OPTION_CALLBACK(use_stdout_size);
-OPTION_CALLBACK(list_folders);
-OPTION_CALLBACK(list_files);
-OPTION_CALLBACK(num_files);
-OPTION_CALLBACK(get_file);
-OPTION_CALLBACK(get_all_files);
-OPTION_CALLBACK(get_thumbnail);
-OPTION_CALLBACK(get_all_metadata);
-OPTION_CALLBACK(get_all_thumbnails);
-OPTION_CALLBACK(get_raw_data);
-OPTION_CALLBACK(get_all_raw_data);
-OPTION_CALLBACK(get_audio_data);
-OPTION_CALLBACK(get_all_audio_data);
-OPTION_CALLBACK(delete_file);
-OPTION_CALLBACK(delete_all_files);
-OPTION_CALLBACK(upload_file);
-OPTION_CALLBACK(upload_metadata);
-OPTION_CALLBACK(capture_frames);
-OPTION_CALLBACK(capture_interval);
-OPTION_CALLBACK(capture_image);
-OPTION_CALLBACK(capture_preview);
-OPTION_CALLBACK(capture_movie);
-OPTION_CALLBACK(capture_sound);
-OPTION_CALLBACK(summary);
-OPTION_CALLBACK(manual);
-OPTION_CALLBACK(about);
-OPTION_CALLBACK(make_dir);
-OPTION_CALLBACK(remove_dir);
-OPTION_CALLBACK(list_config);
-OPTION_CALLBACK(get_config);
-OPTION_CALLBACK(set_config);
-OPTION_CALLBACK(wait_event);
-
-/* 2) Add an entry in the option table                          */
-/*    ----------------------------------------------------------------- */
-/*    Format for option is:                                             */
-/*     {"short", "long", "argument", "description", callback_function, required}, */
-/*    if it is just a flag, set the argument to "".                     */
-/*    Order is important! Options are exec'd in the order in the table! */
-
-Option option[] = {
-
-/* Settings needed for formatting output */
-{"",  "debug", "", N_("Turn on debugging"),              debug,         0},
-{"q", "quiet", "", N_("Quiet output (default=verbose)"), quiet,         0},
-
-/* Display and die actions */
-
-{"v", "version",     "", N_("Display version and exit"),     version,        0},
-{"h", "help",        "", N_("Displays this help screen"),    help,           0},
-{"",  "list-cameras","", N_("List supported camera models"), list_cameras,   0},
-{"",  "list-ports",  "", N_("List supported port devices"),  list_ports,     0},
-{"",  "stdout",      "", N_("Send file to stdout"),          use_stdout,     0},
-{"",  "stdout-size", "", N_("Print filesize before data"),   use_stdout_size,0},
-{"",  "auto-detect", "", N_("List auto-detected cameras"),   auto_detect,    0},
-
-/* Settings needed for camera functions */
-{"" , "port",     "path",     N_("Specify port device"),            port,      0},
-{"" , "speed",    "speed",    N_("Specify serial transfer speed"),  speed,     0},
-{"" , "camera",   "model",    N_("Specify camera model"),           model,     0},
-{"" , "filename", "filename", N_("Specify a filename"),             filename, 0},
-{"" , "usbid",    "usbid",    N_("(expert only) Override USB IDs"), usbid,     0},
-
-/* Actions that depend on settings */
-{"a", "abilities", "",       N_("Display camera abilities"), abilities,    0},
-{"f", "folder",    "folder", N_("Specify camera folder (default=\"/\")"),use_folder,0},
-{"R", "recurse", "",  N_("Recursion (default for download)"), recurse, 0},
-{"", "no-recurse", "",  N_("No recursion (default for deletion)"), no_recurse, 0},
-{"", "new", "", N_("Process new files only"), new, 0},
-{"l", "list-folders",   "", N_("List folders in folder"), list_folders,   0},
-{"L", "list-files",     "", N_("List files in folder"),   list_files,     0},
-{"m", "mkdir", N_("name"),  N_("Create a directory"),     make_dir,       0},
-{"r", "rmdir", N_("name"),  N_("Remove a directory"),     remove_dir,     0},
-{"n", "num-files", "",           N_("Display number of files"),     num_files,   0},
-{"p", "get-file", "range",       N_("Get files given in range"),    get_file,    0},
-{"P", "get-all-files","",        N_("Get all files from folder"),   get_all_files,0},
-{"t", "get-thumbnail",  "range",  N_("Get thumbnails given in range"),  get_thumbnail,  0},
-{"T", "get-all-thumbnails","",    N_("Get all thumbnails from folder"), get_all_thumbnails,0},
-{"", "get-metadata","",    N_("Get metadata from file"), get_metadata,0},
-{"", "get-all-metadata","",    N_("Get all metadata from folder"), get_all_metadata,0},
-{"", "upload-metadata","",    N_("Upload metadata for file"), upload_metadata,0},
-{"", "get-raw-data", "range",     N_("Get raw data given in range"),    get_raw_data, 0},
-{"", "get-all-raw-data", "",      N_("Get all raw data from folder"),   get_all_raw_data, 0},
-{"", "get-audio-data", "range",   N_("Get audio data given in range"),  get_audio_data, 0},
-{"", "get-all-audio-data", "",    N_("Get all audio data from folder"), get_all_audio_data, 0},
-{"d", "delete-file", "range",  N_("Delete files given in range"), delete_file, 0},
-{"D", "delete-all-files","",     N_("Delete all files in folder"), delete_all_files,0},
-{"u", "upload-file", "filename", N_("Upload a file to camera"),    upload_file, 0},
-#ifdef HAVE_CDK
-{"" , "config",         "",  N_("Configure"),               config,          0},
-#endif
-{"", "list-config", "", N_("List the configuration tree"),    list_config, 0},
-{"", "get-config", "name", N_("Get a configuration variable"),    get_config, 0},
-{"", "set-config", "name", N_("Set a configuration variable"),    set_config, 0},
-{"", "wait-event",    "",  N_("Wait for event from camera"),  wait_event,   0},
-{"F" , "frames", "count", N_("Set number of frames to capture (default=infinite)"), capture_frames, 0},
-{"I" , "interval", "seconds", N_("Set capture interval in seconds"), capture_interval, 0},
-{"" , "capture-preview", "", N_("Capture a quick preview"), capture_preview, 0},
-{"" , "capture-image",  "",  N_("Capture an image"),        capture_image,   0},
-{"" , "capture-movie",  "",  N_("Capture a movie "),        capture_movie,   0},
-{"" , "capture-sound",  "",  N_("Capture an audio clip"),   capture_sound,   0},
-#ifdef HAVE_LIBEXIF
-{"", "show-exif", "range",   N_("Show EXIF information"), show_exif, 0},
-#endif
-{"", "show-info", "range",   N_("Show info"), show_info, 0},
-{"",  "summary",        "",  N_("Summary of camera status"), summary, 0},
-{"",  "manual",         "",  N_("Camera driver manual"),     manual,  0},
-{"",  "about",          "",  N_("About the camera driver"),  about,   0},
-{"",  "shell",          "",  N_("gPhoto shell"),             shell,   0},
-
-/* End of list                  */
-{"" , "", "", "", NULL, 0}
-};
-
-/* 3) Add any necessary global variables                                */
-/*    ----------------------------------------------------------------- */
-/*    Most flags will set options, like choosing a port, camera model,  */
-/*    etc...                                                            */
-
-int  glob_option_count = 0;
-#endif
-
 int  glob_debug = -1;
 char glob_cancel = 0;
 int  glob_frames = 0;
@@ -254,272 +80,6 @@ int  glob_interval = 0;
 
 GPParams p;
 
-/* 4) Finally, add your callback function.                              */
-/*    ----------------------------------------------------------------- */
-/*    The callback function is passed "char *arg" to the argument of    */
-/*    command-line option. It must return GP_OK or GP_ERROR.            */
-/*    Again, use the OPTION_CALLBACK(function) macro.                   */
-
-#ifndef HAVE_POPT
-
-OPTION_CALLBACK(help)
-{
-        usage (&p);
-        exit (EXIT_SUCCESS);
-}
-
-OPTION_CALLBACK(version)
-{
-	CR (print_version_action (&p));
-        exit (EXIT_SUCCESS);
-}
-
-OPTION_CALLBACK(use_stdout)
-{
-        p.flags |= FLAGS_STDOUT;
-        p.flags |= FLAGS_QUIET; /* implied */
-
-        return GP_OK;
-}
-
-OPTION_CALLBACK (use_stdout_size)
-{
-        p.flags |= FLAGS_STDOUT_SIZE;
-        use_stdout(arg);
-
-        return GP_OK;
-}
-
-OPTION_CALLBACK (auto_detect)
-{
-	CR (auto_detect_action (&p));
-
-        return GP_OK;
-}
-
-OPTION_CALLBACK (abilities)
-{
-	CR (action_camera_show_abilities (&p));
-
-        return (GP_OK);
-}
-
-
-OPTION_CALLBACK(list_cameras)
-{
-	CR (list_cameras_action (&p));
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK(get_config)
-{
-	CR (get_config_action (&p, arg));
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK(set_config)
-{
-        char *name, *value;
-	int ret;
-
-	if (strchr (arg, '=') == NULL)
-		return GP_ERROR_BAD_PARAMETERS;
-	name = strdup (arg);
-        if (!name) 
-		return GP_ERROR_NO_MEMORY;
-	value = strchr (name,'=');
-	*value = '\0';
-	value++;
-	ret = set_config_action (&p, name, value);
-	free (name);
-	return ret;
-}
-
-OPTION_CALLBACK(list_config)
-{
-	CR (list_config_action (&p));
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK(list_ports)
-{
-	CR (list_ports_action (&p));
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK(filename)
-{
-	CR (set_filename_action (&p, arg));
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK(port)
-{
-	CR (action_camera_set_port (&p, arg));
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK(speed)
-{
-	CR (action_camera_set_speed (&p, atoi (arg)));
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK(model)
-{
-	CR (action_camera_set_model (&p, arg));
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK (usbid)
-{
-	int usb_product, usb_vendor, usb_product_modified, usb_vendor_modified;
-
-	gp_log (GP_LOG_DEBUG, "main", "Overriding USB IDs to '%s'...", arg);
-
-	if (sscanf (arg, "0x%x:0x%x=0x%x:0x%x", &usb_vendor_modified,
-		    &usb_product_modified, &usb_vendor, &usb_product) != 4) {
-		printf (_("Use the following syntax a:b=c:d to treat any "
-			  "USB device detected as a:b as c:d instead. "
-			  "a b c d should be hexadecimal numbers beginning "
-			  "with '0x'.\n"));
-		return (GP_ERROR_BAD_PARAMETERS);
-	}
-	CR (override_usbids_action (&p, usb_vendor, usb_product,
-				usb_vendor_modified, usb_product_modified));
-
-	return (GP_OK);
-}
-
-OPTION_CALLBACK (debug)
-{
-	CR (debug_action (&p));
-
-	return (GP_OK);
-}
-
-OPTION_CALLBACK(quiet)
-{
-        p.flags |= FLAGS_QUIET;
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK(shell)
-{
-	CR (shell_prompt (&p));
-
-	return (GP_OK);
-}
-
-OPTION_CALLBACK (use_folder)
-{
-	CR (set_folder_action (&p, arg));
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK (recurse)
-{
-	p.flags |= FLAGS_RECURSE;
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK (no_recurse)
-{
-	p.flags &= ~FLAGS_RECURSE;
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK (new)
-{
-	p.flags |= FLAGS_NEW;
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK (list_folders)
-{
-	CR (for_each_folder (&p, list_folders_action));
-
-	return (GP_OK);
-}
-
-OPTION_CALLBACK (capture_frames)
-{
-	glob_frames = atoi(arg);
-
-	return (GP_OK);
-}
-
-OPTION_CALLBACK (capture_interval)
-{
-	glob_interval = atoi(arg);
-
-	return (GP_OK);
-}
-
-#ifdef HAVE_CDK
-OPTION_CALLBACK(config)
-{
-	CR (gp_cmd_config (p.camera, p.context));
-
-	return (GP_OK);
-}
-#endif
-
-OPTION_CALLBACK(show_info)
-{
-	/*
-	 * If the user specified the file directly (and not a range),
-	 * directly dump info.
-	 */
-	if (strchr (arg, '.'))
-		return (print_info_action (&p, arg));
-
-	return (for_each_file_in_range (&p, print_info_action, arg));
-}
-
-#ifdef HAVE_LIBEXIF
-OPTION_CALLBACK(show_exif)
-{
-	/*
-	 * If the user specified the file directly (and not a range),
-	 * directly dump EXIF information.
-	 */
-	if (strchr (arg, '.'))
-		return (print_exif_action (&p, arg));
-
-	return (for_each_file_in_range (&p, print_exif_action, arg));
-}
-#endif
-
-OPTION_CALLBACK (list_files)
-{
-        return (for_each_folder (&p, list_files_action));
-}
-
-OPTION_CALLBACK (num_files)
-{
-	return (num_files_action (&p));
-}
-
-OPTION_CALLBACK (wait_event)
-{
-	return (action_camera_wait_event (&p));
-}
-
-#endif
 
 static struct {
 	CameraFileType type;
@@ -931,115 +491,6 @@ get_file_common (const char *arg, CameraFileType type )
 	return (GP_OK);
 }
 
-#ifndef HAVE_POPT
-OPTION_CALLBACK (get_file)
-{
-        return get_file_common (arg, GP_FILE_TYPE_NORMAL);
-}
-
-OPTION_CALLBACK (get_all_files)
-{
-        CR (for_each_file (&p, save_file_action));
-
-	return (GP_OK);
-}
-
-OPTION_CALLBACK (get_thumbnail)
-{
-        return (get_file_common (arg, GP_FILE_TYPE_PREVIEW));
-}
-
-OPTION_CALLBACK (get_metadata)
-{
-        return (get_file_common (arg, GP_FILE_TYPE_METADATA));
-}
-
-OPTION_CALLBACK(get_all_thumbnails)
-{
-        CR (for_each_file (&p, save_thumbnail_action));
-
-	return (GP_OK);
-}
-
-OPTION_CALLBACK (get_all_metadata)
-{
-        CR (for_each_file (&p, save_metadata_action));
-	return (GP_OK);
-}
-
-
-OPTION_CALLBACK (get_raw_data)
-{
-        return (get_file_common (arg, GP_FILE_TYPE_RAW));
-}
-
-OPTION_CALLBACK (get_all_raw_data)
-{
-        CR (for_each_file (&p, save_raw_action));
-
-	return (GP_OK);
-}
-
-OPTION_CALLBACK (get_audio_data)
-{
-	return (get_file_common (arg, GP_FILE_TYPE_AUDIO));
-}
-
-OPTION_CALLBACK (get_all_audio_data)
-{
-	CR (for_each_file (&p, save_all_audio_action));
-
-	return (GP_OK);
-}
-
-OPTION_CALLBACK (delete_file)
-{
-	p.multi_type = MULTI_DELETE;
-	if (strchr (arg, '.'))
-		return (delete_file_action (&p, arg));
-
-	return (for_each_file_in_range (&p, delete_file_action, arg));
-}
-
-OPTION_CALLBACK (delete_all_files)
-{
-	CR (for_each_folder (&p, delete_all_action));
-
-	return (GP_OK);
-}
-
-OPTION_CALLBACK (upload_file)
-{
-        gp_log (GP_LOG_DEBUG, "main", "Uploading file %s ...", arg);
-	p.multi_type = MULTI_UPLOAD;
-	CR (action_camera_upload_file (&p, p.folder, arg));
-        return (GP_OK);
-}
-
-OPTION_CALLBACK (upload_metadata)
-{
-        gp_log (GP_LOG_DEBUG, "main", "Uploading file %s ...", arg);
-	p.multi_type = MULTI_UPLOAD_META;
-	CR (action_camera_upload_metadata (&p, p.folder, arg));
-        return (GP_OK);
-}
-
-OPTION_CALLBACK (make_dir)
-{
-	CR (gp_camera_folder_make_dir (p.camera, p.folder, arg, 
-						 p.context));
-
-	return (GP_OK);
-}
-
-OPTION_CALLBACK (remove_dir)
-{
-	CR (gp_camera_folder_remove_dir (p.camera, p.folder, arg,
-						   p.context));
-
-	return (GP_OK);
-}
-#endif
 
 int
 capture_generic (CameraCaptureType type, const char *name)
@@ -1184,51 +635,6 @@ capture_generic (CameraCaptureType type, const char *name)
 	return (GP_OK);
 }
 
-#ifndef HAVE_POPT
-OPTION_CALLBACK (capture_image)
-{
-	return (capture_generic (GP_CAPTURE_IMAGE, arg));
-}
-
-OPTION_CALLBACK (capture_movie)
-{
-        return (capture_generic (GP_CAPTURE_MOVIE, arg));
-}
-
-OPTION_CALLBACK (capture_sound)
-{
-        return (capture_generic (GP_CAPTURE_SOUND, arg));
-}
-
-OPTION_CALLBACK (capture_preview)
-{
-	CR (action_camera_capture_preview (&p));
-
-	return (GP_OK);
-}
-
-OPTION_CALLBACK(summary)
-{
-	CR (action_camera_summary (&p));
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK (manual)
-{
-	CR (action_camera_manual (&p));
-
-        return (GP_OK);
-}
-
-OPTION_CALLBACK (about)
-{
-	CR (action_camera_about (&p));
-
-        return (GP_OK);
-}
-
-#endif
 
 /* Set/init global variables                                    */
 /* ------------------------------------------------------------ */
@@ -1352,8 +758,6 @@ signal_exit (int signo)
 
 /* Main :)                                                              */
 /* -------------------------------------------------------------------- */
-
-#ifdef HAVE_POPT
 
 typedef enum {
 	ARG_ABILITIES,
@@ -1707,7 +1111,6 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 	};
 };
 
-#endif
 
 static void
 report_failure (int result, int argc, char **argv)
@@ -1765,7 +1168,6 @@ report_failure (int result, int argc, char **argv)
 int
 main (int argc, char **argv)
 {
-#ifdef HAVE_POPT
 	CallbackParams params;
 	poptContext ctx;
 	const struct poptOption options[] = {
@@ -1894,7 +1296,6 @@ main (int argc, char **argv)
 		 N_("gPhoto shell"), NULL},
 		POPT_TABLEEND
 	};
-#endif
 	CameraAbilities a;
 	GPPortInfo info;
 	int result = GP_OK;
@@ -1912,19 +1313,17 @@ main (int argc, char **argv)
 	signal (SIGWINCH, signal_resize);
 
 	/* Prepare processing options. */
-#ifdef HAVE_POPT
 	ctx = poptGetContext (PACKAGE, argc, (const char **) argv, options, 0);
 	if (argc <= 1) {
 		poptPrintUsage (ctx, stdout, 0);
 		return (0);
 	}
-#endif
 
+	fprintf(stderr, "Hurga blubb22222222222!\n");
 	/*
 	 * Do we need debugging output? While we are at it, scan the 
 	 * options for bad ones.
 	 */
-#ifdef HAVE_POPT
 	params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	params.p.q.found = 0;
 	params.p.q.arg = ARG_DEBUG;
@@ -1937,37 +1336,36 @@ main (int argc, char **argv)
 	if (params.p.q.found) {
 		CR_MAIN (debug_action (&p));
 	}
-#endif
 
+	fprintf(stderr, "Hurga blub3333333333!\n");
 	/* Initialize. */
 #ifdef HAVE_PTHREAD
 	gp_camera_set_timeout_funcs (p.camera, start_timeout_func,
 				     stop_timeout_func, NULL);
 #endif
-#ifdef HAVE_POPT
 	params.type = CALLBACK_PARAMS_TYPE_PREINITIALIZE;
 	params.p.r = GP_OK;
 	poptResetContext (ctx);
 	while ((params.p.r >= 0) && (poptGetNextOpt (ctx) >= 0));
 	params.type = CALLBACK_PARAMS_TYPE_INITIALIZE;
+	fprintf(stderr, "Hurga blubb44444444444!\n");
 	poptResetContext (ctx);
+	fprintf(stderr, "Hurga blubb55555555555!\n");
 	while ((params.p.r >= 0) && (poptGetNextOpt (ctx) >= 0));
+	fprintf(stderr, "Hurga blubb 111111111111!\n");
 	CR_MAIN (params.p.r);
-#endif
 
-#ifdef HAVE_POPT
 #define CHECK_OPT(o)					\
 	if (!params.p.q.found) {			\
 		params.p.q.arg = (o);			\
 		poptResetContext (ctx);			\
 		while (poptGetNextOpt (ctx) >= 0);	\
 	}
-#endif
 
 	/* If we need a camera, make sure we've got one. */
 	CR_MAIN (gp_camera_get_abilities (p.camera, &a));
 	CR_MAIN (gp_camera_get_port_info (p.camera, &info));
-#ifdef HAVE_POPT
+
 	params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	params.p.q.found = 0;
 	CHECK_OPT (ARG_ABILITIES);
@@ -1999,9 +1397,6 @@ main (int argc, char **argv)
 	CHECK_OPT (ARG_UPLOAD_FILE);
 	if (params.p.q.found &&
 	    (!strcmp (a.model, "") || (info.type == GP_PORT_NONE))) {
-#else
-	if (!strcmp (a.model, "") || (info.type == GP_PORT_NONE)) {
-#endif
 		int count;
 		const char *model = NULL, *path = NULL;
 		CameraList *list;
@@ -2013,8 +1408,10 @@ main (int argc, char **argv)
 
 		_get_portinfo_list(&p);
 		CR_MAIN (gp_list_new (&list)); /* no freeing below */
+		fprintf(stderr, "XXX 0.a\n");
 		CR_MAIN (gp_abilities_list_detect (p.abilities_list, p.portinfo_list,
 						   list, p.context));
+		fprintf(stderr, "XXX 0.b\n");
 		CR_MAIN (count = gp_list_count (list));
                 if (count == 1) {
                         /* Exactly one camera detected */
@@ -2024,8 +1421,11 @@ main (int argc, char **argv)
 				CameraAbilities alt;
 				int m;
 
+				fprintf(stderr, "XXX 1.a\n");
 				CR_MAIN (m = gp_abilities_list_lookup_model (p.abilities_list, model));
+				fprintf(stderr, "XXX 1.b\n");
 				CR_MAIN (gp_abilities_list_get_abilities (p.abilities_list, m, &alt));
+				fprintf(stderr, "XXX 1.c\n");
 
 				if ((a.port == GP_PORT_USB) && (alt.port == GP_PORT_USB)) {
 					if (	(a.usb_vendor  == alt.usb_vendor)  &&
@@ -2061,8 +1461,11 @@ main (int argc, char **argv)
 					int m;
 
 					gp_list_get_name (list, i, &xmodel);
+					fprintf(stderr, "XXX 2.a\n");
 					CR_MAIN (m = gp_abilities_list_lookup_model (p.abilities_list, xmodel));
+					fprintf(stderr, "XXX 2.b\n");
 					CR_MAIN (gp_abilities_list_get_abilities (p.abilities_list, m, &alt));
+					fprintf(stderr, "XXX 2.c\n");
 
 					if ((a.port == GP_PORT_USB) && (alt.port == GP_PORT_USB)) {
 						if (	(a.usb_vendor  == alt.usb_vendor)  &&
@@ -2092,7 +1495,6 @@ main (int argc, char **argv)
 	 * Recursion is too dangerous for deletion. Only turn it on if
 	 * explicitely specified.
 	 */
-#ifdef HAVE_POPT
 	params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	params.p.q.found = 0;
 	params.p.q.arg = ARG_DELETE_FILE;
@@ -2111,20 +1513,10 @@ main (int argc, char **argv)
 		if (!params.p.q.found)
 			p.flags &= ~FLAGS_RECURSE;
 	}
-#else
-	if ((option_is_present ("delete-all-files", argc, argv) == GP_OK) ||
-	    (option_is_present ("D", argc, argv) == GP_OK)) {
-		if (option_is_present ("recurse", argc, argv) == GP_OK)
-			p.flags |= FLAGS_RECURSE;
-		else
-			p.flags &= ~FLAGS_RECURSE;
-	}
-#endif
 
         signal (SIGINT, signal_exit);
 
 	/* If we are told to be quiet, do so. */
-#ifdef HAVE_POPT
 	params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	params.p.q.found = 0;
 	params.p.q.arg = ARG_QUIET;
@@ -2132,17 +1524,14 @@ main (int argc, char **argv)
 	while (poptGetNextOpt (ctx) >= 0);
 	if (params.p.q.found)
 		p.flags |= FLAGS_QUIET;
-#else
-	if (option_is_present ("q", argc, argv) == GP_OK)
-		p.flags |= FLAGS_QUIET;
-#endif
 
 	/* Go! */
-#ifdef HAVE_POPT
 	params.type = CALLBACK_PARAMS_TYPE_RUN;
 	poptResetContext (ctx);
 	params.p.r = GP_OK;
 	while ((params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
+
+	fprintf(stderr, "Hurga blubb!\n");
 
 	switch (p.multi_type) {
 	case MULTI_UPLOAD: {
@@ -2182,12 +1571,9 @@ main (int argc, char **argv)
 	}
 
 	CR_MAIN (params.p.r);
-#else
-        /* Count the number of command-line options we have */
-        while ((strlen(option[glob_option_count].short_id) > 0) ||
-               (strlen(option[glob_option_count].long_id)  > 0)) {
-                glob_option_count++;
-        }
+
+	/* FIXME: These two OS/2 env var checks should happen before
+	 *        we load the camlibs */
 
 #ifdef OS2 /*check if environment is set otherwise quit*/
         if(CAMLIBS==NULL)
@@ -2207,34 +1593,6 @@ to the location of the io libraries. \
 e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"));
                 exit(EXIT_FAILURE);
         }
-#endif
-
-        /* Peek ahead: Make sure we were called correctly */
-        if ((argc == 1) || (verify_options (argc, argv) != GP_OK)) {
-		if ((p.flags & FLAGS_QUIET) == 0)
-                        usage (&p);
-                exit (EXIT_FAILURE);
-        }
-
-	/* Port specified? If not, try to use the settings. */
-	if (option_is_present ("port", argc, argv) < 0) {
-		char port[1024];
-		result = gp_setting_get ("gphoto2", "port", port);
-		if (result >= 0)
-			action_camera_set_port (&p, port);
-	}
-
-	/* Model specified? If not, try to use the settings. */
-	if (option_is_present ("model", argc, argv) < 0) {
-		char model[1024];
-		result = gp_setting_get ("gphoto2", "model", model);
-		if (result >= 0)
-			CR_MAIN (action_camera_set_model (&p, model));
-	}
-
-	/* Now actually do something. */
-	CR_MAIN (execute_options (argc, argv));
-
 #endif
 
 	gp_params_exit (&p);
