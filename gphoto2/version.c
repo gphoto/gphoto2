@@ -23,6 +23,10 @@
 
 #include <stdlib.h>
 
+#ifndef HAVE_POPT
+# error gphoto2 REQUIRES popt!
+#endif
+
 static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 {
 	/* we could also compute/parse the short strings from the long
@@ -34,11 +38,7 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 #else
 		"unknown (C compiler used)",
 #endif
-#ifdef HAVE_POPT
-		"popt (for handling command-line parameters)",
-#else
-		"no popt (for handling command-line parameters)",
-#endif
+		"popt (mandatory, for handling command-line parameters)",
 #ifdef HAVE_LIBEXIF
 		"exif (for displaying EXIF information)",
 #else
@@ -73,11 +73,7 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 #else
 		"unknown cc",
 #endif
-#ifdef HAVE_POPT
-		"popt",
-#else
-		"no popt",
-#endif
+		"popt(m)",
 #ifdef HAVE_LIBEXIF
 		"exif",
 #else
