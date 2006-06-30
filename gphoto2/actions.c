@@ -901,7 +901,7 @@ print_version_action (GPParams *p)
 	  v = func(GP_VERSION_SHORT);
 	  CHECK_NULL (v);
 	  CHECK_NULL (v[0]);
-	  printf ("%-17s %-12s ", name, v[0]);
+	  printf ("%-15s %-14s ", name, v[0]);
 	  for (i = 1; v[i] != NULL; i++) {
 		  if (v[i+1] != NULL)
 			  printf ("%s, ", v[i]);
