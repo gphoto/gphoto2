@@ -45,7 +45,7 @@
 
 #ifdef HAVE_JPEG
 static char tempname[64];
-void
+static void
 gp_capture_jpeg_exit(j_common_ptr cinfo) {
 	unlink(tempname);
 	exit(1);
