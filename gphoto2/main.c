@@ -1319,7 +1319,6 @@ main (int argc, char **argv)
 		return (0);
 	}
 
-	fprintf(stderr, "Hurga blubb22222222222!\n");
 	/*
 	 * Do we need debugging output? While we are at it, scan the 
 	 * options for bad ones.
@@ -1337,7 +1336,6 @@ main (int argc, char **argv)
 		CR_MAIN (debug_action (&p));
 	}
 
-	fprintf(stderr, "Hurga blub3333333333!\n");
 	/* Initialize. */
 #ifdef HAVE_PTHREAD
 	gp_camera_set_timeout_funcs (p.camera, start_timeout_func,
@@ -1348,11 +1346,8 @@ main (int argc, char **argv)
 	poptResetContext (ctx);
 	while ((params.p.r >= 0) && (poptGetNextOpt (ctx) >= 0));
 	params.type = CALLBACK_PARAMS_TYPE_INITIALIZE;
-	fprintf(stderr, "Hurga blubb44444444444!\n");
 	poptResetContext (ctx);
-	fprintf(stderr, "Hurga blubb55555555555!\n");
 	while ((params.p.r >= 0) && (poptGetNextOpt (ctx) >= 0));
-	fprintf(stderr, "Hurga blubb 111111111111!\n");
 	CR_MAIN (params.p.r);
 
 #define CHECK_OPT(o)					\
@@ -1408,10 +1403,8 @@ main (int argc, char **argv)
 
 		_get_portinfo_list(&p);
 		CR_MAIN (gp_list_new (&list)); /* no freeing below */
-		fprintf(stderr, "XXX 0.a\n");
 		CR_MAIN (gp_abilities_list_detect (p.abilities_list, p.portinfo_list,
 						   list, p.context));
-		fprintf(stderr, "XXX 0.b\n");
 		CR_MAIN (count = gp_list_count (list));
                 if (count == 1) {
                         /* Exactly one camera detected */
@@ -1421,11 +1414,8 @@ main (int argc, char **argv)
 				CameraAbilities alt;
 				int m;
 
-				fprintf(stderr, "XXX 1.a\n");
 				CR_MAIN (m = gp_abilities_list_lookup_model (p.abilities_list, model));
-				fprintf(stderr, "XXX 1.b\n");
 				CR_MAIN (gp_abilities_list_get_abilities (p.abilities_list, m, &alt));
-				fprintf(stderr, "XXX 1.c\n");
 
 				if ((a.port == GP_PORT_USB) && (alt.port == GP_PORT_USB)) {
 					if (	(a.usb_vendor  == alt.usb_vendor)  &&
@@ -1461,11 +1451,8 @@ main (int argc, char **argv)
 					int m;
 
 					gp_list_get_name (list, i, &xmodel);
-					fprintf(stderr, "XXX 2.a\n");
 					CR_MAIN (m = gp_abilities_list_lookup_model (p.abilities_list, xmodel));
-					fprintf(stderr, "XXX 2.b\n");
 					CR_MAIN (gp_abilities_list_get_abilities (p.abilities_list, m, &alt));
-					fprintf(stderr, "XXX 2.c\n");
 
 					if ((a.port == GP_PORT_USB) && (alt.port == GP_PORT_USB)) {
 						if (	(a.usb_vendor  == alt.usb_vendor)  &&
@@ -1530,8 +1517,6 @@ main (int argc, char **argv)
 	poptResetContext (ctx);
 	params.p.r = GP_OK;
 	while ((params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
-
-	fprintf(stderr, "Hurga blubb!\n");
 
 	switch (p.multi_type) {
 	case MULTI_UPLOAD: {
