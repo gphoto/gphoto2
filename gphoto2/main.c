@@ -1168,12 +1168,12 @@ report_failure (int result, int argc, char **argv)
 int
 main (int argc, char **argv)
 {
-	CallbackParams params;
+	CallbackParams cb_params;
 	poptContext ctx;
 	const struct poptOption options[] = {
 		POPT_AUTOHELP
 		{NULL, '\0', POPT_ARG_CALLBACK,
-		 (void *) &cb_arg, 0, (char *) &params, NULL},
+		 (void *) &cb_arg, 0, (char *) &cb_params, NULL},
 		{"debug", '\0', POPT_ARG_NONE, NULL, ARG_DEBUG,
 		 N_("Turn on debugging"), NULL},
 		{"quiet", '\0', POPT_ARG_NONE, NULL, ARG_QUIET,
@@ -1323,16 +1323,16 @@ main (int argc, char **argv)
 	 * Do we need debugging output? While we are at it, scan the 
 	 * options for bad ones.
 	 */
-	params.type = CALLBACK_PARAMS_TYPE_QUERY;
-	params.p.q.found = 0;
-	params.p.q.arg = ARG_DEBUG;
+	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
+	cb_params.p.q.found = 0;
+	cb_params.p.q.arg = ARG_DEBUG;
 	poptResetContext (ctx);
 	while ((result = poptGetNextOpt (ctx)) >= 0);
 	if (result == POPT_ERROR_BADOPT) {
 		poptPrintUsage (ctx, stderr, 0);
 		return (EXIT_FAILURE);
 	}
-	if (params.p.q.found) {
+	if (cb_params.p.q.found) {
 		CR_MAIN (debug_action (&gp_params));
 	}
 
@@ -1341,18 +1341,18 @@ main (int argc, char **argv)
 	gp_camera_set_timeout_funcs (gp_params.camera, start_timeout_func,
 				     stop_timeout_func, NULL);
 #endif
-	params.type = CALLBACK_PARAMS_TYPE_PREINITIALIZE;
-	params.p.r = GP_OK;
+	cb_params.type = CALLBACK_PARAMS_TYPE_PREINITIALIZE;
+	cb_params.p.r = GP_OK;
 	poptResetContext (ctx);
-	while ((params.p.r >= 0) && (poptGetNextOpt (ctx) >= 0));
-	params.type = CALLBACK_PARAMS_TYPE_INITIALIZE;
+	while ((cb_params.p.r >= 0) && (poptGetNextOpt (ctx) >= 0));
+	cb_params.type = CALLBACK_PARAMS_TYPE_INITIALIZE;
 	poptResetContext (ctx);
-	while ((params.p.r >= 0) && (poptGetNextOpt (ctx) >= 0));
-	CR_MAIN (params.p.r);
+	while ((cb_params.p.r >= 0) && (poptGetNextOpt (ctx) >= 0));
+	CR_MAIN (cb_params.p.r);
 
 #define CHECK_OPT(o)					\
-	if (!params.p.q.found) {			\
-		params.p.q.arg = (o);			\
+	if (!cb_params.p.q.found) {			\
+		cb_params.p.q.arg = (o);			\
 		poptResetContext (ctx);			\
 		while (poptGetNextOpt (ctx) >= 0);	\
 	}
@@ -1361,8 +1361,8 @@ main (int argc, char **argv)
 	CR_MAIN (gp_camera_get_abilities (gp_params.camera, &a));
 	CR_MAIN (gp_camera_get_port_info (gp_params.camera, &info));
 
-	params.type = CALLBACK_PARAMS_TYPE_QUERY;
-	params.p.q.found = 0;
+	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
+	cb_params.p.q.found = 0;
 	CHECK_OPT (ARG_ABILITIES);
 	CHECK_OPT (ARG_CAPTURE_IMAGE);
 	CHECK_OPT (ARG_CAPTURE_MOVIE);
@@ -1390,7 +1390,7 @@ main (int argc, char **argv)
 	CHECK_OPT (ARG_SHOW_INFO);
 	CHECK_OPT (ARG_SUMMARY);
 	CHECK_OPT (ARG_UPLOAD_FILE);
-	if (params.p.q.found &&
+	if (cb_params.p.q.found &&
 	    (!strcmp (a.model, "") || (info.type == GP_PORT_NONE))) {
 		int count;
 		const char *model = NULL, *path = NULL;
@@ -1482,47 +1482,47 @@ main (int argc, char **argv)
 	 * Recursion is too dangerous for deletion. Only turn it on if
 	 * explicitely specified.
 	 */
-	params.type = CALLBACK_PARAMS_TYPE_QUERY;
-	params.p.q.found = 0;
-	params.p.q.arg = ARG_DELETE_FILE;
+	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
+	cb_params.p.q.found = 0;
+	cb_params.p.q.arg = ARG_DELETE_FILE;
 	poptResetContext (ctx);
 	while (poptGetNextOpt (ctx) >= 0);
-	if (!params.p.q.found) {
-		params.p.q.arg = ARG_DELETE_ALL_FILES;
+	if (!cb_params.p.q.found) {
+		cb_params.p.q.arg = ARG_DELETE_ALL_FILES;
 		poptResetContext (ctx);
 		while (poptGetNextOpt (ctx) >= 0);
 	}
-	if (params.p.q.found) {
-		params.p.q.found = 0;
-		params.p.q.arg = ARG_RECURSE;
+	if (cb_params.p.q.found) {
+		cb_params.p.q.found = 0;
+		cb_params.p.q.arg = ARG_RECURSE;
 		poptResetContext (ctx);
 		while (poptGetNextOpt (ctx) >= 0);
-		if (!params.p.q.found)
+		if (!cb_params.p.q.found)
 			gp_params.flags &= ~FLAGS_RECURSE;
 	}
 
         signal (SIGINT, signal_exit);
 
 	/* If we are told to be quiet, do so. */
-	params.type = CALLBACK_PARAMS_TYPE_QUERY;
-	params.p.q.found = 0;
-	params.p.q.arg = ARG_QUIET;
+	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
+	cb_params.p.q.found = 0;
+	cb_params.p.q.arg = ARG_QUIET;
 	poptResetContext (ctx);
 	while (poptGetNextOpt (ctx) >= 0);
-	if (params.p.q.found)
+	if (cb_params.p.q.found)
 		gp_params.flags |= FLAGS_QUIET;
 
 	/* Go! */
-	params.type = CALLBACK_PARAMS_TYPE_RUN;
+	cb_params.type = CALLBACK_PARAMS_TYPE_RUN;
 	poptResetContext (ctx);
-	params.p.r = GP_OK;
-	while ((params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
+	cb_params.p.r = GP_OK;
+	while ((cb_params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
 
 	switch (gp_params.multi_type) {
 	case MULTI_UPLOAD: {
 		const char *arg;
 
-		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
+		while ((cb_params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
 			CR_MAIN (action_camera_upload_file (&gp_params, gp_params.folder, arg));
 		}
 		break;
@@ -1530,7 +1530,7 @@ main (int argc, char **argv)
 	case MULTI_UPLOAD_META: {
 		const char *arg;
 
-		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
+		while ((cb_params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
 			CR_MAIN (action_camera_upload_metadata (&gp_params, gp_params.folder, arg));
 		}
 		break;
@@ -1538,7 +1538,7 @@ main (int argc, char **argv)
 	case MULTI_DELETE: {
 		const char *arg;
 
-		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
+		while ((cb_params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
 			CR_MAIN (delete_file_action (&gp_params, arg));
 		}
 		break;
@@ -1546,7 +1546,7 @@ main (int argc, char **argv)
 	case MULTI_DOWNLOAD: {
 		const char *arg;
 
-		while ((params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
+		while ((cb_params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
 			CR_MAIN (get_file_common (arg, gp_params.download_type ));
 		}
 		break;
@@ -1555,7 +1555,7 @@ main (int argc, char **argv)
 		break;
 	}
 
-	CR_MAIN (params.p.r);
+	CR_MAIN (cb_params.p.r);
 
 	/* FIXME: These two OS/2 env var checks should happen before
 	 *        we load the camlibs */
