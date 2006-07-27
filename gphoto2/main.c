@@ -771,6 +771,7 @@ typedef enum {
 	ARG_CAPTURE_SOUND,
 	ARG_CONFIG,
 	ARG_DEBUG,
+	ARG_DEBUG_LOGFILE,
 	ARG_DELETE_ALL_FILES,
 	ARG_DELETE_FILE,
 	ARG_FILENAME,
@@ -1170,12 +1171,16 @@ main (int argc, char **argv)
 {
 	CallbackParams cb_params;
 	poptContext ctx;
+	int debug_option_given = 0;
+	char *debug_logfile_name = NULL;
 	const struct poptOption options[] = {
 		POPT_AUTOHELP
 		{NULL, '\0', POPT_ARG_CALLBACK,
 		 (void *) &cb_arg, 0, (char *) &cb_params, NULL},
-		{"debug", '\0', POPT_ARG_NONE, NULL, ARG_DEBUG,
+		{"debug", '\0', POPT_ARG_NONE, (void *) &debug_option_given, ARG_DEBUG,
 		 N_("Turn on debugging"), NULL},
+		{"debug-logfile", '\0', POPT_ARG_STRING, (void *) &debug_logfile_name, ARG_DEBUG_LOGFILE,
+		 N_("Name of file to write debug info to"), NULL},
 		{"quiet", '\0', POPT_ARG_NONE, NULL, ARG_QUIET,
 		 N_("Quiet output (default=verbose)"), NULL},
 		{"force-overwrite", '\0', POPT_ARG_NONE, NULL,
@@ -1323,17 +1328,16 @@ main (int argc, char **argv)
 	 * Do we need debugging output? While we are at it, scan the 
 	 * options for bad ones.
 	 */
-	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
-	cb_params.p.q.found = 0;
-	cb_params.p.q.arg = ARG_DEBUG;
 	poptResetContext (ctx);
+	printf("DEBUG_OPTION_GIVEN = %d %s\n", debug_option_given, debug_logfile_name);
 	while ((result = poptGetNextOpt (ctx)) >= 0);
 	if (result == POPT_ERROR_BADOPT) {
 		poptPrintUsage (ctx, stderr, 0);
 		return (EXIT_FAILURE);
 	}
-	if (cb_params.p.q.found) {
-		CR_MAIN (debug_action (&gp_params));
+	printf("DEBUG_OPTION_GIVEN = %d %s\n", debug_option_given, debug_logfile_name);
+	if (debug_option_given) {
+		CR_MAIN (debug_action (&gp_params, debug_logfile_name));
 	}
 
 	/* Initialize. */
