@@ -1166,6 +1166,10 @@ report_failure (int result, int argc, char **argv)
 	}						\
 }
 
+#define GPHOTO2_POPT_CALLBACK \
+	{NULL, '\0', POPT_ARG_CALLBACK, \
+			(void *) &cb_arg, 0, (char *) &cb_params, NULL},
+
 int
 main (int argc, char **argv)
 {
@@ -1173,40 +1177,57 @@ main (int argc, char **argv)
 	poptContext ctx;
 	int debug_option_given = 0;
 	char *debug_logfile_name = NULL;
-	const struct poptOption options[] = {
-		POPT_AUTOHELP
-		{NULL, '\0', POPT_ARG_CALLBACK,
-		 (void *) &cb_arg, 0, (char *) &cb_params, NULL},
+	const struct poptOption generalOptions[] = {
+		GPHOTO2_POPT_CALLBACK
 		{"debug", '\0', POPT_ARG_NONE, (void *) &debug_option_given, ARG_DEBUG,
 		 N_("Turn on debugging"), NULL},
 		{"debug-logfile", '\0', POPT_ARG_STRING, (void *) &debug_logfile_name, ARG_DEBUG_LOGFILE,
 		 N_("Name of file to write debug info to"), NULL},
 		{"quiet", '\0', POPT_ARG_NONE, NULL, ARG_QUIET,
 		 N_("Quiet output (default=verbose)"), NULL},
-		{"force-overwrite", '\0', POPT_ARG_NONE, NULL,
-		 ARG_FORCE_OVERWRITE, N_("Overwrite files without asking")},
-		{"version", 'v', POPT_ARG_NONE, NULL, ARG_VERSION,
-		 N_("Display version and exit"), NULL},
-		{"list-cameras", '\0', POPT_ARG_NONE, NULL, ARG_LIST_CAMERAS,
-		 N_("List supported camera models"), NULL},
-		{"list-ports", '\0', POPT_ARG_NONE, NULL, ARG_LIST_PORTS,
-		 N_("List supported port devices"), NULL},
-		{"stdout", '\0', POPT_ARG_NONE, NULL, ARG_STDOUT,
-		 N_("Send file to stdout"), NULL},
-		{"stdout-size", '\0', POPT_ARG_NONE, NULL, ARG_STDOUT_SIZE,
-		 N_("Print filesize before data"), NULL},
-		{"auto-detect", '\0', POPT_ARG_NONE, NULL, ARG_AUTO_DETECT,
-		 N_("List auto-detected cameras"), NULL},
+		POPT_TABLEEND
+	};
+	const struct poptOption cameraOptions[] = {
+		GPHOTO2_POPT_CALLBACK
 		{"port", '\0', POPT_ARG_STRING, NULL, ARG_PORT,
 		 N_("Specify port device"), N_("path")},
 		{"speed", '\0', POPT_ARG_INT, NULL, ARG_SPEED,
 		 N_("Specify serial transfer speed"), N_("speed")},
 		{"camera", '\0', POPT_ARG_STRING, NULL, ARG_MODEL,
 		 N_("Specify camera model"), N_("model")},
-		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,
-		 N_("Specify a filename"), N_("filename")},
 		{"usbid", '\0', POPT_ARG_STRING, NULL, ARG_USBID,
 		 N_("(expert only) Override USB IDs"), N_("usbid")},
+		POPT_TABLEEND
+	};
+	const struct poptOption infoOptions[] = {
+		GPHOTO2_POPT_CALLBACK
+		{"version", 'v', POPT_ARG_NONE, NULL, ARG_VERSION,
+		 N_("Display version and exit"), NULL},
+		{"list-cameras", '\0', POPT_ARG_NONE, NULL, ARG_LIST_CAMERAS,
+		 N_("List supported camera models"), NULL},
+		{"list-ports", '\0', POPT_ARG_NONE, NULL, ARG_LIST_PORTS,
+		 N_("List supported port devices"), NULL},
+		POPT_TABLEEND
+	};
+	const struct poptOption options[] = {
+		POPT_AUTOHELP
+		GPHOTO2_POPT_CALLBACK
+		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &generalOptions, 0,
+		 N_("Common options"), NULL},
+		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &cameraOptions, 0,
+		 N_("Specifying the camera to use"), NULL},
+		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &infoOptions, 0,
+		 N_("Getting information (not from the camera)"), NULL},
+		{"force-overwrite", '\0', POPT_ARG_NONE, NULL,
+		 ARG_FORCE_OVERWRITE, N_("Overwrite files without asking")},
+		{"stdout", '\0', POPT_ARG_NONE, NULL, ARG_STDOUT,
+		 N_("Send file to stdout"), NULL},
+		{"stdout-size", '\0', POPT_ARG_NONE, NULL, ARG_STDOUT_SIZE,
+		 N_("Print filesize before data"), NULL},
+		{"auto-detect", '\0', POPT_ARG_NONE, NULL, ARG_AUTO_DETECT,
+		 N_("List auto-detected cameras"), NULL},
+		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,
+		 N_("Specify a filename"), N_("filename")},
 		{"abilities", 'a', POPT_ARG_NONE, NULL, ARG_ABILITIES,
 		 N_("Display camera abilities"), NULL},
 		{"folder", 'f', POPT_ARG_STRING, NULL, ARG_FOLDER,
