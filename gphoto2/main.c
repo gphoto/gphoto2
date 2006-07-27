@@ -851,14 +851,13 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 	int usb_product, usb_vendor, usb_product_modified, usb_vendor_modified;
 
 	/* Check if we are only to query. */
-	if (params->type == CALLBACK_PARAMS_TYPE_QUERY) {
+	switch (params->type) {
+	case CALLBACK_PARAMS_TYPE_QUERY:
 		if (opt->val == params->p.q.arg)
 			params->p.q.found = 1;
 		return;
-	}
-
-	/* Check if we are only to pre-initialize. */
-	if (params->type == CALLBACK_PARAMS_TYPE_PREINITIALIZE) {
+		break;
+	case CALLBACK_PARAMS_TYPE_PREINITIALIZE:
 		switch (opt->val) {
 		case ARG_USBID:
 			gp_log (GP_LOG_DEBUG, "main", "Overriding USB "
@@ -883,10 +882,9 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 			break;
 		}
 		return;
-	}
+		break;
 
-	/* Check if we are only to initialize. */
-	if (params->type == CALLBACK_PARAMS_TYPE_INITIALIZE) {
+	case CALLBACK_PARAMS_TYPE_INITIALIZE: /* Check if we are only to initialize. */
 		switch (opt->val) {
 		case ARG_FILENAME:
 			params->p.r = set_filename_action (&gp_params, arg);
@@ -941,8 +939,8 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 			break;
 		}
 		return;
-	}
 
+	case CALLBACK_PARAMS_TYPE_RUN:
 	switch (opt->val) {
 	case ARG_ABILITIES:
 		params->p.r = action_camera_show_abilities (&gp_params);
@@ -1109,6 +1107,8 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 	default:
 		break;
 	};
+	break;
+	}
 };
 
 
