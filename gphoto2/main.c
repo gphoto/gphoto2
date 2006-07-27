@@ -1209,35 +1209,41 @@ main (int argc, char **argv)
 		 N_("List supported port devices"), NULL},
 		POPT_TABLEEND
 	};
-	const struct poptOption options[] = {
-		POPT_AUTOHELP
+	const struct poptOption configOptions[] = {
 		GPHOTO2_POPT_CALLBACK
-		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &generalOptions, 0,
-		 N_("Common options"), NULL},
-		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &cameraOptions, 0,
-		 N_("Specifying the camera to use"), NULL},
-		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &infoOptions, 0,
-		 N_("Getting information (not from the camera)"), NULL},
-		{"force-overwrite", '\0', POPT_ARG_NONE, NULL,
-		 ARG_FORCE_OVERWRITE, N_("Overwrite files without asking")},
-		{"stdout", '\0', POPT_ARG_NONE, NULL, ARG_STDOUT,
-		 N_("Send file to stdout"), NULL},
-		{"stdout-size", '\0', POPT_ARG_NONE, NULL, ARG_STDOUT_SIZE,
-		 N_("Print filesize before data"), NULL},
-		{"auto-detect", '\0', POPT_ARG_NONE, NULL, ARG_AUTO_DETECT,
-		 N_("List auto-detected cameras"), NULL},
-		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,
-		 N_("Specify a filename"), N_("filename")},
-		{"abilities", 'a', POPT_ARG_NONE, NULL, ARG_ABILITIES,
-		 N_("Display camera abilities"), NULL},
-		{"folder", 'f', POPT_ARG_STRING, NULL, ARG_FOLDER,
-		 N_("Specify camera folder (default=\"/\")"), N_("folder")},
-		{"recurse", 'R', POPT_ARG_NONE, NULL, ARG_RECURSE,
-		 N_("Recursion (default for download)"), NULL},
-		{"no-recurse", '\0', POPT_ARG_NONE, NULL, ARG_NO_RECURSE,
-		 N_("No recursion (default for deletion)"), NULL},
-		{"new", '\0', POPT_ARG_NONE, NULL, ARG_NEW,
-		 N_("Process new files only"), NULL},
+#ifdef HAVE_CDK
+		{"config", '\0', POPT_ARG_NONE, NULL, ARG_CONFIG,
+		 N_("Configure"), NULL},
+#endif
+		{"list-config", '\0', POPT_ARG_NONE, NULL, ARG_LIST_CONFIG,
+		 N_("List configuration tree"), NULL},
+		{"get-config", '\0', POPT_ARG_STRING, NULL, ARG_GET_CONFIG,
+		 N_("Get configuration value"), NULL},
+		{"set-config", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG,
+		 N_("Set configuration value"), NULL},
+		POPT_TABLEEND
+	};
+	const struct poptOption captureOptions[] = {
+		GPHOTO2_POPT_CALLBACK
+		{"wait-event", '\0', POPT_ARG_NONE, NULL, ARG_WAIT_EVENT,
+		 N_("Wait for event from camera"), NULL},
+		{"capture-preview", '\0', POPT_ARG_NONE, NULL,
+		 ARG_CAPTURE_PREVIEW,
+		 N_("Capture a quick preview"), NULL},
+		{"frames", 'F', POPT_ARG_INT, NULL, ARG_CAPTURE_FRAMES,
+		 N_("Set number of frames to capture (default=infinite)"), N_("count")},
+		{"interval", 'I', POPT_ARG_INT, NULL, ARG_CAPTURE_INTERVAL,
+		 N_("Set capture interval in seconds"), N_("seconds")},
+		{"capture-image", '\0', POPT_ARG_NONE, NULL,
+		 ARG_CAPTURE_IMAGE, N_("Capture an image"), NULL},
+		{"capture-movie", '\0', POPT_ARG_NONE, NULL,
+		 ARG_CAPTURE_MOVIE, N_("Capture a movie"), NULL},
+		{"capture-sound", '\0', POPT_ARG_NONE, NULL,
+		 ARG_CAPTURE_SOUND, N_("Capture an audio clip"), NULL},
+		POPT_TABLEEND
+	};
+	const struct poptOption fileOptions[] = {
+		GPHOTO2_POPT_CALLBACK
 		{"list-folders", 'l', POPT_ARG_NONE, NULL, ARG_LIST_FOLDERS,
 		 N_("List folders in folder"), NULL},
 		{"list-files", 'L', POPT_ARG_NONE, NULL, ARG_LIST_FILES,
@@ -1281,31 +1287,31 @@ main (int argc, char **argv)
 		 ARG_DELETE_ALL_FILES, N_("Delete all files in folder"), NULL},
 		{"upload-file", 'u', POPT_ARG_STRING, NULL, ARG_UPLOAD_FILE,
 		 N_("Upload a file to camera"), NULL},
-#ifdef HAVE_CDK
-		{"config", '\0', POPT_ARG_NONE, NULL, ARG_CONFIG,
-		 N_("Configure"), NULL},
-#endif
-		{"list-config", '\0', POPT_ARG_NONE, NULL, ARG_LIST_CONFIG,
-		 N_("List configuration tree"), NULL},
-		{"get-config", '\0', POPT_ARG_STRING, NULL, ARG_GET_CONFIG,
-		 N_("Get configuration value"), NULL},
-		{"set-config", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG,
-		 N_("Set configuration value"), NULL},
-		{"wait-event", '\0', POPT_ARG_NONE, NULL, ARG_WAIT_EVENT,
-		 N_("Wait for event from camera"), NULL},
-		{"capture-preview", '\0', POPT_ARG_NONE, NULL,
-		 ARG_CAPTURE_PREVIEW,
-		 N_("Capture a quick preview"), NULL},
-		{"frames", 'F', POPT_ARG_INT, NULL, ARG_CAPTURE_FRAMES,
-		 N_("Set number of frames to capture (default=infinite)"), N_("count")},
-		{"interval", 'I', POPT_ARG_INT, NULL, ARG_CAPTURE_INTERVAL,
-		 N_("Set capture interval in seconds"), N_("seconds")},
-		{"capture-image", '\0', POPT_ARG_NONE, NULL,
-		 ARG_CAPTURE_IMAGE, N_("Capture an image"), NULL},
-		{"capture-movie", '\0', POPT_ARG_NONE, NULL,
-		 ARG_CAPTURE_MOVIE, N_("Capture a movie"), NULL},
-		{"capture-sound", '\0', POPT_ARG_NONE, NULL,
-		 ARG_CAPTURE_SOUND, N_("Capture an audio clip"), NULL},
+		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,
+		 N_("Specify a filename"), N_("filename")},
+		{"folder", 'f', POPT_ARG_STRING, NULL, ARG_FOLDER,
+		 N_("Specify camera folder (default=\"/\")"), N_("folder")},
+		{"recurse", 'R', POPT_ARG_NONE, NULL, ARG_RECURSE,
+		 N_("Recursion (default for download)"), NULL},
+		{"no-recurse", '\0', POPT_ARG_NONE, NULL, ARG_NO_RECURSE,
+		 N_("No recursion (default for deletion)"), NULL},
+		{"new", '\0', POPT_ARG_NONE, NULL, ARG_NEW,
+		 N_("Process new files only"), NULL},
+		{"force-overwrite", '\0', POPT_ARG_NONE, NULL,
+		 ARG_FORCE_OVERWRITE, N_("Overwrite files without asking")},
+		POPT_TABLEEND
+	};
+	const struct poptOption miscOptions[] = {
+		GPHOTO2_POPT_CALLBACK
+		{"stdout", '\0', POPT_ARG_NONE, NULL, ARG_STDOUT,
+		 N_("Send file to stdout"), NULL},
+		{"stdout-size", '\0', POPT_ARG_NONE, NULL, ARG_STDOUT_SIZE,
+		 N_("Print filesize before data"), NULL},
+		{"auto-detect", '\0', POPT_ARG_NONE, NULL, ARG_AUTO_DETECT,
+		 N_("List auto-detected cameras"), NULL},
+		{"abilities", 'a', POPT_ARG_NONE, NULL, ARG_ABILITIES,
+		 N_("Display camera abilities"), NULL},
+
 #ifdef HAVE_LIBEXIF
 		{"show-exif", '\0', POPT_ARG_STRING, NULL, ARG_SHOW_EXIF,
 		 N_("Show EXIF information"), NULL},
@@ -1320,6 +1326,25 @@ main (int argc, char **argv)
 		 N_("About the camera driver manual"), NULL},
 		{"shell", '\0', POPT_ARG_NONE, NULL, ARG_SHELL,
 		 N_("gPhoto shell"), NULL},
+		POPT_TABLEEND
+	};
+	const struct poptOption options[] = {
+		POPT_AUTOHELP
+		GPHOTO2_POPT_CALLBACK
+		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &generalOptions, 0,
+		 N_("Common options"), NULL},		
+		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &miscOptions, 0,
+		 N_("Miscellaneous options (unsorted)"), NULL},		
+		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &infoOptions, 0,
+		 N_("Get information on software and host system (not from the camera)"), NULL},
+		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &cameraOptions, 0,
+		 N_("Specify the camera to use"), NULL},
+		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &configOptions, 0,
+		 N_("Camera and software configuration"), NULL},
+		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &captureOptions, 0,
+		 N_("Capture an image from or on the camera"), NULL},
+		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &fileOptions, 0,
+		 N_("Manipulate files on the camera"), NULL},
 		POPT_TABLEEND
 	};
 	CameraAbilities a;
