@@ -428,7 +428,7 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 
 	if (flags & FLAGS_STDOUT) {
                 const char *data;
-                long int size;
+                unsigned long int size;
 
                 CR (gp_file_get_data_and_size (file, &data, &size));
 

@@ -475,7 +475,7 @@ print_exif_action (GPParams *p, const char *filename)
         CRU (gp_camera_file_get (p->camera, p->folder, filename,
 				 GP_FILE_TYPE_EXIF, file, p->context), file);
         CRU (gp_file_get_data_and_size (file, &data, &size), file);
-        ed = exif_data_new_from_data (data, size);
+        ed = exif_data_new_from_data ((unsigned char *)data, size);
         gp_file_unref (file);
         if (!ed) {
                 gp_context_error (p->context, _("Could not parse EXIF data."));
