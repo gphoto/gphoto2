@@ -941,173 +941,173 @@ cb_arg (poptContext ctx, enum poptCallbackReason reason,
 		return;
 
 	case CALLBACK_PARAMS_TYPE_RUN:
-	switch (opt->val) {
-	case ARG_ABILITIES:
-		params->p.r = action_camera_show_abilities (&gp_params);
-		break;
-	case ARG_ABOUT:
-		params->p.r = action_camera_about (&gp_params);
-		break;
-	case ARG_AUTO_DETECT:
-		params->p.r = auto_detect_action (&gp_params);
-		break;
-	case ARG_CAPTURE_IMAGE:
-		params->p.r = capture_generic (GP_CAPTURE_IMAGE, arg);
-		break;
-	case ARG_CAPTURE_MOVIE:
-		params->p.r = capture_generic (GP_CAPTURE_MOVIE, arg);
-		break;
-	case ARG_CAPTURE_PREVIEW:
-		params->p.r = action_camera_capture_preview (&gp_params);
-		break;
-	case ARG_CAPTURE_SOUND:
-		params->p.r = capture_generic (GP_CAPTURE_SOUND, arg);
-		break;
-	case ARG_CONFIG:
+		switch (opt->val) {
+		case ARG_ABILITIES:
+			params->p.r = action_camera_show_abilities (&gp_params);
+			break;
+		case ARG_ABOUT:
+			params->p.r = action_camera_about (&gp_params);
+			break;
+		case ARG_AUTO_DETECT:
+			params->p.r = auto_detect_action (&gp_params);
+			break;
+		case ARG_CAPTURE_IMAGE:
+			params->p.r = capture_generic (GP_CAPTURE_IMAGE, arg);
+			break;
+		case ARG_CAPTURE_MOVIE:
+			params->p.r = capture_generic (GP_CAPTURE_MOVIE, arg);
+			break;
+		case ARG_CAPTURE_PREVIEW:
+			params->p.r = action_camera_capture_preview (&gp_params);
+			break;
+		case ARG_CAPTURE_SOUND:
+			params->p.r = capture_generic (GP_CAPTURE_SOUND, arg);
+			break;
+		case ARG_CONFIG:
 #ifdef HAVE_CDK
-		params->p.r = gp_cmd_config (gp_params.camera, gp_params.context);
+			params->p.r = gp_cmd_config (gp_params.camera, gp_params.context);
 #else
-		gp_context_error (gp_params.context,
-				  _("gphoto2 has been compiled without "
-				    "support for CDK."));
-		params->p.r = GP_ERROR_NOT_SUPPORTED;
+			gp_context_error (gp_params.context,
+					  _("gphoto2 has been compiled without "
+					    "support for CDK."));
+			params->p.r = GP_ERROR_NOT_SUPPORTED;
 #endif
-		break;
-	case ARG_DELETE_ALL_FILES:
-		params->p.r = for_each_folder (&gp_params, delete_all_action);
-		break;
-	case ARG_DELETE_FILE:
-		gp_params.multi_type = MULTI_DELETE;
-		/* Did the user specify a file or a range? */
-		if (strchr (arg, '.')) {
-			params->p.r = delete_file_action (&gp_params, arg);
 			break;
-		}
-		params->p.r = for_each_file_in_range (&gp_params,
-					delete_file_action, arg);
-		break;
-	case ARG_GET_ALL_AUDIO_DATA:
-		params->p.r = for_each_file (&gp_params, save_all_audio_action);
-		break;
-	case ARG_GET_ALL_FILES:
-		params->p.r = for_each_file (&gp_params, save_file_action);
-		break;
-	case ARG_GET_ALL_METADATA:
-		params->p.r = for_each_file (&gp_params, save_meta_action);
-		break;
-	case ARG_GET_ALL_RAW_DATA:
-		params->p.r = for_each_file (&gp_params, save_raw_action);
-		break;
-	case ARG_GET_ALL_THUMBNAILS:
-		params->p.r = for_each_file (&gp_params, save_thumbnail_action);
-		break;
-	case ARG_GET_AUDIO_DATA:
-		gp_params.multi_type = MULTI_DOWNLOAD;
-		params->p.r = get_file_common (arg, GP_FILE_TYPE_AUDIO);
-		break;
-	case ARG_GET_METADATA:
-		gp_params.multi_type = MULTI_DOWNLOAD;
-		params->p.r = get_file_common (arg, GP_FILE_TYPE_METADATA);
-		break;
-	case ARG_GET_FILE:
-		gp_params.multi_type = MULTI_DOWNLOAD;
-		params->p.r = get_file_common (arg, GP_FILE_TYPE_NORMAL);
-		break;
-	case ARG_GET_THUMBNAIL:
-		gp_params.multi_type = MULTI_DOWNLOAD;
-		params->p.r = get_file_common (arg, GP_FILE_TYPE_PREVIEW);
-		break;
-	case ARG_GET_RAW_DATA:
-		gp_params.multi_type = MULTI_DOWNLOAD;
-		params->p.r = get_file_common (arg, GP_FILE_TYPE_RAW);
-		break;
-	case ARG_LIST_CAMERAS:
-		params->p.r = list_cameras_action (&gp_params);
-		break;
-	case ARG_LIST_FILES:
-		params->p.r = for_each_folder (&gp_params, list_files_action);
-		break;
-	case ARG_LIST_FOLDERS:
-		params->p.r = for_each_folder (&gp_params, list_folders_action);
-		break;
-	case ARG_LIST_PORTS:
-		params->p.r = list_ports_action (&gp_params);
-		break;
-	case ARG_MANUAL:
-		params->p.r = action_camera_manual (&gp_params);
-		break;
-	case ARG_RMDIR:
-		params->p.r = gp_camera_folder_remove_dir (gp_params.camera,
-				gp_params.folder, arg, gp_params.context);
-		break;
-	case ARG_NUM_FILES:
-		params->p.r = num_files_action (&gp_params);
-		break;
-	case ARG_MKDIR:
-		params->p.r = gp_camera_folder_make_dir (gp_params.camera,
-				gp_params.folder, arg, gp_params.context);
-		break;
-	case ARG_SHELL:
-		params->p.r = shell_prompt (&gp_params);
-		break;
-	case ARG_SHOW_EXIF:
-		/* Did the user specify a file or a range? */
-		if (strchr (arg, '.')) { 
-			params->p.r = print_exif_action (&gp_params, arg); 
-			break; 
-		} 
-		params->p.r = for_each_file_in_range (&gp_params, 
-						 print_exif_action, arg); 
-		break;
-	case ARG_SHOW_INFO:
+		case ARG_DELETE_ALL_FILES:
+			params->p.r = for_each_folder (&gp_params, delete_all_action);
+			break;
+		case ARG_DELETE_FILE:
+			gp_params.multi_type = MULTI_DELETE;
+			/* Did the user specify a file or a range? */
+			if (strchr (arg, '.')) {
+				params->p.r = delete_file_action (&gp_params, arg);
+				break;
+			}
+			params->p.r = for_each_file_in_range (&gp_params,
+							      delete_file_action, arg);
+			break;
+		case ARG_GET_ALL_AUDIO_DATA:
+			params->p.r = for_each_file (&gp_params, save_all_audio_action);
+			break;
+		case ARG_GET_ALL_FILES:
+			params->p.r = for_each_file (&gp_params, save_file_action);
+			break;
+		case ARG_GET_ALL_METADATA:
+			params->p.r = for_each_file (&gp_params, save_meta_action);
+			break;
+		case ARG_GET_ALL_RAW_DATA:
+			params->p.r = for_each_file (&gp_params, save_raw_action);
+			break;
+		case ARG_GET_ALL_THUMBNAILS:
+			params->p.r = for_each_file (&gp_params, save_thumbnail_action);
+			break;
+		case ARG_GET_AUDIO_DATA:
+			gp_params.multi_type = MULTI_DOWNLOAD;
+			params->p.r = get_file_common (arg, GP_FILE_TYPE_AUDIO);
+			break;
+		case ARG_GET_METADATA:
+			gp_params.multi_type = MULTI_DOWNLOAD;
+			params->p.r = get_file_common (arg, GP_FILE_TYPE_METADATA);
+			break;
+		case ARG_GET_FILE:
+			gp_params.multi_type = MULTI_DOWNLOAD;
+			params->p.r = get_file_common (arg, GP_FILE_TYPE_NORMAL);
+			break;
+		case ARG_GET_THUMBNAIL:
+			gp_params.multi_type = MULTI_DOWNLOAD;
+			params->p.r = get_file_common (arg, GP_FILE_TYPE_PREVIEW);
+			break;
+		case ARG_GET_RAW_DATA:
+			gp_params.multi_type = MULTI_DOWNLOAD;
+			params->p.r = get_file_common (arg, GP_FILE_TYPE_RAW);
+			break;
+		case ARG_LIST_CAMERAS:
+			params->p.r = list_cameras_action (&gp_params);
+			break;
+		case ARG_LIST_FILES:
+			params->p.r = for_each_folder (&gp_params, list_files_action);
+			break;
+		case ARG_LIST_FOLDERS:
+			params->p.r = for_each_folder (&gp_params, list_folders_action);
+			break;
+		case ARG_LIST_PORTS:
+			params->p.r = list_ports_action (&gp_params);
+			break;
+		case ARG_MANUAL:
+			params->p.r = action_camera_manual (&gp_params);
+			break;
+		case ARG_RMDIR:
+			params->p.r = gp_camera_folder_remove_dir (gp_params.camera,
+								   gp_params.folder, arg, gp_params.context);
+			break;
+		case ARG_NUM_FILES:
+			params->p.r = num_files_action (&gp_params);
+			break;
+		case ARG_MKDIR:
+			params->p.r = gp_camera_folder_make_dir (gp_params.camera,
+								 gp_params.folder, arg, gp_params.context);
+			break;
+		case ARG_SHELL:
+			params->p.r = shell_prompt (&gp_params);
+			break;
+		case ARG_SHOW_EXIF:
+			/* Did the user specify a file or a range? */
+			if (strchr (arg, '.')) { 
+				params->p.r = print_exif_action (&gp_params, arg); 
+				break; 
+			} 
+			params->p.r = for_each_file_in_range (&gp_params, 
+							      print_exif_action, arg); 
+			break;
+		case ARG_SHOW_INFO:
 
-		/* Did the user specify a file or a range? */
-		if (strchr (arg, '.')) {
-			params->p.r = print_info_action (&gp_params, arg);
+			/* Did the user specify a file or a range? */
+			if (strchr (arg, '.')) {
+				params->p.r = print_info_action (&gp_params, arg);
+				break;
+			}
+			params->p.r = for_each_file_in_range (&gp_params,
+							      print_info_action, arg);
 			break;
-		}
-		params->p.r = for_each_file_in_range (&gp_params,
-						 print_info_action, arg);
-		break;
-	case ARG_SUMMARY:
-		params->p.r = action_camera_summary (&gp_params);
-		break;
-	case ARG_UPLOAD_FILE:
-		gp_params.multi_type = MULTI_UPLOAD;
-		params->p.r = action_camera_upload_file (&gp_params, gp_params.folder, arg);
-		break;
-	case ARG_UPLOAD_METADATA:
-		gp_params.multi_type = MULTI_UPLOAD_META;
-		params->p.r = action_camera_upload_metadata (&gp_params, gp_params.folder, arg);
-		break;
-	case ARG_LIST_CONFIG:
-		params->p.r = list_config_action (&gp_params);
-		break;
-	case ARG_GET_CONFIG:
-		params->p.r = get_config_action (&gp_params, arg);
-		break;
-	case ARG_SET_CONFIG: {
-		char *name, *value;
+		case ARG_SUMMARY:
+			params->p.r = action_camera_summary (&gp_params);
+			break;
+		case ARG_UPLOAD_FILE:
+			gp_params.multi_type = MULTI_UPLOAD;
+			params->p.r = action_camera_upload_file (&gp_params, gp_params.folder, arg);
+			break;
+		case ARG_UPLOAD_METADATA:
+			gp_params.multi_type = MULTI_UPLOAD_META;
+			params->p.r = action_camera_upload_metadata (&gp_params, gp_params.folder, arg);
+			break;
+		case ARG_LIST_CONFIG:
+			params->p.r = list_config_action (&gp_params);
+			break;
+		case ARG_GET_CONFIG:
+			params->p.r = get_config_action (&gp_params, arg);
+			break;
+		case ARG_SET_CONFIG: {
+			char *name, *value;
 
-		if (strchr (arg, '=') == NULL) {
-			params->p.r = GP_ERROR_BAD_PARAMETERS;
+			if (strchr (arg, '=') == NULL) {
+				params->p.r = GP_ERROR_BAD_PARAMETERS;
+				break;
+			}
+			name  = strdup (arg);
+			value = strchr (name, '=');
+			*value = '\0';
+			value++;
+			params->p.r = set_config_action (&gp_params, name, value);
+			free (name);
 			break;
 		}
-		name  = strdup (arg);
-		value = strchr (name, '=');
-		*value = '\0';
-		value++;
-		params->p.r = set_config_action (&gp_params, name, value);
-		free (name);
+		case ARG_WAIT_EVENT:
+			params->p.r = action_camera_wait_event (&gp_params);
+			break;
+		default:
+			break;
+		};
 		break;
-	}
-	case ARG_WAIT_EVENT:
-		params->p.r = action_camera_wait_event (&gp_params);
-		break;
-	default:
-		break;
-	};
-	break;
 	}
 };
 
@@ -1584,3 +1584,11 @@ e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"));
 
         return (EXIT_SUCCESS);
 }
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */
