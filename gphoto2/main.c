@@ -1344,7 +1344,7 @@ main (int argc, char **argv)
 		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &captureOptions, 0,
 		 N_("Capture an image from or on the camera"), NULL},
 		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &fileOptions, 0,
-		 N_("Manipulate files on the camera"), NULL},
+		 N_("Downloading, uploading and manipulating files"), NULL},
 		POPT_TABLEEND
 	};
 	CameraAbilities a;
