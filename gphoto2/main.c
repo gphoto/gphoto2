@@ -789,6 +789,7 @@ typedef enum {
 	ARG_GET_METADATA,
 	ARG_GET_RAW_DATA,
 	ARG_GET_THUMBNAIL,
+	ARG_HELP,
 	ARG_LIST_CAMERAS,
 	ARG_LIST_CONFIG,
 	ARG_LIST_FILES,
@@ -813,6 +814,7 @@ typedef enum {
 	ARG_SUMMARY,
 	ARG_UPLOAD_FILE,
 	ARG_UPLOAD_METADATA,
+	ARG_USAGE,
 	ARG_USBID,
 	ARG_VERSION,
 	ARG_WAIT_EVENT,
@@ -1166,6 +1168,21 @@ report_failure (int result, int argc, char **argv)
 	}						\
 }
 
+/* Perhaps we should use the following code for parsing command line
+ * options:
+
+       poptGetContext(NULL, argc, argv, poptOptions, 0);
+       while ((rc = poptGetNextOpt(poptcon)) > 0) {
+            switch (rc) {
+            ARG_FOO:
+	         printf("foo = %s\n", poptGetOptArg(poptContext con));
+		 break;
+            }
+       }
+       poptFreeContext(poptcon);
+*/
+
+
 #define GPHOTO2_POPT_CALLBACK \
 	{NULL, '\0', POPT_ARG_CALLBACK, \
 			(void *) &cb_arg, 0, (char *) &cb_params, NULL},
@@ -1176,9 +1193,15 @@ main (int argc, char **argv)
 	CallbackParams cb_params;
 	poptContext ctx;
 	int debug_option_given = 0;
+	int help_option_given = 0;
+	int usage_option_given = 0;
 	char *debug_logfile_name = NULL;
 	const struct poptOption generalOptions[] = {
 		GPHOTO2_POPT_CALLBACK
+		{"help", '?', POPT_ARG_NONE, (void *) &help_option_given, ARG_HELP,
+		 N_("Print complete help message on program usage"), NULL},
+		{"usage", '\0', POPT_ARG_NONE, (void *) &usage_option_given, ARG_USAGE,
+		 N_("Print short message on program usage"), NULL},
 		{"debug", '\0', POPT_ARG_NONE, (void *) &debug_option_given, ARG_DEBUG,
 		 N_("Turn on debugging"), NULL},
 		{"debug-logfile", '\0', POPT_ARG_STRING, (void *) &debug_logfile_name, ARG_DEBUG_LOGFILE,
@@ -1329,7 +1352,6 @@ main (int argc, char **argv)
 		POPT_TABLEEND
 	};
 	const struct poptOption options[] = {
-		POPT_AUTOHELP
 		GPHOTO2_POPT_CALLBACK
 		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &generalOptions, 0,
 		 N_("Common options"), NULL},		
@@ -1375,13 +1397,19 @@ main (int argc, char **argv)
 	 * options for bad ones.
 	 */
 	poptResetContext (ctx);
-	printf("DEBUG_OPTION_GIVEN = %d %s\n", debug_option_given, debug_logfile_name);
 	while ((result = poptGetNextOpt (ctx)) >= 0);
 	if (result == POPT_ERROR_BADOPT) {
 		poptPrintUsage (ctx, stderr, 0);
 		return (EXIT_FAILURE);
 	}
-	printf("DEBUG_OPTION_GIVEN = %d %s\n", debug_option_given, debug_logfile_name);
+	if (help_option_given) {
+		poptPrintHelp(ctx, stdout, 0);
+		return 0;
+	}
+	if (usage_option_given) {
+		poptPrintUsage(ctx, stdout, 0);
+		return 0;
+	}
 	if (debug_option_given) {
 		CR_MAIN (debug_action (&gp_params, debug_logfile_name));
 	}
