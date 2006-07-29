@@ -1311,7 +1311,7 @@ main (int argc, char **argv)
 		{"upload-file", 'u', POPT_ARG_STRING, NULL, ARG_UPLOAD_FILE,
 		 N_("Upload a file to camera"), N_("filename")},
 		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,
-		 N_("Specify a filename"), N_("FILENAME_PATTERN")},
+		 N_("Specify a filename or filename pattern"), N_("FILENAME_PATTERN")},
 		{"folder", 'f', POPT_ARG_STRING, NULL, ARG_FOLDER,
 		 N_("Specify camera folder (default=\"/\")"), N_("FOLDER")},
 		{"recurse", 'R', POPT_ARG_NONE, NULL, ARG_RECURSE,
