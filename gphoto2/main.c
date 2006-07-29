@@ -81,6 +81,36 @@ int  glob_interval = 0;
 GPParams gp_params;
 
 
+/** Copy string almost like strncpy, converting to lower case.
+ *
+ * This function behaves like strncpy, but
+ *  - convert chars to lower case
+ *  - ensures the dst buffer is terminated with a '\0'
+ *    (even if that means cutting the string short)
+ *
+ * Relies on tolower() which may be locale specific, but cannot be
+ * multibyte encoding safe.
+ */
+
+static size_t
+strncpy_lower(char *dst, const char *src, size_t count)
+{
+	int i;
+	if ((dst==NULL) || (src==NULL) || (count<0)) { 
+		return -1; 
+	}
+	for (i=0; (i<count) && (src[i] != '\0'); i++) {
+		dst[i] = (char) tolower((int)src[i]);
+	}
+	if (i<count) {
+		dst[i] = '\0';
+	} else {
+		dst[count-1] = '\0';
+	}
+	return i;
+}
+
+
 static struct {
 	CameraFileType type;
 	const char *prefix;
@@ -274,6 +304,10 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 				}
 			case '%':
 				strcpy (b, "%");
+				break;
+			case ':':
+				strncpy_lower(b, name, sizeof(b));
+				b[sizeof(b)-1] = '\0';
 				break;
 			default:
 				free (*path);
