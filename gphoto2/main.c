@@ -1175,7 +1175,7 @@ report_failure (int result, int argc, char **argv)
        while ((rc = poptGetNextOpt(poptcon)) > 0) {
             switch (rc) {
             ARG_FOO:
-	         printf("foo = %s\n", poptGetOptArg(poptContext con));
+	         printf("foo = %s\n", poptGetOptArg(poptcon));
 		 break;
             }
        }
@@ -1205,7 +1205,7 @@ main (int argc, char **argv)
 		{"debug", '\0', POPT_ARG_NONE, (void *) &debug_option_given, ARG_DEBUG,
 		 N_("Turn on debugging"), NULL},
 		{"debug-logfile", '\0', POPT_ARG_STRING, (void *) &debug_logfile_name, ARG_DEBUG_LOGFILE,
-		 N_("Name of file to write debug info to"), NULL},
+		 N_("Name of file to write debug info to"), N_("FILENAME")},
 		{"quiet", '\0', POPT_ARG_NONE, NULL, ARG_QUIET,
 		 N_("Quiet output (default=verbose)"), NULL},
 		POPT_TABLEEND
@@ -1213,13 +1213,13 @@ main (int argc, char **argv)
 	const struct poptOption cameraOptions[] = {
 		GPHOTO2_POPT_CALLBACK
 		{"port", '\0', POPT_ARG_STRING, NULL, ARG_PORT,
-		 N_("Specify port device"), N_("path")},
+		 N_("Specify port device"), N_("FILENAME")},
 		{"speed", '\0', POPT_ARG_INT, NULL, ARG_SPEED,
-		 N_("Specify serial transfer speed"), N_("speed")},
+		 N_("Specify serial transfer speed"), N_("SPEED")},
 		{"camera", '\0', POPT_ARG_STRING, NULL, ARG_MODEL,
-		 N_("Specify camera model"), N_("model")},
+		 N_("Specify camera model"), N_("MODEL")},
 		{"usbid", '\0', POPT_ARG_STRING, NULL, ARG_USBID,
-		 N_("(expert only) Override USB IDs"), N_("usbid")},
+		 N_("(expert only) Override USB IDs"), N_("USBIDs")},
 		POPT_TABLEEND
 	};
 	const struct poptOption infoOptions[] = {
@@ -1254,9 +1254,9 @@ main (int argc, char **argv)
 		 ARG_CAPTURE_PREVIEW,
 		 N_("Capture a quick preview"), NULL},
 		{"frames", 'F', POPT_ARG_INT, NULL, ARG_CAPTURE_FRAMES,
-		 N_("Set number of frames to capture (default=infinite)"), N_("count")},
+		 N_("Set number of frames to capture (default=infinite)"), N_("COUNT")},
 		{"interval", 'I', POPT_ARG_INT, NULL, ARG_CAPTURE_INTERVAL,
-		 N_("Set capture interval in seconds"), N_("seconds")},
+		 N_("Set capture interval in seconds"), N_("SECONDS")},
 		{"capture-image", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_IMAGE, N_("Capture an image"), NULL},
 		{"capture-movie", '\0', POPT_ARG_NONE, NULL,
@@ -1272,48 +1272,48 @@ main (int argc, char **argv)
 		{"list-files", 'L', POPT_ARG_NONE, NULL, ARG_LIST_FILES,
 		 N_("List files in folder"), NULL},
 		{"mkdir", 'm', POPT_ARG_STRING, NULL, ARG_MKDIR,
-		 N_("Create a directory"), NULL},
+		 N_("Create a directory"), N_("DIRNAME")},
 		{"rmdir", 'r', POPT_ARG_STRING, NULL, ARG_RMDIR,
-		 N_("Remove a directory"), NULL},
+		 N_("Remove a directory"), N_("DIRNAME")},
 		{"num-files", 'n', POPT_ARG_NONE, NULL, ARG_NUM_FILES,
 		 N_("Display number of files"), NULL},
 		{"get-file", 'p', POPT_ARG_STRING, NULL, ARG_GET_FILE,
-		 N_("Get files given in range"), NULL},
+		 N_("Get files given in range"), N_("RANGE")},
 		{"get-all-files", 'P', POPT_ARG_NONE, NULL, ARG_GET_ALL_FILES,
 		 N_("Get all files from folder"), NULL},
 		{"get-thumbnail", 't', POPT_ARG_STRING, NULL, ARG_GET_THUMBNAIL,
-		 N_("Get thumbnails given in range"), NULL},
+		 N_("Get thumbnails given in range"), N_("RANGE")},
 		{"get-all-thumbnails", 'T', POPT_ARG_NONE, 0,
 		 ARG_GET_ALL_THUMBNAILS,
 		 N_("Get all thumbnails from folder"), NULL},
 		{"get-metadata", '\0', POPT_ARG_STRING, NULL, ARG_GET_METADATA,
-		 N_("Get metadata given in range"), NULL},
+		 N_("Get metadata given in range"), N_("RANGE")},
 		{"get-all-metadata", '\0', POPT_ARG_STRING, NULL, ARG_GET_ALL_METADATA,
 		 N_("Get all metadata from folder"), NULL},
 		{"upload-metadata", '\0', POPT_ARG_STRING, NULL, ARG_UPLOAD_METADATA,
 		 N_("Upload metadata for file"), NULL},
 		{"get-raw-data", '\0', POPT_ARG_STRING, NULL,
 		 ARG_GET_RAW_DATA,
-		 N_("Get raw data given in range"), NULL},
+		 N_("Get raw data given in range"), N_("RANGE")},
 		{"get-all-raw-data", '\0', POPT_ARG_NONE, NULL,
 		 ARG_GET_ALL_RAW_DATA,
 		 N_("Get all raw data from folder"), NULL},
 		{"get-audio-data", '\0', POPT_ARG_STRING, NULL,
 		 ARG_GET_AUDIO_DATA,
-		 N_("Get audio data given in range"), NULL},
+		 N_("Get audio data given in range"), N_("RANGE")},
 		{"get-all-audio-data", '\0', POPT_ARG_NONE, NULL,
 		 ARG_GET_ALL_AUDIO_DATA,
 		 N_("Get all audio data from folder"), NULL},
 		{"delete-file", 'd', POPT_ARG_STRING, NULL, ARG_DELETE_FILE,
-		 N_("Delete files given in range"), NULL},
+		 N_("Delete files given in range"), N_("RANGE")},
 		{"delete-all-files", 'D', POPT_ARG_NONE, NULL,
 		 ARG_DELETE_ALL_FILES, N_("Delete all files in folder"), NULL},
 		{"upload-file", 'u', POPT_ARG_STRING, NULL, ARG_UPLOAD_FILE,
-		 N_("Upload a file to camera"), NULL},
+		 N_("Upload a file to camera"), N_("filename")},
 		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,
-		 N_("Specify a filename"), N_("filename")},
+		 N_("Specify a filename"), N_("FILENAME_PATTERN")},
 		{"folder", 'f', POPT_ARG_STRING, NULL, ARG_FOLDER,
-		 N_("Specify camera folder (default=\"/\")"), N_("folder")},
+		 N_("Specify camera folder (default=\"/\")"), N_("FOLDER")},
 		{"recurse", 'R', POPT_ARG_NONE, NULL, ARG_RECURSE,
 		 N_("Recursion (default for download)"), NULL},
 		{"no-recurse", '\0', POPT_ARG_NONE, NULL, ARG_NO_RECURSE,
@@ -1321,7 +1321,7 @@ main (int argc, char **argv)
 		{"new", '\0', POPT_ARG_NONE, NULL, ARG_NEW,
 		 N_("Process new files only"), NULL},
 		{"force-overwrite", '\0', POPT_ARG_NONE, NULL,
-		 ARG_FORCE_OVERWRITE, N_("Overwrite files without asking")},
+		 ARG_FORCE_OVERWRITE, N_("Overwrite files without asking"), NULL},
 		POPT_TABLEEND
 	};
 	const struct poptOption miscOptions[] = {
@@ -1439,6 +1439,7 @@ main (int argc, char **argv)
 	CR_MAIN (gp_camera_get_abilities (gp_params.camera, &a));
 	CR_MAIN (gp_camera_get_port_info (gp_params.camera, &info));
 
+	/* Determine which command is given on command line */
 	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	cb_params.p.q.found = 0;
 	CHECK_OPT (ARG_ABILITIES);
