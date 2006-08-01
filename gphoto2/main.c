@@ -294,7 +294,8 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 				if (!s)
 					strncpy (b, name, sizeof (b) - 1);
 				else {
-					l = MIN (sizeof (b) - 1, s - name);
+					l = MIN ((unsigned long)(sizeof(b) - 1),
+						 (unsigned long)(s - name));
 					strncpy (b, name, l);
 					b[l] = '\0';
 				}
@@ -698,7 +699,7 @@ capture_generic (CameraCaptureType type, const char __unused__ *name)
 typedef struct _ThreadData ThreadData;
 struct _ThreadData {
 	Camera *camera;
-	unsigned int timeout;
+	time_t timeout;
 	CameraTimeoutFunc func;
 };
 
@@ -902,30 +903,26 @@ struct _CallbackParams {
 };
 
 
-/*! \brief Callback function called while parsing command line options.
- *
- * This callback function is called multiple times in multiple
- * phases. That should probably become separate functions.
- */
+static void
+cb_arg_query (poptContext __unused__ ctx, 
+	      enum poptCallbackReason __unused__ reason,
+	      const struct poptOption *opt, const char __unused__ *arg,
+	      CallbackParams *params)
+{
+	/* p.q.arg is an enum, but opt->val is an int */
+	if (opt->val == (int)(params->p.q.arg))
+		params->p.q.found = 1;
+}
+
 
 static void
-cb_arg (poptContext __unused__ ctx, 
-	enum poptCallbackReason __unused__ reason,
-	const struct poptOption *opt, const char *arg,
-	void __unused__ *data)
+cb_arg_preinit (poptContext __unused__ ctx, 
+		enum poptCallbackReason __unused__ reason,
+		const struct poptOption *opt, const char *arg,
+		CallbackParams *params)
 {
-	CallbackParams *params = (CallbackParams *) data;
 	int usb_product, usb_vendor;
 	int usb_product_modified, usb_vendor_modified;
-
-	/* Check if we are only to query. */
-	switch (params->type) {
-	case CALLBACK_PARAMS_TYPE_QUERY:
-		if (opt->val == params->p.q.arg)
-			params->p.q.found = 1;
-		return;
-		break;
-	case CALLBACK_PARAMS_TYPE_PREINITIALIZE:
 		switch (opt->val) {
 		case ARG_USBID:
 			gp_log (GP_LOG_DEBUG, "main", "Overriding USB "
@@ -949,10 +946,15 @@ cb_arg (poptContext __unused__ ctx,
 		default:
 			break;
 		}
-		return;
-		break;
+}
 
-	case CALLBACK_PARAMS_TYPE_INITIALIZE: /* Check if we are only to initialize. */
+
+static void
+cb_arg_init (poptContext __unused__ ctx, 
+	     enum poptCallbackReason __unused__ reason,
+	     const struct poptOption *opt, const char *arg,
+	     CallbackParams *params)
+{
 		switch (opt->val) {
 		case ARG_FILENAME:
 			params->p.r = set_filename_action (&gp_params, arg);
@@ -1006,9 +1008,15 @@ cb_arg (poptContext __unused__ ctx,
 		default:
 			break;
 		}
-		return;
+}
 
-	case CALLBACK_PARAMS_TYPE_RUN:
+static void
+cb_arg_run (poptContext __unused__ ctx, 
+	    enum poptCallbackReason __unused__ reason,
+	    const struct poptOption *opt, const char *arg,
+	    CallbackParams *params)
+{
+
 		switch (opt->val) {
 		case ARG_ABILITIES:
 			params->p.r = action_camera_show_abilities (&gp_params);
@@ -1175,6 +1183,37 @@ cb_arg (poptContext __unused__ ctx,
 		default:
 			break;
 		};
+}
+
+
+/*! \brief Callback function called while parsing command line options.
+ *
+ * This callback function is called multiple times in multiple
+ * phases. That should probably become separate functions.
+ */
+
+static void
+cb_arg (poptContext __unused__ ctx, 
+	enum poptCallbackReason __unused__ reason,
+	const struct poptOption *opt, const char *arg,
+	void *data)
+{
+	CallbackParams *params = (CallbackParams *) data;
+
+	/* Check if we are only to query. */
+	switch (params->type) {
+	case CALLBACK_PARAMS_TYPE_QUERY:
+		cb_arg_query (ctx, reason, opt, arg, params);
+		break;
+	case CALLBACK_PARAMS_TYPE_PREINITIALIZE:
+		cb_arg_preinit (ctx, reason, opt, arg, params);
+		break;
+	case CALLBACK_PARAMS_TYPE_INITIALIZE:
+		/* Check if we are only to initialize. */
+		cb_arg_init (ctx, reason, opt, arg, params);
+		break;
+	case CALLBACK_PARAMS_TYPE_RUN:
+		cb_arg_run (ctx, reason, opt, arg, params);
 		break;
 	}
 };
