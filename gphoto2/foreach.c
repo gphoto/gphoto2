@@ -200,7 +200,7 @@ get_path_for_id_rec (GPParams *p,
 	CL (gp_camera_folder_list_files (p->camera, base_folder, list,
 					 p->context), list);
 	CL (n_files = gp_list_count (list), list);
-	if (id - *base_id < n_files) {
+	if (id - *base_id < (unsigned int) n_files) {
 
 		/* ID is in this folder */
 		GP_DEBUG ("ID %i is in folder '%s'.", id, base_folder);
@@ -215,7 +215,7 @@ get_path_for_id_rec (GPParams *p,
 		CL (gp_camera_folder_list_folders (p->camera, base_folder,
 						   list, p->context), list);
 		CL (n_folders = gp_list_count (list), list);
-		for (i = 0; i < n_folders; i++) {
+		for (i = 0; i < (unsigned int)n_folders; i++) {
 			CL (gp_list_get_name (list, i, &name), list);
 			strncpy (subfolder, base_folder, sizeof (subfolder));
 			if (strlen (base_folder) > 1)
@@ -263,6 +263,7 @@ get_path_for_id (GPParams *p, const char *base_folder,
                 }
 	} else {
 		CameraList *list;
+		int list_count;
 
 		/* If we have no recursion, things are easy. */
 		GP_DEBUG ("No recursion. Taking file %i from folder '%s'.",
@@ -270,8 +271,9 @@ get_path_for_id (GPParams *p, const char *base_folder,
 		CR (gp_list_new (&list));
 		CL (gp_camera_folder_list_files (p->camera, base_folder,
 						 list, p->context), list);
-		if (id >= gp_list_count (list)) {
-			switch (gp_list_count (list)) {
+		CL ((list_count = gp_list_count (list)), list);
+		if (id >= (unsigned int) list_count) {
+			switch (list_count) {
 			case 0:
 				gp_context_error (p->context,
 					_("There are no files in "

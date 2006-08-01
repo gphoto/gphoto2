@@ -50,6 +50,12 @@
 #define CRU(result,file) {int r=(result); if (r<0) {gp_file_unref(file);return r;}}
 #define CL(result,list)  {int r=(result); if (r<0) {gp_list_free(list); return r;}}
 
+#ifdef __GNUC__
+#define __unused__ __attribute__((unused))
+#else
+#define __unused__
+#endif
+
 int
 delete_all_action (GPParams *p)
 {
@@ -169,7 +175,7 @@ list_folders_action (GPParams *p)
 	CameraList *list;
 	int count;
 	const char *name;
-	unsigned int i;
+	int i;
 	
 	CR (gp_list_new (&list));
 
@@ -195,7 +201,7 @@ list_files_action (GPParams *p)
 	CameraList *list;
 	int count, filecount;
 	const char *name;
-	unsigned int i;
+	int i;
 
 	CR (gp_list_new (&list));
 	CL (gp_camera_folder_list_files (p->camera, p->folder, list,
@@ -864,7 +870,7 @@ set_filename_action (GPParams *p, const char *filename)
 #define CHECK_NULL(x) { if (x == NULL) { return(-1); /* FIXME: what code? */ } }
 
 int
-print_version_action (GPParams *p)
+print_version_action (GPParams __unused__ *p)
 {
 	int n;
 	const char *port_message =

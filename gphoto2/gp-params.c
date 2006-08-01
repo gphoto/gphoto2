@@ -36,12 +36,20 @@
 #define MIN(x, y) (((x)<(y))?(x):(y))
 #endif
 
+
+#ifdef __GNUC__
+#define __unused__ __attribute__((unused))
+#else
+#define __unused__
+#endif
+
+
 static void
 #ifdef __GNUC__
 __attribute__((__format__(printf,2,0)))
 #endif
-ctx_status_func (GPContext *context, const char *format, va_list args,
-                 void *data)
+ctx_status_func (GPContext __unused__ *context, const char *format, va_list args,
+                 void __unused__ *data)
 {
         vfprintf (stderr, format, args);
         fprintf  (stderr, "\n");
@@ -52,8 +60,8 @@ static void
 #ifdef __GNUC__
 __attribute__((__format__(printf,2,0)))
 #endif
-ctx_error_func (GPContext *context, const char *format, va_list args,
-                void *data)
+ctx_error_func (GPContext __unused__ *context, const char *format, va_list args,
+                void __unused__ *data)
 {
         fprintf  (stderr, "\n");
         fprintf  (stderr, _("*** Error ***              \n"));
@@ -79,7 +87,7 @@ static unsigned int
 #ifdef __GNUC__
 __attribute__((__format__(printf,3,0)))
 #endif
-ctx_progress_start_func (GPContext *context, float target,
+ctx_progress_start_func (GPContext __unused__ *context, float target,
                          const char *format, va_list args, void *data)
 {
 	GPParams *p = data;
@@ -121,7 +129,7 @@ ctx_progress_start_func (GPContext *context, float target,
 }
 
 static void
-ctx_progress_update_func (GPContext *context, unsigned int id,
+ctx_progress_update_func (GPContext __unused__ *context, unsigned int id,
                           float current, void *data)
 {
 	GPParams *p = data;
@@ -132,7 +140,7 @@ ctx_progress_update_func (GPContext *context, unsigned int id,
         time_t sec = 0;
 
         /* Guard against buggy camera drivers */
-        if (id >= MAX_PROGRESS_STATES || id < 0)
+        if (id >= MAX_PROGRESS_STATES || ((int)id) < 0)
                 return;
 
         /* How much time until completion? */
@@ -167,8 +175,8 @@ ctx_progress_update_func (GPContext *context, unsigned int id,
         }
 
         /* Determine the width of the progress bar and the current position */
-        width = MAX (0, (int) p->cols -
-                                strlen (progress_states[id].message) - 20);
+        width = MAX (0, (int) (p->cols -
+			       strlen (progress_states[id].message) - 20));
         pos = MIN (width, (MIN (current / progress_states[id].target, 100.) * width) + 0.5);
 
         /* Print the progress bar */
@@ -187,13 +195,14 @@ ctx_progress_update_func (GPContext *context, unsigned int id,
 }
 
 static void
-ctx_progress_stop_func (GPContext *context, unsigned int id, void *data)
+ctx_progress_stop_func (GPContext __unused__ *context, unsigned int id, 
+			void *data)
 {
 	GPParams *p = data;
         unsigned int i;
 
         /* Guard against buggy camera drivers */
-        if (id >= MAX_PROGRESS_STATES || id < 0)
+        if (id >= MAX_PROGRESS_STATES || ((int)id) < 0)
                 return;
 
         /* Clear the progress bar. */
@@ -206,7 +215,7 @@ ctx_progress_stop_func (GPContext *context, unsigned int id, void *data)
 }
 
 static GPContextFeedback
-ctx_cancel_func (GPContext *context, void *data)
+ctx_cancel_func (GPContext __unused__ *context, void __unused__ *data)
 {
         if (glob_cancel) {
                 return (GP_CONTEXT_FEEDBACK_CANCEL);
@@ -219,8 +228,8 @@ static void
 #ifdef __GNUC__
 __attribute__((__format__(printf,2,0)))
 #endif
-ctx_message_func (GPContext *context, const char *format, va_list args,
-                  void *data)
+ctx_message_func (GPContext __unused__ *context, const char *format, 
+		  va_list args, void __unused__ *data)
 {
         int c;
 

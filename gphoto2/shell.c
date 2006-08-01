@@ -46,6 +46,12 @@
 # define MIN(a, b) ((a) < (b) ? (a) : (b))
 #endif
 
+#ifdef __GNUC__
+#define __unused__ __attribute__((unused))
+#else
+#define __unused__
+#endif
+
 #define CHECK(result) {int r=(result);if(r<0) return(r);}
 #define CL(result,list) {int r=(result);if(r<0) {gp_list_free(list);return(r);}}
 #define CHECK_CONT(result)					\
@@ -553,7 +559,7 @@ shell_construct_path (const char *folder_orig, const char *rel_path,
 }
 
 static int
-shell_lcd (Camera *camera, const char *arg)
+shell_lcd (Camera __unused__ *camera, const char *arg)
 {
 	char new_cwd[MAX_FOLDER_LEN];
 	int arg_count = shell_arg_count (arg);
@@ -580,7 +586,7 @@ shell_lcd (Camera *camera, const char *arg)
 }
 
 static int
-shell_cd (Camera *camera, const char *arg)
+shell_cd (Camera __unused__ *camera, const char *arg)
 {
 	char folder[MAX_FOLDER_LEN];
 	CameraList *list;
@@ -615,7 +621,7 @@ shell_cd (Camera *camera, const char *arg)
 }
 
 static int
-shell_ls (Camera *camera, const char *arg)
+shell_ls (Camera __unused__ *camera, const char *arg)
 {
 	CameraList *list;
 	char buf[1024], folder[MAX_FOLDER_LEN];
@@ -672,7 +678,8 @@ shell_ls (Camera *camera, const char *arg)
 }
 
 static int
-shell_file_action (Camera *camera, GPContext *context, const char *folder,
+shell_file_action (Camera __unused__ *camera, GPContext __unused__ *context, 
+		   const char *folder,
 		   const char *args, FileAction action)
 {
 	char arg[1024];
@@ -690,7 +697,7 @@ shell_file_action (Camera *camera, GPContext *context, const char *folder,
 }
 
 static int
-shell_get_thumbnail (Camera *camera, const char *arg)
+shell_get_thumbnail (Camera __unused__ *camera, const char *arg)
 {
 	CHECK (shell_file_action (p->camera, p->context, p->folder, arg,
 				  save_thumbnail_action));
@@ -699,7 +706,7 @@ shell_get_thumbnail (Camera *camera, const char *arg)
 }
 
 static int
-shell_get (Camera *camera, const char *arg)
+shell_get (Camera __unused__ *camera, const char *arg)
 {
 	CHECK (shell_file_action (p->camera, p->context, p->folder, arg,
 				  save_file_action));
@@ -708,7 +715,7 @@ shell_get (Camera *camera, const char *arg)
 }
 
 static int
-shell_get_raw (Camera *camera, const char *arg)
+shell_get_raw (Camera __unused__ *camera, const char *arg)
 {
 	CHECK (shell_file_action (p->camera, p->context, p->folder, arg,
 				  save_raw_action));
@@ -717,7 +724,7 @@ shell_get_raw (Camera *camera, const char *arg)
 }
 
 static int
-shell_del (Camera *camera, const char *arg)
+shell_del (Camera __unused__ *camera, const char *arg)
 {
 	CHECK (shell_file_action (p->camera, p->context, p->folder, arg,
 				  delete_file_action));
@@ -727,7 +734,7 @@ shell_del (Camera *camera, const char *arg)
 
 #ifdef HAVE_LIBEXIF
 static int
-shell_show_exif (Camera *camera, const char *arg)
+shell_show_exif (Camera __unused__ *camera, const char *arg)
 {
 	CHECK (shell_file_action (p->camera, p->context, p->folder, arg,
 				  print_exif_action));
@@ -737,7 +744,7 @@ shell_show_exif (Camera *camera, const char *arg)
 #endif
 
 static int
-shell_show_info (Camera *camera, const char *arg)
+shell_show_info (Camera __unused__ *camera, const char *arg)
 {
 	CHECK (shell_file_action (p->camera, p->context, p->folder, arg,
 				  print_info_action));
@@ -746,7 +753,7 @@ shell_show_info (Camera *camera, const char *arg)
 }
 
 static int
-shell_put (Camera *camera, const char *args) {
+shell_put (Camera __unused__ *camera, const char *args) {
 	char arg[1024];
 	unsigned int x;
 	char dest_folder[MAX_FOLDER_LEN], dest_filename[MAX_FILE_LEN];
@@ -768,13 +775,13 @@ shell_mkdir (Camera *camera, const char *args) {
 }
 
 static int
-shell_list_config (Camera *camera, const char *args) {
+shell_list_config (Camera __unused__ *camera, const char __unused__ *args) {
 	CHECK (list_config_action (p));
 	return (GP_OK);      
 }
 
 static int
-shell_get_config (Camera *camera, const char *args) {
+shell_get_config (Camera __unused__ *camera, const char *args) {
 	char arg[1024];
 	unsigned int x;
 
@@ -786,7 +793,7 @@ shell_get_config (Camera *camera, const char *args) {
 }
 
 static int
-shell_set_config (Camera *camera, const char *args) {
+shell_set_config (Camera __unused__ *camera, const char *args) {
 	char arg[1024];
 	char *s,*x;
 
@@ -807,20 +814,20 @@ shell_set_config (Camera *camera, const char *args) {
 }
 
 static int
-shell_capture_image (Camera *camera, const char *args) {
+shell_capture_image (Camera __unused__ *camera, const char *args) {
 	while (*args==' ') args++;
 	return capture_generic (GP_CAPTURE_IMAGE, *args?args:NULL);
 }
 
 int
-shell_exit (Camera *camera, const char *arg)
+shell_exit (Camera __unused__ *camera, const char __unused__ *arg)
 {
 	shell_done = 1;
 	return (GP_OK);
 }
 
 static int
-shell_help_command (Camera *camera, const char *arg)
+shell_help_command (Camera __unused__ *camera, const char *arg)
 {
 	char arg_cmd[1024];
 	unsigned int x;
@@ -853,7 +860,7 @@ shell_help_command (Camera *camera, const char *arg)
 }
 
 static int
-shell_help (Camera *camera, const char *arg)
+shell_help (Camera __unused__ *camera, const char *arg)
 {
 	unsigned int x;
 	int arg_count = shell_arg_count (arg);
