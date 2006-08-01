@@ -73,6 +73,12 @@
 
 #define CR(result) {int r = (result); if (r < 0) return (r);}
 
+#ifdef __GNUC__
+#define __unused__ __attribute__((unused))
+#else
+#define __unused__
+#endif
+
 int  glob_debug = -1;
 char glob_cancel = 0;
 int  glob_frames = 0;
@@ -81,12 +87,13 @@ int  glob_interval = 0;
 GPParams gp_params;
 
 
-/** Copy string almost like strncpy, converting to lower case.
+/*! \brief Copy string almost like strncpy, converting to lower case.
  *
  * This function behaves like strncpy, but
  *  - convert chars to lower case
  *  - ensures the dst buffer is terminated with a '\0'
  *    (even if that means cutting the string short)
+ *  - limits the string copy at a reasonable size (32K)
  *
  * Relies on tolower() which may be locale specific, but cannot be
  * multibyte encoding safe.
@@ -95,8 +102,9 @@ GPParams gp_params;
 static size_t
 strncpy_lower(char *dst, const char *src, size_t count)
 {
-	int i;
-	if ((dst==NULL) || (src==NULL) || (count<0)) { 
+	unsigned int i;
+	if ((dst == NULL) || (src == NULL) 
+	    || (((unsigned long)count)>= 0x7fff)) { 
 		return -1; 
 	}
 	for (i=0; (i<count) && (src[i] != '\0'); i++) {
@@ -125,6 +133,17 @@ static struct {
 
 #undef  MIN
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
+
+
+/*! \brief Create local filename for CameraFile according to pattern in gp_params
+ *
+ * \param folder Name of the folder on the camera the CameraFile is stored in
+ * \param file CameraFile to find a local name for.
+ * \param path The pointer to the generated complete path name of the local filename.
+ * \return GPError code
+ *
+ * \warning This function reads the static variable gp_params.
+ */
 
 static int
 get_path_for_file (const char *folder, CameraFile *file, char **path)
@@ -342,6 +361,7 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 	return (GP_OK);
 }
 
+
 int
 save_camera_file_to_file (const char *folder, CameraFile *file)
 {
@@ -480,10 +500,10 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
         return (res);
 }
 
-/*
-  get_file_common() - parse range, download specified files, or their
-        thumbnails according to thumbnail argument, and save to files.
-*/
+
+/*! \brief parse range, download specified files, or their
+ *         thumbnails according to thumbnail argument, and save to files.
+ */
 
 static int
 get_file_common (const char *arg, CameraFileType type )
@@ -527,7 +547,7 @@ get_file_common (const char *arg, CameraFileType type )
 
 
 int
-capture_generic (CameraCaptureType type, const char *name)
+capture_generic (CameraCaptureType type, const char __unused__ *name)
 {
 	CameraFilePath path, last;
 	char *pathsep;
@@ -713,7 +733,7 @@ thread_func (void *data)
 
 static unsigned int
 start_timeout_func (Camera *camera, unsigned int timeout,
-		    CameraTimeoutFunc func, void *data)
+		    CameraTimeoutFunc func, void __unused__ *data)
 {
 	pthread_t tid;
 	ThreadData *td;
@@ -732,7 +752,8 @@ start_timeout_func (Camera *camera, unsigned int timeout,
 }
 
 static void
-stop_timeout_func (Camera *camera, unsigned int id, void *data)
+stop_timeout_func (Camera __unused__ *camera, unsigned int id,
+		   void __unused__ *data)
 {
 	pthread_t tid = id;
 
@@ -758,7 +779,7 @@ cli_error_print (char *format, ...)
 }
 
 static void
-signal_resize (int signo)
+signal_resize (int __unused__ signo)
 {
 	const char *columns;
 
@@ -768,7 +789,7 @@ signal_resize (int signo)
 }
 
 static void
-signal_exit (int signo)
+signal_exit (int __unused__ signo)
 {
 	/* If we already were told to cancel, abort. */
 	if (glob_cancel) {
@@ -880,12 +901,22 @@ struct _CallbackParams {
 	} p;
 };
 
+
+/*! \brief Callback function called while parsing command line options.
+ *
+ * This callback function is called multiple times in multiple
+ * phases. That should probably become separate functions.
+ */
+
 static void
-cb_arg (poptContext ctx, enum poptCallbackReason reason,
-	const struct poptOption *opt, const char *arg, void *data)
+cb_arg (poptContext __unused__ ctx, 
+	enum poptCallbackReason __unused__ reason,
+	const struct poptOption *opt, const char *arg,
+	void __unused__ *data)
 {
 	CallbackParams *params = (CallbackParams *) data;
-	int usb_product, usb_vendor, usb_product_modified, usb_vendor_modified;
+	int usb_product, usb_vendor;
+	int usb_product_modified, usb_vendor_modified;
 
 	/* Check if we are only to query. */
 	switch (params->type) {
@@ -1178,7 +1209,7 @@ report_failure (int result, int argc, char **argv)
 		 * Print the exact command line to assist
 		 * l^Husers
 		 */
-		printf ("    env LANG=C gphoto2 --debug");
+		printf ("    env LANG=C gphoto2 --debug --debug-logfile=my-logfile.txt");
 		for (n = 1; n < argc; n++) {
 			if (argv[n][0] == '-')
 				printf(" %s",argv[n]);
@@ -1202,7 +1233,14 @@ report_failure (int result, int argc, char **argv)
 	}						\
 }
 
-/* Perhaps we should use the following code for parsing command line
+
+#define GPHOTO2_POPT_CALLBACK \
+	{NULL, '\0', POPT_ARG_CALLBACK, \
+			(void *) &cb_arg, 0, (char *) &cb_params, NULL},
+
+/*! main function: parse command line arguments and call actions
+ *
+ * Perhaps we should use the following code for parsing command line
  * options:
 
        poptGetContext(NULL, argc, argv, poptOptions, 0);
@@ -1214,12 +1252,21 @@ report_failure (int result, int argc, char **argv)
             }
        }
        poptFreeContext(poptcon);
-*/
+ *
+ * Regardless of whether we do this or not, we should get rid of those
+ * legions of poptResetContext() calls followed by lots of
+ * poptGetNextOpt() calls.
+ *
+ * At least we should get rid of all those stages. Probably two stages
+ * are sufficient:
+ *  -# look for --help, --debug, --debug-logfile, --quiet
+ *  -# repeat this until command line has been used up
+ *     -# go through all command line options
+ *     -# ignore those from above
+ *     -# if setting for command, store its value
+ *     -# if command, execute command
+ */
 
-
-#define GPHOTO2_POPT_CALLBACK \
-	{NULL, '\0', POPT_ARG_CALLBACK, \
-			(void *) &cb_arg, 0, (char *) &cb_params, NULL},
 
 int
 main (int argc, char **argv)
