@@ -877,6 +877,7 @@ typedef enum {
 } Arg;
 
 typedef enum {
+	CALLBACK_PARAMS_TYPE_NONE,
 	CALLBACK_PARAMS_TYPE_PREINITIALIZE,
 	CALLBACK_PARAMS_TYPE_INITIALIZE,
 	CALLBACK_PARAMS_TYPE_QUERY,
@@ -899,6 +900,8 @@ struct _CallbackParams {
 			Arg arg;
 			char found;
 		} q;
+
+		/* CALLBACK_PARAMS_TYPE_NONE */
 	} p;
 };
 
@@ -1202,6 +1205,9 @@ cb_arg (poptContext __unused__ ctx,
 
 	/* Check if we are only to query. */
 	switch (params->type) {
+	case CALLBACK_PARAMS_TYPE_NONE:
+		/* do nothing */
+		break;
 	case CALLBACK_PARAMS_TYPE_QUERY:
 		cb_arg_query (ctx, reason, opt, arg, params);
 		break;
@@ -1492,6 +1498,7 @@ main (int argc, char **argv)
 	CameraAbilities a;
 	GPPortInfo info;
 	int result = GP_OK;
+	cb_params.type = CALLBACK_PARAMS_TYPE_NONE;
 
 	/* For translation */
 	setlocale (LC_ALL, "");
