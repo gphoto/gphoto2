@@ -906,6 +906,9 @@ struct _CallbackParams {
 };
 
 
+/*! \brief popt callback with type CALLBACK_PARAMS_TYPE_QUERY
+ */
+
 static void
 cb_arg_query (poptContext __unused__ ctx, 
 	      enum poptCallbackReason __unused__ reason,
@@ -918,6 +921,9 @@ cb_arg_query (poptContext __unused__ ctx,
 }
 
 
+/*! \brief popt callback with type CALLBACK_PARAMS_TYPE_PREINITIALIZE
+ */
+
 static void
 cb_arg_preinit (poptContext __unused__ ctx, 
 		enum poptCallbackReason __unused__ reason,
@@ -926,31 +932,34 @@ cb_arg_preinit (poptContext __unused__ ctx,
 {
 	int usb_product, usb_vendor;
 	int usb_product_modified, usb_vendor_modified;
-		switch (opt->val) {
-		case ARG_USBID:
-			gp_log (GP_LOG_DEBUG, "main", "Overriding USB "
-				"IDs to '%s'...", arg);
-			if (sscanf (arg, "0x%x:0x%x=0x%x:0x%x",
-				    &usb_vendor_modified,
-				    &usb_product_modified, &usb_vendor,
-				    &usb_product) != 4) {
-				printf (_("Use the following syntax a:b=c:d "
-					  "to treat any USB device detected "
-					  "as a:b as c:d instead. "
-					  "a b c d should be hexadecimal "
-					  "numbers beginning with '0x'.\n"));
-				params->p.r = GP_ERROR_BAD_PARAMETERS;
-				break;
-			}
-			params->p.r = override_usbids_action (&gp_params, usb_vendor,
-					usb_product, usb_vendor_modified,
-					usb_product_modified);
-			break;
-		default:
+	switch (opt->val) {
+	case ARG_USBID:
+		gp_log (GP_LOG_DEBUG, "main", "Overriding USB "
+			"IDs to '%s'...", arg);
+		if (sscanf (arg, "0x%x:0x%x=0x%x:0x%x",
+			    &usb_vendor_modified,
+			    &usb_product_modified, &usb_vendor,
+			    &usb_product) != 4) {
+			printf (_("Use the following syntax a:b=c:d "
+				  "to treat any USB device detected "
+				  "as a:b as c:d instead. "
+				  "a b c d should be hexadecimal "
+				  "numbers beginning with '0x'.\n"));
+			params->p.r = GP_ERROR_BAD_PARAMETERS;
 			break;
 		}
+		params->p.r = override_usbids_action (&gp_params, usb_vendor,
+						      usb_product, usb_vendor_modified,
+						      usb_product_modified);
+		break;
+	default:
+		break;
+	}
 }
 
+
+/*! \brief popt callback with type CALLBACK_PARAMS_TYPE_INITIALIZE
+ */
 
 static void
 cb_arg_init (poptContext __unused__ ctx, 
@@ -958,60 +967,73 @@ cb_arg_init (poptContext __unused__ ctx,
 	     const struct poptOption *opt, const char *arg,
 	     CallbackParams *params)
 {
-		switch (opt->val) {
-		case ARG_FILENAME:
-			params->p.r = set_filename_action (&gp_params, arg);
-			break;
-		case ARG_FOLDER:
-			params->p.r = set_folder_action (&gp_params, arg);
-			break;
-		case ARG_FORCE_OVERWRITE:
-			gp_params.flags |= FLAGS_FORCE_OVERWRITE;
-			break;
-		case ARG_MODEL:
-			gp_log (GP_LOG_DEBUG, "main", "Processing 'model' "
-				"option ('%s')...", arg);
-			params->p.r = action_camera_set_model (&gp_params, arg);
-			break;
-		case ARG_NEW:
-			gp_params.flags |= FLAGS_NEW;
-			break;
-		case ARG_NO_RECURSE:
-			gp_params.flags &= ~FLAGS_RECURSE;
-			break;
-		case ARG_PORT:
-			gp_log (GP_LOG_DEBUG, "main", "Processing 'port' "
-				"option ('%s')...", arg);
-			params->p.r = action_camera_set_port (&gp_params, arg);
-			break;
-		case ARG_QUIET:
-			gp_params.flags |= FLAGS_QUIET;
-			break;
-		case ARG_RECURSE:
-			gp_params.flags |= FLAGS_RECURSE;
-			break;
-		case ARG_SPEED:
-			params->p.r = action_camera_set_speed (&gp_params, atoi (arg));
-			break;
-		case ARG_STDOUT:
-			gp_params.flags |= FLAGS_QUIET | FLAGS_STDOUT;
-			break;
-		case ARG_CAPTURE_FRAMES:
-			glob_frames = atoi(arg);
-			break;
-		case ARG_CAPTURE_INTERVAL:
-			glob_interval = atoi(arg);
-			break;
-		case ARG_STDOUT_SIZE:
-			gp_params.flags |= FLAGS_QUIET | FLAGS_STDOUT | FLAGS_STDOUT_SIZE;
-			break;
-		case ARG_VERSION:
-			params->p.r = print_version_action (&gp_params);
-			break;
-		default:
-			break;
-		}
+	switch (opt->val) {
+
+	case ARG_FILENAME:
+		params->p.r = set_filename_action (&gp_params, arg);
+		break;
+	case ARG_FOLDER:
+		params->p.r = set_folder_action (&gp_params, arg);
+		break;
+
+	case ARG_FORCE_OVERWRITE:
+		gp_params.flags |= FLAGS_FORCE_OVERWRITE;
+		break;
+	case ARG_NEW:
+		gp_params.flags |= FLAGS_NEW;
+		break;
+	case ARG_NO_RECURSE:
+		gp_params.flags &= ~FLAGS_RECURSE;
+		break;
+	case ARG_RECURSE:
+		gp_params.flags |= FLAGS_RECURSE;
+		break;
+
+	case ARG_MODEL:
+		gp_log (GP_LOG_DEBUG, "main", "Processing 'model' "
+			"option ('%s')...", arg);
+		params->p.r = action_camera_set_model (&gp_params, arg);
+		break;
+	case ARG_PORT:
+		gp_log (GP_LOG_DEBUG, "main", "Processing 'port' "
+			"option ('%s')...", arg);
+		params->p.r = action_camera_set_port (&gp_params, arg);
+		break;
+	case ARG_SPEED:
+		params->p.r = action_camera_set_speed (&gp_params, atoi (arg));
+		break;
+
+	case ARG_QUIET:
+		gp_params.flags |= FLAGS_QUIET;
+		break;
+
+	case ARG_STDOUT:
+		gp_params.flags |= FLAGS_QUIET | FLAGS_STDOUT;
+		break;
+	case ARG_STDOUT_SIZE:
+		gp_params.flags |= FLAGS_QUIET | FLAGS_STDOUT 
+			| FLAGS_STDOUT_SIZE;
+		break;
+
+	case ARG_CAPTURE_FRAMES:
+		glob_frames = atoi(arg);
+		break;
+	case ARG_CAPTURE_INTERVAL:
+		glob_interval = atoi(arg);
+		break;
+
+	case ARG_VERSION:
+		params->p.r = print_version_action (&gp_params);
+		break;
+
+	default:
+		break;
+	}
 }
+
+
+/*! \brief popt callback with type CALLBACK_PARAMS_TYPE_RUN
+ */
 
 static void
 cb_arg_run (poptContext __unused__ ctx, 
@@ -1019,173 +1041,172 @@ cb_arg_run (poptContext __unused__ ctx,
 	    const struct poptOption *opt, const char *arg,
 	    CallbackParams *params)
 {
-
-		switch (opt->val) {
-		case ARG_ABILITIES:
-			params->p.r = action_camera_show_abilities (&gp_params);
-			break;
-		case ARG_ABOUT:
-			params->p.r = action_camera_about (&gp_params);
-			break;
-		case ARG_AUTO_DETECT:
-			params->p.r = auto_detect_action (&gp_params);
-			break;
-		case ARG_CAPTURE_IMAGE:
-			params->p.r = capture_generic (GP_CAPTURE_IMAGE, arg);
-			break;
-		case ARG_CAPTURE_MOVIE:
-			params->p.r = capture_generic (GP_CAPTURE_MOVIE, arg);
-			break;
-		case ARG_CAPTURE_PREVIEW:
-			params->p.r = action_camera_capture_preview (&gp_params);
-			break;
-		case ARG_CAPTURE_SOUND:
-			params->p.r = capture_generic (GP_CAPTURE_SOUND, arg);
-			break;
-		case ARG_CONFIG:
+	switch (opt->val) {
+	case ARG_ABILITIES:
+		params->p.r = action_camera_show_abilities (&gp_params);
+		break;
+	case ARG_ABOUT:
+		params->p.r = action_camera_about (&gp_params);
+		break;
+	case ARG_AUTO_DETECT:
+		params->p.r = auto_detect_action (&gp_params);
+		break;
+	case ARG_CAPTURE_IMAGE:
+		params->p.r = capture_generic (GP_CAPTURE_IMAGE, arg);
+		break;
+	case ARG_CAPTURE_MOVIE:
+		params->p.r = capture_generic (GP_CAPTURE_MOVIE, arg);
+		break;
+	case ARG_CAPTURE_PREVIEW:
+		params->p.r = action_camera_capture_preview (&gp_params);
+		break;
+	case ARG_CAPTURE_SOUND:
+		params->p.r = capture_generic (GP_CAPTURE_SOUND, arg);
+		break;
+	case ARG_CONFIG:
 #ifdef HAVE_CDK
-			params->p.r = gp_cmd_config (gp_params.camera, gp_params.context);
+		params->p.r = gp_cmd_config (gp_params.camera, gp_params.context);
 #else
-			gp_context_error (gp_params.context,
-					  _("gphoto2 has been compiled without "
-					    "support for CDK."));
-			params->p.r = GP_ERROR_NOT_SUPPORTED;
+		gp_context_error (gp_params.context,
+				  _("gphoto2 has been compiled without "
+				    "support for CDK."));
+		params->p.r = GP_ERROR_NOT_SUPPORTED;
 #endif
-			break;
-		case ARG_DELETE_ALL_FILES:
-			params->p.r = for_each_folder (&gp_params, delete_all_action);
-			break;
-		case ARG_DELETE_FILE:
-			gp_params.multi_type = MULTI_DELETE;
-			/* Did the user specify a file or a range? */
-			if (strchr (arg, '.')) {
-				params->p.r = delete_file_action (&gp_params, arg);
-				break;
-			}
-			params->p.r = for_each_file_in_range (&gp_params,
-							      delete_file_action, arg);
-			break;
-		case ARG_GET_ALL_AUDIO_DATA:
-			params->p.r = for_each_file (&gp_params, save_all_audio_action);
-			break;
-		case ARG_GET_ALL_FILES:
-			params->p.r = for_each_file (&gp_params, save_file_action);
-			break;
-		case ARG_GET_ALL_METADATA:
-			params->p.r = for_each_file (&gp_params, save_meta_action);
-			break;
-		case ARG_GET_ALL_RAW_DATA:
-			params->p.r = for_each_file (&gp_params, save_raw_action);
-			break;
-		case ARG_GET_ALL_THUMBNAILS:
-			params->p.r = for_each_file (&gp_params, save_thumbnail_action);
-			break;
-		case ARG_GET_AUDIO_DATA:
-			gp_params.multi_type = MULTI_DOWNLOAD;
-			params->p.r = get_file_common (arg, GP_FILE_TYPE_AUDIO);
-			break;
-		case ARG_GET_METADATA:
-			gp_params.multi_type = MULTI_DOWNLOAD;
-			params->p.r = get_file_common (arg, GP_FILE_TYPE_METADATA);
-			break;
-		case ARG_GET_FILE:
-			gp_params.multi_type = MULTI_DOWNLOAD;
-			params->p.r = get_file_common (arg, GP_FILE_TYPE_NORMAL);
-			break;
-		case ARG_GET_THUMBNAIL:
-			gp_params.multi_type = MULTI_DOWNLOAD;
-			params->p.r = get_file_common (arg, GP_FILE_TYPE_PREVIEW);
-			break;
-		case ARG_GET_RAW_DATA:
-			gp_params.multi_type = MULTI_DOWNLOAD;
-			params->p.r = get_file_common (arg, GP_FILE_TYPE_RAW);
-			break;
-		case ARG_LIST_CAMERAS:
-			params->p.r = list_cameras_action (&gp_params);
-			break;
-		case ARG_LIST_FILES:
-			params->p.r = for_each_folder (&gp_params, list_files_action);
-			break;
-		case ARG_LIST_FOLDERS:
-			params->p.r = for_each_folder (&gp_params, list_folders_action);
-			break;
-		case ARG_LIST_PORTS:
-			params->p.r = list_ports_action (&gp_params);
-			break;
-		case ARG_MANUAL:
-			params->p.r = action_camera_manual (&gp_params);
-			break;
-		case ARG_RMDIR:
-			params->p.r = gp_camera_folder_remove_dir (gp_params.camera,
-								   gp_params.folder, arg, gp_params.context);
-			break;
-		case ARG_NUM_FILES:
-			params->p.r = num_files_action (&gp_params);
-			break;
-		case ARG_MKDIR:
-			params->p.r = gp_camera_folder_make_dir (gp_params.camera,
-								 gp_params.folder, arg, gp_params.context);
-			break;
-		case ARG_SHELL:
-			params->p.r = shell_prompt (&gp_params);
-			break;
-		case ARG_SHOW_EXIF:
-			/* Did the user specify a file or a range? */
-			if (strchr (arg, '.')) { 
-				params->p.r = print_exif_action (&gp_params, arg); 
-				break; 
-			} 
-			params->p.r = for_each_file_in_range (&gp_params, 
-							      print_exif_action, arg); 
-			break;
-		case ARG_SHOW_INFO:
-
-			/* Did the user specify a file or a range? */
-			if (strchr (arg, '.')) {
-				params->p.r = print_info_action (&gp_params, arg);
-				break;
-			}
-			params->p.r = for_each_file_in_range (&gp_params,
-							      print_info_action, arg);
-			break;
-		case ARG_SUMMARY:
-			params->p.r = action_camera_summary (&gp_params);
-			break;
-		case ARG_UPLOAD_FILE:
-			gp_params.multi_type = MULTI_UPLOAD;
-			params->p.r = action_camera_upload_file (&gp_params, gp_params.folder, arg);
-			break;
-		case ARG_UPLOAD_METADATA:
-			gp_params.multi_type = MULTI_UPLOAD_META;
-			params->p.r = action_camera_upload_metadata (&gp_params, gp_params.folder, arg);
-			break;
-		case ARG_LIST_CONFIG:
-			params->p.r = list_config_action (&gp_params);
-			break;
-		case ARG_GET_CONFIG:
-			params->p.r = get_config_action (&gp_params, arg);
-			break;
-		case ARG_SET_CONFIG: {
-			char *name, *value;
-
-			if (strchr (arg, '=') == NULL) {
-				params->p.r = GP_ERROR_BAD_PARAMETERS;
-				break;
-			}
-			name  = strdup (arg);
-			value = strchr (name, '=');
-			*value = '\0';
-			value++;
-			params->p.r = set_config_action (&gp_params, name, value);
-			free (name);
+		break;
+	case ARG_DELETE_ALL_FILES:
+		params->p.r = for_each_folder (&gp_params, delete_all_action);
+		break;
+	case ARG_DELETE_FILE:
+		gp_params.multi_type = MULTI_DELETE;
+		/* Did the user specify a file or a range? */
+		if (strchr (arg, '.')) {
+			params->p.r = delete_file_action (&gp_params, arg);
 			break;
 		}
-		case ARG_WAIT_EVENT:
-			params->p.r = action_camera_wait_event (&gp_params);
+		params->p.r = for_each_file_in_range (&gp_params,
+						      delete_file_action, arg);
+		break;
+	case ARG_GET_ALL_AUDIO_DATA:
+		params->p.r = for_each_file (&gp_params, save_all_audio_action);
+		break;
+	case ARG_GET_ALL_FILES:
+		params->p.r = for_each_file (&gp_params, save_file_action);
+		break;
+	case ARG_GET_ALL_METADATA:
+		params->p.r = for_each_file (&gp_params, save_meta_action);
+		break;
+	case ARG_GET_ALL_RAW_DATA:
+		params->p.r = for_each_file (&gp_params, save_raw_action);
+		break;
+	case ARG_GET_ALL_THUMBNAILS:
+		params->p.r = for_each_file (&gp_params, save_thumbnail_action);
+		break;
+	case ARG_GET_AUDIO_DATA:
+		gp_params.multi_type = MULTI_DOWNLOAD;
+		params->p.r = get_file_common (arg, GP_FILE_TYPE_AUDIO);
+		break;
+	case ARG_GET_METADATA:
+		gp_params.multi_type = MULTI_DOWNLOAD;
+		params->p.r = get_file_common (arg, GP_FILE_TYPE_METADATA);
+		break;
+	case ARG_GET_FILE:
+		gp_params.multi_type = MULTI_DOWNLOAD;
+		params->p.r = get_file_common (arg, GP_FILE_TYPE_NORMAL);
+		break;
+	case ARG_GET_THUMBNAIL:
+		gp_params.multi_type = MULTI_DOWNLOAD;
+		params->p.r = get_file_common (arg, GP_FILE_TYPE_PREVIEW);
+		break;
+	case ARG_GET_RAW_DATA:
+		gp_params.multi_type = MULTI_DOWNLOAD;
+		params->p.r = get_file_common (arg, GP_FILE_TYPE_RAW);
+		break;
+	case ARG_LIST_CAMERAS:
+		params->p.r = list_cameras_action (&gp_params);
+		break;
+	case ARG_LIST_FILES:
+		params->p.r = for_each_folder (&gp_params, list_files_action);
+		break;
+	case ARG_LIST_FOLDERS:
+		params->p.r = for_each_folder (&gp_params, list_folders_action);
+		break;
+	case ARG_LIST_PORTS:
+		params->p.r = list_ports_action (&gp_params);
+		break;
+	case ARG_MANUAL:
+		params->p.r = action_camera_manual (&gp_params);
+		break;
+	case ARG_RMDIR:
+		params->p.r = gp_camera_folder_remove_dir (gp_params.camera,
+							   gp_params.folder, arg, gp_params.context);
+		break;
+	case ARG_NUM_FILES:
+		params->p.r = num_files_action (&gp_params);
+		break;
+	case ARG_MKDIR:
+		params->p.r = gp_camera_folder_make_dir (gp_params.camera,
+							 gp_params.folder, arg, gp_params.context);
+		break;
+	case ARG_SHELL:
+		params->p.r = shell_prompt (&gp_params);
+		break;
+	case ARG_SHOW_EXIF:
+		/* Did the user specify a file or a range? */
+		if (strchr (arg, '.')) { 
+			params->p.r = print_exif_action (&gp_params, arg); 
+			break; 
+		} 
+		params->p.r = for_each_file_in_range (&gp_params, 
+						      print_exif_action, arg); 
+		break;
+	case ARG_SHOW_INFO:
+
+		/* Did the user specify a file or a range? */
+		if (strchr (arg, '.')) {
+			params->p.r = print_info_action (&gp_params, arg);
 			break;
-		default:
+		}
+		params->p.r = for_each_file_in_range (&gp_params,
+						      print_info_action, arg);
+		break;
+	case ARG_SUMMARY:
+		params->p.r = action_camera_summary (&gp_params);
+		break;
+	case ARG_UPLOAD_FILE:
+		gp_params.multi_type = MULTI_UPLOAD;
+		params->p.r = action_camera_upload_file (&gp_params, gp_params.folder, arg);
+		break;
+	case ARG_UPLOAD_METADATA:
+		gp_params.multi_type = MULTI_UPLOAD_META;
+		params->p.r = action_camera_upload_metadata (&gp_params, gp_params.folder, arg);
+		break;
+	case ARG_LIST_CONFIG:
+		params->p.r = list_config_action (&gp_params);
+		break;
+	case ARG_GET_CONFIG:
+		params->p.r = get_config_action (&gp_params, arg);
+		break;
+	case ARG_SET_CONFIG: {
+		char *name, *value;
+
+		if (strchr (arg, '=') == NULL) {
+			params->p.r = GP_ERROR_BAD_PARAMETERS;
 			break;
-		};
+		}
+		name  = strdup (arg);
+		value = strchr (name, '=');
+		*value = '\0';
+		value++;
+		params->p.r = set_config_action (&gp_params, name, value);
+		free (name);
+		break;
+	}
+	case ARG_WAIT_EVENT:
+		params->p.r = action_camera_wait_event (&gp_params);
+		break;
+	default:
+		break;
+	};
 }
 
 
@@ -1356,6 +1377,8 @@ main (int argc, char **argv)
 		 N_("List supported camera models"), NULL},
 		{"list-ports", '\0', POPT_ARG_NONE, NULL, ARG_LIST_PORTS,
 		 N_("List supported port devices"), NULL},
+		{"abilities", 'a', POPT_ARG_NONE, NULL, ARG_ABILITIES,
+		 N_("Display camera/driver abilities"), NULL},
 		POPT_TABLEEND
 	};
 	const struct poptOption configOptions[] = {
@@ -1458,8 +1481,6 @@ main (int argc, char **argv)
 		 N_("Print filesize before data"), NULL},
 		{"auto-detect", '\0', POPT_ARG_NONE, NULL, ARG_AUTO_DETECT,
 		 N_("List auto-detected cameras"), NULL},
-		{"abilities", 'a', POPT_ARG_NONE, NULL, ARG_ABILITIES,
-		 N_("Display camera abilities"), NULL},
 
 #ifdef HAVE_LIBEXIF
 		{"show-exif", '\0', POPT_ARG_STRING, NULL, ARG_SHOW_EXIF,
