@@ -69,7 +69,8 @@ static int
 parse_range_rec (const char *range, unsigned int start, char *index,
 		 GPContext *context)
 {
-	int	i = 0, l = -1, r = -1, j;
+	int i = 0, l = -1, r = -1;
+	unsigned int j;
 	char buf[1024];
 
 	do {
@@ -180,6 +181,7 @@ parse_range_rec (const char *range, unsigned int start, char *index,
 				"Unexpected "
 				"character '%c'."), buf, range[start + i]);
 			return (GP_ERROR_BAD_PARAMETERS);
+			break;
 		}
 	} while ((range[start + i] != '\0') &&
 		 (range[start + i] != ','));
@@ -206,7 +208,7 @@ parse_range_rec (const char *range, unsigned int start, char *index,
 				return (GP_ERROR_BAD_PARAMETERS);
 			}
 
-			for (j = l; j <= r; j++)
+			for (j = l; j <= (unsigned long) r; j++)
 				index[j - 1] ^= 1; /* convert to 0-based numbering */
 		} else  /* update single byte */
 			index[l - 1] ^= 1; /* convert to 0-based numbering */
@@ -226,3 +228,11 @@ parse_range (const char *range, char *index, GPContext *context)
 {
 	return (parse_range_rec (range, 0, index, context));
 }
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

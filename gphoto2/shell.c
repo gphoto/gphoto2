@@ -148,10 +148,12 @@ struct _ShellFunctionTable {
 #define SHELL_PROMPT "gphoto2: {%s} %s> "
 int 	shell_done		= 0;
 
-static int
+static unsigned int
 shell_arg_count (const char *args)
 {
-	int x=0, in_arg=0, count=0;
+	size_t x=0;
+	int in_arg=0;
+	unsigned int count=0;
 	
 	while (x < strlen (args)) {
 		if ((!isspace((int)(args[x]))) && (!in_arg)) {
@@ -208,9 +210,11 @@ shell_read_line (void)
 }
 
 static int
-shell_arg (const char *args, int arg_num, char *arg)
+shell_arg (const char *args, unsigned int arg_num, char *arg)
 {
-	int x=0, y=0, in_arg=0, count=0, copy=0;
+	size_t x=0, y=0;
+	unsigned int count=0;
+	int in_arg=0, copy=0;
 
 	if (arg_num > shell_arg_count(args)-1)
 		return (GP_ERROR);
@@ -885,3 +889,11 @@ shell_help (Camera __unused__ *camera, const char *arg)
 
 	return (GP_OK);
 }
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */
