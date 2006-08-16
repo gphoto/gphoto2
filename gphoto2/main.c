@@ -1784,28 +1784,8 @@ main (int argc, char **argv)
 
 	CR_MAIN (cb_params.p.r);
 
-	/* FIXME: These two OS/2 env var checks should happen before
+	/* FIXME: Env var checks (e.g. for Windows, OS/2) should happen before
 	 *        we load the camlibs */
-
-#ifdef OS2 /*check if environment is set otherwise quit*/
-        if(CAMLIBS==NULL)
-        {
-printf(_("gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS \
-to the location of the camera libraries. \
-e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"));
-                exit(EXIT_FAILURE);
-        }
-#endif
-
-#ifdef OS2 /*check if environment is set otherwise quit*/
-        if(IOLIBS==NULL)
-        {
-printf(_("gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS \
-to the location of the io libraries. \
-e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"));
-                exit(EXIT_FAILURE);
-        }
-#endif
 
 	gp_params_exit (&gp_params);
 
