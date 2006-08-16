@@ -1526,7 +1526,9 @@ main (int argc, char **argv)
         bindtextdomain (PACKAGE, LOCALEDIR);
         textdomain (PACKAGE);
 
-	/* Create the global variables. */
+	/* Create/Initialize the global variables before we first use
+	 * them. And the signal handlers and popt callback functions
+	 * do use them. */
 	gp_params_init (&gp_params);
 
 	/* Figure out the width of the terminal and watch out for changes */
@@ -1630,7 +1632,8 @@ main (int argc, char **argv)
 
 		_get_portinfo_list(&gp_params);
 		CR_MAIN (gp_list_new (&list)); /* no freeing below */
-		CR_MAIN (gp_abilities_list_detect (gp_params.abilities_list, gp_params.portinfo_list,
+		CR_MAIN (gp_abilities_list_detect (gp_params_abilities_list(&gp_params), 
+						   gp_params.portinfo_list,
 						   list, gp_params.context));
 		CR_MAIN (count = gp_list_count (list));
                 if (count == 1) {
@@ -1641,8 +1644,12 @@ main (int argc, char **argv)
 				CameraAbilities alt;
 				int m;
 
-				CR_MAIN (m = gp_abilities_list_lookup_model (gp_params.abilities_list, model));
-				CR_MAIN (gp_abilities_list_get_abilities (gp_params.abilities_list, m, &alt));
+				CR_MAIN (m = gp_abilities_list_lookup_model (
+						 gp_params_abilities_list(&gp_params), 
+						 model));
+				CR_MAIN (gp_abilities_list_get_abilities (
+						 gp_params_abilities_list(&gp_params),
+						 m, &alt));
 
 				if ((a.port == GP_PORT_USB) && (alt.port == GP_PORT_USB)) {
 					if (	(a.usb_vendor  == alt.usb_vendor)  &&
@@ -1678,8 +1685,10 @@ main (int argc, char **argv)
 					int m;
 
 					gp_list_get_name (list, i, &xmodel);
-					CR_MAIN (m = gp_abilities_list_lookup_model (gp_params.abilities_list, xmodel));
-					CR_MAIN (gp_abilities_list_get_abilities (gp_params.abilities_list, m, &alt));
+					CR_MAIN (m = gp_abilities_list_lookup_model (
+							 gp_params_abilities_list(&gp_params), xmodel));
+					CR_MAIN (gp_abilities_list_get_abilities (
+							 gp_params_abilities_list(&gp_params), m, &alt));
 
 					if ((a.port == GP_PORT_USB) && (alt.port == GP_PORT_USB)) {
 						if (	(a.usb_vendor  == alt.usb_vendor)  &&

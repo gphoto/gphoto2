@@ -276,11 +276,24 @@ gp_params_init (GPParams *p)
 			ctx_progress_start_func, ctx_progress_update_func,
 			ctx_progress_stop_func, p);
 
-	gp_abilities_list_new (&p->abilities_list);
-	gp_abilities_list_load (p->abilities_list, p->context);
+	p->_abilities_list = NULL;
 
 	p->debug_func_id = -1;
 }
+
+
+CameraAbilitiesList *
+gp_params_abilities_list (GPParams *p)
+{
+	/* If p == NULL, the behaviour of this function is as undefined as
+	 * the expression p->abilities_list would have been. */
+	if (p->_abilities_list == NULL) {
+		gp_abilities_list_new (&p->_abilities_list);
+		gp_abilities_list_load (p->_abilities_list, p->context);
+	}
+	return p->_abilities_list;
+}
+
 
 void
 gp_params_exit (GPParams *p)
@@ -288,8 +301,8 @@ gp_params_exit (GPParams *p)
 	if (!p)
 		return;
 
-	if (p->abilities_list)
-		gp_abilities_list_free (p->abilities_list);
+	if (p->_abilities_list)
+		gp_abilities_list_free (p->_abilities_list);
 	if (p->camera)
 		gp_camera_unref (p->camera);
 	if (p->folder)

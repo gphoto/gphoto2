@@ -535,7 +535,7 @@ list_cameras_action (GPParams *p)
 	int r = GP_OK, n, i;
 	CameraAbilities a;
 
-	r = gp_abilities_list_count (p->abilities_list);
+	r = gp_abilities_list_count (gp_params_abilities_list(p));
 	if (r < 0)
 		return (r);
 	if (p->flags & FLAGS_QUIET)
@@ -546,7 +546,7 @@ list_cameras_action (GPParams *p)
 	}
 	n = r;
 	for (i = 0; i < n; i++) {
-		r = gp_abilities_list_get_abilities (p->abilities_list,
+		r = gp_abilities_list_get_abilities (gp_params_abilities_list(p),
 						     i, &a);
 		if (r < 0)
 			break;
@@ -634,7 +634,7 @@ auto_detect_action (GPParams *p)
 	count = gp_port_info_list_count (p->portinfo_list);
 
 	CR (gp_list_new (&list));
-        gp_abilities_list_detect (p->abilities_list, p->portinfo_list, list, p->context);
+        gp_abilities_list_detect (gp_params_abilities_list(p), p->portinfo_list, list, p->context);
 
         CL (count = gp_list_count (list), list);
 
@@ -841,8 +841,8 @@ action_camera_set_model (GPParams *p, const char *model)
 	CameraAbilities a;
 	int m;
 
-	CR (m = gp_abilities_list_lookup_model (p->abilities_list, model));
-	CR (gp_abilities_list_get_abilities (p->abilities_list, m, &a));
+	CR (m = gp_abilities_list_lookup_model (gp_params_abilities_list(p), model));
+	CR (gp_abilities_list_get_abilities (gp_params_abilities_list(p), m, &a));
 	CR (gp_camera_set_abilities (p->camera, a));
 	gp_setting_set ("gphoto2", "model", a.model);
 
@@ -986,9 +986,13 @@ override_usbids_action (GPParams *p, int usb_vendor, int usb_product,
 
 	CR (gp_abilities_list_new (&al));
 
-	n = gp_abilities_list_count (p->abilities_list);
+	/* The override_usbides_action() function is a notable
+	 * exception to the rule that one is not supposed to use
+	 * p->_abilities_list directly, because it has to and does so
+	 * in a safe way. */
+	n = gp_abilities_list_count (gp_params_abilities_list(p));
 	for (i = 0; i < n; i++) {
-		r = gp_abilities_list_get_abilities (p->abilities_list, i,
+		r = gp_abilities_list_get_abilities (gp_params_abilities_list(p), i,
 						     &a);
 		if (r < 0)
 			continue;
@@ -1004,8 +1008,9 @@ override_usbids_action (GPParams *p, int usb_vendor, int usb_product,
 		}
 		gp_abilities_list_append (al, a);
 	}
-	gp_abilities_list_free (p->abilities_list);
-	p->abilities_list = al;
+
+	gp_abilities_list_free (p->_abilities_list);
+	p->_abilities_list = al;
 
 	return (GP_OK);
 }
