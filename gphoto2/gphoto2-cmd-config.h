@@ -26,3 +26,11 @@
 int gp_cmd_config (Camera *camera, GPContext *context);
 
 #endif /* __GPHOTO2_CMD_CONFIG_H__ */
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

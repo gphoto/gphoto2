@@ -78,3 +78,11 @@ int set_config_action      (GPParams *, const char *name, const char *value);
 
 void _get_portinfo_list	(GPParams *p);
 #endif /* __ACTIONS_H__ */
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

@@ -1465,3 +1465,11 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 	gp_widget_free (rootconfig);
 	return (ret);
 }
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

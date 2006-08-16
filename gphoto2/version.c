@@ -110,3 +110,11 @@ const module_version module_versions[] = {
 	{ "libgphoto2_port", gp_port_library_version },
 	{ NULL, NULL }
 };
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

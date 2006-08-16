@@ -577,3 +577,11 @@ gp_cmd_config (Camera *camera, GPContext *context)
 
 	return (result);
 }
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

@@ -42,3 +42,11 @@
 #endif
 
 #endif /* __I18N_H__ */
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

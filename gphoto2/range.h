@@ -26,3 +26,11 @@
 int parse_range (const char *range, char *index, GPContext *context);
 
 #endif /* __RANGE_H__ */
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

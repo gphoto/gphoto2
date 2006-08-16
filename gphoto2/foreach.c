@@ -356,3 +356,11 @@ for_each_file_in_range (GPParams *p, FileAction action,
 		
 	return (GP_OK);
 }
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

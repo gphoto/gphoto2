@@ -29,3 +29,11 @@ int execute_options (int argc, char **argv);
 void usage (GPParams *params);
 
 #endif /* __OPTIONS_H__ */
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

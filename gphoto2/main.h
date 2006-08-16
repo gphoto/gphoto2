@@ -44,3 +44,11 @@ int	save_camera_file_to_file (const char *folder, CameraFile *file);
 int	capture_generic (CameraCaptureType type, const char *name);
 
 #endif /* __MAIN_H__ */
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

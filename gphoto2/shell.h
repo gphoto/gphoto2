@@ -26,3 +26,11 @@
 int shell_prompt (GPParams *params);
 
 #endif /* __SHELL_H__ */
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

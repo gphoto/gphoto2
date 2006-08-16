@@ -67,3 +67,11 @@ void gp_params_init (GPParams *params);
 void gp_params_exit (GPParams *params);
 
 #endif
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

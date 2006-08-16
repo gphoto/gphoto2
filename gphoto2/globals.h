@@ -18,3 +18,11 @@ extern int    glob_option_count;
 #endif
 
 #endif
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

@@ -27,3 +27,11 @@ int gp_cmd_capture_preview (Camera *camera, CameraFile *file,
 			    GPContext *context);
 
 #endif /* __GPHOTO2_CMD_CAPTURE_H__ */
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

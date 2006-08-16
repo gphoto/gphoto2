@@ -33,3 +33,11 @@ int for_each_file_in_range  (GPParams *, FileAction action,
 			     const char *range);
 
 #endif /* __FOREACH_H__ */
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

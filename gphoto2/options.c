@@ -214,3 +214,11 @@ usage (GPParams *params)
 	printf (_("--------------------------------------------------------------------------------\n"
 		  "[Use double-quotes around arguments]        [Picture numbers begin with one (1)]\n"));
 }
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */

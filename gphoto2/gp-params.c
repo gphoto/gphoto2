@@ -300,3 +300,11 @@ gp_params_exit (GPParams *p)
 		gp_context_unref (p->context);
 	memset (p, 0, sizeof (GPParams));
 }
+
+
+/*
+ * Local Variables:
+ * c-file-style:"linux"
+ * indent-tabs-mode:t
+ * End:
+ */
