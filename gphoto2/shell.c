@@ -520,7 +520,7 @@ shell_construct_path (const char *folder_orig, const char *rel_path,
                         rel_path += MIN (strlen (rel_path), 2);
 			continue;
 		}
-		if (!strncmp (rel_path, "../", 3)) {
+		if (!strncmp (rel_path, "../", 3) || !strcmp (rel_path, "..")) {
                         rel_path += MIN (3, strlen (rel_path));
 
                         /* Go up one folder */
@@ -782,9 +782,24 @@ shell_mkdir (Camera *camera, const char *args) {
 
 static int
 shell_rmdir (Camera *camera, const char *args) {
+	char *xarg;
+	int xlen, ret;
+
 	if (*args == ' ')
 		args++;
-	return gp_camera_folder_remove_dir (camera, p->folder, args, p->context);
+
+	/* remove trailing / */
+	xarg = strdup(args);
+	xlen = strlen(xarg);
+	while (xlen > 1) {
+		if (xarg[xlen-1] != '/')
+			break;
+		xarg[xlen-1] = '\0';
+		xlen--;
+	}
+	ret = gp_camera_folder_remove_dir (camera, p->folder, xarg, p->context);
+	free (xarg);
+	return ret;
 }
 
 static int
