@@ -1,7 +1,7 @@
 AC_PREREQ(2.59)
 dnl Next stable release must be 2.2.1 or later
 dnl Bump the .1.trunk to 2.trunk etc....
-AC_INIT([gphoto2], [2.2.0.2.trunk], [gphoto-devel@lists.sourceforge.net], [gphoto2])
+AC_INIT([gphoto2 command line interface], [2.2.0.3.trunk], [gphoto-devel@lists.sourceforge.net], [gphoto2])
 AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4m])
@@ -12,11 +12,11 @@ AC_MSG_ERROR([
 You are missing the m4m/ directory in your top
 $PACKAGE_TARNAME source directory.
 
-You are probably using an ill-maintained CVS tree.
+You are probably using an ill-maintained SVN tree.
 Running
 
     cd $srcdir
-    cvs co m4m
+    svn up
 
 and re-running autogen.sh might help.
 ])
