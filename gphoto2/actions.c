@@ -1084,6 +1084,25 @@ debug_action (GPParams *p, const char *debug_logfile_name)
 	  }
 	}
 
+	if (1) {
+		/* This is internal debug stuff for developers - no
+		 * need for translation IMHO */
+		const char *iolibs = getenv("IOLIBS");
+		const char *camlibs = getenv("CAMLIBS");
+		if (camlibs) {
+			gp_log (GP_LOG_DEBUG, "main", "CAMLIBS = '%s'", camlibs);
+		} else {
+			gp_log (GP_LOG_DEBUG, "main", 
+				"CAMLIBS env var not set, using compile-time default instead");
+		}
+		if (iolibs) {
+			gp_log (GP_LOG_DEBUG, "main", "IOLIBS = '%s'", iolibs);
+		} else {
+			gp_log (GP_LOG_DEBUG, "main", 
+				"IOLIBS env var not set, using compile-time default instead");
+		}
+	}
+
 	return (GP_OK);
 }
 
