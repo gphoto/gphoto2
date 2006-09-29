@@ -21,8 +21,8 @@
 #ifndef __ACTIONS_H__
 #define __ACTIONS_H__
 
-#include <gphoto2-camera.h>
-#include <gphoto2-context.h>
+#include <gphoto2/gphoto2-camera.h>
+#include <gphoto2/gphoto2-context.h>
 
 #include <gp-params.h>
 

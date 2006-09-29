@@ -29,7 +29,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <gphoto2-port-log.h>
+#include <gphoto2/gphoto2-port-log.h>
 
 #define GP_ERROR_FRONTEND_BAD_ID -10000
 #define CR(result) {int __r=(result); if(__r<0) return(__r);}

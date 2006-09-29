@@ -28,7 +28,7 @@
 
 #include <aalib.h>
 
-#include <gphoto2-port-log.h>
+#include <gphoto2/gphoto2-port-log.h>
 
 #ifdef HAVE_JPEG
 #include <jpeglib.h>

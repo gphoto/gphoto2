@@ -21,8 +21,8 @@
 #ifndef __FOREACH_H__
 #define __FOREACH_H__
 
-#include <gphoto2-camera.h>
-#include <gphoto2-list.h>
+#include <gphoto2/gphoto2-camera.h>
+#include <gphoto2/gphoto2-list.h>
 
 #include <actions.h>
 #include <gp-params.h>

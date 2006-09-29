@@ -21,8 +21,8 @@
 #ifndef __MAIN_H__
 #define __MAIN_H__
 
-#include <gphoto2-file.h>
-#include <gphoto2-camera.h>
+#include <gphoto2/gphoto2-file.h>
+#include <gphoto2/gphoto2-camera.h>
 #include <gp-params.h>
 
 #define MAX_IMAGE_NUMBER                16384

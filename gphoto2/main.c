@@ -20,9 +20,9 @@
 #include "config.h"
 #include "actions.h"
 #include "foreach.h"
-#include "gphoto2-port-info-list.h"
-#include "gphoto2-port-log.h"
-#include "gphoto2-setting.h"
+#include <gphoto2/gphoto2-port-info-list.h>
+#include <gphoto2/gphoto2-port-log.h>
+#include <gphoto2/gphoto2-setting.h>
 #include "gp-params.h"
 #include "i18n.h"
 #include "main.h"

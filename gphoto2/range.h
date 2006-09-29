@@ -21,7 +21,7 @@
 #ifndef __RANGE_H__
 #define __RANGE_H__
 
-#include <gphoto2-context.h>
+#include <gphoto2/gphoto2-context.h>
 
 int parse_range (const char *range, char *index, GPContext *context);
 

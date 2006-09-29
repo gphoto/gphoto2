@@ -25,7 +25,7 @@
 #include <time.h>
 #include <math.h>
 
-#include <gphoto2-widget.h>
+#include <gphoto2/gphoto2-widget.h>
 
 #include <cdk/cdk.h>
 
