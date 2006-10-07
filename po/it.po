@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.2.0\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2006-09-09 18:15+0200\n"
+"POT-Creation-Date: 2006-09-28 18:36+0200\n"
 "PO-Revision-Date: 2006-06-23 14:46+0100\n"
 "Last-Translator: Marco Colombo <m.colombo@ed.ac.uk>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -89,14 +89,14 @@ msgstr "  Scaricati:   %s\n"
 #: gphoto2/actions.c:268 gphoto2/actions.c:300 gphoto2/actions.c:312
 #: gphoto2/actions.c:662 gphoto2/actions.c:664 gphoto2/actions.c:692
 #: gphoto2/actions.c:695 gphoto2/actions.c:698 gphoto2/actions.c:701
-#: gphoto2/actions.c:704 gphoto2/actions.c:1385
+#: gphoto2/actions.c:704 gphoto2/actions.c:1404
 msgid "yes"
 msgstr "sì"
 
 #: gphoto2/actions.c:268 gphoto2/actions.c:300 gphoto2/actions.c:312
 #: gphoto2/actions.c:662 gphoto2/actions.c:664 gphoto2/actions.c:692
 #: gphoto2/actions.c:695 gphoto2/actions.c:698 gphoto2/actions.c:701
-#: gphoto2/actions.c:704 gphoto2/actions.c:1379
+#: gphoto2/actions.c:704 gphoto2/actions.c:1398
 msgid "no"
 msgstr "no"
 
@@ -413,116 +413,116 @@ msgstr ""
 msgid "%s has been compiled with the following options:"
 msgstr "%s è stato compilato con le seguente opzioni:"
 
-#: gphoto2/actions.c:1178
+#: gphoto2/actions.c:1197
 #, c-format
 msgid "%s not found in configuration tree."
 msgstr "%s non trovato nell'albero di configurazione."
 
 # FIXME
-#: gphoto2/actions.c:1237
+#: gphoto2/actions.c:1256
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr "Recupero del valore del widget di testo %s non riuscito."
 
 # FIXME
-#: gphoto2/actions.c:1254
+#: gphoto2/actions.c:1273
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr "Recupero dei valori del widget di intervallo %s non riuscito."
 
-#: gphoto2/actions.c:1266
+#: gphoto2/actions.c:1285
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr "Recupero dei valori del widget selettore %s non riuscito."
 
 # FIXME
-#: gphoto2/actions.c:1278
+#: gphoto2/actions.c:1297
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr "Recupero dei vaolri del widget di data/ora %s non riuscito."
 
 # FIXME
-#: gphoto2/actions.c:1308
+#: gphoto2/actions.c:1327
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr "Recupero dei valori del radio widget %s non riuscito."
 
 # FIXME
-#: gphoto2/actions.c:1349
+#: gphoto2/actions.c:1368
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr "Impostazione del valore del widget di testo %s a %s non riuscita."
 
-#: gphoto2/actions.c:1359
+#: gphoto2/actions.c:1378
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr "Il valore %s fornito non è un valore in virgola mobile."
 
-#: gphoto2/actions.c:1364
+#: gphoto2/actions.c:1383
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr "Il valore %f fornito non è nell'intervallo %f - %f."
 
 # FIXME
-#: gphoto2/actions.c:1370
+#: gphoto2/actions.c:1389
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr "Impostazione del valore del widget di intervallo %s a %f non riuscita."
 
 # FIXME: femminile?
-#: gphoto2/actions.c:1379
+#: gphoto2/actions.c:1398
 msgid "off"
 msgstr "spento"
 
-#: gphoto2/actions.c:1380
+#: gphoto2/actions.c:1399
 msgid "false"
 msgstr "falso"
 
 # FIXME: femminile?
-#: gphoto2/actions.c:1385
+#: gphoto2/actions.c:1404
 msgid "on"
 msgstr "acceso"
 
-#: gphoto2/actions.c:1386
+#: gphoto2/actions.c:1405
 msgid "true"
 msgstr "vero"
 
 # FIXME
-#: gphoto2/actions.c:1390
+#: gphoto2/actions.c:1409
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
 msgstr "Il valore %s fornito non è un valore valido per il selettore."
 
-#: gphoto2/actions.c:1396
+#: gphoto2/actions.c:1415
 #, c-format
 msgid "Failed to set values %s of toggle widget %s."
 msgstr "Impostazione dei valori %s del widget selettore %s non riuscita."
 
-#: gphoto2/actions.c:1409
+#: gphoto2/actions.c:1428
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr "Il valore %s fornito non è né un orario valido né un intero."
 
 # FIXME
-#: gphoto2/actions.c:1416
+#: gphoto2/actions.c:1435
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr ""
 "Impostazione del nuovo orario del widget di data/ora %s a %s non riuscita."
 
 # FIXME
-#: gphoto2/actions.c:1453
+#: gphoto2/actions.c:1472
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr "La scelta %s non si trova nell'elenco delle scelte possibili."
 
 # FIXME
-#: gphoto2/actions.c:1461
+#: gphoto2/actions.c:1480
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr "Il widget %s non è configurabile."
 
-#: gphoto2/actions.c:1468
+#: gphoto2/actions.c:1487
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr ""
@@ -1072,11 +1072,11 @@ msgstr "Stampa la dimensione dei file prima dei dati"
 msgid "List auto-detected cameras"
 msgstr "Elenca le fotocamere riconosciute automaticamente"
 
-#: gphoto2/main.c:1487 gphoto2/shell.c:130
+#: gphoto2/main.c:1487 gphoto2/shell.c:132
 msgid "Show EXIF information"
 msgstr "Mostra le informazioni EXIF"
 
-#: gphoto2/main.c:1490 gphoto2/shell.c:125
+#: gphoto2/main.c:1490 gphoto2/shell.c:126
 msgid "Show info"
 msgstr "Mostra informazioni"
 
@@ -1219,166 +1219,172 @@ msgstr ""
 msgid "*** Error (%i: '%s') ***"
 msgstr "*** Errore (%i: \"%s\") ***"
 
-#: gphoto2/shell.c:114
+#: gphoto2/shell.c:115
 msgid "Change to a directory on the camera"
 msgstr "Cambia directory sulla fotocamera"
 
-#: gphoto2/shell.c:115 gphoto2/shell.c:117 gphoto2/shell.c:128
+#: gphoto2/shell.c:116 gphoto2/shell.c:118 gphoto2/shell.c:129
+#: gphoto2/shell.c:130
 msgid "directory"
 msgstr "directory"
 
-#: gphoto2/shell.c:116
+#: gphoto2/shell.c:117
 msgid "Change to a directory on the local drive"
 msgstr "Cambia directory sul disco locale"
 
-#: gphoto2/shell.c:118 gphoto2/shell.c:141 gphoto2/shell.c:142
+#: gphoto2/shell.c:119 gphoto2/shell.c:143 gphoto2/shell.c:144
 msgid "Exit the gPhoto shell"
 msgstr "Esce dalla shell di gPhoto"
 
-#: gphoto2/shell.c:119
+#: gphoto2/shell.c:120
 msgid "Download a file"
 msgstr "Scarica un file"
 
-#: gphoto2/shell.c:119 gphoto2/shell.c:120 gphoto2/shell.c:122
-#: gphoto2/shell.c:124 gphoto2/shell.c:126 gphoto2/shell.c:127
-#: gphoto2/shell.c:131
+#: gphoto2/shell.c:120 gphoto2/shell.c:121 gphoto2/shell.c:123
+#: gphoto2/shell.c:125 gphoto2/shell.c:127 gphoto2/shell.c:128
+#: gphoto2/shell.c:133
 msgid "[directory/]filename"
 msgstr "[directory/]nomefile"
 
-#: gphoto2/shell.c:120
+#: gphoto2/shell.c:121
 msgid "Upload a file"
 msgstr "Carica un file"
 
-#: gphoto2/shell.c:121
+#: gphoto2/shell.c:122
 msgid "Download a thumbnail"
 msgstr "Scarica una miniatura"
 
-#: gphoto2/shell.c:123
+#: gphoto2/shell.c:124
 msgid "Download raw data"
 msgstr "Scarica i dati grezzi"
 
-#: gphoto2/shell.c:127
+#: gphoto2/shell.c:128
 msgid "Delete"
 msgstr "Elimina"
 
-#: gphoto2/shell.c:128
+#: gphoto2/shell.c:129
 msgid "Create Directory"
 msgstr "Crea directory"
 
-#: gphoto2/shell.c:133 gphoto2/shell.c:143
+#: gphoto2/shell.c:130
+#, fuzzy
+msgid "Remove Directory"
+msgstr "Rimuove una directory"
+
+#: gphoto2/shell.c:135 gphoto2/shell.c:145
 msgid "Displays command usage"
 msgstr "Mostra un aiuto sui comandi"
 
-#: gphoto2/shell.c:134 gphoto2/shell.c:143
+#: gphoto2/shell.c:136 gphoto2/shell.c:145
 msgid "[command]"
 msgstr "[comando]"
 
-#: gphoto2/shell.c:135
+#: gphoto2/shell.c:137
 msgid "List the contents of the current directory"
 msgstr "Elenca i contenuti della directory corrente"
 
-#: gphoto2/shell.c:136
+#: gphoto2/shell.c:138
 msgid "[directory/]"
 msgstr "[directory/]"
 
-#: gphoto2/shell.c:137
+#: gphoto2/shell.c:139
 msgid "List configuration variables"
 msgstr "Elenca le variabili di configurazione"
 
-#: gphoto2/shell.c:138
+#: gphoto2/shell.c:140
 msgid "Get configuration variable"
 msgstr "Ottiene una variabile di configurazione"
 
-#: gphoto2/shell.c:138
+#: gphoto2/shell.c:140
 msgid "name"
 msgstr "nome"
 
-#: gphoto2/shell.c:139
+#: gphoto2/shell.c:141
 msgid "Set configuration variable"
 msgstr "Imposta una variabile di configurazione"
 
-#: gphoto2/shell.c:139
+#: gphoto2/shell.c:141
 msgid "name=value"
 msgstr "nome=valore"
 
-#: gphoto2/shell.c:140
+#: gphoto2/shell.c:142
 msgid "Capture a single image"
 msgstr "Cattura un'immagine singola"
 
-#: gphoto2/shell.c:140
+#: gphoto2/shell.c:142
 msgid "[name]"
 msgstr "[nome]"
 
-#: gphoto2/shell.c:465
+#: gphoto2/shell.c:467
 msgid "Invalid command."
 msgstr "Comando non valido."
 
-#: gphoto2/shell.c:474
+#: gphoto2/shell.c:476
 #, c-format
 msgid "The command '%s' requires an argument."
 msgstr "Il comando \"%s\" richiede un argomento."
 
-#: gphoto2/shell.c:527
+#: gphoto2/shell.c:529
 msgid "Invalid path."
 msgstr "Percorso non valido."
 
-#: gphoto2/shell.c:573
+#: gphoto2/shell.c:575
 msgid "Could not find home directory."
 msgstr "Impossibile trovare la directory home."
 
-#: gphoto2/shell.c:581
+#: gphoto2/shell.c:583
 #, c-format
 msgid "Could not change to local directory '%s'."
 msgstr "Impossibile entrare nella directory locale \"%s\"."
 
-#: gphoto2/shell.c:584
+#: gphoto2/shell.c:586
 #, c-format
 msgid "Local directory now '%s'."
 msgstr "La directory locale è ora \"%s\"."
 
-#: gphoto2/shell.c:622
+#: gphoto2/shell.c:624
 #, c-format
 msgid "Remote directory now '%s'."
 msgstr "La directory remota è ora \"%s\"."
 
-#: gphoto2/shell.c:816
+#: gphoto2/shell.c:840
 #, c-format
 msgid "set-config needs a second argument.\n"
 msgstr "set-config richiede un secondo argomento.\n"
 
-#: gphoto2/shell.c:846
+#: gphoto2/shell.c:870
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
 msgstr ""
 "Comando \"%s\" non trovato. Usare \"help\" per l'elenco dei comandi "
 "disponibili."
 
-#: gphoto2/shell.c:853
+#: gphoto2/shell.c:877
 #, c-format
 msgid "Help on \"%s\":"
 msgstr "Aiuto su \"%s\":"
 
-#: gphoto2/shell.c:855
+#: gphoto2/shell.c:879
 #, c-format
 msgid "Usage:"
 msgstr "Uso:"
 
-#: gphoto2/shell.c:858
+#: gphoto2/shell.c:882
 #, c-format
 msgid "Description:"
 msgstr "Descrizione:"
 
-#: gphoto2/shell.c:860
+#: gphoto2/shell.c:884
 #, c-format
 msgid "* Arguments in brackets [] are optional"
 msgstr "* Gli argomenti tra parentesi quadre [] sono opzionali"
 
-#: gphoto2/shell.c:881
+#: gphoto2/shell.c:905
 #, c-format
 msgid "Available commands:"
 msgstr "Comandi disponibili:"
 
-#: gphoto2/shell.c:886
+#: gphoto2/shell.c:910
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
 msgstr ""

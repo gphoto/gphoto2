@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.2\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2006-09-09 18:15+0200\n"
+"POT-Creation-Date: 2006-09-28 18:36+0200\n"
 "PO-Revision-Date: 2004-07-09 23:27+0200\n"
 "Last-Translator: Matti Pöllä <mpo@iki.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -87,14 +87,14 @@ msgstr "  Ladattu:  %s\n"
 #: gphoto2/actions.c:268 gphoto2/actions.c:300 gphoto2/actions.c:312
 #: gphoto2/actions.c:662 gphoto2/actions.c:664 gphoto2/actions.c:692
 #: gphoto2/actions.c:695 gphoto2/actions.c:698 gphoto2/actions.c:701
-#: gphoto2/actions.c:704 gphoto2/actions.c:1385
+#: gphoto2/actions.c:704 gphoto2/actions.c:1404
 msgid "yes"
 msgstr "kyllä"
 
 #: gphoto2/actions.c:268 gphoto2/actions.c:300 gphoto2/actions.c:312
 #: gphoto2/actions.c:662 gphoto2/actions.c:664 gphoto2/actions.c:692
 #: gphoto2/actions.c:695 gphoto2/actions.c:698 gphoto2/actions.c:701
-#: gphoto2/actions.c:704 gphoto2/actions.c:1379
+#: gphoto2/actions.c:704 gphoto2/actions.c:1398
 msgid "no"
 msgstr "ei"
 
@@ -408,105 +408,105 @@ msgstr ""
 msgid "%s has been compiled with the following options:"
 msgstr ""
 
-#: gphoto2/actions.c:1178
+#: gphoto2/actions.c:1197
 #, fuzzy, c-format
 msgid "%s not found in configuration tree."
 msgstr "Asetusten päivitys epäonistui:"
 
-#: gphoto2/actions.c:1237
+#: gphoto2/actions.c:1256
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1254
+#: gphoto2/actions.c:1273
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1266
+#: gphoto2/actions.c:1285
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1278
+#: gphoto2/actions.c:1297
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1308
+#: gphoto2/actions.c:1327
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr ""
 
-#: gphoto2/actions.c:1349
+#: gphoto2/actions.c:1368
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr ""
 
-#: gphoto2/actions.c:1359
+#: gphoto2/actions.c:1378
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr ""
 
-#: gphoto2/actions.c:1364
+#: gphoto2/actions.c:1383
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr ""
 
-#: gphoto2/actions.c:1370
+#: gphoto2/actions.c:1389
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr ""
 
-#: gphoto2/actions.c:1379
+#: gphoto2/actions.c:1398
 msgid "off"
 msgstr ""
 
-#: gphoto2/actions.c:1380
+#: gphoto2/actions.c:1399
 #, fuzzy
 msgid "false"
 msgstr "Arvo"
 
-#: gphoto2/actions.c:1385
+#: gphoto2/actions.c:1404
 #, fuzzy
 msgid "on"
 msgstr "ma"
 
-#: gphoto2/actions.c:1386
+#: gphoto2/actions.c:1405
 msgid "true"
-msgstr ""
-
-#: gphoto2/actions.c:1390
-#, c-format
-msgid "The passed value %s is not a valid toggle value."
-msgstr ""
-
-#: gphoto2/actions.c:1396
-#, c-format
-msgid "Failed to set values %s of toggle widget %s."
 msgstr ""
 
 #: gphoto2/actions.c:1409
 #, c-format
+msgid "The passed value %s is not a valid toggle value."
+msgstr ""
+
+#: gphoto2/actions.c:1415
+#, c-format
+msgid "Failed to set values %s of toggle widget %s."
+msgstr ""
+
+#: gphoto2/actions.c:1428
+#, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr ""
 
-#: gphoto2/actions.c:1416
+#: gphoto2/actions.c:1435
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr ""
 
-#: gphoto2/actions.c:1453
+#: gphoto2/actions.c:1472
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr ""
 
-#: gphoto2/actions.c:1461
+#: gphoto2/actions.c:1480
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr ""
 
-#: gphoto2/actions.c:1468
+#: gphoto2/actions.c:1487
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr ""
@@ -1056,11 +1056,11 @@ msgstr "Tulosta tiedoston koko ennen dataa"
 msgid "List auto-detected cameras"
 msgstr "Listaa automaattisesti tunnistetut kamerat"
 
-#: gphoto2/main.c:1487 gphoto2/shell.c:130
+#: gphoto2/main.c:1487 gphoto2/shell.c:132
 msgid "Show EXIF information"
 msgstr "Näytä EXIF-tiedot"
 
-#: gphoto2/main.c:1490 gphoto2/shell.c:125
+#: gphoto2/main.c:1490 gphoto2/shell.c:126
 msgid "Show info"
 msgstr "Näytä tiedot"
 
@@ -1201,141 +1201,147 @@ msgstr ""
 msgid "*** Error (%i: '%s') ***"
 msgstr "*** Virhe (%i: \"%s\") ***"
 
-#: gphoto2/shell.c:114
+#: gphoto2/shell.c:115
 msgid "Change to a directory on the camera"
 msgstr "Siirry kameran kansioon"
 
-#: gphoto2/shell.c:115 gphoto2/shell.c:117 gphoto2/shell.c:128
+#: gphoto2/shell.c:116 gphoto2/shell.c:118 gphoto2/shell.c:129
+#: gphoto2/shell.c:130
 msgid "directory"
 msgstr "kansio"
 
-#: gphoto2/shell.c:116
+#: gphoto2/shell.c:117
 msgid "Change to a directory on the local drive"
 msgstr "Siirry paikallisen aseman kansioon"
 
-#: gphoto2/shell.c:118 gphoto2/shell.c:141 gphoto2/shell.c:142
+#: gphoto2/shell.c:119 gphoto2/shell.c:143 gphoto2/shell.c:144
 msgid "Exit the gPhoto shell"
 msgstr "Poistu gPhoto-komentotulkista"
 
-#: gphoto2/shell.c:119
+#: gphoto2/shell.c:120
 msgid "Download a file"
 msgstr "Lataa tiedosto"
 
-#: gphoto2/shell.c:119 gphoto2/shell.c:120 gphoto2/shell.c:122
-#: gphoto2/shell.c:124 gphoto2/shell.c:126 gphoto2/shell.c:127
-#: gphoto2/shell.c:131
+#: gphoto2/shell.c:120 gphoto2/shell.c:121 gphoto2/shell.c:123
+#: gphoto2/shell.c:125 gphoto2/shell.c:127 gphoto2/shell.c:128
+#: gphoto2/shell.c:133
 msgid "[directory/]filename"
 msgstr "[kansio/]tiedostonimi"
 
-#: gphoto2/shell.c:120
+#: gphoto2/shell.c:121
 #, fuzzy
 msgid "Upload a file"
 msgstr "Lataa tiedosto"
 
-#: gphoto2/shell.c:121
+#: gphoto2/shell.c:122
 msgid "Download a thumbnail"
 msgstr "Lataa pienoiskuva"
 
-#: gphoto2/shell.c:123
+#: gphoto2/shell.c:124
 msgid "Download raw data"
 msgstr "Lataa raakadata"
 
-#: gphoto2/shell.c:127
+#: gphoto2/shell.c:128
 msgid "Delete"
 msgstr "Poista"
 
-#: gphoto2/shell.c:128
+#: gphoto2/shell.c:129
 #, fuzzy
 msgid "Create Directory"
 msgstr "Luo kansio"
 
-#: gphoto2/shell.c:133 gphoto2/shell.c:143
+#: gphoto2/shell.c:130
+#, fuzzy
+msgid "Remove Directory"
+msgstr "Poista kansio"
+
+#: gphoto2/shell.c:135 gphoto2/shell.c:145
 msgid "Displays command usage"
 msgstr "Näytä komennon käyttöohjeet"
 
-#: gphoto2/shell.c:134 gphoto2/shell.c:143
+#: gphoto2/shell.c:136 gphoto2/shell.c:145
 msgid "[command]"
 msgstr "[komento]"
 
-#: gphoto2/shell.c:135
+#: gphoto2/shell.c:137
 msgid "List the contents of the current directory"
 msgstr "Listaa nykyisen kansion sisältö"
 
-#: gphoto2/shell.c:136
+#: gphoto2/shell.c:138
 msgid "[directory/]"
 msgstr "[kansio/]"
 
-#: gphoto2/shell.c:137
+#: gphoto2/shell.c:139
 #, fuzzy
 msgid "List configuration variables"
 msgstr "Asetusten päivitys epäonistui:"
 
-#: gphoto2/shell.c:138
+#: gphoto2/shell.c:140
 #, fuzzy
 msgid "Get configuration variable"
 msgstr "Asetusten päivitys epäonistui:"
 
-#: gphoto2/shell.c:138
+#: gphoto2/shell.c:140
 msgid "name"
 msgstr "nimi"
 
-#: gphoto2/shell.c:139
+#: gphoto2/shell.c:141
 #, fuzzy
 msgid "Set configuration variable"
 msgstr "Asetusten päivitys epäonistui:"
 
-#: gphoto2/shell.c:139
+#: gphoto2/shell.c:141
 msgid "name=value"
 msgstr ""
 
-#: gphoto2/shell.c:140
+#: gphoto2/shell.c:142
 #, fuzzy
 msgid "Capture a single image"
 msgstr "Kaappaa kuva"
 
-#: gphoto2/shell.c:140
+#: gphoto2/shell.c:142
 #, fuzzy
 msgid "[name]"
 msgstr "nimi"
 
-#: gphoto2/shell.c:465
+#: gphoto2/shell.c:467
 msgid "Invalid command."
 msgstr "Virheellinen komento."
 
-#: gphoto2/shell.c:474
+#: gphoto2/shell.c:476
 #, c-format
 msgid "The command '%s' requires an argument."
 msgstr "Komento \"%s\" vaatii argumentin."
 
-#: gphoto2/shell.c:527
+#: gphoto2/shell.c:529
 msgid "Invalid path."
 msgstr "Virheellinen polku."
 
-#: gphoto2/shell.c:573
+#: gphoto2/shell.c:575
 msgid "Could not find home directory."
 msgstr "Kotikansiota ei löytynyt."
 
-#: gphoto2/shell.c:581
+#: gphoto2/shell.c:583
 #, c-format
 msgid "Could not change to local directory '%s'."
 msgstr "Paikalliseen kansioon \"%s\" siirtyminen ei onnistunut."
 
-#: gphoto2/shell.c:584
+#: gphoto2/shell.c:586
 #, c-format
 msgid "Local directory now '%s'."
 msgstr "Paikallinen kansio on nyt \"%s\"."
 
-#: gphoto2/shell.c:622
+#: gphoto2/shell.c:624
 #, c-format
 msgid "Remote directory now '%s'."
 msgstr "Etäkansio on nyt \"%s\"."
 
-#: gphoto2/shell.c:816
+#: gphoto2/shell.c:840
 #, c-format
 msgid "set-config needs a second argument.\n"
 msgstr ""
 
-#: gphoto2/shell.c:846
+#: gphoto2/shell.c:870
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
 msgstr ""
@@ -1343,32 +1349,32 @@ msgstr ""
 "olevista\n"
 "komennoista."
 
-#: gphoto2/shell.c:853
+#: gphoto2/shell.c:877
 #, c-format
 msgid "Help on \"%s\":"
 msgstr "Ohjeita aiheesta \"%s\":"
 
-#: gphoto2/shell.c:855
+#: gphoto2/shell.c:879
 #, c-format
 msgid "Usage:"
 msgstr "Käyttö:"
 
-#: gphoto2/shell.c:858
+#: gphoto2/shell.c:882
 #, c-format
 msgid "Description:"
 msgstr "Kuvaus:"
 
-#: gphoto2/shell.c:860
+#: gphoto2/shell.c:884
 #, c-format
 msgid "* Arguments in brackets [] are optional"
 msgstr "* Argumentit hakasuluissa [] ovat valinnaisia"
 
-#: gphoto2/shell.c:881
+#: gphoto2/shell.c:905
 #, c-format
 msgid "Available commands:"
 msgstr "Käytössä olevat komennot:"
 
-#: gphoto2/shell.c:886
+#: gphoto2/shell.c:910
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
 msgstr ""

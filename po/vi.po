@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.2.0\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2006-09-09 18:15+0200\n"
+"POT-Creation-Date: 2006-09-28 18:36+0200\n"
 "PO-Revision-Date: 2006-06-23 16:19+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -85,14 +85,14 @@ msgstr "  Đã tải về:  %s\n"
 #: gphoto2/actions.c:268 gphoto2/actions.c:300 gphoto2/actions.c:312
 #: gphoto2/actions.c:662 gphoto2/actions.c:664 gphoto2/actions.c:692
 #: gphoto2/actions.c:695 gphoto2/actions.c:698 gphoto2/actions.c:701
-#: gphoto2/actions.c:704 gphoto2/actions.c:1385
+#: gphoto2/actions.c:704 gphoto2/actions.c:1404
 msgid "yes"
 msgstr "có"
 
 #: gphoto2/actions.c:268 gphoto2/actions.c:300 gphoto2/actions.c:312
 #: gphoto2/actions.c:662 gphoto2/actions.c:664 gphoto2/actions.c:692
 #: gphoto2/actions.c:695 gphoto2/actions.c:698 gphoto2/actions.c:701
-#: gphoto2/actions.c:704 gphoto2/actions.c:1379
+#: gphoto2/actions.c:704 gphoto2/actions.c:1398
 msgid "no"
 msgstr "không"
 
@@ -408,104 +408,104 @@ msgstr ""
 msgid "%s has been compiled with the following options:"
 msgstr "%s đã được biên dịch với những tùy chọn theo đây:"
 
-#: gphoto2/actions.c:1178
+#: gphoto2/actions.c:1197
 #, c-format
 msgid "%s not found in configuration tree."
 msgstr "Không tìm thấy %s trong cây cấu hình."
 
-#: gphoto2/actions.c:1237
+#: gphoto2/actions.c:1256
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr "Việc lấy giá trị của ô điều khiển chữ %s bị lỗi."
 
-#: gphoto2/actions.c:1254
+#: gphoto2/actions.c:1273
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr "Việc lấy giá trị của ô điều khiển phạm vị %s bị lỗi"
 
-#: gphoto2/actions.c:1266
+#: gphoto2/actions.c:1285
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr "Việc lấy giá trị của ô điều khiển bật/tắt %s bị lỗi"
 
-#: gphoto2/actions.c:1278
+#: gphoto2/actions.c:1297
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr "Việc lấy giá trị của ô điều khiển ngày/giờ %s bị lỗi"
 
-#: gphoto2/actions.c:1308
+#: gphoto2/actions.c:1327
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr "Việc lấy giá trị của ô điều khiển chọn một %s bị lỗi"
 
-#: gphoto2/actions.c:1349
+#: gphoto2/actions.c:1368
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr "Việc đặt giá trị của ô điều khiển chữ %s thành %s bị lỗi."
 
-#: gphoto2/actions.c:1359
+#: gphoto2/actions.c:1378
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr "Giá trị %s được gởi qua không phải là giá trị với điểm phù động."
 
-#: gphoto2/actions.c:1364
+#: gphoto2/actions.c:1383
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr "Giá trị %f được gởi qua không phải nằm ở trong phạm vị đã ngờ %f - %f."
 
-#: gphoto2/actions.c:1370
+#: gphoto2/actions.c:1389
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr "Việc đặt giá trị của ô điều khiển phạm vị %s thành %f bị lỗi."
 
-#: gphoto2/actions.c:1379
+#: gphoto2/actions.c:1398
 msgid "off"
 msgstr "tắt"
 
-#: gphoto2/actions.c:1380
+#: gphoto2/actions.c:1399
 msgid "false"
 msgstr "sai"
 
-#: gphoto2/actions.c:1385
+#: gphoto2/actions.c:1404
 msgid "on"
 msgstr "bật"
 
-#: gphoto2/actions.c:1386
+#: gphoto2/actions.c:1405
 msgid "true"
 msgstr "đúng"
 
-#: gphoto2/actions.c:1390
+#: gphoto2/actions.c:1409
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
 msgstr "Giá trị đã gởi qua %s không phải là giá trị bật/tắt hợp lệ."
 
-#: gphoto2/actions.c:1396
+#: gphoto2/actions.c:1415
 #, c-format
 msgid "Failed to set values %s of toggle widget %s."
 msgstr "Việc đặt giá trị %s của ô điều khiển bật/tắt %s bị lỗi."
 
-#: gphoto2/actions.c:1409
+#: gphoto2/actions.c:1428
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr ""
 "Giá trị đã gởi qua %s không phải là giờ hợp lệ, cũng không phải là số nguyên."
 
-#: gphoto2/actions.c:1416
+#: gphoto2/actions.c:1435
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr "Việc đặt giờ mới của ô điều khiển ngày/giờ %s thành %s bị lỗi."
 
-#: gphoto2/actions.c:1453
+#: gphoto2/actions.c:1472
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr "Không tìm thấy tùy chọn %s trong danh sách các tùy chọn."
 
-#: gphoto2/actions.c:1461
+#: gphoto2/actions.c:1480
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr "Không thể cấu hình ô điều khiển %s."
 
-#: gphoto2/actions.c:1468
+#: gphoto2/actions.c:1487
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr "Việc đặt giá trị cấu hình mới %s cho mục nhập cấu hình %s bị lỗi."
@@ -1042,11 +1042,11 @@ msgstr "In kích cỡ tập tin nằm trước dữ liệu"
 msgid "List auto-detected cameras"
 msgstr "Liệt kê các máy ảnh được phát hiện tự động"
 
-#: gphoto2/main.c:1487 gphoto2/shell.c:130
+#: gphoto2/main.c:1487 gphoto2/shell.c:132
 msgid "Show EXIF information"
 msgstr "Hiện thông tin EXIF"
 
-#: gphoto2/main.c:1490 gphoto2/shell.c:125
+#: gphoto2/main.c:1490 gphoto2/shell.c:126
 msgid "Show info"
 msgstr "Hiện thông tin"
 
@@ -1186,166 +1186,172 @@ msgstr ""
 msgid "*** Error (%i: '%s') ***"
 msgstr "••• Lỗi (%i: « %s ») •••"
 
-#: gphoto2/shell.c:114
+#: gphoto2/shell.c:115
 msgid "Change to a directory on the camera"
 msgstr "Chuyển đổi sang một thư mục nằm trên máy ảnh"
 
-#: gphoto2/shell.c:115 gphoto2/shell.c:117 gphoto2/shell.c:128
+#: gphoto2/shell.c:116 gphoto2/shell.c:118 gphoto2/shell.c:129
+#: gphoto2/shell.c:130
 msgid "directory"
 msgstr "thư mục"
 
-#: gphoto2/shell.c:116
+#: gphoto2/shell.c:117
 msgid "Change to a directory on the local drive"
 msgstr "Chuyển đổi sang một thư mục nằm trên đĩa cục bộ"
 
-#: gphoto2/shell.c:118 gphoto2/shell.c:141 gphoto2/shell.c:142
+#: gphoto2/shell.c:119 gphoto2/shell.c:143 gphoto2/shell.c:144
 msgid "Exit the gPhoto shell"
 msgstr "Thoát khởi trình bao gPhoto"
 
-#: gphoto2/shell.c:119
+#: gphoto2/shell.c:120
 msgid "Download a file"
 msgstr "Tải về một tập tin"
 
-#: gphoto2/shell.c:119 gphoto2/shell.c:120 gphoto2/shell.c:122
-#: gphoto2/shell.c:124 gphoto2/shell.c:126 gphoto2/shell.c:127
-#: gphoto2/shell.c:131
+#: gphoto2/shell.c:120 gphoto2/shell.c:121 gphoto2/shell.c:123
+#: gphoto2/shell.c:125 gphoto2/shell.c:127 gphoto2/shell.c:128
+#: gphoto2/shell.c:133
 msgid "[directory/]filename"
 msgstr "[thư_mục/]tên_tập_tin"
 
-#: gphoto2/shell.c:120
+#: gphoto2/shell.c:121
 msgid "Upload a file"
 msgstr "Tải lên một tập tin"
 
-#: gphoto2/shell.c:121
+#: gphoto2/shell.c:122
 msgid "Download a thumbnail"
 msgstr "Tải về một hình thu nhỏ"
 
-#: gphoto2/shell.c:123
+#: gphoto2/shell.c:124
 msgid "Download raw data"
 msgstr "Tải về dữ liệu thô"
 
-#: gphoto2/shell.c:127
+#: gphoto2/shell.c:128
 msgid "Delete"
 msgstr "Xóa bỏ"
 
-#: gphoto2/shell.c:128
+#: gphoto2/shell.c:129
 msgid "Create Directory"
 msgstr "Tạo thư mục"
 
-#: gphoto2/shell.c:133 gphoto2/shell.c:143
+#: gphoto2/shell.c:130
+#, fuzzy
+msgid "Remove Directory"
+msgstr "Gỡ bỏ thư mục"
+
+#: gphoto2/shell.c:135 gphoto2/shell.c:145
 msgid "Displays command usage"
 msgstr "Hiển thị cách sử dụng lệnh"
 
-#: gphoto2/shell.c:134 gphoto2/shell.c:143
+#: gphoto2/shell.c:136 gphoto2/shell.c:145
 msgid "[command]"
 msgstr "[lệnh]"
 
-#: gphoto2/shell.c:135
+#: gphoto2/shell.c:137
 msgid "List the contents of the current directory"
 msgstr "Liệt kê nội dung của thư mục hiện có"
 
-#: gphoto2/shell.c:136
+#: gphoto2/shell.c:138
 msgid "[directory/]"
 msgstr "[thư_mục/]"
 
-#: gphoto2/shell.c:137
+#: gphoto2/shell.c:139
 msgid "List configuration variables"
 msgstr "Liệt kê các biến cấu hình"
 
-#: gphoto2/shell.c:138
+#: gphoto2/shell.c:140
 msgid "Get configuration variable"
 msgstr "Lấy biến cấu hình"
 
-#: gphoto2/shell.c:138
+#: gphoto2/shell.c:140
 msgid "name"
 msgstr "tên"
 
-#: gphoto2/shell.c:139
+#: gphoto2/shell.c:141
 msgid "Set configuration variable"
 msgstr "Đặt biến cấu hình"
 
-#: gphoto2/shell.c:139
+#: gphoto2/shell.c:141
 msgid "name=value"
 msgstr "tên=giá_trị"
 
-#: gphoto2/shell.c:140
+#: gphoto2/shell.c:142
 msgid "Capture a single image"
 msgstr "Bắt một ảnh riêng lẻ"
 
-#: gphoto2/shell.c:140
+#: gphoto2/shell.c:142
 msgid "[name]"
 msgstr "[tên]"
 
-#: gphoto2/shell.c:465
+#: gphoto2/shell.c:467
 msgid "Invalid command."
 msgstr "Lệnh không hợp lệ."
 
-#: gphoto2/shell.c:474
+#: gphoto2/shell.c:476
 #, c-format
 msgid "The command '%s' requires an argument."
 msgstr "Lệnh « %s » cần đến một đối số."
 
-#: gphoto2/shell.c:527
+#: gphoto2/shell.c:529
 msgid "Invalid path."
 msgstr "Đường dẫn không hợp lệ."
 
-#: gphoto2/shell.c:573
+#: gphoto2/shell.c:575
 msgid "Could not find home directory."
 msgstr "Không tìm thấy thư mục chính."
 
-#: gphoto2/shell.c:581
+#: gphoto2/shell.c:583
 #, c-format
 msgid "Could not change to local directory '%s'."
 msgstr "Không thể chuyển đổi sang thư mục cục bộ « %s »."
 
-#: gphoto2/shell.c:584
+#: gphoto2/shell.c:586
 #, c-format
 msgid "Local directory now '%s'."
 msgstr "Thư mục cục bộ lúc bây giờ là « %s »."
 
-#: gphoto2/shell.c:622
+#: gphoto2/shell.c:624
 #, c-format
 msgid "Remote directory now '%s'."
 msgstr "Thư mục ở xa lúc bây giờ là « %s »."
 
-#: gphoto2/shell.c:816
+#: gphoto2/shell.c:840
 #, c-format
 msgid "set-config needs a second argument.\n"
 msgstr "Lệnh đặt cấu hình « set-config » cần đến đối số thứ hai:\n"
 
-#: gphoto2/shell.c:846
+#: gphoto2/shell.c:870
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
 msgstr ""
 "Không tìm thấy lệnh « %s ». Hãy sử dụng lệnh « help » (trợ giúp) để xem danh "
 "sách các lệnh sẵn sàng."
 
-#: gphoto2/shell.c:853
+#: gphoto2/shell.c:877
 #, c-format
 msgid "Help on \"%s\":"
 msgstr "Trợ giúp về « %s »:"
 
-#: gphoto2/shell.c:855
+#: gphoto2/shell.c:879
 #, c-format
 msgid "Usage:"
 msgstr "Cách sử dụng:"
 
-#: gphoto2/shell.c:858
+#: gphoto2/shell.c:882
 #, c-format
 msgid "Description:"
 msgstr "Mô tả:"
 
-#: gphoto2/shell.c:860
+#: gphoto2/shell.c:884
 #, c-format
 msgid "* Arguments in brackets [] are optional"
 msgstr "• Mỗi đối số nằm ở trong ngoặc vu là tùy chọn"
 
-#: gphoto2/shell.c:881
+#: gphoto2/shell.c:905
 #, c-format
 msgid "Available commands:"
 msgstr "Lệnh sẵn sàng:"
 
-#: gphoto2/shell.c:886
+#: gphoto2/shell.c:910
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
 msgstr "Để xem trợ giúp về một lệnh nào đó, hãy gõ « help tên_lệnh »."
