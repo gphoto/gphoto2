@@ -5,6 +5,7 @@ AC_INIT([gphoto2 command line interface], [2.2.1.4.trunk], [gphoto-devel@lists.s
 AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4m])
+AC_CONFIG_AUX_DIR([.])
 AM_INIT_AUTOMAKE([-Wall -Werror gnu 1.8 dist-bzip2])
 
 if test ! -d "$srcdir/m4m"; then
