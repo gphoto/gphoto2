@@ -6,7 +6,7 @@ AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4m])
 AC_CONFIG_AUX_DIR([.])
-AM_INIT_AUTOMAKE([-Wall -Werror gnu 1.8 dist-bzip2])
+AM_INIT_AUTOMAKE([-Wall -Werror gnu 1.9 dist-bzip2 check-news])
 
 if test ! -d "$srcdir/m4m"; then
 AC_MSG_ERROR([
