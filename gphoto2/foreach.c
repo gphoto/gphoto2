@@ -219,8 +219,8 @@ get_path_for_id_rec (GPParams *p,
 			CL (gp_list_get_name (list, i, &name), list);
 			strncpy (subfolder, base_folder, sizeof (subfolder));
 			if (strlen (base_folder) > 1)
-				strncat (subfolder, "/", sizeof (subfolder));
-			strncat (subfolder, name, sizeof (subfolder));
+				strncat (subfolder, "/", sizeof (subfolder) - strlen(subfolder) - 1);
+			strncat (subfolder, name, sizeof (subfolder) - strlen(subfolder) - 1);
 			r = get_path_for_id_rec (p, subfolder, id, base_id,
 						 folder, filename);
 			switch (r) {

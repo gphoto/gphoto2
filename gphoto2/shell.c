@@ -184,7 +184,7 @@ shell_read_line (void)
 		if (strlen (cwd) > 25) {
 			strncpy (buf, "...", sizeof (buf));
 			strncat (buf, &cwd[strlen (cwd) - 22],
-				 sizeof (buf));
+				 sizeof (buf) - strlen(buf) - 1);
 			snprintf (prompt, sizeof (prompt), SHELL_PROMPT, buf,
 				  p->folder);
 		} else
@@ -543,11 +543,11 @@ shell_construct_path (const char *folder_orig, const char *rel_path,
 			 * trailing slash
 			 */
 			if (dest_folder[strlen (dest_folder) - 1] != '/')
-				strncat (dest_folder, "/", MAX_FOLDER_LEN);
+				strncat (dest_folder, "/", MAX_FOLDER_LEN - strlen(dest_folder) - 1);
 		}
                 if (slash) {
                         strncat (dest_folder, rel_path,
-                                 MIN (MAX_FOLDER_LEN, slash - rel_path));
+                                 MIN (MAX_FOLDER_LEN - strlen(dest_folder) - 1, slash - rel_path));
                         rel_path = slash + 1;
                 } else {
 
@@ -556,7 +556,7 @@ shell_construct_path (const char *folder_orig, const char *rel_path,
                                 strncpy (dest_filename, rel_path,
                                          MAX_FILE_LEN);
                         else
-                                strncat (dest_folder, rel_path, MAX_FILE_LEN);
+				strncat (dest_folder, rel_path, MAX_FILE_LEN);
                         break;
                 }
         }
