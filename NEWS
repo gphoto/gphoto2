@@ -1,0 +1,29 @@
+gphoto2 2.2.1.4.trunk
+
+  * Require popt library to parse command line options.
+  * Added --debug-logfile=FILENAME option.
+  * Avoid loading of all camlibs if not necessary.
+
+gphoto2 2.2
+
+  * Some speed-ups by avoiding to load
+    list of ports / cameras multiple times.
+
+  * More --shell commands added (put, rmdir, mkdir, configuration,
+    capture).
+
+  * Metadata down and upload added.
+
+  * Waiting for events added.
+
+gphoto2 2.2.0.trunk
+
+  * Option --debug-logfile=FILENAME added.
+  * Options grouped for a little structure in --help output.
+
+gphoto2 2.1.99
+
+  * Requires libgphoto2 2.1.99 to build
+  * Various new translations
+
+gphoto2 2.1.6

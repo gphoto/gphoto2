@@ -1,0 +1,383 @@
+2006-03-23  Marcus Meissner  <marcus@jet.franken.de>
+
+	* gphoto2/{main,action}.{ch}: Added
+	  "--wait-event" functionality to exercise/test new
+	  gp_camera_wait_for_event() functionality.
+
+2006-03-18  Marcus Meissner  <marcus@jet.franken.de>
+
+	* gphoto2/main.c: Allow wildcard gphoto2 -u *
+	  upload, download and deletion, by handling the
+	  rest of the arguments after popt option handling.
+
+	* gphoto2/shell.c: Added "put" shell cmd.
+	  Added "list-config", "set-config", "get-config" shell
+	  cmds. Added "capture-image" shell cmd.
+
+2006-03-11  Hubert Figuiere  <hub@figuiere.net>
+
+	* doc/gphoto2.1: Fix a typo in the man page. Patch
+	by <jnovy AT redhat DOT com>
+
+2006-02-17  Marcus Meissner  <marcus@jet.franken.de>
+	
+	* gphoto2/actions.c: Fixed --port handling 
+	  when supplying regexp matched devices, by
+	  keeping the GPPortInfoList* over the gphoto2 
+	  runtime.
+
+2006-01-27  Theodore Kilgore  <kilgota@auburn.edu>
+
+	* gphoto2/actions.c: added an entry for "Delete all" to 
+	action_camera_show_abilities.
+
+2006-01-01  Hubert Figuiere  <hub@figuiere.net>
+
+	* configure.ac: version 2.1.99
+
+2005-12-30  Hubert Figuiere  <hub@figuiere.net>
+
+	* configure.ac: require libgphoto2 2.1.99
+
+2005-05-13 Marcus Meissner  <marcus@jet.franken.de>
+
+	* po/eu.po: baskish translation from dooteo <dooteo@euskalgnu.org>
+
+2005-04-14 Hans Ulrich Niedermann <gp@n-dimensional.de>
+
+	* */configure.in, */Makefile.am, ...: updated build system.
+	  See "./autogen.sh --help" and ./configure --help" for help.
+	* m4/, m4m/: use common m4 macro dir "m4m" now ("cvs co m4m")
+
+2005-04-13  Colin Marquardt  <colin@marquardt-home.de>
+
+	* configure.in (ALL_LINGUAS): Added rw.
+	* po/rw.po: New file courtesy Steve Murphy.
+	* po/nl.po, po/sk.po, po/sr.po, po/cs.po: Update.
+
+2005-01-17  Colin Marquardt  <colin@marquardt-home.de>
+
+	* po/ja.po: Update thanks to Takeshi AIHANA.
+
+2004-01-08  Marcus Meissner  <marcus@jet.franken.de>
+
+	* gphoto2/*.[ch]:
+	  Merged patch from Hervé Eychenne <eychenne@users.sourceforge.net>:
+	  - new flag handling, obsoleting some global ints
+	  - --new handling, check for downloaded images.
+	  - some fprintf(stdout -> printf( cleanups.
+
+2004-01-08  Marcus Meissner  <marcus@jet.franken.de>
+
+	* gphoto2/action.c, gphoto2/main.c:
+	  - Implemented --set-config <name>=<value> option.
+
+2004-01-05  Marcus Meissner  <marcus@jet.franken.de>
+	
+	* gphoto2/main.c: Change the filename handling to use
+	  strftime() directly. This is sourceforge patch [ 1031367 ],
+	  by Lauri Nurmi <lanurmi@users.sourceforge.net>
+
+2004-01-05  Marcus Meissner  <marcus@jet.franken.de>
+
+	* po/ru.po: Checked in update of ru.po from Vyacheslav Dikonov <slava@altlinux.ru>
+
+2004-12-21  Colin Marquardt  <colin@marquardt-home.de>
+
+	* po/ru.po: Update thanks to Vitaly Lipatov and Dmitry Kostrov.
+
+2004-12-15  Hubert Figuiere  <hfiguiere@teaser.fr>
+
+	* configure.in: version 2.1.5
+
+2004-11-26  Hubert Figuiere  <hfiguiere@teaser.fr>
+
+	* configure.in: version 2.1.5rc1
+
+2004-09-11  Marcus Meissner  <marcus@jet.franken.de>
+
+	* gphoto2/actions.[ch],main.c: Added
+
+	--list-config		- dump the configuration tree of the camera
+	--get-config var	- get the configuration entry <var>
+	
+2004-07-26  Colin Marquardt  <colin@marquardt-home.de>
+
+	* configure.in (ALL_LINGUAS): Added nl
+	* nl.po: New Dutch translation, courtesy Julie Vermeersch.
+	
+2004-07-09  Colin Marquardt  <colin@marquardt-home.de>
+
+	* configure.in (ALL_LINGUAS): Added fi
+	* fi.po: New Finnish translation, courtesy Matti Pöllä.
+
+2004-06-10  Hubert Figuiere  <hfiguiere@teaser.fr>
+
+	* configure.in (ALL_LINGUAS): Added hu
+
+2004-06-04  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* configure.in
+	* exif/actions.c: Make gphoto2 compile with libexif-0.6.9.
+
+2004-04-20  Colin Marquardt  <colin@marquardt-home.de>
+
+	* po/uk.po: Update.
+	* po/en_GB.po: New English (British) translation, courtesy Gareth Owen.
+	* configure.in: Add en_GB to ALL_LINGUAS.
+
+2004-04-20  Marcus Meissner  <marcus@jet.franken.de>
+
+	Patch by Darryl Sokoloski <darryl@k0r3dump.net>
+
+	* gphoto2/main.c: Added 
+		--frames=count
+		--interval=seconds
+	  capture sub options.
+
+	  Cleaned up, corrected translations.
+
+	* gphoto2/main.h: Increased option description length.
+
+2004-03-23  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Patch by Michael Haardt <michael@moria.de>:
+
+	* gphoto2/gphoto2-cmd-config.c: Allow ranges like 1.5 ... 5.5 with
+	  increments of 1.
+
+2004-03-22  Colin Marquardt  <colin@marquardt-home.de>
+
+	* po/az.po: New Azerbaijani translation, courtesy Metin Amiroff.
+	* po/sr.po: New Serbian translation, courtesy Aleksandar Jelenak.
+	* configure.in: Add az and sr to ALL_LINGUAS.
+
+2004-02-17  Christophe Barbe <christophe@ufies.org>
+
+	* gphoto2/shell.c: Fixed shell_command_generator function
+	  that was enough to only segfault on alpha.
+
+2004-01-04  Christophe Barbe <christophe@ufies.org>
+
+	Patch by Terran Melconian <terran@consistent.org>:
+
+	* doc/gphoto2.1: The --camera option is silently ignored without the
+	  --port option.
+
+2003-12-11  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Patch by Andreas Burmester <a.burmester@hamburg.de>:
+
+	* gphoto2/gp-params.c: Only use 79 columns so that the screen doesn't
+	  get messed up on terminals with 80 columns and line wrap.
+
+2003-12-09  Hubert Figuiere  <hfiguiere@teaser.fr>
+
+	* configure.in: required version is 2.1.2 because of gp_library_version
+
+2003-10-27  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c: Make mkdir and rmdir do what they are supposed to
+	  do. Reported by Marek Kassur <marco@bpmok.waw.pl>.
+
+2003-10-14  Colin Marquardt  <colin@marquardt-home.de>
+
+	* po/ro.po: New romanian translation courtesy Laurentiu Buzdugan.
+	* configure.in: Add ro to ALL_LINGUAS.
+
+2003-09-09  Colin Marquardt  <colin@marquardt-home.de>
+
+	* po/cs.po: New slovak translation courtesy Andrej Kacian.
+	* configure.in: Add sk to ALL_LINGUAS.
+
+2003-09-01  Hubert Figuiere  <hfiguiere@teaser.fr>
+
+	* gphoto2/main.c (save_camera_file_to_file): call fflush();
+	See <https://sourceforge.net/tracker/?func=detail&atid=358874&aid=798071&group_id=8874>
+
+2003-08-24  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* gphoto2/actions.c: Fix off-by-one bug (closes #729791).
+
+2003-08-22  Hubert Figuiere  <hfiguiere@teaser.fr>
+
+	* gphoto2/actions.c (action_camera_show_abilities): Display that 
+	capture is not supported by the driver instead of an empty string
+	to fix bug 642394 
+	<https://sf.net/tracker/index.php?func=detail&aid=642394&group_id=8874&atid=108874>
+
+2003-06-22  Christophe Barbe <christophe@ufies.org>
+
+	* gphoto2/main.c, po/*.po:
+	  s/gphoto-devel@gphoto.org/gphoto-devel@lists.sourceforge.net/
+
+2003-05-17  Hans Ulrich Niedermann <gp@n-dimensional.de>
+
+	* configure.in: 2.1.2dev6, with CVS tags
+	* configure.in: 2.1.2dev7, without CVS tags, for development
+
+2003-05-04  Colin Marquardt  <colin@marquardt-home.de>
+
+	* po/cs.po: New translation courtesy Miloslav Trmac.
+	* configure.in: Add cs to ALL_LINGUAS.
+
+2003-03-03  Colin Marquardt  <colin@marquardt-home.de>
+
+	* po/da.po: New translation/update.
+
+2003-02-20  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c: Small date/time related fix by 
+	  Ralph Corderoy <ralph@inputplus.co.uk>.
+
+2003-02-01  Patrick Mansfield <patmans@users.sourceforge.net>
+
+	* foreach.c: Change the CR and CL macro to use "__r" versus "r",
+	  so the result we want to actually check is not hidden by a new
+	  declaration of 'r'. Specifically for_each_file_in_range never
+	  noticed an error of GP_ERROR_NOT_SUPPORTED. actions.c and
+	  shell.c have no problem (i.e. they don't use the variable 'r' in
+	  any functions).
+
+2002-11-08  Hans Ulrich Niedermann <gp@n-dimensional.de>
+
+	* configure.in: 2.1.1dev7
+	* gphoto2/version.[ch]: added: version/feature reporting mechanism
+	* gphoto2/Makefile.am: added version.[ch]
+	* gphoto2/actions.c: added version/feature reports
+
+2002-11-06  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c:
+	* gphoto2/actions.[c,h]: Print some information on the build options
+	  when --debug.
+
+2002-11-06  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/foreach.c (for_each_file_in_range: Supply the correct 
+	  folder.
+
+2002-11-05  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/actions.c:
+	* gphoto2/foreach.c:
+	* gphoto2/main.c: While trying to hunt down a bug: Initialize some
+	  variables, set them to NULL after free, etc.
+
+2002-11-04  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/foreach.c: Fix for-loop.
+
+2002-11-03  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/actions.h: Fix typo in comment.
+
+2002-11-03  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/options.[c,h]:
+	* gphoto2/main.c: Make --without-popt compile again.
+
+2002-11-03  Mark McLoughlin <mark@skynet.ie>
+
+	* gphoto2/foreach.c: (for_each_file): actually recurse into the
+	  sub-folder.
+
+2002-10-18  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c:
+	* gphoto2/gp-param.h: force -> force_overwrite.
+
+2002-10-17  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/gp-params.[c,h]: New. Simplifies passing around parameters.
+	* gphoto2/main.c: New --force parameter.
+	* gphoto2/foreach.[c,h]:
+	* gphoto2/actions.[c,h]: Adjust to above changes.
+
+2002-10-08  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/actions.c: "!result" should have been "result < 0". I 
+	  apologize.
+
+2002-10-08  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c: Only show instructions on how to get debugging
+	  messages if --debug has not been used.
+
+2002-10-08  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c: Additional debugging messages in order to prepare
+	  fixing the introduced bugs.
+
+2002-10-03  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c: Kill warning.
+
+2002-10-03  Lutz Müller <lutz@users.sourceforge.net>
+
+	* configure.in: Require libgphoto2-2.1.1.
+	* gphoto2/main.c: Create the context before the abilities list.
+
+2002-10-03  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c: Don't call gp_cmd_config #ifndef HAVE_CDK.
+
+2002-09-29  Lutz Müller <lutz@users.sourceforge.net>
+
+	* configure.in: Use popt.h if available.
+	* gphoto2/*: Use popt.h if available.
+
+2002-09-12  Hans Ulrich Niedermann <gp@n-dimensional.de>
+
+	* configure.in: 2.1.1dev6
+	* Makefile.am: create .tar.bz2 dists again
+
+2002-08-08  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c: '%n' should work now for non-root folders, too.
+
+2002-08-08  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c: Add %f for filename without suffix.
+
+2002-08-08  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c: tm->tm_wday starts with 0.
+
+2002-08-07  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c: Add %C (filename suffix).
+
+2002-08-07  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gphoto2/main.c: Let users specify %A, %y, etc. in --filename.
+
+2002-08-01  Hans Ulrich Niedermann <gp@n-dimensional.de>
+
+	* Makefile.am:
+	* doc/Makefile.am:
+	* configure.in: added doc/ directory
+
+2002-07-31  Hans Ulrich Niedermann <gp@n-dimensional.de>
+
+	* autogen.sh: patch from Arnaud Launay: check for pkg-config
+	
+2002-07-30  Hans Ulrich Niedermann <gp@n-dimensional.de>
+
+	* gphoto2/main.c: moved away code for --print-usb-usermap
+	* configure.in: 2.1.1 -> 2.1.1dev4
+	* .cvsignore: added everything created by build and unknown to CVS
+	* gphoto2/.cvsignore: added everything created by build and unknown to CVS
+	* po/.cvsignore: added everything created by build and unknown to CVS
+	
+2002-07-29  Lutz Müller <lutz@users.sourceforge.net>
+
+	* README: The first few lines.
+
+2002-07-29  Lutz Müller <lutz@users.sourceforge.net>
+
+	gphoto2 is now functional.
+
+2002-07-28  Lutz Müller <lutz@users.sourceforge.net>
+
+	Initial setup.

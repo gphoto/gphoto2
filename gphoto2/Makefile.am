@@ -1,0 +1,53 @@
+## Process this file with automake to create a GNU Makefile
+
+# We need to add the source files to the list because 
+# sometimes people without aalib or cdk make dist.
+EXTRA_DIST = \
+	gphoto2-cmd-config.c gphoto2-cmd-config.h	\
+	gphoto2-cmd-capture.c gphoto2-cmd-capture.h	\
+	i18n.h options.c options.h
+
+bin_PROGRAMS = gphoto2
+
+if HAVE_CDK
+CDK_FILES = gphoto2-cmd-config.c gphoto2-cmd-config.h
+else
+CDK_FILES =
+endif
+
+if HAVE_AA
+AA_FILES = gphoto2-cmd-capture.c gphoto2-cmd-capture.h
+else
+AA_FILES =
+endif
+
+if HAVE_POPT
+NO_POPT_FILES = 
+else
+NO_POPT_FILES = options.c options.h
+endif
+
+gphoto2_SOURCES = 		\
+	$(AA_FILES)		\
+	$(CDK_FILES)		\
+	$(NO_POPT_FILES)	\
+	actions.c actions.h 	\
+	foreach.c foreach.h 	\
+	globals.h 		\
+	gp-params.c gp-params.h	\
+	main.c main.h 		\
+	version.c version.h	\
+	range.c range.h 	\
+	shell.c shell.h 
+
+#gphoto2_LDFLAGS = -export-dynamic
+
+gphoto2_CFLAGS =					\
+	$(AM_CPPFLAGS) $(CPPFLAGS)			\
+	$(CDK_CFLAGS) $(LIBGPHOTO2_CFLAGS) $(AA_CFLAGS)	\
+	$(LIBEXIF_CFLAGS) $(RL_CFLAGS) $(POPT_CFLAGS)
+
+
+gphoto2_LDADD =								\
+	$(CDK_LIBS) $(AA_LIBS) $(JPEG_LIBS) $(PTHREAD_LIBS)		\
+	$(LIBEXIF_LIBS) $(INTLLIBS) $(RL_LIBS) $(LIBGPHOTO2_LIBS) $(POPT_LIBS)
