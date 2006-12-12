@@ -1,19 +1,20 @@
 # Mesajele în limba română pentru gphoto2
-# Copyright (C) 2005 Free Software Foundation, Inc.
+# Copyright (C) 2005, 2006 Free Software Foundation, Inc.
 # Acest fişier este distribuit sub aceeaşi licenţă ca şi pachetul gphoto2.
-# Laurentiu Buzdugan <lbuz@rolix.org>, 2003-2005.
+# Laurentiu Buzdugan <lbuz@rolix.org>, 2003-2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2-2.1.6rc1\n"
+"Project-Id-Version: gphoto2-2.3.0\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2006-09-28 18:36+0200\n"
-"PO-Revision-Date: 2005-04-14 12:00-0500\n"
+"POT-Creation-Date: 2006-12-01 12:05-0500\n"
+"PO-Revision-Date: 2006-12-11 12:00-0500\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || ((n%100) > 0 && (n%100) < 20)) ? 1 : 2);\n"
 
 #: gphoto2/actions.c:166
 #, c-format
@@ -21,23 +22,25 @@ msgid "Number of files in folder '%s': %i\n"
 msgstr "Numărul de fişiere în director '%s': %i\n"
 
 #: gphoto2/actions.c:186
-#, fuzzy, c-format
+#, c-format
 msgid "There is %d folder in folder '%s'.\n"
 msgid_plural "There are %d folders in folder '%s'.\n"
-msgstr[0] "Există un singur director în directorul '%s':"
-msgstr[1] "Există un singur director în directorul '%s':"
+msgstr[0] "Există %d director în directorul '%s'.\n"
+msgstr[1] "Există %d directoare în directorul '%s'.\n"
+msgstr[2] "Există %d de directoare în directorul '%s'.\n"
 
 #: gphoto2/actions.c:226
-#, fuzzy, c-format
+#, c-format
 msgid "There is no file in folder '%s'.\n"
-msgstr "Există un singur fişier în directorul '%s':"
+msgstr "Nu există nici un fişier în directorul '%s'.\n"
 
 #: gphoto2/actions.c:229
-#, fuzzy, c-format
+#, c-format
 msgid "There is %d file in folder '%s'.\n"
 msgid_plural "There are %d files in folder '%s'.\n"
-msgstr[0] "Există un singur fişier în directorul '%s':"
-msgstr[1] "Există un singur fişier în directorul '%s':"
+msgstr[0] "Există %d fişier în directorul '%s'.\n"
+msgstr[1] "Există %d fişiere în directorul '%s'.\n"
+msgstr[2] "Există %d de fişiere în directorul '%s'.\n"
 
 #: gphoto2/actions.c:250
 #, c-format
@@ -288,10 +291,8 @@ msgstr "                                 : Previzualizare\n"
 
 #: gphoto2/actions.c:689
 #, c-format
-msgid ""
-"                                 : Capture not supported by the driver\n"
-msgstr ""
-"                                 : Captura nu este suportată de driver\n"
+msgid "                                 : Capture not supported by the driver\n"
+msgstr "                                 : Captura nu este suportată de driver\n"
 
 #: gphoto2/actions.c:691
 #, c-format
@@ -299,46 +300,34 @@ msgid "Configuration support            : %s\n"
 msgstr "Suport configuraţie              : %s\n"
 
 #: gphoto2/actions.c:693
-#, fuzzy, c-format
+#, c-format
 msgid "Delete selected files on camera  : %s\n"
-msgstr "Suport ştergere fişiere din aparatul foto : %s\n"
+msgstr "Şterge fişierele selectate din aparatul foto : %s\n"
 
 #: gphoto2/actions.c:696
-#, fuzzy, c-format
+#, c-format
 msgid "Delete all files on camera       : %s\n"
-msgstr "Suport ştergere fişiere din aparatul foto : %s\n"
+msgstr "Şterge toate fişierele din aparatul foto     : %s\n"
 
 #: gphoto2/actions.c:699
 #, c-format
 msgid "File preview (thumbnail) support : %s\n"
-msgstr "Suport previzualizare (thumbnail) fişier  : %s\n"
+msgstr "Suport previzualizare (thumbnail) fişier     : %s\n"
 
 #: gphoto2/actions.c:702
 #, c-format
 msgid "File upload support              : %s\n"
-msgstr "Suport pentru încărcarea fişierelor       : %s\n"
+msgstr "Suport pentru încărcarea fişierelor          : %s\n"
 
 #: gphoto2/actions.c:718
 #, c-format
-msgid ""
-"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
-"colon so I am going to guess what you mean."
-msgstr ""
-"Porturile trebuie să arate ceva de genul 'serial:/dev/ttyS0' sau 'usb:', dar "
-"lui '%s' îl lipseşte un ':' aşa că vom încerca să ghicim ce aţi intenţionat "
-"să scrieţi."
+msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
+msgstr "Porturile trebuie să arate ceva de genul 'serial:/dev/ttyS0' sau 'usb:', dar lui '%s' îl lipseşte un ':' aşa că vom încerca să ghicim ce aţi intenţionat să scrieţi."
 
 #: gphoto2/actions.c:752
 #, c-format
-msgid ""
-"The port you specified ('%s') can not be found. Please specify one of the "
-"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
-"(i.e. with prefix 'serial:' or 'usb:')."
-msgstr ""
-"Portul pe care l-aţi specificat ('%s') nu poate fi ghichit. Vă rugăm "
-"specificaţi unul dintre porturile găsite folosind comanda 'gphoto2 --list-"
-"ports' şi asiguraţi-vă că îl specificaţi corect (adică folosind prefixurile "
-"'serial:' sau 'usb:')."
+msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
+msgstr "Portul pe care l-aţi specificat ('%s') nu poate fi ghichit. Vă rugăm specificaţi unul dintre porturile găsite folosind comanda 'gphoto2 --list-ports' şi asiguraţi-vă că îl specificaţi corect (adică folosind prefixurile 'serial:' sau 'usb:')."
 
 #: gphoto2/actions.c:784
 #, c-format
@@ -365,7 +354,7 @@ msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "Portul OS/2 de Bart van Leeuwen\n"
 
 #: gphoto2/actions.c:882
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "gphoto2 %s\n"
 "\n"
@@ -373,23 +362,20 @@ msgid ""
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
-"License. For more information about these matters, see the files named "
-"COPYING.\n"
+"License. For more information about these matters, see the files named COPYING.\n"
 "\n"
-"This version of gphoto2 is using the following software versions and "
-"options:\n"
+"This version of gphoto2 is using the following software versions and options:\n"
 msgstr ""
 "gphoto2 %s\n"
 "\n"
-"Copyright (c) 2000-2004 Lutz Mueller şi alţii\n"
+"Copyright (c) 2000-%d Lutz Mueller şi alţii\n"
 "%s\n"
 "gphoto2 vine FĂRĂ GARANŢIE, conform legilor în vigoare.  Puteţi\n"
 "redistribui copii de gphoto2 conform termenilor Licenţei Publice Generale\n"
 "GNU (GNU General Public License). Pentru informaţii suplimentare despre\n"
 "aceste chestiuni consultaţi fişierele numite COPYING.\n"
 "\n"
-"Această versiune de gphoto2 foloseşte următoarele versiuni software şi "
-"opţiuni:\n"
+"Această versiune de gphoto2 foloseşte următoarele versiuni software şi opţiuni:\n"
 
 #: gphoto2/actions.c:1002
 #, c-format
@@ -397,12 +383,8 @@ msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Înlocuiesc ID vendor/produs USB 0x%x/0x%x cu 0x%x/0x%x"
 
 #: gphoto2/actions.c:1066
-msgid ""
-"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
-"MAILING LIST:"
-msgstr ""
-"INCLUDEŢI ÎNTORDEAUNA URMĂTOARELE LINII CÂND TRIMITEŢI MESAJE DE DEPANARE "
-"LISTEI DE DISCUŢII:"
+msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
+msgstr "INCLUDEŢI ÎNTORDEAUNA URMĂTOARELE LINII CÂND TRIMITEŢI MESAJE DE DEPANARE LISTEI DE DISCUŢII:"
 
 #: gphoto2/actions.c:1081
 #, c-format
@@ -508,19 +490,12 @@ msgstr "Widget-ul %s nu este configurabil."
 #: gphoto2/actions.c:1487
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
-msgstr ""
-"Nu am reuşit să setez noua valoare de configurare %s pentru întrarea %s."
+msgstr "Nu am reuşit să setez noua valoare de configurare %s pentru întrarea %s."
 
 #: gphoto2/foreach.c:254
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there are only %i files available in "
-"'%s' or its subfolders. Please obtain a valid file number from a file "
-"listing first."
-msgstr ""
-"Număr fişiere incorect. Aţi specificat %i, dar există numai %i fişiere în '%"
-"s' sau subdirectoarele sale. Vă rugăm obţineţi un număr de fişiere valid "
-"folosind comanda ls."
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
+msgstr "Număr fişiere incorect. Aţi specificat %i, dar există numai %i fişiere în '%s' sau subdirectoarele sale. Vă rugăm obţineţi un număr de fişiere valid folosind comanda ls."
 
 #: gphoto2/foreach.c:279
 #, c-format
@@ -529,21 +504,13 @@ msgstr "Nu există nici un fişier în directorul '%s'."
 
 #: gphoto2/foreach.c:285
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there is only 1 file available in '%"
-"s'."
-msgstr ""
-"Număr fişiere incorect. Aţi specificat %i, dar există numai un fişier în '%"
-"s'."
+msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
+msgstr "Număr fişiere incorect. Aţi specificat %i, dar există numai un fişier în '%s'."
 
 #: gphoto2/foreach.c:293
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there are only %i files available in "
-"'%s'. Please obtain a valid file number from a file listing first."
-msgstr ""
-"Număr fişiere incorect. Aţi specificat %i, dar există numai %i fişiere în '%"
-"s'. Vă rugăm obţineţi un număr de fişiere valid folosind comanda ls."
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
+msgstr "Număr fişiere incorect. Aţi specificat %i, dar există numai %i fişiere în '%s'. Vă rugăm obţineţi un număr de fişiere valid folosind comanda ls."
 
 #: gphoto2/gp-params.c:67
 #, c-format
@@ -608,12 +575,12 @@ msgstr "Nu"
 #: gphoto2/main.c:225
 #, c-format
 msgid "Zero padding numbers in file names is only possible with %%n."
-msgstr ""
+msgstr "Adăugare de zerouri în numele fişierelor este posibil numai cu %%n."
 
 #: gphoto2/main.c:234
-#, fuzzy, c-format
+#, c-format
 msgid "You cannot use %%n zero padding without a precision value!"
-msgstr "Nu puteţi folosi '%%n' în combinaţie cu fişiere ne-permanente!"
+msgstr "Nu puteţi folosi %%n caractere zero adăugate fără o valoare de precizie!"
 
 #: gphoto2/main.c:250
 #, c-format
@@ -712,7 +679,7 @@ msgstr "Adormit pentru %d secunde...\n"
 #: gphoto2/main.c:685
 #, c-format
 msgid "not sleeping (%d seconds behind schedule)\n"
-msgstr ""
+msgstr "nu dorm (%d secunde în urmă)\n"
 
 #: gphoto2/main.c:775
 #, c-format
@@ -744,13 +711,8 @@ msgstr ""
 
 #: gphoto2/main.c:943
 #, c-format
-msgid ""
-"Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
-"c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
-msgstr ""
-"Folosiţi următoarea sintaxă a:b=c:d pentru a trata orice dispozitiv USB "
-"detectat ca a:b ca c:c in schimb. a b c d trebuie să fie numere hexazecimale "
-"începând cu '0x'.\n"
+msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
+msgstr "Folosiţi următoarea sintaxă a:b=c:d pentru a trata orice dispozitiv USB detectat ca a:b ca c:c in schimb. a b c d trebuie să fie numere hexazecimale începând cu '0x'.\n"
 
 #: gphoto2/main.c:1071
 msgid "gphoto2 has been compiled without support for CDK."
@@ -788,11 +750,11 @@ msgstr ""
 
 #: gphoto2/main.c:1349
 msgid "Print complete help message on program usage"
-msgstr ""
+msgstr "Afişează mesajul complet de ajutor depre cum se foloseşte programul"
 
 #: gphoto2/main.c:1351
 msgid "Print short message on program usage"
-msgstr ""
+msgstr "Afişează un scurt mesaj despre cum se foloseşte programul"
 
 #: gphoto2/main.c:1353
 msgid "Turn on debugging"
@@ -800,11 +762,11 @@ msgstr "Porniţi depanarea"
 
 #: gphoto2/main.c:1355
 msgid "Name of file to write debug info to"
-msgstr ""
+msgstr "Numele fişierului în care să fie scrisă informaţiile de depanare"
 
 #: gphoto2/main.c:1355 gphoto2/main.c:1363
 msgid "FILENAME"
-msgstr ""
+msgstr "NUMEFIŞIER"
 
 #: gphoto2/main.c:1357
 msgid "Quiet output (default=verbose)"
@@ -820,7 +782,7 @@ msgstr "Specifică viteza de transfer pe serial"
 
 #: gphoto2/main.c:1365
 msgid "SPEED"
-msgstr ""
+msgstr "VITEZĂ"
 
 #: gphoto2/main.c:1367
 msgid "Specify camera model"
@@ -828,7 +790,7 @@ msgstr "Specifică modelul aparatului foto"
 
 #: gphoto2/main.c:1367
 msgid "MODEL"
-msgstr ""
+msgstr "MODEL"
 
 #: gphoto2/main.c:1369
 msgid "(expert only) Override USB IDs"
@@ -836,7 +798,7 @@ msgstr "(numai experţi) Înlocuieşte ID-urile USB"
 
 #: gphoto2/main.c:1369
 msgid "USBIDs"
-msgstr ""
+msgstr "ID-uri USB"
 
 #: gphoto2/main.c:1375
 msgid "Display version and exit"
@@ -851,9 +813,8 @@ msgid "List supported port devices"
 msgstr "Enumeră porturi de unităţi suportate"
 
 #: gphoto2/main.c:1381
-#, fuzzy
 msgid "Display camera/driver abilities"
-msgstr "Afişeaza capabilităţile aparatului foto"
+msgstr "Afişeaza capabilităţile aparatului foto/driverului"
 
 #: gphoto2/main.c:1388
 msgid "Configure"
@@ -873,7 +834,7 @@ msgstr "Setează valoare configuraţie"
 
 #: gphoto2/main.c:1401
 msgid "Wait for event from camera"
-msgstr ""
+msgstr "Aştept eveniment de la aparatul foto"
 
 #: gphoto2/main.c:1404
 msgid "Capture a quick preview"
@@ -885,7 +846,7 @@ msgstr "Setează numărul de cadre de capturat (implicit=infinit)"
 
 #: gphoto2/main.c:1406
 msgid "COUNT"
-msgstr ""
+msgstr "NUMĂR"
 
 #: gphoto2/main.c:1408
 msgid "Set capture interval in seconds"
@@ -893,7 +854,7 @@ msgstr "Setează intervalul de captură în secunde"
 
 #: gphoto2/main.c:1408
 msgid "SECONDS"
-msgstr ""
+msgstr "SECUNDE"
 
 #: gphoto2/main.c:1410
 msgid "Capture an image"
@@ -921,7 +882,7 @@ msgstr "Crează un director"
 
 #: gphoto2/main.c:1424 gphoto2/main.c:1426
 msgid "DIRNAME"
-msgstr ""
+msgstr "NUMEDIRECTOR"
 
 #: gphoto2/main.c:1426
 msgid "Remove a directory"
@@ -938,7 +899,7 @@ msgstr "Ia fişierele date în interval"
 #: gphoto2/main.c:1430 gphoto2/main.c:1434 gphoto2/main.c:1439
 #: gphoto2/main.c:1446 gphoto2/main.c:1452 gphoto2/main.c:1457
 msgid "RANGE"
-msgstr ""
+msgstr "INTERVAL"
 
 #: gphoto2/main.c:1432
 msgid "Get all files from folder"
@@ -953,19 +914,16 @@ msgid "Get all thumbnails from folder"
 msgstr "Ia toate thumbnail-urile din director"
 
 #: gphoto2/main.c:1439
-#, fuzzy
 msgid "Get metadata given in range"
-msgstr "Ia datele 'raw' date în interval"
+msgstr "Ia metadatele date în interval"
 
 #: gphoto2/main.c:1441
-#, fuzzy
 msgid "Get all metadata from folder"
-msgstr "Ia toată datele 'raw' din director"
+msgstr "Ia toate metadatele din director"
 
 #: gphoto2/main.c:1443
-#, fuzzy
 msgid "Upload metadata for file"
-msgstr "Descarcă un fişier"
+msgstr "Încarcă metadatele pentru fişier"
 
 #: gphoto2/main.c:1446
 msgid "Get raw data given in range"
@@ -1000,13 +958,12 @@ msgid "filename"
 msgstr "nume fişier"
 
 #: gphoto2/main.c:1463
-#, fuzzy
 msgid "Specify a filename or filename pattern"
-msgstr "Specifică un nume de fişier"
+msgstr "Specifică un nume sau pattern de fişier"
 
 #: gphoto2/main.c:1463
 msgid "FILENAME_PATTERN"
-msgstr ""
+msgstr "FILENAME_PATTERN"
 
 #: gphoto2/main.c:1465
 msgid "Specify camera folder (default=\"/\")"
@@ -1014,7 +971,7 @@ msgstr "Specifică directorul aparatului foto (implicit=\"/\")"
 
 #: gphoto2/main.c:1465
 msgid "FOLDER"
-msgstr ""
+msgstr "DIRECTOR"
 
 #: gphoto2/main.c:1467
 msgid "Recursion (default for download)"
@@ -1070,34 +1027,31 @@ msgstr "shell gPhoto"
 
 #: gphoto2/main.c:1504
 msgid "Common options"
-msgstr ""
+msgstr "Opţiuni comune"
 
 #: gphoto2/main.c:1506
 msgid "Miscellaneous options (unsorted)"
-msgstr ""
+msgstr "Diferite opţiuni (nesortate)"
 
 #: gphoto2/main.c:1508
 msgid "Get information on software and host system (not from the camera)"
-msgstr ""
+msgstr "Ia informaţii despre software şi sistemul gazdă (nu de pe aparatul foto)"
 
 #: gphoto2/main.c:1510
-#, fuzzy
 msgid "Specify the camera to use"
-msgstr "Specifică modelul aparatului foto"
+msgstr "Specifică aparatului foto de folosit"
 
 #: gphoto2/main.c:1512
-#, fuzzy
 msgid "Camera and software configuration"
-msgstr "Nu am putut seta configuraţia:"
+msgstr "Configurarea aparatului foto şi software-ului"
 
 #: gphoto2/main.c:1514
-#, fuzzy
 msgid "Capture an image from or on the camera"
-msgstr "Schimbă într-un director pe aparatul foto"
+msgstr "Capturează o imagine de pe sau pe aparatul foto"
 
 #: gphoto2/main.c:1516
 msgid "Downloading, uploading and manipulating files"
-msgstr ""
+msgstr "Descarc, încarc sau manipulez fişiere"
 
 #: gphoto2/options.c:181
 #, c-format
@@ -1122,12 +1076,10 @@ msgstr "%-38s %s\n"
 #, c-format
 msgid ""
 "--------------------------------------------------------------------------------\n"
-"[Use double-quotes around arguments]        [Picture numbers begin with one "
-"(1)]\n"
+"[Use double-quotes around arguments]        [Picture numbers begin with one (1)]\n"
 msgstr ""
 "--------------------------------------------------------------------------------\n"
-"[Folosiţi argumente între ghilimele duble]    [Numărul pozelor încep cu unu "
-"(1)]\n"
+"[Folosiţi argumente între ghilimele duble]    [Numărul pozelor încep cu unu (1)]\n"
 
 #: gphoto2/range.c:104 gphoto2/range.c:158
 #, c-format
@@ -1181,8 +1133,7 @@ msgid ""
 "Decreasing ranges are not allowed. You specified a range from %i to %i."
 msgstr ""
 "%s\n"
-"Intervalele descrescătoare nu sunt permise. Aţi specificat un interval de la "
-"%i la %i."
+"Intervalele descrescătoare nu sunt permise. Aţi specificat un interval de la %i la %i."
 
 #: gphoto2/shell.c:65
 #, c-format
@@ -1217,9 +1168,8 @@ msgid "[directory/]filename"
 msgstr "[director/]fişier"
 
 #: gphoto2/shell.c:121
-#, fuzzy
 msgid "Upload a file"
-msgstr "Descarcă un fişier"
+msgstr "Încarcă un fişier"
 
 #: gphoto2/shell.c:122
 msgid "Download a thumbnail"
@@ -1234,14 +1184,12 @@ msgid "Delete"
 msgstr "Şterge"
 
 #: gphoto2/shell.c:129
-#, fuzzy
 msgid "Create Directory"
-msgstr "Crează un director"
+msgstr "Crează director"
 
 #: gphoto2/shell.c:130
-#, fuzzy
 msgid "Remove Directory"
-msgstr "Şterge un director"
+msgstr "Şterge director"
 
 #: gphoto2/shell.c:135 gphoto2/shell.c:145
 msgid "Displays command usage"
@@ -1260,37 +1208,32 @@ msgid "[directory/]"
 msgstr "[director/]"
 
 #: gphoto2/shell.c:139
-#, fuzzy
 msgid "List configuration variables"
-msgstr "Obţine o variabilă de configurare"
+msgstr "Listează variabilele de configurare"
 
 #: gphoto2/shell.c:140
-#, fuzzy
 msgid "Get configuration variable"
-msgstr "Obţine o variabilă de configurare"
+msgstr "Obţine variabilele de configurare"
 
 #: gphoto2/shell.c:140
 msgid "name"
 msgstr "nume"
 
 #: gphoto2/shell.c:141
-#, fuzzy
 msgid "Set configuration variable"
-msgstr "Setează o variabilă de configurare"
+msgstr "Setează variabilele de configurare"
 
 #: gphoto2/shell.c:141
 msgid "name=value"
-msgstr ""
+msgstr "nume=valoare"
 
 #: gphoto2/shell.c:142
-#, fuzzy
 msgid "Capture a single image"
-msgstr "Capturează o imagine"
+msgstr "Capturează o singură imagine"
 
 #: gphoto2/shell.c:142
-#, fuzzy
 msgid "[name]"
-msgstr "nume"
+msgstr "[nume]"
 
 #: gphoto2/shell.c:467
 msgid "Invalid command."
@@ -1327,14 +1270,12 @@ msgstr "Directorul remote este acum '%s'."
 #: gphoto2/shell.c:840
 #, c-format
 msgid "set-config needs a second argument.\n"
-msgstr ""
+msgstr "set-config are nevoie de un al doilea argument.\n"
 
 #: gphoto2/shell.c:870
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
-msgstr ""
-"Comanda '%s' nu a fost găsită. Folosiţi 'help' pentru a vedea lista "
-"comenzilor disponibile."
+msgstr "Comanda '%s' nu a fost găsită. Folosiţi 'help' pentru a vedea lista comenzilor disponibile."
 
 #: gphoto2/shell.c:877
 #, c-format
@@ -1364,24 +1305,22 @@ msgstr "Comenzi disponibile:"
 #: gphoto2/shell.c:910
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
-msgstr ""
-"Pentru a obţine ajutor pentru o anumită comandă, tastaţi 'help nume-comandă'."
+msgstr "Pentru a obţine ajutor pentru o anumită comandă, tastaţi 'help nume-comandă'."
+
+#~ msgid "There are no folders in folder '%s'."
+#~ msgstr "Nu există nici un director în directorul '%s'."
+
+#~ msgid "There are %i folders in folder '%s':"
+#~ msgstr "Există %i directoare în directorul '%s':"
+
+#~ msgid "There are %i files in folder '%s':"
+#~ msgstr "Există %i fişiere în directorul '%s':"
 
 #~ msgid "Displays this help screen"
 #~ msgstr "Afişază acest mesaj de ajutor"
 
-#, fuzzy
-#~ msgid "Get metadata from file"
-#~ msgstr "Ia toată datele 'raw' din director"
-
 #~ msgid "List the configuration tree"
 #~ msgstr "Listează arborele de configuraţie"
-
-#~ msgid "Get a configuration variable"
-#~ msgstr "Obţine o variabilă de configurare"
-
-#~ msgid "Set a configuration variable"
-#~ msgstr "Setează o variabilă de configurare"
 
 #~ msgid "Capture a movie "
 #~ msgstr "Capturează un film "
@@ -1416,30 +1355,11 @@ msgstr ""
 #~ msgid "seconds"
 #~ msgstr "secunde"
 
-#~ msgid ""
-#~ "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
-#~ "location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
-#~ msgstr ""
-#~ "gPhoto2 pentru OS/2 necesită să setaţi variabila de mediu CAMLIBS cu "
-#~ "locaţia bibliotecilor pentru aparatul foto, de exemplu SET CAMLIBS=C:"
-#~ "\\GPHOTO2\\CAM\n"
+#~ msgid "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+#~ msgstr "gPhoto2 pentru OS/2 necesită să setaţi variabila de mediu CAMLIBS cu locaţia bibliotecilor pentru aparatul foto, de exemplu SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
 
-#~ msgid ""
-#~ "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
-#~ "location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-#~ msgstr ""
-#~ "gPhoto2 pentru OS/2 necesită să setaţi variabila de mediu IOLIBS cu "
-#~ "locaţia bibliotecilor io (intrare/ieşire), de exemplu SET IOLIBS=C:"
-#~ "\\GPHOTO2\\IOLIB\n"
-
-#~ msgid "There are no folders in folder '%s'."
-#~ msgstr "Nu există nici un director în directorul '%s'."
-
-#~ msgid "There are %i folders in folder '%s':"
-#~ msgstr "Există %i directoare în directorul '%s':"
-
-#~ msgid "There are %i files in folder '%s':"
-#~ msgstr "Există %i fişiere în directorul '%s':"
+#~ msgid "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
+#~ msgstr "gPhoto2 pentru OS/2 necesită să setaţi variabila de mediu IOLIBS cu locaţia bibliotecilor io (intrare/ieşire), de exemplu SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
 
 #~ msgid "Jan"
 #~ msgstr "Ian"
