@@ -3,17 +3,17 @@
 # Clytie Siddall <clytie@riverland.net.au>, 2005, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.2.0\n"
+"Project-Id-Version: gphoto2 2.3.0\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2006-09-28 18:36+0200\n"
-"PO-Revision-Date: 2006-06-23 16:19+0930\n"
+"POT-Creation-Date: 2006-12-01 12:05-0500\n"
+"PO-Revision-Date: 2006-12-12 21:15+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: LocFactoryEditor 1.6a11\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.6fc1\n"
 
 #: gphoto2/actions.c:166
 #, c-format
@@ -288,11 +288,8 @@ msgstr "                                 : Xem thử\n"
 
 #: gphoto2/actions.c:689
 #, c-format
-msgid ""
-"                                 : Capture not supported by the driver\n"
-msgstr ""
-"                                 : Trình điều khiển không hỗ trợ khả năng "
-"bắt\n"
+msgid "                                 : Capture not supported by the driver\n"
+msgstr "                                 : Trình điều khiển không hỗ trợ khả năng bắt\n"
 
 #: gphoto2/actions.c:691
 #, c-format
@@ -321,23 +318,13 @@ msgstr "Hỗ trợ tải tập tin lên\t  : %s\n"
 
 #: gphoto2/actions.c:718
 #, c-format
-msgid ""
-"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
-"colon so I am going to guess what you mean."
-msgstr ""
-"Cổng phải có dạng như « serial:/dev/ttyS0 » hay « usb: », nhưng còn thiếu « %"
-"s » nên trình này sẽ đoán bạn có ý kiến nào."
+msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
+msgstr "Cổng phải có dạng như « serial:/dev/ttyS0 » hay « usb: », nhưng còn thiếu « %s » nên trình này sẽ đoán bạn có ý kiến nào."
 
 #: gphoto2/actions.c:752
 #, c-format
-msgid ""
-"The port you specified ('%s') can not be found. Please specify one of the "
-"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
-"(i.e. with prefix 'serial:' or 'usb:')."
-msgstr ""
-"Bạn đã xác định một cổng (« %s ») không thể được tìm. Hãy xác định một của "
-"những cổng được tìm bởi lệnh « gphoto2 --list-ports » và kiểm tra xem lại "
-"bạn đã gõ đúng chính tả (tực là có tiền tố « serial: » hay « usb: »)."
+msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
+msgstr "Bạn đã xác định một cổng (« %s ») không thể được tìm. Hãy xác định một của những cổng được tìm bởi lệnh « gphoto2 --list-ports » và kiểm tra xem lại bạn đã gõ đúng chính tả (tực là có tiền tố « serial: » hay « usb: »)."
 
 #: gphoto2/actions.c:784
 #, c-format
@@ -364,7 +351,7 @@ msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "Chuyển sang OS/2 bởi Bart van Leeuwen\n"
 
 #: gphoto2/actions.c:882
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "gphoto2 %s\n"
 "\n"
@@ -372,24 +359,23 @@ msgid ""
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
-"License. For more information about these matters, see the files named "
-"COPYING.\n"
+"License. For more information about these matters, see the files named COPYING.\n"
 "\n"
-"This version of gphoto2 is using the following software versions and "
-"options:\n"
+"This version of gphoto2 is using the following software versions and options:\n"
 msgstr ""
 "gphoto2 phiên bản %s\n"
 "\n"
-"Tác quyền © 2000-2004 Lutz Mueller và người khác\n"
+"Tác quyền © 2000-%d Lutz Mueller và người khác\n"
 "%s\n"
-"Trình gphoto2 KHÔNG BẢO ĐẢM GÌ CẢ, với điều kiện mà luật cho phép.\n"
-"Bạn có thể phân phối lại bản sao của trình gphoto2\n"
-"với điều kiện của Bản Quyền Dùng Chung Tổng Quát GNU (GPL).\n"
+"Trình gphoto2 KHÔNG BẢO HÀNH GÌ CẢ,\n"
+"với điều kiện được pháp luật cho phép.\n"
+"Bạn có thể phân phối lại các bản sao của trình gphoto2\n"
+"với điều kiện của Giấy Phép Công Cộng GNU (GPL).\n"
 "Để tìm thông tin thêm về các vấn đề này, bạn hãy xem những tập tin tên\n"
 "COPYING (sao chép).\n"
 "\n"
-"Phiên bản gphoto2 này có dùng những phiên bản phần mềm\n"
-"và tùy chọn như theo đây:\n"
+"Phiên bản gphoto2 này có dùng các phiên bản phần mềm\n"
+"và tùy chọn sau :\n"
 
 #: gphoto2/actions.c:1002
 #, c-format
@@ -397,11 +383,8 @@ msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Đang đè lên mã hiệu sản phẩm/nhà bán USB 0x%x/0x%x bằng 0x%x/0x%x"
 
 #: gphoto2/actions.c:1066
-msgid ""
-"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
-"MAILING LIST:"
-msgstr ""
-"LUÔN LUÔN HÃY GỒM NHỮNG DÒNG THEO ĐÂY KHI THÔNG BÁO LỖI CHO HỘP THƯ CHUNG:"
+msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
+msgstr "LUÔN LUÔN HÃY GỒM NHỮNG DÒNG THEO ĐÂY KHI THÔNG BÁO LỖI CHO HỘP THƯ CHUNG:"
 
 #: gphoto2/actions.c:1081
 #, c-format
@@ -487,8 +470,7 @@ msgstr "Việc đặt giá trị %s của ô điều khiển bật/tắt %s bị
 #: gphoto2/actions.c:1428
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
-msgstr ""
-"Giá trị đã gởi qua %s không phải là giờ hợp lệ, cũng không phải là số nguyên."
+msgstr "Giá trị đã gởi qua %s không phải là giờ hợp lệ, cũng không phải là số nguyên."
 
 #: gphoto2/actions.c:1435
 #, c-format
@@ -512,14 +494,8 @@ msgstr "Việc đặt giá trị cấu hình mới %s cho mục nhập cấu hì
 
 #: gphoto2/foreach.c:254
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there are only %i files available in "
-"'%s' or its subfolders. Please obtain a valid file number from a file "
-"listing first."
-msgstr ""
-"Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có %i tập tin sẵn sàng nằm trong "
-"« %s » hay các thư mục con của nó. Hãy lấy một số tập tin hợp lệ từ danh "
-"sách tập tin trước tiên."
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
+msgstr "Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có %i tập tin sẵn sàng nằm trong « %s » hay các thư mục con của nó. Hãy lấy một số tập tin hợp lệ từ danh sách tập tin trước tiên."
 
 #: gphoto2/foreach.c:279
 #, c-format
@@ -528,21 +504,13 @@ msgstr "Không có tập tin nằm trong thư mục « %s »."
 
 #: gphoto2/foreach.c:285
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there is only 1 file available in '%"
-"s'."
-msgstr ""
-"Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có 1 tập tin sẵn sàng nằm trong "
-"« %s » thôi."
+msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
+msgstr "Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có 1 tập tin sẵn sàng nằm trong « %s » thôi."
 
 #: gphoto2/foreach.c:293
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there are only %i files available in "
-"'%s'. Please obtain a valid file number from a file listing first."
-msgstr ""
-"Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có %i tập tin sẵn sàng nằm trong "
-"« %s ». Hãy lấy một số tập tin hợp lệ từ danh sách tập tin trước tiên."
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
+msgstr "Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có %i tập tin sẵn sàng nằm trong « %s ». Hãy lấy một số tập tin hợp lệ từ danh sách tập tin trước tiên."
 
 #: gphoto2/gp-params.c:67
 #, c-format
@@ -612,9 +580,7 @@ msgstr "Chỉ có khả năng đệm bằng số không những số trong tên 
 #: gphoto2/main.c:234
 #, c-format
 msgid "You cannot use %%n zero padding without a precision value!"
-msgstr ""
-"Bạn không thể sử dụng khả năng đệm bằng số không kiểu « %%n » khi không có "
-"giá trị chính xác !"
+msgstr "Bạn không thể sử dụng khả năng đệm bằng số không kiểu « %%n » khi không có giá trị chính xác !"
 
 #: gphoto2/main.c:250
 #, c-format
@@ -745,13 +711,8 @@ msgstr ""
 
 #: gphoto2/main.c:943
 #, c-format
-msgid ""
-"Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
-"c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
-msgstr ""
-"Hãy sử dụng cú pháp « a:b=c:d » để xử lý thiết bị USB nào được phát hiện như "
-"« a:b » thành « c:d » thay thế. « a b c d » nên là số dạng hệ thập lục phân "
-"bắt đầu với « 0x ».\n"
+msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
+msgstr "Hãy sử dụng cú pháp « a:b=c:d » để xử lý thiết bị USB nào được phát hiện như « a:b » thành « c:d » thay thế. « a b c d » nên là số dạng hệ thập lục phân bắt đầu với « 0x ».\n"
 
 #: gphoto2/main.c:1071
 msgid "gphoto2 has been compiled without support for CDK."
@@ -789,11 +750,11 @@ msgstr ""
 
 #: gphoto2/main.c:1349
 msgid "Print complete help message on program usage"
-msgstr ""
+msgstr "In ra toàn bộ trợ giúp về cách sử dụng chương trình"
 
 #: gphoto2/main.c:1351
 msgid "Print short message on program usage"
-msgstr ""
+msgstr "In ra trợ giúp ngắn về cách sử dụng chương trình"
 
 #: gphoto2/main.c:1353
 msgid "Turn on debugging"
@@ -801,11 +762,11 @@ msgstr "Bật gỡ lỗi"
 
 #: gphoto2/main.c:1355
 msgid "Name of file to write debug info to"
-msgstr ""
+msgstr "Tên tập tin vào đó cần ghi thông tin gỡ lỗi"
 
 #: gphoto2/main.c:1355 gphoto2/main.c:1363
 msgid "FILENAME"
-msgstr ""
+msgstr "TÊN TẬP TIN"
 
 #: gphoto2/main.c:1357
 msgid "Quiet output (default=verbose)"
@@ -821,7 +782,7 @@ msgstr "Xác định tốc độ truyền nối tiếp"
 
 #: gphoto2/main.c:1365
 msgid "SPEED"
-msgstr ""
+msgstr "TỐC ĐỘ"
 
 #: gphoto2/main.c:1367
 msgid "Specify camera model"
@@ -829,7 +790,7 @@ msgstr "Xác định mô hình máy ảnh"
 
 #: gphoto2/main.c:1367
 msgid "MODEL"
-msgstr ""
+msgstr "MÔ HÌNH"
 
 #: gphoto2/main.c:1369
 msgid "(expert only) Override USB IDs"
@@ -837,7 +798,7 @@ msgstr "(chỉ cấp cao) Đè lên mã hiệu USB"
 
 #: gphoto2/main.c:1369
 msgid "USBIDs"
-msgstr ""
+msgstr "USBID"
 
 #: gphoto2/main.c:1375
 msgid "Display version and exit"
@@ -852,9 +813,8 @@ msgid "List supported port devices"
 msgstr "Liệt kê các thiết bị cổng được hỗ trợ"
 
 #: gphoto2/main.c:1381
-#, fuzzy
 msgid "Display camera/driver abilities"
-msgstr "Hiển thị các khả năng máy ảnh"
+msgstr "Hiển thị các khả năng máy ảnh/trình điều khiển"
 
 #: gphoto2/main.c:1388
 msgid "Configure"
@@ -886,7 +846,7 @@ msgstr "Đặt tổng số khung cần bắt (mặc định là vô hạn)"
 
 #: gphoto2/main.c:1406
 msgid "COUNT"
-msgstr ""
+msgstr "SỐ ĐẾM"
 
 #: gphoto2/main.c:1408
 msgid "Set capture interval in seconds"
@@ -894,7 +854,7 @@ msgstr "Đặt thời gian giữa hai lần bắt, theo giây"
 
 #: gphoto2/main.c:1408
 msgid "SECONDS"
-msgstr ""
+msgstr "GIÂY"
 
 #: gphoto2/main.c:1410
 msgid "Capture an image"
@@ -922,7 +882,7 @@ msgstr "Tạo thư mục"
 
 #: gphoto2/main.c:1424 gphoto2/main.c:1426
 msgid "DIRNAME"
-msgstr ""
+msgstr "TÊN THƯ MỤC"
 
 #: gphoto2/main.c:1426
 msgid "Remove a directory"
@@ -939,7 +899,7 @@ msgstr "Lấy các tập tin đưa ra trong phạm vị"
 #: gphoto2/main.c:1430 gphoto2/main.c:1434 gphoto2/main.c:1439
 #: gphoto2/main.c:1446 gphoto2/main.c:1452 gphoto2/main.c:1457
 msgid "RANGE"
-msgstr ""
+msgstr "PHẠM VỊ"
 
 #: gphoto2/main.c:1432
 msgid "Get all files from folder"
@@ -998,13 +958,12 @@ msgid "filename"
 msgstr "tên tập tin"
 
 #: gphoto2/main.c:1463
-#, fuzzy
 msgid "Specify a filename or filename pattern"
-msgstr "Xác định tên tập tin"
+msgstr "Xác định tên tập tin hay mẫu tên tập tin"
 
 #: gphoto2/main.c:1463
 msgid "FILENAME_PATTERN"
-msgstr ""
+msgstr "MẪU TÊN TẬP TIN"
 
 #: gphoto2/main.c:1465
 msgid "Specify camera folder (default=\"/\")"
@@ -1012,7 +971,7 @@ msgstr "Xác định thư mục máy ảnh (mặc định là « / »)"
 
 #: gphoto2/main.c:1465
 msgid "FOLDER"
-msgstr ""
+msgstr "THƯ MỤC"
 
 #: gphoto2/main.c:1467
 msgid "Recursion (default for download)"
@@ -1068,34 +1027,31 @@ msgstr "Trình bao gPhoto"
 
 #: gphoto2/main.c:1504
 msgid "Common options"
-msgstr ""
+msgstr "Tùy chọn chung"
 
 #: gphoto2/main.c:1506
 msgid "Miscellaneous options (unsorted)"
-msgstr ""
+msgstr "Tùy chọn lặt vặt (chưa sắp xếp)"
 
 #: gphoto2/main.c:1508
 msgid "Get information on software and host system (not from the camera)"
-msgstr ""
+msgstr "Lấy thông tin về phần mềm và hệ thống chủ (không phải từ máy ảnh)"
 
 #: gphoto2/main.c:1510
-#, fuzzy
 msgid "Specify the camera to use"
-msgstr "Xác định mô hình máy ảnh"
+msgstr "Xác định máy ảnh cần dùng"
 
 #: gphoto2/main.c:1512
-#, fuzzy
 msgid "Camera and software configuration"
-msgstr "Không thể đặt cấu hình:"
+msgstr "Cấu hình máy ảnh và phần mềm"
 
 #: gphoto2/main.c:1514
-#, fuzzy
 msgid "Capture an image from or on the camera"
-msgstr "Chuyển đổi sang một thư mục nằm trên máy ảnh"
+msgstr "Bắt ảnh từ hay trên máy ảnh"
 
 #: gphoto2/main.c:1516
 msgid "Downloading, uploading and manipulating files"
-msgstr ""
+msgstr "Tải xuống/lên và thao tác tập tin"
 
 #: gphoto2/options.c:181
 #, c-format
@@ -1120,12 +1076,10 @@ msgstr "%-38s %s\n"
 #, c-format
 msgid ""
 "--------------------------------------------------------------------------------\n"
-"[Use double-quotes around arguments]        [Picture numbers begin with one "
-"(1)]\n"
+"[Use double-quotes around arguments]        [Picture numbers begin with one (1)]\n"
 msgstr ""
 "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n"
-"[Sử dụng đôi dấu trích dẫn chung quanh đối số]        [Mỗi số ảnh bắt đầu "
-"với số một (1)]\n"
+"[Sử dụng đôi dấu trích dẫn chung quanh đối số]        [Mỗi số ảnh bắt đầu với số một (1)]\n"
 
 #: gphoto2/range.c:104 gphoto2/range.c:158
 #, c-format
@@ -1234,7 +1188,6 @@ msgid "Create Directory"
 msgstr "Tạo thư mục"
 
 #: gphoto2/shell.c:130
-#, fuzzy
 msgid "Remove Directory"
 msgstr "Gỡ bỏ thư mục"
 
@@ -1322,9 +1275,7 @@ msgstr "Lệnh đặt cấu hình « set-config » cần đến đối số th�
 #: gphoto2/shell.c:870
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
-msgstr ""
-"Không tìm thấy lệnh « %s ». Hãy sử dụng lệnh « help » (trợ giúp) để xem danh "
-"sách các lệnh sẵn sàng."
+msgstr "Không tìm thấy lệnh « %s ». Hãy sử dụng lệnh « help » (trợ giúp) để xem danh sách các lệnh sẵn sàng."
 
 #: gphoto2/shell.c:877
 #, c-format
@@ -1355,76 +1306,3 @@ msgstr "Lệnh sẵn sàng:"
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
 msgstr "Để xem trợ giúp về một lệnh nào đó, hãy gõ « help tên_lệnh »."
-
-#~ msgid "Displays this help screen"
-#~ msgstr "Hiển thị trợ giúp này"
-
-#~ msgid "Get metadata from file"
-#~ msgstr "Lấy siêu dữ liệu từ tập tin"
-
-#~ msgid "List the configuration tree"
-#~ msgstr "Liệt kê cây cấu hình"
-
-#~ msgid "Get a configuration variable"
-#~ msgstr "Gọi một biến cấu hình"
-
-#~ msgid "Set a configuration variable"
-#~ msgstr "Đặt một biến cấu hình"
-
-#~ msgid "Capture a movie "
-#~ msgstr "Bắt một phim "
-
-#~ msgid "Summary of camera status"
-#~ msgstr "Tóm tắt trạng thái máy ảnh"
-
-#~ msgid "Camera driver manual"
-#~ msgstr "Sổ tay trình điều khiển máy ảnh"
-
-#~ msgid "About the camera driver"
-#~ msgstr "Thông tin về trình điều khiển máy ảnh"
-
-#~ msgid "path"
-#~ msgstr "đường dẫn"
-
-#~ msgid "speed"
-#~ msgstr "tốc độ"
-
-#~ msgid "model"
-#~ msgstr "mô hình"
-
-#~ msgid "usbid"
-#~ msgstr "mã USB"
-
-#~ msgid "folder"
-#~ msgstr "thư mục"
-
-#~ msgid "count"
-#~ msgstr "tổng"
-
-#~ msgid "seconds"
-#~ msgstr "giây"
-
-#~ msgid ""
-#~ "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
-#~ "location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
-#~ msgstr ""
-#~ "Trình gphoto2 chạy trên hệ điều hành OS/2 cần thiết bạn đặt giá trị môi "
-#~ "trường « CAMLIBS » thành vị trí của những thư viện máy ảnh, v.d. « SET "
-#~ "CAMLIBS=C:\\GPHOTO2\\CAM ».\n"
-
-#~ msgid ""
-#~ "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
-#~ "location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-#~ msgstr ""
-#~ "Trình gphoto2 chạy trên hệ điều hành OS/2 cần thiết bạn đặt giá trị môi "
-#~ "trường « IOLIBS » thành vị trí của những thư viện « io », v.d. « SET "
-#~ "IOLIBS=C:\\GPHOTO2\\IOLIB ».\n"
-
-#~ msgid "There are no folders in folder '%s'."
-#~ msgstr "Không có danh mục nào trong danh mục « %s »."
-
-#~ msgid "There are %i folders in folder '%s':"
-#~ msgstr "Có %i danh mục trong danh mục « %s »:"
-
-#~ msgid "There are %i files in folder '%s':"
-#~ msgstr "Có %i tập tin trong danh mục « %s »:"
