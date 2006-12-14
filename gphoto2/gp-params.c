@@ -311,7 +311,24 @@ gp_params_exit (GPParams *p)
 		free (p->filename);
 	if (p->context)
 		gp_context_unref (p->context);
+	if (p->hook_script)
+		free (p->hook_script);
 	memset (p, 0, sizeof (GPParams));
+}
+
+
+void
+gp_params_run_hook (GPParams *params, const char *command, const char *argument)
+{
+	if (params->hook_script != NULL) {
+		const char *argv[] = { params->hook_script,
+				       command,
+				       argument,
+				       NULL };
+		/* Possibly another calling convention using
+		 * environment variables would be better */
+		const int retcode = execvp(params->hook_script, argv);
+	}
 }
 
 

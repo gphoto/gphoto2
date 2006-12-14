@@ -874,6 +874,7 @@ typedef enum {
 	ARG_USBID,
 	ARG_VERSION,
 	ARG_WAIT_EVENT,
+	ARG_HOOK_SCRIPT,
 } Arg;
 
 typedef enum {
@@ -1005,6 +1006,18 @@ cb_arg_init (poptContext __unused__ ctx,
 
 	case ARG_QUIET:
 		gp_params.flags |= FLAGS_QUIET;
+		break;
+
+	case ARG_HOOK_SCRIPT:
+		do {
+			const size_t sz = strlen(arg);
+			char *copy = malloc(sz+1);
+			if (!copy) {
+				perror("malloc error");
+				exit (EXIT_FAILURE);
+			}
+			gp_params.hook_script = strcpy(copy, arg);
+		} while (0);
 		break;
 
 	case ARG_STDOUT:
@@ -1355,6 +1368,8 @@ main (int argc, char **argv)
 		 N_("Name of file to write debug info to"), N_("FILENAME")},
 		{"quiet", '\0', POPT_ARG_NONE, NULL, ARG_QUIET,
 		 N_("Quiet output (default=verbose)"), NULL},
+		{"hook-script", '\0', POPT_ARG_STRING, NULL, ARG_HOOK_SCRIPT,
+		 N_("Hook script to call after downloads, captures, etc. (ALPHA)"), N_("EXECUTABLE")},
 		POPT_TABLEEND
 	};
 	const struct poptOption cameraOptions[] = {
@@ -1738,6 +1753,15 @@ main (int argc, char **argv)
 	}
 
         signal (SIGINT, signal_exit);
+
+	/* If we are told to be quiet, do so. */
+	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
+	cb_params.p.q.found = 0;
+	cb_params.p.q.arg = ARG_QUIET;
+	poptResetContext (ctx);
+	while (poptGetNextOpt (ctx) >= 0);
+	if (cb_params.p.q.found)
+		gp_params.flags |= FLAGS_QUIET;
 
 	/* If we are told to be quiet, do so. */
 	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
