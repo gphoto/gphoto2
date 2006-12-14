@@ -321,13 +321,15 @@ void
 gp_params_run_hook (GPParams *params, const char *command, const char *argument)
 {
 	if (params->hook_script != NULL) {
-		const char *argv[] = { params->hook_script,
-				       command,
-				       argument,
-				       NULL };
+		char buf[2048];
+		snprintf(buf, sizeof(buf)-1, "%s %s %s", params->hook_script, command, argument);
 		/* Possibly another calling convention using
 		 * environment variables would be better */
-		const int retcode = execvp(params->hook_script, argv);
+		const int retcode = system(buf);
+		if (retcode != 0) {
+			fprintf(stderr, "Hook script returned error code %d (0x%x)\n",
+				retcode, retcode);
+		}
 	}
 }
 
