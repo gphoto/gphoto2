@@ -1766,15 +1766,6 @@ main (int argc, char **argv)
 	if (cb_params.p.q.found)
 		gp_params.flags |= FLAGS_QUIET;
 
-	/* If we are told to be quiet, do so. */
-	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
-	cb_params.p.q.found = 0;
-	cb_params.p.q.arg = ARG_QUIET;
-	poptResetContext (ctx);
-	while (poptGetNextOpt (ctx) >= 0);
-	if (cb_params.p.q.found)
-		gp_params.flags |= FLAGS_QUIET;
-
 	/* Go! */
 	cb_params.type = CALLBACK_PARAMS_TYPE_RUN;
 	poptResetContext (ctx);
