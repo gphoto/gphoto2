@@ -414,6 +414,7 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 		fflush (stdout);
         }
 	CR (gp_file_save (file, s));
+	gp_params_run_hook(&gp_params, "downloaded", s);
 
 	return (GP_OK);
 }
@@ -1369,7 +1370,7 @@ main (int argc, char **argv)
 		{"quiet", '\0', POPT_ARG_NONE, NULL, ARG_QUIET,
 		 N_("Quiet output (default=verbose)"), NULL},
 		{"hook-script", '\0', POPT_ARG_STRING, NULL, ARG_HOOK_SCRIPT,
-		 N_("Hook script to call after downloads, captures, etc. (ALPHA)"), N_("EXECUTABLE")},
+		 N_("Hook script to call after downloads, captures, etc. (ALPHA, calling convention to be determined)"), N_("EXECUTABLE")},
 		POPT_TABLEEND
 	};
 	const struct poptOption cameraOptions[] = {
