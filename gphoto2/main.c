@@ -1757,7 +1757,7 @@ main (int argc, char **argv)
 
         signal (SIGINT, signal_exit);
 
-	/* If we are told to be quiet, do so. */
+	/* If we are told to be quiet, be so. */
 	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	cb_params.p.q.found = 0;
 	cb_params.p.q.arg = ARG_QUIET;
