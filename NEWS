@@ -1,9 +1,16 @@
 gphoto2 2.3.0.1.trunk
 
+  * Add --hook-script option (ALPHA status, interface will change)
+
+gphoto2 2.3.0
+
   * Require popt library to parse command line options.
+  * Partitioned command line options into groups of related options.
   * Added --debug-logfile=FILENAME option.
-  * Avoid loading of all camlibs if not necessary.
+  * Only load all camlibs if necessary.
   * (Half-)Fix to make --with-libgphoto2=PREFIX configure parameter work.
+  * Preliminary support for lower-case filenames in --filename pattern: %:
+  * Added "rmdir" command to gphoto2 --shell.
 
 gphoto2 2.2
 
