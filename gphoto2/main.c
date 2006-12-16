@@ -1455,7 +1455,7 @@ main (int argc, char **argv)
 		 N_("Get all thumbnails from folder"), NULL},
 		{"get-metadata", '\0', POPT_ARG_STRING, NULL, ARG_GET_METADATA,
 		 N_("Get metadata given in range"), N_("RANGE")},
-		{"get-all-metadata", '\0', POPT_ARG_STRING, NULL, ARG_GET_ALL_METADATA,
+		{"get-all-metadata", '\0', POPT_ARG_NONE, NULL, ARG_GET_ALL_METADATA,
 		 N_("Get all metadata from folder"), NULL},
 		{"upload-metadata", '\0', POPT_ARG_STRING, NULL, ARG_UPLOAD_METADATA,
 		 N_("Upload metadata for file"), NULL},
