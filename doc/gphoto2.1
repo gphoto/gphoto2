@@ -13,6 +13,8 @@ gphoto2 \- command\-line gphoto2 client
 .HP 8
 \fBgphoto2\fR [\-\-debug] [\-\-debug\-logfile\ \fIFILENAME\fR] [[\-q] [\-\-quiet]] [[\-v] [\-\-verbose]] [[\-h] [\-\-help]]
 .br
+ [\-\-hook\-script\ \fIFILENAME\fR]
+.br
  [\-\-list\-cameras] [\-\-list\-ports] [\-\-stdout] [\-\-stdout\-size]
 .br
  [\-\-auto\-detect] [\-\-port\ \fIPATH\fR] [\-\-speed\ \fISPEED\fR] [\-\-camera\ \fIMODEL\fR]
@@ -81,10 +83,31 @@ Turn on debugging output. Debugging output is written to stderr by default, or t
 \fB\-\-debug\-logfile\fR
 option.
 .TP
-\fB\-\-debug\-logfile\fR \fIFILENAME\fR (new in version 2.2.x SVN trunk)
+\fB\-\-debug\-logfile\fR \fIFILENAME\fR (since 2.3.0)
 The logfile to write the debugging info to, if
 \fB\-\-debug\fR
 is given.
+.TP
+\fB\-\-hook\-script\fR \fIFILENAME\fR (new after 2.3.0)
+Hook script to execute when something has happened. The hook script reads the environment variable
+\fBACTION\fR.
+.RS
+.TP
+\fBACTION\fR=init
+indicates that gphoto2 has just initialized. If the hook script returns with a non\-zero exit code now,
+\fBgphoto2\fR
+will abort.
+.TP
+\fBACTION\fR=start
+indicates that gphoto2 has finished parsing the command line and ise about to execute the requested commands.
+.TP
+\fBACTION\fR=download
+indicates that a file has just been downloaded to the computer and stored in the file indicated by the environment variable
+\fBARGUMENT\fR.
+.TP
+\fBACTION\fR=stop
+indicates that gphoto2 is about to finish.
+.RE
 .TP
 \fB\-q\fR, \fB\-\-quiet\fR
 Quiet output (default=verbose).

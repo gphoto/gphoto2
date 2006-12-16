@@ -5,9 +5,11 @@
 EXTRA_DIST = \
 	gphoto2-cmd-config.c gphoto2-cmd-config.h	\
 	gphoto2-cmd-capture.c gphoto2-cmd-capture.h	\
-	i18n.h
+	i18n.h test-hook.sh
 
 bin_PROGRAMS = gphoto2
+
+# doc_DATA = test-hook.sh
 
 if HAVE_CDK
 CDK_FILES = gphoto2-cmd-config.c gphoto2-cmd-config.h
@@ -35,6 +37,7 @@ gphoto2_SOURCES = 		\
 	foreach.c foreach.h 	\
 	globals.h 		\
 	gp-params.c gp-params.h	\
+	spawnve.c spawnve.h	\
 	main.c main.h 		\
 	version.c version.h	\
 	range.c range.h 	\
@@ -51,3 +54,11 @@ gphoto2_CFLAGS =					\
 gphoto2_LDADD =								\
 	$(CDK_LIBS) $(AA_LIBS) $(JPEG_LIBS) $(PTHREAD_LIBS)		\
 	$(LIBEXIF_LIBS) $(INTLLIBS) $(RL_LIBS) $(LIBGPHOTO2_LIBS) $(POPT_LIBS)
+
+TESTS = spawntest
+
+TESTS_ENVIRONMENT = GPHOTO_HOOK=$(srcdir)/test-hook.sh
+
+check_PROGRAMS = spawntest
+
+spawntest_SOURCES = spawntest.c spawnve.c spawnve.h

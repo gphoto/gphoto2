@@ -26,7 +26,6 @@
 #include "gp-params.h"
 #include "i18n.h"
 #include "main.h"
-#include "options.h"
 #include "range.h"
 #include "shell.h"
 
@@ -414,7 +413,7 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
 		fflush (stdout);
         }
 	CR (gp_file_save (file, s));
-	gp_params_run_hook(&gp_params, "downloaded", s);
+	gp_params_run_hook(&gp_params, "download", s);
 
 	return (GP_OK);
 }
@@ -1018,6 +1017,13 @@ cb_arg_init (poptContext __unused__ ctx,
 				exit (EXIT_FAILURE);
 			}
 			gp_params.hook_script = strcpy(copy, arg);
+			/* Run init hook */
+			if (0!=gp_params_run_hook(&gp_params, "init", NULL)) {
+				fprintf(stdout,
+					"Hook script \"%s\" init failed. Aborting.\n",
+					gp_params.hook_script);
+				exit(3);
+			}
 		} while (0);
 		break;
 
@@ -1302,16 +1308,20 @@ report_failure (int result, int argc, char **argv)
 	}
 }
 
-#define CR_MAIN(result)					\
-{							\
-	int r = (result);				\
-							\
-	if (r < 0) {					\
-		report_failure (r, argc, argv);		\
-		gp_params_exit (&gp_params);			\
-		return (EXIT_FAILURE);			\
-	}						\
-}
+#define CR_MAIN(result)							\
+	do {								\
+		int r = (result);					\
+									\
+		if (r < 0) {						\
+			report_failure (r, argc, argv);			\
+									\
+			/* Run stop hook */				\
+			gp_params_run_hook(&gp_params, "stop", NULL);	\
+									\
+			gp_params_exit (&gp_params);			\
+			return (EXIT_FAILURE);				\
+		}							\
+	} while (0)
 
 
 #define GPHOTO2_POPT_CALLBACK \
@@ -1349,7 +1359,7 @@ report_failure (int result, int argc, char **argv)
 
 
 int
-main (int argc, char **argv)
+main (int argc, char **argv, char **envp)
 {
 	CallbackParams cb_params;
 	poptContext ctx;
@@ -1370,9 +1380,8 @@ main (int argc, char **argv)
 		{"quiet", '\0', POPT_ARG_NONE, NULL, ARG_QUIET,
 		 N_("Quiet output (default=verbose)"), NULL},
 		{"hook-script", '\0', POPT_ARG_STRING, NULL, ARG_HOOK_SCRIPT,
-		 N_("Hook script to call after downloads, captures, etc."
-		    " (ALPHA, calling convention to be determined)"), 
-		 N_("EXECUTABLE")},
+		 N_("Hook script to call after downloads, captures, etc."),
+		 N_("FILENAME")},
 		POPT_TABLEEND
 	};
 	const struct poptOption cameraOptions[] = {
@@ -1547,7 +1556,7 @@ main (int argc, char **argv)
 	/* Create/Initialize the global variables before we first use
 	 * them. And the signal handlers and popt callback functions
 	 * do use them. */
-	gp_params_init (&gp_params);
+	gp_params_init (&gp_params, envp);
 
 	/* Figure out the width of the terminal and watch out for changes */
 	signal_resize (0);
@@ -1757,14 +1766,19 @@ main (int argc, char **argv)
 
         signal (SIGINT, signal_exit);
 
-	/* If we are told to be quiet, be so. */
+	/* If we are told to be quiet, be so. *
 	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	cb_params.p.q.found = 0;
 	cb_params.p.q.arg = ARG_QUIET;
 	poptResetContext (ctx);
 	while (poptGetNextOpt (ctx) >= 0);
-	if (cb_params.p.q.found)
+	if (cb_params.p.q.found) {
 		gp_params.flags |= FLAGS_QUIET;
+	}
+	*/
+
+	/* Run startup hook */
+	gp_params_run_hook(&gp_params, "start", NULL);
 
 	/* Go! */
 	cb_params.type = CALLBACK_PARAMS_TYPE_RUN;
@@ -1810,6 +1824,9 @@ main (int argc, char **argv)
 	}
 
 	CR_MAIN (cb_params.p.r);
+
+	/* Run stop hook */
+	gp_params_run_hook(&gp_params, "stop", NULL);
 
 	/* FIXME: Env var checks (e.g. for Windows, OS/2) should happen before
 	 *        we load the camlibs */
