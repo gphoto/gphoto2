@@ -323,6 +323,8 @@ gp_params_exit (GPParams *p)
 		gp_context_unref (p->context);
 	if (p->hook_script)
 		free (p->hook_script);
+	if (p->portinfo_list)
+		gp_port_info_list_free (p->portinfo_list);
 	memset (p, 0, sizeof (GPParams));
 }
 
