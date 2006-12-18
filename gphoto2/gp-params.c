@@ -28,6 +28,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <errno.h>
+
+#include "spawnve.h"
 
 #ifndef MAX
 #define MAX(x, y) (((x)>(y))?(x):(y))
@@ -245,8 +248,13 @@ ctx_message_func (GPContext __unused__ *context, const char *format,
                 fflush (stdout);
 }
 
+
+/** gp_params_init
+ * @param envp: The third char ** parameter of the main() function
+ */
+
 void
-gp_params_init (GPParams *p)
+gp_params_init (GPParams *p, char **envp)
 {
 	if (!p)
 		return;
@@ -279,6 +287,8 @@ gp_params_init (GPParams *p)
 	p->_abilities_list = NULL;
 
 	p->debug_func_id = -1;
+
+	p->envp = envp;
 }
 
 
@@ -311,7 +321,208 @@ gp_params_exit (GPParams *p)
 		free (p->filename);
 	if (p->context)
 		gp_context_unref (p->context);
+	if (p->hook_script)
+		free (p->hook_script);
+	if (p->portinfo_list)
+		gp_port_info_list_free (p->portinfo_list);
 	memset (p, 0, sizeof (GPParams));
+}
+
+
+/* If CALL_VIA_SYSTEM is defined, use insecure system(3) instead of execve(2) */
+/* #define CALL_VIA_SYSTEM */
+
+static int
+internal_run_hook(const char *const hook_script, 
+		  const char *const action, const char *const argument,
+		  char **envp);
+
+
+int
+gp_params_run_hook (GPParams *params, const char *action, const char *argument)
+{
+	/* printf("gp_params_run_hook(params, \"%s\", \"%s\")\n", 
+	   action, argument);
+	*/
+	if (params->hook_script == NULL) {
+		return 0;
+	}
+	return internal_run_hook(params->hook_script,
+				 action, argument,
+				 params->envp);
+}
+
+
+#ifdef CALL_VIA_SYSTEM
+static void
+internal_putenv(const char *const varname, const char *const value)
+{
+	if (NULL != varname) {
+		if (NULL != value) {
+			const size_t varname_size = strlen(varname);
+			const size_t value_size = strlen(value);
+			/* '=' and '\0' */
+			const size_t buffer_size = varname_size + value_size + 2;
+			char buffer[buffer_size];
+			strcpy(buffer, varname);
+			strcat(buffer, "=");
+			strcat(buffer, value);
+			printf("putenv(\"%s\")\n", buffer);
+			if (0 != putenv(buffer)) {
+				printf("putenv error\n");
+			}
+		} else {
+			/* clear variable */
+			if (unsetenv(varname)) {
+				int my_errno = errno;
+				fprintf(stderr, "unsetenv(\"%s\"): %s", 
+					varname, strerror(my_errno));
+			}
+		}
+	}
+	printf("%% %s=%s\n", varname, getenv(varname));
+}
+#endif
+
+
+#ifndef CALL_VIA_SYSTEM
+
+#define ASSERT(cond)					\
+  do {							\
+    if (!(cond)) {					\
+      fprintf(stderr, "%s:%d: Assertion failed: %s\n",	\
+	      __FILE__, __LINE__, #cond);		\
+      exit(13);						\
+    }							\
+  } while(0)
+
+
+static char *
+alloc_envar(const char *varname, const char *value)
+{
+  const size_t varname_size = strlen(varname);
+  const size_t value_size = strlen(value);
+  const size_t buf_size = varname_size + 1 + value_size + 1;
+  char *result_buf = malloc(buf_size);
+  ASSERT(result_buf != NULL);
+  strcpy(result_buf, varname);
+  strcat(result_buf, "=");
+  strcat(result_buf, value);
+  return result_buf;
+}
+#endif
+
+
+static int
+internal_run_hook(const char *const hook_script, 
+		  const char *const action, const char *const argument,
+		  char **envp)
+{
+#ifdef CALL_VIA_SYSTEM
+	int retcode;
+
+	/* run hook using system(3) */
+	internal_putenv("ACTION", action);
+	internal_putenv("ARGUMENT", argument);
+	
+	retcode = system(hook_script);
+	if (retcode != 0) {
+		fprintf(stderr, "Hook script returned error code %d (0x%x)\n",
+			retcode, retcode);
+		return 1;
+	}
+	return 0;
+#else
+	/* spawnve() based implementation of internal_run_hook()
+	 *
+	 * Most of the code here creates and destructs the
+	 * char *child_argv[] and char *child_envp[] to be passed to 
+	 * spawnve() and thus execve().
+	 */
+
+	/* A note on program memory layout:
+	 *
+	 * child_argv and child_envp must be in writable memory. It
+	 * may be possible that on some systems, we should malloc()
+	 * them instead of just defining them within this function.
+	 *
+	 * Anyway... do not define them as const char *foo[].
+	 */
+	
+	unsigned int i;
+
+	/* run hook using execve(2) */
+	char *child_argv[] = {
+		hook_script,
+		NULL
+	};
+
+	/* count number of environment variables currently set */
+	unsigned int envar_count;
+	for (envar_count=0; envp[envar_count] != NULL; envar_count++) {
+		/* printf("%3d: \"%s\"\n", envar_count, envp[envar_count]); */
+	}
+
+	/* envars not to copy */
+	char *varlist[] = {
+		"ACTION", "ARGUMENT", NULL
+	};
+
+	/* Initialize environment. Start with newly defined vars, then copy
+	 * all the existing ones. Finally fill up with NULLs.
+	 * Total amount of char* is
+	 *     number of existing envars (envar_count)
+	 *   + max number of new envars (2)
+	 *   + NULL list terminator (1)
+	 */
+	char *child_envp[envar_count+((sizeof(varlist)/sizeof(varlist[0]))-1)+1];
+	unsigned int envi = 0;
+	
+	/* own envars */
+	if (NULL != action) {
+		child_envp[envi++] = alloc_envar("ACTION", action);
+	}
+	if (NULL != argument) {
+		child_envp[envi++] = alloc_envar("ARGUMENT", argument);
+	}
+	
+	/* copy envars except for those in varlist */
+	for (i=0; i<envar_count; i++) {
+		int skip = 0;
+		unsigned int n;
+		for (n=0; varlist[n] != NULL; n++) {
+			const char *varname = varlist[n];
+			const char *start = strstr(envp[i], varname);
+			if ((envp[i] == start) &&  (envp[i][strlen(varname)] == '=')) {
+				skip = 1;
+				break;
+			}
+		}
+		if (!skip) {
+			child_envp[envi++] = strdup(envp[i]);
+		}
+	}
+	
+	/* fill up with NULL */
+	while (envi<(sizeof(child_envp)/sizeof(child_envp[0]))) {
+		child_envp[envi++] = NULL;
+	}
+
+	const int retcode = spawnve(hook_script, child_argv, child_envp);
+	const int errno_s = errno;
+
+	/* Free envp memory */
+	for (i=0; child_envp[i] != NULL; i++) {
+		free(child_envp[i]);
+	}
+
+	if (retcode != 0) {
+		fprintf(stderr, "Hook script returned error code %d (0x%x)\n",
+			retcode, retcode);
+		return 1;
+	}
+	return 0;
+#endif
 }
 
 

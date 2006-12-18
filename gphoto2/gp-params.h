@@ -65,15 +65,20 @@ struct _GPParams {
 
 	MultiType	multi_type;
 	CameraFileType	download_type; /* for multi download */
+       
+	char *hook_script; /* If non-NULL, hook script to run */
+	char **envp;  /* envp from the main() function */
 };
 
-void gp_params_init (GPParams *params);
+void gp_params_init (GPParams *params, char **envp);
 void gp_params_exit (GPParams *params);
 
 /* Use only this function to access the abilities_list member of the
  * GPParams structure. This function makes sure that the
  * abilities_list is only iniatilized if it is actually used. */
 CameraAbilitiesList *gp_params_abilities_list (GPParams *params);
+
+int gp_params_run_hook (GPParams *params, const char *command, const char *argument);
 
 #endif
 
