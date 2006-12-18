@@ -23,12 +23,6 @@ else
 AA_FILES =
 endif
 
-if HAVE_POPT
-NO_POPT_FILES = 
-else
-NO_POPT_FILES = options.c options.h
-endif
-
 gphoto2_SOURCES = 		\
 	$(AA_FILES)		\
 	$(CDK_FILES)		\
