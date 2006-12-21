@@ -934,7 +934,7 @@ action_camera_capture_preview (GPParams *p)
 		return (r);
 	}
 
-	r = save_camera_file_to_file (NULL, file);
+	r = save_camera_file_to_file (NULL, file, NULL);
 	gp_file_unref (file);
 	if (r < 0) 
 		return (r);

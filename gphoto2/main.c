@@ -40,6 +40,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <locale.h>
+#include <fcntl.h>
 
 #ifdef HAVE_POPT
 #  include <popt.h>
@@ -363,8 +364,9 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 
 
 int
-save_camera_file_to_file (const char *folder, CameraFile *file)
-{
+save_camera_file_to_file (
+	const char *folder, CameraFile *file, const char *curname
+) {
 	char *path = NULL, s[1024], c[1024];
 	CameraFileType type;
 
@@ -412,9 +414,12 @@ save_camera_file_to_file (const char *folder, CameraFile *file)
                 printf (_("Saving file as %s\n"), s);
 		fflush (stdout);
         }
-	CR (gp_file_save (file, s));
+	if (curname) {
+		unlink(s);
+		if (-1 == rename (curname, s))
+			perror("rename");
+	}
 	gp_params_run_hook(&gp_params, "download", s);
-
 	return (GP_OK);
 }
 
@@ -446,8 +451,9 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 		   const char *folder, const char *filename,
 		   CameraFileType type)
 {
-        int res;
+        int fd, res;
         CameraFile *file;
+	char	tmpname[20], *tmpfilename;
 
 	if (flags & FLAGS_NEW) {
 		CameraFileInfo info;
@@ -476,10 +482,27 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 			return (GP_ERROR_NOT_SUPPORTED);
 		}
 	}
-	
-        CR (gp_file_new (&file));
-        CR (gp_camera_file_get (camera, folder, filename, type,
-				file, context));
+	strcpy (tmpname, "tmpfileXXXXXX");
+	fd = mkstemp(tmpname);
+	if (fd == -1) {
+        	CR (gp_file_new (&file));
+		tmpfilename = NULL;
+	} else {
+		res = gp_file_new_from_fd (&file, fd);
+		if (res < GP_OK) {
+			close (fd);
+			unlink (tmpname);
+			return res;
+		}
+		tmpfilename = tmpname;
+	}
+        res = gp_camera_file_get (camera, folder, filename, type,
+				  file, context);
+	if (res < GP_OK) {
+		gp_file_unref (file);
+		if (tmpfilename) unlink (tmpfilename);
+		return res;
+	}
 
 	if (flags & FLAGS_STDOUT) {
                 const char *data;
@@ -487,17 +510,15 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 
                 CR (gp_file_get_data_and_size (file, &data, &size));
 
-		if (flags & FLAGS_STDOUT_SIZE)
+		if (flags & FLAGS_STDOUT_SIZE) /* this will be difficult in fd mode */
                         printf ("%li\n", size);
                 fwrite (data, sizeof(char), size, stdout);
                 gp_file_unref (file);
+		unlink (tmpname);
                 return (GP_OK);
         }
-
-        res = save_camera_file_to_file (folder, file);
-
+        res = save_camera_file_to_file (folder, file, tmpfilename);
         gp_file_unref (file);
-
         return (res);
 }
 
