@@ -20,6 +20,7 @@
 
 #define _XOPEN_SOURCE	/* strptime proto, but this hides other prototypes */
 #define _GNU_SOURCE	/* get all the other prototypes */
+#define __EXTENSIONS__	/* for solaris to get back strdup and strcasecmp */
 
 #include "config.h"
 #include "actions.h"
