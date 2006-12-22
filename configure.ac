@@ -1,7 +1,7 @@
 AC_PREREQ(2.59)
 dnl Next stable release must be 2.2.1 or later
 dnl Bump the .1.trunk to 2.trunk etc....
-AC_INIT([gphoto2 command line interface], [2.3.0.2.trunk], [gphoto-devel@lists.sourceforge.net], [gphoto2])
+AC_INIT([gphoto2 command line interface], [2.3.0.3.trunk], [gphoto-devel@lists.sourceforge.net], [gphoto2])
 AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4m])
@@ -82,6 +82,10 @@ GP_CHECK_LIBRARY([LIBGPHOTO2], [libgphoto2], [>= 2.2.1.4])
 
 
 AC_CHECK_FUNCS([strptime])
+
+
+AC_HEADER_STDC
+AC_CHECK_HEADERS([fcntl.h])
 
 
 dnl ---------------------------------------------------------------------------
