@@ -33,7 +33,8 @@ enum _Flags {
 	FLAGS_FORCE_OVERWRITE	= 1 << 3,
 	FLAGS_STDOUT		= 1 << 4,
 	FLAGS_STDOUT_SIZE	= 1 << 5,
-	FLAGS_NEW		= 1 << 6
+	FLAGS_NEW		= 1 << 6,
+	FLAGS_RESET_CAPTURE_INTERVAL = 1 << 7
 };
 
 typedef enum _MultiType MultiType;
