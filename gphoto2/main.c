@@ -896,7 +896,7 @@ typedef enum {
 	ARG_VERSION,
 	ARG_WAIT_EVENT,
 	ARG_HOOK_SCRIPT,
-	ARG_ALESAN
+	ARG_ALESAN /* FIXME: What to call it? reset capture interval? restart capture interval? */
 } Arg;
 
 typedef enum {
