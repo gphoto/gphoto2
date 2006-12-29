@@ -35,6 +35,7 @@ dnl Some programs we need
 dnl ---------------------------------------------------------------------------
 AC_PROG_CC
 AC_PROG_CPP
+AM_PROG_CC_C_O
 AM_PROG_LIBTOOL
 AC_PROG_INSTALL
 GP_PKG_CONFIG
