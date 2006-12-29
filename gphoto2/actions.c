@@ -71,11 +71,11 @@ action_camera_upload_file (GPParams *p, const char *folder, const char *path)
 
 	gp_log (GP_LOG_DEBUG, "main", "Uploading file...");
 
-	CR (gp_file_new (&file));
+	CR (gp_file_new_from_fd (&file, -1));
 	res = gp_file_open (file, path);
-	if (res < 0) {
+	if (res < GP_OK) {
 		gp_file_unref (file);
-		return (res);
+		return res;
 	}
 
 	/* Check if the user specified a filename */
@@ -86,7 +86,6 @@ action_camera_upload_file (GPParams *p, const char *folder, const char *path)
 			return (res);
 		}
 	}
-
 	res = gp_camera_folder_put_file (p->camera, folder, file,
 					 p->context);
 	gp_file_unref (file);
