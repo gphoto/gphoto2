@@ -4,8 +4,8 @@ dnl Bump the .1.trunk to 2.trunk etc....
 AC_INIT([gphoto2 command line interface], [2.3.0.3.trunk], [gphoto-devel@lists.sourceforge.net], [gphoto2])
 AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_MACRO_DIR([m4m])
-AC_CONFIG_AUX_DIR([.])
+AC_CONFIG_MACRO_DIR([auto-m4])
+AC_CONFIG_AUX_DIR([auto-aux])
 AM_INIT_AUTOMAKE([-Wall -Werror gnu 1.9 dist-bzip2 check-news])
 
 if test ! -d "$srcdir/m4m"; then

@@ -17,3 +17,14 @@ at one of the following URLs:
 	http://www.gphoto.com/
 	http://www.gphoto.org/
 	http://gphoto.sourceforge.net/
+
+
+How do I build it?
+------------------
+
+  * If using SVN source, run "autoreconf -is".
+  * configure
+  * make
+  * make install
+
+Out-of-tree builds are supported. "configure --help" may help.
