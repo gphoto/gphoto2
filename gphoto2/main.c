@@ -896,7 +896,8 @@ typedef enum {
 	ARG_VERSION,
 	ARG_WAIT_EVENT,
 	ARG_HOOK_SCRIPT,
-	ARG_ALESAN /* FIXME: What to call it? reset capture interval? restart capture interval? */
+	ARG_ALESAN, /* FIXME: What to call it? reset capture interval? restart capture interval? */
+	ARG_STORAGE_INFO
 } Arg;
 
 typedef enum {
@@ -1250,6 +1251,9 @@ cb_arg_run (poptContext __unused__ ctx,
 	case ARG_WAIT_EVENT:
 		params->p.r = action_camera_wait_event (&gp_params);
 		break;
+	case ARG_STORAGE_INFO:
+		params->p.r = print_storage_info (&gp_params);
+		break;
 	default:
 		break;
 	};
@@ -1549,6 +1553,8 @@ main (int argc, char **argv, char **envp)
 		 N_("Show camera driver manual"), NULL},
 		{"about", '\0', POPT_ARG_NONE, NULL, ARG_ABOUT,
 		 N_("About the camera driver manual"), NULL},
+		{"storage-info", '\0', POPT_ARG_NONE, NULL, ARG_STORAGE_INFO,
+		 N_("Show storage information"), NULL},
 		{"shell", '\0', POPT_ARG_NONE, NULL, ARG_SHELL,
 		 N_("gPhoto shell"), NULL},
 		POPT_TABLEEND
@@ -1674,6 +1680,7 @@ main (int argc, char **argv, char **envp)
 	CHECK_OPT (ARG_SHOW_INFO);
 	CHECK_OPT (ARG_SUMMARY);
 	CHECK_OPT (ARG_UPLOAD_FILE);
+	CHECK_OPT (ARG_STORAGE_INFO);
 	if (cb_params.p.q.found &&
 	    (!strcmp (a.model, "") || (info.type == GP_PORT_NONE))) {
 		int count;

@@ -75,6 +75,7 @@ int debug_action           (GPParams *, const char *debug_logfile_name);
 int list_config_action     (GPParams *);
 int get_config_action      (GPParams *, const char *name);
 int set_config_action      (GPParams *, const char *name, const char *value);
+int print_storage_info     (GPParams *);
 
 void _get_portinfo_list	(GPParams *p);
 #endif /* __ACTIONS_H__ */

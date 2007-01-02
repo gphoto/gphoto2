@@ -37,6 +37,7 @@
 
 #include <gphoto2/gphoto2-port-log.h>
 #include <gphoto2/gphoto2-setting.h>
+#include <gphoto2/gphoto2-filesys.h>
 #include <gphoto2/globals.h>
 
 #ifdef HAVE_AA
@@ -972,6 +973,95 @@ action_camera_wait_event (GPParams *p)
 		fn = (CameraFilePath*)data;
 		printf("FOLDERADDED %s %s\n",fn->name, fn->folder);
 		break;
+	}
+	return GP_OK;
+}
+
+int
+print_storage_info (GPParams *p)
+{
+	int			ret, i, nrofsinfos;
+	CameraStorageInformation	*sinfos;
+
+	ret = gp_camera_get_storageinfo (p->camera, &sinfos, &nrofsinfos, p->context);
+	if (ret != GP_OK) {
+		if (ret == GP_ERROR_NOT_SUPPORTED)
+			printf (_("Getting storage information not supported for this camera.\n"));
+		return ret;
+	}
+	for (i=0;i<nrofsinfos;i++) {
+		printf ("[Storage %d]\n", i);
+		if (sinfos[i].fields & GP_STORAGEINFO_LABEL)
+			printf ("label=%s\n", sinfos[i].label);
+		if (sinfos[i].fields & GP_STORAGEINFO_DESCRIPTION)
+			printf ("description=%s\n", sinfos[i].description);
+		if (sinfos[i].fields & GP_STORAGEINFO_BASE)
+			printf ("basedir=%s\n", sinfos[i].basedir);
+		if (sinfos[i].fields & GP_STORAGEINFO_ACCESS) {
+			printf ("access=%d ", sinfos[i].access);
+			switch (sinfos[i].access) {
+			case GP_STORAGEINFO_AC_READWRITE:
+				printf (_("Read-Write"));
+				break;
+			case GP_STORAGEINFO_AC_READONLY:
+				printf (_("Read-Only"));
+				break;
+			case GP_STORAGEINFO_AC_READONLY_WITH_DELETE:
+				printf (_("Read-only with delete"));
+				break;
+			default:
+				printf (_("Unknown"));
+				break;
+			}
+			printf("\n");
+		}
+		if (sinfos[i].fields & GP_STORAGEINFO_STORAGETYPE) {
+			printf ("type=%d ", sinfos[i].type);
+			switch (sinfos[i].type) {
+			default:
+			case GP_STORAGEINFO_ST_UNKNOWN:
+				printf ( _("Unknown"));
+				break;
+			case GP_STORAGEINFO_ST_FIXED_ROM:
+				printf ( _("Fixed ROM"));
+				break;
+			case GP_STORAGEINFO_ST_REMOVABLE_ROM:
+				printf ( _("Removable ROM"));
+				break;
+			case GP_STORAGEINFO_ST_FIXED_RAM:
+				printf ( _("Fixed RAM"));
+				break;
+			case GP_STORAGEINFO_ST_REMOVABLE_RAM:
+				printf ( _("Removable RAM"));
+				break;
+			}
+			printf("\n");
+		}
+		if (sinfos[i].fields & GP_STORAGEINFO_FILESYSTEMTYPE) {
+			printf ("fstype=%d ", sinfos[i].type);
+			switch (sinfos[i].fstype) {
+			default:
+			case GP_STORAGEINFO_FST_UNDEFINED:
+				printf ( _("Undefined"));
+				break;
+			case GP_STORAGEINFO_FST_GENERICFLAT:
+				printf ( _("Generic Flat"));
+				break;
+			case GP_STORAGEINFO_FST_GENERICHIERARCHICAL:
+				printf ( _("Generic Hierarchical"));
+				break;
+			case GP_STORAGEINFO_FST_DCF:
+				printf ( _("Camera layout (DCIM)"));
+				break;
+			}
+			printf("\n");
+		}
+		if (sinfos[i].fields & GP_STORAGEINFO_MAXCAPACITY)
+			printf ("totalcapacity=%ld KB\n", sinfos[i].capacitykbytes);
+		if (sinfos[i].fields & GP_STORAGEINFO_FREESPACEKBYTES)
+			printf ("free=%ld KB\n", sinfos[i].freekbytes);
+		if (sinfos[i].fields & GP_STORAGEINFO_FREESPACEIMAGES)
+			printf ("freeimages=%ld\n", sinfos[i].freeimages);
 	}
 	return GP_OK;
 }
