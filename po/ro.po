@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2-2.3.0\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2006-12-29 09:39+0100\n"
+"POT-Creation-Date: 2007-01-03 09:16+0100\n"
 "PO-Revision-Date: 2006-12-11 12:00-0500\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -91,14 +91,14 @@ msgstr "   Descărcat:  %s\n"
 #: gphoto2/actions.c:269 gphoto2/actions.c:301 gphoto2/actions.c:313
 #: gphoto2/actions.c:663 gphoto2/actions.c:665 gphoto2/actions.c:693
 #: gphoto2/actions.c:696 gphoto2/actions.c:699 gphoto2/actions.c:702
-#: gphoto2/actions.c:705 gphoto2/actions.c:1405
+#: gphoto2/actions.c:705 gphoto2/actions.c:1494
 msgid "yes"
 msgstr "da"
 
 #: gphoto2/actions.c:269 gphoto2/actions.c:301 gphoto2/actions.c:313
 #: gphoto2/actions.c:663 gphoto2/actions.c:665 gphoto2/actions.c:693
 #: gphoto2/actions.c:696 gphoto2/actions.c:699 gphoto2/actions.c:702
-#: gphoto2/actions.c:705 gphoto2/actions.c:1399
+#: gphoto2/actions.c:705 gphoto2/actions.c:1488
 msgid "no"
 msgstr "nu"
 
@@ -395,12 +395,77 @@ msgstr ""
 "Această versiune de gphoto2 foloseşte următoarele versiuni software şi "
 "opţiuni:\n"
 
-#: gphoto2/actions.c:1003
+#: gphoto2/actions.c:989
+#, c-format
+msgid "Getting storage information not supported for this camera.\n"
+msgstr ""
+
+#: gphoto2/actions.c:1004
+#, c-format
+msgid "Read-Write"
+msgstr ""
+
+#: gphoto2/actions.c:1007
+#, c-format
+msgid "Read-Only"
+msgstr ""
+
+#: gphoto2/actions.c:1010
+#, c-format
+msgid "Read-only with delete"
+msgstr ""
+
+#: gphoto2/actions.c:1013 gphoto2/actions.c:1023
+#, c-format
+msgid "Unknown"
+msgstr ""
+
+#: gphoto2/actions.c:1026
+#, c-format
+msgid "Fixed ROM"
+msgstr ""
+
+#: gphoto2/actions.c:1029
+#, c-format
+msgid "Removable ROM"
+msgstr ""
+
+#: gphoto2/actions.c:1032
+#, c-format
+msgid "Fixed RAM"
+msgstr ""
+
+#: gphoto2/actions.c:1035
+#, c-format
+msgid "Removable RAM"
+msgstr ""
+
+#: gphoto2/actions.c:1045
+#, c-format
+msgid "Undefined"
+msgstr ""
+
+#: gphoto2/actions.c:1048
+#, c-format
+msgid "Generic Flat"
+msgstr ""
+
+#: gphoto2/actions.c:1051
+#, c-format
+msgid "Generic Hierarchical"
+msgstr ""
+
+#: gphoto2/actions.c:1054
+#, c-format
+msgid "Camera layout (DCIM)"
+msgstr ""
+
+#: gphoto2/actions.c:1092
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Înlocuiesc ID vendor/produs USB 0x%x/0x%x cu 0x%x/0x%x"
 
-#: gphoto2/actions.c:1067
+#: gphoto2/actions.c:1156
 msgid ""
 "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
 "MAILING LIST:"
@@ -408,108 +473,108 @@ msgstr ""
 "INCLUDEŢI ÎNTORDEAUNA URMĂTOARELE LINII CÂND TRIMITEŢI MESAJE DE DEPANARE "
 "LISTEI DE DISCUŢII:"
 
-#: gphoto2/actions.c:1082
+#: gphoto2/actions.c:1171
 #, c-format
 msgid "%s has been compiled with the following options:"
 msgstr "%s a fost compilat cu următoarele opţiuni:"
 
-#: gphoto2/actions.c:1198
+#: gphoto2/actions.c:1287
 #, c-format
 msgid "%s not found in configuration tree."
 msgstr "%s nu a fost găsit în arborele de configuraţie."
 
-#: gphoto2/actions.c:1257
+#: gphoto2/actions.c:1346
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr "Nu am reuşit să extrag valoarea widget-ului text %s."
 
-#: gphoto2/actions.c:1274
+#: gphoto2/actions.c:1363
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr "Nu am reuşit să extrag valorile widget-ului interval %s."
 
-#: gphoto2/actions.c:1286
+#: gphoto2/actions.c:1375
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr "Nu am reuşit să extrag valorile widget-ului comutator %s."
 
-#: gphoto2/actions.c:1298
+#: gphoto2/actions.c:1387
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr "Nu am reuşit să extrag valorile widget-ului dată/timp %s."
 
-#: gphoto2/actions.c:1328
+#: gphoto2/actions.c:1417
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr "Nu am reuşit să extrag valorile widget-ului radio %s."
 
-#: gphoto2/actions.c:1369
+#: gphoto2/actions.c:1458
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr "Nu am reuşit să setez valoarea widget-ului %s ca %s."
 
-#: gphoto2/actions.c:1379
+#: gphoto2/actions.c:1468
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr "Valoarea pasată %s nu este o valoare în virgulă mobilă."
 
-#: gphoto2/actions.c:1384
+#: gphoto2/actions.c:1473
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr "Valoarea pasată %f nu este în intervalus aşteptat %f - %f."
 
-#: gphoto2/actions.c:1390
+#: gphoto2/actions.c:1479
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr "Nu am reuşit să setez valoarea widget-ului interval %s ca %f."
 
-#: gphoto2/actions.c:1399
+#: gphoto2/actions.c:1488
 msgid "off"
 msgstr "închis"
 
-#: gphoto2/actions.c:1400
+#: gphoto2/actions.c:1489
 msgid "false"
 msgstr "fals"
 
-#: gphoto2/actions.c:1405
+#: gphoto2/actions.c:1494
 msgid "on"
 msgstr "deschis"
 
-#: gphoto2/actions.c:1406
+#: gphoto2/actions.c:1495
 msgid "true"
 msgstr "adevărat"
 
-#: gphoto2/actions.c:1410
+#: gphoto2/actions.c:1499
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
 msgstr "Valoarea pasată %s nu este o valoare comutator validă."
 
-#: gphoto2/actions.c:1416
+#: gphoto2/actions.c:1505
 #, c-format
 msgid "Failed to set values %s of toggle widget %s."
 msgstr "Nu am reuşit să setez valorile %s ale widget-ului comutator %s."
 
-#: gphoto2/actions.c:1429
+#: gphoto2/actions.c:1518
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr "Valoarea pasată %s nu este nici n timp valid nici un întreg."
 
-#: gphoto2/actions.c:1436
+#: gphoto2/actions.c:1525
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr "Nu am reuşit să setez noul timp pentru widget-ul dată/timp %s ca %s."
 
-#: gphoto2/actions.c:1473
+#: gphoto2/actions.c:1562
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr "Alegerea %s nu a fost găsită în lista de opţiuni."
 
-#: gphoto2/actions.c:1481
+#: gphoto2/actions.c:1570
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr "Widget-ul %s nu este configurabil."
 
-#: gphoto2/actions.c:1488
+#: gphoto2/actions.c:1577
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr ""
@@ -747,7 +812,7 @@ msgstr ""
 "\n"
 "Renunţ...\n"
 
-#: gphoto2/main.c:966
+#: gphoto2/main.c:967
 #, c-format
 msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
@@ -757,16 +822,16 @@ msgstr ""
 "detectat ca a:b ca c:c in schimb. a b c d trebuie să fie numere hexazecimale "
 "începând cu '0x'.\n"
 
-#: gphoto2/main.c:1117
+#: gphoto2/main.c:1118
 msgid "gphoto2 has been compiled without support for CDK."
 msgstr "gphoto2 a fost compilat fără suport pentru CDK."
 
-#: gphoto2/main.c:1302
+#: gphoto2/main.c:1306
 #, c-format
 msgid "Operation cancelled.\n"
 msgstr "Operaţiune anulată.\n"
 
-#: gphoto2/main.c:1306
+#: gphoto2/main.c:1310
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -775,7 +840,7 @@ msgstr ""
 "*** Eroare (%i: '%s') ***      \n"
 "\n"
 
-#: gphoto2/main.c:1310
+#: gphoto2/main.c:1314
 #, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
@@ -791,317 +856,322 @@ msgstr ""
 "de discuţii a dezvoltatorilor gphoto <gphoto-devel@lists.sourceforge.net>,\n"
 "vă rugăm rulaţi gphoto2 astfel:\n"
 
-#: gphoto2/main.c:1399
+#: gphoto2/main.c:1403
 msgid "Print complete help message on program usage"
 msgstr "Afişează mesajul complet de ajutor depre cum se foloseşte programul"
 
-#: gphoto2/main.c:1401
+#: gphoto2/main.c:1405
 msgid "Print short message on program usage"
 msgstr "Afişează un scurt mesaj despre cum se foloseşte programul"
 
-#: gphoto2/main.c:1403
+#: gphoto2/main.c:1407
 msgid "Turn on debugging"
 msgstr "Porniţi depanarea"
 
-#: gphoto2/main.c:1405
+#: gphoto2/main.c:1409
 msgid "Name of file to write debug info to"
 msgstr "Numele fişierului în care să fie scrisă informaţiile de depanare"
 
-#: gphoto2/main.c:1405 gphoto2/main.c:1410 gphoto2/main.c:1416
+#: gphoto2/main.c:1409 gphoto2/main.c:1414 gphoto2/main.c:1420
 msgid "FILENAME"
 msgstr "NUMEFIŞIER"
 
-#: gphoto2/main.c:1407
+#: gphoto2/main.c:1411
 msgid "Quiet output (default=verbose)"
 msgstr "Ieşire sumară (implicit=amanunţită)"
 
-#: gphoto2/main.c:1409
+#: gphoto2/main.c:1413
 msgid "Hook script to call after downloads, captures, etc."
 msgstr ""
 
-#: gphoto2/main.c:1416
+#: gphoto2/main.c:1420
 msgid "Specify port device"
 msgstr "Specifică porturi de unităţi"
 
-#: gphoto2/main.c:1418
+#: gphoto2/main.c:1422
 msgid "Specify serial transfer speed"
 msgstr "Specifică viteza de transfer pe serial"
 
-#: gphoto2/main.c:1418
+#: gphoto2/main.c:1422
 msgid "SPEED"
 msgstr "VITEZĂ"
 
-#: gphoto2/main.c:1420
+#: gphoto2/main.c:1424
 msgid "Specify camera model"
 msgstr "Specifică modelul aparatului foto"
 
-#: gphoto2/main.c:1420
+#: gphoto2/main.c:1424
 msgid "MODEL"
 msgstr "MODEL"
 
-#: gphoto2/main.c:1422
+#: gphoto2/main.c:1426
 msgid "(expert only) Override USB IDs"
 msgstr "(numai experţi) Înlocuieşte ID-urile USB"
 
-#: gphoto2/main.c:1422
+#: gphoto2/main.c:1426
 msgid "USBIDs"
 msgstr "ID-uri USB"
 
-#: gphoto2/main.c:1428
+#: gphoto2/main.c:1432
 msgid "Display version and exit"
 msgstr "Afişază versiunea şi termină"
 
-#: gphoto2/main.c:1430
+#: gphoto2/main.c:1434
 msgid "List supported camera models"
 msgstr "Enumeră modelele de aparate suportate"
 
-#: gphoto2/main.c:1432
+#: gphoto2/main.c:1436
 msgid "List supported port devices"
 msgstr "Enumeră porturi de unităţi suportate"
 
-#: gphoto2/main.c:1434
+#: gphoto2/main.c:1438
 msgid "Display camera/driver abilities"
 msgstr "Afişeaza capabilităţile aparatului foto/driverului"
 
-#: gphoto2/main.c:1441
+#: gphoto2/main.c:1445
 msgid "Configure"
 msgstr "Configurează"
 
-#: gphoto2/main.c:1444
+#: gphoto2/main.c:1448
 msgid "List configuration tree"
 msgstr "Listează arborele de configuraţie"
 
-#: gphoto2/main.c:1446
+#: gphoto2/main.c:1450
 msgid "Get configuration value"
 msgstr "Obţine valoare configuraţie"
 
-#: gphoto2/main.c:1448
+#: gphoto2/main.c:1452
 msgid "Set configuration value"
 msgstr "Setează valoare configuraţie"
 
-#: gphoto2/main.c:1454
+#: gphoto2/main.c:1458
 msgid "Wait for event from camera"
 msgstr "Aştept eveniment de la aparatul foto"
 
-#: gphoto2/main.c:1457
+#: gphoto2/main.c:1461
 msgid "Capture a quick preview"
 msgstr "Capturează o previzualizare rapidă"
 
-#: gphoto2/main.c:1459
+#: gphoto2/main.c:1463
 msgid "Set number of frames to capture (default=infinite)"
 msgstr "Setează numărul de cadre de capturat (implicit=infinit)"
 
-#: gphoto2/main.c:1459
+#: gphoto2/main.c:1463
 msgid "COUNT"
 msgstr "NUMĂR"
 
-#: gphoto2/main.c:1461
+#: gphoto2/main.c:1465
 msgid "Set capture interval in seconds"
 msgstr "Setează intervalul de captură în secunde"
 
-#: gphoto2/main.c:1461
+#: gphoto2/main.c:1465
 msgid "SECONDS"
 msgstr "SECUNDE"
 
-#: gphoto2/main.c:1463
+#: gphoto2/main.c:1467
 msgid "(ALPHA) Reset capture interval on signal (default=no, rename pending)"
 msgstr ""
 
-#: gphoto2/main.c:1465
+#: gphoto2/main.c:1469
 msgid "Capture an image"
 msgstr "Capturează o imagine"
 
-#: gphoto2/main.c:1467
+#: gphoto2/main.c:1471
 msgid "Capture a movie"
 msgstr "Capturează un film"
 
-#: gphoto2/main.c:1469
+#: gphoto2/main.c:1473
 msgid "Capture an audio clip"
 msgstr "Capturează un clip audio"
 
-#: gphoto2/main.c:1475
+#: gphoto2/main.c:1479
 msgid "List folders in folder"
 msgstr "Enumeră directoare în director"
 
-#: gphoto2/main.c:1477
+#: gphoto2/main.c:1481
 msgid "List files in folder"
 msgstr "Enumeră fişierele în director"
 
-#: gphoto2/main.c:1479
+#: gphoto2/main.c:1483
 msgid "Create a directory"
 msgstr "Crează un director"
 
-#: gphoto2/main.c:1479 gphoto2/main.c:1481
+#: gphoto2/main.c:1483 gphoto2/main.c:1485
 msgid "DIRNAME"
 msgstr "NUMEDIRECTOR"
 
-#: gphoto2/main.c:1481
+#: gphoto2/main.c:1485
 msgid "Remove a directory"
 msgstr "Şterge un director"
 
-#: gphoto2/main.c:1483
+#: gphoto2/main.c:1487
 msgid "Display number of files"
 msgstr "Afişează numărul de fişiere"
 
-#: gphoto2/main.c:1485
+#: gphoto2/main.c:1489
 msgid "Get files given in range"
 msgstr "Ia fişierele date în interval"
 
-#: gphoto2/main.c:1485 gphoto2/main.c:1489 gphoto2/main.c:1494
-#: gphoto2/main.c:1501 gphoto2/main.c:1507 gphoto2/main.c:1512
+#: gphoto2/main.c:1489 gphoto2/main.c:1493 gphoto2/main.c:1498
+#: gphoto2/main.c:1505 gphoto2/main.c:1511 gphoto2/main.c:1516
 msgid "RANGE"
 msgstr "INTERVAL"
 
-#: gphoto2/main.c:1487
+#: gphoto2/main.c:1491
 msgid "Get all files from folder"
 msgstr "Ia toate fişierele din director"
 
-#: gphoto2/main.c:1489
+#: gphoto2/main.c:1493
 msgid "Get thumbnails given in range"
 msgstr "Ia thumbnail-urile date în interval"
 
-#: gphoto2/main.c:1492
+#: gphoto2/main.c:1496
 msgid "Get all thumbnails from folder"
 msgstr "Ia toate thumbnail-urile din director"
 
-#: gphoto2/main.c:1494
+#: gphoto2/main.c:1498
 msgid "Get metadata given in range"
 msgstr "Ia metadatele date în interval"
 
-#: gphoto2/main.c:1496
+#: gphoto2/main.c:1500
 msgid "Get all metadata from folder"
 msgstr "Ia toate metadatele din director"
 
-#: gphoto2/main.c:1498
+#: gphoto2/main.c:1502
 msgid "Upload metadata for file"
 msgstr "Încarcă metadatele pentru fişier"
 
-#: gphoto2/main.c:1501
+#: gphoto2/main.c:1505
 msgid "Get raw data given in range"
 msgstr "Ia datele 'raw' date în interval"
 
-#: gphoto2/main.c:1504
+#: gphoto2/main.c:1508
 msgid "Get all raw data from folder"
 msgstr "Ia toată datele 'raw' din director"
 
-#: gphoto2/main.c:1507
+#: gphoto2/main.c:1511
 msgid "Get audio data given in range"
 msgstr "Ia datele audio date în interval"
 
-#: gphoto2/main.c:1510
+#: gphoto2/main.c:1514
 msgid "Get all audio data from folder"
 msgstr "Ia toate datele audio din director"
 
-#: gphoto2/main.c:1512
+#: gphoto2/main.c:1516
 msgid "Delete files given in range"
 msgstr "Şterge toate fişierele date în interval"
 
-#: gphoto2/main.c:1514
+#: gphoto2/main.c:1518
 msgid "Delete all files in folder"
 msgstr "Şterge toate fişierele din director"
 
-#: gphoto2/main.c:1516
+#: gphoto2/main.c:1520
 msgid "Upload a file to camera"
 msgstr "Încarvă un fişier în aparatul foto"
 
-#: gphoto2/main.c:1516
+#: gphoto2/main.c:1520
 msgid "filename"
 msgstr "nume fişier"
 
-#: gphoto2/main.c:1518
+#: gphoto2/main.c:1522
 msgid "Specify a filename or filename pattern"
 msgstr "Specifică un nume sau pattern de fişier"
 
-#: gphoto2/main.c:1518
+#: gphoto2/main.c:1522
 msgid "FILENAME_PATTERN"
 msgstr "FILENAME_PATTERN"
 
-#: gphoto2/main.c:1520
+#: gphoto2/main.c:1524
 msgid "Specify camera folder (default=\"/\")"
 msgstr "Specifică directorul aparatului foto (implicit=\"/\")"
 
-#: gphoto2/main.c:1520
+#: gphoto2/main.c:1524
 msgid "FOLDER"
 msgstr "DIRECTOR"
 
-#: gphoto2/main.c:1522
+#: gphoto2/main.c:1526
 msgid "Recursion (default for download)"
 msgstr "Recursiv (implicit pentru descărcare)"
 
-#: gphoto2/main.c:1524
+#: gphoto2/main.c:1528
 msgid "No recursion (default for deletion)"
 msgstr "Ne-recursiv (implicit pentru ştergere)"
 
-#: gphoto2/main.c:1526
+#: gphoto2/main.c:1530
 msgid "Process new files only"
 msgstr "Procesează numai noile fişiere"
 
-#: gphoto2/main.c:1528
+#: gphoto2/main.c:1532
 msgid "Overwrite files without asking"
 msgstr "Suprascrie fişiere fără a întreba."
 
-#: gphoto2/main.c:1534
+#: gphoto2/main.c:1538
 msgid "Send file to stdout"
 msgstr "Trimite fişierul la ieşirea standard"
 
-#: gphoto2/main.c:1536
+#: gphoto2/main.c:1540
 msgid "Print filesize before data"
 msgstr "Afişează dimensiune fişier înainte de date"
 
-#: gphoto2/main.c:1538
+#: gphoto2/main.c:1542
 msgid "List auto-detected cameras"
 msgstr "Enumeră aparatele foto auto-detectate"
 
-#: gphoto2/main.c:1542 gphoto2/shell.c:132
+#: gphoto2/main.c:1546 gphoto2/shell.c:132
 msgid "Show EXIF information"
 msgstr "Afişează informaţia EXIF"
 
-#: gphoto2/main.c:1545 gphoto2/shell.c:126
+#: gphoto2/main.c:1549 gphoto2/shell.c:126
 msgid "Show info"
 msgstr "Afişează info"
 
-#: gphoto2/main.c:1547
+#: gphoto2/main.c:1551
 msgid "Show summary"
 msgstr "Afişează rezumat"
 
-#: gphoto2/main.c:1549
+#: gphoto2/main.c:1553
 msgid "Show camera driver manual"
 msgstr "Afişează manualul driverului aparatului foto"
 
-#: gphoto2/main.c:1551
+#: gphoto2/main.c:1555
 msgid "About the camera driver manual"
 msgstr "Despre manualul driverului aparatului foto"
 
-#: gphoto2/main.c:1553
+#: gphoto2/main.c:1557
+#, fuzzy
+msgid "Show storage information"
+msgstr "Afişează informaţia EXIF"
+
+#: gphoto2/main.c:1559
 msgid "gPhoto shell"
 msgstr "shell gPhoto"
 
-#: gphoto2/main.c:1559
+#: gphoto2/main.c:1565
 msgid "Common options"
 msgstr "Opţiuni comune"
 
-#: gphoto2/main.c:1561
+#: gphoto2/main.c:1567
 msgid "Miscellaneous options (unsorted)"
 msgstr "Diferite opţiuni (nesortate)"
 
-#: gphoto2/main.c:1563
+#: gphoto2/main.c:1569
 msgid "Get information on software and host system (not from the camera)"
 msgstr ""
 "Ia informaţii despre software şi sistemul gazdă (nu de pe aparatul foto)"
 
-#: gphoto2/main.c:1565
+#: gphoto2/main.c:1571
 msgid "Specify the camera to use"
 msgstr "Specifică aparatului foto de folosit"
 
-#: gphoto2/main.c:1567
+#: gphoto2/main.c:1573
 msgid "Camera and software configuration"
 msgstr "Configurarea aparatului foto şi software-ului"
 
-#: gphoto2/main.c:1569
+#: gphoto2/main.c:1575
 msgid "Capture an image from or on the camera"
 msgstr "Capturează o imagine de pe sau pe aparatul foto"
 
-#: gphoto2/main.c:1571
+#: gphoto2/main.c:1577
 msgid "Downloading, uploading and manipulating files"
 msgstr "Descarc, încarc sau manipulez fişiere"
 
