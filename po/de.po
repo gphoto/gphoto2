@@ -6,13 +6,13 @@
 # Marcus Meissner, 2005.
 # Lutz Müller <urc8@rz.uni-karlsruhe.de>, 2000.
 # Colin Marquardt <colin@marquardt-home.de>, 2001, 2002, 2003.
-# Marcus Meissner <marcus@jet.franken.de>, 2005, 2006.
+# Marcus Meissner <marcus@jet.franken.de>, 2005, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2007-01-03 09:16+0100\n"
-"PO-Revision-Date: 2006-12-17 02:10+0100\n"
+"PO-Revision-Date: 2007-01-03 09:20+0100\n"
 "Last-Translator: Marcus Meissner <marcus@jet.franken.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -294,8 +294,7 @@ msgstr "                                 : Bildvorschau\n"
 
 #: gphoto2/actions.c:690
 #, c-format
-msgid ""
-"                                 : Capture not supported by the driver\n"
+msgid "                                 : Capture not supported by the driver\n"
 msgstr ""
 "                                 : Aufnahme wird nicht durch Treiber "
 "unterstützt\n"
@@ -400,67 +399,67 @@ msgstr ""
 #: gphoto2/actions.c:989
 #, c-format
 msgid "Getting storage information not supported for this camera.\n"
-msgstr ""
+msgstr "Das Abfragen von Informationen über Speichergeräte ist bei dieser Kamera nicht unterstützt.\n"
 
 #: gphoto2/actions.c:1004
 #, c-format
 msgid "Read-Write"
-msgstr ""
+msgstr "Lesen/Schreiben"
 
 #: gphoto2/actions.c:1007
 #, c-format
 msgid "Read-Only"
-msgstr ""
+msgstr "Nur Lesen"
 
 #: gphoto2/actions.c:1010
 #, c-format
 msgid "Read-only with delete"
-msgstr ""
+msgstr "Nur Lesen und Bilder löschen"
 
 #: gphoto2/actions.c:1013 gphoto2/actions.c:1023
 #, c-format
 msgid "Unknown"
-msgstr ""
+msgstr "Unbekannt"
 
 #: gphoto2/actions.c:1026
 #, c-format
 msgid "Fixed ROM"
-msgstr ""
+msgstr "Fester ROM"
 
 #: gphoto2/actions.c:1029
 #, c-format
 msgid "Removable ROM"
-msgstr ""
+msgstr "Entfernbarer ROM"
 
 #: gphoto2/actions.c:1032
 #, c-format
 msgid "Fixed RAM"
-msgstr ""
+msgstr "Fester RAM"
 
 #: gphoto2/actions.c:1035
 #, c-format
 msgid "Removable RAM"
-msgstr ""
+msgstr "Entfernbarer RAM"
 
 #: gphoto2/actions.c:1045
 #, c-format
 msgid "Undefined"
-msgstr ""
+msgstr "Unbekannt"
 
 #: gphoto2/actions.c:1048
 #, c-format
 msgid "Generic Flat"
-msgstr ""
+msgstr "Flacher Speicher"
 
 #: gphoto2/actions.c:1051
 #, c-format
 msgid "Generic Hierarchical"
-msgstr ""
+msgstr "Hierarchischer Speicher"
 
 #: gphoto2/actions.c:1054
 #, c-format
 msgid "Camera layout (DCIM)"
-msgstr ""
+msgstr "Kamera Struktur (DCIM)"
 
 #: gphoto2/actions.c:1092
 #, c-format
@@ -604,8 +603,7 @@ msgstr "Es gibt keine Datei im Verzeichnis »%s«."
 msgid ""
 "Bad file number. You specified %i, but there is only 1 file available in '%"
 "s'."
-msgstr ""
-"Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
+msgstr "Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
 
 #: gphoto2/foreach.c:293
 #, c-format
@@ -696,8 +694,7 @@ msgstr ""
 #: gphoto2/main.c:281
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr ""
-"Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
+msgstr "Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
 
 #: gphoto2/main.c:336
 #, c-format
@@ -1144,9 +1141,8 @@ msgid "About the camera driver manual"
 msgstr "Die Kameratreiberhilfe anzeigen"
 
 #: gphoto2/main.c:1557
-#, fuzzy
 msgid "Show storage information"
-msgstr "Zeige EXIF-Informationen"
+msgstr "Zeige Speicher-Informationen"
 
 #: gphoto2/main.c:1559
 msgid "gPhoto shell"
@@ -1162,8 +1158,7 @@ msgstr "Weitere Optionen (unsortiert)"
 
 #: gphoto2/main.c:1569
 msgid "Get information on software and host system (not from the camera)"
-msgstr ""
-"Frage Informationen über Software und Maschine ab (nicht von der Kamera)"
+msgstr "Frage Informationen über Software und Maschine ab (nicht von der Kamera)"
 
 #: gphoto2/main.c:1571
 msgid "Specify the camera to use"
@@ -1411,5 +1406,3 @@ msgstr ""
 "Um Hilfe zu einem bestimmten Befehl zu erhalten, verwenden Sie »help "
 "Befehlsname«."
 
-#~ msgid "EXECUTABLE"
-#~ msgstr "Programm"
