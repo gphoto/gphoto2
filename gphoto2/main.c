@@ -896,7 +896,10 @@ typedef enum {
 	ARG_VERSION,
 	ARG_WAIT_EVENT,
 	ARG_HOOK_SCRIPT,
-	ARG_ALESAN, /* FIXME: What to call it? reset capture interval? restart capture interval? */
+	/*
+	  FIXME: What to call it? reset capture interval? restart capture interval?
+	  ARG_ALESAN,
+	*/
 	ARG_STORAGE_INFO
 } Arg;
 
@@ -1031,9 +1034,11 @@ cb_arg_init (poptContext __unused__ ctx,
 		gp_params.flags |= FLAGS_QUIET;
 		break;
 
+		/*
 	case ARG_ALESAN:
 		gp_params.flags |= FLAGS_RESET_CAPTURE_INTERVAL;
 		break;
+		*/
 
 	case ARG_HOOK_SCRIPT:
 		do {
@@ -1463,8 +1468,10 @@ main (int argc, char **argv, char **envp)
 		 N_("Set number of frames to capture (default=infinite)"), N_("COUNT")},
 		{"interval", 'I', POPT_ARG_INT, NULL, ARG_CAPTURE_INTERVAL,
 		 N_("Set capture interval in seconds"), N_("SECONDS")},
+		/*
 		{"reset-capture-interval-on-signal", '\0', POPT_ARG_NONE, NULL, ARG_ALESAN,
 		 N_("(ALPHA) Reset capture interval on signal (default=no, rename pending)"), NULL},
+		*/
 		{"capture-image", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_IMAGE, N_("Capture an image"), NULL},
 		{"capture-movie", '\0', POPT_ARG_NONE, NULL,
