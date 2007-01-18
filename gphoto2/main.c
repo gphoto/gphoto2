@@ -1607,6 +1607,8 @@ main (int argc, char **argv, char **envp)
 	ctx = poptGetContext (PACKAGE, argc, (const char **) argv, options, 0);
 	if (argc <= 1) {
 		poptPrintUsage (ctx, stdout, 0);
+		gp_params_exit (&gp_params);
+                poptFreeContext(ctx);
 		return (0);
 	}
 
@@ -1618,14 +1620,20 @@ main (int argc, char **argv, char **envp)
 	while ((result = poptGetNextOpt (ctx)) >= 0);
 	if (result == POPT_ERROR_BADOPT) {
 		poptPrintUsage (ctx, stderr, 0);
+		gp_params_exit (&gp_params);
+                poptFreeContext(ctx);
 		return (EXIT_FAILURE);
 	}
 	if (help_option_given) {
 		poptPrintHelp(ctx, stdout, 0);
+		gp_params_exit (&gp_params);
+                poptFreeContext(ctx);
 		return 0;
 	}
 	if (usage_option_given) {
 		poptPrintUsage(ctx, stdout, 0);
+		gp_params_exit (&gp_params);
+                poptFreeContext(ctx);
 		return 0;
 	}
 	if (debug_option_given) {
@@ -1874,7 +1882,7 @@ main (int argc, char **argv, char **envp)
 	 *        we load the camlibs */
 
 	gp_params_exit (&gp_params);
-
+        poptFreeContext(ctx);
         return (EXIT_SUCCESS);
 }
 
