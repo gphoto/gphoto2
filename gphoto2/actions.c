@@ -1490,7 +1490,7 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 		)
 			t = 0;
 		if (	strcasecmp (value, "on")	|| strcasecmp (value, "yes")	||
-			strcasecmp (value, "true")	|| strcmp (value, "0")		||
+			strcasecmp (value, "true")	|| strcmp (value, "1")		||
 			strcasecmp (value, _("on"))	|| strcasecmp (value, _("yes"))	||
 			strcasecmp (value, _("true"))
 		)
