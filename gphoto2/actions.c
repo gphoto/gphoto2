@@ -1483,18 +1483,19 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 		int	t;
 
 		t = 2;
-		if (	strcasecmp (value, "off")	|| strcasecmp (value, "no")	||
-			strcasecmp (value, "false")	|| strcmp (value, "0")		||
-			strcasecmp (value, _("off"))	|| strcasecmp (value, _("no"))	||
-			strcasecmp (value, _("false"))
+		if (	!strcasecmp (value, "off")	|| !strcasecmp (value, "no")	||
+			!strcasecmp (value, "false")	|| !strcmp (value, "0")		||
+			!strcasecmp (value, _("off"))	|| !strcasecmp (value, _("no"))	||
+			!strcasecmp (value, _("false"))
 		)
 			t = 0;
-		if (	strcasecmp (value, "on")	|| strcasecmp (value, "yes")	||
-			strcasecmp (value, "true")	|| strcmp (value, "1")		||
-			strcasecmp (value, _("on"))	|| strcasecmp (value, _("yes"))	||
-			strcasecmp (value, _("true"))
+		if (	!strcasecmp (value, "on")	|| !strcasecmp (value, "yes")	||
+			!strcasecmp (value, "true")	|| !strcmp (value, "1")		||
+			!strcasecmp (value, _("on"))	|| !strcasecmp (value, _("yes"))	||
+			!strcasecmp (value, _("true"))
 		)
 			t = 1;
+		fprintf (stderr," value %s, t %d\n", value, t);
 		if (t == 2) {
 			gp_context_error (p->context, _("The passed value %s is not a valid toggle value."), value);
 			ret = GP_ERROR_BAD_PARAMETERS;
