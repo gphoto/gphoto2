@@ -1217,11 +1217,12 @@ display_widgets (CameraWidget *widget, char *prefix) {
 	n = gp_widget_count_children (widget);
 
 	newprefix = malloc(strlen(prefix)+1+strlen(uselabel)+1);
+	if (!newprefix) /* we will likely die now anyway */
+		return;
 	sprintf(newprefix,"%s/%s",prefix,uselabel);
 
-	if ((type != GP_WIDGET_WINDOW) && (type != GP_WIDGET_SECTION)) {
+	if ((type != GP_WIDGET_WINDOW) && (type != GP_WIDGET_SECTION))
 		printf("%s\n",newprefix);
-	}
 	for (i=0; i<n; i++) {
 		CameraWidget *child;
 	
