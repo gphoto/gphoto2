@@ -404,7 +404,8 @@ alloc_envar(const char *varname, const char *value)
   const size_t value_size = strlen(value);
   const size_t buf_size = varname_size + 1 + value_size + 1;
   char *result_buf = malloc(buf_size);
-  ASSERT(result_buf != NULL);
+
+  if (!result_buf) return NULL;
   strcpy(result_buf, varname);
   strcat(result_buf, "=");
   strcat(result_buf, value);
@@ -481,9 +482,11 @@ internal_run_hook(const char *const hook_script,
 	/* own envars */
 	if (NULL != action) {
 		child_envp[envi++] = alloc_envar("ACTION", action);
+		if (!child_envp[envi-1]) return 1;
 	}
 	if (NULL != argument) {
 		child_envp[envi++] = alloc_envar("ARGUMENT", argument);
+		if (!child_envp[envi-1]) return 1;
 	}
 	
 	/* copy envars except for those in varlist */
@@ -509,7 +512,6 @@ internal_run_hook(const char *const hook_script,
 	}
 
 	const int retcode = spawnve(hook_script, child_argv, child_envp);
-	const int errno_s = errno;
 
 	/* Free envp memory */
 	for (i=0; child_envp[i] != NULL; i++) {
