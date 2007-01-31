@@ -1217,7 +1217,7 @@ display_widgets (CameraWidget *widget, char *prefix) {
 	n = gp_widget_count_children (widget);
 
 	newprefix = malloc(strlen(prefix)+1+strlen(uselabel)+1);
-	if (!newprefix) /* we will likely die now anyway */
+	if (!newprefix)
 		return;
 	sprintf(newprefix,"%s/%s",prefix,uselabel);
 
