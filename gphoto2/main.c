@@ -519,6 +519,8 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
         }
         res = save_camera_file_to_file (folder, file, tmpfilename);
         gp_file_unref (file);
+	if ((res!=GP_OK) && tmpfilename)
+		unlink (tmpfilename);
         return (res);
 }
 
