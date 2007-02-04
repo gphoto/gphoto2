@@ -1218,7 +1218,7 @@ display_widgets (CameraWidget *widget, char *prefix) {
 
 	newprefix = malloc(strlen(prefix)+1+strlen(uselabel)+1);
 	if (!newprefix)
-		return;
+		abort();
 	sprintf(newprefix,"%s/%s",prefix,uselabel);
 
 	if ((type != GP_WIDGET_WINDOW) && (type != GP_WIDGET_SECTION))
