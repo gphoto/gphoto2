@@ -86,6 +86,9 @@ int  glob_interval = 0;
 
 GPParams gp_params;
 
+/* flag for SIGUSR1 handler */
+volatile int capture_now = 0;
+
 
 /*! \brief Copy string almost like strncpy, converting to lower case.
  *
@@ -569,6 +572,12 @@ get_file_common (const char *arg, CameraFileType type )
 	return (GP_OK);
 }
 
+static void
+sig_handler_capture_now (int sig_num)
+{
+	signal (SIGUSR1, sig_handler_capture_now);
+	capture_now = 1;
+}
 
 int
 capture_generic (CameraCaptureType type, const char __unused__ *name)
@@ -576,16 +585,22 @@ capture_generic (CameraCaptureType type, const char __unused__ *name)
 	CameraFilePath path, last;
 	char *pathsep;
 	int result, frames = 0;
-	time_t next_pic_time;
+	time_t next_pic_time, now;
 	int waittime;
 
 	next_pic_time = time (NULL) + glob_interval;
 	if(glob_interval) {
 		memset(&last, 0, sizeof(last));
-		if (!(gp_params.flags & FLAGS_QUIET))
-			printf (_("Time-lapse mode enabled (interval: %ds).\n"),
-				glob_interval);
+		if (!(gp_params.flags & FLAGS_QUIET)) {
+			if (glob_interval != -1)
+				printf (_("Time-lapse mode enabled (interval: %ds).\n"),
+					glob_interval);
+			else
+				printf (_("Standing by waiting for SIGUSR1 to capture.\n"));
+		}
 	}
+	capture_now = 0;
+	signal(SIGUSR1, sig_handler_capture_now);
 
 	while(++frames) {
 		if (!(gp_params.flags & FLAGS_QUIET) && glob_interval) {
@@ -698,18 +713,57 @@ capture_generic (CameraCaptureType type, const char __unused__ *name)
 			cli_error_print (_("Could not close camera connection."));
 		}
 #endif
-		waittime = next_pic_time - time (NULL);
-		if (waittime > 0) {
-			if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
-				printf (_("Sleeping for %d second(s)...\n"), glob_interval);
-			sleep (waittime);
+		/*
+		 * Even if -1 interval is set, a picture must be taken to prepare
+		 * the camera/driver, otherwise the time betwen when the signal is
+		 * received and the actual capture could be more than one minute.
+		 * I'll experiment with USB_NORMAL_TIMEOUT (camlibs/ptp2/library.c)
+		 * to partially solve this issue.
+		 * [alesan]
+		 */
+		if (glob_interval != -1) {
+			waittime = next_pic_time - time (NULL);
+			if (waittime > 0) {
+				int i;
+				if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
+					printf (_("Sleeping for %d second(s)...\n"), waittime);
+				/* We're not sure about sleep() semantics when catching a signal */
+				for (i=0; (!capture_now) && (i<waittime); i++)
+					sleep(1);
+				if (capture_now && !(gp_params.flags & FLAGS_QUIET) && glob_interval)
+					printf (_("Awakened by SIGUSR1...\n"));
+			} else {
+				if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
+					printf (_("not sleeping (%d seconds behind schedule)\n"), - waittime);
+			}
+			if (capture_now && (gp_params.flags & FLAGS_RESET_CAPTURE_INTERVAL))
+				next_pic_time = time(NULL) + glob_interval;
+			else if (!capture_now) {
+				now = time(NULL) - glob_interval;
+				/*
+				 * In the case of a (huge) time-sync while gphoto is running,
+				 * gphoto could percieve an extremely large amount of time and
+				 * stay "behind schedule" quite forever. That's why I reduce the
+				 * difference of time with the following loop.
+				 * [alesan]
+				 */
+				do {
+					next_pic_time += glob_interval;
+				} while (next_pic_time < now);
+			}
+			capture_now = 0;
 		} else {
-			if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
-				printf (_("not sleeping (%d seconds behind schedule)\n"), - waittime);
+			/* wait indefinitely for SIGUSR1 */
+			do {
+				pause();
+			} while(!capture_now);
+			capture_now = 0;
+			if (!(gp_params.flags & FLAGS_QUIET))
+				printf (_("Awakened by SIGUSR1...\n"));
 		}
-		next_pic_time += glob_interval;
 	}
 
+	signal(SIGUSR1, SIG_DFL);
 	return (GP_OK);
 }
 
@@ -869,6 +923,7 @@ typedef enum {
 	ARG_GET_RAW_DATA,
 	ARG_GET_THUMBNAIL,
 	ARG_HELP,
+	ARG_HOOK_SCRIPT,
 	ARG_LIST_CAMERAS,
 	ARG_LIST_CONFIG,
 	ARG_LIST_FILES,
@@ -883,6 +938,7 @@ typedef enum {
 	ARG_PORT,
 	ARG_QUIET,
 	ARG_RECURSE,
+	ARG_RESET_CAPTURE_INTERVAL,
 	ARG_RMDIR,
 	ARG_SHELL,
 	ARG_SHOW_EXIF,
@@ -890,19 +946,14 @@ typedef enum {
 	ARG_SPEED,
 	ARG_STDOUT,
 	ARG_STDOUT_SIZE,
+	ARG_STORAGE_INFO,
 	ARG_SUMMARY,
 	ARG_UPLOAD_FILE,
 	ARG_UPLOAD_METADATA,
 	ARG_USAGE,
 	ARG_USBID,
 	ARG_VERSION,
-	ARG_WAIT_EVENT,
-	ARG_HOOK_SCRIPT,
-	/*
-	  FIXME: What to call it? reset capture interval? restart capture interval?
-	  ARG_ALESAN,
-	*/
-	ARG_STORAGE_INFO
+	ARG_WAIT_EVENT
 } Arg;
 
 typedef enum {
@@ -1036,11 +1087,9 @@ cb_arg_init (poptContext __unused__ ctx,
 		gp_params.flags |= FLAGS_QUIET;
 		break;
 
-		/*
-	case ARG_ALESAN:
+	case ARG_RESET_CAPTURE_INTERVAL:
 		gp_params.flags |= FLAGS_RESET_CAPTURE_INTERVAL;
 		break;
-		*/
 
 	case ARG_HOOK_SCRIPT:
 		do {
@@ -1470,10 +1519,9 @@ main (int argc, char **argv, char **envp)
 		 N_("Set number of frames to capture (default=infinite)"), N_("COUNT")},
 		{"interval", 'I', POPT_ARG_INT, NULL, ARG_CAPTURE_INTERVAL,
 		 N_("Set capture interval in seconds"), N_("SECONDS")},
-		/*
-		{"reset-capture-interval-on-signal", '\0', POPT_ARG_NONE, NULL, ARG_ALESAN,
+		{"reset-capture-interval-on-signal", '\0', POPT_ARG_NONE, 
+		 NULL, ARG_RESET_CAPTURE_INTERVAL,
 		 N_("(ALPHA) Reset capture interval on signal (default=no, rename pending)"), NULL},
-		*/
 		{"capture-image", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_IMAGE, N_("Capture an image"), NULL},
 		{"capture-movie", '\0', POPT_ARG_NONE, NULL,

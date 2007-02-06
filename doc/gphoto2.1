@@ -57,7 +57,7 @@ gphoto2 \- command\-line gphoto2 client
 .br
  [\-\-capture\-preview]
 .br
- [[\-F\ \fICOUNT\fR] [\-\-frames\ \fICOUNT\fR]] [[\-I\ \fISECONDS\fR] [\-\-interval\ \fISECONDS\fR]] [\-\-capture\-image] [\-\-capture\-movie] [\-\-capture\-sound]
+ [[\-F\ \fICOUNT\fR] [\-\-frames\ \fICOUNT\fR]] [[\-I\ \fISECONDS\fR] [\-\-interval\ \fISECONDS\fR]] [\-\-reset\-capture\-interval\-on\-signal]  [\-\-capture\-image] [\-\-capture\-movie] [\-\-capture\-sound]
 .br
  [\-\-show\-info\ \fIRANGE\fR]
 .br
@@ -99,7 +99,7 @@ indicates that gphoto2 has just initialized. If the hook script returns with a n
 will abort.
 .TP
 \fBACTION\fR=start
-indicates that gphoto2 has finished parsing the command line and ise about to execute the requested commands.
+indicates that gphoto2 has finished parsing the command line and is about to execute the requested commands.
 .TP
 \fBACTION\fR=download
 indicates that a file has just been downloaded to the computer and stored in the file indicated by the environment variable
@@ -259,7 +259,10 @@ Capture a quick preview.
 Number of frames to capture in one run. Default is infinite number of frames.
 .TP
 \fB\-I \fR\fB\fISECONDS\fR\fR, \fB\-\-interval \fR\fB\fISECONDS\fR\fR
-Time between capture of multiple frames.
+Time between capture of multiple frames. If SIGUSR1 is received a picture is taken immediately (see \fBSIGNALS\fR). A value of -1 will let gphoto wait forever (until a signal arrives).
+.TP
+\fB\-\-reset\-capture\-interval\-on\-signal\fR
+Setting this option will reset the time interval when a SIGUSR1 is received while in time-lapse mode.
 .TP
 \fB\-\-capture\-image\fR
 Capture an image.
@@ -357,6 +360,10 @@ If set, defines the numeric debug level with which the
 libusb
 library will print messages. In order to get some debug output, set it to
 \fI1\fR.
+.SH "SIGNALS"
+.TP
+\fBSIGUSR1\fR
+When in time-lapse capture mode, if a SIGUSR1 is received a picture is taken immediately and the time counter is reset. Note that the camera will need some time (from 50ms to a few seconds) to actually capture the image.
 .SH "SEE ALSO"
 .PP
 libgphoto2(3),
