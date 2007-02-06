@@ -61,7 +61,7 @@ gphoto2 \- command\-line gphoto2 client
 .br
  [[\-F\ \fICOUNT\fR] [\-\-frames\ \fICOUNT\fR]] [[\-I\ \fISECONDS\fR] [\-\-interval\ \fISECONDS\fR]]
 .br
- [\-\-reset\-capture\-interval\-on\-signal]
+ [\-\-reset\-interval]
 .br
  [\-\-capture\-image] [\-\-capture\-movie] [\-\-capture\-sound]
 .br
@@ -267,13 +267,18 @@ Number of frames to capture in one run. Default is infinite number of frames.
 \fB\-I \fR\fB\fISECONDS\fR\fR, \fB\-\-interval \fR\fB\fISECONDS\fR\fR
 Time between capture of multiple frames.
 .sp
-(Since 2.4) If SIGUSR1 is received, a picture is taken immediately without waiting for the end of the current interval period (see
-the section called \(lqSIGNALS\(rq). A value of \-1 will let gphoto2 wait forever (i.e. until a signal arrives).
+(Since 2.4) If
+SIGUSR1 signal
+is received, a picture is taken immediately without waiting for the end of the current interval period (see
+the section called \(lqSIGNALS\(rq). A value of \-1 will let gphoto2 wait forever, i.e. until a signal arrives. See also
+\fB\-\-reset\-interval\fR (since 2.4).
 .TP
-\fB\-\-reset\-capture\-interval\-on\-signal\fR (since 2.4)
+\fB\-\-reset\-interval\fR (since 2.4)
 Setting this option will reset the time interval to the value given by the
-\fB\-I|\-\-interval\fR
-option when a SIGUSR1 is received in time\-lapse mode.
+\fB\-I|\-\-interval\fR option
+when a
+SIGUSR1 signal
+is received in time\-lapse mode.
 .TP
 \fB\-\-capture\-image\fR
 Capture an image.
@@ -377,10 +382,9 @@ SIGUSR1 (since 2.4)
 In time\-lapse capture mode, receiving a SIGUSR1 signal makes gphoto2 take a picture immediately.
 .sp
 If the
-\fB\-\-reset\-capture\-interval\-on\-signal\fR
-option is given, the time counter is reset to the value given by the
-\fB\-I|\-\-interval\fR
-option. Note that the camera will need some time (from 50ms to a few seconds) to actually capture the image.
+\fB\-\-reset\-interval\fR option
+is given, the time counter is reset to the value given by the
+\fB\-I|\-\-interval\fR option. Note that the camera will need some time (from 50ms to a few seconds) to actually capture the image.
 .SH "SEE ALSO"
 .PP
 libgphoto2(3),

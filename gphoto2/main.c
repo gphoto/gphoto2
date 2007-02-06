@@ -938,7 +938,7 @@ typedef enum {
 	ARG_PORT,
 	ARG_QUIET,
 	ARG_RECURSE,
-	ARG_RESET_CAPTURE_INTERVAL,
+	ARG_RESET_INTERVAL,
 	ARG_RMDIR,
 	ARG_SHELL,
 	ARG_SHOW_EXIF,
@@ -1087,7 +1087,7 @@ cb_arg_init (poptContext __unused__ ctx,
 		gp_params.flags |= FLAGS_QUIET;
 		break;
 
-	case ARG_RESET_CAPTURE_INTERVAL:
+	case ARG_RESET_INTERVAL:
 		gp_params.flags |= FLAGS_RESET_CAPTURE_INTERVAL;
 		break;
 
@@ -1520,7 +1520,7 @@ main (int argc, char **argv, char **envp)
 		{"interval", 'I', POPT_ARG_INT, NULL, ARG_CAPTURE_INTERVAL,
 		 N_("Set capture interval in seconds"), N_("SECONDS")},
 		{"reset-capture-interval-on-signal", '\0', POPT_ARG_NONE, 
-		 NULL, ARG_RESET_CAPTURE_INTERVAL,
+		 NULL, ARG_RESET_INTERVAL,
 		 N_("(ALPHA) Reset capture interval on signal (default=no, rename pending)"), NULL},
 		{"capture-image", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_IMAGE, N_("Capture an image"), NULL},
