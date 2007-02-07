@@ -714,11 +714,9 @@ capture_generic (CameraCaptureType type, const char __unused__ *name)
 		}
 #endif
 		/*
-		 * Even if -1 interval is set, a picture must be taken to prepare
-		 * the camera/driver, otherwise the time betwen when the signal is
-		 * received and the actual capture could be more than one minute.
-		 * I'll experiment with USB_NORMAL_TIMEOUT (camlibs/ptp2/library.c)
-		 * to partially solve this issue.
+		 * Even if the interval is set to -1, it is better to take a
+		 * picture first to prepare the camera driver for faster
+		 * response when a signal is caught.
 		 * [alesan]
 		 */
 		if (glob_interval != -1) {
