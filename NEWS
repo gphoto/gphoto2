@@ -4,6 +4,8 @@ gphoto2 2.3.1.2.trunk
  * Put auto* files into auto-aux/ and auto-m4/.
  * New --storage-info function to get direct storage information
    from the camera via API.
+ * Use SIGUSR1 to trigger premature image capture in --interval mode.
+ * New --reset-interval parameter makes SIGUSR1 reset the capture interval.
 
 gphoto2 2.3.1
 
