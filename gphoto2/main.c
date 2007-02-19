@@ -1100,7 +1100,7 @@ cb_arg_init (poptContext __unused__ ctx,
 			gp_params.hook_script = strcpy(copy, arg);
 			/* Run init hook */
 			if (0!=gp_params_run_hook(&gp_params, "init", NULL)) {
-				fprintf(stdout,
+				fprintf(stderr,
 					"Hook script \"%s\" init failed. Aborting.\n",
 					gp_params.hook_script);
 				exit(3);
@@ -1699,6 +1699,28 @@ main (int argc, char **argv, char **envp)
 	cb_params.type = CALLBACK_PARAMS_TYPE_INITIALIZE;
 	poptResetContext (ctx);
 	while ((cb_params.p.r >= 0) && (poptGetNextOpt (ctx) >= 0));
+	/* Load default values for --filename and --hook-script if not
+	 * explicitely specified
+	 */
+	if (!gp_params.filename) {
+		char buf[256];
+		if (gp_setting_get("gphoto2","filename",buf)>=0) {
+			set_filename_action(&gp_params,buf);
+		}	
+	}
+	if (!gp_params.hook_script) {
+		char buf[PATH_MAX];
+		if (gp_setting_get("gphoto2","hook-script",buf)>=0) {
+			gp_params.hook_script = strdup(buf);
+			/* Run init hook */
+			if (0!=gp_params_run_hook(&gp_params, "init", NULL)) {
+				fprintf(stdout,
+					"Hook script \"%s\" init failed. Aborting.\n",
+					gp_params.hook_script);
+				exit(3);
+			}
+		}	
+	}
 	CR_MAIN (cb_params.p.r);
 
 #define CHECK_OPT(o)					\
