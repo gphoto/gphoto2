@@ -1,8 +1,11 @@
-.\" ** You probably do not want to edit this file directly **
-.\" It was generated using the DocBook XSL Stylesheets (version 1.69.1).
-.\" Instead of manually editing it, you probably should edit the DocBook XML
-.\" source for it and then use the DocBook XSL Stylesheets to regenerate it.
-.TH "GPHOTO2" "1" "August 2006" "" "The gPhoto2 Reference (the man"
+.\"     Title: gphoto2
+.\"    Author: The gPhoto2 Team
+.\" Generator: DocBook XSL Stylesheets v1.71.1 <http://docbook.sf.net/>
+.\"      Date: <pubdate>2006.12.21</pubdate>August 2006
+.\"    Manual: The gPhoto2 Reference (the man pages)
+.\"    Source: 
+.\"
+.TH "GPHOTO2" "1" "<pubdate>2006\-12\-21</pubdate>August 2006" "" "The gPhoto2 Reference (the man"
 .\" disable hyphenation
 .nh
 .\" disable justification (adjust text to left margin only)
@@ -11,65 +14,65 @@
 gphoto2 \- command\-line gphoto2 client
 .SH "SYNOPSIS"
 .HP 8
-\fBgphoto2\fR [\-\-debug] [\-\-debug\-logfile\ \fIFILENAME\fR] [[\-q] [\-\-quiet]] [[\-v] [\-\-verbose]] [[\-h] [\-\-help]]
+\fBgphoto2\fR [\-\-debug] [\-\-debug\-logfile\ \fIFILENAME\fR] [[\-q] | [\-\-quiet]] [[\-v] | [\-\-verbose]] [[\-h] | [\-\-help]]
 .br
- [\-\-hook\-script\ \fIFILENAME\fR]
+[\-\-hook\-script\ \fIFILENAME\fR]
 .br
- [\-\-list\-cameras] [\-\-list\-ports] [\-\-stdout] [\-\-stdout\-size]
+[\-\-list\-cameras] [\-\-list\-ports] [\-\-stdout] [\-\-stdout\-size]
 .br
- [\-\-auto\-detect] [\-\-port\ \fIPATH\fR] [\-\-speed\ \fISPEED\fR] [\-\-camera\ \fIMODEL\fR]
+[\-\-auto\-detect] [\-\-port\ \fIPATH\fR] [\-\-speed\ \fISPEED\fR] [\-\-camera\ \fIMODEL\fR]
 .br
- [\-\-filename\ \fIFILENAME\fR]
+[\-\-filename\ \fIFILENAME\fR]
 .br
- [\-\-usbid\ \fIUSBIDS\fR]
+[\-\-usbid\ \fIUSBIDS\fR]
 .br
- [[\-a] [\-\-abilities]]
+[[\-a] | [\-\-abilities]]
 .br
- [[\-\-folder\ \fIFOLDER\fR] [\-f\ \fIFOLDER\fR]] [[[\-R] [\-\-recurse]] [\-\-no\-recurse]]
+[[\-\-folder\ \fIFOLDER\fR] | [\-f\ \fIFOLDER\fR]] [[[\-R] | [\-\-recurse]] | [\-\-no\-recurse]]
 .br
- [[\-l] [\-\-list\-folders]]
+[[\-l] | [\-\-list\-folders]]
 .br
- [[\-L] [\-\-list\-files]] [[\-m\ \fINAME\fR] [\-\-mkdir\ \fINAME\fR]]
+[[\-L] | [\-\-list\-files]] [[\-m\ \fINAME\fR] | [\-\-mkdir\ \fINAME\fR]]
 .br
- [[\-r\ \fINAME\fR] [\-\-rmdir\ \fINAME\fR]] [[\-n] [\-\-num\-files]]
+[[\-r\ \fINAME\fR] | [\-\-rmdir\ \fINAME\fR]] [[\-n] | [\-\-num\-files]]
 .br
- [[\-p\ \fIRANGE\fR] [\-\-get\-file\ \fIRANGE\fR]] [[\-P] [\-\-get\-all\-files]]
+[[\-p\ \fIRANGE\fR] | [\-\-get\-file\ \fIRANGE\fR]] [[\-P] | [\-\-get\-all\-files]]
 .br
- [[\-t\ \fIRANGE\fR] [\-\-get\-thumbnail\ \fIRANGE\fR]]
+[[\-t\ \fIRANGE\fR] | [\-\-get\-thumbnail\ \fIRANGE\fR]]
 .br
- [[\-T] [\-\-get\-all\-thumbnails]]
+[[\-T] | [\-\-get\-all\-thumbnails]]
 .br
- [\-\-get\-raw\-data\ \fIRANGE\fR] [\-\-get\-all\-raw\-data]
+[\-\-get\-raw\-data\ \fIRANGE\fR] [\-\-get\-all\-raw\-data]
 .br
- [\-\-get\-audio\-data\ \fIRANGE\fR] [\-\-get\-all\-audio\-data]
+[\-\-get\-audio\-data\ \fIRANGE\fR] [\-\-get\-all\-audio\-data]
 .br
- [\-\-force\-overwrite]
+[\-\-force\-overwrite]
 .br
- [\-\-new]
+[\-\-new]
 .br
- [[\-d\ \fIRANGE\fR] [\-\-delete\-file\ \fIRANGE\fR]] [[\-D] [\-\-delete\-all\-files]]
+[[\-d\ \fIRANGE\fR] | [\-\-delete\-file\ \fIRANGE\fR]] [[\-D] | [\-\-delete\-all\-files]]
 .br
- [[\-u\ \fIFILENAME\fR] [\-\-upload\-file\ \fIFILENAME\fR]] [\-\-config]
+[[\-u\ \fIFILENAME\fR] | [\-\-upload\-file\ \fIFILENAME\fR]] [\-\-config]
 .br
- [\-\-list\-config]
+[\-\-list\-config]
 .br
- [\-\-get\-config\ \fICONFIGENTRY\fR]
+[\-\-get\-config\ \fICONFIGENTRY\fR]
 .br
- [\-\-set\-config\ \fICONFIGENTRY=CONFIGVALUE\fR]
+[\-\-set\-config\ \fICONFIGENTRY=CONFIGVALUE\fR]
 .br
- [\-\-capture\-preview]
+[\-\-capture\-preview]
 .br
- [[\-F\ \fICOUNT\fR] [\-\-frames\ \fICOUNT\fR]] [[\-I\ \fISECONDS\fR] [\-\-interval\ \fISECONDS\fR]]
+[[\-F\ \fICOUNT\fR] | [\-\-frames\ \fICOUNT\fR]] [[\-I\ \fISECONDS\fR] | [\-\-interval\ \fISECONDS\fR]]
 .br
- [\-\-reset\-interval]
+[\-\-reset\-interval]
 .br
- [\-\-capture\-image] [\-\-capture\-movie] [\-\-capture\-sound]
+[\-\-capture\-image] [\-\-capture\-movie] [\-\-capture\-sound]
 .br
- [\-\-show\-info\ \fIRANGE\fR]
+[\-\-show\-info\ \fIRANGE\fR]
 .br
- [\-\-show\-exif\ \fIRANGE\fR]
+[\-\-show\-exif\ \fIRANGE\fR]
 .br
- [\-\-storage\-info] [\-\-summary] [\-\-manual] [\-\-about] [\-\-shell]
+[\-\-storage\-info] [\-\-summary] [\-\-manual] [\-\-about] [\-\-shell]
 .SH "DESCRIPTION"
 .PP
 libgphoto2(3)
@@ -83,75 +86,115 @@ of files, thumbnails, or other data, they are numbered beginning at 1. A range i
 \(lq1\-5,3,7\(rq
 is equivalent to
 \(lq1,2,4,5,7\(rq.
-.TP
+.PP
 \fB\-\-debug\fR
+.RS 4
 Turn on debugging output. Debugging output is written to stderr by default, or to the filename given to the
 \fB\-\-debug\-logfile\fR
 option.
-.TP
+.RE
+.PP
 \fB\-\-debug\-logfile\fR \fIFILENAME\fR (since 2.3.0)
+.RS 4
 The logfile to write the debugging info to, if
 \fB\-\-debug\fR
 is given.
-.TP
+.RE
+.PP
 \fB\-\-hook\-script\fR \fIFILENAME\fR (new after 2.3.0)
+.RS 4
 Hook script to execute when something has happened. The hook script reads the environment variable
 \fBACTION\fR.
-.RS
-.TP
+.RS 4
+.PP
 \fBACTION\fR=init
+.RS 4
 indicates that gphoto2 has just initialized. If the hook script returns with a non\-zero exit code now,
 \fBgphoto2\fR
 will abort.
-.TP
+.RE
+.PP
 \fBACTION\fR=start
+.RS 4
 indicates that gphoto2 has finished parsing the command line and is about to execute the requested commands.
-.TP
+.RE
+.PP
 \fBACTION\fR=download
+.RS 4
 indicates that a file has just been downloaded to the computer and stored in the file indicated by the environment variable
 \fBARGUMENT\fR.
-.TP
+.RE
+.PP
 \fBACTION\fR=stop
+.RS 4
 indicates that gphoto2 is about to finish.
 .RE
-.IP
+.RE
+.IP "" 4
 All other environment variables are passed to the hook script unchanged. You can make use of that to pass data to the hook script.
-.TP
+.sp
+Hook script may be specified in the
+\fI~/.gphoto/settings\fR
+file as
+\fBgphoto2=hook\-script=\fR\fIfilename\fR.
+.RE
+.PP
 \fB\-q\fR, \fB\-\-quiet\fR
+.RS 4
 Quiet output (default=verbose).
-.TP
+.RE
+.PP
 \fB\-v\fR, \fB\-\-version\fR
+.RS 4
 Display version and exit.
-.TP
+.RE
+.PP
 \fB\-h\fR, \fB\-\-help\fR
+.RS 4
 Display a short usage message.
-.TP
+.RE
+.PP
 \fB\-\-list\-cameras\fR
+.RS 4
 List supported camera models.
-.TP
+.RE
+.PP
 \fB\-\-list\-ports\fR
+.RS 4
 List supported port devices.
-.TP
+.RE
+.PP
 \fB\-\-stdout\fR
+.RS 4
 Send file to stdout.
-.TP
+.RE
+.PP
 \fB\-\-stdout\-size\fR
+.RS 4
 Print filesize before data.
-.TP
+.RE
+.PP
 \fB\-\-auto\-detect\fR
+.RS 4
 List auto\-detected cameras and the ports to which they are connected.
-.TP
+.RE
+.PP
 \fB\-\-port\fR \fIPATH\fR
+.RS 4
 Specify port device. The
 \fB\-\-list\-ports\fR
 prints a list of valid, usable ports. In case of multiple USB cameras, the
 \fB\-\-auto\-detect\fR
 shows you the specific port each camera is connected to.
-.TP
+.RE
+.PP
 \fB\-\-speed\fR \fISPEED\fR
+.RS 4
 Specify serial transfer speed.
-.TP
+.RE
+.PP
 \fB\-\-camera\fR \fIMODEL\fR
+.RS 4
 Specify camera model. The
 \fB\-\-list\-cameras\fR
 option prints a list of all explicitly supported cameras.
@@ -164,8 +207,10 @@ Note that if you specify
 \fB\fB\-\-port\fR\fR. Otherwise the
 \fB\fB\-\-camera\fR\fR
 option will be silently ignored.
-.TP
+.RE
+.PP
 \fB\-\-filename\fR \fIFILENAME\fR
+.RS 4
 When downloading files from the camera, specify the file name or file name pattern to use when storing the downloaded file on the local disk. When uploading a file to the camera, specify the filename to store the uploaded file as on the camera.
 .sp
 The
@@ -176,8 +221,15 @@ Note that %: is still in alpha stage, and the actual character or syntax may sti
 .sp
 %n is the only conversion specifier to accept a padding character and width: %03n will pad with zeros to width 3 (e.g. print the number 7 as
 \(lq007\(rq). Leaving out the padding character (e.g. %3n) will use an implementation specific default padding character which may or may not be suitable for use in file names.
-.TP
+.sp
+Default value for this option can be specified in the
+\fI~/.gphoto/settings\fR
+file as
+\fBgphoto2=filename=value\fR.
+.RE
+.PP
 \fB\-\-usbid\fR \fI\fIUSBIDS\fR\fR
+.RS 4
 (Expert only) Override
 USB
 IDs.
@@ -191,80 +243,130 @@ instead. All the VendorIDs and ProductIDs should be hexadecimal numbers beginnin
 .sp
 Example:
 \fB\-\-usbid \fR\fB\fI0x4a9:0x306b=0x4a9:0x306c\fR\fR
-.TP
+.RE
+.PP
 \fB\-a\fR, \fB\-\-abilities\fR
+.RS 4
 Display camera abilities.
-.TP
+.RE
+.PP
 \fB\-f\fR, \fB\-\-folder\fR \fIFOLDER\fR
+.RS 4
 Specify camera folder (default="/").
-.TP
+.RE
+.PP
 \fB\-R\fR, \fB\-\-recurse\fR
+.RS 4
 Recursion (default for download).
-.TP
+.RE
+.PP
 \fB\-\-no\-recurse\fR
+.RS 4
 No recursion (default for deletion).
-.TP
+.RE
+.PP
 \fB\-l\fR, \fB\-\-list\-folders\fR
+.RS 4
 List folders in folder.
-.TP
+.RE
+.PP
 \fB\-L\fR, \fB\-\-list\-files\fR
+.RS 4
 List files in folder.
-.TP
+.RE
+.PP
 \fB\-m\fR, \fB\-\-mkdir\fR \fINAME\fR
+.RS 4
 Create a directory.
-.TP
+.RE
+.PP
 \fB\-r\fR, \fB\-\-rmdir\fR \fINAME\fR
+.RS 4
 Remove a directory.
-.TP
+.RE
+.PP
 \fB\-n\fR, \fB\-\-num\-files\fR
+.RS 4
 Display number of files.
-.TP
+.RE
+.PP
 \fB\-p\fR, \fB\-\-get\-file\fR \fIRANGE\fR
+.RS 4
 Get files given in range.
-.TP
+.RE
+.PP
 \fB\-P\fR, \fB\-\-get\-all\-files\fR
+.RS 4
 Get all files from folder.
-.TP
+.RE
+.PP
 \fB\-t\fR, \fB\-\-get\-thumbnail\fR \fIRANGE\fR
+.RS 4
 Get thumbnails given in range.
-.TP
+.RE
+.PP
 \fB\-T\fR, \fB\-\-get\-all\-thumbnails\fR
+.RS 4
 Get all thumbnails from folder.
-.TP
+.RE
+.PP
 \fB\-\-get\-raw\-data\fR \fIRANGE\fR
+.RS 4
 Get raw data given in range.
-.TP
+.RE
+.PP
 \fB\-\-get\-all\-raw\-data\fR
+.RS 4
 Get all raw data from folder.
-.TP
+.RE
+.PP
 \fB\-\-get\-audio\-data\fR \fIRANGE\fR
+.RS 4
 Get audio data given in range.
-.TP
+.RE
+.PP
 \fB\-\-get\-all\-audio\-data\fR
+.RS 4
 Get all audio data from folder.
-.TP
+.RE
+.PP
 \fB\-\-force\-overwrite\fR
+.RS 4
 Overwrite files without asking.
-.TP
+.RE
+.PP
 \fB\-\-new\fR
+.RS 4
 Only get not already downloaded files. This option depends on camera support of flagging already downloaded images and is not available for all drivers.
-.TP
+.RE
+.PP
 \fB\-d\fR, \fB\-\-delete\-file\fR \fIRANGE\fR
+.RS 4
 Delete files given in range.
-.TP
+.RE
+.PP
 \fB\-D\fR, \fB\-\-delete\-all\-files\fR
+.RS 4
 Delete all files in folder.
-.TP
+.RE
+.PP
 \fB\-u\fR, \fB\-\-upload\-file\fR \fIFILENAME\fR
+.RS 4
 Upload a file to camera.
-.TP
+.RE
+.PP
 \fB\-\-capture\-preview\fR
+.RS 4
 Capture a quick preview.
-.TP
+.RE
+.PP
 \fB\-F \fR\fB\fICOUNT\fR\fR, \fB\-\-frames \fR\fB\fICOUNT\fR\fR
+.RS 4
 Number of frames to capture in one run. Default is infinite number of frames.
-.TP
+.RE
+.PP
 \fB\-I \fR\fB\fISECONDS\fR\fR, \fB\-\-interval \fR\fB\fISECONDS\fR\fR
+.RS 4
 Time between capture of multiple frames.
 .sp
 (Since 2.4) If
@@ -272,139 +374,215 @@ SIGUSR1 signal
 is received, a picture is taken immediately without waiting for the end of the current interval period (see
 the section called \(lqSIGNALS\(rq). A value of \-1 will let gphoto2 wait forever, i.e. until a signal arrives. See also
 \fB\-\-reset\-interval\fR (since 2.4).
-.TP
+.RE
+.PP
 \fB\-\-reset\-interval\fR (since 2.4)
+.RS 4
 Setting this option will reset the time interval to the value given by the
 \fB\-I|\-\-interval\fR option
 when a
 SIGUSR1 signal
 is received in time\-lapse mode.
-.TP
+.RE
+.PP
 \fB\-\-capture\-image\fR
+.RS 4
 Capture an image.
-.TP
+.RE
+.PP
 \fB\-\-capture\-movie\fR
+.RS 4
 Capture a movie.
-.TP
+.RE
+.PP
 \fB\-\-capture\-sound\fR
+.RS 4
 Capture an audio clip.
-.TP
+.RE
+.PP
 \fB\-\-show\-info\fR \fIRANGE\fR
+.RS 4
 Show info.
-.TP
+.RE
+.PP
 \fB\-\-list\-config\fR
+.RS 4
 List all configuration entries.
-.TP
+.RE
+.PP
 \fB\-\-get\-config\fR \fICONFIGENTRY\fR
+.RS 4
 Get the specified configuration entry.
-.TP
+.sp
+This command will list the type, the current value and also the available options of this configuration value.
+.RE
+.PP
 \fB\-\-set\-config\fR \fICONFIGENTRY=CONFIGVALUE\fR
+.RS 4
 Set the specified configuration entry.
-.TP
+.sp
+Look at the output of
+\fB\-\-get\-config\fR
+to see what values are possible to set here.
+.RE
+.PP
 \fB\-\-storage\-info\fR
+.RS 4
 Display information about the camera's storage media.
-.TP
+.RE
+.PP
 \fB\-\-summary\fR
+.RS 4
 Summary of camera status.
-.TP
+.RE
+.PP
 \fB\-\-manual\fR
+.RS 4
 Camera driver manual.
-.TP
+.RE
+.PP
 \fB\-\-about\fR
+.RS 4
 About the camera driver.
-.TP
+.RE
+.PP
 \fB\-\-shell\fR
+.RS 4
 Start the gphoto2 shell, an interactive environment. See
 SHELL MODEfor a detailed description.
+.RE
 .SH "SHELL MODE"
 .PP
 The following commands are available:
-.TP
+.PP
 cd
+.RS 4
 Change to a directory on the camera.
-.TP
+.RE
+.PP
 ls
+.RS 4
 List the contents of the current directory on the camera.
-.TP
+.RE
+.PP
 lcd
+.RS 4
 Change to a directory on the local machine.
-.TP
+.RE
+.PP
 get
+.RS 4
 Download the file to the current directory.
-.TP
+.RE
+.PP
 get\-thumbnail
+.RS 4
 Download the thumbnail to the current directory.
-.TP
+.RE
+.PP
 get\-raw
+.RS 4
 Download raw data to the current directory.
-.TP
+.RE
+.PP
 show\-info
+.RS 4
 Show information.
-.TP
+.RE
+.PP
 delete
+.RS 4
 Delete a file or directory.
-.TP
+.RE
+.PP
 show\-exif
+.RS 4
 Show EXIF information (only if compiled with EXIF support).
-.TP
+.RE
+.PP
 help, ?
+.RS 4
 Displays command usage.
-.TP
+.RE
+.PP
 exit, quit, q
+.RS 4
 Exit the gphoto2 shell.
+.RE
 .SH "ENVIRONMENT VARIABLES"
-.TP
+.PP
 \fBCAMLIBS\fR
+.RS 4
 If set, defines the directory where the
 libgphoto2
 library looks for its camera drivers (camlibs). You only need to set this on OS/2 systems and broken/test installations.
-.TP
+.RE
+.PP
 \fBIOLIBS\fR
+.RS 4
 If set, defines the directory where the
 libgphoto2_port
 library looks for its I/O drivers (iolibs). You only need to set this on OS/2 systems and broken/test installations.
-.TP
+.RE
+.PP
 \fBLD_DEBUG\fR
+.RS 4
 Set this to
 \fIall\fR
 to receive lots of debug information regarding library loading on
 \fBld\fR
 based systems.
-.TP
+.RE
+.PP
 \fBUSB_DEBUG\fR
+.RS 4
 If set, defines the numeric debug level with which the
 libusb
 library will print messages. In order to get some debug output, set it to
 \fI1\fR.
+.RE
 .SH "SIGNALS"
-.TP
+.PP
 SIGUSR1 (since 2.4)
+.RS 4
 In time\-lapse capture mode, receiving a SIGUSR1 signal makes gphoto2 take a picture immediately.
 .sp
 If the
 \fB\-\-reset\-interval\fR option
 is given, the time counter is reset to the value given by the
 \fB\-I|\-\-interval\fR option. Note that the camera will need some time (from 50ms to a few seconds) to actually capture the image.
+.RE
 .SH "SEE ALSO"
 .PP
+
 libgphoto2(3),
-[1]\&\fIThe gPhoto2 Manual\fR,[2]\&\fIThe gphoto.org website\fR,
-[3]\&\fIDigital Camera Support for UNIX, Linux and BSD\fR
+\fIThe gPhoto2 Manual\fR\&[1],
+
+\fIThe gphoto.org website\fR\&[2],
+\fIDigital Camera Support for UNIX, Linux and BSD\fR\&[3]
 .SH "EXAMPLES"
-.TP
+.PP
 \fBgphoto2 \fR\fB\fB\-\-list\-ports\fR\fR
+.RS 4
 Shows what kinds of ports (USB
 and serial) you have.
-.TP
+.RE
+.PP
 \fBgphoto2 \fR\fB\fB\-\-auto\-detect\fR\fR
+.RS 4
 Shows what camera(s) you have connected.
-.TP
+.RE
+.PP
 \fBgphoto2 \fR\fB\fB\-\-list\-files\fR\fR
+.RS 4
 List files on camera.
-.TP
+.RE
+.PP
 \fBgphoto2 \fR\fB\fB\-\-get\-file\fR\fR\fB \fR\fB\fI7\-13\fR\fR
+.RS 4
 Get files number 7 through 13 from the list output by
 \fB\fBgphoto2\fR\fR\fB \fR\fB\fB\-\-list\-files\fR\fR.
+.RE
 .PP
 To track down errors, you can add the
 \fB\-\-debug\fR
@@ -412,17 +590,52 @@ parameter to the
 \fBgphoto2\fR
 command line and, if dealing with USB problems, setting the environment variable
 \fBUSB_DEBUG\fR\fI=1\fR.
-.SH "AUTHOR"
-The gPhoto2 Team. 
-.br
-Tim Waugh <twaugh@redhat.com>Hans Ulrich Niedermann <gp@n\-dimensional.de>. (man page)
+.SH "AUTHORS"
+.PP
+\fBTim Waugh\fR
+.sp -1n
+.IP "" 4
+Author.
+.PP
+\fBHans Ulrich Niedermann, current maintainer\fR <\&gp@n\-dimensional.de\&>
+.sp -1n
+.IP "" 4
+Author.
+.PP
+\fBMichael J. Rensing\fR
+.sp -1n
+.IP "" 4
+Author.
+.PP
+\fBMiscellanous Contributors.\fR
+.PP
+\fBThe gPhoto2 Team\fR
+.sp -1n
+.IP "" 4
+Author.
+.PP
+\fBTim Waugh\fR <\&twaugh@redhat.com\&>
+.sp -1n
+.IP "" 4
+Original man page author.
+.PP
+\fBHans Ulrich Niedermann\fR <\&gp@n\-dimensional.de\&>
+.sp -1n
+.IP "" 4
+Current man page editor.
 .SH "REFERENCES"
-.TP 3
-1.\ The gPhoto2 Manual
+.IP " 1." 4
+The gPhoto2 Manual
+.RS 4
 \%http://www.gphoto.org/doc/manual/
-.TP 3
-2.\ The gphoto.org website
+.RE
+.IP " 2." 4
+The gphoto.org website
+.RS 4
 \%http://www.gphoto.org/
-.TP 3
-3.\ Digital Camera Support for UNIX, Linux and BSD
+.RE
+.IP " 3." 4
+Digital Camera Support for UNIX, Linux and BSD
+.RS 4
 \%http://www.teaser.fr/~hfiguiere/linux/digicam.html
+.RE
