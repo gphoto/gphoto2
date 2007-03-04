@@ -358,6 +358,7 @@ Makefile
 gphoto2/Makefile
 m4m/Makefile
 doc/Makefile
+contrib/Makefile
 packaging/Makefile
 packaging/rpm/Makefile
 packaging/rpm/package.spec
