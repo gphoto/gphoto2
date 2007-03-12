@@ -41,6 +41,7 @@
 #include <ctype.h>
 #include <locale.h>
 #include <fcntl.h>
+#include <utime.h>
 
 #ifdef HAVE_POPT
 #  include <popt.h>
@@ -372,6 +373,9 @@ save_camera_file_to_file (
 ) {
 	char *path = NULL, s[1024], c[1024];
 	CameraFileType type;
+	int res;
+	time_t mtime;
+	struct utimbuf u;
 
 	CR (gp_file_get_type (file, &type));
 
@@ -422,6 +426,12 @@ save_camera_file_to_file (
 		if (-1 == rename (curname, s))
 			perror("rename");
 	}
+	res = gp_file_get_mtime (file, &mtime);
+        if ((res == GP_OK) && (mtime)) {
+                u.actime = mtime;
+                u.modtime = mtime;
+                utime (s, &u);
+        }
 	gp_params_run_hook(&gp_params, "download", s);
 	return (GP_OK);
 }
