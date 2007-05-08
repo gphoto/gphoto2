@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2007-05-08 08:36+0200\n"
-"PO-Revision-Date: 2007-01-03 09:20+0100\n"
+"PO-Revision-Date: 2007-05-08 08:43+0200\n"
 "Last-Translator: Marcus Meissner <marcus@jet.franken.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -294,8 +294,7 @@ msgstr "                                 : Bildvorschau\n"
 
 #: gphoto2/actions.c:690
 #, c-format
-msgid ""
-"                                 : Capture not supported by the driver\n"
+msgid "                                 : Capture not supported by the driver\n"
 msgstr ""
 "                                 : Aufnahme wird nicht durch Treiber "
 "unterstützt\n"
@@ -606,8 +605,7 @@ msgstr "Es gibt keine Datei im Verzeichnis »%s«."
 msgid ""
 "Bad file number. You specified %i, but there is only 1 file available in '%"
 "s'."
-msgstr ""
-"Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
+msgstr "Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
 
 #: gphoto2/foreach.c:293
 #, c-format
@@ -698,8 +696,7 @@ msgstr ""
 #: gphoto2/main.c:285
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr ""
-"Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
+msgstr "Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
 
 #: gphoto2/main.c:340
 #, c-format
@@ -735,7 +732,7 @@ msgstr "Zeitlupen Modus aktiviert (Intervall: %ds).\n"
 #: gphoto2/main.c:609
 #, c-format
 msgid "Standing by waiting for SIGUSR1 to capture.\n"
-msgstr ""
+msgstr "Warte auf SIGUSR1 um Aufnahme zu starten.\n"
 
 #: gphoto2/main.c:618
 #, c-format
@@ -794,7 +791,7 @@ msgstr "Warte %d Sekunde(n)...\n"
 #: gphoto2/main.c:742 gphoto2/main.c:770
 #, c-format
 msgid "Awakened by SIGUSR1...\n"
-msgstr ""
+msgstr "Aufgeweckt durch SIGUSR1...\n"
 
 #: gphoto2/main.c:745
 #, c-format
@@ -987,9 +984,8 @@ msgid "SECONDS"
 msgstr "SEKUNDEN"
 
 #: gphoto2/main.c:1531
-#, fuzzy
 msgid "Reset capture interval on signal (default=no)"
-msgstr "Setze das Aufnahmeintervall in Sekunden"
+msgstr "Setze Aufnahmeinterval nach Signal zurück (default=nein)"
 
 #: gphoto2/main.c:1533
 msgid "Capture an image"
@@ -1174,8 +1170,7 @@ msgstr "Weitere Optionen (unsortiert)"
 
 #: gphoto2/main.c:1633
 msgid "Get information on software and host system (not from the camera)"
-msgstr ""
-"Frage Informationen über Software und Maschine ab (nicht von der Kamera)"
+msgstr "Frage Informationen über Software und Maschine ab (nicht von der Kamera)"
 
 #: gphoto2/main.c:1635
 msgid "Specify the camera to use"
@@ -1422,3 +1417,4 @@ msgid "To get help on a particular command, type in 'help command-name'."
 msgstr ""
 "Um Hilfe zu einem bestimmten Befehl zu erhalten, verwenden Sie »help "
 "Befehlsname«."
+
