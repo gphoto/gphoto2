@@ -1231,6 +1231,7 @@ display_widgets (CameraWidget *widget, char *prefix) {
 			continue;
 		display_widgets (child, newprefix);
 	}
+	free(newprefix);
 }
 
 
