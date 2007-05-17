@@ -105,7 +105,7 @@ static int shell_construct_path (const char *folder_orig, const char *rel_path,
 typedef int (* ShellFunction) (Camera *camera, const char *arg);
 
 typedef struct _ShellFunctionTable ShellFunctionTable;
-struct _ShellFunctionTable {
+static const struct _ShellFunctionTable {
 	const char *command;
 	ShellFunction function;
 	const char *description;
@@ -148,7 +148,7 @@ struct _ShellFunctionTable {
 
 /* Local globals */
 #define SHELL_PROMPT "gphoto2: {%s} %s> "
-int 	shell_done		= 0;
+static int 	shell_done		= 0;
 
 static unsigned int
 shell_arg_count (const char *args)

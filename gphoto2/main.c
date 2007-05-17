@@ -80,15 +80,15 @@
 #define __unused__
 #endif
 
-int  glob_debug = -1;
+static int  glob_debug = -1;
 char glob_cancel = 0;
-int  glob_frames = 0;
-int  glob_interval = 0;
+static int  glob_frames = 0;
+static int  glob_interval = 0;
 
 GPParams gp_params;
 
 /* flag for SIGUSR1 handler */
-volatile int capture_now = 0;
+static volatile int capture_now = 0;
 
 
 /*! \brief Copy string almost like strncpy, converting to lower case.

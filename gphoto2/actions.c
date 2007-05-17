@@ -1106,7 +1106,7 @@ override_usbids_action (GPParams *p, int usb_vendor, int usb_product,
 }
 
 /* time zero for debug log time stamps */
-struct timeval glob_tv_zero = { 0, 0 };
+static struct timeval glob_tv_zero = { 0, 0 };
 
 static void
 #ifdef __GNUC__
