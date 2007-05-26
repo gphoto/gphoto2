@@ -1,5 +1,5 @@
 #!/bin/sh
-# test-hook.sh - test script for --hook-script option
+# test-hook.sh - test script for gphoto2's --hook-script option
 # Copyright © 2006 Hans Ulrich Niedermann <gp@n-dimensional.de>
 #
 # This library is free software; you can redistribute it and/or

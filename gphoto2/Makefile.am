@@ -9,7 +9,7 @@ EXTRA_DIST = \
 
 bin_PROGRAMS = gphoto2
 
-# doc_DATA = test-hook.sh
+doc_DATA = test-hook.sh
 
 if HAVE_CDK
 CDK_FILES = gphoto2-cmd-config.c gphoto2-cmd-config.h
