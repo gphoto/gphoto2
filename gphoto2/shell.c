@@ -575,7 +575,8 @@ shell_lcd (Camera __unused__ *camera, const char *arg)
 			cli_error_print (_("Could not find home directory."));
 			return (GP_OK); 
 		}
-		strcpy (new_cwd, getenv ("HOME"));
+		strncpy (new_cwd, getenv ("HOME"), sizeof(new_cwd)-1);
+		new_cwd[sizeof(new_cwd)-1] = '\0';
 	} else
 		shell_construct_path (cwd, arg, new_cwd, NULL);
 
