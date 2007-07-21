@@ -68,6 +68,8 @@ gphoto2 \- command\-line gphoto2 client
 .br
 [\-\-capture\-image] [\-\-capture\-movie] [\-\-capture\-sound]
 .br
+[\-\-capture\-tethered]
+.br
 [\-\-show\-info\ \fIRANGE\fR]
 .br
 [\-\-show\-exif\ \fIRANGE\fR]
@@ -103,31 +105,44 @@ is given.
 .PP
 \fB\-\-hook\-script\fR \fIFILENAME\fR (new after 2.3.0)
 .RS 4
-Hook script to execute when something has happened. The hook script reads the environment variable
-\fBACTION\fR.
+Execute the hook script
+\fIFILENAME\fR
+every time a certain event happens within
+\fBgphoto2\fR. The hook script reads the environment variable
+\fBACTION\fR. It must ignore
+\fBACTION\fR
+values unknown to it.
 .RS 4
 .PP
 \fBACTION\fR=init
 .RS 4
-indicates that gphoto2 has just initialized. If the hook script returns with a non\-zero exit code now,
+
+\fBgphoto2\fR
+has just been initialized. If the hook script returns with a non\-zero exit code now,
 \fBgphoto2\fR
 will abort.
 .RE
 .PP
 \fBACTION\fR=start
 .RS 4
-indicates that gphoto2 has finished parsing the command line and is about to execute the requested commands.
+
+\fBgphoto2\fR
+has just finished parsing the command line and is about to start executing the commands given on the command line.
 .RE
 .PP
 \fBACTION\fR=download
 .RS 4
-indicates that a file has just been downloaded to the computer and stored in the file indicated by the environment variable
+
+\fBgphoto2\fR
+has just downloaded a file to the computer, storing it in the file indicated by the environment variable
 \fBARGUMENT\fR.
 .RE
 .PP
 \fBACTION\fR=stop
 .RS 4
-indicates that gphoto2 is about to finish.
+
+\fBgphoto2\fR
+is about to finish. Do your final cleanups here.
 .RE
 .RE
 .IP "" 4
@@ -400,6 +415,17 @@ Capture a movie.
 Capture an audio clip.
 .RE
 .PP
+\fB\-\-capture\-tethered\fR
+.RS 4
+Lets gphoto2 wait for notifications from the camera that an object was added. This is useful for tethered capture, where pressing the shutter on the camera immediately transfer the image to the machine for processing.
+.sp
+Together with the
+\fB\-\-hook\-script\fR
+to immediately postprocess or display the images this can help a studio workflow.
+.sp
+This option requires support in the driver and by the camera, currently only Nikon DSC are known to work.
+.RE
+.PP
 \fB\-\-show\-info\fR \fIRANGE\fR
 .RS 4
 Show info.
@@ -582,6 +608,11 @@ List files on camera.
 .RS 4
 Get files number 7 through 13 from the list output by
 \fB\fBgphoto2\fR\fR\fB \fR\fB\fB\-\-list\-files\fR\fR.
+.RE
+.PP
+\fBgphoto2 \fR\fB\fB\-\-capture\-image\fR\fR\fB \fR\fB\fB\-\-interval\fR\fR\fB \fR\fB\fI60\fR\fR\fB \fR\fB\fB\-\-hook\-script\fR\fR\fB \fR\fB\fI/usr/share/doc/gphoto2/test\-hook.sh\fR\fR
+.RS 4
+Capture one image every 60 seconds from now to eternity. The example hook script will be called after each captured image has been stored on the computer.
 .RE
 .PP
 To track down errors, you can add the
