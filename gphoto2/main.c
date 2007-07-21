@@ -834,8 +834,8 @@ capture_tethered (const char __unused__ *name)
 				if (result != GP_OK) {
 					cli_error_print ( _("Could not delete image."));
 					/* continue in tethered loop */
-					break;
 				}
+				break;
 			}
 			break;
 		case GP_EVENT_FOLDER_ADDED:
