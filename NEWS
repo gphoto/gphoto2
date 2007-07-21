@@ -7,6 +7,9 @@ gphoto2 2.3.1.2.trunk
    from the camera via API.
  * Use SIGUSR1 to trigger premature image capture in --interval mode.
  * New --reset-interval parameter makes SIGUSR1 reset the capture interval.
+ 
+ * New --capture-tethered command to wait for presses of the camera shutter
+   button and download. Confirmed working only with Nikon DSC.
 
 gphoto2 2.3.1
 
