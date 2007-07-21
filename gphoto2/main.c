@@ -775,6 +775,79 @@ capture_generic (CameraCaptureType type, const char __unused__ *name)
 	return (GP_OK);
 }
 
+static int
+capture_tethered (const char __unused__ *name)
+{
+	CameraFilePath last;
+	int result;
+        CameraEventType event;
+        CameraFilePath  *fn;
+        void    *data = NULL;
+
+	printf ( _("Waiting for events from camera. Press Ctrl-C to abort.\n"));
+
+	while (1) {
+		result = gp_camera_wait_for_event (gp_params.camera, 10000, &event, &data, gp_params.context);
+
+		if (result != GP_OK)
+			break;
+		switch (event) {
+		case GP_EVENT_UNKNOWN:
+			if (data) {
+				printf("UNKNOWN %s\n", (char*)data);
+			} else {
+				printf("UNKNOWN\n");
+			}
+			break;
+		case GP_EVENT_TIMEOUT:
+			/* just continue and wait for next one. */
+			break;
+		case GP_EVENT_FILE_ADDED:
+			fn = (CameraFilePath*)data;
+			printf( _("New file %s/%s, downloading...\n"),fn->name, fn->folder);
+
+			if(strcmp(fn->folder, last.folder)) {
+				strcpy(last.folder, fn->folder);
+				result = set_folder_action(&gp_params, fn->folder);
+				if (result != GP_OK) {
+					cli_error_print(_("Could not set folder."));
+					return (result);
+				}
+			}
+			result = get_file_common (fn->name, GP_FILE_TYPE_NORMAL);
+			if (result != GP_OK) {
+				cli_error_print (_("Could not get image."));
+				if(result == GP_ERROR_FILE_NOT_FOUND) {
+					/* Buggy libcanon.so?
+					 * Can happen if this was the first capture after a
+					 * CF card format, or during a directory roll-over,
+					 * ie: CANON100 -> CANON101
+					 */
+					cli_error_print ( _("Buggy libcanon.so?"));
+				}
+				return (result);
+			}
+
+			while (1) {
+				result = delete_file_action (&gp_params, fn->name);
+				if (result == GP_ERROR_CAMERA_BUSY) continue;
+				if (result != GP_OK) {
+					cli_error_print ( _("Could not delete image."));
+					/* continue in tethered loop */
+					break;
+				}
+			}
+			break;
+		case GP_EVENT_FOLDER_ADDED:
+			fn = (CameraFilePath*)data;
+			/*printf("FOLDERADDED %s %s\n",fn->name, fn->folder);*/
+			break;
+        	}
+	}
+        return GP_OK;
+}
+
+
 
 /* Set/init global variables                                    */
 /* ------------------------------------------------------------ */
@@ -910,6 +983,7 @@ typedef enum {
 	ARG_CAPTURE_MOVIE,
 	ARG_CAPTURE_PREVIEW,
 	ARG_CAPTURE_SOUND,
+	ARG_CAPTURE_TETHERED,
 	ARG_CONFIG,
 	ARG_DEBUG,
 	ARG_DEBUG_LOGFILE,
@@ -1173,6 +1247,9 @@ cb_arg_run (poptContext __unused__ ctx,
 		break;
 	case ARG_CAPTURE_SOUND:
 		params->p.r = capture_generic (GP_CAPTURE_SOUND, arg);
+		break;
+	case ARG_CAPTURE_TETHERED:
+		params->p.r = capture_tethered (arg);
 		break;
 	case ARG_CONFIG:
 #ifdef HAVE_CDK
@@ -1535,6 +1612,8 @@ main (int argc, char **argv, char **envp)
 		 ARG_CAPTURE_MOVIE, N_("Capture a movie"), NULL},
 		{"capture-sound", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_SOUND, N_("Capture an audio clip"), NULL},
+		{"capture-tethered", '\0', POPT_ARG_NONE, NULL,
+		 ARG_CAPTURE_TETHERED, N_("Wait for shutter release on the camera and download"), NULL},
 		POPT_TABLEEND
 	};
 	const struct poptOption fileOptions[] = {
@@ -1752,6 +1831,7 @@ main (int argc, char **argv, char **envp)
 	CHECK_OPT (ARG_CAPTURE_MOVIE);
 	CHECK_OPT (ARG_CAPTURE_PREVIEW);
 	CHECK_OPT (ARG_CAPTURE_SOUND);
+	CHECK_OPT (ARG_CAPTURE_TETHERED);
 	CHECK_OPT (ARG_CONFIG);
 	CHECK_OPT (ARG_DELETE_ALL_FILES);
 	CHECK_OPT (ARG_DELETE_FILE);
