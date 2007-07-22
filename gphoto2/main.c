@@ -828,14 +828,12 @@ capture_tethered (const char __unused__ *name)
 				return (result);
 			}
 
-			while (1) {
+			do {
 				result = delete_file_action (&gp_params, fn->name);
-				if (result == GP_ERROR_CAMERA_BUSY) continue;
-				if (result != GP_OK) {
-					cli_error_print ( _("Could not delete image."));
-					/* continue in tethered loop */
-				}
-				break;
+			} while (result == GP_ERROR_CAMERA_BUSY);
+			if (result != GP_OK) {
+				cli_error_print ( _("Could not delete image."));
+				/* continue in tethered loop */
 			}
 			break;
 		case GP_EVENT_FOLDER_ADDED:
