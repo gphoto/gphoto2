@@ -43,12 +43,14 @@ spawnve(const char *filename, char *const argv[], char *const envp[])
     int fd;
     close(STDIN_FILENO);
     for (fd = 3; fd<200; fd++) { close(fd); }
-    const int retcode = execve(filename, argv, envp);
-    const int s_errno = errno;
-    fprintf(stderr, "execve(\"%s\") failed: %s\n", 	    
-	    filename, strerror(s_errno));
-    _exit(79);
-    return retcode;
+    if (1) {
+      const int retcode = execve(filename, argv, envp);
+      const int s_errno = errno;
+      fprintf(stderr, "execve(\"%s\") failed: %s\n", 	    
+	      filename, strerror(s_errno));
+      _exit(79);
+      return retcode;
+    }
   } else if (pid > 0) {
     /* parent process, child's PID is in pid */
     int status;
