@@ -139,7 +139,7 @@ static const struct _ShellFunctionTable {
 	{"list-config", shell_list_config, N_("List configuration variables"), NULL, 0},
 	{"get-config", shell_get_config, N_("Get configuration variable"), N_("name"), 1},
 	{"set-config", shell_set_config, N_("Set configuration variable"), N_("name=value"), 1},
-	{"capture-image", shell_capture_image, N_("Capture a single image"), N_("[name]"), 0},
+	{"capture-image", shell_capture_image, N_("Capture a single image"), NULL, 0},
 	{"q", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"quit", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"?", shell_help, N_("Displays command usage"), N_("[command]"), 0},
