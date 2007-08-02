@@ -843,9 +843,8 @@ shell_set_config (Camera __unused__ *camera, const char *args) {
 }
 
 static int
-shell_capture_image (Camera __unused__ *camera, const char *args) {
-	while (*args==' ') args++;
-	return capture_generic (GP_CAPTURE_IMAGE, *args?args:NULL);
+shell_capture_image (Camera __unused__ *camera, const char __unused__ *args) {
+	return capture_generic (GP_CAPTURE_IMAGE, NULL);
 }
 
 int
