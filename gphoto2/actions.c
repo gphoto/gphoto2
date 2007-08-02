@@ -1306,8 +1306,9 @@ _find_widget_by_name (GPParams *p, const char *name, CameraWidget **child, Camer
  *     clean one is to add an intermediate function
  */
 
-static inline size_t
-my_strftime(char *s, size_t max, const char *fmt, const struct tm *tm) {
+static size_t
+my_strftime(char *s, size_t max, const char *fmt, const struct tm *tm)
+{
 	return strftime(s, max, fmt, tm);
 }
 
