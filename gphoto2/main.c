@@ -1467,7 +1467,7 @@ report_failure (int result, int argc, char **argv)
 		 */
 		printf ("    env LANG=C gphoto2 --debug --debug-logfile=my-logfile.txt");
 		for (n = 1; n < argc; n++) {
-			if (argv[n][0] == '-')
+			if (strchr(argv[n], ' ') == NULL)
 				printf(" %s",argv[n]);
 			else
 				printf(" \"%s\"",argv[n]);
