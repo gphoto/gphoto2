@@ -79,7 +79,7 @@ AM_CPPFLAGS="$AM_CPPFLAGS -DLOCALEDIR=\\\"${localedir}\\\""
 dnl ---------------------------------------------------------------------------
 dnl Check for libgphoto2
 dnl ---------------------------------------------------------------------------
-GP_CHECK_LIBRARY([LIBGPHOTO2], [libgphoto2], [>= 2.3.1.3.trunk])
+GP_CHECK_LIBRARY([LIBGPHOTO2], [libgphoto2], [>= 2.4.0])
 
 
 AC_CHECK_FUNCS([strptime])
