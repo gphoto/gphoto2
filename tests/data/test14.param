@@ -1,0 +1,2 @@
+TITLE='File download to stdout'
+COMMAND='"$PROGRAM" --camera="Directory Browse" --folder="$STAGINGDIR" --get-file=1 --stdout 2> "$ERRFILE" > "$OUTFILE"'

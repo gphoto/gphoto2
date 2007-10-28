@@ -1,0 +1,76 @@
+GPHOTO2 TEST FRAMEWORK
+======================
+The gphoto2 test suite consists of a simple framework plus test data
+that allows basic regression tests to be run to validate the gphoto2
+code. It is designed primarily to run tests on the "gphoto2" executable
+but is flexible enough to run other programs as well.
+
+Although it is possible to execute tests directly on a connected camera,
+the "Directory Browse" camera driver is used for most tests as it allows
+testing with no external dependencies. This is sufficient to test the
+gphoto2 executable, libgphoto2 framework code, and directory driver,
+but, naturally, none of the other camera drivers.
+
+The test framework provides the facility to compare the output of the
+program under test with an expected file, massage that file to make it
+easier to compare first, perform tests that are expected to fail, and
+perform arbitrary checks following the test.  It is driven by a test
+parameters file which contains instructions for running that test,
+plus a data file containing the data expected after running the test.
+
+TEST FILE FORMAT
+================
+Each test parameters file has a name of the form testN.param where N
+is the test number. it consists of a series of variable assignments
+of the form 'VARIABLE=data'.  Several pre-set variables are available
+for use in the data.  Bourne shell quoting rules are in effect, and
+the order does not matter.
+
+These are the variables that can be set in the test parameters file:
+
+COMMAND - The command to run to execute the test (mandatory)
+PRECOMMAND - A command to run before COMMAND (which must have a 0
+  exit status)
+POSTCOMMAND - A command to run after COMMAND (which must have a 0
+  exit status)
+RESULTCODE - The return status expected by the command (default 0)
+RESULTFILE - A file containing the expected output of the program; this will
+  be compared to $OUTFILE (default result/testN.result)
+SEDCOMMAND - A command passed to sed which modifies the output file
+  $OUTFILE; this can be used to remove parts of the file (like absolute
+  paths) that can be inconsistent between test runs
+TITLE - A short descriptive name for the test (mandatory)
+
+These are the variables that are available for use in the parameters file:
+
+$DATADIR - path to the data directory (data/)
+$ERRFILE - path to the default standard error output file for this test
+$LOGDIR - path to the log directory (log/)
+$OUTFILE - path to the default test output file for this test
+$PROGRAM - path to the gphoto2 executable (../gphoto2)
+$STAGINGDIR - path to an area containing sample files and directories
+  (staging/)
+
+FILES AND DIRECTORIES
+=====================
+Test parameter files and any data files are found in the data/ directory.
+Test parameter files end with the .param extension, while data files end
+with the .result extension.  Files created while running the test are
+stored in the log/ directory. The contents of log/ is erased before the
+start of each test run.
+
+The directory staging/ contains a few small files and subdirectories that
+can be used with the Directory Browse driver to simulate the contents of
+a camera.  It should be treated as read only, and should not be modified.
+Tests requiring (like uploads) requiring modification of the file system
+should first create a test area in $LOGDIR in the PRECOMMAND.
+
+INVOCATION
+==========
+Start the tests with the command "./testsuite".  If parameters are given,
+they are to specific tests to run, e.g. "./testsuite data/test2.param"
+will run only test 2.  When running outside the build tree, the
+environment variable "srcdir" must be set to the absolute path of the
+tests source directory.  The program will exit with a non-zero status
+code if at least one test failed.
+

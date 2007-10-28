@@ -1,0 +1,111 @@
+#!/bin/sh
+# Simple regression test suite for gphoto2
+# Dan Fandrich
+
+if [ -z "$srcdir" ] ; then
+	srcdir=`pwd`
+fi
+
+DATADIR="$srcdir/data"
+if [ ! -e "$DATADIR" ] ; then
+	echo Must run tests from the tests directory
+	exit 1
+fi
+
+STAGINGDIR="$srcdir/staging"
+LOGDIR="`pwd`/log"
+if [ -e "$LOGDIR" ] ; then
+	rm -fr "$LOGDIR"
+fi
+mkdir "$LOGDIR"
+
+TESTLIST="$DATADIR/*.param"
+
+if [ -n "$1" ] ; then
+  TESTLIST="$@"
+fi
+
+TESTRESULT=0
+
+for TEST in $TESTLIST ; do
+  echo ''
+
+  # These variables are unlikely to be needed in the test parameters file
+  TESTNAME=`echo $TEST | sed -e 's@^.*data/@@' -e 's/\..*$//'`
+  RESULTFILE="$DATADIR/$TESTNAME.result"
+
+  # Initialize variables that can be used within the test parameters file
+  PROGRAM=../gphoto2
+  OUTFILE="$LOGDIR/$TESTNAME.out"
+  ERRFILE="$LOGDIR/$TESTNAME.err"
+
+  # Initialize variables that must be set for each test
+  TITLE=''
+  COMMAND=''
+  PRECOMMAND=''
+  POSTCOMMAND=''
+  SEDCOMMAND=''
+  RESULTCODE=0
+
+  # Load the test parameters, which can override the above
+  if [ ! -e "$TEST" ] ; then
+  	echo "Test $TESTNAME FAILED: invalid test parameter file $TEST"
+  	TESTRESULT=1
+  	continue
+  fi
+  . "$TEST"
+
+  echo '***' Running \"$TITLE\" test
+
+  # Run a pre-test command
+  if [ -n "$PRECOMMAND" ] ; then
+	if ! eval $PRECOMMAND ; then
+		echo Test $TESTNAME FAILED: pre test command failure
+  		TESTRESULT=1
+  		continue
+  	fi
+  fi
+
+  echo "$COMMAND"
+  eval $COMMAND
+  EXITCODE=$?
+  if  [ $EXITCODE != "$RESULTCODE" ] ; then
+  	echo "Test $TESTNAME FAILED: got exit $EXITCODE, expected $RESULTCODE"
+  	TESTRESULT=1
+  	continue
+  fi
+
+  # Run a post-test command
+  if [ -n "$POSTCOMMAND" ] ; then
+	if ! eval $POSTCOMMAND ; then
+		echo Test $TESTNAME FAILED: post test command failure
+  		TESTRESULT=1
+  		continue
+  	fi
+  fi
+
+  if [ -n "$SEDCOMMAND" ] ; then
+	mv -f "$OUTFILE" "$OUTFILE".orig
+	sed "$SEDCOMMAND" < "$OUTFILE.orig" > "$OUTFILE"
+  fi
+
+  if ! cmp "$RESULTFILE" "$OUTFILE" >/dev/null ; then
+  	echo Test $TESTNAME FAILED: unexpected output:
+  	diff -u "$RESULTFILE" "$OUTFILE"
+  	TESTRESULT=1
+  	continue
+  fi
+
+  echo Test $TESTNAME PASSED
+done
+
+echo ''
+if [ $TESTRESULT == 0 ] ; then
+  echo All tests have PASSED
+else
+  echo "Test(s) have FAILED"
+fi
+exit $TESTRESULT
+
+
+

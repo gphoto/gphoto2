@@ -1,0 +1,4 @@
+TITLE='Make directory'
+COMMAND='"$PROGRAM" --camera="Directory Browse" --folder="$LOGDIR" --mkdir=newdir  2> "$ERRFILE" > "$OUTFILE"'
+RESULTFILE=/dev/null
+POSTCOMMAND='test -d "$LOGDIR/newdir" && rmdir "$LOGDIR/newdir"'

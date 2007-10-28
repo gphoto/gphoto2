@@ -1,0 +1,4 @@
+TITLE='File upload'
+PRECOMMAND='mkdir "$LOGDIR/uploaddir"'
+COMMAND='"$PROGRAM" --camera="Directory Browse" --folder="$LOGDIR/uploaddir" --upload-file="$STAGINGDIR/subdir1/architecture.png" 2> "$ERRFILE" > /dev/null'
+POSTCOMMAND='mv -f "$LOGDIR/uploaddir/architecture.png" "$OUTFILE" && rmdir "$LOGDIR/uploaddir"'
