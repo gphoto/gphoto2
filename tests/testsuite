@@ -18,9 +18,10 @@ fi
 STAGINGDIR="$srcdir/staging"
 LOGDIR="`pwd`/log"
 if [ -e "$LOGDIR" ] ; then
-	rm -fr "$LOGDIR"
+	rm -fr "$LOGDIR/test*"
+else
+	mkdir "$LOGDIR"
 fi
-mkdir "$LOGDIR"
 
 TESTLIST="$DATADIR/*.param"
 
