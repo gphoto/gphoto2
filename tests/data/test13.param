@@ -1,3 +1,3 @@
 TITLE='File download'
-COMMAND='"$PROGRAM" --camera="Directory Browse" --folder="$STAGINGDIR" --get-file=1 2> "$ERRFILE" > /dev/null'
+COMMAND='"$PROGRAM" --camera="Directory Browse" --port=disk:"$STAGINGDIR" --get-file=1 2> "$ERRFILE" > /dev/null'
 POSTCOMMAND='mv -f gphotobutton.jpg "$OUTFILE"'

@@ -1,6 +1,6 @@
 SUBDIRS = data staging
 
-EXTRA_DIST = TESTING
+EXTRA_DIST = TESTING testsuite
 
 TESTS = testsuite
 

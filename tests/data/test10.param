@@ -1,2 +1,2 @@
 TITLE='Manual text'
-COMMAND='"$PROGRAM" --camera="Directory Browse" --folder="$STAGINGDIR" --manual 2> "$ERRFILE" > "$OUTFILE"'
+COMMAND='"$PROGRAM" --camera="Directory Browse" --port disk:"$STAGINGDIR" --manual 2> "$ERRFILE" > "$OUTFILE"'

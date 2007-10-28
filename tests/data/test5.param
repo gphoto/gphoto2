@@ -1,3 +1,3 @@
 TITLE='Nonrecursive directory list'
-COMMAND='"$PROGRAM" --camera="Directory Browse" --folder="$STAGINGDIR" --no-recurse -l 2> "$ERRFILE" > "$OUTFILE"'
+COMMAND='"$PROGRAM" --camera="Directory Browse" --port=disk:"$STAGINGDIR" --no-recurse -l 2> "$ERRFILE" > "$OUTFILE"'
 SEDCOMMAND='s@\(in folder .\).*/@\1@'

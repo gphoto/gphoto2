@@ -1,5 +1,5 @@
 TITLE='File delete'
 PRECOMMAND='mkdir "$LOGDIR/deletedir" && cp "$STAGINGDIR/gphotobutton.jpg" "$LOGDIR/deletedir/"'
-COMMAND='"$PROGRAM" --camera="Directory Browse" --folder="$LOGDIR/deletedir" --delete-file=1 2> "$ERRFILE" > "$OUTFILE"'
+COMMAND='"$PROGRAM" --camera="Directory Browse" --port=disk:"$LOGDIR" -f /deletedir --delete-file=1 2> "$ERRFILE" > "$OUTFILE"'
 POSTCOMMAND='rmdir "$LOGDIR/deletedir"'
 RESULTFILE=/dev/null
