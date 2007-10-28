@@ -2,6 +2,9 @@
 # Simple regression test suite for gphoto2
 # Dan Fandrich
 
+# we expect english text... 
+export LANG=C
+
 if [ -z "$srcdir" ] ; then
 	srcdir=`pwd`
 fi
@@ -35,7 +38,7 @@ for TEST in $TESTLIST ; do
   RESULTFILE="$DATADIR/$TESTNAME.result"
 
   # Initialize variables that can be used within the test parameters file
-  PROGRAM=../gphoto2
+  PROGRAM=../gphoto2/gphoto2
   OUTFILE="$LOGDIR/$TESTNAME.out"
   ERRFILE="$LOGDIR/$TESTNAME.err"
 
