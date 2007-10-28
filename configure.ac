@@ -362,6 +362,11 @@ contrib/Makefile
 packaging/Makefile
 packaging/rpm/Makefile
 packaging/rpm/package.spec
+tests/data/Makefile
+tests/staging/subdir1/Makefile
+tests/staging/subdir2/Makefile
+tests/staging/Makefile
+tests/Makefile
 ])
 AC_OUTPUT()dnl
 
