@@ -16,6 +16,8 @@ if [ ! -e "$DATADIR" ] ; then
 fi
 
 STAGINGDIR="$srcdir/staging"
+chmod u+w $STAGINGDIR/*.{png,wav,jpg}
+chmod u+w $STAGINGDIR/subdir1/*.png
 LOGDIR="`pwd`/log"
 if [ -e "$LOGDIR" ] ; then
 	rm -fr "$LOGDIR/test*"
