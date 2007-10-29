@@ -16,16 +16,16 @@ if [ ! -e "$DATADIR" ] ; then
 fi
 
 STAGINGDIR="$srcdir/staging"
-chmod u+w $STAGINGDIR/*.{png,wav,jpg}
-chmod u+w $STAGINGDIR/subdir1/*.png
+chmod u+w "$STAGINGDIR"/*.{png,wav,jpg}
+chmod u+w "$STAGINGDIR"/subdir1/*.png
 LOGDIR="`pwd`/log"
 if [ -e "$LOGDIR" ] ; then
-	rm -fr "$LOGDIR/test*"
+	rm -fr "$LOGDIR/"test*
 else
 	mkdir "$LOGDIR"
 fi
 
-TESTLIST="$DATADIR/*.param"
+TESTLIST="$DATADIR"/*.param
 
 if [ -n "$1" ] ; then
   TESTLIST="$@"
