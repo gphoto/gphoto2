@@ -615,10 +615,13 @@ list_ports_action (GPParams *p)
 
 	/* Now list the ports */
 	for (x = 0; x < count; x++) {
+		char *xname, *xpath;
 		result = gp_port_info_list_get_info (p->portinfo_list, x, &info);
 		if (result < 0)
 			break;
-		printf ("%-32s %-32s\n", info.path, info.name);
+		gp_port_info_get_name (info, &xname);
+		gp_port_info_get_path (info, &xpath);
+		printf ("%-32s %-32s\n", xpath, xname);
 	}
 	return (result);
 
@@ -712,6 +715,7 @@ action_camera_set_port (GPParams *params, const char *port)
 {
 	int p, r;
 	GPPortInfo info;
+	char *path;
 	char verified_port[1024];
 
 	verified_port[sizeof (verified_port) - 1] = '\0';
@@ -771,7 +775,8 @@ action_camera_set_port (GPParams *params, const char *port)
 	r = gp_camera_set_port_info (params->camera, info);
 	if (r < 0)
 		return (r);
-	gp_setting_set ("gphoto2", "port", info.path);
+	gp_port_info_get_path (info, &path);
+	gp_setting_set ("gphoto2", "port", path);
 	return (GP_OK);
 }
 
@@ -817,11 +822,13 @@ action_camera_manual (GPParams *params)
 int
 action_camera_set_speed (GPParams *p, unsigned int speed)
 {
-	GPPortInfo info;
+	GPPortInfo	info;
+	GPPortType	type;
 
 	/* Make sure we've got a serial port. */
 	CR (gp_camera_get_port_info (p->camera, &info));
-	if (info.type != GP_PORT_SERIAL) {
+	gp_port_info_get_type (info, &type);
+	if (type != GP_PORT_SERIAL) {
 		if ((p->flags & FLAGS_QUIET) == 0) {
 			fprintf (stderr, _("You can only specify speeds for "
 					   "serial ports."));
@@ -829,11 +836,8 @@ action_camera_set_speed (GPParams *p, unsigned int speed)
 		}
 		return (GP_ERROR_BAD_PARAMETERS);
 	}
-
 	/* Set the speed. */
-	CR (gp_camera_set_port_speed (p->camera, speed));
-
-	return (GP_OK);
+	return gp_camera_set_port_speed (p->camera, speed);
 }
 
 int

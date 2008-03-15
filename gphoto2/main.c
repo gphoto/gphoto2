@@ -1721,6 +1721,7 @@ main (int argc, char **argv, char **envp)
 	};
 	CameraAbilities a;
 	GPPortInfo info;
+	GPPortType type;
 	int result = GP_OK;
 	cb_params.type = CALLBACK_PARAMS_TYPE_NONE;
 
@@ -1854,8 +1855,9 @@ main (int argc, char **argv, char **envp)
 	CHECK_OPT (ARG_SUMMARY);
 	CHECK_OPT (ARG_UPLOAD_FILE);
 	CHECK_OPT (ARG_STORAGE_INFO);
+	gp_port_info_get_type (info, &type);
 	if (cb_params.p.q.found &&
-	    (!strcmp (a.model, "") || (info.type == GP_PORT_NONE))) {
+	    (!strcmp (a.model, "") || (type == GP_PORT_NONE))) {
 		int count;
 		const char *model = NULL, *path = NULL;
 		CameraList *list;
