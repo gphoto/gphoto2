@@ -139,7 +139,7 @@ static const struct _ShellFunctionTable {
 	{"list-config", shell_list_config, N_("List configuration variables"), NULL, 0},
 	{"get-config", shell_get_config, N_("Get configuration variable"), N_("name"), 1},
 	{"set-config", shell_set_config, N_("Set configuration variable"), N_("name=value"), 1},
-	{"capture-image", shell_capture_image, N_("Capture a single image"), N_("[name]"), 0},
+	{"capture-image", shell_capture_image, N_("Capture a single image"), NULL, 0},
 	{"q", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"quit", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"?", shell_help, N_("Displays command usage"), N_("[command]"), 0},
@@ -843,9 +843,8 @@ shell_set_config (Camera __unused__ *camera, const char *args) {
 }
 
 static int
-shell_capture_image (Camera __unused__ *camera, const char *args) {
-	while (*args==' ') args++;
-	return capture_generic (GP_CAPTURE_IMAGE, *args?args:NULL);
+shell_capture_image (Camera __unused__ *camera, const char __unused__ *args) {
+	return capture_generic (GP_CAPTURE_IMAGE, NULL);
 }
 
 int

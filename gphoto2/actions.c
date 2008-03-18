@@ -922,9 +922,24 @@ int
 action_camera_capture_preview (GPParams *p)
 {
 	CameraFile *file;
-	int r;
+	int	r, fd;
+        char    tmpname[20], *tmpfilename;
 
-	CR (gp_file_new (&file));
+	strcpy (tmpname, "tmpfileXXXXXX");
+	fd = mkstemp(tmpname);
+	if (fd == -1) {
+		CR (gp_file_new (&file));
+		tmpfilename = NULL;
+	} else {
+		r = gp_file_new_from_fd (&file, fd);
+		if (r < GP_OK) {
+			close (fd);
+			unlink (tmpname);
+			return r;
+		}
+		tmpfilename = tmpname;
+	}
+
 #ifdef HAVE_AA
 	r = gp_cmd_capture_preview (p->camera, file, p->context);
 #else
@@ -935,7 +950,7 @@ action_camera_capture_preview (GPParams *p)
 		return (r);
 	}
 
-	r = save_camera_file_to_file (NULL, file, NULL);
+	r = save_camera_file_to_file (NULL, file, tmpfilename);
 	gp_file_unref (file);
 	if (r < 0) 
 		return (r);
