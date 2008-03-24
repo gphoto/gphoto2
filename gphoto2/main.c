@@ -42,6 +42,7 @@
 #include <locale.h>
 #include <fcntl.h>
 #include <utime.h>
+#include <limits.h>
 
 #ifdef HAVE_POPT
 #  include <popt.h>
