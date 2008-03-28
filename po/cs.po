@@ -1,19 +1,21 @@
 # Czech translation of gphoto2
-# Copyright (C) 2003 Miloslav Trmac
+# Copyright (C) 2003, 2007 Miloslav Trmac
 # This file is distributed under the same license as the gphoto2 package.
-# Miloslav Trmac <mitr@volny.cz>, 2003.
+# Miloslav Trmac <mitr@volny.cz>, 2003, 2007.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.1.5\n"
+"Project-Id-Version: gphoto2 2.4.0\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2008-03-24 20:14+0100\n"
-"PO-Revision-Date: 2005-09-20 10:42+0200\n"
+"PO-Revision-Date: 2007-09-06 21:52+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%100/10==1 ? 2 : n%10==1 ? 0 : (n+9)%"
+"10>3 ? 2 : 1;\n"
 
 #: gphoto2/actions.c:167
 #, c-format
@@ -21,23 +23,25 @@ msgid "Number of files in folder '%s': %i\n"
 msgstr "Počet souborů v adresáři '%s': %i\n"
 
 #: gphoto2/actions.c:187
-#, fuzzy, c-format
+#, c-format
 msgid "There is %d folder in folder '%s'.\n"
 msgid_plural "There are %d folders in folder '%s'.\n"
-msgstr[0] "V adresáři '%s' je jeden adresář:"
-msgstr[1] "V adresáři '%s' je jeden adresář:"
+msgstr[0] "V adresáři '%2$s' je %1$d adresář.\n"
+msgstr[1] "V adresáři '%2$s' jsou %1$d adresáře.\n"
+msgstr[2] "V adresáři '%2$s' je %1$d adresářů.\n"
 
 #: gphoto2/actions.c:227
-#, fuzzy, c-format
+#, c-format
 msgid "There is no file in folder '%s'.\n"
-msgstr "V adresáři '%s' je jeden soubor:"
+msgstr "V adresáři '%s' není žádný soubor.\n"
 
 #: gphoto2/actions.c:230
-#, fuzzy, c-format
+#, c-format
 msgid "There is %d file in folder '%s'.\n"
 msgid_plural "There are %d files in folder '%s'.\n"
-msgstr[0] "V adresáři '%s' je jeden soubor:"
-msgstr[1] "V adresáři '%s' je jeden soubor:"
+msgstr[0] "V adresáři '%2$s' je %1$d soubor.\n"
+msgstr[1] "V adresáři '%2$s' jsou %1$d soubory.\n"
+msgstr[2] "V adresáři '%2$s' je %1$d souborů.\n"
 
 #: gphoto2/actions.c:251
 #, c-format
@@ -299,14 +303,14 @@ msgid "Configuration support            : %s\n"
 msgstr "Podpora konfigurace              : %s\n"
 
 #: gphoto2/actions.c:694
-#, fuzzy, c-format
+#, c-format
 msgid "Delete selected files on camera  : %s\n"
-msgstr "Podpora odstranění souborů   t   : %s\n"
+msgstr "Odstranit vybrané soubory z fotoaparátu: %s\n"
 
 #: gphoto2/actions.c:697
-#, fuzzy, c-format
+#, c-format
 msgid "Delete all files on camera       : %s\n"
-msgstr "Podpora odstranění souborů   t   : %s\n"
+msgstr "Odstranit všechny soubory z fotoaparátu: %s\n"
 
 #: gphoto2/actions.c:700
 #, c-format
@@ -363,7 +367,7 @@ msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "OS/2 port napsal Bart van Leeuwen\n"
 
 #: gphoto2/actions.c:883
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "gphoto2 %s\n"
 "\n"
@@ -379,7 +383,7 @@ msgid ""
 msgstr ""
 "gphoto2 %s\n"
 "\n"
-"Copyright (C) 2000-2004 Lutz Mueller a další\n"
+"Copyright © 2000-%d Lutz Mueller a další\n"
 "%s\n"
 "gphoto2 je dodáváno BEZ ZÁRUKY, v rozsahu povoleném zákonem. Můžete\n"
 "šířit kopie gphoto2 za podmínek GNU General Public License. Pro více\n"
@@ -390,67 +394,67 @@ msgstr ""
 #: gphoto2/actions.c:1004
 #, c-format
 msgid "Getting storage information not supported for this camera.\n"
-msgstr ""
+msgstr "Získávání informací o úložištinení pro tento fotoaparát podporováno.\n"
 
 #: gphoto2/actions.c:1019
 #, c-format
 msgid "Read-Write"
-msgstr ""
+msgstr "Čtení a zápis"
 
 #: gphoto2/actions.c:1022
 #, c-format
 msgid "Read-Only"
-msgstr ""
+msgstr "Jen čtení"
 
 #: gphoto2/actions.c:1025
 #, c-format
 msgid "Read-only with delete"
-msgstr ""
+msgstr "Jen čtení a odstraňování"
 
 #: gphoto2/actions.c:1028 gphoto2/actions.c:1038
 #, c-format
 msgid "Unknown"
-msgstr ""
+msgstr "Neznámé"
 
 #: gphoto2/actions.c:1041
 #, c-format
 msgid "Fixed ROM"
-msgstr ""
+msgstr "Pevná ROM"
 
 #: gphoto2/actions.c:1044
 #, c-format
 msgid "Removable ROM"
-msgstr ""
+msgstr "Výměnná ROM"
 
 #: gphoto2/actions.c:1047
 #, c-format
 msgid "Fixed RAM"
-msgstr ""
+msgstr "Pevná RAM"
 
 #: gphoto2/actions.c:1050
 #, c-format
 msgid "Removable RAM"
-msgstr ""
+msgstr "Výměnná RAM"
 
 #: gphoto2/actions.c:1060
 #, c-format
 msgid "Undefined"
-msgstr ""
+msgstr "Nedefinováno"
 
 #: gphoto2/actions.c:1063
 #, c-format
 msgid "Generic Flat"
-msgstr ""
+msgstr "Obecné ploché"
 
 #: gphoto2/actions.c:1066
 #, c-format
 msgid "Generic Hierarchical"
-msgstr ""
+msgstr "Obecné hierarchické"
 
 #: gphoto2/actions.c:1069
 #, c-format
 msgid "Camera layout (DCIM)"
-msgstr ""
+msgstr "Rozložení kamery (DCIM)"
 
 #: gphoto2/actions.c:1107
 #, c-format
@@ -470,107 +474,105 @@ msgid "%s has been compiled with the following options:"
 msgstr "%s bylo přeloženo s následujícími přepínači:"
 
 #: gphoto2/actions.c:1304
-#, fuzzy, c-format
+#, c-format
 msgid "%s not found in configuration tree."
-msgstr "%s nenalezeno ve stromu konfigurace.\n"
+msgstr "%s nenalezeno ve stromu konfigurace."
 
 #: gphoto2/actions.c:1363
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to retrieve value of text widget %s."
-msgstr "Nemohu získat hodnotu textového widgetu %s.\n"
+msgstr "Nemohu získat hodnotu textového widgetu %s."
 
 #: gphoto2/actions.c:1380
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to retrieve values of range widget %s."
-msgstr "Nemohu získat hodnotu widgetu rozsahu %s.\n"
+msgstr "Nemohu získat hodnotu widgetu rozsahu %s."
 
 #: gphoto2/actions.c:1392
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to retrieve values of toggle widget %s."
-msgstr "Nemohu získat hodnotu přepínacího widgetu %s.\n"
+msgstr "Nemohu získat hodnotu přepínacího widgetu %s."
 
 #: gphoto2/actions.c:1404
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to retrieve values of date/time widget %s."
-msgstr "Nemohu získat hodnotu widgetu data/času %s.\n"
+msgstr "Nemohu získat hodnotu widgetu data/času %s."
 
 #: gphoto2/actions.c:1434
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to retrieve values of radio widget %s."
-msgstr "Nemohu získat hodnotu rádiového widgetu %s.\n"
+msgstr "Nemohu získat hodnotu rádiového widgetu %s."
 
 #: gphoto2/actions.c:1475
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to set the value of text widget %s to %s."
-msgstr "Nemohu získat hodnotu textového widgetu %s.\n"
+msgstr "Nemohu nastavit hodnotu textového widgetu %s na %s."
 
 #: gphoto2/actions.c:1485
 #, c-format
 msgid "The passed value %s is not a floating point value."
-msgstr ""
+msgstr "Zadaná hodnota %s není hodnota s pohyblivou řádovou čárkou."
 
 #: gphoto2/actions.c:1490
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
-msgstr ""
+msgstr "Zadaná hodnota %f není v očekávaném rozsahu %f – %f."
 
 #: gphoto2/actions.c:1496
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to set the value of range widget %s to %f."
-msgstr "Nemohu získat hodnotu widgetu rozsahu %s.\n"
+msgstr "Nemohu nastavit hodnotu widgetu rozsahu %s na %f."
 
 #: gphoto2/actions.c:1505
 msgid "off"
-msgstr ""
+msgstr "vypnuto"
 
 #: gphoto2/actions.c:1506
-#, fuzzy
 msgid "false"
-msgstr "Hodnota"
+msgstr "ne"
 
 #: gphoto2/actions.c:1511
-#, fuzzy
 msgid "on"
-msgstr "Po"
+msgstr "zapnuto"
 
 #: gphoto2/actions.c:1512
 msgid "true"
-msgstr ""
+msgstr "ano"
 
 #: gphoto2/actions.c:1517
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
-msgstr ""
+msgstr "Zadaná hodnota %s nená platná hodnota přepínače."
 
 #: gphoto2/actions.c:1523
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to set values %s of toggle widget %s."
-msgstr "Nemohu získat hodnotu přepínacího widgetu %s.\n"
+msgstr "Nemohu nastavit hodnoty %s přepínacího widgetu %s."
 
 #: gphoto2/actions.c:1536
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
-msgstr ""
+msgstr "Zadaná hodnota %s není platný čas ani celé číslo."
 
 #: gphoto2/actions.c:1543
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
-msgstr "Nemohu získat hodnotu widgetu data/času %s.\n"
+msgstr "Nemohu nastavyt nový čas widgetu data/času %s na %s."
 
 #: gphoto2/actions.c:1580
 #, c-format
 msgid "Choice %s not found within list of choices."
-msgstr ""
+msgstr "Možnost %s nebyla nalezena v seznamu."
 
 #: gphoto2/actions.c:1588
 #, c-format
 msgid "The %s widget is not configurable."
-msgstr ""
+msgstr "Widget %s nelze nastavovat."
 
 #: gphoto2/actions.c:1595
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
-msgstr "Nemohu získat hodnotu rádiového widgetu %s.\n"
+msgstr "Nemohu nastavit novou hodnotu nastavení %s položky nastavení %s."
 
 #: gphoto2/foreach.c:254
 #, c-format
@@ -598,14 +600,13 @@ msgstr ""
 "soubor."
 
 #: gphoto2/foreach.c:293
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Bad file number. You specified %i, but there are only %i files available in "
 "'%s'. Please obtain a valid file number from a file listing first."
 msgstr ""
-"Špatné číslo souboru. Zadali jste %1$i, ale v '%3$s' je k dispozici jen '%2"
-"$i' souborů. Nejdříve prosím získejte ze seznamu souborů platné číslo "
-"souboru."
+"Špatné číslo souboru. Zadali jste %1$i, ale v '%3$s' je k dispozici jen %2$i "
+"souborů. Nejdříve prosím získejte ze seznamu souborů platné číslo souboru."
 
 #: gphoto2/gp-params.c:70
 #, c-format
@@ -670,12 +671,12 @@ msgstr "Ne"
 #: gphoto2/main.c:230
 #, c-format
 msgid "Zero padding numbers in file names is only possible with %%n."
-msgstr ""
+msgstr "Doplňování čísel nulami v názvech souborů je možné jen s %%n."
 
 #: gphoto2/main.c:239
-#, fuzzy, c-format
+#, c-format
 msgid "You cannot use %%n zero padding without a precision value!"
-msgstr "Nemůžete použít '%%n' v kombinaci s neperzistentními soubory!"
+msgstr "Nemůžete použít doplňování čísel nulami %%n bez hodnoty přesnosti!"
 
 #: gphoto2/main.c:255
 #, c-format
@@ -720,7 +721,7 @@ msgstr "Režim time-lapse povolen (interval: %ds).\n"
 #: gphoto2/main.c:610
 #, c-format
 msgid "Standing by waiting for SIGUSR1 to capture.\n"
-msgstr ""
+msgstr "Pripraven, čekám na SIGUSR1 před zachytáváním.\n"
 
 #: gphoto2/main.c:619
 #, c-format
@@ -764,7 +765,6 @@ msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Odstraňuji soubor %s%s%s z fotoaparátu\n"
 
 #: gphoto2/main.c:704 gphoto2/main.c:836
-#, fuzzy
 msgid "Could not delete image."
 msgstr "Nemohu odstranit obrázek."
 
@@ -780,22 +780,22 @@ msgstr "Spím na %d sekund...\n"
 #: gphoto2/main.c:743 gphoto2/main.c:771
 #, c-format
 msgid "Awakened by SIGUSR1...\n"
-msgstr ""
+msgstr "Probuzen pomocí SIGUSR1...\n"
 
 #: gphoto2/main.c:746
 #, c-format
 msgid "not sleeping (%d seconds behind schedule)\n"
-msgstr ""
+msgstr "nespím (%d sekund pozadu vůči plánu)\n"
 
 #: gphoto2/main.c:788
 #, c-format
 msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
-msgstr ""
+msgstr "Čekám na události od fotoaparátu.  Přerušte stisknutím Ctrl-C.\n"
 
 #: gphoto2/main.c:808
 #, c-format
 msgid "New file %s/%s, downloading...\n"
-msgstr ""
+msgstr "Nový soubor %s/%s, stahuji...\n"
 
 #: gphoto2/main.c:932
 #, c-format
@@ -872,11 +872,11 @@ msgstr ""
 
 #: gphoto2/main.c:1543
 msgid "Print complete help message on program usage"
-msgstr ""
+msgstr "Vypsat úplnou zprávu nápovědy o používání programu"
 
 #: gphoto2/main.c:1545
 msgid "Print short message on program usage"
-msgstr ""
+msgstr "Vypsat krátkou zprávu o používání programu"
 
 #: gphoto2/main.c:1547
 msgid "Turn on debugging"
@@ -884,11 +884,11 @@ msgstr "Zapnout ladění"
 
 #: gphoto2/main.c:1549
 msgid "Name of file to write debug info to"
-msgstr ""
+msgstr "Název souboru, do kterého zapisovat ladicí informace"
 
 #: gphoto2/main.c:1549 gphoto2/main.c:1554 gphoto2/main.c:1560
 msgid "FILENAME"
-msgstr ""
+msgstr "NÁZEVSOUBORU"
 
 #: gphoto2/main.c:1551
 msgid "Quiet output (default=verbose)"
@@ -896,7 +896,7 @@ msgstr "Tichý výstup (implicitní=podrobný)"
 
 #: gphoto2/main.c:1553
 msgid "Hook script to call after downloads, captures, etc."
-msgstr ""
+msgstr "Skript, který volat po stahování, zachytávání atd."
 
 #: gphoto2/main.c:1560
 msgid "Specify port device"
@@ -908,7 +908,7 @@ msgstr "Určení rychlosti sériového přenosu"
 
 #: gphoto2/main.c:1562
 msgid "SPEED"
-msgstr ""
+msgstr "RYCHLOST"
 
 #: gphoto2/main.c:1564
 msgid "Specify camera model"
@@ -916,7 +916,7 @@ msgstr "Určení modelu fotoaparátu"
 
 #: gphoto2/main.c:1564
 msgid "MODEL"
-msgstr ""
+msgstr "MODEL"
 
 #: gphoto2/main.c:1566
 msgid "(expert only) Override USB IDs"
@@ -924,7 +924,7 @@ msgstr "(jen pro experty) Přebít USB ID"
 
 #: gphoto2/main.c:1566
 msgid "USBIDs"
-msgstr ""
+msgstr "USBID"
 
 #: gphoto2/main.c:1572
 msgid "Display version and exit"
@@ -939,9 +939,8 @@ msgid "List supported port devices"
 msgstr "Vypsat podporovaná zařízení portu"
 
 #: gphoto2/main.c:1578
-#, fuzzy
 msgid "Display camera/driver abilities"
-msgstr "Zobrazit schopnosti fotoaparátu"
+msgstr "Zobrazit schopnosti fotoaparátu/ovladače"
 
 #: gphoto2/main.c:1585
 msgid "Configure"
@@ -956,13 +955,12 @@ msgid "Get configuration value"
 msgstr "Získat hodnotu konfigurace"
 
 #: gphoto2/main.c:1592
-#, fuzzy
 msgid "Set configuration value"
-msgstr "Získat hodnotu konfigurace"
+msgstr "Nastavit hodnotu konfigurace"
 
 #: gphoto2/main.c:1598
 msgid "Wait for event from camera"
-msgstr ""
+msgstr "Čekat na události od fotoaparátu"
 
 #: gphoto2/main.c:1601
 msgid "Capture a quick preview"
@@ -974,7 +972,7 @@ msgstr "Nastavit počet políček, která zachytávat (implicitní=nekonečno)"
 
 #: gphoto2/main.c:1603
 msgid "COUNT"
-msgstr ""
+msgstr "POČET"
 
 #: gphoto2/main.c:1605
 msgid "Set capture interval in seconds"
@@ -982,12 +980,11 @@ msgstr "Nastavit interval zachytávání"
 
 #: gphoto2/main.c:1605
 msgid "SECONDS"
-msgstr ""
+msgstr "SEKUND"
 
 #: gphoto2/main.c:1607
-#, fuzzy
 msgid "Reset capture interval on signal (default=no)"
-msgstr "Nastavit interval zachytávání"
+msgstr "Vynulovat interval zachytávání při signálu (implicitní=ne)"
 
 #: gphoto2/main.c:1609
 msgid "Capture an image"
@@ -1003,7 +1000,7 @@ msgstr "Zachytit zvukový klip"
 
 #: gphoto2/main.c:1615
 msgid "Wait for shutter release on the camera and download"
-msgstr ""
+msgstr "Čekat na uvolnění závěrky fotoaparátu a stáhnout"
 
 #: gphoto2/main.c:1621
 msgid "List folders in folder"
@@ -1019,7 +1016,7 @@ msgstr "Vytvořit adresář"
 
 #: gphoto2/main.c:1625 gphoto2/main.c:1627
 msgid "DIRNAME"
-msgstr ""
+msgstr "NÁZEVADRESÁŘE"
 
 #: gphoto2/main.c:1627
 msgid "Remove a directory"
@@ -1036,7 +1033,7 @@ msgstr "Získat soubory dané v rozsahu"
 #: gphoto2/main.c:1631 gphoto2/main.c:1635 gphoto2/main.c:1640
 #: gphoto2/main.c:1647 gphoto2/main.c:1653 gphoto2/main.c:1658
 msgid "RANGE"
-msgstr ""
+msgstr "ROZSAH"
 
 #: gphoto2/main.c:1633
 msgid "Get all files from folder"
@@ -1051,19 +1048,16 @@ msgid "Get all thumbnails from folder"
 msgstr "Získat všechny náhledy z adresáře"
 
 #: gphoto2/main.c:1640
-#, fuzzy
 msgid "Get metadata given in range"
-msgstr "Získat neupravená data daná v rozsahu"
+msgstr "Získat metadata daná v rozsahu"
 
 #: gphoto2/main.c:1642
-#, fuzzy
 msgid "Get all metadata from folder"
-msgstr "Získat neupravená data z adresáře"
+msgstr "Získat všechna metadata z adresáře"
 
 #: gphoto2/main.c:1644
-#, fuzzy
 msgid "Upload metadata for file"
-msgstr "Stáhnout soubor"
+msgstr "Uložit metadata souboru"
 
 #: gphoto2/main.c:1647
 msgid "Get raw data given in range"
@@ -1098,13 +1092,12 @@ msgid "filename"
 msgstr "názevsouboru"
 
 #: gphoto2/main.c:1664
-#, fuzzy
 msgid "Specify a filename or filename pattern"
-msgstr "Určení názvu souboru"
+msgstr "Určení názvu souboru nebo vzoru názvů souborů"
 
 #: gphoto2/main.c:1664
 msgid "FILENAME_PATTERN"
-msgstr ""
+msgstr "VZOR_NÁZVŮ_SOUBORŮ"
 
 #: gphoto2/main.c:1666
 msgid "Specify camera folder (default=\"/\")"
@@ -1112,7 +1105,7 @@ msgstr "Určení adresáře fotoaparátu (implicitní=\"/\")"
 
 #: gphoto2/main.c:1666
 msgid "FOLDER"
-msgstr ""
+msgstr "ADRESÁŘ"
 
 #: gphoto2/main.c:1668
 msgid "Recursion (default for download)"
@@ -1124,12 +1117,11 @@ msgstr "Žádná rekurze (implicitní pro odstraňování)"
 
 #: gphoto2/main.c:1672
 msgid "Process new files only"
-msgstr ""
+msgstr "Zpracovávat jen nové soubory"
 
 #: gphoto2/main.c:1674
-#, fuzzy
 msgid "Overwrite files without asking"
-msgstr "Přepisovat soubory bez ptaní."
+msgstr "Přepisovat soubory bez ptaní"
 
 #: gphoto2/main.c:1680
 msgid "Send file to stdout"
@@ -1164,9 +1156,8 @@ msgid "About the camera driver manual"
 msgstr "O manuálu ovladače fotoaparátu"
 
 #: gphoto2/main.c:1699
-#, fuzzy
 msgid "Show storage information"
-msgstr "Zobrazit informace EXIF"
+msgstr "Zobrazit informace o úložišti"
 
 #: gphoto2/main.c:1701
 msgid "gPhoto shell"
@@ -1174,34 +1165,31 @@ msgstr "shell gPhoto"
 
 #: gphoto2/main.c:1707
 msgid "Common options"
-msgstr ""
+msgstr "Časté přepínače"
 
 #: gphoto2/main.c:1709
 msgid "Miscellaneous options (unsorted)"
-msgstr ""
+msgstr "Různé přepínače (netříděné)"
 
 #: gphoto2/main.c:1711
 msgid "Get information on software and host system (not from the camera)"
-msgstr ""
+msgstr "Získat informaci o software a hostitelském systému (ne z fotoaparátu)"
 
 #: gphoto2/main.c:1713
-#, fuzzy
 msgid "Specify the camera to use"
-msgstr "Určení modelu fotoaparátu"
+msgstr "Určení fotoaparátu, který používat"
 
 #: gphoto2/main.c:1715
-#, fuzzy
 msgid "Camera and software configuration"
-msgstr "Nemohu nastavit konfiguraci:"
+msgstr "Nastavení fotoaparátu a software"
 
 #: gphoto2/main.c:1717
-#, fuzzy
 msgid "Capture an image from or on the camera"
-msgstr "Přejít do adresáře ve fotoaparátu"
+msgstr "Zachytit obrázek z nebo ve fotoaparátu"
 
 #: gphoto2/main.c:1719
 msgid "Downloading, uploading and manipulating files"
-msgstr ""
+msgstr "Stahování, ukládání a práce se soubory"
 
 #: gphoto2/range.c:104 gphoto2/range.c:158
 #, c-format
@@ -1290,9 +1278,8 @@ msgid "[directory/]filename"
 msgstr "[adresář/]názevsouboru"
 
 #: gphoto2/shell.c:121
-#, fuzzy
 msgid "Upload a file"
-msgstr "Stáhnout soubor"
+msgstr "Uložit soubor"
 
 #: gphoto2/shell.c:122
 msgid "Download a thumbnail"
@@ -1307,12 +1294,10 @@ msgid "Delete"
 msgstr "Odstranit"
 
 #: gphoto2/shell.c:129
-#, fuzzy
 msgid "Create Directory"
 msgstr "Vytvořit adresář"
 
 #: gphoto2/shell.c:130
-#, fuzzy
 msgid "Remove Directory"
 msgstr "Odstranit adresář"
 
@@ -1333,12 +1318,10 @@ msgid "[directory/]"
 msgstr "[adresář/]"
 
 #: gphoto2/shell.c:139
-#, fuzzy
 msgid "List configuration variables"
-msgstr "Získat proměnnou konfigurace"
+msgstr "Vypsat proměnné konfigurace"
 
 #: gphoto2/shell.c:140
-#, fuzzy
 msgid "Get configuration variable"
 msgstr "Získat proměnnou konfigurace"
 
@@ -1347,18 +1330,16 @@ msgid "name"
 msgstr "název"
 
 #: gphoto2/shell.c:141
-#, fuzzy
 msgid "Set configuration variable"
-msgstr "Získat proměnnou konfigurace"
+msgstr "Nastavit proměnnou konfigurace"
 
 #: gphoto2/shell.c:141
 msgid "name=value"
-msgstr ""
+msgstr "název=hodnota"
 
 #: gphoto2/shell.c:142
-#, fuzzy
 msgid "Capture a single image"
-msgstr "Zachytit obrázek"
+msgstr "Zachytit jeden obrázek"
 
 #: gphoto2/shell.c:467
 msgid "Invalid command."
@@ -1395,7 +1376,7 @@ msgstr "Vzdálený adresář je nyní '%s'."
 #: gphoto2/shell.c:841
 #, c-format
 msgid "set-config needs a second argument.\n"
-msgstr ""
+msgstr "set-config potřebuje druhý prametr.\n"
 
 #: gphoto2/shell.c:870
 #, c-format
@@ -1435,211 +1416,5 @@ msgid "To get help on a particular command, type in 'help command-name'."
 msgstr ""
 "Pro získání nápovědy o konkrétním příkazu napište 'help název-příkazu'."
 
-#, fuzzy
 #~ msgid "[name]"
-#~ msgstr "název"
-
-#~ msgid "Usage:\n"
-#~ msgstr "Použití:\n"
-
-#~ msgid ""
-#~ "Short/long options (& argument)        Description\n"
-#~ "--------------------------------------------------------------------------------\n"
-#~ msgstr ""
-#~ "Krátké/dlouhé přepínače (& argument)   Popis\n"
-#~ "--------------------------------------------------------------------------------\n"
-
-#~ msgid "%-38s %s\n"
-#~ msgstr "%-38s %s\n"
-
-#~ msgid ""
-#~ "--------------------------------------------------------------------------------\n"
-#~ "[Use double-quotes around arguments]        [Picture numbers begin with "
-#~ "one (1)]\n"
-#~ msgstr ""
-#~ "--------------------------------------------------------------------------------\n"
-#~ "[Používejte uvozovky kolem argumentů]       [Čísla obrázků začínají "
-#~ "jedničkou (1)]\n"
-
-#~ msgid "Displays this help screen"
-#~ msgstr "Zobrazí tuto obrazovku nápovědy"
-
-#, fuzzy
-#~ msgid "Get metadata from file"
-#~ msgstr "Získat neupravená data z adresáře"
-
-#~ msgid "List the configuration tree"
-#~ msgstr "Vypsat strom konfigurace"
-
-#~ msgid "Get a configuration variable"
-#~ msgstr "Získat proměnnou konfigurace"
-
-#, fuzzy
-#~ msgid "Set a configuration variable"
-#~ msgstr "Získat proměnnou konfigurace"
-
-#~ msgid "Capture a movie "
-#~ msgstr "Zachytit film "
-
-#~ msgid "Summary of camera status"
-#~ msgstr "Souhrn stavu kamery"
-
-#~ msgid "Camera driver manual"
-#~ msgstr "Manuál ovladače kamery"
-
-#~ msgid "About the camera driver"
-#~ msgstr "O ovladači kamery"
-
-#~ msgid "path"
-#~ msgstr "cesta"
-
-#~ msgid "speed"
-#~ msgstr "rychlost"
-
-#~ msgid "model"
-#~ msgstr "model"
-
-#~ msgid "usbid"
-#~ msgstr "usbid"
-
-#~ msgid "folder"
-#~ msgstr "adresář"
-
-#~ msgid "count"
-#~ msgstr "počet"
-
-#~ msgid "seconds"
-#~ msgstr "sekundy"
-
-#~ msgid ""
-#~ "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
-#~ "location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
-#~ msgstr ""
-#~ "gPhoto2 pro OS/2 vyžaduje, abyste nastavili hodnotu prostředí CAMLIBS na "
-#~ "umístění knihoven fotoaparátu. např.. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
-
-#~ msgid ""
-#~ "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
-#~ "location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-#~ msgstr ""
-#~ "gPhoto2 pro OS/2 vyžaduje, abyste nastavili hodnotu prostředí IOLIBS na "
-#~ "umístění knihoven io. např.. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-
-#~ msgid "There are no folders in folder '%s'."
-#~ msgstr "V adresáři '%s' nejsou žádné adresáře."
-
-#~ msgid "There are %i folders in folder '%s':"
-#~ msgstr "V adresáři '%2$s' je %1$i adresářů:"
-
-#~ msgid "There are %i files in folder '%s':"
-#~ msgstr "V adresáři '%2$s' je %1$i souborů:"
-
-# FIXME: this is in libc
-#~ msgid "Jan"
-#~ msgstr "Led"
-
-#~ msgid "January"
-#~ msgstr "Leden"
-
-#~ msgid "Feb"
-#~ msgstr "Úno"
-
-#~ msgid "February"
-#~ msgstr "Únor"
-
-#~ msgid "Mar"
-#~ msgstr "Bře"
-
-#~ msgid "March"
-#~ msgstr "Březen"
-
-#~ msgid "Apr"
-#~ msgstr "Dub"
-
-#~ msgid "April"
-#~ msgstr "Duben"
-
-# Ouch
-#~ msgid "May"
-#~ msgstr "Kvě"
-
-#~ msgid "Jun"
-#~ msgstr "Čen"
-
-#~ msgid "June"
-#~ msgstr "Červen"
-
-#~ msgid "Jul"
-#~ msgstr "Čec"
-
-#~ msgid "July"
-#~ msgstr "Červenec"
-
-#~ msgid "Aug"
-#~ msgstr "Srp"
-
-#~ msgid "August"
-#~ msgstr "Srpen"
-
-#~ msgid "Sep"
-#~ msgstr "Zář"
-
-#~ msgid "September"
-#~ msgstr "Září"
-
-#~ msgid "Oct"
-#~ msgstr "Říj"
-
-#~ msgid "October"
-#~ msgstr "Říjen"
-
-#~ msgid "Nov"
-#~ msgstr "Lis"
-
-#~ msgid "November"
-#~ msgstr "Listopad"
-
-#~ msgid "Dec"
-#~ msgstr "Pro"
-
-#~ msgid "December"
-#~ msgstr "Prosinec"
-
-#~ msgid "Sun"
-#~ msgstr "Ne"
-
-#~ msgid "Sunday"
-#~ msgstr "Neděle"
-
-#~ msgid "Monday"
-#~ msgstr "Pondělí"
-
-#~ msgid "Tue"
-#~ msgstr "Út"
-
-#~ msgid "Tuesday"
-#~ msgstr "Úterý"
-
-#~ msgid "Wed"
-#~ msgstr "St"
-
-#~ msgid "Wednesday"
-#~ msgstr "Středa"
-
-#~ msgid "Thu"
-#~ msgstr "Čt"
-
-#~ msgid "Thursday"
-#~ msgstr "Čtvrtek"
-
-#~ msgid "Fri"
-#~ msgstr "Pá"
-
-#~ msgid "Friday"
-#~ msgstr "Pátek"
-
-#~ msgid "Sat"
-#~ msgstr "So"
-
-#~ msgid "Saturday"
-#~ msgstr "Sobota"
+#~ msgstr "[název]"
