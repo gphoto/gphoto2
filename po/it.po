@@ -6,10 +6,10 @@
 # FIXME: toggle???
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.3.0\n"
+"Project-Id-Version: gphoto2 2.4.0\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2008-03-24 20:14+0100\n"
-"PO-Revision-Date: 2007-01-12 12:34+0000\n"
+"PO-Revision-Date: 2007-08-09 18:15+0100\n"
 "Last-Translator: Marco Colombo <m.colombo@ed.ac.uk>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -399,66 +399,71 @@ msgstr ""
 #, c-format
 msgid "Getting storage information not supported for this camera.\n"
 msgstr ""
+"Lettura delle informazioni sulla memoria non gestita su questa fotocamera.\n"
 
 #: gphoto2/actions.c:1019
 #, c-format
 msgid "Read-Write"
-msgstr ""
+msgstr "Lettura-Scrittura"
 
 #: gphoto2/actions.c:1022
 #, c-format
 msgid "Read-Only"
-msgstr ""
+msgstr "Solo lettura"
 
+# FIXME
 #: gphoto2/actions.c:1025
 #, c-format
 msgid "Read-only with delete"
-msgstr ""
+msgstr "Solo lettura con eliminazione"
 
 #: gphoto2/actions.c:1028 gphoto2/actions.c:1038
 #, c-format
 msgid "Unknown"
-msgstr ""
+msgstr "Sconosciuto"
 
 #: gphoto2/actions.c:1041
 #, c-format
 msgid "Fixed ROM"
-msgstr ""
+msgstr "ROM fissa"
 
 #: gphoto2/actions.c:1044
 #, c-format
 msgid "Removable ROM"
-msgstr ""
+msgstr "ROM removibile"
 
 #: gphoto2/actions.c:1047
 #, c-format
 msgid "Fixed RAM"
-msgstr ""
+msgstr "RAM fissa"
 
 #: gphoto2/actions.c:1050
 #, c-format
 msgid "Removable RAM"
-msgstr ""
+msgstr "RAM removibile"
 
 #: gphoto2/actions.c:1060
 #, c-format
 msgid "Undefined"
-msgstr ""
+msgstr "Non definito"
 
+# FIXME
 #: gphoto2/actions.c:1063
 #, c-format
 msgid "Generic Flat"
-msgstr ""
+msgstr "Generico piatto"
 
+# FIXME
 #: gphoto2/actions.c:1066
 #, c-format
 msgid "Generic Hierarchical"
-msgstr ""
+msgstr "Generico gerarchico"
 
+# FIXME
 #: gphoto2/actions.c:1069
 #, c-format
 msgid "Camera layout (DCIM)"
-msgstr ""
+msgstr "Disposizione fotocamera (DCIM)"
 
 #: gphoto2/actions.c:1107
 #, c-format
@@ -748,7 +753,7 @@ msgstr "Modalità intervallo abilitata (intervallo: %ds).\n"
 #: gphoto2/main.c:610
 #, c-format
 msgid "Standing by waiting for SIGUSR1 to capture.\n"
-msgstr ""
+msgstr "In attesa di catturare SIGUSR1.\n"
 
 #: gphoto2/main.c:619
 #, c-format
@@ -808,7 +813,7 @@ msgstr "In pausa per %d secondi...\n"
 #: gphoto2/main.c:743 gphoto2/main.c:771
 #, c-format
 msgid "Awakened by SIGUSR1...\n"
-msgstr ""
+msgstr "Svegliato da SIGUSR1...\n"
 
 # FIXME
 #: gphoto2/main.c:746
@@ -817,14 +822,15 @@ msgid "not sleeping (%d seconds behind schedule)\n"
 msgstr "non in pausa (%d secondi di ritardo)\n"
 
 #: gphoto2/main.c:788
-#, fuzzy, c-format
+#, c-format
 msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
-msgstr "Attende un evento della fotocamera"
+msgstr ""
+"In attesa di un evento dalla fotocamera. Premere Ctrl-C per interrompere.\n"
 
 #: gphoto2/main.c:808
 #, c-format
 msgid "New file %s/%s, downloading...\n"
-msgstr ""
+msgstr "Nuovo file %s/%s, scaricamento in corso...\n"
 
 #: gphoto2/main.c:932
 #, c-format
@@ -927,7 +933,7 @@ msgstr "Output silenzioso (predefinito: prolisso)"
 
 #: gphoto2/main.c:1553
 msgid "Hook script to call after downloads, captures, etc."
-msgstr ""
+msgstr "Collega script da eseguire dopo scaricamenti, catture, ecc."
 
 #: gphoto2/main.c:1560
 msgid "Specify port device"
@@ -1015,10 +1021,10 @@ msgstr "Imposta l'intervallo di cattura in secondi"
 msgid "SECONDS"
 msgstr "SECONDI"
 
+# FIXME
 #: gphoto2/main.c:1607
-#, fuzzy
 msgid "Reset capture interval on signal (default=no)"
-msgstr "Imposta l'intervallo di cattura in secondi"
+msgstr "Reimposta l'intervallo di cattura sul segnale (predefinito: no)"
 
 #: gphoto2/main.c:1609
 msgid "Capture an image"
@@ -1035,7 +1041,7 @@ msgstr "Cattura un clip audio"
 
 #: gphoto2/main.c:1615
 msgid "Wait for shutter release on the camera and download"
-msgstr ""
+msgstr "Attendi la chiusura dell'otturatore e scarica"
 
 #: gphoto2/main.c:1621
 msgid "List folders in folder"
@@ -1191,9 +1197,8 @@ msgid "About the camera driver manual"
 msgstr "Informazioni sul manuale del driver della fotocamera"
 
 #: gphoto2/main.c:1699
-#, fuzzy
 msgid "Show storage information"
-msgstr "Mostra le informazioni EXIF"
+msgstr "Mostra le informazioni sulla memoria"
 
 #: gphoto2/main.c:1701
 msgid "gPhoto shell"
@@ -1459,26 +1464,6 @@ msgstr ""
 
 #~ msgid "Usage:\n"
 #~ msgstr "Uso:\n"
-
-#~ msgid ""
-#~ "Short/long options (& argument)        Description\n"
-#~ "--------------------------------------------------------------------------------\n"
-#~ msgstr ""
-#~ "Opzioni lunghe/corte (e argomento)     Descrizione\n"
-#~ "--------------------------------------------------------------------------------\n"
-
-#~ msgid "%-38s %s\n"
-#~ msgstr "%-38s %s\n"
-
-# FIXME
-#~ msgid ""
-#~ "--------------------------------------------------------------------------------\n"
-#~ "[Use double-quotes around arguments]        [Picture numbers begin with "
-#~ "one (1)]\n"
-#~ msgstr ""
-#~ "--------------------------------------------------------------------------------\n"
-#~ "[Usare virgolette \" per gli argomenti]      [Numeri di immagini partono "
-#~ "da 1]\n"
 
 #~ msgid "Displays this help screen"
 #~ msgstr "Mostra questa schermata d'aiuto"
