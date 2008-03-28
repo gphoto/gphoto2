@@ -1,19 +1,19 @@
 # Vietnamese translation for GPhoto2.
-# Copyright © 2006 Free Software Foundation, Inc.
-# Clytie Siddall <clytie@riverland.net.au>, 2005, 2006.
+# Copyright © 2007 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2005-2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.3.0\n"
+"Project-Id-Version: gphoto2 2.4.0\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2008-03-24 20:14+0100\n"
-"PO-Revision-Date: 2006-12-12 21:15+1030\n"
+"PO-Revision-Date: 2007-08-09 17:08+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: LocFactoryEditor 1.6fc1\n"
+"X-Generator: LocFactoryEditor 1.7b1\n"
 
 #: gphoto2/actions.c:167
 #, c-format
@@ -104,7 +104,7 @@ msgstr "  Quyền hạn: "
 #: gphoto2/actions.c:274
 #, c-format
 msgid "read/delete"
-msgstr "đọc/xóa"
+msgstr "đọc/xoá"
 
 #: gphoto2/actions.c:276
 #, c-format
@@ -114,7 +114,7 @@ msgstr "đọc"
 #: gphoto2/actions.c:278
 #, c-format
 msgid "delete"
-msgstr "xóa"
+msgstr "xoá"
 
 #: gphoto2/actions.c:280
 #, c-format
@@ -395,67 +395,67 @@ msgstr ""
 #: gphoto2/actions.c:1004
 #, c-format
 msgid "Getting storage information not supported for this camera.\n"
-msgstr ""
+msgstr "Đang lấy thông tin cất giữ không được hỗ trợ cho máy ảnh này.\n"
 
 #: gphoto2/actions.c:1019
 #, c-format
 msgid "Read-Write"
-msgstr ""
+msgstr "Đọc-Ghi"
 
 #: gphoto2/actions.c:1022
 #, c-format
 msgid "Read-Only"
-msgstr ""
+msgstr "Chỉ-Đọc"
 
 #: gphoto2/actions.c:1025
 #, c-format
 msgid "Read-only with delete"
-msgstr ""
+msgstr "Chỉ-Đọc có xoá"
 
 #: gphoto2/actions.c:1028 gphoto2/actions.c:1038
 #, c-format
 msgid "Unknown"
-msgstr ""
+msgstr "Không rõ"
 
 #: gphoto2/actions.c:1041
 #, c-format
 msgid "Fixed ROM"
-msgstr ""
+msgstr "ROM cố định"
 
 #: gphoto2/actions.c:1044
 #, c-format
 msgid "Removable ROM"
-msgstr ""
+msgstr "ROM rời"
 
 #: gphoto2/actions.c:1047
 #, c-format
 msgid "Fixed RAM"
-msgstr ""
+msgstr "RAM cố định"
 
 #: gphoto2/actions.c:1050
 #, c-format
 msgid "Removable RAM"
-msgstr ""
+msgstr "RAM rời"
 
 #: gphoto2/actions.c:1060
 #, c-format
 msgid "Undefined"
-msgstr ""
+msgstr "Chưa xác định"
 
 #: gphoto2/actions.c:1063
 #, c-format
 msgid "Generic Flat"
-msgstr ""
+msgstr "Phẳng giống loài"
 
 #: gphoto2/actions.c:1066
 #, c-format
 msgid "Generic Hierarchical"
-msgstr ""
+msgstr "Phân cấp giống loài"
 
 #: gphoto2/actions.c:1069
 #, c-format
 msgid "Camera layout (DCIM)"
-msgstr ""
+msgstr "Bố trí máy ảnh (DCM)"
 
 #: gphoto2/actions.c:1107
 #, c-format
@@ -725,7 +725,7 @@ msgstr "Chế độ khoảng thời gian được bật (thời gian: %dg).\n"
 #: gphoto2/main.c:610
 #, c-format
 msgid "Standing by waiting for SIGUSR1 to capture.\n"
-msgstr ""
+msgstr "Đang đợi SIGUSR1 bắt.\n"
 
 #: gphoto2/main.c:619
 #, c-format
@@ -784,7 +784,7 @@ msgstr "Ngủ được %d giây...\n"
 #: gphoto2/main.c:743 gphoto2/main.c:771
 #, c-format
 msgid "Awakened by SIGUSR1...\n"
-msgstr ""
+msgstr "Do SIGUSR1 kích hoạt...\n"
 
 #: gphoto2/main.c:746
 #, c-format
@@ -792,14 +792,14 @@ msgid "not sleeping (%d seconds behind schedule)\n"
 msgstr "không ngủ (trễ %d giây)\n"
 
 #: gphoto2/main.c:788
-#, fuzzy, c-format
+#, c-format
 msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
-msgstr "Đợi một sự kiện từ máy ảnh"
+msgstr "Đợi dữ kiện từ máy ảnh. Bấm Ctrl-C để hủy bỏ.\n"
 
 #: gphoto2/main.c:808
 #, c-format
 msgid "New file %s/%s, downloading...\n"
-msgstr ""
+msgstr "Tập tin mới %s/%s, đang tải về...\n"
 
 #: gphoto2/main.c:932
 #, c-format
@@ -899,7 +899,7 @@ msgstr "Xuất im (mặc định là chi tiết)"
 
 #: gphoto2/main.c:1553
 msgid "Hook script to call after downloads, captures, etc."
-msgstr ""
+msgstr "Văn lệnh móc vào cần chạy sau khi tải về, bắt v.v."
 
 #: gphoto2/main.c:1560
 msgid "Specify port device"
@@ -986,9 +986,9 @@ msgid "SECONDS"
 msgstr "GIÂY"
 
 #: gphoto2/main.c:1607
-#, fuzzy
 msgid "Reset capture interval on signal (default=no)"
-msgstr "Đặt thời gian giữa hai lần bắt, theo giây"
+msgstr ""
+"Đặt lại thời gian giữa hai lần bắt khi nhận tin hiệu (mặc định là Không)"
 
 #: gphoto2/main.c:1609
 msgid "Capture an image"
@@ -1004,7 +1004,7 @@ msgstr "Bắt một trích đoạn âm thanh"
 
 #: gphoto2/main.c:1615
 msgid "Wait for shutter release on the camera and download"
-msgstr ""
+msgstr "Đợi buông ra chập trên máy ảnh và tải về"
 
 #: gphoto2/main.c:1621
 msgid "List folders in folder"
@@ -1160,9 +1160,8 @@ msgid "About the camera driver manual"
 msgstr "Thông tin về sổ tay trình điều khiển máy ảnh"
 
 #: gphoto2/main.c:1699
-#, fuzzy
 msgid "Show storage information"
-msgstr "Hiện thông tin EXIF"
+msgstr "Hiện thông tin cất giữ"
 
 #: gphoto2/main.c:1701
 msgid "gPhoto shell"
@@ -1408,7 +1407,7 @@ msgstr "Mô tả:"
 #: gphoto2/shell.c:884
 #, c-format
 msgid "* Arguments in brackets [] are optional"
-msgstr "• Mỗi đối số nằm ở trong ngoặc vu là tùy chọn"
+msgstr "• Mỗi đối số nằm trong ngoặc vu là tùy chọn"
 
 #: gphoto2/shell.c:905
 #, c-format
