@@ -1517,7 +1517,7 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 			!strcasecmp (value, _("true"))
 		)
 			t = 1;
-		fprintf (stderr," value %s, t %d\n", value, t);
+		/*fprintf (stderr," value %s, t %d\n", value, t);*/
 		if (t == 2) {
 			gp_context_error (p->context, _("The passed value %s is not a valid toggle value."), value);
 			ret = GP_ERROR_BAD_PARAMETERS;
