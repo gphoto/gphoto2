@@ -93,6 +93,7 @@ static int shell_list_config   (Camera *, const char *);
 static int shell_get_config    (Camera *, const char *);
 static int shell_set_config    (Camera *, const char *);
 static int shell_capture_image (Camera *, const char *);
+static int shell_capture_image_and_download (Camera *, const char *);
 static int shell_mkdir         (Camera *, const char *);
 static int shell_rmdir         (Camera *, const char *);
 
@@ -140,6 +141,7 @@ static const struct _ShellFunctionTable {
 	{"get-config", shell_get_config, N_("Get configuration variable"), N_("name"), 1},
 	{"set-config", shell_set_config, N_("Set configuration variable"), N_("name=value"), 1},
 	{"capture-image", shell_capture_image, N_("Capture a single image"), NULL, 0},
+	{"capture-image-and-download", shell_capture_image_and_download, N_("Capture a single image and download it"), NULL, 0},
 	{"q", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"quit", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"?", shell_help, N_("Displays command usage"), N_("[command]"), 0},
@@ -844,7 +846,12 @@ shell_set_config (Camera __unused__ *camera, const char *args) {
 
 static int
 shell_capture_image (Camera __unused__ *camera, const char __unused__ *args) {
-	return capture_generic (GP_CAPTURE_IMAGE, NULL);
+	return capture_generic (GP_CAPTURE_IMAGE, NULL, 0);
+}
+
+static int
+shell_capture_image_and_download (Camera __unused__ *camera, const char __unused__ *args) {
+	return capture_generic (GP_CAPTURE_IMAGE, NULL, 1);
 }
 
 int
