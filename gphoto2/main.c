@@ -591,7 +591,7 @@ sig_handler_capture_now (int sig_num)
 }
 
 int
-capture_generic (CameraCaptureType type, const char __unused__ *name)
+capture_generic (CameraCaptureType type, const char __unused__ *name, int download)
 {
 	CameraFilePath path, last;
 	char *pathsep;
@@ -651,63 +651,46 @@ capture_generic (CameraCaptureType type, const char __unused__ *name)
 			printf (_("New file is in location %s%s%s on the camera\n"),
 				path.folder, pathsep, path.name);
 
-		if(!glob_interval) break;
+		if (download) {
+			if (strcmp(path.folder, last.folder)) {
+				memcpy(&last, &path, sizeof(last));
 
-		if(strcmp(path.folder, last.folder)) {
-			memcpy(&last, &path, sizeof(last));
+				result = set_folder_action(&gp_params, path.folder);
+				if (result != GP_OK) {
+					cli_error_print(_("Could not set folder."));
+					return (result);
+				}
+			}
 
-			result = set_folder_action(&gp_params, path.folder);
+			result = get_file_common (path.name, GP_FILE_TYPE_NORMAL);
 			if (result != GP_OK) {
-				cli_error_print(_("Could not set folder."));
+				cli_error_print (_("Could not get image."));
+				if(result == GP_ERROR_FILE_NOT_FOUND) {
+					/* Buggy libcanon.so?
+					 * Can happen if this was the first capture after a
+					 * CF card format, or during a directory roll-over,
+					 * ie: CANON100 -> CANON101
+					 */
+					cli_error_print ( _("Buggy libcanon.so?"));
+				}
+				return (result);
+			}
+
+			if (!(gp_params.flags & FLAGS_QUIET))
+				printf (_("Deleting file %s%s%s on the camera\n"),
+					path.folder, pathsep, path.name);
+
+			result = delete_file_action (&gp_params, path.name);
+			if (result != GP_OK) {
+				cli_error_print ( _("Could not delete image."));
 				return (result);
 			}
 		}
-
-		/* XXX: I wonder if there is some way to determine if the camera
-		 * is still writing the image because if we don't sleep here,
-		 * the image will be corrupt when we attempt to download it.
-		 * I assume this is a result of the camera still writing the
-		 * data!  I picked 2 seconds as a first try and it seems like
-		 * enough time for high-quality JPEG on the Canon EOS 10D (with
-		 * a San Disk Ultra II CF).  May need to be increased for RAW
-		 * images...  I don't think this is the correct way to do this.
-		 */
-
-		/* Marcus Meissner: Fix the camera driver to only return from
-		 * camera_capture() when you know it is done ...
-		 * Otherwise other drivers suffer.
-		 */
-#if 0
-		sleep(2);
-#endif
-
-		result = get_file_common (path.name, GP_FILE_TYPE_NORMAL);
-		if (result != GP_OK) {
-			cli_error_print (_("Could not get image."));
-			if(result == GP_ERROR_FILE_NOT_FOUND) {
-				/* Buggy libcanon.so?
-				 * Can happen if this was the first capture after a
-				 * CF card format, or during a directory roll-over,
-				 * ie: CANON100 -> CANON101
-				 */
-				cli_error_print ( _("Buggy libcanon.so?"));
-			}
-			return (result);
-		}
-
-		if (!(gp_params.flags & FLAGS_QUIET))
-			printf (_("Deleting file %s%s%s on the camera\n"),
-				path.folder, pathsep, path.name);
-
-		result = delete_file_action (&gp_params, path.name);
-		if (result != GP_OK) {
-			cli_error_print ( _("Could not delete image."));
-			return (result);
-		}
-
 		/* Break if we've reached the requested number of frames
 		 * to capture.
 		 */
+		if(!glob_interval) break;
+
 		if(glob_frames && frames == glob_frames) break;
 
 #if 0
@@ -979,6 +962,7 @@ typedef enum {
 	ARG_CAPTURE_FRAMES,
 	ARG_CAPTURE_INTERVAL,
 	ARG_CAPTURE_IMAGE,
+	ARG_CAPTURE_IMAGE_AND_DOWNLOAD,
 	ARG_CAPTURE_MOVIE,
 	ARG_CAPTURE_PREVIEW,
 	ARG_CAPTURE_SOUND,
@@ -1236,16 +1220,19 @@ cb_arg_run (poptContext __unused__ ctx,
 		params->p.r = auto_detect_action (&gp_params);
 		break;
 	case ARG_CAPTURE_IMAGE:
-		params->p.r = capture_generic (GP_CAPTURE_IMAGE, arg);
+		params->p.r = capture_generic (GP_CAPTURE_IMAGE, arg, 0);
+		break;
+	case ARG_CAPTURE_IMAGE_AND_DOWNLOAD:
+		params->p.r = capture_generic (GP_CAPTURE_IMAGE, arg, 1);
 		break;
 	case ARG_CAPTURE_MOVIE:
-		params->p.r = capture_generic (GP_CAPTURE_MOVIE, arg);
+		params->p.r = capture_generic (GP_CAPTURE_MOVIE, arg, 0);
 		break;
 	case ARG_CAPTURE_PREVIEW:
 		params->p.r = action_camera_capture_preview (&gp_params);
 		break;
 	case ARG_CAPTURE_SOUND:
-		params->p.r = capture_generic (GP_CAPTURE_SOUND, arg);
+		params->p.r = capture_generic (GP_CAPTURE_SOUND, arg, 0);
 		break;
 	case ARG_CAPTURE_TETHERED:
 		params->p.r = capture_tethered (arg);
@@ -1467,7 +1454,7 @@ report_failure (int result, int argc, char **argv)
 		 */
 		printf ("    env LANG=C gphoto2 --debug --debug-logfile=my-logfile.txt");
 		for (n = 1; n < argc; n++) {
-			if (argv[n][0] == '-')
+			if (strchr(argv[n], ' ') == NULL)
 				printf(" %s",argv[n]);
 			else
 				printf(" \"%s\"",argv[n]);
@@ -1607,6 +1594,8 @@ main (int argc, char **argv, char **envp)
 		 N_("Reset capture interval on signal (default=no)"), NULL},
 		{"capture-image", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_IMAGE, N_("Capture an image"), NULL},
+		{"capture-image-and-download", '\0', POPT_ARG_NONE, NULL,
+		 ARG_CAPTURE_IMAGE_AND_DOWNLOAD, N_("Capture an image and download it"), NULL},
 		{"capture-movie", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_MOVIE, N_("Capture a movie"), NULL},
 		{"capture-sound", '\0', POPT_ARG_NONE, NULL,

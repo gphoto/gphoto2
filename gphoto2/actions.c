@@ -891,7 +891,7 @@ print_version_action (GPParams __unused__ *p)
 		  "\n"
 		  "This version of gphoto2 is using the following software versions and options:\n"),
 		VERSION,
-		2006, /* year of release! */
+		2008, /* year of release! */
 		port_message
 		);
 
@@ -1321,8 +1321,9 @@ _find_widget_by_name (GPParams *p, const char *name, CameraWidget **child, Camer
  *     clean one is to add an intermediate function
  */
 
-static inline size_t
-my_strftime(char *s, size_t max, const char *fmt, const struct tm *tm) {
+static size_t
+my_strftime(char *s, size_t max, const char *fmt, const struct tm *tm)
+{
 	return strftime(s, max, fmt, tm);
 }
 
@@ -1512,7 +1513,7 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 			!strcasecmp (value, _("true"))
 		)
 			t = 1;
-		fprintf (stderr," value %s, t %d\n", value, t);
+		/*fprintf (stderr," value %s, t %d\n", value, t);*/
 		if (t == 2) {
 			gp_context_error (p->context, _("The passed value %s is not a valid toggle value."), value);
 			ret = GP_ERROR_BAD_PARAMETERS;
