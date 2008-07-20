@@ -1,21 +1,20 @@
 # Polish translation for gphoto2.
-# Copyright (C) 2006, 2007 Free Software Foundation, Inc.
+# Copyright (C) 2006, 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gphoto2 package.
-# Jakub Bogusz <qboosh@pld-linux.org>, 2006-2007.
+# Jakub Bogusz <qboosh@pld-linux.org>, 2006-2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.4.0\n"
+"Project-Id-Version: gphoto2 2.4.2\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2008-06-22 18:31+0200\n"
-"PO-Revision-Date: 2007-08-11 12:50+0200\n"
+"PO-Revision-Date: 2008-07-15 06:16+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: gphoto2/actions.c:167
 #, c-format
@@ -292,10 +291,8 @@ msgstr "                                 : Podgląd\n"
 
 #: gphoto2/actions.c:690
 #, c-format
-msgid ""
-"                                 : Capture not supported by the driver\n"
-msgstr ""
-"                                 : Ten sterownik nie obsługuje nagrywania\n"
+msgid "                                 : Capture not supported by the driver\n"
+msgstr "                                 : Ten sterownik nie obsługuje nagrywania\n"
 
 #: gphoto2/actions.c:692
 #, c-format
@@ -324,23 +321,13 @@ msgstr "Przesyłanie plików do aparatu    : %s\n"
 
 #: gphoto2/actions.c:719
 #, c-format
-msgid ""
-"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
-"colon so I am going to guess what you mean."
-msgstr ""
-"Porty muszą być w postaci 'serial:/dev/ttyS0' lub 'usb:', ale '%s' nie "
-"zawiera dwukropka, więc spróbuję zgadnąć, co to miało znaczyć."
+msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
+msgstr "Porty muszą być w postaci 'serial:/dev/ttyS0' lub 'usb:', ale '%s' nie zawiera dwukropka, więc spróbuję zgadnąć, co to miało znaczyć."
 
 #: gphoto2/actions.c:753
 #, c-format
-msgid ""
-"The port you specified ('%s') can not be found. Please specify one of the "
-"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
-"(i.e. with prefix 'serial:' or 'usb:')."
-msgstr ""
-"Podany port ('%s') nie został odnaleziony. Proszę podać jeden z portów "
-"znajdywanych przez 'gphoto2 --list-ports' i upewnić się, że pisownia jest "
-"poprawna (tzn. z przedrostkiem 'serial:' lub 'usb:')."
+msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
+msgstr "Podany port ('%s') nie został odnaleziony. Proszę podać jeden z portów znajdywanych przez 'gphoto2 --list-ports' i upewnić się, że pisownia jest poprawna (tzn. z przedrostkiem 'serial:' lub 'usb:')."
 
 #: gphoto2/actions.c:785
 #, c-format
@@ -375,11 +362,9 @@ msgid ""
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
-"License. For more information about these matters, see the files named "
-"COPYING.\n"
+"License. For more information about these matters, see the files named COPYING.\n"
 "\n"
-"This version of gphoto2 is using the following software versions and "
-"options:\n"
+"This version of gphoto2 is using the following software versions and options:\n"
 msgstr ""
 "gphoto2 %s\n"
 "\n"
@@ -395,8 +380,7 @@ msgstr ""
 #: gphoto2/actions.c:1004
 #, c-format
 msgid "Getting storage information not supported for this camera.\n"
-msgstr ""
-"Pobieranie informacji o nośniku nie jest obsługiwane przez ten aparat.\n"
+msgstr "Pobieranie informacji o nośniku nie jest obsługiwane przez ten aparat.\n"
 
 #: gphoto2/actions.c:1019
 #, c-format
@@ -464,12 +448,8 @@ msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Nadpisywanie id producenta/produktu USB 0x%x/0x%x przez 0x%x/0x%x"
 
 #: gphoto2/actions.c:1171
-msgid ""
-"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
-"MAILING LIST:"
-msgstr ""
-"ZAWSZE NALEŻY DOŁĄCZYĆ NASTĘPUJĄCE LINIE PRZY WYSYŁANIU KOMUNIKATÓW "
-"DIAGNOSTYCZNYCH NA LISTĘ DYSKUSYJNĄ:"
+msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
+msgstr "ZAWSZE NALEŻY DOŁĄCZYĆ NASTĘPUJĄCE LINIE PRZY WYSYŁANIU KOMUNIKATÓW DIAGNOSTYCZNYCH NA LISTĘ DYSKUSYJNĄ:"
 
 #: gphoto2/actions.c:1186
 #, c-format
@@ -555,8 +535,7 @@ msgstr "Nie udało się ustawić wartości %s widgetu przełącznika %s."
 #: gphoto2/actions.c:1537
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
-msgstr ""
-"Przekazana wartość %s nie jest prawidłowym czasem ani liczbą całkowitą."
+msgstr "Przekazana wartość %s nie jest prawidłowym czasem ani liczbą całkowitą."
 
 #: gphoto2/actions.c:1544
 #, c-format
@@ -576,19 +555,12 @@ msgstr "Widget %s nie jest konfigurowalny."
 #: gphoto2/actions.c:1596
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
-msgstr ""
-"Nie udało się ustawić nowej wartości konfiguracji %s dla wpisu konfiguracji %"
-"s."
+msgstr "Nie udało się ustawić nowej wartości konfiguracji %s dla wpisu konfiguracji %s."
 
 #: gphoto2/foreach.c:254
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there are only %i files available in "
-"'%s' or its subfolders. Please obtain a valid file number from a file "
-"listing first."
-msgstr ""
-"Zły numer pliku. Podano %i, a jest tylko %i plików dostępnych w '%s' i "
-"podkatalogach. Proszę uzyskać prawidłowy numer pliku z listy plików."
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
+msgstr "Zły numer pliku. Podano %i, a jest tylko %i plików dostępnych w '%s' i podkatalogach. Proszę uzyskać prawidłowy numer pliku z listy plików."
 
 #: gphoto2/foreach.c:279
 #, c-format
@@ -597,19 +569,13 @@ msgstr "Nie ma plików w folderze '%s'."
 
 #: gphoto2/foreach.c:285
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there is only 1 file available in '%"
-"s'."
+msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
 msgstr "Zły numer pliku. Podano %i, ale jest tylko 1 plik dostępny w '%s'."
 
 #: gphoto2/foreach.c:293
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there are only %i files available in "
-"'%s'. Please obtain a valid file number from a file listing first."
-msgstr ""
-"Zły numer pliku. Podano %i, a jest tylko %i plików dostępnych w '%s'. Proszę "
-"uzyskać prawidłowy numer pliku z listy plików."
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
+msgstr "Zły numer pliku. Podano %i, a jest tylko %i plików dostępnych w '%s'. Proszę uzyskać prawidłowy numer pliku z listy plików."
 
 #: gphoto2/gp-params.c:70
 #, c-format
@@ -674,8 +640,7 @@ msgstr "Nie"
 #: gphoto2/main.c:230
 #, c-format
 msgid "Zero padding numbers in file names is only possible with %%n."
-msgstr ""
-"Dopełnianie zerami liczb w nazwach plików jest możliwe tylko przy użyciu %%n."
+msgstr "Dopełnianie zerami liczb w nazwach plików jest możliwe tylko przy użyciu %%n."
 
 #: gphoto2/main.c:239
 #, c-format
@@ -794,8 +759,7 @@ msgstr "nie zasypianie (%d sekund poza terminem)\n"
 #: gphoto2/main.c:771
 #, c-format
 msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
-msgstr ""
-"Oczekiwanie na zdarzenie z aparatu. Aby przerwać, proszę nacisnąć Ctrl-C.\n"
+msgstr "Oczekiwanie na zdarzenie z aparatu. Aby przerwać, proszę nacisnąć Ctrl-C.\n"
 
 #: gphoto2/main.c:791
 #, c-format
@@ -832,13 +796,8 @@ msgstr ""
 
 #: gphoto2/main.c:1088
 #, c-format
-msgid ""
-"Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
-"c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
-msgstr ""
-"Należy użyć składni a:b=c:d, aby potraktować dowolne urządzenie USB wykryte "
-"jako a:b jako c:d. a b c d powinny być liczbami szesnastkowymi zaczynającymi "
-"się od '0x'.\n"
+msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
+msgstr "Należy użyć składni a:b=c:d, aby potraktować dowolne urządzenie USB wykryte jako a:b jako c:d. a b c d powinny być liczbami szesnastkowymi zaczynającymi się od '0x'.\n"
 
 #: gphoto2/main.c:1245
 msgid "gphoto2 has been compiled without support for CDK."
@@ -996,9 +955,8 @@ msgid "Capture an image"
 msgstr "Zrobienie zdjęcia"
 
 #: gphoto2/main.c:1598
-#, fuzzy
 msgid "Capture an image and download it"
-msgstr "Zrobienie zdjęcia"
+msgstr "Zrobienie zdjęcia i ściągnięcie go"
 
 #: gphoto2/main.c:1600
 msgid "Capture a movie"
@@ -1183,8 +1141,7 @@ msgstr "Różnie opcje (kolejność dowolna)"
 
 #: gphoto2/main.c:1700
 msgid "Get information on software and host system (not from the camera)"
-msgstr ""
-"Pobranie informacji o oprogramowaniu i systemie komputera (nie z aparatu)"
+msgstr "Pobranie informacji o oprogramowaniu i systemie komputera (nie z aparatu)"
 
 #: gphoto2/main.c:1702
 msgid "Specify the camera to use"
@@ -1254,8 +1211,7 @@ msgid ""
 "Decreasing ranges are not allowed. You specified a range from %i to %i."
 msgstr ""
 "%s\n"
-"Przedziały zmniejszające się nie są dopuszczalne. Podano przedział od %i do %"
-"i."
+"Przedziały zmniejszające się nie są dopuszczalne. Podano przedział od %i do %i."
 
 #: gphoto2/shell.c:65
 #, c-format
@@ -1354,9 +1310,8 @@ msgid "Capture a single image"
 msgstr "Zrobienie pojedynczego zdjęcia"
 
 #: gphoto2/shell.c:144
-#, fuzzy
 msgid "Capture a single image and download it"
-msgstr "Zrobienie pojedynczego zdjęcia"
+msgstr "Zrobienie pojedynczego zdjęcia i ściągnięcie go"
 
 #: gphoto2/shell.c:469
 msgid "Invalid command."
@@ -1428,9 +1383,4 @@ msgstr "Dostępne polecenia:"
 #: gphoto2/shell.c:917
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
-msgstr ""
-"Aby uzyskać pomoc dla danego polecenia, należy napisać 'help nazwa-"
-"polecenia'."
-
-#~ msgid "[name]"
-#~ msgstr "[nazwa]"
+msgstr "Aby uzyskać pomoc dla danego polecenia, należy napisać 'help nazwa-polecenia'."
