@@ -1903,17 +1903,21 @@ main (int argc, char **argv, char **envp)
 
 		} else {
 			/* If --port override, search the model with the same port. */
-			if (info.type != GP_PORT_NONE) {
+			if (type != GP_PORT_NONE) {
 				int i;
+				char *xpath, *xname;
+
+				gp_port_info_get_path (info, &xpath);
+				gp_port_info_get_name (info, &xname);
 				gp_log (GP_LOG_DEBUG, "gphoto2", "Looking for port ...\n");
-				gp_log (GP_LOG_DEBUG, "gphoto2", "info.type = %d\n", info.type);
-				gp_log (GP_LOG_DEBUG, "gphoto2", "info.name = %s\n", info.name);
-				gp_log (GP_LOG_DEBUG, "gphoto2", "info.path = %s\n", info.path);
+				gp_log (GP_LOG_DEBUG, "gphoto2", "info.type = %d\n", type);
+				gp_log (GP_LOG_DEBUG, "gphoto2", "info.name = %s\n", xname);
+				gp_log (GP_LOG_DEBUG, "gphoto2", "info.path = %s\n", xpath);
 
 				for (i=0;i<count;i++) {
 					const char *xport, *xmodel;
 					gp_list_get_value (list, i, &xport);
-					if (!strcmp(xport, info.path)) {
+					if (!strcmp(xport, xpath)) {
 						gp_list_get_name (list, i, &xmodel);
 						CR_MAIN (action_camera_set_model (&gp_params, xmodel));
 						CR_MAIN (action_camera_set_port (&gp_params, xport));
