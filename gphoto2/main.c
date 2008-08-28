@@ -1854,6 +1854,7 @@ main (int argc, char **argv, char **envp)
 		gp_log (GP_LOG_DEBUG, "main", "The user has not specified "
 			"both a model and a port. Try to figure them out.");
 
+
 		_get_portinfo_list(&gp_params);
 		CR_MAIN (gp_list_new (&list)); /* no freeing below */
 		CR_MAIN (gp_abilities_list_detect (gp_params_abilities_list(&gp_params), 
@@ -1891,7 +1892,7 @@ main (int argc, char **argv, char **envp)
                 } else if (!count) {
 			/*
 			 * No camera detected. Have a look at the settings.
-			 * Ignore errors here.
+			 * Ignore errors here, it might be a serial one.
 			 */
                         if (gp_setting_get ("gphoto2", "model", buf) >= 0)
 				action_camera_set_model (&gp_params, buf);
@@ -1899,11 +1900,34 @@ main (int argc, char **argv, char **envp)
 				action_camera_set_port (&gp_params, buf);
 
 		} else {
+			/* If --port override, search the model with the same port. */
+			if (info.type != GP_PORT_NONE) {
+				int i;
+				gp_log (GP_LOG_DEBUG, "gphoto2", "Looking for port ...\n");
+				gp_log (GP_LOG_DEBUG, "gphoto2", "info.type = %d\n", info.type);
+				gp_log (GP_LOG_DEBUG, "gphoto2", "info.name = %s\n", info.name);
+				gp_log (GP_LOG_DEBUG, "gphoto2", "info.path = %s\n", info.path);
+
+				for (i=0;i<count;i++) {
+					const char *xport, *xmodel;
+					gp_list_get_value (list, i, &xport);
+					if (!strcmp(xport, info.path)) {
+						gp_list_get_name (list, i, &xmodel);
+						CR_MAIN (action_camera_set_model (&gp_params, xmodel));
+						CR_MAIN (action_camera_set_port (&gp_params, xport));
+						gp_log (GP_LOG_DEBUG, "gphoto2","found port, was entry %d\n", i);
+						break;
+					}
+				}
+				if (i != count)
+					use_auto = 0;
+			}
 			/* If --camera override, search the model with the same USB ID. */
-			if (a.model[0]) {
+			if (use_auto && a.model[0]) {
 				int i;
 				const char *xmodel;
 
+				gp_log (GP_LOG_DEBUG, "gphoto2","Looking for model %s\n", a.model);
 				for (i=0;i<count;i++) {
 					CameraAbilities alt;
 					int m;
@@ -1929,6 +1953,7 @@ main (int argc, char **argv, char **envp)
 			if (use_auto) {
 				/* More than one camera detected */
 				/*FIXME: Let the user choose from the list!*/
+				gp_log (GP_LOG_DEBUG,"gphoto2","Nothing specified, using first entry of autodetect list.\n");
 				CR_MAIN (gp_list_get_name (list, 0, &model));
 				CR_MAIN (gp_list_get_value (list, 0, &path));
 				CR_MAIN (action_camera_set_model (&gp_params, model));

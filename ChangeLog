@@ -1,3 +1,21 @@
+2008-08-28  Marcus Meissner  <marcus@jet.franken.de>
+
+	* gphoto2/main.c: Allow to specify a camera by port.
+
+	  For instance:
+		gphoto2 --port usb:005,003 --capture-image
+
+
+2008-05-24  Marcus Meissner  <marcus@jet.franken.de>
+
+	* gphoto2/{main.c,main.h,shell.c}:
+
+	  --capture-image split into:
+
+		--capture-image: just capture the image
+		--capture-image-and-download:
+			capture the image and download it.
+
 2007-07-21  Marcus Meissner  <marcus@jet.franken.de>
 
 	* implemented --capture-tethered 
