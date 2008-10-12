@@ -1,20 +1,21 @@
 # Czech translation of gphoto2
-# Copyright (C) 2003, 2007 Miloslav Trmac
+# Copyright (C) 2003, 2007, 2008 Miloslav Trmac
 # This file is distributed under the same license as the gphoto2 package.
-# Miloslav Trmac <mitr@volny.cz>, 2003, 2007.
+# Miloslav Trmac <mitr@volny.cz>, 2003, 2007, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.4.0\n"
+"Project-Id-Version: gphoto2 2.4.2\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2007-07-29 20:50-0400\n"
-"PO-Revision-Date: 2007-09-06 21:52+0200\n"
+"POT-Creation-Date: 2008-10-12 14:45+0200\n"
+"PO-Revision-Date: 2008-10-12 12:00+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%100/10==1 ? 2 : n%10==1 ? 0 : (n+9)%10>3 ? 2 : 1;\n"
+"Plural-Forms: nplurals=3; plural=n%100/10==1 ? 2 : n%10==1 ? 0 : (n+9)%"
+"10>3 ? 2 : 1;\n"
 
 #: gphoto2/actions.c:167
 #, c-format
@@ -88,16 +89,16 @@ msgid "  Downloaded:  %s\n"
 msgstr "  Staženo:     %s\n"
 
 #: gphoto2/actions.c:269 gphoto2/actions.c:301 gphoto2/actions.c:313
-#: gphoto2/actions.c:663 gphoto2/actions.c:665 gphoto2/actions.c:693
-#: gphoto2/actions.c:696 gphoto2/actions.c:699 gphoto2/actions.c:702
-#: gphoto2/actions.c:705 gphoto2/actions.c:1496
+#: gphoto2/actions.c:666 gphoto2/actions.c:668 gphoto2/actions.c:696
+#: gphoto2/actions.c:699 gphoto2/actions.c:702 gphoto2/actions.c:705
+#: gphoto2/actions.c:708 gphoto2/actions.c:1516
 msgid "yes"
 msgstr "ano"
 
 #: gphoto2/actions.c:269 gphoto2/actions.c:301 gphoto2/actions.c:313
-#: gphoto2/actions.c:663 gphoto2/actions.c:665 gphoto2/actions.c:693
-#: gphoto2/actions.c:696 gphoto2/actions.c:699 gphoto2/actions.c:702
-#: gphoto2/actions.c:705 gphoto2/actions.c:1490
+#: gphoto2/actions.c:666 gphoto2/actions.c:668 gphoto2/actions.c:696
+#: gphoto2/actions.c:699 gphoto2/actions.c:702 gphoto2/actions.c:705
+#: gphoto2/actions.c:708 gphoto2/actions.c:1510
 msgid "no"
 msgstr "ne"
 
@@ -221,139 +222,151 @@ msgstr ""
 "Cesta                            Popis\n"
 "--------------------------------------------------------------\n"
 
-#: gphoto2/actions.c:642 gphoto2/actions.c:647
+#: gphoto2/actions.c:645 gphoto2/actions.c:650
 #, c-format
 msgid "%-30s %-16s\n"
 msgstr "%-30s %-16s\n"
 
-#: gphoto2/actions.c:642
+#: gphoto2/actions.c:645
 msgid "Model"
 msgstr "Model"
 
-#: gphoto2/actions.c:642
+#: gphoto2/actions.c:645
 msgid "Port"
 msgstr "Port"
 
-#: gphoto2/actions.c:643
+#: gphoto2/actions.c:646
 #, c-format
 msgid "----------------------------------------------------------\n"
 msgstr "----------------------------------------------------------\n"
 
-#: gphoto2/actions.c:661
+#: gphoto2/actions.c:664
 #, c-format
 msgid "Abilities for camera             : %s\n"
 msgstr "Schopnosti fotoaparátu           : %s\n"
 
-#: gphoto2/actions.c:662
+#: gphoto2/actions.c:665
 #, c-format
 msgid "Serial port support              : %s\n"
 msgstr "Podpora sériového portu          : %s\n"
 
-#: gphoto2/actions.c:664
+#: gphoto2/actions.c:667
 #, c-format
 msgid "USB support                      : %s\n"
 msgstr "Podpora USB                      : %s\n"
 
-#: gphoto2/actions.c:667
+#: gphoto2/actions.c:670
 #, c-format
 msgid "Transfer speeds supported        :\n"
 msgstr "Podporované rychlosti přenosu    :\n"
 
-#: gphoto2/actions.c:669
+#: gphoto2/actions.c:672
 #, c-format
 msgid "                                 : %i\n"
 msgstr "                                 : %i\n"
 
-#: gphoto2/actions.c:672
+#: gphoto2/actions.c:675
 #, c-format
 msgid "Capture choices                  :\n"
 msgstr "Možnosti zachycení               :\n"
 
-#: gphoto2/actions.c:674
+#: gphoto2/actions.c:677
 #, c-format
 msgid "                                 : Image\n"
 msgstr "                                 : Obrázek\n"
 
-#: gphoto2/actions.c:678
+#: gphoto2/actions.c:681
 #, c-format
 msgid "                                 : Video\n"
 msgstr "                                 : Video\n"
 
-#: gphoto2/actions.c:682
+#: gphoto2/actions.c:685
 #, c-format
 msgid "                                 : Audio\n"
 msgstr "                                 : Video\n"
 
-#: gphoto2/actions.c:686
+#: gphoto2/actions.c:689
 #, c-format
 msgid "                                 : Preview\n"
 msgstr "                                 : Náhled\n"
 
-#: gphoto2/actions.c:690
+#: gphoto2/actions.c:693
 #, c-format
-msgid "                                 : Capture not supported by the driver\n"
-msgstr "                                 : Zachytávání nepodporováno ovladačem\n"
+msgid ""
+"                                 : Capture not supported by the driver\n"
+msgstr ""
+"                                 : Zachytávání nepodporováno ovladačem\n"
 
-#: gphoto2/actions.c:692
+#: gphoto2/actions.c:695
 #, c-format
 msgid "Configuration support            : %s\n"
 msgstr "Podpora konfigurace              : %s\n"
 
-#: gphoto2/actions.c:694
+#: gphoto2/actions.c:697
 #, c-format
 msgid "Delete selected files on camera  : %s\n"
 msgstr "Odstranit vybrané soubory z fotoaparátu: %s\n"
 
-#: gphoto2/actions.c:697
+#: gphoto2/actions.c:700
 #, c-format
 msgid "Delete all files on camera       : %s\n"
 msgstr "Odstranit všechny soubory z fotoaparátu: %s\n"
 
-#: gphoto2/actions.c:700
+#: gphoto2/actions.c:703
 #, c-format
 msgid "File preview (thumbnail) support : %s\n"
 msgstr "Podpora náhledů souborů          : %s\n"
 
-#: gphoto2/actions.c:703
+#: gphoto2/actions.c:706
 #, c-format
 msgid "File upload support              : %s\n"
 msgstr "Podpora ukládání souborů         : %s\n"
 
-#: gphoto2/actions.c:719
+#: gphoto2/actions.c:723
 #, c-format
-msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
-msgstr "Porty musí vypadat jako 'serial:/dev/ttyS0' nebo 'usb;', ale v '%s' chybí dvojtečka, takže budu hádat, co tím myslíte."
+msgid ""
+"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
+"colon so I am going to guess what you mean."
+msgstr ""
+"Porty musí vypadat jako 'serial:/dev/ttyS0' nebo 'usb;', ale v '%s' chybí "
+"dvojtečka, takže budu hádat, co tím myslíte."
 
-#: gphoto2/actions.c:753
+#: gphoto2/actions.c:757
 #, c-format
-msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
-msgstr "Port, který jste určili, ('%s'), nelze najít. Zadejte prosím jeden z portů nalezených 'gphoto2 --list-ports' a ujistěte se, že zápis je správný (např. s předponou 'serial:' nebo 'usb:')."
+msgid ""
+"The port you specified ('%s') can not be found. Please specify one of the "
+"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
+"(i.e. with prefix 'serial:' or 'usb:')."
+msgstr ""
+"Port, který jste určili, ('%s'), nelze najít. Zadejte prosím jeden z portů "
+"nalezených 'gphoto2 --list-ports' a ujistěte se, že zápis je správný (např. "
+"s předponou 'serial:' nebo 'usb:')."
 
-#: gphoto2/actions.c:785
+#: gphoto2/actions.c:790
 #, c-format
 msgid "About the camera driver:"
 msgstr "O ovladači fotoaparátu:"
 
-#: gphoto2/actions.c:798
+#: gphoto2/actions.c:803
 #, c-format
 msgid "Camera summary:"
 msgstr "Shrnutí fotoaparátu:"
 
-#: gphoto2/actions.c:811
+#: gphoto2/actions.c:816
 #, c-format
 msgid "Camera manual:"
 msgstr "Manuál fotoaparátu:"
 
-#: gphoto2/actions.c:826
+#: gphoto2/actions.c:833
 #, c-format
 msgid "You can only specify speeds for serial ports."
 msgstr "Můžete určovat rychlosti jen pro sériové porty."
 
-#: gphoto2/actions.c:879
+#: gphoto2/actions.c:883
 msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "OS/2 port napsal Bart van Leeuwen\n"
 
-#: gphoto2/actions.c:883
+#: gphoto2/actions.c:887
 #, c-format
 msgid ""
 "gphoto2 %s\n"
@@ -362,9 +375,11 @@ msgid ""
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
-"License. For more information about these matters, see the files named COPYING.\n"
+"License. For more information about these matters, see the files named "
+"COPYING.\n"
 "\n"
-"This version of gphoto2 is using the following software versions and options:\n"
+"This version of gphoto2 is using the following software versions and "
+"options:\n"
 msgstr ""
 "gphoto2 %s\n"
 "\n"
@@ -376,190 +391,199 @@ msgstr ""
 "\n"
 "Tato verze gphoto2 používá následující verze a nastavení softwaru:\n"
 
-#: gphoto2/actions.c:989
+#: gphoto2/actions.c:1008
 #, c-format
 msgid "Getting storage information not supported for this camera.\n"
 msgstr "Získávání informací o úložištinení pro tento fotoaparát podporováno.\n"
 
-#: gphoto2/actions.c:1004
+#: gphoto2/actions.c:1023
 #, c-format
 msgid "Read-Write"
 msgstr "Čtení a zápis"
 
-#: gphoto2/actions.c:1007
+#: gphoto2/actions.c:1026
 #, c-format
 msgid "Read-Only"
 msgstr "Jen čtení"
 
-#: gphoto2/actions.c:1010
+#: gphoto2/actions.c:1029
 #, c-format
 msgid "Read-only with delete"
 msgstr "Jen čtení a odstraňování"
 
-#: gphoto2/actions.c:1013 gphoto2/actions.c:1023
+#: gphoto2/actions.c:1032 gphoto2/actions.c:1042
 #, c-format
 msgid "Unknown"
 msgstr "Neznámé"
 
-#: gphoto2/actions.c:1026
+#: gphoto2/actions.c:1045
 #, c-format
 msgid "Fixed ROM"
 msgstr "Pevná ROM"
 
-#: gphoto2/actions.c:1029
+#: gphoto2/actions.c:1048
 #, c-format
 msgid "Removable ROM"
 msgstr "Výměnná ROM"
 
-#: gphoto2/actions.c:1032
+#: gphoto2/actions.c:1051
 #, c-format
 msgid "Fixed RAM"
 msgstr "Pevná RAM"
 
-#: gphoto2/actions.c:1035
+#: gphoto2/actions.c:1054
 #, c-format
 msgid "Removable RAM"
 msgstr "Výměnná RAM"
 
-#: gphoto2/actions.c:1045
+#: gphoto2/actions.c:1064
 #, c-format
 msgid "Undefined"
 msgstr "Nedefinováno"
 
-#: gphoto2/actions.c:1048
+#: gphoto2/actions.c:1067
 #, c-format
 msgid "Generic Flat"
 msgstr "Obecné ploché"
 
-#: gphoto2/actions.c:1051
+#: gphoto2/actions.c:1070
 #, c-format
 msgid "Generic Hierarchical"
 msgstr "Obecné hierarchické"
 
-#: gphoto2/actions.c:1054
+#: gphoto2/actions.c:1073
 #, c-format
 msgid "Camera layout (DCIM)"
 msgstr "Rozložení kamery (DCIM)"
 
-#: gphoto2/actions.c:1092
+#: gphoto2/actions.c:1111
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Nahrazuji USB id dodavatale/produktu 0x%x/0x%x s 0x%x/0x%x"
 
-#: gphoto2/actions.c:1156
-msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
-msgstr "PŘI POSÍLÁNÍ LADICÍCH ZPRÁV DO KONFERENCE VŽDY PŘILOŽTE NÁSLEDUJÍCÍ ŘÁDKY:"
+#: gphoto2/actions.c:1175
+msgid ""
+"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
+"MAILING LIST:"
+msgstr ""
+"PŘI POSÍLÁNÍ LADICÍCH ZPRÁV DO KONFERENCE VŽDY PŘILOŽTE NÁSLEDUJÍCÍ ŘÁDKY:"
 
-#: gphoto2/actions.c:1171
+#: gphoto2/actions.c:1190
 #, c-format
 msgid "%s has been compiled with the following options:"
 msgstr "%s bylo přeloženo s následujícími přepínači:"
 
-#: gphoto2/actions.c:1289
+#: gphoto2/actions.c:1308
 #, c-format
 msgid "%s not found in configuration tree."
 msgstr "%s nenalezeno ve stromu konfigurace."
 
-#: gphoto2/actions.c:1348
+#: gphoto2/actions.c:1368
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr "Nemohu získat hodnotu textového widgetu %s."
 
-#: gphoto2/actions.c:1365
+#: gphoto2/actions.c:1385
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr "Nemohu získat hodnotu widgetu rozsahu %s."
 
-#: gphoto2/actions.c:1377
+#: gphoto2/actions.c:1397
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr "Nemohu získat hodnotu přepínacího widgetu %s."
 
-#: gphoto2/actions.c:1389
+#: gphoto2/actions.c:1409
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr "Nemohu získat hodnotu widgetu data/času %s."
 
-#: gphoto2/actions.c:1419
+#: gphoto2/actions.c:1439
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr "Nemohu získat hodnotu rádiového widgetu %s."
 
-#: gphoto2/actions.c:1460
+#: gphoto2/actions.c:1480
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr "Nemohu nastavit hodnotu textového widgetu %s na %s."
 
-#: gphoto2/actions.c:1470
+#: gphoto2/actions.c:1490
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr "Zadaná hodnota %s není hodnota s pohyblivou řádovou čárkou."
 
-#: gphoto2/actions.c:1475
+#: gphoto2/actions.c:1495
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr "Zadaná hodnota %f není v očekávaném rozsahu %f – %f."
 
-#: gphoto2/actions.c:1481
+#: gphoto2/actions.c:1501
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr "Nemohu nastavit hodnotu widgetu rozsahu %s na %f."
 
-#: gphoto2/actions.c:1490
+#: gphoto2/actions.c:1510
 msgid "off"
 msgstr "vypnuto"
 
-#: gphoto2/actions.c:1491
+#: gphoto2/actions.c:1511
 msgid "false"
 msgstr "ne"
 
-#: gphoto2/actions.c:1496
+#: gphoto2/actions.c:1516
 msgid "on"
 msgstr "zapnuto"
 
-#: gphoto2/actions.c:1497
+#: gphoto2/actions.c:1517
 msgid "true"
 msgstr "ano"
 
-#: gphoto2/actions.c:1502
+#: gphoto2/actions.c:1522
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
 msgstr "Zadaná hodnota %s nená platná hodnota přepínače."
 
-#: gphoto2/actions.c:1508
+#: gphoto2/actions.c:1528
 #, c-format
 msgid "Failed to set values %s of toggle widget %s."
 msgstr "Nemohu nastavit hodnoty %s přepínacího widgetu %s."
 
-#: gphoto2/actions.c:1521
+#: gphoto2/actions.c:1541
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr "Zadaná hodnota %s není platný čas ani celé číslo."
 
-#: gphoto2/actions.c:1528
+#: gphoto2/actions.c:1548
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr "Nemohu nastavyt nový čas widgetu data/času %s na %s."
 
-#: gphoto2/actions.c:1565
+#: gphoto2/actions.c:1585
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr "Možnost %s nebyla nalezena v seznamu."
 
-#: gphoto2/actions.c:1573
+#: gphoto2/actions.c:1593
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr "Widget %s nelze nastavovat."
 
-#: gphoto2/actions.c:1580
+#: gphoto2/actions.c:1600
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr "Nemohu nastavit novou hodnotu nastavení %s položky nastavení %s."
 
 #: gphoto2/foreach.c:254
 #, c-format
-msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
-msgstr "Špatné číslo souboru. Zadali jste %1$i, ale v '%3$s' a jeho podadresářích je k dispozici jen '%2$i' souborů. Nejdříve prosím získejte ze seznamu souborů platné číslo souboru."
+msgid ""
+"Bad file number. You specified %i, but there are only %i files available in "
+"'%s' or its subfolders. Please obtain a valid file number from a file "
+"listing first."
+msgstr ""
+"Špatné číslo souboru. Zadali jste %1$i, ale v '%3$s' a jeho podadresářích je "
+"k dispozici jen '%2$i' souborů. Nejdříve prosím získejte ze seznamu souborů "
+"platné číslo souboru."
 
 #: gphoto2/foreach.c:279
 #, c-format
@@ -568,13 +592,21 @@ msgstr "V adresáři '%s' nejsou žádné soubory."
 
 #: gphoto2/foreach.c:285
 #, c-format
-msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
-msgstr "Špatné číslo souboru. Zadali jste %i, ale v '%s' je k dispozici jen jeden soubor."
+msgid ""
+"Bad file number. You specified %i, but there is only 1 file available in '%"
+"s'."
+msgstr ""
+"Špatné číslo souboru. Zadali jste %i, ale v '%s' je k dispozici jen jeden "
+"soubor."
 
 #: gphoto2/foreach.c:293
 #, c-format
-msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
-msgstr "Špatné číslo souboru. Zadali jste %1$i, ale v '%3$s' je k dispozici jen %2$i souborů. Nejdříve prosím získejte ze seznamu souborů platné číslo souboru."
+msgid ""
+"Bad file number. You specified %i, but there are only %i files available in "
+"'%s'. Please obtain a valid file number from a file listing first."
+msgstr ""
+"Špatné číslo souboru. Zadali jste %1$i, ale v '%3$s' je k dispozici jen %2$i "
+"souborů. Nejdříve prosím získejte ze seznamu souborů platné číslo souboru."
 
 #: gphoto2/gp-params.c:70
 #, c-format
@@ -636,141 +668,141 @@ msgstr "Ano"
 msgid "No"
 msgstr "Ne"
 
-#: gphoto2/main.c:229
+#: gphoto2/main.c:230
 #, c-format
 msgid "Zero padding numbers in file names is only possible with %%n."
 msgstr "Doplňování čísel nulami v názvech souborů je možné jen s %%n."
 
-#: gphoto2/main.c:238
+#: gphoto2/main.c:239
 #, c-format
 msgid "You cannot use %%n zero padding without a precision value!"
 msgstr "Nemůžete použít doplňování čísel nulami %%n bez hodnoty přesnosti!"
 
-#: gphoto2/main.c:254
+#: gphoto2/main.c:255
 #, c-format
 msgid "You cannot use '%%n' in combination with non-persistent files!"
 msgstr "Nemůžete použít '%%n' v kombinaci s neperzistentními soubory!"
 
-#: gphoto2/main.c:285
+#: gphoto2/main.c:286
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
 msgstr "Název souboru dotaný fotoaparátem ('%s') neobsahuje příponu!"
 
-#: gphoto2/main.c:340
+#: gphoto2/main.c:341
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
 msgstr "Neplatný formát '%s' (chyba na pozici %i)."
 
-#: gphoto2/main.c:393
+#: gphoto2/main.c:394
 #, c-format
 msgid "File %s exists. Overwrite? [y|n] "
 msgstr "Soubor %s existuje. Přepsat? [y|n] "
 
-#: gphoto2/main.c:405
+#: gphoto2/main.c:406
 #, c-format
 msgid "Specify new filename? [y|n] "
 msgstr "Zadat nový název souboru? [y|n] "
 
-#: gphoto2/main.c:415
+#: gphoto2/main.c:416
 #, c-format
 msgid "Enter new filename: "
 msgstr "Zadejte nový název souboru: "
 
-#: gphoto2/main.c:421
+#: gphoto2/main.c:422
 #, c-format
 msgid "Saving file as %s\n"
 msgstr "Ukládám souboru jako %s\n"
 
-#: gphoto2/main.c:606
+#: gphoto2/main.c:607
 #, c-format
 msgid "Time-lapse mode enabled (interval: %ds).\n"
 msgstr "Režim time-lapse povolen (interval: %ds).\n"
 
-#: gphoto2/main.c:609
+#: gphoto2/main.c:610
 #, c-format
 msgid "Standing by waiting for SIGUSR1 to capture.\n"
 msgstr "Pripraven, čekám na SIGUSR1 před zachytáváním.\n"
 
-#: gphoto2/main.c:618
+#: gphoto2/main.c:619
 #, c-format
 msgid "Capturing frame #%d...\n"
 msgstr "Zachytávám políčko č. %d...\n"
 
-#: gphoto2/main.c:620
+#: gphoto2/main.c:621
 #, c-format
 msgid "Capturing frame #%d/%d...\n"
 msgstr "Zachytávám políčko č. %d/%d...\n"
 
-#: gphoto2/main.c:627
+#: gphoto2/main.c:628
 msgid "Could not capture."
 msgstr "Nemohu zachytávat."
 
-#: gphoto2/main.c:636
+#: gphoto2/main.c:637
 #, c-format
 msgid "Capture failed (auto-focus problem?)...\n"
 msgstr "Zachytávání selhalo (problém automatického zaostřování?)...\n"
 
-#: gphoto2/main.c:650
+#: gphoto2/main.c:651
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "Nový soubor je na fotoaparátu v umístění %s%s%s\n"
 
-#: gphoto2/main.c:660 gphoto2/main.c:813
+#: gphoto2/main.c:660 gphoto2/main.c:797
 msgid "Could not set folder."
 msgstr "Nemohu nastavit adresář:"
 
-#: gphoto2/main.c:685 gphoto2/main.c:819
+#: gphoto2/main.c:667 gphoto2/main.c:803
 msgid "Could not get image."
 msgstr "Nemohu získat obrázek."
 
-#: gphoto2/main.c:692 gphoto2/main.c:826
+#: gphoto2/main.c:674 gphoto2/main.c:810
 msgid "Buggy libcanon.so?"
 msgstr "Chyba v libcanon.so?"
 
-#: gphoto2/main.c:698
+#: gphoto2/main.c:680
 #, c-format
 msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Odstraňuji soubor %s%s%s z fotoaparátu\n"
 
-#: gphoto2/main.c:703 gphoto2/main.c:835
+#: gphoto2/main.c:685 gphoto2/main.c:819
 msgid "Could not delete image."
 msgstr "Nemohu odstranit obrázek."
 
-#: gphoto2/main.c:723
+#: gphoto2/main.c:707
 msgid "Could not close camera connection."
 msgstr "Nemohu zavřít připojení k fotoaparátu."
 
-#: gphoto2/main.c:737
+#: gphoto2/main.c:721
 #, c-format
 msgid "Sleeping for %d second(s)...\n"
 msgstr "Spím na %d sekund...\n"
 
-#: gphoto2/main.c:742 gphoto2/main.c:770
+#: gphoto2/main.c:726 gphoto2/main.c:754
 #, c-format
 msgid "Awakened by SIGUSR1...\n"
 msgstr "Probuzen pomocí SIGUSR1...\n"
 
-#: gphoto2/main.c:745
+#: gphoto2/main.c:729
 #, c-format
 msgid "not sleeping (%d seconds behind schedule)\n"
 msgstr "nespím (%d sekund pozadu vůči plánu)\n"
 
-#: gphoto2/main.c:787
+#: gphoto2/main.c:771
 #, c-format
 msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
 msgstr "Čekám na události od fotoaparátu.  Přerušte stisknutím Ctrl-C.\n"
 
-#: gphoto2/main.c:807
+#: gphoto2/main.c:791
 #, c-format
 msgid "New file %s/%s, downloading...\n"
 msgstr "Nový soubor %s/%s, stahuji...\n"
 
-#: gphoto2/main.c:931
+#: gphoto2/main.c:915
 #, c-format
 msgid "ERROR: "
 msgstr "CHYBA: "
 
-#: gphoto2/main.c:954
+#: gphoto2/main.c:938
 #, c-format
 msgid ""
 "\n"
@@ -779,12 +811,12 @@ msgstr ""
 "\n"
 "Končím...\n"
 
-#: gphoto2/main.c:960
+#: gphoto2/main.c:944
 #, c-format
 msgid "Aborted.\n"
 msgstr "Skončil jsem.\n"
 
-#: gphoto2/main.c:965
+#: gphoto2/main.c:949
 #, c-format
 msgid ""
 "\n"
@@ -793,21 +825,26 @@ msgstr ""
 "\n"
 "Přerušuji...\n"
 
-#: gphoto2/main.c:1103
+#: gphoto2/main.c:1088
 #, c-format
-msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
-msgstr "Použijte následující syntax a:b=c:d pro obsluhu libovolného zařízení detekovaného jako a:b místo toho jako c:d. a b c d by měly být šestnáctková čísla začínající '0x'.\n"
+msgid ""
+"Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
+"c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
+msgstr ""
+"Použijte následující syntax a:b=c:d pro obsluhu libovolného zařízení "
+"detekovaného jako a:b místo toho jako c:d. a b c d by měly být šestnáctková "
+"čísla začínající '0x'.\n"
 
-#: gphoto2/main.c:1257
+#: gphoto2/main.c:1245
 msgid "gphoto2 has been compiled without support for CDK."
 msgstr "gphoto2 bylo přeloženo bez podpory pro CDK."
 
-#: gphoto2/main.c:1445
+#: gphoto2/main.c:1433
 #, c-format
 msgid "Operation cancelled.\n"
 msgstr "Operace přerušena.\n"
 
-#: gphoto2/main.c:1449
+#: gphoto2/main.c:1437
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -816,7 +853,7 @@ msgstr ""
 "*** Chyba (%i: '%s') ***       \n"
 "\n"
 
-#: gphoto2/main.c:1453
+#: gphoto2/main.c:1441
 #, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
@@ -833,324 +870,328 @@ msgstr ""
 "spusťte prosím gphoto2 následovně:\n"
 "\n"
 
-#: gphoto2/main.c:1542
+#: gphoto2/main.c:1530
 msgid "Print complete help message on program usage"
 msgstr "Vypsat úplnou zprávu nápovědy o používání programu"
 
-#: gphoto2/main.c:1544
+#: gphoto2/main.c:1532
 msgid "Print short message on program usage"
 msgstr "Vypsat krátkou zprávu o používání programu"
 
-#: gphoto2/main.c:1546
+#: gphoto2/main.c:1534
 msgid "Turn on debugging"
 msgstr "Zapnout ladění"
 
-#: gphoto2/main.c:1548
+#: gphoto2/main.c:1536
 msgid "Name of file to write debug info to"
 msgstr "Název souboru, do kterého zapisovat ladicí informace"
 
-#: gphoto2/main.c:1548 gphoto2/main.c:1553 gphoto2/main.c:1559
+#: gphoto2/main.c:1536 gphoto2/main.c:1541 gphoto2/main.c:1547
 msgid "FILENAME"
 msgstr "NÁZEVSOUBORU"
 
-#: gphoto2/main.c:1550
+#: gphoto2/main.c:1538
 msgid "Quiet output (default=verbose)"
 msgstr "Tichý výstup (implicitní=podrobný)"
 
-#: gphoto2/main.c:1552
+#: gphoto2/main.c:1540
 msgid "Hook script to call after downloads, captures, etc."
 msgstr "Skript, který volat po stahování, zachytávání atd."
 
-#: gphoto2/main.c:1559
+#: gphoto2/main.c:1547
 msgid "Specify port device"
 msgstr "Určení zařízení portu"
 
-#: gphoto2/main.c:1561
+#: gphoto2/main.c:1549
 msgid "Specify serial transfer speed"
 msgstr "Určení rychlosti sériového přenosu"
 
-#: gphoto2/main.c:1561
+#: gphoto2/main.c:1549
 msgid "SPEED"
 msgstr "RYCHLOST"
 
-#: gphoto2/main.c:1563
+#: gphoto2/main.c:1551
 msgid "Specify camera model"
 msgstr "Určení modelu fotoaparátu"
 
-#: gphoto2/main.c:1563
+#: gphoto2/main.c:1551
 msgid "MODEL"
 msgstr "MODEL"
 
-#: gphoto2/main.c:1565
+#: gphoto2/main.c:1553
 msgid "(expert only) Override USB IDs"
 msgstr "(jen pro experty) Přebít USB ID"
 
-#: gphoto2/main.c:1565
+#: gphoto2/main.c:1553
 msgid "USBIDs"
 msgstr "USBID"
 
-#: gphoto2/main.c:1571
+#: gphoto2/main.c:1559
 msgid "Display version and exit"
 msgstr "Zobrazit verzi a skončit"
 
-#: gphoto2/main.c:1573
+#: gphoto2/main.c:1561
 msgid "List supported camera models"
 msgstr "Vypsat podporované modly fotoaparátů"
 
-#: gphoto2/main.c:1575
+#: gphoto2/main.c:1563
 msgid "List supported port devices"
 msgstr "Vypsat podporovaná zařízení portu"
 
-#: gphoto2/main.c:1577
+#: gphoto2/main.c:1565
 msgid "Display camera/driver abilities"
 msgstr "Zobrazit schopnosti fotoaparátu/ovladače"
 
-#: gphoto2/main.c:1584
+#: gphoto2/main.c:1572
 msgid "Configure"
 msgstr "Nastavit"
 
-#: gphoto2/main.c:1587
+#: gphoto2/main.c:1575
 msgid "List configuration tree"
 msgstr "Vypsat strom konfigurace"
 
-#: gphoto2/main.c:1589
+#: gphoto2/main.c:1577
 msgid "Get configuration value"
 msgstr "Získat hodnotu konfigurace"
 
-#: gphoto2/main.c:1591
+#: gphoto2/main.c:1579
 msgid "Set configuration value"
 msgstr "Nastavit hodnotu konfigurace"
 
-#: gphoto2/main.c:1597
+#: gphoto2/main.c:1585
 msgid "Wait for event from camera"
 msgstr "Čekat na události od fotoaparátu"
 
-#: gphoto2/main.c:1600
+#: gphoto2/main.c:1588
 msgid "Capture a quick preview"
 msgstr "Zachytit rychlý náhled"
 
-#: gphoto2/main.c:1602
+#: gphoto2/main.c:1590
 msgid "Set number of frames to capture (default=infinite)"
 msgstr "Nastavit počet políček, která zachytávat (implicitní=nekonečno)"
 
-#: gphoto2/main.c:1602
+#: gphoto2/main.c:1590
 msgid "COUNT"
 msgstr "POČET"
 
-#: gphoto2/main.c:1604
+#: gphoto2/main.c:1592
 msgid "Set capture interval in seconds"
 msgstr "Nastavit interval zachytávání"
 
-#: gphoto2/main.c:1604
+#: gphoto2/main.c:1592
 msgid "SECONDS"
 msgstr "SEKUND"
 
-#: gphoto2/main.c:1606
+#: gphoto2/main.c:1594
 msgid "Reset capture interval on signal (default=no)"
 msgstr "Vynulovat interval zachytávání při signálu (implicitní=ne)"
 
-#: gphoto2/main.c:1608
+#: gphoto2/main.c:1596
 msgid "Capture an image"
 msgstr "Zachytit obrázek"
 
-#: gphoto2/main.c:1610
+#: gphoto2/main.c:1598
+msgid "Capture an image and download it"
+msgstr "Zachytit obrázek a stánout jej"
+
+#: gphoto2/main.c:1600
 msgid "Capture a movie"
 msgstr "Zachytit film"
 
-#: gphoto2/main.c:1612
+#: gphoto2/main.c:1602
 msgid "Capture an audio clip"
 msgstr "Zachytit zvukový klip"
 
-#: gphoto2/main.c:1614
+#: gphoto2/main.c:1604
 msgid "Wait for shutter release on the camera and download"
 msgstr "Čekat na uvolnění závěrky fotoaparátu a stáhnout"
 
-#: gphoto2/main.c:1620
+#: gphoto2/main.c:1610
 msgid "List folders in folder"
 msgstr "Vypsat adresáře v adresáři"
 
-#: gphoto2/main.c:1622
+#: gphoto2/main.c:1612
 msgid "List files in folder"
 msgstr "Vypsat soubory v adresáři"
 
-#: gphoto2/main.c:1624
+#: gphoto2/main.c:1614
 msgid "Create a directory"
 msgstr "Vytvořit adresář"
 
-#: gphoto2/main.c:1624 gphoto2/main.c:1626
+#: gphoto2/main.c:1614 gphoto2/main.c:1616
 msgid "DIRNAME"
 msgstr "NÁZEVADRESÁŘE"
 
-#: gphoto2/main.c:1626
+#: gphoto2/main.c:1616
 msgid "Remove a directory"
 msgstr "Odstranit adresář"
 
-#: gphoto2/main.c:1628
+#: gphoto2/main.c:1618
 msgid "Display number of files"
 msgstr "Zobrazit počet souborů"
 
-#: gphoto2/main.c:1630
+#: gphoto2/main.c:1620
 msgid "Get files given in range"
 msgstr "Získat soubory dané v rozsahu"
 
-#: gphoto2/main.c:1630 gphoto2/main.c:1634 gphoto2/main.c:1639
-#: gphoto2/main.c:1646 gphoto2/main.c:1652 gphoto2/main.c:1657
+#: gphoto2/main.c:1620 gphoto2/main.c:1624 gphoto2/main.c:1629
+#: gphoto2/main.c:1636 gphoto2/main.c:1642 gphoto2/main.c:1647
 msgid "RANGE"
 msgstr "ROZSAH"
 
-#: gphoto2/main.c:1632
+#: gphoto2/main.c:1622
 msgid "Get all files from folder"
 msgstr "Získat všechny soubory z adresáře"
 
-#: gphoto2/main.c:1634
+#: gphoto2/main.c:1624
 msgid "Get thumbnails given in range"
 msgstr "Získat miniatury dané v rozsahu"
 
-#: gphoto2/main.c:1637
+#: gphoto2/main.c:1627
 msgid "Get all thumbnails from folder"
 msgstr "Získat všechny náhledy z adresáře"
 
-#: gphoto2/main.c:1639
+#: gphoto2/main.c:1629
 msgid "Get metadata given in range"
 msgstr "Získat metadata daná v rozsahu"
 
-#: gphoto2/main.c:1641
+#: gphoto2/main.c:1631
 msgid "Get all metadata from folder"
 msgstr "Získat všechna metadata z adresáře"
 
-#: gphoto2/main.c:1643
+#: gphoto2/main.c:1633
 msgid "Upload metadata for file"
 msgstr "Uložit metadata souboru"
 
-#: gphoto2/main.c:1646
+#: gphoto2/main.c:1636
 msgid "Get raw data given in range"
 msgstr "Získat neupravená data daná v rozsahu"
 
-#: gphoto2/main.c:1649
+#: gphoto2/main.c:1639
 msgid "Get all raw data from folder"
 msgstr "Získat neupravená data z adresáře"
 
-#: gphoto2/main.c:1652
+#: gphoto2/main.c:1642
 msgid "Get audio data given in range"
 msgstr "Získat zvuková data daná v rozsahu"
 
-#: gphoto2/main.c:1655
+#: gphoto2/main.c:1645
 msgid "Get all audio data from folder"
 msgstr "Získat všechna zvuková data z adresáře"
 
-#: gphoto2/main.c:1657
+#: gphoto2/main.c:1647
 msgid "Delete files given in range"
 msgstr "Odstranit soubory dané v rozsahu"
 
-#: gphoto2/main.c:1659
+#: gphoto2/main.c:1649
 msgid "Delete all files in folder"
 msgstr "Odstranit všechny soubory v adresáři"
 
-#: gphoto2/main.c:1661
+#: gphoto2/main.c:1651
 msgid "Upload a file to camera"
 msgstr "Uložit soubor do fotoaparátu"
 
-#: gphoto2/main.c:1661
+#: gphoto2/main.c:1651
 msgid "filename"
 msgstr "názevsouboru"
 
-#: gphoto2/main.c:1663
+#: gphoto2/main.c:1653
 msgid "Specify a filename or filename pattern"
 msgstr "Určení názvu souboru nebo vzoru názvů souborů"
 
-#: gphoto2/main.c:1663
+#: gphoto2/main.c:1653
 msgid "FILENAME_PATTERN"
 msgstr "VZOR_NÁZVŮ_SOUBORŮ"
 
-#: gphoto2/main.c:1665
+#: gphoto2/main.c:1655
 msgid "Specify camera folder (default=\"/\")"
 msgstr "Určení adresáře fotoaparátu (implicitní=\"/\")"
 
-#: gphoto2/main.c:1665
+#: gphoto2/main.c:1655
 msgid "FOLDER"
 msgstr "ADRESÁŘ"
 
-#: gphoto2/main.c:1667
+#: gphoto2/main.c:1657
 msgid "Recursion (default for download)"
 msgstr "Rekurze (implicitní pro stahování)"
 
-#: gphoto2/main.c:1669
+#: gphoto2/main.c:1659
 msgid "No recursion (default for deletion)"
 msgstr "Žádná rekurze (implicitní pro odstraňování)"
 
-#: gphoto2/main.c:1671
+#: gphoto2/main.c:1661
 msgid "Process new files only"
 msgstr "Zpracovávat jen nové soubory"
 
-#: gphoto2/main.c:1673
+#: gphoto2/main.c:1663
 msgid "Overwrite files without asking"
 msgstr "Přepisovat soubory bez ptaní"
 
-#: gphoto2/main.c:1679
+#: gphoto2/main.c:1669
 msgid "Send file to stdout"
 msgstr "Poslat soubor na stdout"
 
-#: gphoto2/main.c:1681
+#: gphoto2/main.c:1671
 msgid "Print filesize before data"
 msgstr "Vytisknout před daty velikost souboru"
 
-#: gphoto2/main.c:1683
+#: gphoto2/main.c:1673
 msgid "List auto-detected cameras"
 msgstr "Vypsat automaticky detekované fotoaparáty"
 
-#: gphoto2/main.c:1687 gphoto2/shell.c:132
+#: gphoto2/main.c:1677 gphoto2/shell.c:133
 msgid "Show EXIF information"
 msgstr "Zobrazit informace EXIF"
 
-#: gphoto2/main.c:1690 gphoto2/shell.c:126
+#: gphoto2/main.c:1680 gphoto2/shell.c:127
 msgid "Show info"
 msgstr "Zobrazit informace"
 
-#: gphoto2/main.c:1692
+#: gphoto2/main.c:1682
 msgid "Show summary"
 msgstr "Zobrazit souhrn"
 
-#: gphoto2/main.c:1694
+#: gphoto2/main.c:1684
 msgid "Show camera driver manual"
 msgstr "Zobrazit manuál ovladače fotoaparátu"
 
-#: gphoto2/main.c:1696
+#: gphoto2/main.c:1686
 msgid "About the camera driver manual"
 msgstr "O manuálu ovladače fotoaparátu"
 
-#: gphoto2/main.c:1698
+#: gphoto2/main.c:1688
 msgid "Show storage information"
 msgstr "Zobrazit informace o úložišti"
 
-#: gphoto2/main.c:1700
+#: gphoto2/main.c:1690
 msgid "gPhoto shell"
 msgstr "shell gPhoto"
 
-#: gphoto2/main.c:1706
+#: gphoto2/main.c:1696
 msgid "Common options"
 msgstr "Časté přepínače"
 
-#: gphoto2/main.c:1708
+#: gphoto2/main.c:1698
 msgid "Miscellaneous options (unsorted)"
 msgstr "Různé přepínače (netříděné)"
 
-#: gphoto2/main.c:1710
+#: gphoto2/main.c:1700
 msgid "Get information on software and host system (not from the camera)"
 msgstr "Získat informaci o software a hostitelském systému (ne z fotoaparátu)"
 
-#: gphoto2/main.c:1712
+#: gphoto2/main.c:1702
 msgid "Specify the camera to use"
 msgstr "Určení fotoaparátu, který používat"
 
-#: gphoto2/main.c:1714
+#: gphoto2/main.c:1704
 msgid "Camera and software configuration"
 msgstr "Nastavení fotoaparátu a software"
 
-#: gphoto2/main.c:1716
+#: gphoto2/main.c:1706
 msgid "Capture an image from or on the camera"
 msgstr "Zachytit obrázek z nebo ve fotoaparátu"
 
-#: gphoto2/main.c:1718
+#: gphoto2/main.c:1708
 msgid "Downloading, uploading and manipulating files"
 msgstr "Stahování, ukládání a práce se soubory"
 
@@ -1213,169 +1254,175 @@ msgstr ""
 msgid "*** Error (%i: '%s') ***"
 msgstr "*** Chyba (%i: '%s') ***"
 
-#: gphoto2/shell.c:115
+#: gphoto2/shell.c:116
 msgid "Change to a directory on the camera"
 msgstr "Přejít do adresáře ve fotoaparátu"
 
-#: gphoto2/shell.c:116 gphoto2/shell.c:118 gphoto2/shell.c:129
-#: gphoto2/shell.c:130
+#: gphoto2/shell.c:117 gphoto2/shell.c:119 gphoto2/shell.c:130
+#: gphoto2/shell.c:131
 msgid "directory"
 msgstr "adresář"
 
-#: gphoto2/shell.c:117
+#: gphoto2/shell.c:118
 msgid "Change to a directory on the local drive"
 msgstr "Přejít do adresáře na místním disku"
 
-#: gphoto2/shell.c:119 gphoto2/shell.c:143 gphoto2/shell.c:144
+#: gphoto2/shell.c:120 gphoto2/shell.c:145 gphoto2/shell.c:146
 msgid "Exit the gPhoto shell"
 msgstr "Ukončit shell gPhoto"
 
-#: gphoto2/shell.c:120
+#: gphoto2/shell.c:121
 msgid "Download a file"
 msgstr "Stáhnout soubor"
 
-#: gphoto2/shell.c:120 gphoto2/shell.c:121 gphoto2/shell.c:123
-#: gphoto2/shell.c:125 gphoto2/shell.c:127 gphoto2/shell.c:128
-#: gphoto2/shell.c:133
+#: gphoto2/shell.c:121 gphoto2/shell.c:122 gphoto2/shell.c:124
+#: gphoto2/shell.c:126 gphoto2/shell.c:128 gphoto2/shell.c:129
+#: gphoto2/shell.c:134
 msgid "[directory/]filename"
 msgstr "[adresář/]názevsouboru"
 
-#: gphoto2/shell.c:121
+#: gphoto2/shell.c:122
 msgid "Upload a file"
 msgstr "Uložit soubor"
 
-#: gphoto2/shell.c:122
+#: gphoto2/shell.c:123
 msgid "Download a thumbnail"
 msgstr "Stáhnout náhled"
 
-#: gphoto2/shell.c:124
+#: gphoto2/shell.c:125
 msgid "Download raw data"
 msgstr "Stáhnout neupravená data"
 
-#: gphoto2/shell.c:128
+#: gphoto2/shell.c:129
 msgid "Delete"
 msgstr "Odstranit"
 
-#: gphoto2/shell.c:129
+#: gphoto2/shell.c:130
 msgid "Create Directory"
 msgstr "Vytvořit adresář"
 
-#: gphoto2/shell.c:130
+#: gphoto2/shell.c:131
 msgid "Remove Directory"
 msgstr "Odstranit adresář"
 
-#: gphoto2/shell.c:135 gphoto2/shell.c:145
+#: gphoto2/shell.c:136 gphoto2/shell.c:147
 msgid "Displays command usage"
 msgstr "Zobrazí použití příkazů"
 
-#: gphoto2/shell.c:136 gphoto2/shell.c:145
+#: gphoto2/shell.c:137 gphoto2/shell.c:147
 msgid "[command]"
 msgstr "[příkaz]"
 
-#: gphoto2/shell.c:137
+#: gphoto2/shell.c:138
 msgid "List the contents of the current directory"
 msgstr "Vypsat obsah aktuálního adresáře"
 
-#: gphoto2/shell.c:138
+#: gphoto2/shell.c:139
 msgid "[directory/]"
 msgstr "[adresář/]"
 
-#: gphoto2/shell.c:139
+#: gphoto2/shell.c:140
 msgid "List configuration variables"
 msgstr "Vypsat proměnné konfigurace"
 
-#: gphoto2/shell.c:140
+#: gphoto2/shell.c:141
 msgid "Get configuration variable"
 msgstr "Získat proměnnou konfigurace"
 
-#: gphoto2/shell.c:140
+#: gphoto2/shell.c:141
 msgid "name"
 msgstr "název"
 
-#: gphoto2/shell.c:141
+#: gphoto2/shell.c:142
 msgid "Set configuration variable"
 msgstr "Nastavit proměnnou konfigurace"
 
-#: gphoto2/shell.c:141
+#: gphoto2/shell.c:142
 msgid "name=value"
 msgstr "název=hodnota"
 
-#: gphoto2/shell.c:142
+#: gphoto2/shell.c:143
 msgid "Capture a single image"
 msgstr "Zachytit jeden obrázek"
 
-#: gphoto2/shell.c:142
-msgid "[name]"
-msgstr "[název]"
+#: gphoto2/shell.c:144
+msgid "Capture a single image and download it"
+msgstr "Zachytit jeden obrázek a stáhnout jej"
 
-#: gphoto2/shell.c:467
+#: gphoto2/shell.c:469
 msgid "Invalid command."
 msgstr "Neplatný příkaz."
 
-#: gphoto2/shell.c:476
+#: gphoto2/shell.c:478
 #, c-format
 msgid "The command '%s' requires an argument."
 msgstr "Příkaz '%s' vyžaduje argument."
 
-#: gphoto2/shell.c:529
+#: gphoto2/shell.c:531
 msgid "Invalid path."
 msgstr "Neplatná cesta."
 
-#: gphoto2/shell.c:575
+#: gphoto2/shell.c:577
 msgid "Could not find home directory."
 msgstr "Nemohu nalézt domovský adresář."
 
-#: gphoto2/shell.c:584
+#: gphoto2/shell.c:586
 #, c-format
 msgid "Could not change to local directory '%s'."
 msgstr "Nemohu přejít do místního adresáře '%s'."
 
-#: gphoto2/shell.c:587
+#: gphoto2/shell.c:589
 #, c-format
 msgid "Local directory now '%s'."
 msgstr "Místní adresář je nyní '%s'."
 
-#: gphoto2/shell.c:625
+#: gphoto2/shell.c:627
 #, c-format
 msgid "Remote directory now '%s'."
 msgstr "Vzdálený adresář je nyní '%s'."
 
-#: gphoto2/shell.c:841
+#: gphoto2/shell.c:843
 #, c-format
 msgid "set-config needs a second argument.\n"
 msgstr "set-config potřebuje druhý prametr.\n"
 
-#: gphoto2/shell.c:871
+#: gphoto2/shell.c:877
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
-msgstr "Příkaz '%s' nenalezen. Použijte 'help' pro získání seznamu dostupných příkazů."
+msgstr ""
+"Příkaz '%s' nenalezen. Použijte 'help' pro získání seznamu dostupných "
+"příkazů."
 
-#: gphoto2/shell.c:878
+#: gphoto2/shell.c:884
 #, c-format
 msgid "Help on \"%s\":"
 msgstr "Nápověda pro \"%s\":"
 
-#: gphoto2/shell.c:880
+#: gphoto2/shell.c:886
 #, c-format
 msgid "Usage:"
 msgstr "Použití:"
 
-#: gphoto2/shell.c:883
+#: gphoto2/shell.c:889
 #, c-format
 msgid "Description:"
 msgstr "Popis:"
 
-#: gphoto2/shell.c:885
+#: gphoto2/shell.c:891
 #, c-format
 msgid "* Arguments in brackets [] are optional"
 msgstr "* Argumenty v hranatých závorkách [] jsou nepovinné"
 
-#: gphoto2/shell.c:906
+#: gphoto2/shell.c:912
 #, c-format
 msgid "Available commands:"
 msgstr "Dostupné příkazy:"
 
-#: gphoto2/shell.c:911
+#: gphoto2/shell.c:917
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
-msgstr "Pro získání nápovědy o konkrétním příkazu napište 'help název-příkazu'."
+msgstr ""
+"Pro získání nápovědy o konkrétním příkazu napište 'help název-příkazu'."
+
+#~ msgid "[name]"
+#~ msgstr "[název]"
