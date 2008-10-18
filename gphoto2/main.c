@@ -788,7 +788,7 @@ capture_tethered (const char __unused__ *name)
 			break;
 		case GP_EVENT_FILE_ADDED:
 			fn = (CameraFilePath*)data;
-			printf( _("New file %s/%s, downloading...\n"),fn->name, fn->folder);
+			printf( _("New file %s/%s, downloading...\n"),fn->folder, fn->name);
 
 			if(strcmp(fn->folder, last.folder)) {
 				strcpy(last.folder, fn->folder);
