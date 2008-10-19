@@ -1,396 +1,639 @@
-# Magyar nyelv˚ szˆvegek a gphoto2 programhoz.
+# Magyar nyelv≈± sz√∂vegek a gphoto2 programhoz.
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # This file is distributed under the same license as the PACKAGE package.
-# Mih·ly Gyulai <gyulai@fbi.hu>, 2003.
+# Mih√°ly Gyulai <gyulai@fbi.hu>, 2003.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.2\n"
-"POT-Creation-Date: 2003-08-10 20:58+0200\n"
+"Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2008-06-22 18:31+0200\n"
 "PO-Revision-Date: 2003-10-13 18:52+0200\n"
-"Last-Translator: Mih·ly Gyulai <gyulai@fbi.hu>\n"
+"Last-Translator: Mih√°ly Gyulai <gyulai@fbi.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: gphoto2/actions.c:101
-#, c-format
-msgid "Number of files in folder '%s': %i\n"
-msgstr "A '%s' kˆnyvt·rban lÈvı f·jlok sz·ma: %i\n"
-
-#: gphoto2/actions.c:122
-#, c-format
-msgid "There are no folders in folder '%s'."
-msgstr "A '%s' kˆnyvt·r alatt nincs alkˆnyvt·r."
-
-#: gphoto2/actions.c:126
-#, c-format
-msgid "There is one folder in folder '%s':"
-msgstr "A(z) '%s' kˆnyvt·rban egy alkˆnyvt·r van:"
-
-#: gphoto2/actions.c:130
-#, c-format
-msgid "There are %i folders in folder '%s':"
-msgstr "%i alkˆnyvt·r van a(z) '%s' kˆnyvt·rban:"
-
-#: gphoto2/actions.c:157 gphoto2/foreach.c:277
-#, c-format
-msgid "There are no files in folder '%s'."
-msgstr "A(z) '%s' kˆnyvt·rban nincsen f·jl."
-
-#: gphoto2/actions.c:162
-#, c-format
-msgid "There is one file in folder '%s':"
-msgstr "A(z) '%s' kˆnyvt·rban egy f·jl van:"
 
 #: gphoto2/actions.c:167
 #, c-format
-msgid "There are %i files in folder '%s':"
-msgstr "%i f·jl van a(z) '%s' kˆnyvt·rban:"
+msgid "Number of files in folder '%s': %i\n"
+msgstr "A '%s' k√∂nyvt√°rban l√©v≈ë f√°jlok sz√°ma: %i\n"
 
-#: gphoto2/actions.c:188
+#: gphoto2/actions.c:187
+#, fuzzy, c-format
+msgid "There is %d folder in folder '%s'.\n"
+msgid_plural "There are %d folders in folder '%s'.\n"
+msgstr[0] "A(z) '%s' k√∂nyvt√°rban egy alk√∂nyvt√°r van:"
+msgstr[1] "A(z) '%s' k√∂nyvt√°rban egy alk√∂nyvt√°r van:"
+
+#: gphoto2/actions.c:227
+#, fuzzy, c-format
+msgid "There is no file in folder '%s'.\n"
+msgstr "A(z) '%s' k√∂nyvt√°rban egy f√°jl van:"
+
+#: gphoto2/actions.c:230
+#, fuzzy, c-format
+msgid "There is %d file in folder '%s'.\n"
+msgid_plural "There are %d files in folder '%s'.\n"
+msgstr[0] "A(z) '%s' k√∂nyvt√°rban egy f√°jl van:"
+msgstr[1] "A(z) '%s' k√∂nyvt√°rban egy f√°jl van:"
+
+#: gphoto2/actions.c:251
 #, c-format
 msgid "Information on file '%s' (folder '%s'):\n"
-msgstr "Inform·ciÛ errıl a f·jlrÛl: '%s' ('%s' kˆnyvt·rban)\n"
+msgstr "Inform√°ci√≥ err≈ël a f√°jlr√≥l: '%s' ('%s' k√∂nyvt√°rban)\n"
 
-#: gphoto2/actions.c:190
+#: gphoto2/actions.c:253
+#, c-format
 msgid "File:\n"
-msgstr "F·jl:\n"
+msgstr "F√°jl:\n"
 
-#: gphoto2/actions.c:192 gphoto2/actions.c:226 gphoto2/actions.c:242
+#: gphoto2/actions.c:255 gphoto2/actions.c:289 gphoto2/actions.c:305
+#, c-format
 msgid "  None available.\n"
-msgstr "  Nem hozz·fÈrhetı.\n"
+msgstr "  Nem hozz√°f√©rhet≈ë.\n"
 
-#: gphoto2/actions.c:195
+#: gphoto2/actions.c:258
 #, c-format
 msgid "  Name:        '%s'\n"
-msgstr "  NÈv:         '%s'\n"
+msgstr "  N√©v:         '%s'\n"
 
-#: gphoto2/actions.c:197 gphoto2/actions.c:229
+#: gphoto2/actions.c:260 gphoto2/actions.c:292
 #, c-format
 msgid "  Mime type:   '%s'\n"
-msgstr "  MIME tÌpus:   '%s'\n"
+msgstr "  MIME t√≠pus:   '%s'\n"
 
-#: gphoto2/actions.c:199 gphoto2/actions.c:231
+#: gphoto2/actions.c:262 gphoto2/actions.c:294
 #, c-format
 msgid "  Size:        %li byte(s)\n"
-msgstr "  MÈret:       %li b·jt\n"
+msgstr "  M√©ret:       %li b√°jt\n"
 
-#: gphoto2/actions.c:201 gphoto2/actions.c:233
+#: gphoto2/actions.c:264 gphoto2/actions.c:296
 #, c-format
 msgid "  Width:       %i pixel(s)\n"
-msgstr "  SzÈlessÈg:      %i pixel\n"
+msgstr "  Sz√©less√©g:      %i pixel\n"
 
-#: gphoto2/actions.c:203 gphoto2/actions.c:235
+#: gphoto2/actions.c:266 gphoto2/actions.c:298
 #, c-format
 msgid "  Height:      %i pixel(s)\n"
-msgstr "  Magass·g:      %i pixel\n"
+msgstr "  Magass√°g:      %i pixel\n"
 
-#: gphoto2/actions.c:205 gphoto2/actions.c:237
+#: gphoto2/actions.c:268 gphoto2/actions.c:300
 #, c-format
 msgid "  Downloaded:  %s\n"
-msgstr "  Letˆltve:  %s\n"
+msgstr "  Let√∂ltve:  %s\n"
 
-#: gphoto2/actions.c:206 gphoto2/actions.c:238 gphoto2/actions.c:250
-#: gphoto2/actions.c:548 gphoto2/actions.c:550 gphoto2/actions.c:567
-#: gphoto2/actions.c:570 gphoto2/actions.c:573 gphoto2/actions.c:576
+#: gphoto2/actions.c:269 gphoto2/actions.c:301 gphoto2/actions.c:313
+#: gphoto2/actions.c:663 gphoto2/actions.c:665 gphoto2/actions.c:693
+#: gphoto2/actions.c:696 gphoto2/actions.c:699 gphoto2/actions.c:702
+#: gphoto2/actions.c:705 gphoto2/actions.c:1512
 msgid "yes"
 msgstr "igen"
 
-#: gphoto2/actions.c:206 gphoto2/actions.c:238 gphoto2/actions.c:250
-#: gphoto2/actions.c:548 gphoto2/actions.c:550 gphoto2/actions.c:567
-#: gphoto2/actions.c:570 gphoto2/actions.c:573 gphoto2/actions.c:576
+#: gphoto2/actions.c:269 gphoto2/actions.c:301 gphoto2/actions.c:313
+#: gphoto2/actions.c:663 gphoto2/actions.c:665 gphoto2/actions.c:693
+#: gphoto2/actions.c:696 gphoto2/actions.c:699 gphoto2/actions.c:702
+#: gphoto2/actions.c:705 gphoto2/actions.c:1506
 msgid "no"
 msgstr "nem"
 
-#: gphoto2/actions.c:208
+#: gphoto2/actions.c:271
+#, c-format
 msgid "  Permissions: "
-msgstr "  EngedÈlyek: "
+msgstr "  Enged√©lyek: "
 
-#: gphoto2/actions.c:211
+#: gphoto2/actions.c:274
+#, c-format
 msgid "read/delete"
-msgstr "olvas/tˆrˆl"
+msgstr "olvas/t√∂r√∂l"
 
-#: gphoto2/actions.c:213
+#: gphoto2/actions.c:276
+#, c-format
 msgid "read"
 msgstr "olvas"
 
-#: gphoto2/actions.c:215
+#: gphoto2/actions.c:278
+#, c-format
 msgid "delete"
-msgstr "tˆrˆl"
+msgstr "t√∂r√∂l"
 
-#: gphoto2/actions.c:217
+#: gphoto2/actions.c:280
+#, c-format
 msgid "none"
 msgstr "nincs"
 
-#: gphoto2/actions.c:221
+#: gphoto2/actions.c:284
 #, c-format
 msgid "  Time:        %s"
-msgstr "  Idı:        %s"
+msgstr "  Id≈ë:        %s"
 
-#: gphoto2/actions.c:224
+#: gphoto2/actions.c:287
+#, c-format
 msgid "Thumbnail:\n"
-msgstr "BemutatÛkÈp:\n"
+msgstr "Bemutat√≥k√©p:\n"
 
-#: gphoto2/actions.c:240
+#: gphoto2/actions.c:303
+#, c-format
 msgid "Audio data:\n"
 msgstr "Hanganyag:\n"
 
-#: gphoto2/actions.c:245
+#: gphoto2/actions.c:308
 #, c-format
 msgid "  Mime type:  '%s'\n"
-msgstr "  MIME tÌpus:  '%s'\n"
+msgstr "  MIME t√≠pus:  '%s'\n"
 
-#: gphoto2/actions.c:247
+#: gphoto2/actions.c:310
 #, c-format
 msgid "  Size:       %li byte(s)\n"
-msgstr "  MÈret:       %li b·jt\n"
+msgstr "  M√©ret:       %li b√°jt\n"
 
-#: gphoto2/actions.c:249
+#: gphoto2/actions.c:312
 #, c-format
 msgid "  Downloaded: %s\n"
-msgstr "  Letˆltve: %s\n"
+msgstr "  Let√∂ltve: %s\n"
 
-#: gphoto2/actions.c:380
+#: gphoto2/actions.c:488
 msgid "Could not parse EXIF data."
-msgstr "Nem tudom Èrtelmezni az EXIF adatot."
+msgstr "Nem tudom √©rtelmezni az EXIF adatot."
 
-#: gphoto2/actions.c:384
+#: gphoto2/actions.c:492
+#, c-format
 msgid "EXIF tags:"
 msgstr "EXIF elemek:"
 
-#: gphoto2/actions.c:387
+#: gphoto2/actions.c:495
 msgid "Tag"
 msgstr "Elem"
 
-#: gphoto2/actions.c:389
+#: gphoto2/actions.c:497
 msgid "Value"
-msgstr "…rtÈk"
+msgstr "√ârt√©k"
 
-#: gphoto2/actions.c:410
+#: gphoto2/actions.c:518
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
-msgstr "Az EXIF adat bemutatÛkÈpet tartalmaz (%i b·jt)."
+msgstr "Az EXIF adat bemutat√≥k√©pet tartalmaz (%i b√°jt)."
 
-#: gphoto2/actions.c:419
+#: gphoto2/actions.c:527
 msgid "gphoto2 has been compiled without EXIF support."
-msgstr "A gphoto2 EXIF t·mogat·s nÈlk¸l lett elkÈszÌtve."
+msgstr "A gphoto2 EXIF t√°mogat√°s n√©lk√ºl lett elk√©sz√≠tve."
 
-#: gphoto2/actions.c:437
+#: gphoto2/actions.c:545
 #, c-format
 msgid "Number of supported cameras: %i\n"
-msgstr "T·mogatott fÈnykÈpezıgÈpek sz·ma: %i\n"
+msgstr "T√°mogatott f√©nyk√©pez≈ëg√©pek sz√°ma: %i\n"
 
-#: gphoto2/actions.c:439
+#: gphoto2/actions.c:546
+#, c-format
 msgid "Supported cameras:\n"
-msgstr "T·mogatott fÈnykÈpezıgÈpek:\n"
+msgstr "T√°mogatott f√©nyk√©pez≈ëg√©pek:\n"
 
-#: gphoto2/actions.c:452
+#: gphoto2/actions.c:559
 #, c-format
 msgid "\t\"%s\" (TESTING)\n"
-msgstr "\t\"%s\" (TESZTEL…S)\n"
+msgstr "\t\"%s\" (TESZTEL√âS)\n"
 
-#: gphoto2/actions.c:455
+#: gphoto2/actions.c:562
 #, c-format
 msgid "\t\"%s\" (EXPERIMENTAL)\n"
-msgstr "\t\"%s\" (KÕS…RLETI)\n"
+msgstr "\t\"%s\" (K√çS√âRLETI)\n"
 
-#: gphoto2/actions.c:460
+#: gphoto2/actions.c:567
 #, c-format
 msgid "\t\"%s\"\n"
 msgstr "\t\"%s\"\n"
 
-#: gphoto2/actions.c:488
+#: gphoto2/actions.c:611
 #, c-format
 msgid "Devices found: %i\n"
-msgstr "Tal·lt eszkˆzˆk: %i\n"
+msgstr "Tal√°lt eszk√∂z√∂k: %i\n"
 
-#: gphoto2/actions.c:489
+#: gphoto2/actions.c:612
+#, c-format
 msgid ""
 "Path                             Description\n"
 "--------------------------------------------------------------\n"
 msgstr ""
-"⁄tvonal                          LeÌr·s\n"
+"√ötvonal                          Le√≠r√°s\n"
 "--------------------------------------------------------------\n"
 
-#: gphoto2/actions.c:528 gphoto2/actions.c:533
+#: gphoto2/actions.c:642 gphoto2/actions.c:647
 #, c-format
 msgid "%-30s %-16s\n"
 msgstr "%-30s %-16s\n"
 
-#: gphoto2/actions.c:528
+#: gphoto2/actions.c:642
 msgid "Model"
 msgstr "Modell"
 
-#: gphoto2/actions.c:528
+#: gphoto2/actions.c:642
 msgid "Port"
 msgstr "Port"
 
-#: gphoto2/actions.c:529
+#: gphoto2/actions.c:643
+#, c-format
 msgid "----------------------------------------------------------\n"
 msgstr "----------------------------------------------------------\n"
 
-#: gphoto2/actions.c:546
+#: gphoto2/actions.c:661
 #, c-format
 msgid "Abilities for camera             : %s\n"
-msgstr "A kamera kÈpessÈgei              : %s\n"
+msgstr "A kamera k√©pess√©gei              : %s\n"
 
-#: gphoto2/actions.c:547
+#: gphoto2/actions.c:662
 #, c-format
 msgid "Serial port support              : %s\n"
-msgstr "Soros port t·mogat·sa            : %s\n"
+msgstr "Soros port t√°mogat√°sa            : %s\n"
 
-#: gphoto2/actions.c:549
+#: gphoto2/actions.c:664
 #, c-format
 msgid "USB support                      : %s\n"
-msgstr "USB t·mogat·s                    : %s\n"
+msgstr "USB t√°mogat√°s                    : %s\n"
 
-#: gphoto2/actions.c:552
+#: gphoto2/actions.c:667
+#, c-format
 msgid "Transfer speeds supported        :\n"
-msgstr "¡tviteli sebessÈgek              :\n"
+msgstr "√Åtviteli sebess√©gek              :\n"
 
-#: gphoto2/actions.c:554
+#: gphoto2/actions.c:669
 #, c-format
 msgid "                                 : %i\n"
 msgstr "                                 : %i\n"
 
-#: gphoto2/actions.c:557
+#: gphoto2/actions.c:672
+#, c-format
 msgid "Capture choices                  :\n"
-msgstr "LeszedÈsi lehetısÈgek            :\n"
+msgstr "Leszed√©si lehet≈ës√©gek            :\n"
 
-#: gphoto2/actions.c:559
+#: gphoto2/actions.c:674
+#, c-format
 msgid "                                 : Image\n"
-msgstr "                                 : KÈp\n"
+msgstr "                                 : K√©p\n"
 
-#: gphoto2/actions.c:561
+#: gphoto2/actions.c:678
+#, c-format
 msgid "                                 : Video\n"
 msgstr "                                 : Video\n"
 
-#: gphoto2/actions.c:563
+#: gphoto2/actions.c:682
+#, c-format
 msgid "                                 : Audio\n"
 msgstr "                                 : Hang\n"
 
-#: gphoto2/actions.c:565
+#: gphoto2/actions.c:686
+#, c-format
 msgid "                                 : Preview\n"
-msgstr "                                 : ElınÈzet\n"
+msgstr "                                 : El≈ën√©zet\n"
 
-#: gphoto2/actions.c:566
+#: gphoto2/actions.c:690
+#, fuzzy, c-format
+msgid ""
+"                                 : Capture not supported by the driver\n"
+msgstr "                                 : El≈ën√©zet\n"
+
+#: gphoto2/actions.c:692
 #, c-format
 msgid "Configuration support            : %s\n"
-msgstr "Be·llÌt·sok t·mogat·sa           : %s\n"
+msgstr "Be√°ll√≠t√°sok t√°mogat√°sa           : %s\n"
 
-#: gphoto2/actions.c:568
-#, c-format
-msgid "Delete files on camera support   : %s\n"
-msgstr "F·jltˆrlÈs t·mogat·sa a kamer·ban: %s\n"
+#: gphoto2/actions.c:694
+#, fuzzy, c-format
+msgid "Delete selected files on camera  : %s\n"
+msgstr "F√°jlt√∂rl√©s t√°mogat√°sa a kamer√°ban: %s\n"
 
-#: gphoto2/actions.c:571
+#: gphoto2/actions.c:697
+#, fuzzy, c-format
+msgid "Delete all files on camera       : %s\n"
+msgstr "F√°jlt√∂rl√©s t√°mogat√°sa a kamer√°ban: %s\n"
+
+#: gphoto2/actions.c:700
 #, c-format
 msgid "File preview (thumbnail) support : %s\n"
-msgstr "BemutatÛkÈp t·mogat·sa           : %s\n"
+msgstr "Bemutat√≥k√©p t√°mogat√°sa           : %s\n"
 
-#: gphoto2/actions.c:574
+#: gphoto2/actions.c:703
 #, c-format
 msgid "File upload support              : %s\n"
-msgstr "F·jl-feltˆltÈs t·mogat·sa        : %s\n"
+msgstr "F√°jl-felt√∂lt√©s t√°mogat√°sa        : %s\n"
 
-#: gphoto2/actions.c:591
+#: gphoto2/actions.c:719
 #, c-format
-msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
-msgstr "A portot ilyen form·ban kell megadni: 'serial:/dev/ttyS0', vagy 'usb:', de a(z) '%s'-ban hi·nyzik a kettıspont, de megprÛb·lom kital·lni, hogy lenne helyes."
+msgid ""
+"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
+"colon so I am going to guess what you mean."
+msgstr ""
+"A portot ilyen form√°ban kell megadni: 'serial:/dev/ttyS0', vagy 'usb:', de a"
+"(z) '%s'-ban hi√°nyzik a kett≈ëspont, de megpr√≥b√°lom kital√°lni, hogy lenne "
+"helyes."
 
-#: gphoto2/actions.c:630
+#: gphoto2/actions.c:753
 #, c-format
-msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
-msgstr "Nem tal·lom a megadott portot ('%s'). Olyan portot kell megadni, amit a 'gphoto2 --list-ports' parancs megtal·l. Ellenırizd, hogy jÛl Ìrtad be! (serial: vagy usb: legyen az elejÈn)"
+msgid ""
+"The port you specified ('%s') can not be found. Please specify one of the "
+"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
+"(i.e. with prefix 'serial:' or 'usb:')."
+msgstr ""
+"Nem tal√°lom a megadott portot ('%s'). Olyan portot kell megadni, amit a "
+"'gphoto2 --list-ports' parancs megtal√°l. Ellen≈ërizd, hogy j√≥l √≠rtad be! "
+"(serial: vagy usb: legyen az elej√©n)"
 
-#: gphoto2/actions.c:668
+#: gphoto2/actions.c:785
+#, c-format
 msgid "About the camera driver:"
-msgstr "A kamera meghajtÛprogramja:"
+msgstr "A kamera meghajt√≥programja:"
 
-#: gphoto2/actions.c:682
-msgid "Camera summary:"
-msgstr "Kamera ˆsszefoglalÛ:"
-
-#: gphoto2/actions.c:696
-msgid "Camera manual:"
-msgstr "Kamera kÈzikˆnyv:"
-
-#: gphoto2/actions.c:712
-msgid "You can only specify speeds for serial ports."
-msgstr "Csak a soros port sebessÈget lehet megadni."
-
-#: gphoto2/actions.c:763
+#: gphoto2/actions.c:798
 #, c-format
+msgid "Camera summary:"
+msgstr "Kamera √∂sszefoglal√≥:"
+
+#: gphoto2/actions.c:811
+#, c-format
+msgid "Camera manual:"
+msgstr "Kamera k√©zik√∂nyv:"
+
+#: gphoto2/actions.c:826
+#, c-format
+msgid "You can only specify speeds for serial ports."
+msgstr "Csak a soros port sebess√©get lehet megadni."
+
+#: gphoto2/actions.c:879
+msgid "OS/2 port by Bart van Leeuwen\n"
+msgstr "OS/2-re √°t√ºltette Bart van Leeuwen\n"
+
+#: gphoto2/actions.c:883
+#, fuzzy, c-format
 msgid ""
 "gphoto2 %s\n"
 "\n"
-"Copyright (c) 2000-2003 Lutz Mueller and others\n"
+"Copyright (c) 2000-%d Lutz Mueller and others\n"
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
-"License. For more information about these matters, see the files named COPYING.\n"
+"License. For more information about these matters, see the files named "
+"COPYING.\n"
 "\n"
-"This version of gphoto2 is using the following software versions and options:\n"
+"This version of gphoto2 is using the following software versions and "
+"options:\n"
 msgstr ""
 "gphoto2 %s\n"
 "\n"
-"Copyright (C) 2000-2003 Lutz Mueller Ès m·sok\n"
+"Copyright (C) 2000-2003 Lutz Mueller √©s m√°sok\n"
 "%s\n"
-"A gphoto2 programra nem vonatkozik SEMMILYEN GARANCIA, kivÈve, ha a\n"
-"tˆrvÈny m·skÈpp nem rendelkezik. A gphoto2 pÈld·nyokat tov·bb lehet\n"
-"adni a GNU General Public License rendelkezÈsei alapj·n. Tov·bbi \n"
-"inform·ciÛkÈrt olvasd el a COPYING f·jlt.\n"
+"A gphoto2 programra nem vonatkozik SEMMILYEN GARANCIA, kiv√©ve, ha a\n"
+"t√∂rv√©ny m√°sk√©pp nem rendelkezik. A gphoto2 p√©ld√°nyokat tov√°bb lehet\n"
+"adni a GNU General Public License rendelkez√©sei alapj√°n. Tov√°bbi \n"
+"inform√°ci√≥k√©rt olvasd el a COPYING f√°jlt.\n"
 "\n"
-"A gphoto2 ezen verziÛja a kˆvetkezı programverziÛkat Ès opciÛkat haszn·lja:\n"
+"A gphoto2 ezen verzi√≥ja a k√∂vetkez≈ë programverzi√≥kat √©s opci√≥kat haszn√°lja:\n"
 
-#: gphoto2/actions.c:776
-msgid "OS/2 port by Bart van Leeuwen\n"
-msgstr "OS/2-re ·t¸ltette Bart van Leeuwen\n"
+#: gphoto2/actions.c:1004
+#, c-format
+msgid "Getting storage information not supported for this camera.\n"
+msgstr ""
 
-#: gphoto2/actions.c:890
-msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
-msgstr "A K÷VETKEZ’ SOROKAT MINDIG ADD MEG, HA HIBAKERES…S C…LJ¡B”L A LEVELEZ’LIST¡RA ÕRSZ:"
+#: gphoto2/actions.c:1019
+#, c-format
+msgid "Read-Write"
+msgstr ""
+
+#: gphoto2/actions.c:1022
+#, c-format
+msgid "Read-Only"
+msgstr ""
+
+#: gphoto2/actions.c:1025
+#, c-format
+msgid "Read-only with delete"
+msgstr ""
+
+#: gphoto2/actions.c:1028 gphoto2/actions.c:1038
+#, c-format
+msgid "Unknown"
+msgstr ""
+
+#: gphoto2/actions.c:1041
+#, c-format
+msgid "Fixed ROM"
+msgstr ""
+
+#: gphoto2/actions.c:1044
+#, c-format
+msgid "Removable ROM"
+msgstr ""
+
+#: gphoto2/actions.c:1047
+#, c-format
+msgid "Fixed RAM"
+msgstr ""
+
+#: gphoto2/actions.c:1050
+#, c-format
+msgid "Removable RAM"
+msgstr ""
+
+#: gphoto2/actions.c:1060
+#, c-format
+msgid "Undefined"
+msgstr ""
+
+#: gphoto2/actions.c:1063
+#, c-format
+msgid "Generic Flat"
+msgstr ""
+
+#: gphoto2/actions.c:1066
+#, c-format
+msgid "Generic Hierarchical"
+msgstr ""
+
+#: gphoto2/actions.c:1069
+#, c-format
+msgid "Camera layout (DCIM)"
+msgstr ""
+
+#: gphoto2/actions.c:1107
+#, c-format
+msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
+msgstr ""
+
+#: gphoto2/actions.c:1171
+msgid ""
+"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
+"MAILING LIST:"
+msgstr ""
+"A K√ñVETKEZ≈ê SOROKAT MINDIG ADD MEG, HA HIBAKERES√âS C√âLJ√ÅB√ìL A "
+"LEVELEZ≈êLIST√ÅRA √çRSZ:"
+
+#: gphoto2/actions.c:1186
+#, c-format
+msgid "%s has been compiled with the following options:"
+msgstr ""
+
+#: gphoto2/actions.c:1304
+#, fuzzy, c-format
+msgid "%s not found in configuration tree."
+msgstr "Nem tudom be√°ll√≠tani a konfigur√°ci√≥t:"
+
+#: gphoto2/actions.c:1364
+#, c-format
+msgid "Failed to retrieve value of text widget %s."
+msgstr ""
+
+#: gphoto2/actions.c:1381
+#, c-format
+msgid "Failed to retrieve values of range widget %s."
+msgstr ""
+
+#: gphoto2/actions.c:1393
+#, c-format
+msgid "Failed to retrieve values of toggle widget %s."
+msgstr ""
+
+#: gphoto2/actions.c:1405
+#, c-format
+msgid "Failed to retrieve values of date/time widget %s."
+msgstr ""
+
+#: gphoto2/actions.c:1435
+#, c-format
+msgid "Failed to retrieve values of radio widget %s."
+msgstr ""
+
+#: gphoto2/actions.c:1476
+#, c-format
+msgid "Failed to set the value of text widget %s to %s."
+msgstr ""
+
+#: gphoto2/actions.c:1486
+#, c-format
+msgid "The passed value %s is not a floating point value."
+msgstr ""
+
+#: gphoto2/actions.c:1491
+#, c-format
+msgid "The passed value %f is not within the expected range %f - %f."
+msgstr ""
+
+#: gphoto2/actions.c:1497
+#, c-format
+msgid "Failed to set the value of range widget %s to %f."
+msgstr ""
+
+#: gphoto2/actions.c:1506
+msgid "off"
+msgstr ""
+
+#: gphoto2/actions.c:1507
+#, fuzzy
+msgid "false"
+msgstr "√ârt√©k"
+
+#: gphoto2/actions.c:1512
+#, fuzzy
+msgid "on"
+msgstr "H√©t"
+
+#: gphoto2/actions.c:1513
+msgid "true"
+msgstr ""
+
+#: gphoto2/actions.c:1518
+#, c-format
+msgid "The passed value %s is not a valid toggle value."
+msgstr ""
+
+#: gphoto2/actions.c:1524
+#, c-format
+msgid "Failed to set values %s of toggle widget %s."
+msgstr ""
+
+#: gphoto2/actions.c:1537
+#, c-format
+msgid "The passed value %s is neither a valid time nor an integer."
+msgstr ""
+
+#: gphoto2/actions.c:1544
+#, c-format
+msgid "Failed to set new time of date/time widget %s to %s."
+msgstr ""
+
+#: gphoto2/actions.c:1581
+#, c-format
+msgid "Choice %s not found within list of choices."
+msgstr ""
+
+#: gphoto2/actions.c:1589
+#, c-format
+msgid "The %s widget is not configurable."
+msgstr ""
+
+#: gphoto2/actions.c:1596
+#, c-format
+msgid "Failed to set new configuration value %s for configuration entry %s."
+msgstr ""
 
 #: gphoto2/foreach.c:254
 #, c-format
-msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
-msgstr "Hib·s a f·jlok sz·ma. Ennyit adt·l meg: %i, de csak %i f·jl van ebben a kˆnyvt·rban: '%s' (illetve az alkˆnyvt·raiban). A helyes ÈrtÈket a f·jlok list·z·s·bÛl olvashatod ki."
+msgid ""
+"Bad file number. You specified %i, but there are only %i files available in "
+"'%s' or its subfolders. Please obtain a valid file number from a file "
+"listing first."
+msgstr ""
+"Hib√°s a f√°jlok sz√°ma. Ennyit adt√°l meg: %i, de csak %i f√°jl van ebben a "
+"k√∂nyvt√°rban: '%s' (illetve az alk√∂nyvt√°raiban). A helyes √©rt√©ket a f√°jlok "
+"list√°z√°s√°b√≥l olvashatod ki."
 
-#: gphoto2/foreach.c:283
+#: gphoto2/foreach.c:279
 #, c-format
-msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
-msgstr "Hib·s a f·jlok sz·ma. %i-t adt·l meg, de csak 1 hozz·fÈrhetı f·jl van itt: '%s'."
+msgid "There are no files in folder '%s'."
+msgstr "A(z) '%s' k√∂nyvt√°rban nincsen f√°jl."
 
-#: gphoto2/foreach.c:291
+#: gphoto2/foreach.c:285
 #, c-format
-msgid "Bad file number. You specified %i, but there are only %i files available in '%s'.Please obtain a valid file number from a file listing first."
-msgstr "Hib·s a f·jlok sz·ma. %i-t adt·l meg, de csak %i hozz·fÈrhetı f·jl van itt: '%s'. A f·jlok sz·m·t a f·jlok list·j·bÛl tudhatod meg."
+msgid ""
+"Bad file number. You specified %i, but there is only 1 file available in '%"
+"s'."
+msgstr ""
+"Hib√°s a f√°jlok sz√°ma. %i-t adt√°l meg, de csak 1 hozz√°f√©rhet≈ë f√°jl van itt: '%"
+"s'."
 
-#: gphoto2/gp-params.c:53
+#: gphoto2/foreach.c:293
+#, fuzzy, c-format
+msgid ""
+"Bad file number. You specified %i, but there are only %i files available in "
+"'%s'. Please obtain a valid file number from a file listing first."
+msgstr ""
+"Hib√°s a f√°jlok sz√°ma. %i-t adt√°l meg, de csak %i hozz√°f√©rhet≈ë f√°jl van itt: "
+"'%s'. A f√°jlok sz√°m√°t a f√°jlok list√°j√°b√≥l tudhatod meg."
+
+#: gphoto2/gp-params.c:70
+#, c-format
 msgid "*** Error ***              \n"
 msgstr "*** Hiba ***              \n"
 
-#: gphoto2/gp-params.c:220
+#: gphoto2/gp-params.c:244
+#, c-format
 msgid "Press any key to continue.\n"
-msgstr "Nyomj meg egy billenty˚t a folytat·shoz.\n"
+msgstr "Nyomj meg egy billenty≈±t a folytat√°shoz.\n"
 
-#: gphoto2/gp-params.c:237
+#: gphoto2/gp-params.c:266
+#, c-format
 msgid "Not enough memory."
-msgstr "Nincs elÈg memÛria."
+msgstr "Nincs el√©g mem√≥ria."
 
-#: gphoto2/gphoto2-cmd-capture.c:201
+#: gphoto2/gphoto2-cmd-capture.c:211
 msgid "Operation cancelled"
-msgstr "M˚velet megszakÌtva"
+msgstr "M≈±velet megszak√≠tva"
 
 #: gphoto2/gphoto2-cmd-config.c:55
 msgid "</B/24>Continue"
-msgstr "</B/24>Folytat·s"
+msgstr "</B/24>Folytat√°s"
 
 #: gphoto2/gphoto2-cmd-config.c:55
 msgid "</B16>Cancel"
-msgstr "</B16>MÈgsem"
+msgstr "</B16>M√©gsem"
 
 #: gphoto2/gphoto2-cmd-config.c:61
 msgid "<C></5>Error"
@@ -398,24 +641,24 @@ msgstr "<C></5>Hiba"
 
 #: gphoto2/gphoto2-cmd-config.c:63
 msgid "Could not set configuration:"
-msgstr "Nem tudom be·llÌtani a konfigur·ciÛt:"
+msgstr "Nem tudom be√°ll√≠tani a konfigur√°ci√≥t:"
 
 #: gphoto2/gphoto2-cmd-config.c:107
 msgid "Exit"
-msgstr "KilÈpÈs"
+msgstr "Kil√©p√©s"
 
 #: gphoto2/gphoto2-cmd-config.c:109
 msgid "Back"
 msgstr "Vissza"
 
-#: gphoto2/gphoto2-cmd-config.c:253
+#: gphoto2/gphoto2-cmd-config.c:254
 msgid "Time: "
-msgstr "Idı: "
+msgstr "Id≈ë: "
 
-#: gphoto2/gphoto2-cmd-config.c:312 gphoto2/gphoto2-cmd-config.c:340
+#: gphoto2/gphoto2-cmd-config.c:313 gphoto2/gphoto2-cmd-config.c:341
 #: gphoto2/gphoto2-cmd-config.c:400 gphoto2/gphoto2-cmd-config.c:463
 msgid "Value: "
-msgstr "…rtÈk: "
+msgstr "√ârt√©k: "
 
 #: gphoto2/gphoto2-cmd-config.c:362
 msgid "Yes"
@@ -425,413 +668,188 @@ msgstr "Igen"
 msgid "No"
 msgstr "Nem"
 
-#: gphoto2/main.c:161 gphoto2/main.c:1461
-msgid "Turn on debugging"
-msgstr "HibakeresÈs bekapcsolva"
-
-#: gphoto2/main.c:162 gphoto2/main.c:1463
-msgid "Quiet output (default=verbose)"
-msgstr "Csendes kimenet (alapban: bıbeszÈd˚)"
-
-#: gphoto2/main.c:166 gphoto2/main.c:1467
-msgid "Display version and exit"
-msgstr "VerziÛ kiÌr·sa Ès kilÈpÈs"
-
-#: gphoto2/main.c:167
-msgid "Displays this help screen"
-msgstr "Ez a s˙gÛ oldal"
-
-#: gphoto2/main.c:168 gphoto2/main.c:1469
-msgid "List supported camera models"
-msgstr "T·mogatott kamer·k list·ja"
-
-#: gphoto2/main.c:169 gphoto2/main.c:1471
-msgid "List supported port devices"
-msgstr "T·mogatott port eszkˆzˆk list·ja"
-
-#: gphoto2/main.c:170 gphoto2/main.c:1473
-msgid "Send file to stdout"
-msgstr "F·jl k¸ldÈse az stdout-ra"
-
-#: gphoto2/main.c:171 gphoto2/main.c:1475
-msgid "Print filesize before data"
-msgstr "F·jlmÈret nyomtat·sa az adatok elıtt"
-
-#: gphoto2/main.c:172 gphoto2/main.c:1477
-msgid "List auto-detected cameras"
-msgstr "Felismert kamer·k list·ja"
-
-#: gphoto2/main.c:175 gphoto2/main.c:1479
-msgid "Specify port device"
-msgstr "Port eszkˆz megad·sa"
-
-#: gphoto2/main.c:176 gphoto2/main.c:1481
-msgid "Specify serial transfer speed"
-msgstr "Soros ·tviteli sebessÈg megad·sa"
-
-#: gphoto2/main.c:177 gphoto2/main.c:1483
-msgid "Specify camera model"
-msgstr "Kamera tÌpus·nak megad·sa"
-
-#: gphoto2/main.c:178 gphoto2/main.c:1485
-msgid "Specify a filename"
-msgstr "F·jlnÈv megad·sa"
-
-#: gphoto2/main.c:179 gphoto2/main.c:1487
-msgid "(expert only) Override USB IDs"
-msgstr "(csak szakÈrtıknek) USB ID-k fel¸lÌr·sa"
-
-#: gphoto2/main.c:182 gphoto2/main.c:1489
-msgid "Display camera abilities"
-msgstr "Kamera kÈpessÈgeinek kiÌr·sa"
-
-#: gphoto2/main.c:183 gphoto2/main.c:1491
-msgid "Specify camera folder (default=\"/\")"
-msgstr "Kamera kˆnyvt·r·nak megad·sa (alapbÛl: \"/\")"
-
-#: gphoto2/main.c:184 gphoto2/main.c:1493
-msgid "Recursion (default for download)"
-msgstr "RekurziÛ (alapÈrtelmezÈs letˆltÈskor)"
-
-#: gphoto2/main.c:185 gphoto2/main.c:1495
-msgid "No recursion (default for deletion)"
-msgstr "Nincs rekurziÛ (tˆrlÈskor alapÈrtelmezÈs)"
-
-#: gphoto2/main.c:186 gphoto2/main.c:1497
-msgid "List folders in folder"
-msgstr "Kˆnyvt·rban lÈvı alkˆnyvt·rak list·z·sa"
-
-#: gphoto2/main.c:187 gphoto2/main.c:1499
-msgid "List files in folder"
-msgstr "Kˆnyvt·rban lÈvı f·jlok list·z·sa"
-
-#: gphoto2/main.c:188 gphoto2/main.c:189
-msgid "name"
-msgstr "nÈv"
-
-#: gphoto2/main.c:188 gphoto2/main.c:1501
-msgid "Create a directory"
-msgstr "Kˆnyvt·r lÈtrehoz·sa"
-
-#: gphoto2/main.c:189 gphoto2/main.c:1503
-msgid "Remove a directory"
-msgstr "Kˆnyvt·r tˆrlÈse"
-
-#: gphoto2/main.c:190 gphoto2/main.c:1505
-msgid "Display number of files"
-msgstr "F·jlok sz·m·nak kiÌr·sa"
-
-#: gphoto2/main.c:191 gphoto2/main.c:1507
-msgid "Get files given in range"
-msgstr "A megadott tartom·nyban lÈvı f·jlok letˆltÈse"
-
-#: gphoto2/main.c:192 gphoto2/main.c:1509
-msgid "Get all files from folder"
-msgstr "A kˆnyvt·rban lÈvı ˆsszes f·jl letˆltÈse"
-
-#: gphoto2/main.c:193 gphoto2/main.c:1511
-msgid "Get thumbnails given in range"
-msgstr "A tartom·nyban megadott bemutatÛkÈpek letˆltÈse"
-
-#: gphoto2/main.c:194 gphoto2/main.c:1514
-msgid "Get all thumbnails from folder"
-msgstr "÷sszes bemutatÛkÈp letˆltÈse a kˆnyvt·rbÛl"
-
-#: gphoto2/main.c:195 gphoto2/main.c:1517
-msgid "Get raw data given in range"
-msgstr "Nyers adatok letˆltÈse a megadott tartom·nybÛl"
-
-#: gphoto2/main.c:196 gphoto2/main.c:1520
-msgid "Get all raw data from folder"
-msgstr "Nyers adatok letˆltÈse kˆnyvt·rbÛl"
-
-#: gphoto2/main.c:197 gphoto2/main.c:1523
-msgid "Get audio data given in range"
-msgstr "Audio adatok letˆltÈse a megadott tartom·nybÛl"
-
-#: gphoto2/main.c:198 gphoto2/main.c:1526
-msgid "Get all audio data from folder"
-msgstr "÷sszes audio adat letˆltÈse kˆnyvt·rbÛl"
-
-#: gphoto2/main.c:199 gphoto2/main.c:1528
-msgid "Delete files given in range"
-msgstr "A tartom·nyban megadott f·jlok tˆrlÈse"
-
-#: gphoto2/main.c:200 gphoto2/main.c:1530
-msgid "Delete all files in folder"
-msgstr "A kˆnyvt·rban lÈvı ˆsszes f·jl tˆrlÈse"
-
-#: gphoto2/main.c:201 gphoto2/main.c:1532
-msgid "Upload a file to camera"
-msgstr "F·jl feltˆltÈse a kamer·ba"
-
-#: gphoto2/main.c:203 gphoto2/main.c:1535
-msgid "Configure"
-msgstr "Be·llÌt·s"
-
-#: gphoto2/main.c:205 gphoto2/main.c:1539
-msgid "Capture a quick preview"
-msgstr "Gyors elınÈzet kÈszÌtÈse"
-
-#: gphoto2/main.c:206 gphoto2/main.c:1541
-msgid "Capture an image"
-msgstr "KÈp kÈszÌtÈse"
-
-#: gphoto2/main.c:207
-msgid "Capture a movie "
-msgstr "Film kÈszÌtÈse "
-
-#: gphoto2/main.c:208 gphoto2/main.c:1545
-msgid "Capture an audio clip"
-msgstr "Audio felvÈtel kÈszÌtÈse"
-
-#: gphoto2/main.c:210 gphoto2/main.c:1548 gphoto2/shell.c:113
-msgid "Show EXIF information"
-msgstr "EXIF inform·ciÛ mutat·sa"
-
-#: gphoto2/main.c:212 gphoto2/main.c:1551 gphoto2/shell.c:109
-msgid "Show info"
-msgstr "Info mutat·sa"
-
-#: gphoto2/main.c:213
-msgid "Summary of camera status"
-msgstr "A kamera ·llapot·nak ˆsszegzÈse"
-
-#: gphoto2/main.c:214
-msgid "Camera driver manual"
-msgstr "A kamera-meghajtÛ kÈzikˆnyve"
-
-#: gphoto2/main.c:215
-msgid "About the camera driver"
-msgstr "A kamera-meghajtÛrÛl"
-
-#: gphoto2/main.c:216 gphoto2/main.c:1559
-msgid "gPhoto shell"
-msgstr "gPhoto burok"
-
-#: gphoto2/main.c:343 gphoto2/main.c:1192
-msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
-msgstr "USB eszkˆz megad·s·hoz haszn·ld a z·rÛjelben lÈvı mÛdot (a:b=c:d). Itt \"a:b\" a felismert eszkˆz, amit \"c:d\" eszkˆzkÈnt szeretnÈnk haszn·lni. Az a, b, c, d hexadecim·lis sz·mok, '0x'-el kell kezdıdni¸k.\n"
-
-#: gphoto2/main.c:466
-msgid "Jan"
-msgstr "Jan"
-
-#: gphoto2/main.c:466
-msgid "January"
-msgstr "Janu·r"
-
-#: gphoto2/main.c:467
-msgid "Feb"
-msgstr "Feb"
-
-#: gphoto2/main.c:467
-msgid "February"
-msgstr "Febru·r"
-
-#: gphoto2/main.c:468
-msgid "Mar"
-msgstr "M·rc"
-
-#: gphoto2/main.c:468
-msgid "March"
-msgstr "M·rcius"
-
-#: gphoto2/main.c:469
-msgid "Apr"
-msgstr "¡pr"
-
-#: gphoto2/main.c:469
-msgid "April"
-msgstr "¡prilis"
-
-#: gphoto2/main.c:470
-msgid "May"
-msgstr "M·jus"
-
-#: gphoto2/main.c:471
-msgid "Jun"
-msgstr "J˙n"
-
-#: gphoto2/main.c:471
-msgid "June"
-msgstr "J˙nius"
-
-#: gphoto2/main.c:472
-msgid "Jul"
-msgstr "J˙l"
-
-#: gphoto2/main.c:472
-msgid "July"
-msgstr "J˙lius"
-
-#: gphoto2/main.c:473
-msgid "Aug"
-msgstr "Aug"
-
-#: gphoto2/main.c:473
-msgid "August"
-msgstr "Augusztus"
-
-#: gphoto2/main.c:474
-msgid "Sep"
-msgstr "Szep"
-
-#: gphoto2/main.c:474
-msgid "September"
-msgstr "Szeptember"
-
-#: gphoto2/main.c:475
-msgid "Oct"
-msgstr "Okt"
-
-#: gphoto2/main.c:475
-msgid "October"
-msgstr "OktÛber"
-
-#: gphoto2/main.c:476
-msgid "Nov"
-msgstr "Nov"
-
-#: gphoto2/main.c:476
-msgid "November"
-msgstr "November"
-
-#: gphoto2/main.c:477
-msgid "Dec"
-msgstr "Dec"
-
-#: gphoto2/main.c:477
-msgid "December"
-msgstr "December"
-
-#: gphoto2/main.c:484
-msgid "Sun"
-msgstr "Vas"
-
-#: gphoto2/main.c:484
-msgid "Sunday"
-msgstr "Vas·rnap"
-
-#: gphoto2/main.c:485
-msgid "Mon"
-msgstr "HÈt"
-
-#: gphoto2/main.c:485
-msgid "Monday"
-msgstr "HÈtfı"
-
-#: gphoto2/main.c:486
-msgid "Tue"
-msgstr "Kedd"
-
-#: gphoto2/main.c:486
-msgid "Tuesday"
-msgstr "Kedd"
-
-#: gphoto2/main.c:487
-msgid "Wed"
-msgstr "Sze"
-
-#: gphoto2/main.c:487
-msgid "Wednesday"
-msgstr "Szerda"
-
-#: gphoto2/main.c:488
-msgid "Thu"
-msgstr "Cs¸"
-
-#: gphoto2/main.c:488
-msgid "Thursday"
-msgstr "Cs¸tˆrtˆk"
-
-#: gphoto2/main.c:489
-msgid "Fri"
-msgstr "PÈn"
-
-#: gphoto2/main.c:489
-msgid "Friday"
-msgstr "PÈntek"
-
-#: gphoto2/main.c:490
-msgid "Sat"
-msgstr "Szo"
-
-#: gphoto2/main.c:490
-msgid "Saturday"
-msgstr "Szombat"
-
-#: gphoto2/main.c:552
+#: gphoto2/main.c:230
 #, c-format
-msgid "You cannot use '%n' in combination with non-persistent files!"
-msgstr "Nem haszn·lhatod a(z) '%n'-t nem-·llandÛ f·jlokkal kapcsolatban!"
+msgid "Zero padding numbers in file names is only possible with %%n."
+msgstr ""
 
-#: gphoto2/main.c:575
+#: gphoto2/main.c:239
+#, fuzzy, c-format
+msgid "You cannot use %%n zero padding without a precision value!"
+msgstr "Nem haszn√°lhatod a(z) '%n'-t nem-√°lland√≥ f√°jlokkal kapcsolatban!"
+
+#: gphoto2/main.c:255
+#, fuzzy, c-format
+msgid "You cannot use '%%n' in combination with non-persistent files!"
+msgstr "Nem haszn√°lhatod a(z) '%n'-t nem-√°lland√≥ f√°jlokkal kapcsolatban!"
+
+#: gphoto2/main.c:286
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr "A kamera ·ltal adott f·jlnÈv ('%s') nem tartalmaz utÛtagot!"
+msgstr "A kamera √°ltal adott f√°jln√©v ('%s') nem tartalmaz ut√≥tagot!"
 
-#: gphoto2/main.c:654
+#: gphoto2/main.c:341
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
-msgstr "…rvÈnytelen form·tum '%s' (hib·s pozÌciÛ: %i)."
+msgstr "√ârv√©nytelen form√°tum '%s' (hib√°s poz√≠ci√≥: %i)."
 
-#: gphoto2/main.c:701
+#: gphoto2/main.c:394
 #, c-format
 msgid "File %s exists. Overwrite? [y|n] "
-msgstr "A(z) %s f·jl lÈtezik. Fel¸lÌrjuk? [y|n] "
+msgstr "A(z) %s f√°jl l√©tezik. Fel√ºl√≠rjuk? [y|n] "
 
-#: gphoto2/main.c:712
+#: gphoto2/main.c:406
+#, c-format
 msgid "Specify new filename? [y|n] "
-msgstr "⁄j f·jlnevet adsz meg? [y|n] "
+msgstr "√öj f√°jlnevet adsz meg? [y|n] "
 
-#: gphoto2/main.c:721
+#: gphoto2/main.c:416
+#, c-format
 msgid "Enter new filename: "
-msgstr "⁄j f·jlnÈv megad·sa: "
+msgstr "√öj f√°jln√©v megad√°sa: "
 
-#: gphoto2/main.c:726
+#: gphoto2/main.c:422
 #, c-format
 msgid "Saving file as %s\n"
-msgstr "F·jl mentÈse mint %s\n"
+msgstr "F√°jl ment√©se mint %s\n"
 
-#: gphoto2/main.c:918
+#: gphoto2/main.c:607
+#, c-format
+msgid "Time-lapse mode enabled (interval: %ds).\n"
+msgstr ""
+
+#: gphoto2/main.c:610
+#, c-format
+msgid "Standing by waiting for SIGUSR1 to capture.\n"
+msgstr ""
+
+#: gphoto2/main.c:619
+#, c-format
+msgid "Capturing frame #%d...\n"
+msgstr ""
+
+#: gphoto2/main.c:621
+#, c-format
+msgid "Capturing frame #%d/%d...\n"
+msgstr ""
+
+#: gphoto2/main.c:628
+#, fuzzy
+msgid "Could not capture."
+msgstr "Nem tudom √©rtelmezni az EXIF adatot."
+
+#: gphoto2/main.c:637
+#, c-format
+msgid "Capture failed (auto-focus problem?)...\n"
+msgstr ""
+
+#: gphoto2/main.c:651
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
-msgstr "Az ˙j f·jl helye a kamer·ban: %s%s%s\n"
+msgstr "Az √∫j f√°jl helye a kamer√°ban: %s%s%s\n"
 
-#: gphoto2/main.c:1050
+#: gphoto2/main.c:660 gphoto2/main.c:797
+#, fuzzy
+msgid "Could not set folder."
+msgstr "Nem tudom be√°ll√≠tani a konfigur√°ci√≥t:"
+
+#: gphoto2/main.c:667 gphoto2/main.c:803
+#, fuzzy
+msgid "Could not get image."
+msgstr "Nem tudom be√°ll√≠tani a konfigur√°ci√≥t:"
+
+#: gphoto2/main.c:674 gphoto2/main.c:810
+msgid "Buggy libcanon.so?"
+msgstr ""
+
+#: gphoto2/main.c:680
+#, fuzzy, c-format
+msgid "Deleting file %s%s%s on the camera\n"
+msgstr "Az √∫j f√°jl helye a kamer√°ban: %s%s%s\n"
+
+#: gphoto2/main.c:685 gphoto2/main.c:819
+#, fuzzy
+msgid "Could not delete image."
+msgstr "Nem tal√°lom a HOME k√∂nyvt√°rat."
+
+#: gphoto2/main.c:707
+#, fuzzy
+msgid "Could not close camera connection."
+msgstr "Nem tudom be√°ll√≠tani a konfigur√°ci√≥t:"
+
+#: gphoto2/main.c:721
+#, c-format
+msgid "Sleeping for %d second(s)...\n"
+msgstr ""
+
+#: gphoto2/main.c:726 gphoto2/main.c:754
+#, c-format
+msgid "Awakened by SIGUSR1...\n"
+msgstr ""
+
+#: gphoto2/main.c:729
+#, c-format
+msgid "not sleeping (%d seconds behind schedule)\n"
+msgstr ""
+
+#: gphoto2/main.c:771
+#, c-format
+msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
+msgstr ""
+
+#: gphoto2/main.c:791
+#, c-format
+msgid "New file %s/%s, downloading...\n"
+msgstr ""
+
+#: gphoto2/main.c:915
+#, c-format
 msgid "ERROR: "
 msgstr "HIBA: "
 
-#: gphoto2/main.c:1073
+#: gphoto2/main.c:938
+#, c-format
 msgid ""
 "\n"
 "Aborting...\n"
 msgstr ""
 "\n"
-"MegszakÌt·s...\n"
+"Megszak√≠t√°s...\n"
 
-#: gphoto2/main.c:1079
+#: gphoto2/main.c:944
+#, c-format
 msgid "Aborted.\n"
-msgstr "MegszakÌtva.\n"
+msgstr "Megszak√≠tva.\n"
 
-#: gphoto2/main.c:1084
+#: gphoto2/main.c:949
+#, c-format
 msgid ""
 "\n"
 "Cancelling...\n"
 msgstr ""
 "\n"
-"KilÈpÈs...\n"
+"Kil√©p√©s...\n"
 
-#: gphoto2/main.c:1291
+#: gphoto2/main.c:1088
+#, c-format
+msgid ""
+"Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
+"c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
+msgstr ""
+"USB eszk√∂z megad√°s√°hoz haszn√°ld a z√°r√≥jelben l√©v≈ë m√≥dot (a:b=c:d). Itt \"a:b"
+"\" a felismert eszk√∂z, amit \"c:d\" eszk√∂zk√©nt szeretn√©nk haszn√°lni. Az a, "
+"b, c, d hexadecim√°lis sz√°mok, '0x'-el kell kezd≈ëdni√ºk.\n"
+
+#: gphoto2/main.c:1245
 msgid "gphoto2 has been compiled without support for CDK."
-msgstr "A gphoto2 CDK t·mogat·s nÈlk¸l lett lefordÌtva."
+msgstr "A gphoto2 CDK t√°mogat√°s n√©lk√ºl lett leford√≠tva."
 
-#: gphoto2/main.c:1404
+#: gphoto2/main.c:1433
+#, c-format
 msgid "Operation cancelled.\n"
-msgstr "M˚velet megszakÌtva.\n"
+msgstr "M≈±velet megszak√≠tva.\n"
 
-#: gphoto2/main.c:1408
+#: gphoto2/main.c:1437
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -840,7 +858,8 @@ msgstr ""
 "*** Hiba (%i: '%s') ***        \n"
 "\n"
 
-#: gphoto2/main.c:1412
+#: gphoto2/main.c:1441
+#, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
 "Debugging messages may help finding a solution to your problem.\n"
@@ -849,258 +868,763 @@ msgid ""
 "gphoto2 as follows:\n"
 "\n"
 msgstr ""
-"Hibakeresı ¸zenetekhez haszn·ld a --debug opciÛt.\n"
-"A hibakeresı ¸zenetek segÌthetnek megold·st tal·lni a problÈm·ra.\n"
-"Ha sz·ndÈkodban ·ll hibajelentÈst k¸ldeni a gphoto fejlesztık levelezÈsi\n"
-"list·j·ra <gphoto-devel@lists.sourceforge.net>, lÈgy szÌves Ìgy futtasd a gphoto-t:\n"
+"Hibakeres≈ë √ºzenetekhez haszn√°ld a --debug opci√≥t.\n"
+"A hibakeres≈ë √ºzenetek seg√≠thetnek megold√°st tal√°lni a probl√©m√°ra.\n"
+"Ha sz√°nd√©kodban √°ll hibajelent√©st k√ºldeni a gphoto fejleszt≈ëk levelez√©si\n"
+"list√°j√°ra <gphoto-devel@lists.sourceforge.net>, l√©gy sz√≠ves √≠gy futtasd a "
+"gphoto-t:\n"
 
-#: gphoto2/main.c:1465
-msgid "Overwrite files without asking."
-msgstr "F·jlok fel¸lÌr·sa kÈrdezÈs nÈlk¸l."
+#: gphoto2/main.c:1530
+msgid "Print complete help message on program usage"
+msgstr ""
 
-#: gphoto2/main.c:1479
-msgid "path"
-msgstr "˙tvonal"
+#: gphoto2/main.c:1532
+msgid "Print short message on program usage"
+msgstr ""
 
-#: gphoto2/main.c:1481
-msgid "speed"
-msgstr "sebessÈg"
+#: gphoto2/main.c:1534
+msgid "Turn on debugging"
+msgstr "Hibakeres√©s bekapcsolva"
 
-#: gphoto2/main.c:1483
-msgid "model"
-msgstr "tÌpus"
+#: gphoto2/main.c:1536
+msgid "Name of file to write debug info to"
+msgstr ""
 
-#: gphoto2/main.c:1485
-msgid "filename"
-msgstr "f·jlnÈv"
+#: gphoto2/main.c:1536 gphoto2/main.c:1541 gphoto2/main.c:1547
+msgid "FILENAME"
+msgstr ""
 
-#: gphoto2/main.c:1487
-msgid "usbid"
-msgstr "usb id"
+#: gphoto2/main.c:1538
+msgid "Quiet output (default=verbose)"
+msgstr "Csendes kimenet (alapban: b≈ëbesz√©d≈±)"
 
-#: gphoto2/main.c:1491
-msgid "folder"
-msgstr "kˆnyvt·r"
+#: gphoto2/main.c:1540
+msgid "Hook script to call after downloads, captures, etc."
+msgstr ""
 
-#: gphoto2/main.c:1543
-msgid "Capture a movie"
-msgstr "MozgÛkÈp felvÈtel"
+#: gphoto2/main.c:1547
+msgid "Specify port device"
+msgstr "Port eszk√∂z megad√°sa"
+
+#: gphoto2/main.c:1549
+msgid "Specify serial transfer speed"
+msgstr "Soros √°tviteli sebess√©g megad√°sa"
+
+#: gphoto2/main.c:1549
+msgid "SPEED"
+msgstr ""
+
+#: gphoto2/main.c:1551
+msgid "Specify camera model"
+msgstr "Kamera t√≠pus√°nak megad√°sa"
+
+#: gphoto2/main.c:1551
+msgid "MODEL"
+msgstr ""
 
 #: gphoto2/main.c:1553
+msgid "(expert only) Override USB IDs"
+msgstr "(csak szak√©rt≈ëknek) USB ID-k fel√ºl√≠r√°sa"
+
+#: gphoto2/main.c:1553
+msgid "USBIDs"
+msgstr ""
+
+#: gphoto2/main.c:1559
+msgid "Display version and exit"
+msgstr "Verzi√≥ ki√≠r√°sa √©s kil√©p√©s"
+
+#: gphoto2/main.c:1561
+msgid "List supported camera models"
+msgstr "T√°mogatott kamer√°k list√°ja"
+
+#: gphoto2/main.c:1563
+msgid "List supported port devices"
+msgstr "T√°mogatott port eszk√∂z√∂k list√°ja"
+
+#: gphoto2/main.c:1565
+#, fuzzy
+msgid "Display camera/driver abilities"
+msgstr "Kamera k√©pess√©geinek ki√≠r√°sa"
+
+#: gphoto2/main.c:1572
+msgid "Configure"
+msgstr "Be√°ll√≠t√°s"
+
+#: gphoto2/main.c:1575
+#, fuzzy
+msgid "List configuration tree"
+msgstr "Nem tudom be√°ll√≠tani a konfigur√°ci√≥t:"
+
+#: gphoto2/main.c:1577
+#, fuzzy
+msgid "Get configuration value"
+msgstr "Nem tudom be√°ll√≠tani a konfigur√°ci√≥t:"
+
+#: gphoto2/main.c:1579
+#, fuzzy
+msgid "Set configuration value"
+msgstr "Nem tudom be√°ll√≠tani a konfigur√°ci√≥t:"
+
+#: gphoto2/main.c:1585
+msgid "Wait for event from camera"
+msgstr ""
+
+#: gphoto2/main.c:1588
+msgid "Capture a quick preview"
+msgstr "Gyors el≈ën√©zet k√©sz√≠t√©se"
+
+#: gphoto2/main.c:1590
+msgid "Set number of frames to capture (default=infinite)"
+msgstr ""
+
+#: gphoto2/main.c:1590
+msgid "COUNT"
+msgstr ""
+
+#: gphoto2/main.c:1592
+msgid "Set capture interval in seconds"
+msgstr ""
+
+#: gphoto2/main.c:1592
+msgid "SECONDS"
+msgstr ""
+
+#: gphoto2/main.c:1594
+msgid "Reset capture interval on signal (default=no)"
+msgstr ""
+
+#: gphoto2/main.c:1596
+msgid "Capture an image"
+msgstr "K√©p k√©sz√≠t√©se"
+
+#: gphoto2/main.c:1598
+#, fuzzy
+msgid "Capture an image and download it"
+msgstr "K√©p k√©sz√≠t√©se"
+
+#: gphoto2/main.c:1600
+msgid "Capture a movie"
+msgstr "Mozg√≥k√©p felv√©tel"
+
+#: gphoto2/main.c:1602
+msgid "Capture an audio clip"
+msgstr "Audio felv√©tel k√©sz√≠t√©se"
+
+#: gphoto2/main.c:1604
+msgid "Wait for shutter release on the camera and download"
+msgstr ""
+
+#: gphoto2/main.c:1610
+msgid "List folders in folder"
+msgstr "K√∂nyvt√°rban l√©v≈ë alk√∂nyvt√°rak list√°z√°sa"
+
+#: gphoto2/main.c:1612
+msgid "List files in folder"
+msgstr "K√∂nyvt√°rban l√©v≈ë f√°jlok list√°z√°sa"
+
+#: gphoto2/main.c:1614
+msgid "Create a directory"
+msgstr "K√∂nyvt√°r l√©trehoz√°sa"
+
+#: gphoto2/main.c:1614 gphoto2/main.c:1616
+msgid "DIRNAME"
+msgstr ""
+
+#: gphoto2/main.c:1616
+msgid "Remove a directory"
+msgstr "K√∂nyvt√°r t√∂rl√©se"
+
+#: gphoto2/main.c:1618
+msgid "Display number of files"
+msgstr "F√°jlok sz√°m√°nak ki√≠r√°sa"
+
+#: gphoto2/main.c:1620
+msgid "Get files given in range"
+msgstr "A megadott tartom√°nyban l√©v≈ë f√°jlok let√∂lt√©se"
+
+#: gphoto2/main.c:1620 gphoto2/main.c:1624 gphoto2/main.c:1629
+#: gphoto2/main.c:1636 gphoto2/main.c:1642 gphoto2/main.c:1647
+msgid "RANGE"
+msgstr ""
+
+#: gphoto2/main.c:1622
+msgid "Get all files from folder"
+msgstr "A k√∂nyvt√°rban l√©v≈ë √∂sszes f√°jl let√∂lt√©se"
+
+#: gphoto2/main.c:1624
+msgid "Get thumbnails given in range"
+msgstr "A tartom√°nyban megadott bemutat√≥k√©pek let√∂lt√©se"
+
+#: gphoto2/main.c:1627
+msgid "Get all thumbnails from folder"
+msgstr "√ñsszes bemutat√≥k√©p let√∂lt√©se a k√∂nyvt√°rb√≥l"
+
+#: gphoto2/main.c:1629
+#, fuzzy
+msgid "Get metadata given in range"
+msgstr "Nyers adatok let√∂lt√©se a megadott tartom√°nyb√≥l"
+
+#: gphoto2/main.c:1631
+#, fuzzy
+msgid "Get all metadata from folder"
+msgstr "Nyers adatok let√∂lt√©se k√∂nyvt√°rb√≥l"
+
+#: gphoto2/main.c:1633
+msgid "Upload metadata for file"
+msgstr ""
+
+#: gphoto2/main.c:1636
+msgid "Get raw data given in range"
+msgstr "Nyers adatok let√∂lt√©se a megadott tartom√°nyb√≥l"
+
+#: gphoto2/main.c:1639
+msgid "Get all raw data from folder"
+msgstr "Nyers adatok let√∂lt√©se k√∂nyvt√°rb√≥l"
+
+#: gphoto2/main.c:1642
+msgid "Get audio data given in range"
+msgstr "Audio adatok let√∂lt√©se a megadott tartom√°nyb√≥l"
+
+#: gphoto2/main.c:1645
+msgid "Get all audio data from folder"
+msgstr "√ñsszes audio adat let√∂lt√©se k√∂nyvt√°rb√≥l"
+
+#: gphoto2/main.c:1647
+msgid "Delete files given in range"
+msgstr "A tartom√°nyban megadott f√°jlok t√∂rl√©se"
+
+#: gphoto2/main.c:1649
+msgid "Delete all files in folder"
+msgstr "A k√∂nyvt√°rban l√©v≈ë √∂sszes f√°jl t√∂rl√©se"
+
+#: gphoto2/main.c:1651
+msgid "Upload a file to camera"
+msgstr "F√°jl felt√∂lt√©se a kamer√°ba"
+
+#: gphoto2/main.c:1651
+msgid "filename"
+msgstr "f√°jln√©v"
+
+#: gphoto2/main.c:1653
+#, fuzzy
+msgid "Specify a filename or filename pattern"
+msgstr "F√°jln√©v megad√°sa"
+
+#: gphoto2/main.c:1653
+msgid "FILENAME_PATTERN"
+msgstr ""
+
+#: gphoto2/main.c:1655
+msgid "Specify camera folder (default=\"/\")"
+msgstr "Kamera k√∂nyvt√°r√°nak megad√°sa (alapb√≥l: \"/\")"
+
+#: gphoto2/main.c:1655
+msgid "FOLDER"
+msgstr ""
+
+#: gphoto2/main.c:1657
+msgid "Recursion (default for download)"
+msgstr "Rekurzi√≥ (alap√©rtelmez√©s let√∂lt√©skor)"
+
+#: gphoto2/main.c:1659
+msgid "No recursion (default for deletion)"
+msgstr "Nincs rekurzi√≥ (t√∂rl√©skor alap√©rtelmez√©s)"
+
+#: gphoto2/main.c:1661
+msgid "Process new files only"
+msgstr ""
+
+#: gphoto2/main.c:1663
+#, fuzzy
+msgid "Overwrite files without asking"
+msgstr "F√°jlok fel√ºl√≠r√°sa k√©rdez√©s n√©lk√ºl."
+
+#: gphoto2/main.c:1669
+msgid "Send file to stdout"
+msgstr "F√°jl k√ºld√©se az stdout-ra"
+
+#: gphoto2/main.c:1671
+msgid "Print filesize before data"
+msgstr "F√°jlm√©ret nyomtat√°sa az adatok el≈ëtt"
+
+#: gphoto2/main.c:1673
+msgid "List auto-detected cameras"
+msgstr "Felismert kamer√°k list√°ja"
+
+#: gphoto2/main.c:1677 gphoto2/shell.c:133
+msgid "Show EXIF information"
+msgstr "EXIF inform√°ci√≥ mutat√°sa"
+
+#: gphoto2/main.c:1680 gphoto2/shell.c:127
+msgid "Show info"
+msgstr "Info mutat√°sa"
+
+#: gphoto2/main.c:1682
 msgid "Show summary"
-msgstr "÷sszegzÈs"
+msgstr "√ñsszegz√©s"
 
-#: gphoto2/main.c:1555
+#: gphoto2/main.c:1684
 msgid "Show camera driver manual"
-msgstr "Kamera meghajtÛ-program kÈzikˆnyve"
+msgstr "Kamera meghajt√≥-program k√©zik√∂nyve"
 
-#: gphoto2/main.c:1557
+#: gphoto2/main.c:1686
 msgid "About the camera driver manual"
-msgstr "A kamera meghajtÛ-program kÈzikˆnyvÈrıl"
+msgstr "A kamera meghajt√≥-program k√©zik√∂nyv√©r≈ël"
 
-#: gphoto2/main.c:1784
-msgid "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
-msgstr "A gPhoto2 OS/2-es verziÛja igÈnyli a CAMLIBS kˆrnyezeti v·ltozÛ be·llÌt·s·t. Oda mutasson, ahol a kamera f¸ggvÈnykˆnyvt·rai vannak (pÈld·ul SET CAMLIBS=C:\\GPHOTO2\\CAM)\n"
+#: gphoto2/main.c:1688
+#, fuzzy
+msgid "Show storage information"
+msgstr "EXIF inform√°ci√≥ mutat√°sa"
 
-#: gphoto2/main.c:1794
-msgid "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-msgstr "A gPhoto2 OS/2-es verziÛja igÈnyli az IOLIBS kˆrnyezeti v·ltozÛ be·llÌt·s·t. Oda mutasson, ahol az IO f¸ggvÈnykˆnyvt·rak vannak (pÈld·ul SET IOLIBS=C:\\GPHOTO2\\IOLIBS)\n"
+#: gphoto2/main.c:1690
+msgid "gPhoto shell"
+msgstr "gPhoto burok"
 
-#: gphoto2/options.c:181
-msgid "Usage:\n"
-msgstr "Haszn·lat:\n"
-
-#: gphoto2/options.c:184
-msgid ""
-"Short/long options (& argument)        Description\n"
-"--------------------------------------------------------------------------------\n"
+#: gphoto2/main.c:1696
+msgid "Common options"
 msgstr ""
-"Rˆvid/hossz˙ opciÛk (Ès paramÈter)      LeÌr·s\n"
-"--------------------------------------------------------------------------------\n"
 
-#: gphoto2/options.c:209
-#, c-format
-msgid "%-38s %s\n"
-msgstr "%-38s %s\n"
-
-#: gphoto2/options.c:214
-msgid ""
-"--------------------------------------------------------------------------------\n"
-"[Use double-quotes around arguments]        [Picture numbers begin with one (1)]\n"
+#: gphoto2/main.c:1698
+msgid "Miscellaneous options (unsorted)"
 msgstr ""
-"--------------------------------------------------------------------------------\n"
-"[Haszn·lj dupla-idÈzıjelet a paramÈterek kˆr¸l]  [A kÈpek sz·moz·sa 1-tıl kezdıdik]\n"
 
-#: gphoto2/range.c:103 gphoto2/range.c:157
+#: gphoto2/main.c:1700
+msgid "Get information on software and host system (not from the camera)"
+msgstr ""
+
+#: gphoto2/main.c:1702
+#, fuzzy
+msgid "Specify the camera to use"
+msgstr "Kamera t√≠pus√°nak megad√°sa"
+
+#: gphoto2/main.c:1704
+#, fuzzy
+msgid "Camera and software configuration"
+msgstr "Nem tudom be√°ll√≠tani a konfigur√°ci√≥t:"
+
+#: gphoto2/main.c:1706
+#, fuzzy
+msgid "Capture an image from or on the camera"
+msgstr "V√°lt√°s a kamer√°ban l√©v≈ë k√∂nyvt√°rra"
+
+#: gphoto2/main.c:1708
+msgid "Downloading, uploading and manipulating files"
+msgstr ""
+
+#: gphoto2/range.c:104 gphoto2/range.c:158
 #, c-format
 msgid ""
 "%s\n"
 "Image IDs must be a number greater than zero."
 msgstr ""
 "%s\n"
-"A kÈpek azonosÌtÛj·nak null·n·l nagyobb sz·mnak kell lennie."
+"A k√©pek azonos√≠t√≥j√°nak null√°n√°l nagyobb sz√°mnak kell lennie."
 
-#: gphoto2/range.c:109 gphoto2/range.c:163
+#: gphoto2/range.c:110 gphoto2/range.c:164
 #, c-format
 msgid ""
 "%s\n"
 "Image ID %i too high."
 msgstr ""
 "%s\n"
-"A kÈp azonosÌtÛja t˙l nagy (%i)."
+"A k√©p azonos√≠t√≥ja t√∫l nagy (%i)."
 
-#: gphoto2/range.c:125
+#: gphoto2/range.c:126
 #, c-format
 msgid ""
 "%s\n"
 "Ranges must be separated by ','."
 msgstr ""
 "%s\n"
-"A tartom·nyt vesszıvel kell elv·lasztani (,)."
+"A tartom√°nyt vessz≈ëvel kell elv√°lasztani (,)."
 
-#: gphoto2/range.c:139
+#: gphoto2/range.c:140
 #, c-format
 msgid ""
 "%s\n"
 "Ranges need to start with a number."
 msgstr ""
 "%s\n"
-"A tartom·nynak sz·mmal kell kezdıdnie."
+"A tartom√°nynak sz√°mmal kell kezd≈ëdnie."
 
-#: gphoto2/range.c:179
+#: gphoto2/range.c:180
 #, c-format
 msgid ""
 "%s\n"
 "Unexpected character '%c'."
 msgstr ""
 "%s\n"
-"Nem v·rt karakter ez: '%c'."
+"Nem v√°rt karakter ez: '%c'."
 
-#: gphoto2/range.c:202
+#: gphoto2/range.c:204
 #, c-format
 msgid ""
 "%s\n"
 "Decreasing ranges are not allowed. You specified a range from %i to %i."
 msgstr ""
 "%s\n"
-"Csˆkkenı tartom·ny nincs megengedve. Õgy adtad meg: %i...%i"
+"Cs√∂kken≈ë tartom√°ny nincs megengedve. √çgy adtad meg: %i...%i"
 
-#: gphoto2/shell.c:55
+#: gphoto2/shell.c:65
 #, c-format
 msgid "*** Error (%i: '%s') ***"
 msgstr "*** Hiba (%i: '%s') ***"
 
-#: gphoto2/shell.c:98
+#: gphoto2/shell.c:116
 msgid "Change to a directory on the camera"
-msgstr "V·lt·s a kamer·ban lÈvı kˆnyvt·rra"
+msgstr "V√°lt√°s a kamer√°ban l√©v≈ë k√∂nyvt√°rra"
 
-#: gphoto2/shell.c:99 gphoto2/shell.c:101
+#: gphoto2/shell.c:117 gphoto2/shell.c:119 gphoto2/shell.c:130
+#: gphoto2/shell.c:131
 msgid "directory"
-msgstr "kˆnyvt·r"
+msgstr "k√∂nyvt√°r"
 
-#: gphoto2/shell.c:100
+#: gphoto2/shell.c:118
 msgid "Change to a directory on the local drive"
-msgstr "V·lt·s a helyi meghajtÛn lÈvı kˆnyvt·rra"
+msgstr "V√°lt√°s a helyi meghajt√≥n l√©v≈ë k√∂nyvt√°rra"
 
-#: gphoto2/shell.c:102 gphoto2/shell.c:120 gphoto2/shell.c:121
+#: gphoto2/shell.c:120 gphoto2/shell.c:145 gphoto2/shell.c:146
 msgid "Exit the gPhoto shell"
-msgstr "gPhoto burok elhagy·sa"
+msgstr "gPhoto burok elhagy√°sa"
 
-#: gphoto2/shell.c:103
+#: gphoto2/shell.c:121
 msgid "Download a file"
-msgstr "F·jl letˆltÈse"
+msgstr "F√°jl let√∂lt√©se"
 
-#: gphoto2/shell.c:103 gphoto2/shell.c:106 gphoto2/shell.c:108
-#: gphoto2/shell.c:110 gphoto2/shell.c:111 gphoto2/shell.c:114
+#: gphoto2/shell.c:121 gphoto2/shell.c:122 gphoto2/shell.c:124
+#: gphoto2/shell.c:126 gphoto2/shell.c:128 gphoto2/shell.c:129
+#: gphoto2/shell.c:134
 msgid "[directory/]filename"
-msgstr "[kˆnyvt·r/]f·jlnÈv"
+msgstr "[k√∂nyvt√°r/]f√°jln√©v"
 
-#: gphoto2/shell.c:105
+#: gphoto2/shell.c:122
+#, fuzzy
+msgid "Upload a file"
+msgstr "F√°jl let√∂lt√©se"
+
+#: gphoto2/shell.c:123
 msgid "Download a thumbnail"
-msgstr "BemutatÛkÈp letˆltÈse"
+msgstr "Bemutat√≥k√©p let√∂lt√©se"
 
-#: gphoto2/shell.c:107
+#: gphoto2/shell.c:125
 msgid "Download raw data"
-msgstr "Nyers adat letˆltÈse"
+msgstr "Nyers adat let√∂lt√©se"
 
-#: gphoto2/shell.c:111
+#: gphoto2/shell.c:129
 msgid "Delete"
-msgstr "TˆrlÈs"
+msgstr "T√∂rl√©s"
 
-#: gphoto2/shell.c:116 gphoto2/shell.c:122
+#: gphoto2/shell.c:130
+#, fuzzy
+msgid "Create Directory"
+msgstr "K√∂nyvt√°r l√©trehoz√°sa"
+
+#: gphoto2/shell.c:131
+#, fuzzy
+msgid "Remove Directory"
+msgstr "K√∂nyvt√°r t√∂rl√©se"
+
+#: gphoto2/shell.c:136 gphoto2/shell.c:147
 msgid "Displays command usage"
-msgstr "Parancsok mutat·sa"
+msgstr "Parancsok mutat√°sa"
 
-#: gphoto2/shell.c:117 gphoto2/shell.c:122
+#: gphoto2/shell.c:137 gphoto2/shell.c:147
 msgid "[command]"
 msgstr "[parancs]"
 
-#: gphoto2/shell.c:118
+#: gphoto2/shell.c:138
 msgid "List the contents of the current directory"
-msgstr "Aktu·lis kˆnyvt·r tartalm·nak list·z·sa"
+msgstr "Aktu√°lis k√∂nyvt√°r tartalm√°nak list√°z√°sa"
 
-#: gphoto2/shell.c:119
+#: gphoto2/shell.c:139
 msgid "[directory/]"
-msgstr "[kˆnyvt·r/]"
+msgstr "[k√∂nyvt√°r/]"
 
-#: gphoto2/shell.c:421
+#: gphoto2/shell.c:140
+msgid "List configuration variables"
+msgstr ""
+
+#: gphoto2/shell.c:141
+msgid "Get configuration variable"
+msgstr ""
+
+#: gphoto2/shell.c:141
+msgid "name"
+msgstr "n√©v"
+
+#: gphoto2/shell.c:142
+msgid "Set configuration variable"
+msgstr ""
+
+#: gphoto2/shell.c:142
+msgid "name=value"
+msgstr ""
+
+#: gphoto2/shell.c:143
+#, fuzzy
+msgid "Capture a single image"
+msgstr "K√©p k√©sz√≠t√©se"
+
+#: gphoto2/shell.c:144
+msgid "Capture a single image and download it"
+msgstr ""
+
+#: gphoto2/shell.c:469
 msgid "Invalid command."
-msgstr "…rvÈnytelen parancs."
+msgstr "√ârv√©nytelen parancs."
 
-#: gphoto2/shell.c:430
+#: gphoto2/shell.c:478
 #, c-format
 msgid "The command '%s' requires an argument."
-msgstr "A '%s' parancs paramÈtert igÈnyel."
+msgstr "A '%s' parancs param√©tert ig√©nyel."
 
-#: gphoto2/shell.c:483
+#: gphoto2/shell.c:531
 msgid "Invalid path."
-msgstr "…rvÈnytelen ˙tvonal."
+msgstr "√ârv√©nytelen √∫tvonal."
 
-#: gphoto2/shell.c:529
+#: gphoto2/shell.c:577
 msgid "Could not find home directory."
-msgstr "Nem tal·lom a HOME kˆnyvt·rat."
+msgstr "Nem tal√°lom a HOME k√∂nyvt√°rat."
 
-#: gphoto2/shell.c:537
+#: gphoto2/shell.c:586
 #, c-format
 msgid "Could not change to local directory '%s'."
-msgstr "Nem tudok v·ltani a helyi '%s' kˆnyvt·rra."
+msgstr "Nem tudok v√°ltani a helyi '%s' k√∂nyvt√°rra."
 
-#: gphoto2/shell.c:540
+#: gphoto2/shell.c:589
 #, c-format
 msgid "Local directory now '%s'."
-msgstr "A helyi kˆnyvt·r most: '%s'."
+msgstr "A helyi k√∂nyvt√°r most: '%s'."
 
-#: gphoto2/shell.c:578
+#: gphoto2/shell.c:627
 #, c-format
 msgid "Remote directory now '%s'."
-msgstr "A t·voli kˆnyvt·r most: '%s'."
+msgstr "A t√°voli k√∂nyvt√°r most: '%s'."
 
-#: gphoto2/shell.c:734
+#: gphoto2/shell.c:843
+#, c-format
+msgid "set-config needs a second argument.\n"
+msgstr ""
+
+#: gphoto2/shell.c:877
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
-msgstr "A(z) '%s' parancs nem tal·lhatÛ. Haszn·ld a 'help' parancsot az elÈrhetı parancsok list·j·hoz."
+msgstr ""
+"A(z) '%s' parancs nem tal√°lhat√≥. Haszn√°ld a 'help' parancsot az el√©rhet≈ë "
+"parancsok list√°j√°hoz."
 
-#: gphoto2/shell.c:741
+#: gphoto2/shell.c:884
 #, c-format
 msgid "Help on \"%s\":"
-msgstr "\"%s\" SegÌtsÈg:"
+msgstr "\"%s\" Seg√≠ts√©g:"
 
-#: gphoto2/shell.c:743
+#: gphoto2/shell.c:886
+#, c-format
 msgid "Usage:"
-msgstr "Haszn·lat:"
+msgstr "Haszn√°lat:"
 
-#: gphoto2/shell.c:747
+#: gphoto2/shell.c:889
+#, c-format
 msgid "Description:"
-msgstr "LeÌr·s:"
+msgstr "Le√≠r√°s:"
 
-#: gphoto2/shell.c:749
+#: gphoto2/shell.c:891
+#, c-format
 msgid "* Arguments in brackets [] are optional"
-msgstr "* A szˆgletes z·rÛjelben lÈvı paramÈterek nem kˆtelezıek []"
+msgstr "* A sz√∂gletes z√°r√≥jelben l√©v≈ë param√©terek nem k√∂telez≈ëek []"
 
-#: gphoto2/shell.c:770
+#: gphoto2/shell.c:912
+#, c-format
 msgid "Available commands:"
-msgstr "ElÈrhetı parancsok:"
+msgstr "El√©rhet≈ë parancsok:"
 
-#: gphoto2/shell.c:775
+#: gphoto2/shell.c:917
+#, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
-msgstr "Egy bizonyos parancsrÛl s˙gÛ kÈrÈse: 'help parancs-neve'."
+msgstr "Egy bizonyos parancsr√≥l s√∫g√≥ k√©r√©se: 'help parancs-neve'."
+
+#~ msgid "There are no folders in folder '%s'."
+#~ msgstr "A '%s' k√∂nyvt√°r alatt nincs alk√∂nyvt√°r."
+
+#~ msgid "There are %i folders in folder '%s':"
+#~ msgstr "%i alk√∂nyvt√°r van a(z) '%s' k√∂nyvt√°rban:"
+
+#~ msgid "There are %i files in folder '%s':"
+#~ msgstr "%i f√°jl van a(z) '%s' k√∂nyvt√°rban:"
+
+#~ msgid "Displays this help screen"
+#~ msgstr "Ez a s√∫g√≥ oldal"
+
+#~ msgid "Capture a movie "
+#~ msgstr "Film k√©sz√≠t√©se "
+
+#~ msgid "Summary of camera status"
+#~ msgstr "A kamera √°llapot√°nak √∂sszegz√©se"
+
+#~ msgid "Camera driver manual"
+#~ msgstr "A kamera-meghajt√≥ k√©zik√∂nyve"
+
+#~ msgid "About the camera driver"
+#~ msgstr "A kamera-meghajt√≥r√≥l"
+
+#~ msgid "Jan"
+#~ msgstr "Jan"
+
+#~ msgid "January"
+#~ msgstr "Janu√°r"
+
+#~ msgid "Feb"
+#~ msgstr "Feb"
+
+#~ msgid "February"
+#~ msgstr "Febru√°r"
+
+#~ msgid "Mar"
+#~ msgstr "M√°rc"
+
+#~ msgid "March"
+#~ msgstr "M√°rcius"
+
+#~ msgid "Apr"
+#~ msgstr "√Åpr"
+
+#~ msgid "April"
+#~ msgstr "√Åprilis"
+
+#~ msgid "May"
+#~ msgstr "M√°jus"
+
+#~ msgid "Jun"
+#~ msgstr "J√∫n"
+
+#~ msgid "June"
+#~ msgstr "J√∫nius"
+
+#~ msgid "Jul"
+#~ msgstr "J√∫l"
+
+#~ msgid "July"
+#~ msgstr "J√∫lius"
+
+#~ msgid "Aug"
+#~ msgstr "Aug"
+
+#~ msgid "August"
+#~ msgstr "Augusztus"
+
+#~ msgid "Sep"
+#~ msgstr "Szep"
+
+#~ msgid "September"
+#~ msgstr "Szeptember"
+
+#~ msgid "Oct"
+#~ msgstr "Okt"
+
+#~ msgid "October"
+#~ msgstr "Okt√≥ber"
+
+#~ msgid "Nov"
+#~ msgstr "Nov"
+
+#~ msgid "November"
+#~ msgstr "November"
+
+#~ msgid "Dec"
+#~ msgstr "Dec"
+
+#~ msgid "December"
+#~ msgstr "December"
+
+#~ msgid "Sun"
+#~ msgstr "Vas"
+
+#~ msgid "Sunday"
+#~ msgstr "Vas√°rnap"
+
+#~ msgid "Monday"
+#~ msgstr "H√©tf≈ë"
+
+#~ msgid "Tue"
+#~ msgstr "Kedd"
+
+#~ msgid "Tuesday"
+#~ msgstr "Kedd"
+
+#~ msgid "Wed"
+#~ msgstr "Sze"
+
+#~ msgid "Wednesday"
+#~ msgstr "Szerda"
+
+#~ msgid "Thu"
+#~ msgstr "Cs√º"
+
+#~ msgid "Thursday"
+#~ msgstr "Cs√ºt√∂rt√∂k"
+
+#~ msgid "Fri"
+#~ msgstr "P√©n"
+
+#~ msgid "Friday"
+#~ msgstr "P√©ntek"
+
+#~ msgid "Sat"
+#~ msgstr "Szo"
+
+#~ msgid "Saturday"
+#~ msgstr "Szombat"
+
+#~ msgid "path"
+#~ msgstr "√∫tvonal"
+
+#~ msgid "speed"
+#~ msgstr "sebess√©g"
+
+#~ msgid "model"
+#~ msgstr "t√≠pus"
+
+#~ msgid "usbid"
+#~ msgstr "usb id"
+
+#~ msgid "folder"
+#~ msgstr "k√∂nyvt√°r"
+
+#~ msgid ""
+#~ "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
+#~ "location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+#~ msgstr ""
+#~ "A gPhoto2 OS/2-es verzi√≥ja ig√©nyli a CAMLIBS k√∂rnyezeti v√°ltoz√≥ "
+#~ "be√°ll√≠t√°s√°t. Oda mutasson, ahol a kamera f√ºggv√©nyk√∂nyvt√°rai vannak "
+#~ "(p√©ld√°ul SET CAMLIBS=C:\\GPHOTO2\\CAM)\n"
+
+#~ msgid ""
+#~ "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
+#~ "location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
+#~ msgstr ""
+#~ "A gPhoto2 OS/2-es verzi√≥ja ig√©nyli az IOLIBS k√∂rnyezeti v√°ltoz√≥ "
+#~ "be√°ll√≠t√°s√°t. Oda mutasson, ahol az IO f√ºggv√©nyk√∂nyvt√°rak vannak (p√©ld√°ul "
+#~ "SET IOLIBS=C:\\GPHOTO2\\IOLIBS)\n"
+
+#~ msgid "Usage:\n"
+#~ msgstr "Haszn√°lat:\n"
+
+#~ msgid ""
+#~ "Short/long options (& argument)        Description\n"
+#~ "--------------------------------------------------------------------------------\n"
+#~ msgstr ""
+#~ "R√∂vid/hossz√∫ opci√≥k (√©s param√©ter)      Le√≠r√°s\n"
+#~ "--------------------------------------------------------------------------------\n"
+
+#~ msgid "%-38s %s\n"
+#~ msgstr "%-38s %s\n"
+
+#~ msgid ""
+#~ "--------------------------------------------------------------------------------\n"
+#~ "[Use double-quotes around arguments]        [Picture numbers begin with "
+#~ "one (1)]\n"
+#~ msgstr ""
+#~ "--------------------------------------------------------------------------------\n"
+#~ "[Haszn√°lj dupla-id√©z≈ëjelet a param√©terek k√∂r√ºl]  [A k√©pek sz√°moz√°sa 1-t≈ël "
+#~ "kezd≈ëdik]\n"

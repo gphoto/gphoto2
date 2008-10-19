@@ -290,8 +290,10 @@ msgstr "                                 : Voorbeeldweergave\n"
 
 #: gphoto2/actions.c:690
 #, c-format
-msgid "                                 : Capture not supported by the driver\n"
-msgstr "                                 : Stuurprogramma ondersteunt opname niet\n"
+msgid ""
+"                                 : Capture not supported by the driver\n"
+msgstr ""
+"                                 : Stuurprogramma ondersteunt opname niet\n"
 
 #: gphoto2/actions.c:692
 #, c-format
@@ -320,13 +322,23 @@ msgstr "Ondersteuning van bestandsupload : %s\n"
 
 #: gphoto2/actions.c:719
 #, c-format
-msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
-msgstr "Poorten moeten eruit zien als 'serial:/dev/ttyS0' of 'usb:', maar '%s' mist een dubbele punt, dus er wordt gegist naar wat u bedoelt."
+msgid ""
+"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
+"colon so I am going to guess what you mean."
+msgstr ""
+"Poorten moeten eruit zien als 'serial:/dev/ttyS0' of 'usb:', maar '%s' mist "
+"een dubbele punt, dus er wordt gegist naar wat u bedoelt."
 
 #: gphoto2/actions.c:753
 #, c-format
-msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
-msgstr "De opgegeven poort ('%s') kan niet worden gevonden.  Geef één van de poorten gevonden door 'gphoto2 --list-ports' op en zorg dat de schrijfwijze juist is (bijvoorbeeld met het voorvoegsel 'serial:' of 'usb:')."
+msgid ""
+"The port you specified ('%s') can not be found. Please specify one of the "
+"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
+"(i.e. with prefix 'serial:' or 'usb:')."
+msgstr ""
+"De opgegeven poort ('%s') kan niet worden gevonden.  Geef één van de poorten "
+"gevonden door 'gphoto2 --list-ports' op en zorg dat de schrijfwijze juist is "
+"(bijvoorbeeld met het voorvoegsel 'serial:' of 'usb:')."
 
 #: gphoto2/actions.c:785
 #, c-format
@@ -361,9 +373,11 @@ msgid ""
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
-"License. For more information about these matters, see the files named COPYING.\n"
+"License. For more information about these matters, see the files named "
+"COPYING.\n"
 "\n"
-"This version of gphoto2 is using the following software versions and options:\n"
+"This version of gphoto2 is using the following software versions and "
+"options:\n"
 msgstr ""
 "gphoto2 %s\n"
 "\n"
@@ -379,7 +393,8 @@ msgstr ""
 #: gphoto2/actions.c:1004
 #, c-format
 msgid "Getting storage information not supported for this camera.\n"
-msgstr "Het verkrijgen van opslaginformatie is bij deze camera niet mogelijk.\n"
+msgstr ""
+"Het verkrijgen van opslaginformatie is bij deze camera niet mogelijk.\n"
 
 #: gphoto2/actions.c:1019
 #, c-format
@@ -447,8 +462,12 @@ msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Verkoper/product-ID 0x%x/0x%x is herschreven naar 0x%x/0x%x"
 
 #: gphoto2/actions.c:1171
-msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
-msgstr "NEEM ALTIJD DE VOLGENDE REGELS OP BIJ HET ZENDEN VAN DEBUG-MELDINGEN NAAR DE MAILINGLIJST:"
+msgid ""
+"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
+"MAILING LIST:"
+msgstr ""
+"NEEM ALTIJD DE VOLGENDE REGELS OP BIJ HET ZENDEN VAN DEBUG-MELDINGEN NAAR DE "
+"MAILINGLIJST:"
 
 #: gphoto2/actions.c:1186
 #, c-format
@@ -554,12 +573,20 @@ msgstr "Het %s-onderdeel is niet instelbaar."
 #: gphoto2/actions.c:1596
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
-msgstr "Instellen van nieuwe configuratiewaarde %s voor configuratie-item %s is mislukt."
+msgstr ""
+"Instellen van nieuwe configuratiewaarde %s voor configuratie-item %s is "
+"mislukt."
 
 #: gphoto2/foreach.c:254
 #, c-format
-msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
-msgstr "Ongeldig bestandsnummer.  U hebt %i opgegeven, maar er zijn maar %i bestanden beschikbaar in '%s' en zijn onderliggende mappen.  Bepaal een geldig bestandsnummer via een weergave van de bestanden."
+msgid ""
+"Bad file number. You specified %i, but there are only %i files available in "
+"'%s' or its subfolders. Please obtain a valid file number from a file "
+"listing first."
+msgstr ""
+"Ongeldig bestandsnummer.  U hebt %i opgegeven, maar er zijn maar %i "
+"bestanden beschikbaar in '%s' en zijn onderliggende mappen.  Bepaal een "
+"geldig bestandsnummer via een weergave van de bestanden."
 
 #: gphoto2/foreach.c:279
 #, c-format
@@ -568,13 +595,22 @@ msgstr "Er zijn geen bestanden in map '%s'."
 
 #: gphoto2/foreach.c:285
 #, c-format
-msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
-msgstr "Ongeldig bestandsnummer.  U hebt %i opgegeven, maar er is maar één bestand beschikbaar in '%s'."
+msgid ""
+"Bad file number. You specified %i, but there is only 1 file available in '%"
+"s'."
+msgstr ""
+"Ongeldig bestandsnummer.  U hebt %i opgegeven, maar er is maar één bestand "
+"beschikbaar in '%s'."
 
 #: gphoto2/foreach.c:293
 #, c-format
-msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
-msgstr "Ongeldig bestandsnummer.  U hebt %i opgegeven, maar er zijn maar %i bestanden beschikbaar in '%s'.  Bepaal een geldig bestandsnummer via een weergave van de bestanden."
+msgid ""
+"Bad file number. You specified %i, but there are only %i files available in "
+"'%s'. Please obtain a valid file number from a file listing first."
+msgstr ""
+"Ongeldig bestandsnummer.  U hebt %i opgegeven, maar er zijn maar %i "
+"bestanden beschikbaar in '%s'.  Bepaal een geldig bestandsnummer via een "
+"weergave van de bestanden."
 
 #: gphoto2/gp-params.c:70
 #, c-format
@@ -639,12 +675,15 @@ msgstr "Nee"
 #: gphoto2/main.c:230
 #, c-format
 msgid "Zero padding numbers in file names is only possible with %%n."
-msgstr "Getallen in bestandsnamen aanvullen met voornullen is alleen mogelijk met %%n."
+msgstr ""
+"Getallen in bestandsnamen aanvullen met voornullen is alleen mogelijk met %%"
+"n."
 
 #: gphoto2/main.c:239
 #, c-format
 msgid "You cannot use %%n zero padding without a precision value!"
-msgstr "U kunt een nullenaanvulling van %%n niet gebruiken zonder een precisiewaarde."
+msgstr ""
+"U kunt een nullenaanvulling van %%n niet gebruiken zonder een precisiewaarde."
 
 #: gphoto2/main.c:255
 #, c-format
@@ -654,7 +693,8 @@ msgstr "U kunt '%%n' niet gebruiken in combinatie met tijdelijke bestanden."
 #: gphoto2/main.c:286
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr "De bestandsnaam aangeboden door de camera ('%s') bevat geen achtervoegsel."
+msgstr ""
+"De bestandsnaam aangeboden door de camera ('%s') bevat geen achtervoegsel."
 
 #: gphoto2/main.c:341
 #, c-format
@@ -758,7 +798,8 @@ msgstr "niet aan het slapen (%d seconden achter op schema)\n"
 #: gphoto2/main.c:771
 #, c-format
 msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
-msgstr "Wachtend op gebeurtenissen van de camera.  Druk op Ctrl+C om af te breken.\n"
+msgstr ""
+"Wachtend op gebeurtenissen van de camera.  Druk op Ctrl+C om af te breken.\n"
 
 #: gphoto2/main.c:791
 #, c-format
@@ -795,7 +836,9 @@ msgstr ""
 
 #: gphoto2/main.c:1088
 #, c-format
-msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
+msgid ""
+"Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
+"c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
 msgstr ""
 "Gebruik de syntax 'a:b=c:d' om een USB-apparaat dat gedetecteerd is als\n"
 "a:b te behandelen alsof het c:d was.  De getallen a, b, c en d moeten\n"
@@ -971,7 +1014,8 @@ msgstr "Een audio-opname maken"
 
 #: gphoto2/main.c:1604
 msgid "Wait for shutter release on the camera and download"
-msgstr "Wachten op sluiterontspanning van de camera en dan opname direct downloaden"
+msgstr ""
+"Wachten op sluiterontspanning van de camera en dan opname direct downloaden"
 
 #: gphoto2/main.c:1610
 msgid "List folders in folder"
@@ -1216,7 +1260,8 @@ msgid ""
 "Decreasing ranges are not allowed. You specified a range from %i to %i."
 msgstr ""
 "%s\n"
-"Afnemende bereiken zijn niet toegestaan. U kunt een bereik opgeven van %i tot %i."
+"Afnemende bereiken zijn niet toegestaan. U kunt een bereik opgeven van %i "
+"tot %i."
 
 #: gphoto2/shell.c:65
 #, c-format

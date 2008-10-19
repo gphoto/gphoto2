@@ -14,7 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%100/10==1 ? 2 : n%10==1 ? 0 : (n+9)%10>3 ? 2 : 1;\n"
+"Plural-Forms: nplurals=3; plural=n%100/10==1 ? 2 : n%10==1 ? 0 : (n+9)%"
+"10>3 ? 2 : 1;\n"
 
 #: gphoto2/actions.c:167
 #, c-format
@@ -291,8 +292,10 @@ msgstr "                                 : Náhled\n"
 
 #: gphoto2/actions.c:690
 #, c-format
-msgid "                                 : Capture not supported by the driver\n"
-msgstr "                                 : Zachytávání nepodporováno ovladačem\n"
+msgid ""
+"                                 : Capture not supported by the driver\n"
+msgstr ""
+"                                 : Zachytávání nepodporováno ovladačem\n"
 
 #: gphoto2/actions.c:692
 #, c-format
@@ -321,13 +324,23 @@ msgstr "Podpora ukládání souborů         : %s\n"
 
 #: gphoto2/actions.c:719
 #, c-format
-msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
-msgstr "Porty musí vypadat jako 'serial:/dev/ttyS0' nebo 'usb;', ale v '%s' chybí dvojtečka, takže budu hádat, co tím myslíte."
+msgid ""
+"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
+"colon so I am going to guess what you mean."
+msgstr ""
+"Porty musí vypadat jako 'serial:/dev/ttyS0' nebo 'usb;', ale v '%s' chybí "
+"dvojtečka, takže budu hádat, co tím myslíte."
 
 #: gphoto2/actions.c:753
 #, c-format
-msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
-msgstr "Port, který jste určili, ('%s'), nelze najít. Zadejte prosím jeden z portů nalezených 'gphoto2 --list-ports' a ujistěte se, že zápis je správný (např. s předponou 'serial:' nebo 'usb:')."
+msgid ""
+"The port you specified ('%s') can not be found. Please specify one of the "
+"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
+"(i.e. with prefix 'serial:' or 'usb:')."
+msgstr ""
+"Port, který jste určili, ('%s'), nelze najít. Zadejte prosím jeden z portů "
+"nalezených 'gphoto2 --list-ports' a ujistěte se, že zápis je správný (např. "
+"s předponou 'serial:' nebo 'usb:')."
 
 #: gphoto2/actions.c:785
 #, c-format
@@ -362,9 +375,11 @@ msgid ""
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
-"License. For more information about these matters, see the files named COPYING.\n"
+"License. For more information about these matters, see the files named "
+"COPYING.\n"
 "\n"
-"This version of gphoto2 is using the following software versions and options:\n"
+"This version of gphoto2 is using the following software versions and "
+"options:\n"
 msgstr ""
 "gphoto2 %s\n"
 "\n"
@@ -447,8 +462,11 @@ msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Nahrazuji USB id dodavatale/produktu 0x%x/0x%x s 0x%x/0x%x"
 
 #: gphoto2/actions.c:1171
-msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
-msgstr "PŘI POSÍLÁNÍ LADICÍCH ZPRÁV DO KONFERENCE VŽDY PŘILOŽTE NÁSLEDUJÍCÍ ŘÁDKY:"
+msgid ""
+"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
+"MAILING LIST:"
+msgstr ""
+"PŘI POSÍLÁNÍ LADICÍCH ZPRÁV DO KONFERENCE VŽDY PŘILOŽTE NÁSLEDUJÍCÍ ŘÁDKY:"
 
 #: gphoto2/actions.c:1186
 #, c-format
@@ -558,8 +576,14 @@ msgstr "Nemohu nastavit novou hodnotu nastavení %s položky nastavení %s."
 
 #: gphoto2/foreach.c:254
 #, c-format
-msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
-msgstr "Špatné číslo souboru. Zadali jste %1$i, ale v '%3$s' a jeho podadresářích je k dispozici jen '%2$i' souborů. Nejdříve prosím získejte ze seznamu souborů platné číslo souboru."
+msgid ""
+"Bad file number. You specified %i, but there are only %i files available in "
+"'%s' or its subfolders. Please obtain a valid file number from a file "
+"listing first."
+msgstr ""
+"Špatné číslo souboru. Zadali jste %1$i, ale v '%3$s' a jeho podadresářích je "
+"k dispozici jen '%2$i' souborů. Nejdříve prosím získejte ze seznamu souborů "
+"platné číslo souboru."
 
 #: gphoto2/foreach.c:279
 #, c-format
@@ -568,13 +592,21 @@ msgstr "V adresáři '%s' nejsou žádné soubory."
 
 #: gphoto2/foreach.c:285
 #, c-format
-msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
-msgstr "Špatné číslo souboru. Zadali jste %i, ale v '%s' je k dispozici jen jeden soubor."
+msgid ""
+"Bad file number. You specified %i, but there is only 1 file available in '%"
+"s'."
+msgstr ""
+"Špatné číslo souboru. Zadali jste %i, ale v '%s' je k dispozici jen jeden "
+"soubor."
 
 #: gphoto2/foreach.c:293
 #, c-format
-msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
-msgstr "Špatné číslo souboru. Zadali jste %1$i, ale v '%3$s' je k dispozici jen %2$i souborů. Nejdříve prosím získejte ze seznamu souborů platné číslo souboru."
+msgid ""
+"Bad file number. You specified %i, but there are only %i files available in "
+"'%s'. Please obtain a valid file number from a file listing first."
+msgstr ""
+"Špatné číslo souboru. Zadali jste %1$i, ale v '%3$s' je k dispozici jen %2$i "
+"souborů. Nejdříve prosím získejte ze seznamu souborů platné číslo souboru."
 
 #: gphoto2/gp-params.c:70
 #, c-format
@@ -795,8 +827,13 @@ msgstr ""
 
 #: gphoto2/main.c:1088
 #, c-format
-msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
-msgstr "Použijte následující syntax a:b=c:d pro obsluhu libovolného zařízení detekovaného jako a:b místo toho jako c:d. a b c d by měly být šestnáctková čísla začínající '0x'.\n"
+msgid ""
+"Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
+"c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
+msgstr ""
+"Použijte následující syntax a:b=c:d pro obsluhu libovolného zařízení "
+"detekovaného jako a:b místo toho jako c:d. a b c d by měly být šestnáctková "
+"čísla začínající '0x'.\n"
 
 #: gphoto2/main.c:1245
 msgid "gphoto2 has been compiled without support for CDK."
@@ -1352,7 +1389,9 @@ msgstr "set-config potřebuje druhý prametr.\n"
 #: gphoto2/shell.c:877
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
-msgstr "Příkaz '%s' nenalezen. Použijte 'help' pro získání seznamu dostupných příkazů."
+msgstr ""
+"Příkaz '%s' nenalezen. Použijte 'help' pro získání seznamu dostupných "
+"příkazů."
 
 #: gphoto2/shell.c:884
 #, c-format
@@ -1382,7 +1421,8 @@ msgstr "Dostupné příkazy:"
 #: gphoto2/shell.c:917
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
-msgstr "Pro získání nápovědy o konkrétním příkazu napište 'help název-příkazu'."
+msgstr ""
+"Pro získání nápovědy o konkrétním příkazu napište 'help název-příkazu'."
 
 #~ msgid "[name]"
 #~ msgstr "[název]"
