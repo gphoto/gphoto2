@@ -7,13 +7,13 @@
 # Marcus Meissner, 2005.
 # Lutz Müller <urc8@rz.uni-karlsruhe.de>, 2000.
 # Colin Marquardt <colin@marquardt-home.de>, 2001, 2002, 2003.
-# Marcus Meissner <marcus@jet.franken.de>, 2005, 2006, 2007.
+# Marcus Meissner <marcus@jet.franken.de>, 2005, 2006, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: libexif 0.6.16\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2008-06-22 18:31+0200\n"
-"PO-Revision-Date: 2007-07-22 12:49+0200\n"
+"PO-Revision-Date: 2008-10-19 19:40+0200\n"
 "Last-Translator: Marcus Meissner <marcus@jet.franken.de>\n"
 "Language-Team: Deutsch <German <translation-team-de@lists.sourceforge.net>>\n"
 "MIME-Version: 1.0\n"
@@ -295,8 +295,7 @@ msgstr "                                 : Bildvorschau\n"
 
 #: gphoto2/actions.c:690
 #, c-format
-msgid ""
-"                                 : Capture not supported by the driver\n"
+msgid "                                 : Capture not supported by the driver\n"
 msgstr ""
 "                                 : Aufnahme wird nicht durch Treiber "
 "unterstützt\n"
@@ -593,8 +592,8 @@ msgid ""
 "'%s' or its subfolders. Please obtain a valid file number from a file "
 "listing first."
 msgstr ""
-"Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur %i Dateien in »%"
-"s« oder seinen Unterverzeichnissen. Bite holen Sie zuerst eine gültige "
+"Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur %i Dateien in »%s« "
+"oder seinen Unterverzeichnissen. Bite holen Sie zuerst eine gültige "
 "Dateinummer aus einer Dateiliste."
 
 #: gphoto2/foreach.c:279
@@ -607,8 +606,7 @@ msgstr "Es gibt keine Datei im Verzeichnis »%s«."
 msgid ""
 "Bad file number. You specified %i, but there is only 1 file available in '%"
 "s'."
-msgstr ""
-"Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
+msgstr "Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
 
 #: gphoto2/foreach.c:293
 #, c-format
@@ -699,8 +697,7 @@ msgstr ""
 #: gphoto2/main.c:286
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr ""
-"Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
+msgstr "Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
 
 #: gphoto2/main.c:341
 #, c-format
@@ -846,8 +843,8 @@ msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
 "c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
 msgstr ""
-"Verwenden Sie die Syntax »a:b=c:d« um ein als »a:b« erkanntes USB-Gerät als "
-"»c:d« zu behandeln.\n"
+"Verwenden Sie die Syntax »a:b=c:d« um ein als »a:b« erkanntes USB-Gerät als »c:"
+"d« zu behandeln.\n"
 "a b c d sind hexadezimale Angaben, die mit »0x« beginnen müssen.\n"
 
 #: gphoto2/main.c:1245
@@ -1006,9 +1003,8 @@ msgid "Capture an image"
 msgstr "Eine Bildaufnahme machen"
 
 #: gphoto2/main.c:1598
-#, fuzzy
 msgid "Capture an image and download it"
-msgstr "Eine Bildaufnahme machen"
+msgstr "Eine Bild aufnehmen und herunterladen"
 
 #: gphoto2/main.c:1600
 msgid "Capture a movie"
@@ -1193,8 +1189,7 @@ msgstr "Weitere Optionen (unsortiert)"
 
 #: gphoto2/main.c:1700
 msgid "Get information on software and host system (not from the camera)"
-msgstr ""
-"Frage Informationen über Software und Maschine ab (nicht von der Kamera)"
+msgstr "Frage Informationen über Software und Maschine ab (nicht von der Kamera)"
 
 #: gphoto2/main.c:1702
 msgid "Specify the camera to use"
@@ -1363,9 +1358,8 @@ msgid "Capture a single image"
 msgstr "Eine Bildaufnahme machen"
 
 #: gphoto2/shell.c:144
-#, fuzzy
 msgid "Capture a single image and download it"
-msgstr "Eine Bildaufnahme machen"
+msgstr "Ein Bild aufnahmen und herunterladen"
 
 #: gphoto2/shell.c:469
 msgid "Invalid command."
@@ -1443,5 +1437,3 @@ msgstr ""
 "Um Hilfe zu einem bestimmten Befehl zu erhalten, verwenden Sie »help "
 "Befehlsname«."
 
-#~ msgid "[name]"
-#~ msgstr "[Name]"
