@@ -1725,7 +1725,9 @@ main (int argc, char **argv, char **envp)
 
 	/* Figure out the width of the terminal and watch out for changes */
 	signal_resize (0);
+#ifdef SIGWINCH
 	signal (SIGWINCH, signal_resize);
+#endif
 
 	/* Prepare processing options. */
 	ctx = poptGetContext (PACKAGE, argc, (const char **) argv, options, 0);
