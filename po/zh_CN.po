@@ -10,8 +10,7 @@ msgstr ""
 "POT-Creation-Date: 2008-06-22 18:31+0200\n"
 "PO-Revision-Date: 2008-07-15 10:12+0800\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
-"Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
-"sourceforge.net>\n"
+"Language-Team: Chinese (simplified) <translation-team-zh-cn@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -351,8 +350,7 @@ msgstr "                     ：预览\n"
 # frontends/command-line/main.c:435
 #: gphoto2/actions.c:690
 #, c-format
-msgid ""
-"                                 : Capture not supported by the driver\n"
+msgid "                                 : Capture not supported by the driver\n"
 msgstr "                     ：设备不支持捕获功能\n"
 
 # frontends/command-line/main.c:436
@@ -388,23 +386,14 @@ msgstr "文件上载支持         ：%s\n"
 # frontends/command-line/main.c:586
 #: gphoto2/actions.c:719
 #, c-format
-msgid ""
-"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
-"colon so I am going to guess what you mean."
-msgstr ""
-"端口必须是类似“serial:/dev/ttyS0”或“usb:”的形式，但“%s”缺少冒号，所以我将猜测"
-"您的意图。"
+msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
+msgstr "端口必须是类似“serial:/dev/ttyS0”或“usb:”的形式，但“%s”缺少冒号，所以我将猜测您的意图。"
 
 # frontends/command-line/main.c:1318
 #: gphoto2/actions.c:753
 #, c-format
-msgid ""
-"The port you specified ('%s') can not be found. Please specify one of the "
-"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
-"(i.e. with prefix 'serial:' or 'usb:')."
-msgstr ""
-"无法找到您指定的端口 (“%s”)。请指定一个由“gphoto2 --list-ports”列出的端口并确"
-"信拼写正确 (例如，带有前缀“serial:”或“usb:”)。"
+msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
+msgstr "无法找到您指定的端口 (“%s”)。请指定一个由“gphoto2 --list-ports”列出的端口并确信拼写正确 (例如，带有前缀“serial:”或“usb:”)。"
 
 # frontends/command-line/main.c:243
 #: gphoto2/actions.c:785
@@ -443,11 +432,9 @@ msgid ""
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
-"License. For more information about these matters, see the files named "
-"COPYING.\n"
+"License. For more information about these matters, see the files named COPYING.\n"
 "\n"
-"This version of gphoto2 is using the following software versions and "
-"options:\n"
+"This version of gphoto2 is using the following software versions and options:\n"
 msgstr ""
 "gphoto2 %s\n"
 "\n"
@@ -530,9 +517,7 @@ msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "正以 0x%3$x/0x%4$x 覆盖 USB 生产商/产品 id 0x%1$x/0x%2$x"
 
 #: gphoto2/actions.c:1171
-msgid ""
-"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
-"MAILING LIST:"
+msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
 msgstr "在将调试信息发送到邮件列表的时候总是包含下列行："
 
 #: gphoto2/actions.c:1186
@@ -647,13 +632,8 @@ msgstr "为配置选项 %2$s 设置新的值 %1$s 出错。"
 # frontends/command-line/foreach.c:207
 #: gphoto2/foreach.c:254
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there are only %i files available in "
-"'%s' or its subfolders. Please obtain a valid file number from a file "
-"listing first."
-msgstr ""
-"错误的文件编号。您给出 %1$i，但在“%3$s”和它的子目录中只有 %2$i 个文件。请首先"
-"从文件列表中获取一个合法的文件编号。"
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
+msgstr "错误的文件编号。您给出 %1$i，但在“%3$s”和它的子目录中只有 %2$i 个文件。请首先从文件列表中获取一个合法的文件编号。"
 
 # frontends/command-line/actions.c:111 frontends/command-line/foreach.c:228
 #: gphoto2/foreach.c:279
@@ -664,20 +644,14 @@ msgstr "文件夹“%s”中没有文件。"
 # frontends/command-line/foreach.c:233
 #: gphoto2/foreach.c:285
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there is only 1 file available in '%"
-"s'."
+msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
 msgstr "错误的文件编号。您给出 %i，但在“%s”中只有一个文件。"
 
 # frontends/command-line/foreach.c:240
 #: gphoto2/foreach.c:293
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there are only %i files available in "
-"'%s'. Please obtain a valid file number from a file listing first."
-msgstr ""
-"错误的文件编号。您给出 %1$i，但在“%3$s”中只有 %2$i 个文件。请首先从文件列表中"
-"获取一个合法的文件编号。"
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
+msgstr "错误的文件编号。您给出 %1$i，但在“%3$s”中只有 %2$i 个文件。请首先从文件列表中获取一个合法的文件编号。"
 
 # frontends/command-line/main.c:1753
 #: gphoto2/gp-params.c:70
@@ -934,12 +908,8 @@ msgstr ""
 # frontends/command-line/main.c:637
 #: gphoto2/main.c:1088
 #, c-format
-msgid ""
-"Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
-"c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
-msgstr ""
-"使用诸如 a:b=c:d 的形式将探测为 a:b 的 USB 设备处理为 c:d。a b c d 应为"
-"以“0x”开始的十六进制数。\n"
+msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
+msgstr "使用诸如 a:b=c:d 的形式将探测为 a:b 的 USB 设备处理为 c:d。a b c d 应为以“0x”开始的十六进制数。\n"
 
 # frontends/command-line/actions.c:355
 #: gphoto2/main.c:1245
