@@ -1544,7 +1544,7 @@ main (int argc, char **argv, char **envp)
 	const struct poptOption cameraOptions[] = {
 		GPHOTO2_POPT_CALLBACK
 		{"port", '\0', POPT_ARG_STRING, NULL, ARG_PORT,
-		 N_("Specify port device"), N_("FILENAME")},
+		 N_("Specify device port"), N_("FILENAME")},
 		{"speed", '\0', POPT_ARG_INT, NULL, ARG_SPEED,
 		 N_("Specify serial transfer speed"), N_("SPEED")},
 		{"camera", '\0', POPT_ARG_STRING, NULL, ARG_MODEL,
@@ -1648,7 +1648,7 @@ main (int argc, char **argv, char **envp)
 		{"delete-all-files", 'D', POPT_ARG_NONE, NULL,
 		 ARG_DELETE_ALL_FILES, N_("Delete all files in folder"), NULL},
 		{"upload-file", 'u', POPT_ARG_STRING, NULL, ARG_UPLOAD_FILE,
-		 N_("Upload a file to camera"), N_("filename")},
+		 N_("Upload a file to camera"), N_("FILENAME")},
 		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,
 		 N_("Specify a filename or filename pattern"), N_("FILENAME_PATTERN")},
 		{"folder", 'f', POPT_ARG_STRING, NULL, ARG_FOLDER,
