@@ -1,1161 +1,1555 @@
-# gphoto2 ja.po.
-# Copyright (C) 2000-2002 Free Software Foundation, Inc.
+# ja.po for gphoto2.
+# This file is distributed under the same license as the gphoto2 package.
 # Yukihiro Nakai <nakai@gnome.gr.jp>, 2000.
 # Takeshi Aihana <aihana@gnome.gr.jp>, 2001-2002.
 # AMANO Kazuhiro <haa13142@jnb.odn.ne.jp>, 2002.
-# 
+# Tadashi Jokagi <elf2000@users.sourceforge.net>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.1.1rc2\n"
-"POT-Creation-Date: 2002-12-01 22:52+0100\n"
-"PO-Revision-Date: 2002-11-25 08:16+0900\n"
-"Last-Translator: Takeshi Aihana <aihana@gnome.gr.jp>\n"
-"Language-Team: Japanese <translation@gnome.gr.jp>\n"
+"Project-Id-Version: gphoto2 2.4.3\n"
+"Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2008-06-22 18:31+0200\n"
+"PO-Revision-Date: 2008-11-17 05:56+0900\n"
+"Last-Translator: Tadashi Jokagi <elf2000@users.sourceforge.net>\n"
+"Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=euc-jp\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
-#: gphoto2/actions.c:117
+#: gphoto2/actions.c:167
 #, c-format
 msgid "Number of files in folder '%s': %i\n"
-msgstr "¥Õ¥©¥ë¥À '%s' Æâ¤Î¥Õ¥¡¥¤¥ë¤Î¿ô: %i\n"
+msgstr "ãƒ•ã‚©ãƒ«ãƒ€ '%s' å†…ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®æ•°: %i\n"
 
-#: gphoto2/actions.c:136
+#: gphoto2/actions.c:187
 #, c-format
-msgid "There are no folders in folder '%s'."
-msgstr "¥Õ¥©¥ë¥À '%s' ¤ÎÃæ¤Ë¥Õ¥©¥ë¥À¤Ï¤¢¤ê¤Ş¤»¤ó¡£"
+msgid "There is %d folder in folder '%s'.\n"
+msgid_plural "There are %d folders in folder '%s'.\n"
+msgstr[0] "ãƒ•ã‚©ãƒ«ãƒ€ '%2$s' ã®ä¸­ã«ãƒ•ã‚©ãƒ«ãƒ€ãŒ %1$d å€‹ã‚ã‚Šã¾ã™ã€‚\n"
 
-#: gphoto2/actions.c:140
+#: gphoto2/actions.c:227
 #, c-format
-msgid "There is one folder in folder '%s':"
-msgstr "¥Õ¥©¥ë¥À '%s' ¤ÎÃæ¤Ë¥Õ¥©¥ë¥À¤¬°ì¤Ä¤¢¤ê¤Ş¤¹:"
-
-#: gphoto2/actions.c:144
-#, c-format
-msgid "There are %i folders in folder '%s':"
-msgstr "%i ¸Ä¤Î¥Õ¥©¥ë¥À¤¬¥Õ¥©¥ë¥À '%s' ¤ÎÃæ¤Ë¤¢¤ê¤Ş¤¹:"
-
-#: gphoto2/actions.c:170 gphoto2/foreach.c:283
-#, c-format
-msgid "There are no files in folder '%s'."
-msgstr "¥Õ¥©¥ë¥À '%s' ¤ÎÃæ¤Ë¥Õ¥¡¥¤¥ë¤Ï¤¢¤ê¤Ş¤»¤ó¡£"
-
-#: gphoto2/actions.c:175
-#, c-format
-msgid "There is one file in folder '%s':"
-msgstr "¥Õ¥©¥ë¥À '%s' ¤ÎÃæ¤Ë¥Õ¥¡¥¤¥ë¤¬°ì¤Ä¤¢¤ê¤Ş¤¹:"
-
-#: gphoto2/actions.c:180
-#, c-format
-msgid "There are %i files in folder '%s':"
-msgstr "%i ¸Ä¤Î¥Õ¥¡¥¤¥ë¤¬¥Õ¥©¥ë¥À '%s' ¤ÎÃæ¤Ë¤¢¤ê¤Ş¤¹:"
-
-#: gphoto2/actions.c:201
-#, c-format
-msgid "Information on file '%s' (folder '%s'):\n"
-msgstr "¥Õ¥¡¥¤¥ë '%s' (¥Õ¥©¥ë¥À '%s') ¤Î¾ğÊó:\n"
-
-#: gphoto2/actions.c:203
-msgid "File:\n"
-msgstr "¥Õ¥¡¥¤¥ë:\n"
-
-#: gphoto2/actions.c:205 gphoto2/actions.c:239 gphoto2/actions.c:255
-msgid "  None available.\n"
-msgstr " »ÈÍÑÉÔ²Ä¤Ç¤¹¡£\n"
-
-#: gphoto2/actions.c:208
-#, c-format
-msgid "  Name:        '%s'\n"
-msgstr "  Ì¾Á°:        '%s'\n"
-
-#: gphoto2/actions.c:210 gphoto2/actions.c:242
-#, c-format
-msgid "  Mime type:   '%s'\n"
-msgstr "  MIME ·¿:     '%s'\n"
-
-#: gphoto2/actions.c:212 gphoto2/actions.c:244
-#, c-format
-msgid "  Size:        %li byte(s)\n"
-msgstr "  ¥µ¥¤¥º:      %li ¥Ğ¥¤¥È\n"
-
-#: gphoto2/actions.c:214 gphoto2/actions.c:246
-#, c-format
-msgid "  Width:       %i pixel(s)\n"
-msgstr "  ²£:          %i ¥Ô¥¯¥»¥ë\n"
-
-#: gphoto2/actions.c:216 gphoto2/actions.c:248
-#, c-format
-msgid "  Height:      %i pixel(s)\n"
-msgstr "  ½Ä:          %i ¥Ô¥¯¥»¥ë\n"
-
-#: gphoto2/actions.c:218 gphoto2/actions.c:250
-#, c-format
-msgid "  Downloaded:  %s\n"
-msgstr " ¥À¥¦¥ó¥í¡¼¥ÉºÑ:  %s\n"
-
-#: gphoto2/actions.c:219 gphoto2/actions.c:251 gphoto2/actions.c:263
-#: gphoto2/actions.c:560 gphoto2/actions.c:562 gphoto2/actions.c:579
-#: gphoto2/actions.c:582 gphoto2/actions.c:585 gphoto2/actions.c:588
-msgid "yes"
-msgstr "¤Ï¤¤"
-
-#: gphoto2/actions.c:219 gphoto2/actions.c:251 gphoto2/actions.c:263
-#: gphoto2/actions.c:560 gphoto2/actions.c:562 gphoto2/actions.c:579
-#: gphoto2/actions.c:582 gphoto2/actions.c:585 gphoto2/actions.c:588
-msgid "no"
-msgstr "¤¤¤¤¤¨"
-
-#: gphoto2/actions.c:221
-msgid "  Permissions: "
-msgstr "  ¸¢¸Â: "
-
-#: gphoto2/actions.c:224
-msgid "read/delete"
-msgstr "ÆÉ¤ß¹ş¤ß/ºï½ü"
-
-#: gphoto2/actions.c:226
-msgid "read"
-msgstr "ÆÉ¤ß¹ş¤ß"
-
-#: gphoto2/actions.c:228
-msgid "delete"
-msgstr "ºï½ü"
+msgid "There is no file in folder '%s'.\n"
+msgstr "ãƒ•ã‚©ãƒ«ãƒ€ '%s' ã®ä¸­ã«ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚Šã¾ã›ã‚“ã€‚\n"
 
 #: gphoto2/actions.c:230
-msgid "none"
-msgstr "¤Ê¤·"
-
-#: gphoto2/actions.c:234
 #, c-format
-msgid "  Time:        %s"
-msgstr "  »ş´Ö:        %s"
+msgid "There is %d file in folder '%s'.\n"
+msgid_plural "There are %d files in folder '%s'.\n"
+msgstr[0] "ãƒ•ã‚©ãƒ«ãƒ€ '%2$s' ã®ä¸­ã«ãƒ•ã‚¡ã‚¤ãƒ«ãŒ %1$d å€‹ã‚ã‚Šã¾ã™ã€‚\n"
 
-#: gphoto2/actions.c:237
-msgid "Thumbnail:\n"
-msgstr "¥µ¥à¥Í¥¤¥ë:\n"
+#: gphoto2/actions.c:251
+#, c-format
+msgid "Information on file '%s' (folder '%s'):\n"
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ« '%s' (ãƒ•ã‚©ãƒ«ãƒ€ '%s') ã®æƒ…å ±:\n"
 
 #: gphoto2/actions.c:253
-msgid "Audio data:\n"
-msgstr "¥ª¡¼¥Ç¥£¥ª¥Ç¡¼¥¿:\n"
+#, c-format
+msgid "File:\n"
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«:\n"
+
+#: gphoto2/actions.c:255 gphoto2/actions.c:289 gphoto2/actions.c:305
+#, c-format
+msgid "  None available.\n"
+msgstr " ä½¿ç”¨ä¸å¯ã§ã™ã€‚\n"
 
 #: gphoto2/actions.c:258
 #, c-format
-msgid "  Mime type:  '%s'\n"
-msgstr "  MIME ·¿:    '%s'\n"
+msgid "  Name:        '%s'\n"
+msgstr "  åå‰:        '%s'\n"
 
-#: gphoto2/actions.c:260
+#: gphoto2/actions.c:260 gphoto2/actions.c:292
+#, c-format
+msgid "  Mime type:   '%s'\n"
+msgstr "  MIME å‹:     '%s'\n"
+
+#: gphoto2/actions.c:262 gphoto2/actions.c:294
+#, c-format
+msgid "  Size:        %li byte(s)\n"
+msgstr "  ã‚µã‚¤ã‚º:      %li ãƒã‚¤ãƒˆ\n"
+
+#: gphoto2/actions.c:264 gphoto2/actions.c:296
+#, c-format
+msgid "  Width:       %i pixel(s)\n"
+msgstr "  æ¨ª:          %i ãƒ”ã‚¯ã‚»ãƒ«\n"
+
+#: gphoto2/actions.c:266 gphoto2/actions.c:298
+#, c-format
+msgid "  Height:      %i pixel(s)\n"
+msgstr "  ç¸¦:          %i ãƒ”ã‚¯ã‚»ãƒ«\n"
+
+#: gphoto2/actions.c:268 gphoto2/actions.c:300
+#, c-format
+msgid "  Downloaded:  %s\n"
+msgstr " ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰æ¸ˆ:  %s\n"
+
+#: gphoto2/actions.c:269 gphoto2/actions.c:301 gphoto2/actions.c:313
+#: gphoto2/actions.c:663 gphoto2/actions.c:665 gphoto2/actions.c:693
+#: gphoto2/actions.c:696 gphoto2/actions.c:699 gphoto2/actions.c:702
+#: gphoto2/actions.c:705 gphoto2/actions.c:1512
+msgid "yes"
+msgstr "ã¯ã„"
+
+#: gphoto2/actions.c:269 gphoto2/actions.c:301 gphoto2/actions.c:313
+#: gphoto2/actions.c:663 gphoto2/actions.c:665 gphoto2/actions.c:693
+#: gphoto2/actions.c:696 gphoto2/actions.c:699 gphoto2/actions.c:702
+#: gphoto2/actions.c:705 gphoto2/actions.c:1506
+msgid "no"
+msgstr "ã„ã„ãˆ"
+
+#: gphoto2/actions.c:271
+#, c-format
+msgid "  Permissions: "
+msgstr "  æ¨©é™: "
+
+#: gphoto2/actions.c:274
+#, c-format
+msgid "read/delete"
+msgstr "èª­ã¿è¾¼ã¿/å‰Šé™¤"
+
+#: gphoto2/actions.c:276
+#, c-format
+msgid "read"
+msgstr "èª­ã¿è¾¼ã¿"
+
+#: gphoto2/actions.c:278
+#, c-format
+msgid "delete"
+msgstr "å‰Šé™¤"
+
+#: gphoto2/actions.c:280
+#, c-format
+msgid "none"
+msgstr "ãªã—"
+
+#: gphoto2/actions.c:284
+#, c-format
+msgid "  Time:        %s"
+msgstr "  æ™‚é–“:        %s"
+
+#: gphoto2/actions.c:287
+#, c-format
+msgid "Thumbnail:\n"
+msgstr "ã‚µãƒ ãƒã‚¤ãƒ«:\n"
+
+#: gphoto2/actions.c:303
+#, c-format
+msgid "Audio data:\n"
+msgstr "ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ‡ãƒ¼ã‚¿:\n"
+
+#: gphoto2/actions.c:308
+#, c-format
+msgid "  Mime type:  '%s'\n"
+msgstr "  MIME å‹:    '%s'\n"
+
+#: gphoto2/actions.c:310
 #, c-format
 msgid "  Size:       %li byte(s)\n"
-msgstr "  ¥µ¥¤¥º:     %li ¥Ğ¥¤¥È\n"
+msgstr "  ã‚µã‚¤ã‚º:     %li ãƒã‚¤ãƒˆ\n"
 
-#: gphoto2/actions.c:262
+#: gphoto2/actions.c:312
 #, c-format
 msgid "  Downloaded: %s\n"
-msgstr " ¥À¥¦¥ó¥í¡¼¥ÉºÑ: %s\n"
+msgstr " ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰æ¸ˆ: %s\n"
 
-#: gphoto2/actions.c:393
+#: gphoto2/actions.c:488
 msgid "Could not parse EXIF data."
-msgstr "EXIF ¥Ç¡¼¥¿¤ò²òÀÏ¤Ç¤­¤Ş¤»¤ó¤Ç¤·¤¿¡£"
+msgstr "EXIF ãƒ‡ãƒ¼ã‚¿ã‚’è§£æã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
 
-#: gphoto2/actions.c:397
+#: gphoto2/actions.c:492
+#, c-format
 msgid "EXIF tags:"
-msgstr "EXIF ¥¿¥°:"
+msgstr "EXIF ã‚¿ã‚°:"
 
-#: gphoto2/actions.c:400
+#: gphoto2/actions.c:495
 msgid "Tag"
-msgstr "¥¿¥°"
+msgstr "ã‚¿ã‚°"
 
-#: gphoto2/actions.c:402
+#: gphoto2/actions.c:497
 msgid "Value"
-msgstr "ÃÍ"
+msgstr "å€¤"
 
-#: gphoto2/actions.c:423
+#: gphoto2/actions.c:518
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
-msgstr "EXIF ¥Ç¡¼¥¿¤Ë¥µ¥à¥Í¥¤¥ë¤¬¤¢¤ê¤Ş¤¹ (%i ¥Ğ¥¤¥È)¡£"
+msgstr "EXIF ãƒ‡ãƒ¼ã‚¿ã«ã‚µãƒ ãƒã‚¤ãƒ«ãŒã‚ã‚Šã¾ã™ (%i ãƒã‚¤ãƒˆ)ã€‚"
 
-#: gphoto2/actions.c:432
+#: gphoto2/actions.c:527
 msgid "gphoto2 has been compiled without EXIF support."
-msgstr "¤³¤Î gphoto2 ¤Ï EXIF ¤ò¥µ¥İ¡¼¥È¤·¤Æ¤¤¤Ş¤»¤ó¡£"
+msgstr "ã“ã® gphoto2 ã¯ EXIF ã‚’ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ã¾ã›ã‚“ã€‚"
 
-#: gphoto2/actions.c:450
+#: gphoto2/actions.c:545
 #, c-format
 msgid "Number of supported cameras: %i\n"
-msgstr "¥µ¥İ¡¼¥È¤·¤Æ¤¤¤ë¥«¥á¥é¤Î¿ô: %i\n"
+msgstr "ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ã‚‹ã‚«ãƒ¡ãƒ©ã®æ•°: %i\n"
 
-#: gphoto2/actions.c:452
+#: gphoto2/actions.c:546
+#, c-format
 msgid "Supported cameras:\n"
-msgstr "¥µ¥İ¡¼¥È¤¹¤ë¥«¥á¥é:\n"
+msgstr "ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã‚«ãƒ¡ãƒ©:\n"
 
-#: gphoto2/actions.c:465
+#: gphoto2/actions.c:559
 #, c-format
 msgid "\t\"%s\" (TESTING)\n"
-msgstr "\t\"%s\" (¥Æ¥¹¥È)\n"
+msgstr "\t\"%s\" (ãƒ†ã‚¹ãƒˆ)\n"
 
-#: gphoto2/actions.c:468
+#: gphoto2/actions.c:562
 #, c-format
 msgid "\t\"%s\" (EXPERIMENTAL)\n"
-msgstr "\t\"%s\" (³«È¯¸ş¤±)\n"
+msgstr "\t\"%s\" (é–‹ç™ºå‘ã‘)\n"
 
-#: gphoto2/actions.c:473
+#: gphoto2/actions.c:567
 #, c-format
 msgid "\t\"%s\"\n"
 msgstr "\t\"%s\"\n"
 
-#: gphoto2/actions.c:501
+#: gphoto2/actions.c:611
 #, c-format
 msgid "Devices found: %i\n"
-msgstr "¸¡½Ğ¤·¤¿¥Ç¥Ğ¥¤¥¹¿ô: %i\n"
+msgstr "æ¤œå‡ºã—ãŸãƒ‡ãƒã‚¤ã‚¹æ•°: %i\n"
 
-#: gphoto2/actions.c:502
+#: gphoto2/actions.c:612
+#, c-format
 msgid ""
 "Path                             Description\n"
 "--------------------------------------------------------------\n"
 msgstr ""
-"¥Ñ¥¹Ì¾                           ÀâÌÀ\n"
+"ãƒ‘ã‚¹å                           èª¬æ˜\n"
 "--------------------------------------------------------------\n"
 
-#: gphoto2/actions.c:540 gphoto2/actions.c:545
+#: gphoto2/actions.c:642 gphoto2/actions.c:647
 #, c-format
 msgid "%-30s %-16s\n"
 msgstr "%-30s %-16s\n"
 
-#: gphoto2/actions.c:540
+#: gphoto2/actions.c:642
 msgid "Model"
-msgstr "·¿¼°"
+msgstr "å‹å¼"
 
-#: gphoto2/actions.c:540
+#: gphoto2/actions.c:642
 msgid "Port"
-msgstr "¥İ¡¼¥È"
+msgstr "ãƒãƒ¼ãƒˆ"
 
-#: gphoto2/actions.c:541
+#: gphoto2/actions.c:643
+#, c-format
 msgid "----------------------------------------------------------\n"
 msgstr "----------------------------------------------------------\n"
 
-#: gphoto2/actions.c:558
+#: gphoto2/actions.c:661
 #, c-format
 msgid "Abilities for camera             : %s\n"
-msgstr "¥«¥á¥é¤ÎÀ­Ç½                     : %s\n"
+msgstr "ã‚«ãƒ¡ãƒ©ã®æ€§èƒ½                     : %s\n"
 
-#: gphoto2/actions.c:559
+#: gphoto2/actions.c:662
 #, c-format
 msgid "Serial port support              : %s\n"
-msgstr "¥·¥ê¥¢¥ë¥İ¡¼¥È¤Î¥µ¥İ¡¼¥È         : %s\n"
+msgstr "ã‚·ãƒªã‚¢ãƒ«ãƒãƒ¼ãƒˆã®ã‚µãƒãƒ¼ãƒˆ         : %s\n"
 
-#: gphoto2/actions.c:561
+#: gphoto2/actions.c:664
 #, c-format
 msgid "USB support                      : %s\n"
-msgstr "USB ¥µ¥İ¡¼¥È                     : %s\n"
+msgstr "USB ã‚µãƒãƒ¼ãƒˆ                     : %s\n"
 
-#: gphoto2/actions.c:564
+#: gphoto2/actions.c:667
+#, c-format
 msgid "Transfer speeds supported        :\n"
-msgstr "¥µ¥İ¡¼¥È¤¹¤ëÅ¾Á÷¥¹¥Ô¡¼¥É         :\n"
+msgstr "ã‚µãƒãƒ¼ãƒˆã™ã‚‹è»¢é€ã‚¹ãƒ”ãƒ¼ãƒ‰         :\n"
 
-#: gphoto2/actions.c:566
+#: gphoto2/actions.c:669
 #, c-format
 msgid "                                 : %i\n"
 msgstr "                                 : %i\n"
 
-#: gphoto2/actions.c:569
+#: gphoto2/actions.c:672
+#, c-format
 msgid "Capture choices                  :\n"
-msgstr "¥­¥ã¥×¥Á¥ã¤ÎÁªÂò                 :\n"
+msgstr "å–ã‚Šè¾¼ã¿ã®é¸æŠ                   :\n"
 
-#: gphoto2/actions.c:571
+#: gphoto2/actions.c:674
+#, c-format
 msgid "                                 : Image\n"
-msgstr "                                 : ²èÁü\n"
+msgstr "                                 : ç”»åƒ\n"
 
-#: gphoto2/actions.c:573
+#: gphoto2/actions.c:678
+#, c-format
 msgid "                                 : Video\n"
-msgstr "                                 : ¥Ó¥Ç¥ª\n"
+msgstr "                                 : ãƒ“ãƒ‡ã‚ª\n"
 
-#: gphoto2/actions.c:575
+#: gphoto2/actions.c:682
+#, c-format
 msgid "                                 : Audio\n"
-msgstr "                                 : ¥ª¡¼¥Ç¥£¥ª\n"
+msgstr "                                 : ã‚ªãƒ¼ãƒ‡ã‚£ã‚ª\n"
 
-#: gphoto2/actions.c:577
+#: gphoto2/actions.c:686
+#, c-format
 msgid "                                 : Preview\n"
-msgstr "                                 : ¥×¥ì¥Ó¥å¡¼\n"
+msgstr "                                 : ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼\n"
 
-#: gphoto2/actions.c:578
+#: gphoto2/actions.c:690
+#, c-format
+msgid "                                 : Capture not supported by the driver\n"
+msgstr "                                 : ãƒ‰ãƒ©ã‚¤ãƒãƒ¼ã§å–ã‚Šè¾¼ã¿ãŒæœªã‚µãƒãƒ¼ãƒˆã§ã™\n"
+
+#: gphoto2/actions.c:692
 #, c-format
 msgid "Configuration support            : %s\n"
-msgstr "¥»¥Ã¥Æ¥£¥ó¥°¤Î¥µ¥İ¡¼¥È           : %s\n"
-
-#: gphoto2/actions.c:580
-#, c-format
-msgid "Delete files on camera support   : %s\n"
-msgstr "¥«¥á¥éÆâ¤Î¥Õ¥¡¥¤¥ëºï½ü¤Î¥µ¥İ¡¼¥È : %s\n"
-
-#: gphoto2/actions.c:583
-#, c-format
-msgid "File preview (thumbnail) support : %s\n"
-msgstr "¥×¥ì¥Ó¥å¡¼¤Î¥µ¥İ¡¼¥È             : %s\n"
-
-#: gphoto2/actions.c:586
-#, c-format
-msgid "File upload support              : %s\n"
-msgstr "File upload support              : %s\n"
-
-#: gphoto2/actions.c:603
-#, c-format
-msgid ""
-"Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a "
-"colon so I am going to guess what you mean."
-msgstr ""
-"¥İ¡¼¥È¤Ï 'serial:/dev/ttyS0' ¤Ş¤¿¤Ï 'USB:' ¤Î¤è¤¦¤Ç¤¹¤¬¡¢'%s' ¤Ï¥³¥í¥ó ':' ¤¬"
-"¤Ê¤¤¤Î¤ÇÅ¬ÍÑ¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş¤»¤ó¡£"
-
-#: gphoto2/actions.c:642
-#, c-format
-msgid ""
-"The port you specified ('%s') can not be found. Please specify one of the "
-"ports found by 'gphoto2 --list-ports' and make sure the spelling is correct "
-"(i.e. with prefix 'serial:' or 'usb:')."
-msgstr ""
-"»ØÄê¤·¤¿¥İ¡¼¥È ('%s') ¤¬¸«¤Ä¤«¤ê¤Ş¤»¤ó¡£'gphoto2 --list-ports' ¤Ç¼¨¤µ¤ì¤ë¥İ¡¼"
-"¥È¤Î°ì¤Ä¤ò»ØÄê¤·¤Æ¡¢¥İ¡¼¥ÈÌ¾¤Î¥¹¥Ú¥ë¤¬Àµ¤·¤¤¤«³ÎÇ§¤·¤Æ²¼¤µ¤¤ (ÀÜÆ¬»Ò "
-"'serial:' ¤Ş¤¿¤Ï 'usb:')¡£"
-
-#: gphoto2/actions.c:680
-msgid "About the camera driver:"
-msgstr "¥«¥á¥é¤Î¥É¥é¥¤¥Ğ¾ğÊó"
+msgstr "ã‚»ãƒƒãƒ†ã‚£ãƒ³ã‚°ã®ã‚µãƒãƒ¼ãƒˆ           : %s\n"
 
 #: gphoto2/actions.c:694
+#, c-format
+msgid "Delete selected files on camera  : %s\n"
+msgstr "ã‚«ãƒ¡ãƒ©å†…ã®é¸æŠãƒ•ã‚¡ã‚¤ãƒ«ã®å‰Šé™¤     : %s\n"
+
+#: gphoto2/actions.c:697
+#, c-format
+msgid "Delete all files on camera       : %s\n"
+msgstr "ã‚«ãƒ¡ãƒ©å†…ã®å…¨ãƒ•ã‚¡ã‚¤ãƒ«ã®å‰Šé™¤       : %s\n"
+
+#: gphoto2/actions.c:700
+#, c-format
+msgid "File preview (thumbnail) support : %s\n"
+msgstr "ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ã®ã‚µãƒãƒ¼ãƒˆ             : %s\n"
+
+#: gphoto2/actions.c:703
+#, c-format
+msgid "File upload support              : %s\n"
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã®ã‚µãƒãƒ¼ãƒˆ   : %s\n"
+
+#: gphoto2/actions.c:719
+#, c-format
+msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
+msgstr "ãƒãƒ¼ãƒˆã¯ 'serial:/dev/ttyS0' ã¾ãŸã¯ 'USB:' ã®ã‚ˆã†ã§ã™ãŒã€'%s' ã¯ã‚³ãƒ­ãƒ³ ':' ãŒãªã„ã®ã§é©ç”¨ã™ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚"
+
+#: gphoto2/actions.c:753
+#, c-format
+msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
+msgstr "æŒ‡å®šã—ãŸãƒãƒ¼ãƒˆ ('%s') ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚'gphoto2 --list-ports' ã§ç¤ºã•ã‚Œã‚‹ãƒãƒ¼ãƒˆã®ä¸€ã¤ã‚’æŒ‡å®šã—ã¦ã€ãƒãƒ¼ãƒˆåã®ã‚¹ãƒšãƒ«ãŒæ­£ã—ã„ã‹ç¢ºèªã—ã¦ä¸‹ã•ã„ (æ¥é ­å­ 'serial:' ã¾ãŸã¯ 'usb:')ã€‚"
+
+#: gphoto2/actions.c:785
+#, c-format
+msgid "About the camera driver:"
+msgstr "ã‚«ãƒ¡ãƒ©ã®ãƒ‰ãƒ©ã‚¤ãƒæƒ…å ±"
+
+#: gphoto2/actions.c:798
+#, c-format
 msgid "Camera summary:"
-msgstr "¥«¥á¥é¤Î¥µ¥Ş¥ê:"
+msgstr "ã‚«ãƒ¡ãƒ©ã®ã‚µãƒãƒª:"
 
-#: gphoto2/actions.c:708
+#: gphoto2/actions.c:811
+#, c-format
 msgid "Camera manual:"
-msgstr "¥«¥á¥é¤Î¥Ş¥Ë¥å¥¢¥ë:"
+msgstr "ã‚«ãƒ¡ãƒ©ã®ãƒãƒ‹ãƒ¥ã‚¢ãƒ«:"
 
-#: gphoto2/actions.c:724
+#: gphoto2/actions.c:826
+#, c-format
 msgid "You can only specify speeds for serial ports."
-msgstr "¥·¥ê¥¢¥ë¥İ¡¼¥È¤ÎÅ¾Á÷Â®ÅÙ¤Î¤ß»ØÄê¤¹¤ë¤³¤È¤¬²ÄÇ½¤Ç¤¹¡£"
+msgstr "ã‚·ãƒªã‚¢ãƒ«ãƒãƒ¼ãƒˆã®è»¢é€é€Ÿåº¦ã®ã¿æŒ‡å®šã™ã‚‹ã“ã¨ãŒå¯èƒ½ã§ã™ã€‚"
 
-#: gphoto2/actions.c:775
+#: gphoto2/actions.c:879
+msgid "OS/2 port by Bart van Leeuwen\n"
+msgstr "Bart van Leeuwen : OS/2 ã®ãƒãƒ¼ãƒ†ã‚£ãƒ³ã‚°æ‹…å½“\n"
+
+#: gphoto2/actions.c:883
 #, c-format
 msgid ""
 "gphoto2 %s\n"
 "\n"
-"Copyright (C) 2000-2002 Lutz Mueller and others\n"
+"Copyright (c) 2000-%d Lutz Mueller and others\n"
 "%s\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
-"License. For more information about these matters, see the files named "
-"COPYING.\n"
+"License. For more information about these matters, see the files named COPYING.\n"
 "\n"
-"This version of gphoto2 is using the following software versions and "
-"options:\n"
+"This version of gphoto2 is using the following software versions and options:\n"
 msgstr ""
 "gphoto2 %s\n"
 "\n"
-"Copyright (C) 2000-2002 Lutz Mueller »á¤È¤½¤ÎÂ¾¤ÎÊı¡¹\n"
+"Copyright (C) 2000-%d Lutz Mueller æ°ã¨ãã®ä»–ã®æ–¹ã€…\n"
 "%s\n"
-"gphoto2 ¤ÏË¡Î§¤Ë¤è¤êµö²Ä¤µ¤ì¤¿ÈÏ°Ï¤Ç´°Á´ÌµÊİ¾Ú¤Ç¤¹¡£\n"
-"¤¢¤Ê¤¿¤Ï GNU ¸øÍ­»ÈÍÑµöÂú·ÀÌó½ñ¤Î²¼¤Ç gphoto2 ¤ÎÊ£À½¤òºÆÇÛÉÛ¤¹¤ë¤³¤È¤¬¤Ç¤­¤Ş"
-"¤¹¡£\n"
-"¤³¤ì¤é¤ÎÆâÍÆ¤Ë¤Ä¤¤¤Æ¾ÜºÙ¤Ê¾ğÊó¤Ë¤Ä¤¤¤Æ¤Ï COPYING ¥Õ¥¡¥¤¥ë¤ò»²¾È²¼¤µ¤¤¡£\n"
+"gphoto2 ã¯æ³•å¾‹ã«ã‚ˆã‚Šè¨±å¯ã•ã‚ŒãŸç¯„å›²ã§å®Œå…¨ç„¡ä¿è¨¼ã§ã™ã€‚\n"
+"ã‚ãªãŸã¯ GNU å…¬æœ‰ä½¿ç”¨è¨±è«¾å¥‘ç´„æ›¸ã®ä¸‹ã§ gphoto2 ã®è¤‡è£½ã‚’å†é…å¸ƒã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚\n"
+"ã“ã‚Œã‚‰ã®å†…å®¹ã«ã¤ã„ã¦è©³ç´°ãªæƒ…å ±ã«ã¤ã„ã¦ã¯ COPYING ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‚ç…§ãã ã•ã„ã€‚\n"
 "\n"
-"¤³¤Î¥Ğ¡¼¥¸¥ç¥ó¤Î gphoto2 ¤Ï¼¡¤Î¥½¥Õ¥È¥¦¥§¥¢¡¦¥Ğ¡¼¥¸¥ç¥ó¤È¥ª¥×¥·¥ç¥ó¤ò»ÈÍÑ¤·¤Ş"
-"¤¹:\n"
+"ã“ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã® gphoto2 ã¯æ¬¡ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ãƒ»ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¨ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’ä½¿ç”¨ã—ã¾ã™:\n"
 
-#: gphoto2/actions.c:788
-msgid "OS/2 port by Bart van Leeuwen\n"
-msgstr "Bart van Leeuwen : OS/2 ¤Î¥İ¡¼¥Æ¥£¥ó¥°Ã´Åö\n"
-
-#: gphoto2/actions.c:902
-msgid ""
-"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
-"MAILING LIST:"
-msgstr ""
-"¥á¡¼¥ê¥ó¥°¥ê¥¹¥È¤Ë¥Ç¥Ğ¥Ã¥°¥á¥Ã¥»¡¼¥¸¤òÁ÷¿®¤¹¤ë¾ì¹ç¤Ï¡¢É¬¤º¼¡¤Î¹Ô¤òÁŞÆş¤·¤Æ²¼"
-"¤µ¤¤:"
-
-#: gphoto2/foreach.c:262
+#: gphoto2/actions.c:1004
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there are only %i files available in "
-"'%s' or its subfolders. Please obtain a valid file number from a file "
-"listing first."
-msgstr ""
-"¥Õ¥¡¥¤¥ëÈÖ¹æ¤¬¤ª¤«¤·¤¤¤Ç¤¹¡£%i ¤ò»ØÄê¤·¤Ş¤·¤¿¤¬¡¢%i ¸Ä¤Î¥Õ¥¡¥¤¥ë¤·¤« '%s' ¤Î"
-"Ãæ¤Ë¤Ï¤Ê¤¤¤«¡¢¤Ş¤¿¤Ï¥µ¥Ö¥Õ¥©¥ë¥À¤Î¤è¤¦¤Ç¤¹¡£¤Ş¤ººÇ½é¤Ë¥Õ¥¡¥¤¥ë°ìÍ÷¤«¤éÀµ¤·¤¤"
-"ÈÖ¹æ¤ò¼èÆÀ¤·¤Æ²¼¤µ¤¤¡£"
+msgid "Getting storage information not supported for this camera.\n"
+msgstr "ã“ã®ã‚«ãƒ¡ãƒ©ã¯ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸æƒ…å ±ã®å–å¾—ã‚’ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ã¾ã›ã‚“ã§ã—ãŸã€‚\n"
 
-#: gphoto2/foreach.c:288
+#: gphoto2/actions.c:1019
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there is only 1 file available in '%"
-"s'."
-msgstr ""
-"¥Õ¥¡¥¤¥ëÈÖ¹æ¤¬¤ª¤«¤·¤¤¤Ç¤¹¡£%i ¤ò»ØÄê¤·¤Ş¤·¤¿¤¬¡¢1¸Ä¤Î¥Õ¥¡¥¤¥ë¤·¤« '%s' ¤ÎÃæ"
-"¤Ë¤¢¤ê¤Ş¤»¤ó¡£"
+msgid "Read-Write"
+msgstr "èª­ã¿æ›¸ã"
 
-#: gphoto2/foreach.c:295
+#: gphoto2/actions.c:1022
 #, c-format
-msgid ""
-"Bad file number. You specified %i, but there are only %i files available in "
-"'%s'.Please obtain a valid file number from a file listing first."
-msgstr ""
-"¥Õ¥¡¥¤¥ëÈÖ¹æ¤¬¤ª¤«¤·¤¤¤Ç¤¹¡£%i ¤ò»ØÄê¤Ş¤·¤¿¤¬¡¢%i ¸Ä¤Î¥Õ¥¡¥¤¥ë¤·¤« '%s' ¤ÎÃæ"
-"¤Ë¤¢¤ê¤Ş¤»¤ó¡£¤Ş¤ººÇ½é¤Ë¥Õ¥¡¥¤¥ë°ìÍ÷¤«¤éÀµ¤·¤¤ÈÖ¹æ¤ò¼èÆÀ¤·¤Æ²¼¤µ¤¤¡£"
+msgid "Read-Only"
+msgstr "èª­ã¿è¾¼ã¿å°‚ç”¨"
 
-#: gphoto2/gp-params.c:64
-#, fuzzy
+#: gphoto2/actions.c:1025
+#, c-format
+msgid "Read-only with delete"
+msgstr "èª­ã¿è¾¼ã¿å°‚ç”¨ã¨å‰Šé™¤"
+
+#: gphoto2/actions.c:1028 gphoto2/actions.c:1038
+#, c-format
+msgid "Unknown"
+msgstr "ä¸æ˜"
+
+#: gphoto2/actions.c:1041
+#, c-format
+msgid "Fixed ROM"
+msgstr "å›ºå®š ROM"
+
+#: gphoto2/actions.c:1044
+#, c-format
+msgid "Removable ROM"
+msgstr "ãƒªãƒ ãƒ¼ãƒãƒ–ãƒ« ROM"
+
+#: gphoto2/actions.c:1047
+#, c-format
+msgid "Fixed RAM"
+msgstr "å›ºå®š RAM"
+
+#: gphoto2/actions.c:1050
+#, c-format
+msgid "Removable RAM"
+msgstr "ãƒªãƒ ãƒ¼ãƒãƒ–ãƒ« RAM"
+
+#: gphoto2/actions.c:1060
+#, c-format
+msgid "Undefined"
+msgstr "æœªå®šç¾©"
+
+#: gphoto2/actions.c:1063
+#, c-format
+msgid "Generic Flat"
+msgstr "ä¸€èˆ¬ãƒ•ãƒ©ãƒƒãƒˆ"
+
+#: gphoto2/actions.c:1066
+#, c-format
+msgid "Generic Hierarchical"
+msgstr "ä¸€èˆ¬éšå±¤"
+
+#: gphoto2/actions.c:1069
+#, c-format
+msgid "Camera layout (DCIM)"
+msgstr "ã‚«ãƒ¡ãƒ©ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆ (DCIM)"
+
+#: gphoto2/actions.c:1107
+#, c-format
+msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
+msgstr "USB ãƒ™ãƒ³ãƒ€ãƒ¼/è£½å“ ID 0x%x/0x%x ã¨ 0x%x/0x%x ã‚’ä¸Šæ›¸ãã—ã¦ã„ã¾ã™"
+
+#: gphoto2/actions.c:1171
+msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
+msgstr "ãƒ¡ãƒ¼ãƒªãƒ³ã‚°ãƒªã‚¹ãƒˆã«ãƒ‡ãƒãƒƒã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹å ´åˆã¯ã€å¿…ãšæ¬¡ã®è¡Œã‚’æŒ¿å…¥ã—ã¦ä¸‹ã•ã„:"
+
+#: gphoto2/actions.c:1186
+#, c-format
+msgid "%s has been compiled with the following options:"
+msgstr "%s ã¯æ¬¡ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã•ã‚Œã¾ã—ãŸ:"
+
+#: gphoto2/actions.c:1304
+#, c-format
+msgid "%s not found in configuration tree."
+msgstr "%s ã¯è¨­å®šãƒ„ãƒªãƒ¼ã§è¦‹ã¤ã‘ã‚‰ã‚Œã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1364
+#, c-format
+msgid "Failed to retrieve value of text widget %s."
+msgstr "ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆ %s ã®ãƒ†ã‚­ã‚¹ãƒˆã®å€¤ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1381
+#, c-format
+msgid "Failed to retrieve values of range widget %s."
+msgstr "ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆ %s ã®ç¯„å›²ã®å€¤ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1393
+#, c-format
+msgid "Failed to retrieve values of toggle widget %s."
+msgstr "ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆ %s ã®ãƒˆã‚°ãƒ«ã®å€¤ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1405
+#, c-format
+msgid "Failed to retrieve values of date/time widget %s."
+msgstr "ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆ %s ã®æ—¥æ™‚ã®å€¤ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1435
+#, c-format
+msgid "Failed to retrieve values of radio widget %s."
+msgstr "ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆ %s ã®æ¯”ç‡ã®å€¤ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1476
+#, c-format
+msgid "Failed to set the value of text widget %s to %s."
+msgstr "ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆ %s ã®ãƒ†ã‚­ã‚¹ãƒˆã®å€¤ã‚’ %s ã«è¨­å®šã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1486
+#, c-format
+msgid "The passed value %s is not a floating point value."
+msgstr "æ¸¡ã•ã‚ŒãŸå€¤ %s ã¯æµ®å‹•å°æ•°ç‚¹å€¤ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1491
+#, c-format
+msgid "The passed value %f is not within the expected range %f - %f."
+msgstr "æ¸¡ã•ã‚ŒãŸå€¤ %f ã¯æœŸå¾…ã•ã‚ŒãŸç¯„å›²(%fï½%f)ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1497
+#, c-format
+msgid "Failed to set the value of range widget %s to %f."
+msgstr "ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆ %s ã®ç¯„å›²ã®å€¤ã‚’ %f ã«è¨­å®šã§ãã¾ã›ã‚“ã§ã—ãŸã€‚<"
+
+#: gphoto2/actions.c:1506
+msgid "off"
+msgstr "ã‚ªãƒ•"
+
+#: gphoto2/actions.c:1507
+msgid "false"
+msgstr "å½(false)"
+
+#: gphoto2/actions.c:1512
+msgid "on"
+msgstr "ã‚ªãƒ³"
+
+#: gphoto2/actions.c:1513
+msgid "true"
+msgstr "çœŸ(true)"
+
+#: gphoto2/actions.c:1518
+#, c-format
+msgid "The passed value %s is not a valid toggle value."
+msgstr "æ¸¡ã•ã‚ŒãŸå€¤ %s ã¯æ­£ã—ã„ãƒˆã‚°ãƒ«å€¤ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1524
+#, c-format
+msgid "Failed to set values %s of toggle widget %s."
+msgstr "ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆ %s ã®ãƒˆã‚°ãƒ«ã®å€¤ã‚’ %s ã«è¨­å®šã§ãã¾ã›ã‚“ã§ã—ãŸï¼"
+
+#: gphoto2/actions.c:1537
+#, c-format
+msgid "The passed value %s is neither a valid time nor an integer."
+msgstr "æ¸¡ã•ã‚ŒãŸå€¤ %s ã¯æ•´æ•°ã‹æ­£ã—ã„æ™‚é–“ã®ã©ã¡ã‚‰ã§ã‚‚ã‚ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1544
+#, c-format
+msgid "Failed to set new time of date/time widget %s to %s."
+msgstr "ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆ %s ã®æ—¥æ™‚ã‚’æ–°ã—ã„æ™‚é–“ %s ã«è¨­å®šã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1581
+#, c-format
+msgid "Choice %s not found within list of choices."
+msgstr "é¸æŠã—ãŸ %s ã¯é¸æŠè‚¢ä¸­ã§è¦‹ã¤ã‘ã‚‰ã‚Œã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/actions.c:1589
+#, c-format
+msgid "The %s widget is not configurable."
+msgstr "ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆ %s ã¯è¨­å®šã§ãã¾ã›ã‚“ã€‚"
+
+#: gphoto2/actions.c:1596
+#, c-format
+msgid "Failed to set new configuration value %s for configuration entry %s."
+msgstr "è¨­å®šã‚¨ãƒ³ãƒˆãƒªãƒ¼ %2$s ã¸ã®æ–°ã—ã„è¨­å®šå€¤ %1$s ã®è¨­å®šã«å¤±æ•—ã—ã¾ã—ãŸã€‚"
+
+#: gphoto2/foreach.c:254
+#, c-format
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«ç•ªå·ãŒãŠã‹ã—ã„ã§ã™ã€‚%i ã‚’æŒ‡å®šã—ã¾ã—ãŸãŒã€%i å€‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã—ã‹ '%s' ã®ä¸­ã«ã¯ãªã„ã‹ã€ã¾ãŸã¯ã‚µãƒ–ãƒ•ã‚©ãƒ«ãƒ€ã®ã‚ˆã†ã§ã™ã€‚ã¾ãšæœ€åˆã«ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ã‹ã‚‰æ­£ã—ã„ç•ªå·ã‚’å–å¾—ã—ã¦ä¸‹ã•ã„ã€‚"
+
+#: gphoto2/foreach.c:279
+#, c-format
+msgid "There are no files in folder '%s'."
+msgstr "ãƒ•ã‚©ãƒ«ãƒ€ '%s' ã®ä¸­ã«ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"
+
+#: gphoto2/foreach.c:285
+#, c-format
+msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«ç•ªå·ãŒãŠã‹ã—ã„ã§ã™ã€‚%i ã‚’æŒ‡å®šã—ã¾ã—ãŸãŒã€1å€‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã—ã‹ '%s' ã®ä¸­ã«ã‚ã‚Šã¾ã›ã‚“ã€‚"
+
+#: gphoto2/foreach.c:293
+#, c-format
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«ç•ªå·ãŒãŠã‹ã—ã„ã§ã™ã€‚%1$i ã‚’æŒ‡å®šã¾ã—ãŸãŒã€'%3$s' ã®ä¸­ã«ã¯æœ‰åŠ¹ãªãƒ•ã‚¡ã‚¤ãƒ«ã¯ %2$i å€‹ã—ã‹ã‚ã‚Šã¾ã›ã‚“ã€‚ã¾ãšæœ€åˆã«ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ã‹ã‚‰æ­£ã—ã„ç•ªå·ã‚’å–å¾—ã—ã¦ãã ã•ã„ã€‚"
+
+#: gphoto2/gp-params.c:70
+#, c-format
 msgid "*** Error ***              \n"
-msgstr ""
-"*** ¥¨¥é¡¼ (%i: '%s') ***       \n"
-"\n"
+msgstr "*** ã‚¨ãƒ©ãƒ¼ ***             \n"
 
-#: gphoto2/gp-params.c:231
-msgid "Press any key to continue.\n"
-msgstr ""
-
-#: gphoto2/gp-params.c:248
-msgid "Not enough memory."
-msgstr ""
-
-#: gphoto2/gphoto2-cmd-capture.c:218
-msgid "Operation cancelled"
-msgstr "Áàºî¤ò¥­¥ã¥ó¥»¥ë¤·¤Ş¤·¤¿"
-
-#: gphoto2/gphoto2-cmd-config.c:72
-msgid "</B/24>Continue"
-msgstr "</B/24>Â³¹Ô"
-
-#: gphoto2/gphoto2-cmd-config.c:72
-msgid "</B16>Cancel"
-msgstr "</B16>¥­¥ã¥ó¥»¥ë"
-
-#: gphoto2/gphoto2-cmd-config.c:78
-msgid "<C></5>Error"
-msgstr "<C></5>¥¨¥é¡¼"
-
-#: gphoto2/gphoto2-cmd-config.c:80
-msgid "Could not set configuration:"
-msgstr "ÀßÄê¤òÍ­¸ú¤Ë¤¹¤ë¤³¤È¤¬½ĞÍè¤Ş¤»¤ó¤Ç¤·¤¿:"
-
-#: gphoto2/gphoto2-cmd-config.c:124
-msgid "Exit"
-msgstr "½ªÎ»"
-
-#: gphoto2/gphoto2-cmd-config.c:126
-msgid "Back"
-msgstr "Ìá¤ë"
-
-#: gphoto2/gphoto2-cmd-config.c:270
-msgid "Time: "
-msgstr "»ş¹ï: "
-
-#: gphoto2/gphoto2-cmd-config.c:329 gphoto2/gphoto2-cmd-config.c:357
-#: gphoto2/gphoto2-cmd-config.c:417 gphoto2/gphoto2-cmd-config.c:480
-msgid "Value: "
-msgstr "ÃÍ: "
-
-#: gphoto2/gphoto2-cmd-config.c:379
-msgid "Yes"
-msgstr "¤Ï¤¤"
-
-#: gphoto2/gphoto2-cmd-config.c:379
-msgid "No"
-msgstr "¤¤¤¤¤¨"
-
-#: gphoto2/main.c:183 gphoto2/main.c:1475
-msgid "Turn on debugging"
-msgstr "¥Ç¥Ğ¥Ã¥°¤òÍ­¸ú¤Ë¤¹¤ë"
-
-#: gphoto2/main.c:184 gphoto2/main.c:1477
-msgid "Quiet output (default=verbose)"
-msgstr "´Ê°×½ĞÎÏ (¥Ç¥Õ¥©¥ë¥È=¾ÜºÙ)"
-
-#: gphoto2/main.c:188 gphoto2/main.c:1481
-msgid "Display version and exit"
-msgstr "¥Ğ¡¼¥¸¥ç¥ó¾ğÊó¤òÉ½¼¨¤·¤Æ½ªÎ»¤¹¤ë"
-
-#: gphoto2/main.c:189
-msgid "Displays this help screen"
-msgstr "¤³¤Î¥Ø¥ë¥×¤òÉ½¼¨¤¹¤ë"
-
-#: gphoto2/main.c:190 gphoto2/main.c:1483
-msgid "List supported camera models"
-msgstr "¥µ¥İ¡¼¥È¤·¤Æ¤¤¤ë¥«¥á¥é·¿¼°¤Î°ìÍ÷"
-
-#: gphoto2/main.c:191 gphoto2/main.c:1485
-msgid "List supported port devices"
-msgstr "¥µ¥İ¡¼¥È¤·¤Æ¤¤¤ë¥İ¡¼¥È¡¦¥Ç¥Ğ¥¤¥¹¤Î°ìÍ÷¤òÉ½¼¨¤¹¤ë"
-
-#: gphoto2/main.c:192 gphoto2/main.c:1487
-msgid "Send file to stdout"
-msgstr "É¸½à½ĞÎÏ¤Ë¥Õ¥¡¥¤¥ë¤òÁ÷½Ğ¤¹¤ë"
-
-#: gphoto2/main.c:193 gphoto2/main.c:1489
-msgid "Print filesize before data"
-msgstr "¥Ç¡¼¥¿¤ÎÁ°¤Ë¥Õ¥¡¥¤¥ë¥µ¥¤¥º¤ò½ĞÎÏ¤¹¤ë"
-
-#: gphoto2/main.c:194 gphoto2/main.c:1491
-msgid "List auto-detected cameras"
-msgstr "¼«Æ°¸¡½Ğ¤·¤¿¥«¥á¥é¤Î°ìÍ÷¤òÉ½¼¨¤¹¤ë"
-
-#: gphoto2/main.c:197 gphoto2/main.c:1493
-msgid "Specify port device"
-msgstr "¥İ¡¼¥È¡¦¥Ç¥Ğ¥¤¥¹¤ò»ØÄê¤¹¤ë"
-
-#: gphoto2/main.c:198 gphoto2/main.c:1495
-msgid "Specify serial transfer speed"
-msgstr "¥·¥ê¥¢¥ëÅ¾Á÷¥¹¥Ô¡¼¥É¤ò»ØÄê¤¹¤ë"
-
-#: gphoto2/main.c:199 gphoto2/main.c:1497
-msgid "Specify camera model"
-msgstr "¥«¥á¥é¤Î·¿¼°¤ò»ØÄê¤·¤Æ²¼¤µ¤¤"
-
-#: gphoto2/main.c:200 gphoto2/main.c:1499
-msgid "Specify a filename"
-msgstr "¥Õ¥¡¥¤¥ëÌ¾¤ò»ØÄê¤¹¤ë"
-
-#: gphoto2/main.c:201 gphoto2/main.c:1501
-msgid "(expert only) Override USB IDs"
-msgstr "USB ID ¤Î¾å½ñ¤­ (¥¨¥­¥¹¥Ñ¡¼¥È¸ş¤±)"
-
-#: gphoto2/main.c:204 gphoto2/main.c:1503
-msgid "Display camera abilities"
-msgstr "¥«¥á¥é¤ÎÀ­Ç½¤òÉ½¼¨¤¹¤ë"
-
-#: gphoto2/main.c:205 gphoto2/main.c:1505
-msgid "Specify camera folder (default=\"/\")"
-msgstr "¥«¥á¥é¤Î¥Õ¥©¥ë¥À¤ò»ØÄê¤¹¤ë (¥Ç¥Õ¥©¥ë¥È=\"/\")"
-
-#: gphoto2/main.c:206 gphoto2/main.c:1507
-msgid "Recursion (default for download)"
-msgstr "ºÆµ¢¤¹¤ë (¥Ç¥Õ¥©¥ë¥È=¥À¥¦¥ó¥í¡¼¥É)"
-
-#: gphoto2/main.c:207 gphoto2/main.c:1509
-msgid "No recursion (default for deletion)"
-msgstr "ºÆµ¢¤·¤Ê¤¤ (¥Ç¥Õ¥©¥ë¥È=ºï½ü)"
-
-#: gphoto2/main.c:208 gphoto2/main.c:1511
-msgid "List folders in folder"
-msgstr "¥Õ¥©¥ë¥À¤Î°ìÍ÷"
-
-#: gphoto2/main.c:209 gphoto2/main.c:1513
-msgid "List files in folder"
-msgstr "¥Õ¥©¥ë¥ÀÆâ¤Î¥Õ¥¡¥¤¥ë°ìÍ÷"
-
-#: gphoto2/main.c:210 gphoto2/main.c:211
-msgid "name"
-msgstr "Ì¾Á°"
-
-#: gphoto2/main.c:210 gphoto2/main.c:1515
-msgid "Create a directory"
-msgstr "¥Ç¥£¥ì¥¯¥È¥ê¤ÎºîÀ®"
-
-#: gphoto2/main.c:211 gphoto2/main.c:1517
-msgid "Remove a directory"
-msgstr "¥Ç¥£¥ì¥¯¥È¥ê¤Îºï½ü"
-
-#: gphoto2/main.c:212 gphoto2/main.c:1519
-msgid "Display number of files"
-msgstr "¥Õ¥¡¥¤¥ë¿ô¤ÎÉ½¼¨"
-
-#: gphoto2/main.c:213 gphoto2/main.c:1521
-msgid "Get files given in range"
-msgstr "»ØÄê¤·¤¿ÈÏ°Ï¤Ç¥Õ¥¡¥¤¥ë¤Î¼èÆÀ"
-
-#: gphoto2/main.c:214 gphoto2/main.c:1523
-msgid "Get all files from folder"
-msgstr "¥Õ¥©¥ë¥À¤«¤éÁ´¤Æ¤Î¥Õ¥¡¥¤¥ë¤Î¼èÆÀ"
-
-#: gphoto2/main.c:215 gphoto2/main.c:1525
-msgid "Get thumbnails given in range"
-msgstr "»ØÄê¤·¤¿ÈÏ°Ï¤Ç¥µ¥à¥Í¥¤¥ë¤Î¼èÆÀ"
-
-#: gphoto2/main.c:216 gphoto2/main.c:1528
-msgid "Get all thumbnails from folder"
-msgstr "¥Õ¥©¥ë¥À¤«¤éÁ´¤Æ¤Î¥µ¥à¥Í¥¤¥ë¤Î¼èÆÀ"
-
-#: gphoto2/main.c:217 gphoto2/main.c:1531
-msgid "Get raw data given in range"
-msgstr "»ØÄê¤·¤¿ÈÏ°Ï¤ÇÀ¸¥Ç¡¼¥¿¤Î¼èÆÀ"
-
-#: gphoto2/main.c:218 gphoto2/main.c:1534
-msgid "Get all raw data from folder"
-msgstr "¥Õ¥©¥ë¥À¤«¤éÁ´¤Æ¤ÎÀ¸¥Ç¡¼¥¿¤Î¼èÆÀ"
-
-#: gphoto2/main.c:219 gphoto2/main.c:1537
-msgid "Get audio data given in range"
-msgstr "»ØÄê¤·¤¿¥ª¡¼¥Ç¥£¥ª¥Ç¡¼¥¿¤Î¼èÆÀ"
-
-#: gphoto2/main.c:220 gphoto2/main.c:1540
-msgid "Get all audio data from folder"
-msgstr "¥Õ¥©¥ë¥À¤«¤é¥ª¡¼¥Ç¥£¥ª¥Ç¡¼¥¿¤Î¼èÆÀ"
-
-#: gphoto2/main.c:221 gphoto2/main.c:1542
-msgid "Delete files given in range"
-msgstr "»ØÄê¤·¤¿ÈÏ°Ï¤Ç¥Õ¥¡¥¤¥ë¤Îºï½ü"
-
-#: gphoto2/main.c:222 gphoto2/main.c:1544
-msgid "Delete all files in folder"
-msgstr "¥Õ¥©¥ë¥À¤ÎÃæ¤Î¥Õ¥¡¥¤¥ë¤òºï½ü"
-
-#: gphoto2/main.c:223 gphoto2/main.c:1546
-msgid "Upload a file to camera"
-msgstr "¥Õ¥¡¥¤¥ë¤ò¥«¥á¥é¤Ë¥¢¥Ã¥×¥í¡¼¥É"
-
-#: gphoto2/main.c:225 gphoto2/main.c:1549
-msgid "Configure"
-msgstr "ÀßÄê"
-
-#: gphoto2/main.c:227 gphoto2/main.c:1553
-msgid "Capture a quick preview"
-msgstr "¥­¥ã¥×¥Á¥ã¤Î´Ê°×¥×¥ì¥Ó¥å¡¼"
-
-#: gphoto2/main.c:228 gphoto2/main.c:1555
-msgid "Capture an image"
-msgstr "²èÁü¤Î¥­¥ã¥×¥Á¥ã"
-
-#: gphoto2/main.c:229
-msgid "Capture a movie "
-msgstr "±ÇÁü¤Î¥­¥ã¥×¥Á¥ã"
-
-#: gphoto2/main.c:230 gphoto2/main.c:1559
-msgid "Capture an audio clip"
-msgstr "¥ª¡¼¥Ç¥£¥ª¤Î¥­¥ã¥×¥Á¥ã"
-
-#: gphoto2/main.c:232 gphoto2/main.c:1562 gphoto2/shell.c:131
-msgid "Show EXIF information"
-msgstr "EXIF ¾ğÊó¤ÎÉ½¼¨"
-
-#: gphoto2/main.c:234 gphoto2/main.c:1565 gphoto2/shell.c:127
-msgid "Show info"
-msgstr "¾ğÊó¤ÎÉ½¼¨"
-
-#: gphoto2/main.c:235
-msgid "Summary of camera status"
-msgstr "¥«¥á¥é¾õÂÖ¤Î¥µ¥Ş¥ê"
-
-#: gphoto2/main.c:236
-msgid "Camera driver manual"
-msgstr "¥«¥á¥é¤Î¥É¥é¥¤¥Ğ¤Î¥Ş¥Ë¥å¥¢¥ë"
-
-#: gphoto2/main.c:237
-msgid "About the camera driver"
-msgstr "¥«¥á¥é¤Î¥É¥é¥¤¥Ğ¾ğÊó"
-
-#: gphoto2/main.c:238 gphoto2/main.c:1573
-msgid "gPhoto shell"
-msgstr "gPhoto ¥·¥§¥ë"
-
-#: gphoto2/main.c:365 gphoto2/main.c:1206
-msgid ""
-"Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
-"c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
-msgstr ""
-"¸¡½Ğ¤µ¤ì¤¿ USB ¥Ç¥Ğ¥¤¥¹¤ò»ÈÍÑ¤¹¤ë¤¿¤á¤Ë a:b=c:d ¤È¤¤¤¦½ñ¼°¤ò»ÈÍÑ¤·¤Æ²¼¤µ¤¤¡£"
-"a, b, c, d ¤Ï '0x' ¤Ç»Ï¤Ş¤ë 16 ¿Ê¤Î¿ôÃÍ¤Ë¤·¤Æ²¼¤µ¤¤¡£\n"
-
-#: gphoto2/main.c:488
-msgid "Jan"
-msgstr "1·î"
-
-#: gphoto2/main.c:488
-msgid "January"
-msgstr "1·î"
-
-#: gphoto2/main.c:489
-msgid "Feb"
-msgstr "2·î"
-
-#: gphoto2/main.c:489
-msgid "February"
-msgstr "2·î"
-
-#: gphoto2/main.c:490
-msgid "Mar"
-msgstr "3·î"
-
-#: gphoto2/main.c:490
-msgid "March"
-msgstr "3·î"
-
-#: gphoto2/main.c:491
-msgid "Apr"
-msgstr "4·î"
-
-#: gphoto2/main.c:491
-msgid "April"
-msgstr "4·î"
-
-#: gphoto2/main.c:492
-msgid "May"
-msgstr "5·î"
-
-#: gphoto2/main.c:493
-msgid "Jun"
-msgstr "6·î"
-
-#: gphoto2/main.c:493
-msgid "June"
-msgstr "6·î"
-
-#: gphoto2/main.c:494
-msgid "Jul"
-msgstr "7·î"
-
-#: gphoto2/main.c:494
-msgid "July"
-msgstr "7·î"
-
-#: gphoto2/main.c:495
-msgid "Aug"
-msgstr "8·î"
-
-#: gphoto2/main.c:495
-msgid "August"
-msgstr "8·î"
-
-#: gphoto2/main.c:496
-msgid "Sep"
-msgstr "9·î"
-
-#: gphoto2/main.c:496
-msgid "September"
-msgstr "9·î"
-
-#: gphoto2/main.c:497
-msgid "Oct"
-msgstr "10·î"
-
-#: gphoto2/main.c:497
-msgid "October"
-msgstr "10·î"
-
-#: gphoto2/main.c:498
-msgid "Nov"
-msgstr "11·î"
-
-#: gphoto2/main.c:498
-msgid "November"
-msgstr "11·î"
-
-#: gphoto2/main.c:499
-msgid "Dec"
-msgstr "12·î"
-
-#: gphoto2/main.c:499
-msgid "December"
-msgstr "12·î"
-
-#: gphoto2/main.c:506
-msgid "Sun"
-msgstr "Æü"
-
-#: gphoto2/main.c:506
-msgid "Sunday"
-msgstr "ÆüÍËÆü"
-
-#: gphoto2/main.c:507
-msgid "Mon"
-msgstr "·î"
-
-#: gphoto2/main.c:507
-msgid "Monday"
-msgstr "·îÍËÆü"
-
-#: gphoto2/main.c:508
-msgid "Tue"
-msgstr "²Ğ"
-
-#: gphoto2/main.c:508
-msgid "Tuesday"
-msgstr "²ĞÍËÆü"
-
-#: gphoto2/main.c:509
-msgid "Wed"
-msgstr "¿å"
-
-#: gphoto2/main.c:509
-msgid "Wednesday"
-msgstr "¿åÍËÆü"
-
-#: gphoto2/main.c:510
-msgid "Thu"
-msgstr "ÌÚ"
-
-#: gphoto2/main.c:510
-msgid "Thursday"
-msgstr "ÌÚÍËÆü"
-
-#: gphoto2/main.c:511
-msgid "Fri"
-msgstr "¶â"
-
-#: gphoto2/main.c:511
-msgid "Friday"
-msgstr "¶âÍËÆü"
-
-#: gphoto2/main.c:512
-msgid "Sat"
-msgstr "ÅÚ"
-
-#: gphoto2/main.c:512
-msgid "Saturday"
-msgstr "ÅÚÍËÆü"
-
-#: gphoto2/main.c:569
+#: gphoto2/gp-params.c:244
 #, c-format
-msgid "You cannot use '%n' in combination with non-persistent files!"
-msgstr "ºî¶ÈÍÑ¥Õ¥¡¥¤¥ë¤È°ì½ï¤Ë '%n' ¤ò»ÈÍÑ¤¹¤ë¤³¤È¤Ï¤Ç¤­¤Ş¤»¤ó¡ª"
+msgid "Press any key to continue.\n"
+msgstr "ä½•ã‹ã‚­ãƒ¼ã‚’æŠ¼ã™ã¨ç¶šã‘ã¾ã™ã€‚\n"
 
-#: gphoto2/main.c:592
+#: gphoto2/gp-params.c:266
+#, c-format
+msgid "Not enough memory."
+msgstr "ãƒ¡ãƒ¢ãƒªãŒè¶³ã‚Šã¾ã›ã‚“ã€‚"
+
+#: gphoto2/gphoto2-cmd-capture.c:211
+msgid "Operation cancelled"
+msgstr "æ“ä½œã‚’å–ã‚Šæ¶ˆã—ã¾ã—ãŸ"
+
+#: gphoto2/gphoto2-cmd-config.c:55
+msgid "</B/24>Continue"
+msgstr "</B/24>ç¶šè¡Œ"
+
+#: gphoto2/gphoto2-cmd-config.c:55
+msgid "</B16>Cancel"
+msgstr "</B16>ã‚­ãƒ£ãƒ³ã‚»ãƒ«"
+
+#: gphoto2/gphoto2-cmd-config.c:61
+msgid "<C></5>Error"
+msgstr "<C></5>ã‚¨ãƒ©ãƒ¼"
+
+#: gphoto2/gphoto2-cmd-config.c:63
+msgid "Could not set configuration:"
+msgstr "è¨­å®šã‚’æœ‰åŠ¹ã«ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã›ã‚“ã§ã—ãŸ:"
+
+#: gphoto2/gphoto2-cmd-config.c:107
+msgid "Exit"
+msgstr "çµ‚äº†"
+
+#: gphoto2/gphoto2-cmd-config.c:109
+msgid "Back"
+msgstr "æˆ»ã‚‹"
+
+#: gphoto2/gphoto2-cmd-config.c:254
+msgid "Time: "
+msgstr "æ™‚åˆ»: "
+
+#: gphoto2/gphoto2-cmd-config.c:313 gphoto2/gphoto2-cmd-config.c:341
+#: gphoto2/gphoto2-cmd-config.c:400 gphoto2/gphoto2-cmd-config.c:463
+msgid "Value: "
+msgstr "å€¤: "
+
+#: gphoto2/gphoto2-cmd-config.c:362
+msgid "Yes"
+msgstr "ã¯ã„"
+
+#: gphoto2/gphoto2-cmd-config.c:362
+msgid "No"
+msgstr "ã„ã„ãˆ"
+
+#: gphoto2/main.c:230
+#, c-format
+msgid "Zero padding numbers in file names is only possible with %%n."
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«åã®ã‚¼ãƒ­ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã¯ %%n ã§ã®ã¿å¯èƒ½ã§ã™ã€‚"
+
+#: gphoto2/main.c:239
+#, c-format
+msgid "You cannot use %%n zero padding without a precision value!"
+msgstr "æ­£ç¢ºãªå€¤ãªã—ã§ %%n ã‚¼ãƒ­ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚’ä½¿ã†ã“ã¨ã¯ã§ãã¾ã›ã‚“!"
+
+#: gphoto2/main.c:255
+#, c-format
+msgid "You cannot use '%%n' in combination with non-persistent files!"
+msgstr "non-persistent ãƒ•ã‚¡ã‚¤ãƒ«ã¨ã€Œ%%nã€ã®çµ„ã¿åˆã‚ã›ã‚’ä½¿ç”¨ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“!"
+
+#: gphoto2/main.c:286
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr "¥«¥á¥é¤¬Äó¶¡¤¹¤ë¥Õ¥¡¥¤¥ëÌ¾ ('%s') ¤Ë¤Ï³ÈÄ¥»Ò¤¬¤¢¤ê¤Ş¤»¤ó¡ª"
+msgstr "ã‚«ãƒ¡ãƒ©ãŒæä¾›ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«å ('%s') ã«ã¯æ‹¡å¼µå­ãŒã‚ã‚Šã¾ã›ã‚“ï¼"
 
-#: gphoto2/main.c:668
+#: gphoto2/main.c:341
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
-msgstr "ÉÔÀµ¤Ê½ñ¼° '%s' (%i ¤Ç¥¨¥é¡¼) ¤Ç¤¹¡£"
+msgstr "ä¸æ­£ãªæ›¸å¼ '%s' (%i ã§ã‚¨ãƒ©ãƒ¼) ã§ã™ã€‚"
 
-#: gphoto2/main.c:715
+#: gphoto2/main.c:394
 #, c-format
 msgid "File %s exists. Overwrite? [y|n] "
-msgstr "¥Õ¥¡¥¤¥ë %s ¤ÏÂ¸ºß¤·¤Ş¤¹¡£¾å½ñ¤­¤·¤Ş¤¹¤«¡© [y|n] "
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ« %s ã¯å­˜åœ¨ã—ã¾ã™ã€‚ä¸Šæ›¸ãã—ã¾ã™ã‹ï¼Ÿ [y|n] "
 
-#: gphoto2/main.c:726
+#: gphoto2/main.c:406
+#, c-format
 msgid "Specify new filename? [y|n] "
-msgstr "¿·¤·¤¤¥Õ¥¡¥¤¥ëÌ¾¤ò»ØÄê¤·¤Ş¤¹¤«¡© [y|n] "
+msgstr "æ–°ã—ã„ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¾ã™ã‹ï¼Ÿ [y|n] "
 
-#: gphoto2/main.c:735
+#: gphoto2/main.c:416
+#, c-format
 msgid "Enter new filename: "
-msgstr "¿·¤·¤¤¥Õ¥¡¥¤¥ëÌ¾: "
+msgstr "æ–°ã—ã„ãƒ•ã‚¡ã‚¤ãƒ«å: "
 
-#: gphoto2/main.c:740
+#: gphoto2/main.c:422
 #, c-format
 msgid "Saving file as %s\n"
-msgstr "¥Õ¥¡¥¤¥ë¤ò %s ¤ÇÊİÂ¸¤·¤Ş¤¹\n"
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ %s ã§ä¿å­˜ã—ã¾ã™\n"
 
-#: gphoto2/main.c:932
+#: gphoto2/main.c:607
+#, c-format
+msgid "Time-lapse mode enabled (interval: %ds).\n"
+msgstr "ã‚³ãƒãƒ‰ãƒªãƒ¢ãƒ¼ãƒ‰ã‚’æœ‰åŠ¹ã«ã—ã¾ã—ãŸ(é–“éš”: %d ç§’)ã€‚\n"
+
+#: gphoto2/main.c:610
+#, c-format
+msgid "Standing by waiting for SIGUSR1 to capture.\n"
+msgstr "å–ã‚Šè¾¼ã¿ã‚’ã™ã‚‹ãŸã‚ã« SIGUSR1 ã®å¾…ã¡ã®å¾…æ©Ÿã‚’ã—ã¦ã„ã¾ã™ã€‚\n"
+
+#: gphoto2/main.c:619
+#, c-format
+msgid "Capturing frame #%d...\n"
+msgstr "ãƒ•ãƒ¬ãƒ¼ãƒ  #%d ã®å–ã‚Šè¾¼ã¿ä¸­ã§ã™...\n"
+
+#: gphoto2/main.c:621
+#, c-format
+msgid "Capturing frame #%d/%d...\n"
+msgstr "ãƒ•ãƒ¬ãƒ¼ãƒ  #%d/%d ã®å–ã‚Šè¾¼ã¿ä¸­ã§ã™...\n"
+
+#: gphoto2/main.c:628
+msgid "Could not capture."
+msgstr "å–ã‚Šè¾¼ã¿ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/main.c:637
+#, c-format
+msgid "Capture failed (auto-focus problem?)...\n"
+msgstr "å–ã‚Šè¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ (ã‚ªãƒ¼ãƒˆãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã®å•é¡Œ?)...\n"
+
+#: gphoto2/main.c:651
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
-msgstr "¿·¤·¤¤¥Õ¥¡¥¤¥ë¤Î³ÊÇ¼¾ì½ê: %s%s%s\n"
+msgstr "æ–°ã—ã„ãƒ•ã‚¡ã‚¤ãƒ«ã®æ ¼ç´å ´æ‰€: %s%s%s\n"
 
-#: gphoto2/main.c:1064
+#: gphoto2/main.c:660 gphoto2/main.c:797
+msgid "Could not set folder."
+msgstr "ãƒ•ã‚©ãƒ«ãƒ€ã‚’è¨­å®šã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/main.c:667 gphoto2/main.c:803
+msgid "Could not get image."
+msgstr "ç”»åƒã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/main.c:674 gphoto2/main.c:810
+msgid "Buggy libcanon.so?"
+msgstr "libcanon.so ã®ãƒã‚°?"
+
+#: gphoto2/main.c:680
+#, c-format
+msgid "Deleting file %s%s%s on the camera\n"
+msgstr "ã‚«ãƒ¡ãƒ©å†…ã®ãƒ•ã‚¡ã‚¤ãƒ« %s%s%s ã®å‰Šé™¤ã‚’ã—ã¦ã„ã¾ã™\n"
+
+#: gphoto2/main.c:685 gphoto2/main.c:819
+msgid "Could not delete image."
+msgstr "ç”»åƒã®å‰Šé™¤ãŒã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/main.c:707
+msgid "Could not close camera connection."
+msgstr "ã‚«ãƒ¡ãƒ©ã®æ¥ç¶šã‚’é–‰ã˜ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/main.c:721
+#, c-format
+msgid "Sleeping for %d second(s)...\n"
+msgstr "%d ç§’ã‚¹ãƒªãƒ¼ãƒ—ã—ã¦ã„ã¾ã™...\n"
+
+#: gphoto2/main.c:726 gphoto2/main.c:754
+#, c-format
+msgid "Awakened by SIGUSR1...\n"
+msgstr "SIGUSR1 ã§ç›®è¦šã‚ã¾ã™...\n"
+
+#: gphoto2/main.c:729
+#, c-format
+msgid "not sleeping (%d seconds behind schedule)\n"
+msgstr "ã‚¹ãƒªãƒ¼ãƒ—ã—ã¦ã„ã¾ã›ã‚“ (%d ç§’ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«é…ã‚Œ)\n"
+
+#: gphoto2/main.c:771
+#, c-format
+msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
+msgstr "ã‚«ãƒ¡ãƒ©ã‹ã‚‰ã®ã‚¤ãƒ™ãƒ³ãƒˆã‚’å¾…ã£ã¦ã„ã¾ã™ã€‚[Ctrl][C] ã‚’æŠ¼ã™ã¨ä¸­æ–­ã—ã¾ã™ã€‚\n"
+
+#: gphoto2/main.c:791
+#, c-format
+msgid "New file %s/%s, downloading...\n"
+msgstr "æ–°è¦ãƒ•ã‚¡ã‚¤ãƒ« %s/%s ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦ã„ã¾ã™...\n"
+
+#: gphoto2/main.c:915
+#, c-format
 msgid "ERROR: "
-msgstr "¥¨¥é¡¼: "
+msgstr "ã‚¨ãƒ©ãƒ¼: "
 
-#: gphoto2/main.c:1087
+#: gphoto2/main.c:938
+#, c-format
 msgid ""
 "\n"
 "Aborting...\n"
 msgstr ""
 "\n"
-"Ää»ßÃæ...\n"
+"åœæ­¢ä¸­...\n"
 
-#: gphoto2/main.c:1093
+#: gphoto2/main.c:944
+#, c-format
 msgid "Aborted.\n"
-msgstr "Ää»ß¤·¤Ş¤·¤¿¡£\n"
+msgstr "åœæ­¢ã—ã¾ã—ãŸã€‚\n"
 
-#: gphoto2/main.c:1098
+#: gphoto2/main.c:949
+#, c-format
 msgid ""
 "\n"
 "Cancelling...\n"
 msgstr ""
 "\n"
-"¥­¥ã¥ó¥»¥ëÃæ...\n"
+"ã‚­ãƒ£ãƒ³ã‚»ãƒ«ä¸­...\n"
 
-#: gphoto2/main.c:1305
+#: gphoto2/main.c:1088
+#, c-format
+msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
+msgstr "æ¤œå‡ºã•ã‚ŒãŸ USB ãƒ‡ãƒã‚¤ã‚¹ã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ã« a:b=c:d ã¨ã„ã†æ›¸å¼ã‚’ä½¿ç”¨ã—ã¦ä¸‹ã•ã„ã€‚a, b, c, d ã¯ '0x' ã§å§‹ã¾ã‚‹ 16 é€²ã®æ•°å€¤ã«ã—ã¦ä¸‹ã•ã„ã€‚\n"
+
+#: gphoto2/main.c:1245
 msgid "gphoto2 has been compiled without support for CDK."
-msgstr "¤³¤Î gphoto2 ¤Ï CDK ¤ò¥µ¥İ¡¼¥È¤·¤Æ¤¤¤Ş¤»¤ó¡£"
+msgstr "ã“ã® gphoto2 ã¯ CDK ã‚’ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ã¾ã›ã‚“ã€‚"
 
-#: gphoto2/main.c:1418
+#: gphoto2/main.c:1433
+#, c-format
 msgid "Operation cancelled.\n"
-msgstr "Áàºî¤¬¥­¥ã¥ó¥»¥ë¤µ¤ì¤Ş¤·¤¿¡£\n"
+msgstr "æ“ä½œãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã—ãŸã€‚\n"
 
-#: gphoto2/main.c:1422
+#: gphoto2/main.c:1437
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
 "\n"
 msgstr ""
-"*** ¥¨¥é¡¼ (%i: '%s') ***       \n"
+"*** ã‚¨ãƒ©ãƒ¼ (%i: '%s') ***       \n"
 "\n"
 
-#: gphoto2/main.c:1426
+#: gphoto2/main.c:1441
+#, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
 "Debugging messages may help finding a solution to your problem.\n"
 "If you intend to send any error or debug messages to the gphoto\n"
-"developer mailing list <gphoto-devel@gphoto.org>, please run\n"
+"developer mailing list <gphoto-devel@lists.sourceforge.net>, please run\n"
 "gphoto2 as follows:\n"
 "\n"
 msgstr ""
-"¥Ç¥Ğ¥Ã¥°¤¹¤ë¾ì¹ç¤Ï¡¢--debug ¥ª¥×¥·¥ç¥ó¤ò»ÈÍÑ¤·¤Æ²¼¤µ¤¤¡£\n"
-"¥Ç¥Ğ¥Ã¥°¡¦¥á¥Ã¥»¡¼¥¸¤ÏÈ¯À¸¤·¤¿ÌäÂê¤ËÂĞ¤¹¤ë°ì¤Ä¤Î²ò·èË¡¤òÆ³¤¯½õ¤±¤Ë¤Ê¤ê¤Ş"
-"¤¹¡£\n"
-"²¿¤«¥¨¥é¡¼¤Ë¤Ä¤¤¤Æ¼ÁÌä¤¹¤ë¾ì¹ç¡¢¤Ş¤¿¤Ï¥Ç¥Ğ¥Ã¥°¥á¥Ã¥»¡¼¥¸¤ò\n"
-"gPhoto2 ³«È¯¼Ô¤Î¥á¡¼¥ê¥ó¥°¥ê¥¹¥È <gphoto-devel@gphoto.org> ¤ËÁ÷¿®¤¹¤ë¾ì¹ç¤Ï\n"
-"°Ê²¼¤Î¤è¤¦¤Ë gphoto2 ¤òµ¯Æ°¤·¤Æ²¼¤µ¤¤:\n"
+"ãƒ‡ãƒãƒƒã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãŸã‚ã«ã€--debug ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚\n"
+"ãƒ‡ãƒãƒƒã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯ç™ºç”Ÿã—ãŸå•é¡Œã«å¯¾ã™ã‚‹ä¸€ã¤ã®è§£æ±ºæ³•ã‚’å°ãåŠ©ã‘ã«ãªã‚Šã¾ã™ã€‚\n"
+"ä½•ã‹ã‚¨ãƒ©ãƒ¼ã«ã¤ã„ã¦è³ªå•ã™ã‚‹å ´åˆã€ã¾ãŸã¯ãƒ‡ãƒãƒƒã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’\n"
+"gPhoto2 é–‹ç™ºè€…ã®ãƒ¡ãƒ¼ãƒªãƒ³ã‚°ãƒªã‚¹ãƒˆ <gphoto-devel@lists.sourceforge.net> ã«\n"
+"é€ä¿¡ã™ã‚‹å ´åˆã€ä»¥ä¸‹ã®ã‚ˆã†ã« gphoto2 ã‚’èµ·å‹•ã—ã¦ãã ã•ã„:\n"
 "\n"
 
-#: gphoto2/main.c:1479
-msgid "Overwrite files without asking."
-msgstr "¥Õ¥¡¥¤¥ë¤Î¾å½ñ¤­¤ÇÌä¤¤¹ç¤ï¤»¤Ê¤¤¡£"
+#: gphoto2/main.c:1530
+msgid "Print complete help message on program usage"
+msgstr "ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ä½¿ã„æ–¹ã®å®Œå…¨ãªãƒ˜ãƒ«ãƒ—ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹"
 
-#: gphoto2/main.c:1493
-msgid "path"
-msgstr "¥Ñ¥¹Ì¾"
+#: gphoto2/main.c:1532
+msgid "Print short message on program usage"
+msgstr "ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã«ä½¿ã„æ–¹ã®çŸ­ã„ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹"
 
-#: gphoto2/main.c:1495
-msgid "speed"
-msgstr "Å¾Á÷¥¹¥Ô¡¼¥É"
+#: gphoto2/main.c:1534
+msgid "Turn on debugging"
+msgstr "ãƒ‡ãƒãƒƒã‚°ã‚’æœ‰åŠ¹ã«ã™ã‚‹"
 
-#: gphoto2/main.c:1497
-msgid "model"
-msgstr "·¿¼°"
+#: gphoto2/main.c:1536
+msgid "Name of file to write debug info to"
+msgstr "ãƒ‡ãƒãƒƒã‚°æƒ…å ±ã‚’æ›¸ãè¾¼ã‚€ãƒ•ã‚¡ã‚¤ãƒ«ã®åå‰"
 
-#: gphoto2/main.c:1499
-msgid "filename"
-msgstr "¥Õ¥¡¥¤¥ëÌ¾"
+#: gphoto2/main.c:1536 gphoto2/main.c:1541 gphoto2/main.c:1547
+msgid "FILENAME"
+msgstr "FILENAME"
 
-#: gphoto2/main.c:1501
-msgid "usbid"
-msgstr "USB-ID"
+#: gphoto2/main.c:1538
+msgid "Quiet output (default=verbose)"
+msgstr "ç°¡æ˜“å‡ºåŠ› (æ¨™æº–=è©³ç´°)"
 
-#: gphoto2/main.c:1505
-msgid "folder"
-msgstr "¥Õ¥©¥ë¥ÀÌ¾"
+#: gphoto2/main.c:1540
+msgid "Hook script to call after downloads, captures, etc."
+msgstr "ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã€å–ã‚Šè¾¼ã¿ãªã©ã®è·¡ã«å‘¼ã³å‡ºã™ãƒ•ãƒƒã‚¯ã‚¹ã‚¯ãƒªãƒ—ãƒˆã§ã™ã€‚"
 
-#: gphoto2/main.c:1557
+#: gphoto2/main.c:1547
+msgid "Specify port device"
+msgstr "ãƒãƒ¼ãƒˆãƒ»ãƒ‡ãƒã‚¤ã‚¹ã‚’æŒ‡å®šã™ã‚‹"
+
+#: gphoto2/main.c:1549
+msgid "Specify serial transfer speed"
+msgstr "ã‚·ãƒªã‚¢ãƒ«è»¢é€ã‚¹ãƒ”ãƒ¼ãƒ‰ã‚’æŒ‡å®šã™ã‚‹"
+
+#: gphoto2/main.c:1549
+msgid "SPEED"
+msgstr "SPEED"
+
+#: gphoto2/main.c:1551
+msgid "Specify camera model"
+msgstr "ã‚«ãƒ¡ãƒ©ã®å‹å¼ã‚’æŒ‡å®šã—ã¦ä¸‹ã•ã„"
+
+#: gphoto2/main.c:1551
+msgid "MODEL"
+msgstr "MODEL"
+
+#: gphoto2/main.c:1553
+msgid "(expert only) Override USB IDs"
+msgstr "USB ID ã®ä¸Šæ›¸ã (ã‚¨ã‚­ã‚¹ãƒ‘ãƒ¼ãƒˆå‘ã‘)"
+
+#: gphoto2/main.c:1553
+msgid "USBIDs"
+msgstr "USBID"
+
+#: gphoto2/main.c:1559
+msgid "Display version and exit"
+msgstr "ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã‚’è¡¨ç¤ºã—ã¦çµ‚äº†ã™ã‚‹"
+
+#: gphoto2/main.c:1561
+msgid "List supported camera models"
+msgstr "ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ã‚‹ã‚«ãƒ¡ãƒ©å‹å¼ã®ä¸€è¦§"
+
+#: gphoto2/main.c:1563
+msgid "List supported port devices"
+msgstr "ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ã‚‹ãƒãƒ¼ãƒˆãƒ»ãƒ‡ãƒã‚¤ã‚¹ã®ä¸€è¦§ã‚’è¡¨ç¤ºã™ã‚‹"
+
+#: gphoto2/main.c:1565
+msgid "Display camera/driver abilities"
+msgstr "ã‚«ãƒ¡ãƒ©/ãƒ‰ãƒ©ã‚¤ãƒãƒ¼ã®æ€§èƒ½ã‚’è¡¨ç¤ºã™ã‚‹"
+
+#: gphoto2/main.c:1572
+msgid "Configure"
+msgstr "è¨­å®š"
+
+#: gphoto2/main.c:1575
+msgid "List configuration tree"
+msgstr "è¨­å®šãƒ„ãƒªãƒ¼ã®ä¸€è¦§"
+
+#: gphoto2/main.c:1577
+msgid "Get configuration value"
+msgstr "è¨­å®šå€¤ã®å–å¾—"
+
+#: gphoto2/main.c:1579
+msgid "Set configuration value"
+msgstr "è¨­å®šå€¤ã®è¨­å®š"
+
+#: gphoto2/main.c:1585
+msgid "Wait for event from camera"
+msgstr "ã‚«ãƒ¡ãƒ©ã‹ã‚‰ã®ã‚¤ãƒ™ãƒ³ãƒˆã‚’å¾…ã¤"
+
+#: gphoto2/main.c:1588
+msgid "Capture a quick preview"
+msgstr "å–ã‚Šè¾¼ã¿ã®ç°¡æ˜“ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼"
+
+#: gphoto2/main.c:1590
+msgid "Set number of frames to capture (default=infinite)"
+msgstr "å–ã‚Šè¾¼ã‚€ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã®è¨­å®š (æ¨™æº–=infinite(ç„¡é™))"
+
+#: gphoto2/main.c:1590
+msgid "COUNT"
+msgstr "COUNT"
+
+#: gphoto2/main.c:1592
+msgid "Set capture interval in seconds"
+msgstr "å–ã‚Šè¾¼ã¿é–“éš”ã®è¨­å®š (å˜ä½:ç§’)"
+
+#: gphoto2/main.c:1592
+msgid "SECONDS"
+msgstr "SECONDS"
+
+#: gphoto2/main.c:1594
+msgid "Reset capture interval on signal (default=no)"
+msgstr "ã‚·ã‚°ãƒŠãƒ«ã§å–ã‚Šè¾¼ã¿é–“éš”ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ (æ¨™æº–=no)"
+
+#: gphoto2/main.c:1596
+msgid "Capture an image"
+msgstr "ç”»åƒã®å–ã‚Šè¾¼ã¿"
+
+#: gphoto2/main.c:1598
+msgid "Capture an image and download it"
+msgstr "ç”»åƒã®å–ã‚Šè¾¼ã¿ã¨ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰"
+
+#: gphoto2/main.c:1600
 msgid "Capture a movie"
-msgstr "±ÇÁü¤Î¥­¥ã¥×¥Á¥ã"
+msgstr "æ˜ åƒã®å–ã‚Šè¾¼ã¿"
 
-#: gphoto2/main.c:1567
+#: gphoto2/main.c:1602
+msgid "Capture an audio clip"
+msgstr "ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã®å–ã‚Šè¾¼ã¿"
+
+#: gphoto2/main.c:1604
+msgid "Wait for shutter release on the camera and download"
+msgstr "ã‚«ãƒ¡ãƒ©ã®ã‚·ãƒ£ãƒƒã‚¿ãƒ¼ãƒªãƒªãƒ¼ã‚¹ã¨ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã‚’å¾…ã¤"
+
+#: gphoto2/main.c:1610
+msgid "List folders in folder"
+msgstr "ãƒ•ã‚©ãƒ«ãƒ€ã®ä¸€è¦§"
+
+#: gphoto2/main.c:1612
+msgid "List files in folder"
+msgstr "ãƒ•ã‚©ãƒ«ãƒ€å†…ã®ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§"
+
+#: gphoto2/main.c:1614
+msgid "Create a directory"
+msgstr "ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ä½œæˆ"
+
+#: gphoto2/main.c:1614 gphoto2/main.c:1616
+msgid "DIRNAME"
+msgstr "DIRNAME"
+
+#: gphoto2/main.c:1616
+msgid "Remove a directory"
+msgstr "ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®å‰Šé™¤"
+
+#: gphoto2/main.c:1618
+msgid "Display number of files"
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«æ•°ã®è¡¨ç¤º"
+
+#: gphoto2/main.c:1620
+msgid "Get files given in range"
+msgstr "æŒ‡å®šã—ãŸç¯„å›²ã§ãƒ•ã‚¡ã‚¤ãƒ«ã®å–å¾—"
+
+#: gphoto2/main.c:1620 gphoto2/main.c:1624 gphoto2/main.c:1629
+#: gphoto2/main.c:1636 gphoto2/main.c:1642 gphoto2/main.c:1647
+msgid "RANGE"
+msgstr "RANGE"
+
+#: gphoto2/main.c:1622
+msgid "Get all files from folder"
+msgstr "ãƒ•ã‚©ãƒ«ãƒ€ã‹ã‚‰ã™ã¹ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®å–å¾—"
+
+#: gphoto2/main.c:1624
+msgid "Get thumbnails given in range"
+msgstr "æŒ‡å®šã—ãŸç¯„å›²ã§ã‚µãƒ ãƒã‚¤ãƒ«ã®å–å¾—"
+
+#: gphoto2/main.c:1627
+msgid "Get all thumbnails from folder"
+msgstr "ãƒ•ã‚©ãƒ«ãƒ€ã‹ã‚‰ã™ã¹ã¦ã®ã‚µãƒ ãƒã‚¤ãƒ«ã®å–å¾—"
+
+#: gphoto2/main.c:1629
+msgid "Get metadata given in range"
+msgstr "æŒ‡å®šç¯„å›²ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®å–å¾—"
+
+#: gphoto2/main.c:1631
+msgid "Get all metadata from folder"
+msgstr "ãƒ•ã‚©ãƒ«ãƒ€ã‹ã‚‰ã™ã¹ã¦ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹"
+
+#: gphoto2/main.c:1633
+msgid "Upload metadata for file"
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹"
+
+#: gphoto2/main.c:1636
+msgid "Get raw data given in range"
+msgstr "æŒ‡å®šã—ãŸç¯„å›²ã§ç”Ÿãƒ‡ãƒ¼ã‚¿ã®å–å¾—"
+
+#: gphoto2/main.c:1639
+msgid "Get all raw data from folder"
+msgstr "ãƒ•ã‚©ãƒ«ãƒ€ã‹ã‚‰ã™ã¹ã¦ã®ç”Ÿãƒ‡ãƒ¼ã‚¿ã®å–å¾—"
+
+#: gphoto2/main.c:1642
+msgid "Get audio data given in range"
+msgstr "æŒ‡å®šã—ãŸã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ‡ãƒ¼ã‚¿ã®å–å¾—"
+
+#: gphoto2/main.c:1645
+msgid "Get all audio data from folder"
+msgstr "ãƒ•ã‚©ãƒ«ãƒ€ã‹ã‚‰ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ‡ãƒ¼ã‚¿ã®å–å¾—"
+
+#: gphoto2/main.c:1647
+msgid "Delete files given in range"
+msgstr "æŒ‡å®šã—ãŸç¯„å›²ã§ãƒ•ã‚¡ã‚¤ãƒ«ã®å‰Šé™¤"
+
+#: gphoto2/main.c:1649
+msgid "Delete all files in folder"
+msgstr "ãƒ•ã‚©ãƒ«ãƒ€ã®ä¸­ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤"
+
+#: gphoto2/main.c:1651
+msgid "Upload a file to camera"
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚«ãƒ¡ãƒ©ã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰"
+
+#: gphoto2/main.c:1651
+msgid "filename"
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«å"
+
+#: gphoto2/main.c:1653
+msgid "Specify a filename or filename pattern"
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«åã‚‚ã—ãã¯ãƒ•ã‚¡ã‚¤ãƒ«åã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã®æŒ‡å®š"
+
+#: gphoto2/main.c:1653
+msgid "FILENAME_PATTERN"
+msgstr "FILENAME_PATTERN"
+
+#: gphoto2/main.c:1655
+msgid "Specify camera folder (default=\"/\")"
+msgstr "ã‚«ãƒ¡ãƒ©ã®ãƒ•ã‚©ãƒ«ãƒ€ã‚’æŒ‡å®šã™ã‚‹ (æ¨™æº–=\"/\")"
+
+#: gphoto2/main.c:1655
+msgid "FOLDER"
+msgstr "FOLDER"
+
+#: gphoto2/main.c:1657
+msgid "Recursion (default for download)"
+msgstr "å†å¸°ã™ã‚‹ (æ¨™æº–=ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰)"
+
+#: gphoto2/main.c:1659
+msgid "No recursion (default for deletion)"
+msgstr "å†å¸°ã—ãªã„ (æ¨™æº–=å‰Šé™¤)"
+
+#: gphoto2/main.c:1661
+msgid "Process new files only"
+msgstr "æ–°ã—ã„ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿å‡¦ç†ã™ã‚‹"
+
+#: gphoto2/main.c:1663
+msgid "Overwrite files without asking"
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸Šæ›¸ãã§å•ã„åˆã‚ã›ãªã„"
+
+#: gphoto2/main.c:1669
+msgid "Send file to stdout"
+msgstr "æ¨™æº–å‡ºåŠ›ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é€å‡ºã™ã‚‹"
+
+#: gphoto2/main.c:1671
+msgid "Print filesize before data"
+msgstr "ãƒ‡ãƒ¼ã‚¿ã®å‰ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚ºã‚’å‡ºåŠ›ã™ã‚‹"
+
+#: gphoto2/main.c:1673
+msgid "List auto-detected cameras"
+msgstr "è‡ªå‹•æ¤œå‡ºã—ãŸã‚«ãƒ¡ãƒ©ã®ä¸€è¦§ã‚’è¡¨ç¤ºã™ã‚‹"
+
+#: gphoto2/main.c:1677 gphoto2/shell.c:133
+msgid "Show EXIF information"
+msgstr "EXIF æƒ…å ±ã®è¡¨ç¤º"
+
+#: gphoto2/main.c:1680 gphoto2/shell.c:127
+msgid "Show info"
+msgstr "æƒ…å ±ã®è¡¨ç¤º"
+
+#: gphoto2/main.c:1682
 msgid "Show summary"
-msgstr "¥µ¥Ş¥ê¤ÎÉ½¼¨"
+msgstr "ã‚µãƒãƒªã®è¡¨ç¤º"
 
-#: gphoto2/main.c:1569
+#: gphoto2/main.c:1684
 msgid "Show camera driver manual"
-msgstr "¥«¥á¥é¤Î¥É¥é¥¤¥Ğ¤Î¥Ş¥Ë¥å¥¢¥ë¤òÉ½¼¨¤¹¤ë"
+msgstr "ã‚«ãƒ¡ãƒ©ã®ãƒ‰ãƒ©ã‚¤ãƒã®ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ã‚’è¡¨ç¤ºã™ã‚‹"
 
-#: gphoto2/main.c:1571
+#: gphoto2/main.c:1686
 msgid "About the camera driver manual"
-msgstr "¥«¥á¥é¤Î¥É¥é¥¤¥Ğ¤Î¥Ş¥Ë¥å¥¢¥ë¤Î¾ğÊó"
+msgstr "ã‚«ãƒ¡ãƒ©ã®ãƒ‰ãƒ©ã‚¤ãƒã®ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ã®æƒ…å ±"
 
-#: gphoto2/main.c:1796
-msgid ""
-"gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the "
-"location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
-msgstr ""
-"OS/2 ¸ş¤±¤Î gPhoto2 ¤Ç¤Ï´Ä¶­ÊÑ¿ô ${CAMLIBS} ¤Ë¥«¥á¥é¡¦¥é¥¤¥Ö¥é¥ê¤Ø¤Î¥Ñ¥¹¤òÀß"
-"Äê¤¹¤ëÉ¬Í×¤¬¤¢¤ê¤Ş¤¹¡£(Îã) SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+#: gphoto2/main.c:1688
+msgid "Show storage information"
+msgstr "ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸æƒ…å ±ã®è¡¨ç¤º"
 
-#: gphoto2/main.c:1806
-msgid ""
-"gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the "
-"location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-msgstr ""
-"OS/2 ¸ş¤±¤Î gPhoto2 ¤Ç¤Ï´Ä¶­ÊÑ¿ô ${IOLIBS} ¤Ë¥«¥á¥é¤Î I/O ¥é¥¤¥Ö¥é¥ê¤Ø¤Î¥Ñ¥¹"
-"¤ËÀßÄê¤¹¤ëÉ¬Í×¤¬¤¢¤ê¤Ş¤¹¡£(Îã) SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
+#: gphoto2/main.c:1690
+msgid "gPhoto shell"
+msgstr "gPhoto ã‚·ã‚§ãƒ«"
 
-#: gphoto2/options.c:199
-msgid "Usage:\n"
-msgstr "ÍÑË¡:\n"
+#: gphoto2/main.c:1696
+msgid "Common options"
+msgstr "å…±é€šã‚ªãƒ—ã‚·ãƒ§ãƒ³"
 
-#: gphoto2/options.c:202
-msgid ""
-"Short/long options (& argument)        Description\n"
-"--------------------------------------------------------------------------------\n"
-msgstr ""
-"¥ª¥×¥·¥ç¥ó (´Ş¤à°ú¿ô)                  ÀâÌÀ\n"
-"--------------------------------------------------------------------------------\n"
+#: gphoto2/main.c:1698
+msgid "Miscellaneous options (unsorted)"
+msgstr "ãã®ä»–ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ (é †ä¸åŒ)"
 
-#: gphoto2/options.c:227
-#, c-format
-msgid "%-38s %s\n"
-msgstr "%-38s %s\n"
+#: gphoto2/main.c:1700
+msgid "Get information on software and host system (not from the camera)"
+msgstr "ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¨ãƒ›ã‚¹ãƒˆã‚·ã‚¹ãƒ†ãƒ ã®æƒ…å ±ã®å–å¾— (ã‚«ãƒ¡ãƒ©ã‹ã‚‰ã§ã¯ã‚ã‚Šã¾ã›ã‚“)"
 
-#: gphoto2/options.c:232
-msgid ""
-"--------------------------------------------------------------------------------\n"
-"[Use double-quotes around arguments]        [Picture numbers begin with one "
-"(1)]\n"
-msgstr ""
-"--------------------------------------------------------------------------------\n"
-"[°ú¿ô¤Ë¥À¥Ö¥ë¥¯¥ª¡¼¥Æ¡¼¥·¥ç¥ó¤ò»ÈÍÑ¤¹¤ë]    [¼Ì¿¿¤ÎÈÖ¹æ¤ò (1) ¤«¤é»Ï¤á¤ë]\n"
+#: gphoto2/main.c:1702
+msgid "Specify the camera to use"
+msgstr "ä½¿ç”¨ã™ã‚‹ã‚«ãƒ¡ãƒ©ã®æŒ‡å®š"
 
-#: gphoto2/range.c:122 gphoto2/range.c:176
+#: gphoto2/main.c:1704
+msgid "Camera and software configuration"
+msgstr "ã‚«ãƒ¡ãƒ©ã¨ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢è¨­å®š"
+
+#: gphoto2/main.c:1706
+msgid "Capture an image from or on the camera"
+msgstr "ã‚«ãƒ¡ãƒ©ä¸Šã§ã€ã‚«ãƒ¡ãƒ©ã‹ã‚‰ç”»åƒã®å–ã‚Šè¾¼ã¿"
+
+#: gphoto2/main.c:1708
+msgid "Downloading, uploading and manipulating files"
+msgstr "ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã€ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã¨ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œ"
+
+#: gphoto2/range.c:104 gphoto2/range.c:158
 #, c-format
 msgid ""
 "%s\n"
 "Image IDs must be a number greater than zero."
 msgstr ""
 "%s\n"
-"²èÁü¤Î ID ¤Ï 0 °Ê¾å¤Ë¤·¤Æ²¼¤µ¤¤¡£"
+"ç”»åƒã® ID ã¯ 0 ä»¥ä¸Šã«ã—ã¦ä¸‹ã•ã„ã€‚"
 
-#: gphoto2/range.c:128 gphoto2/range.c:182
+#: gphoto2/range.c:110 gphoto2/range.c:164
 #, c-format
 msgid ""
 "%s\n"
 "Image ID %i too high."
 msgstr ""
 "%s\n"
-"²èÁü ID %i ¤ÏÂç¤­¤¹¤®¤Ş¤¹¡£"
+"ç”»åƒ ID %i ã¯å¤§ãã™ãã¾ã™ã€‚"
 
-#: gphoto2/range.c:144
+#: gphoto2/range.c:126
 #, c-format
 msgid ""
 "%s\n"
 "Ranges must be separated by ','."
 msgstr ""
 "%s\n"
-"ÈÏ°Ï¤Ï ',' ¤Ç¶èÀÚ¤Ã¤Æ²¼¤µ¤¤¡£"
+"ç¯„å›²ã¯ ',' ã§åŒºåˆ‡ã£ã¦ä¸‹ã•ã„ã€‚"
 
-#: gphoto2/range.c:158
+#: gphoto2/range.c:140
 #, c-format
 msgid ""
 "%s\n"
 "Ranges need to start with a number."
 msgstr ""
 "%s\n"
-"ÈÏ°Ï¤Ï¿ôÃÍ¤Ç»Ï¤á¤Æ²¼¤µ¤¤¡£"
+"ç¯„å›²ã¯æ•°å€¤ã§å§‹ã‚ã¦ä¸‹ã•ã„ã€‚"
 
-#: gphoto2/range.c:198
+#: gphoto2/range.c:180
 #, c-format
 msgid ""
 "%s\n"
 "Unexpected character '%c'."
 msgstr ""
 "%s\n"
-"Í½´ü¤·¤Ê¤¤Ê¸»ú '%c' ¤Ç¤¹¡£"
+"äºˆæœŸã—ãªã„æ–‡å­— '%c' ã§ã™ã€‚"
 
-#: gphoto2/range.c:221
+#: gphoto2/range.c:204
 #, c-format
 msgid ""
 "%s\n"
 "Decreasing ranges are not allowed. You specified a range from %i to %i."
 msgstr ""
 "%s\n"
-"ÈÏ°Ï¤ò¾®¤µ¤¯¤¹¤ë¤³¤È¤Ï¤Ç¤­¤Ş¤»¤ó¡£%i ¤«¤é %i ¤ÎÈÏ°Ï¤Ç»ØÄê¤·¤Æ²¼¤µ¤¤¡£"
+"ç¯„å›²ã‚’å°ã•ãã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚%i ã‹ã‚‰ %i ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ä¸‹ã•ã„ã€‚"
 
-#: gphoto2/shell.c:73
+#: gphoto2/shell.c:65
 #, c-format
 msgid "*** Error (%i: '%s') ***"
-msgstr "*** ¥¨¥é¡¼ (%i: '%s') ***"
+msgstr "*** ã‚¨ãƒ©ãƒ¼ (%i: '%s') ***"
 
 #: gphoto2/shell.c:116
 msgid "Change to a directory on the camera"
-msgstr "¥«¥á¥é¾å¤Ç¥Ç¥£¥ì¥¯¥È¥ê¤òÊÑ¹¹¤·¤Ş¤¹"
+msgstr "ã‚«ãƒ¡ãƒ©ä¸Šã§ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å¤‰æ›´ã—ã¾ã™"
 
-#: gphoto2/shell.c:117 gphoto2/shell.c:119
+#: gphoto2/shell.c:117 gphoto2/shell.c:119 gphoto2/shell.c:130
+#: gphoto2/shell.c:131
 msgid "directory"
-msgstr "¥Ç¥£¥ì¥¯¥È¥ê"
+msgstr "ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª"
 
 #: gphoto2/shell.c:118
 msgid "Change to a directory on the local drive"
-msgstr "¥í¡¼¥«¥ë¥Ç¥£¥¹¥¯¾å¤Ç¥Ç¥£¥ì¥¯¥È¥ê¤òÊÑ¹¹¤·¤Ş¤¹"
+msgstr "ãƒ­ãƒ¼ã‚«ãƒ«ãƒ‡ã‚£ã‚¹ã‚¯ä¸Šã§ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å¤‰æ›´ã—ã¾ã™"
 
-#: gphoto2/shell.c:120 gphoto2/shell.c:138 gphoto2/shell.c:139
+#: gphoto2/shell.c:120 gphoto2/shell.c:145 gphoto2/shell.c:146
 msgid "Exit the gPhoto shell"
-msgstr "gPhoto ¥·¥§¥ë¤ò½ªÎ»¤·¤Ş¤¹"
+msgstr "gPhoto ã‚·ã‚§ãƒ«ã‚’çµ‚äº†ã—ã¾ã™"
 
 #: gphoto2/shell.c:121
 msgid "Download a file"
-msgstr "¥Õ¥¡¥¤¥ë¤Î¥À¥¦¥ó¥í¡¼¥É"
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰"
 
-#: gphoto2/shell.c:121 gphoto2/shell.c:124 gphoto2/shell.c:126
-#: gphoto2/shell.c:128 gphoto2/shell.c:129 gphoto2/shell.c:132
+#: gphoto2/shell.c:121 gphoto2/shell.c:122 gphoto2/shell.c:124
+#: gphoto2/shell.c:126 gphoto2/shell.c:128 gphoto2/shell.c:129
+#: gphoto2/shell.c:134
 msgid "[directory/]filename"
-msgstr "[¥Ç¥£¥ì¥¯¥È¥ê/]¥Õ¥¡¥¤¥ëÌ¾"
+msgstr "[ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª/]ãƒ•ã‚¡ã‚¤ãƒ«å"
+
+#: gphoto2/shell.c:122
+msgid "Upload a file"
+msgstr "ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰"
 
 #: gphoto2/shell.c:123
 msgid "Download a thumbnail"
-msgstr "¥µ¥à¥Í¥¤¥ë¤Î¥À¥¦¥ó¥í¡¼¥É"
+msgstr "ã‚µãƒ ãƒã‚¤ãƒ«ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰"
 
 #: gphoto2/shell.c:125
 msgid "Download raw data"
-msgstr "À¸¥Ç¡¼¥¿¤Î¥À¥¦¥ó¥í¡¼¥É"
+msgstr "ç”Ÿãƒ‡ãƒ¼ã‚¿ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰"
 
 #: gphoto2/shell.c:129
 msgid "Delete"
-msgstr "ºï½ü"
+msgstr "å‰Šé™¤"
 
-#: gphoto2/shell.c:134 gphoto2/shell.c:140
+#: gphoto2/shell.c:130
+msgid "Create Directory"
+msgstr "ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ä½œæˆ"
+
+#: gphoto2/shell.c:131
+msgid "Remove Directory"
+msgstr "ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®å‰Šé™¤"
+
+#: gphoto2/shell.c:136 gphoto2/shell.c:147
 msgid "Displays command usage"
-msgstr "¥³¥Ş¥ó¥É¤ÎÍÑË¡¤òÉ½¼¨¤¹¤ë"
+msgstr "ã‚³ãƒãƒ³ãƒ‰ã®ç”¨æ³•ã‚’è¡¨ç¤ºã™ã‚‹"
 
-#: gphoto2/shell.c:135 gphoto2/shell.c:140
+#: gphoto2/shell.c:137 gphoto2/shell.c:147
 msgid "[command]"
-msgstr "[¥³¥Ş¥ó¥É]"
+msgstr "[ã‚³ãƒãƒ³ãƒ‰]"
 
-#: gphoto2/shell.c:136
+#: gphoto2/shell.c:138
 msgid "List the contents of the current directory"
-msgstr "¤³¤Î¥Ç¥£¥ì¥¯¥È¥ê¤Î°ìÍ÷¤òÉ½¼¨¤·¤Ş¤¹"
+msgstr "ã“ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ä¸€è¦§ã‚’è¡¨ç¤ºã—ã¾ã™"
 
-#: gphoto2/shell.c:137
+#: gphoto2/shell.c:139
 msgid "[directory/]"
-msgstr "[¥Ç¥£¥ì¥¯¥È¥ê/]"
+msgstr "[ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª/]"
 
-#: gphoto2/shell.c:423
+#: gphoto2/shell.c:140
+msgid "List configuration variables"
+msgstr "è¨­å®šå€¤ã®ä¸€è¦§"
+
+#: gphoto2/shell.c:141
+msgid "Get configuration variable"
+msgstr "è¨­å®šå€¤ã®å–å¾—"
+
+#: gphoto2/shell.c:141
+msgid "name"
+msgstr "åå‰"
+
+#: gphoto2/shell.c:142
+msgid "Set configuration variable"
+msgstr "è¨­å®šå€¤ã®è¨­å®š"
+
+#: gphoto2/shell.c:142
+msgid "name=value"
+msgstr "åå‰=å€¤"
+
+#: gphoto2/shell.c:143
+msgid "Capture a single image"
+msgstr "å˜ä¸€ç”»åƒã®å–ã‚Šè¾¼ã¿"
+
+#: gphoto2/shell.c:144
+msgid "Capture a single image and download it"
+msgstr "å˜ä¸€ç”»åƒã®å–ã‚Šè¾¼ã¿ã¨ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰"
+
+#: gphoto2/shell.c:469
 msgid "Invalid command."
-msgstr "¥³¥Ş¥ó¥É¤¬Àµ¤·¤¯¤¢¤ê¤Ş¤»¤ó¡£"
+msgstr "ã‚³ãƒãƒ³ãƒ‰ãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“ã€‚"
 
-#: gphoto2/shell.c:432
+#: gphoto2/shell.c:478
 #, c-format
 msgid "The command '%s' requires an argument."
-msgstr "¥³¥Ş¥ó¥É '%s' ¤Ë¤Ï°ú¿ô¤¬É¬Í×¤Ç¤¹¡£"
-
-#: gphoto2/shell.c:485
-msgid "Invalid path."
-msgstr "¥Ñ¥¹Ì¾¤¬Àµ¤·¤¯¤¢¤ê¤Ş¤»¤ó¡£"
+msgstr "ã‚³ãƒãƒ³ãƒ‰ '%s' ã«ã¯å¼•æ•°ãŒå¿…è¦ã§ã™ã€‚"
 
 #: gphoto2/shell.c:531
-msgid "Could not find home directory."
-msgstr "¥Û¡¼¥à¡¦¥Ç¥£¥ì¥¯¥È¥ê¤¬¸«¤Ä¤«¤ê¤Ş¤»¤ó¤Ç¤·¤¿¡£"
-
-#: gphoto2/shell.c:539
-#, c-format
-msgid "Could not change to local directory '%s'."
-msgstr "¥í¡¼¥«¥ë¤Î¥Ç¥£¥ì¥¯¥È¥ê '%s' ¤Ë°ÜÆ°¤Ç¤­¤Ş¤»¤ó¤Ç¤·¤¿¡£"
-
-#: gphoto2/shell.c:542
-#, c-format
-msgid "Local directory now '%s'."
-msgstr "¸½ºß¤Î¥í¡¼¥«¥ë¥Ç¥£¥ì¥¯¥È¥ê¤Ï '%s' ¤Ç¤¹¡£"
+msgid "Invalid path."
+msgstr "ãƒ‘ã‚¹åãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: gphoto2/shell.c:577
+msgid "Could not find home directory."
+msgstr "ãƒ›ãƒ¼ãƒ ãƒ»ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/shell.c:586
+#, c-format
+msgid "Could not change to local directory '%s'."
+msgstr "ãƒ­ãƒ¼ã‚«ãƒ«ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª '%s' ã«ç§»å‹•ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
+
+#: gphoto2/shell.c:589
+#, c-format
+msgid "Local directory now '%s'."
+msgstr "ç¾åœ¨ã®ãƒ­ãƒ¼ã‚«ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¯ '%s' ã§ã™ã€‚"
+
+#: gphoto2/shell.c:627
 #, c-format
 msgid "Remote directory now '%s'."
-msgstr "¸½ºß¤Î¥ê¥â¡¼¥È¤Î¥Ç¥£¥ì¥¯¥È¥ê¤Ï '%s' ¤Ç¤¹¡£"
+msgstr "ç¾åœ¨ã®ãƒªãƒ¢ãƒ¼ãƒˆã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¯ '%s' ã§ã™ã€‚"
 
-#: gphoto2/shell.c:732
+#: gphoto2/shell.c:843
+#, c-format
+msgid "set-config needs a second argument.\n"
+msgstr "set-config ã¯ç¬¬ 2 å¼•æ•°ã‚’å¿…è¦ã¨ã—ã¾ã™ã€‚\n"
+
+#: gphoto2/shell.c:877
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
-msgstr ""
-"¥³¥Ş¥ó¥É '%s' ¤¬¸«¤Ä¤«¤ê¤Ş¤»¤ó¤Ç¤·¤¿¡£'help' ¤ÇÍøÍÑ²ÄÇ½¤Ê¥³¥Ş¥ó¥É°ìÍ÷¤òÉ½¼¨¤·"
-"¤Ş¤¹¡£"
+msgstr "ã‚³ãƒãƒ³ãƒ‰ '%s' ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚'help' ã§åˆ©ç”¨å¯èƒ½ãªã‚³ãƒãƒ³ãƒ‰ä¸€è¦§ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚"
 
-#: gphoto2/shell.c:739
+#: gphoto2/shell.c:884
 #, c-format
 msgid "Help on \"%s\":"
-msgstr "\"%s\" ¤Î¥Ø¥ë¥×:"
+msgstr "\"%s\" ã®ãƒ˜ãƒ«ãƒ—:"
 
-#: gphoto2/shell.c:741
+#: gphoto2/shell.c:886
+#, c-format
 msgid "Usage:"
-msgstr "ÍÑË¡:"
+msgstr "ä½¿ã„æ–¹:"
 
-#: gphoto2/shell.c:745
+#: gphoto2/shell.c:889
+#, c-format
 msgid "Description:"
-msgstr "ÀâÌÀ:"
+msgstr "èª¬æ˜:"
 
-#: gphoto2/shell.c:747
+#: gphoto2/shell.c:891
+#, c-format
 msgid "* Arguments in brackets [] are optional"
-msgstr "* [] Æâ¤Î°ú¿ô¤Ï¥ª¥×¥·¥ç¥ó¤Ç¤¹¡£"
+msgstr "* [] å†…ã®å¼•æ•°ã¯ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§ã™ã€‚"
 
-#: gphoto2/shell.c:768
+#: gphoto2/shell.c:912
+#, c-format
 msgid "Available commands:"
-msgstr "ÍøÍÑ²ÄÇ½¤Ê¥³¥Ş¥ó¥É:"
+msgstr "åˆ©ç”¨å¯èƒ½ãªã‚³ãƒãƒ³ãƒ‰:"
 
-#: gphoto2/shell.c:773
+#: gphoto2/shell.c:917
+#, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
-msgstr ""
-"ÆÃÄê¤Î¥³¥Ş¥ó¥É¤ËÂĞ¤¹¤ë¥Ø¥ë¥×¤òÉ½¼¨¤¹¤ë¾ì¹ç¤Ï 'help ¥³¥Ş¥ó¥ÉÌ¾' ¤ÈÆşÎÏ¤·¤Æ²¼¤µ"
-"¤¤¡£"
+msgstr "ç‰¹å®šã®ã‚³ãƒãƒ³ãƒ‰ã«å¯¾ã™ã‚‹ãƒ˜ãƒ«ãƒ—ã‚’è¡¨ç¤ºã™ã‚‹å ´åˆã¯ 'help ã‚³ãƒãƒ³ãƒ‰å' ã¨å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"
+
+#~ msgid "There are no folders in folder '%s'."
+#~ msgstr "ãƒ•ã‚©ãƒ«ãƒ€ '%s' ã®ä¸­ã«ãƒ•ã‚©ãƒ«ãƒ€ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"
+
+#~ msgid "There are %i folders in folder '%s':"
+#~ msgstr "%i å€‹ã®ãƒ•ã‚©ãƒ«ãƒ€ãŒãƒ•ã‚©ãƒ«ãƒ€ '%s' ã®ä¸­ã«ã‚ã‚Šã¾ã™:"
+
+#~ msgid "There are %i files in folder '%s':"
+#~ msgstr "%i å€‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒãƒ•ã‚©ãƒ«ãƒ€ '%s' ã®ä¸­ã«ã‚ã‚Šã¾ã™:"
+
+#~ msgid "Displays this help screen"
+#~ msgstr "ã“ã®ãƒ˜ãƒ«ãƒ—ã‚’è¡¨ç¤ºã™ã‚‹"
+
+#~ msgid "Capture a movie "
+#~ msgstr "æ˜ åƒã®ã‚­ãƒ£ãƒ—ãƒãƒ£"
+
+#~ msgid "Summary of camera status"
+#~ msgstr "ã‚«ãƒ¡ãƒ©çŠ¶æ…‹ã®ã‚µãƒãƒª"
+
+#~ msgid "Camera driver manual"
+#~ msgstr "ã‚«ãƒ¡ãƒ©ã®ãƒ‰ãƒ©ã‚¤ãƒã®ãƒãƒ‹ãƒ¥ã‚¢ãƒ«"
+
+#~ msgid "About the camera driver"
+#~ msgstr "ã‚«ãƒ¡ãƒ©ã®ãƒ‰ãƒ©ã‚¤ãƒæƒ…å ±"
+
+#~ msgid "Jan"
+#~ msgstr "1æœˆ"
+
+#~ msgid "January"
+#~ msgstr "1æœˆ"
+
+#~ msgid "Feb"
+#~ msgstr "2æœˆ"
+
+#~ msgid "February"
+#~ msgstr "2æœˆ"
+
+#~ msgid "Mar"
+#~ msgstr "3æœˆ"
+
+#~ msgid "March"
+#~ msgstr "3æœˆ"
+
+#~ msgid "Apr"
+#~ msgstr "4æœˆ"
+
+#~ msgid "April"
+#~ msgstr "4æœˆ"
+
+#~ msgid "May"
+#~ msgstr "5æœˆ"
+
+#~ msgid "Jun"
+#~ msgstr "6æœˆ"
+
+#~ msgid "June"
+#~ msgstr "6æœˆ"
+
+#~ msgid "Jul"
+#~ msgstr "7æœˆ"
+
+#~ msgid "July"
+#~ msgstr "7æœˆ"
+
+#~ msgid "Aug"
+#~ msgstr "8æœˆ"
+
+#~ msgid "August"
+#~ msgstr "8æœˆ"
+
+#~ msgid "Sep"
+#~ msgstr "9æœˆ"
+
+#~ msgid "September"
+#~ msgstr "9æœˆ"
+
+#~ msgid "Oct"
+#~ msgstr "10æœˆ"
+
+#~ msgid "October"
+#~ msgstr "10æœˆ"
+
+#~ msgid "Nov"
+#~ msgstr "11æœˆ"
+
+#~ msgid "November"
+#~ msgstr "11æœˆ"
+
+#~ msgid "Dec"
+#~ msgstr "12æœˆ"
+
+#~ msgid "December"
+#~ msgstr "12æœˆ"
+
+#~ msgid "Sun"
+#~ msgstr "æ—¥"
+
+#~ msgid "Sunday"
+#~ msgstr "æ—¥æ›œæ—¥"
+
+#~ msgid "Monday"
+#~ msgstr "æœˆæ›œæ—¥"
+
+#~ msgid "Tue"
+#~ msgstr "ç«"
+
+#~ msgid "Tuesday"
+#~ msgstr "ç«æ›œæ—¥"
+
+#~ msgid "Wed"
+#~ msgstr "æ°´"
+
+#~ msgid "Wednesday"
+#~ msgstr "æ°´æ›œæ—¥"
+
+#~ msgid "Thu"
+#~ msgstr "æœ¨"
+
+#~ msgid "Thursday"
+#~ msgstr "æœ¨æ›œæ—¥"
+
+#~ msgid "Fri"
+#~ msgstr "é‡‘"
+
+#~ msgid "Friday"
+#~ msgstr "é‡‘æ›œæ—¥"
+
+#~ msgid "Sat"
+#~ msgstr "åœŸ"
+
+#~ msgid "Saturday"
+#~ msgstr "åœŸæ›œæ—¥"
+
+#~ msgid "path"
+#~ msgstr "ãƒ‘ã‚¹å"
+
+#~ msgid "speed"
+#~ msgstr "è»¢é€ã‚¹ãƒ”ãƒ¼ãƒ‰"
+
+#~ msgid "model"
+#~ msgstr "å‹å¼"
+
+#~ msgid "usbid"
+#~ msgstr "USB-ID"
+
+#~ msgid "folder"
+#~ msgstr "ãƒ•ã‚©ãƒ«ãƒ€å"
+
+#~ msgid "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+#~ msgstr "OS/2 å‘ã‘ã® gPhoto2 ã§ã¯ç’°å¢ƒå¤‰æ•° ${CAMLIBS} ã«ã‚«ãƒ¡ãƒ©ãƒ»ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã¸ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚(ä¾‹) SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
+
+#~ msgid "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
+#~ msgstr "OS/2 å‘ã‘ã® gPhoto2 ã§ã¯ç’°å¢ƒå¤‰æ•° ${IOLIBS} ã«ã‚«ãƒ¡ãƒ©ã® I/O ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã¸ã®ãƒ‘ã‚¹ã«è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚(ä¾‹) SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
+
+#~ msgid "Usage:\n"
+#~ msgstr "ç”¨æ³•:\n"
+
+#~ msgid ""
+#~ "Short/long options (& argument)        Description\n"
+#~ "--------------------------------------------------------------------------------\n"
+#~ msgstr ""
+#~ "ã‚ªãƒ—ã‚·ãƒ§ãƒ³ (å«ã‚€å¼•æ•°)                  èª¬æ˜\n"
+#~ "--------------------------------------------------------------------------------\n"
+
+#~ msgid "%-38s %s\n"
+#~ msgstr "%-38s %s\n"
+
+#~ msgid ""
+#~ "--------------------------------------------------------------------------------\n"
+#~ "[Use double-quotes around arguments]        [Picture numbers begin with one (1)]\n"
+#~ msgstr ""
+#~ "--------------------------------------------------------------------------------\n"
+#~ "[å¼•æ•°ã«ãƒ€ãƒ–ãƒ«ã‚¯ã‚ªãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ç”¨ã™ã‚‹]    [å†™çœŸã®ç•ªå·ã‚’ (1) ã‹ã‚‰å§‹ã‚ã‚‹]\n"
