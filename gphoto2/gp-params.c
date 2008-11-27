@@ -165,16 +165,16 @@ ctx_progress_update_func (GPContext __unused__ *context, unsigned int id,
         if ((int) sec >= 3600) {
                 snprintf (buf, sizeof (buf), "%2ih", (int) sec / 3600);
                 sec -= ((int) (sec / 3600) * 3600);
-                strncat (remaining, buf, sizeof (remaining) - 1);
+                strncat (remaining, buf, sizeof (remaining) - strlen (remaining) - 1);
         }
         if ((int) sec >= 60) {
                 snprintf (buf, sizeof (buf), "%2im", (int) sec / 60);
                 sec -= ((int) (sec / 60) * 60);
-                strncat (remaining, buf, sizeof (remaining) - 1);
+                strncat (remaining, buf, sizeof (remaining) - strlen (remaining) - 1);
         }
         if ((int) sec) {
                 snprintf (buf, sizeof (buf), "%2is", (int) sec);
-                strncat (remaining, buf, sizeof (remaining) - 1);
+                strncat (remaining, buf, sizeof (remaining) - strlen (remaining) - 1);
         }
 
         /* Determine the width of the progress bar and the current position */
