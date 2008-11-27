@@ -599,9 +599,9 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 	time_t next_pic_time, now;
 	int waittime;
 
+	memset(&last, 0, sizeof(last));
 	next_pic_time = time (NULL) + glob_interval;
 	if(glob_interval) {
-		memset(&last, 0, sizeof(last));
 		if (!(gp_params.flags & FLAGS_QUIET)) {
 			if (glob_interval != -1)
 				printf (_("Time-lapse mode enabled (interval: %ds).\n"),
