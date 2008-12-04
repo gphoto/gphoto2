@@ -91,6 +91,8 @@ GPParams gp_params;
 /* flag for SIGUSR1 handler */
 static volatile int capture_now = 0;
 
+/* flag for SIGUSR2 handler */
+static volatile int end_next = 0;
 
 /*! \brief Copy string almost like strncpy, converting to lower case.
  *
@@ -590,6 +592,13 @@ sig_handler_capture_now (int sig_num)
 	capture_now = 1;
 }
 
+static void
+sig_handler_end_next (int sig_num)
+{
+        signal (SIGUSR2, sig_handler_end_next);
+        end_next = 1;
+}
+
 int
 capture_generic (CameraCaptureType type, const char __unused__ *name, int download)
 {
@@ -612,6 +621,8 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 	}
 	capture_now = 0;
 	signal(SIGUSR1, sig_handler_capture_now);
+	end_next = 0;
+	signal(SIGUSR2, sig_handler_end_next);
 
 	while(++frames) {
 		if (!(gp_params.flags & FLAGS_QUIET) && glob_interval) {
@@ -692,6 +703,9 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 		if(!glob_interval) break;
 
 		if(glob_frames && frames == glob_frames) break;
+		
+		/* Break if we've been told to end before the next frame */
+		if(end_next) break;
 
 #if 0
 		/* Marcus Meissner: Before you enable this, try to fix the
