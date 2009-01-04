@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gphoto2 2.4.3\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2008-06-22 18:31+0200\n"
-"PO-Revision-Date: 2008-10-23 15:41+0800\n"
+"PO-Revision-Date: 2008-12-26 13:10+0800\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr[0] "文件夹“%2$s”中有“%1$d”个文件。\n"
 #: gphoto2/actions.c:251
 #, c-format
 msgid "Information on file '%s' (folder '%s'):\n"
-msgstr "关于文件“%s”(文件夹“%s”)的信息：\n"
+msgstr "文件“%s”(文件夹“%s”)的信息：\n"
 
 # frontends/command-line/actions.c:141
 #: gphoto2/actions.c:253
@@ -125,7 +125,7 @@ msgstr "否"
 #: gphoto2/actions.c:271
 #, c-format
 msgid "  Permissions: "
-msgstr "  访问权限："
+msgstr "  权限："
 
 # frontends/command-line/actions.c:162
 #: gphoto2/actions.c:274
@@ -212,18 +212,18 @@ msgstr "值"
 #: gphoto2/actions.c:518
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
-msgstr "EXIF 数据含有一幅缩略图 (%i 字节)。"
+msgstr "EXIF 数据中含有一幅缩略图 (%i 字节)。"
 
 # frontends/command-line/actions.c:355
 #: gphoto2/actions.c:527
 msgid "gphoto2 has been compiled without EXIF support."
-msgstr "gphoto2 编译时没有包含对 EXIF 的支持。"
+msgstr "gphoto2 编译时未包含对 EXIF 的支持。"
 
 # frontends/command-line/main.c:464
 #: gphoto2/actions.c:545
 #, c-format
 msgid "Number of supported cameras: %i\n"
-msgstr "支持相机数量         ：%i\n"
+msgstr "所支持的相机数：%i\n"
 
 # frontends/command-line/main.c:465
 #: gphoto2/actions.c:546
@@ -235,19 +235,19 @@ msgstr "已支持相机：\n"
 #: gphoto2/actions.c:559
 #, c-format
 msgid "\t\"%s\" (TESTING)\n"
-msgstr "\t\"%s\" (正在测试)\n"
+msgstr "\t“%s” (测试中)\n"
 
 # frontends/command-line/main.c:479
 #: gphoto2/actions.c:562
 #, c-format
 msgid "\t\"%s\" (EXPERIMENTAL)\n"
-msgstr "\t\"%s\" (正在试用)\n"
+msgstr "\t“%s” (实验项)\n"
 
 # frontends/command-line/main.c:483
 #: gphoto2/actions.c:567
 #, c-format
 msgid "\t\"%s\"\n"
-msgstr "\t\"%s\"\n"
+msgstr "\t“%s”\n"
 
 # frontends/command-line/main.c:548
 #: gphoto2/actions.c:611
@@ -321,7 +321,7 @@ msgstr "                     ：%i\n"
 #: gphoto2/actions.c:672
 #, c-format
 msgid "Capture choices                  :\n"
-msgstr "捕捉选项             ：\n"
+msgstr "捕获选项             ：\n"
 
 # frontends/command-line/main.c:429
 #: gphoto2/actions.c:674
@@ -381,7 +381,7 @@ msgstr "支持文件预览 (缩略图)：%s\n"
 #: gphoto2/actions.c:703
 #, c-format
 msgid "File upload support              : %s\n"
-msgstr "文件上载支持         ：%s\n"
+msgstr "文件上传支持         ：%s\n"
 
 # frontends/command-line/main.c:586
 #: gphoto2/actions.c:719
@@ -1584,7 +1584,7 @@ msgstr "描述："
 #: gphoto2/shell.c:891
 #, c-format
 msgid "* Arguments in brackets [] are optional"
-msgstr "* 出现在方括号 [] 中的参数是可选的"
+msgstr "所有出现在方括号 [] 中的参数是可选的"
 
 # frontends/command-line/shell.c:779
 #: gphoto2/shell.c:912
