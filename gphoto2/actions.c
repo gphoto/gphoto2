@@ -87,7 +87,7 @@ action_camera_upload_file (GPParams *p, const char *folder, const char *path)
 			return (res);
 		}
 	}
-	res = gp_camera_folder_put_file (p->camera, folder, file,
+	res = gp_camera_folder_put_file (p->camera, folder, p->filename, file,
 					 p->context);
 	gp_file_unref (file);
 	return (res);
@@ -98,6 +98,7 @@ action_camera_upload_metadata (GPParams *p, const char *folder, const char *path
 {
 	CameraFile *file;
 	int res;
+	char *fn = NULL;
 
 	gp_log (GP_LOG_DEBUG, "main", "Uploading metadata...");
 
@@ -110,12 +111,14 @@ action_camera_upload_metadata (GPParams *p, const char *folder, const char *path
 
 	/* Check if the user specified a filename */
 	if (p->filename && strcmp (p->filename, "")) {
+		fn = p->filename;
 		res = gp_file_set_name (file, p->filename);
 		if (res < 0) {
 			gp_file_unref (file);
 			return (res);
 		}
 	} else if (path == strstr(path, "meta_")) {
+		fn = path+5;
 		res = gp_file_set_name (file, path+5);
 		if (res < 0) {
 			gp_file_unref (file);
@@ -124,7 +127,7 @@ action_camera_upload_metadata (GPParams *p, const char *folder, const char *path
 	}
 	gp_file_set_type (file, GP_FILE_TYPE_METADATA);
 
-	res = gp_camera_folder_put_file (p->camera, folder, file,
+	res = gp_camera_folder_put_file (p->camera, folder, fn, file,
 					 p->context);
 	gp_file_unref (file);
 	return (res);
@@ -254,8 +257,6 @@ print_info_action (GPParams *p, const char *filename)
 	if (info.file.fields == GP_FILE_INFO_NONE)
 		printf (_("  None available.\n"));
 	else {
-		if (info.file.fields & GP_FILE_INFO_NAME)
-			printf (_("  Name:        '%s'\n"), info.file.name);
 		if (info.file.fields & GP_FILE_INFO_TYPE)
 			printf (_("  Mime type:   '%s'\n"), info.file.type);
 		if (info.file.fields & GP_FILE_INFO_SIZE)
