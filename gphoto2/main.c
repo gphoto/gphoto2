@@ -126,18 +126,6 @@ strncpy_lower(char *dst, const char *src, size_t count)
 }
 
 
-static struct {
-	CameraFileType type;
-	const char *prefix;
-} PrefixTable[] = {
-	{GP_FILE_TYPE_NORMAL, ""},
-	{GP_FILE_TYPE_PREVIEW, "thumb_"},
-	{GP_FILE_TYPE_RAW, "raw_"},
-	{GP_FILE_TYPE_AUDIO, "audio_"},
-	{GP_FILE_TYPE_METADATA, "meta_"},
-	{0, NULL}
-};
-
 #undef  MIN
 #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
 
@@ -153,13 +141,11 @@ static struct {
  */
 
 static int
-get_path_for_file (const char *folder, CameraFile *file, char **path)
+get_path_for_file (const char *folder, const char *name, CameraFileType type, CameraFile *file, char **path)
 {
 	unsigned int i, l;
 	int n;
 	char *s, b[1024];
-	const char *name, *prefix;
-	CameraFileType type;
 	time_t t;
 	struct tm *tm;
 	int hour12;
@@ -168,7 +154,6 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 		return (GP_ERROR_BAD_PARAMETERS);
 
 	*path = NULL;
-	CR (gp_file_get_name (file, &name));
 	CR (gp_file_get_mtime (file, &t));
 	tm = localtime (&t);
 	hour12 = tm->tm_hour % 12;
@@ -180,20 +165,8 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 	 * If the user didn't specify a filename, use the original name 
 	 * (and prefix).
 	 */
-	if (!gp_params.filename || !strcmp (gp_params.filename, "")) {
-		CR (gp_file_get_type (file, &type));
-		for (i = 0; PrefixTable[i].prefix; i++)
-			if (PrefixTable[i].type == type)
-				break;
-		prefix = (PrefixTable[i].prefix ? PrefixTable[i].prefix :
-						  "unknown_");
-		*path = malloc (strlen (prefix) + strlen (name) + 1);
-		if (!*path)
-			return (GP_ERROR_NO_MEMORY);
-		strcpy (*path, prefix);
-		strcat (*path, name);
-		return (GP_OK);
-	}
+	if (!gp_params.filename || !strcmp (gp_params.filename, ""))
+		return gp_file_get_name_by_type (file, name, type, path);
 
 	/* The user did specify a filename. Use it. */
 	b[sizeof (b) - 1] = '\0';
@@ -372,17 +345,14 @@ get_path_for_file (const char *folder, CameraFile *file, char **path)
 
 int
 save_camera_file_to_file (
-	const char *folder, CameraFile *file, const char *curname
+	const char *folder, const char *name, CameraFileType type, CameraFile *file, const char *curname
 ) {
 	char *path = NULL, s[1024], c[1024];
-	CameraFileType type;
 	int res;
 	time_t mtime;
 	struct utimbuf u;
 
-	CR (gp_file_get_type (file, &type));
-
-	CR (get_path_for_file (folder, file, &path));
+	CR (get_path_for_file (folder, name, type, file, &path));
 	strncpy (s, path, sizeof (s) - 1);
 	s[sizeof (s) - 1] = '\0';
 	free (path);
@@ -533,7 +503,7 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 		unlink (tmpname);
                 return (GP_OK);
         }
-        res = save_camera_file_to_file (folder, file, tmpfilename);
+        res = save_camera_file_to_file (folder, filename, type, file, tmpfilename);
         gp_file_unref (file);
 	if ((res!=GP_OK) && tmpfilename)
 		unlink (tmpfilename);

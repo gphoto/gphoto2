@@ -79,15 +79,7 @@ action_camera_upload_file (GPParams *p, const char *folder, const char *path)
 		return res;
 	}
 
-	/* Check if the user specified a filename */
-	if (p->filename && strcmp (p->filename, "")) {
-		res = gp_file_set_name (file, p->filename);
-		if (res < 0) {
-			gp_file_unref (file);
-			return (res);
-		}
-	}
-	res = gp_camera_folder_put_file (p->camera, folder, p->filename, file,
+	res = gp_camera_folder_put_file (p->camera, folder, p->filename, GP_FILE_TYPE_NORMAL, file,
 					 p->context);
 	gp_file_unref (file);
 	return (res);
@@ -112,22 +104,10 @@ action_camera_upload_metadata (GPParams *p, const char *folder, const char *path
 	/* Check if the user specified a filename */
 	if (p->filename && strcmp (p->filename, "")) {
 		fn = p->filename;
-		res = gp_file_set_name (file, p->filename);
-		if (res < 0) {
-			gp_file_unref (file);
-			return (res);
-		}
 	} else if (path == strstr(path, "meta_")) {
 		fn = path+5;
-		res = gp_file_set_name (file, path+5);
-		if (res < 0) {
-			gp_file_unref (file);
-			return (res);
-		}
 	}
-	gp_file_set_type (file, GP_FILE_TYPE_METADATA);
-
-	res = gp_camera_folder_put_file (p->camera, folder, fn, file,
+	res = gp_camera_folder_put_file (p->camera, folder, fn, GP_FILE_TYPE_METADATA, file,
 					 p->context);
 	gp_file_unref (file);
 	return (res);
@@ -955,7 +935,7 @@ action_camera_capture_preview (GPParams *p)
 		return (r);
 	}
 
-	r = save_camera_file_to_file (NULL, file, tmpfilename);
+	r = save_camera_file_to_file (NULL, "capture_preview", GP_FILE_TYPE_NORMAL, file, tmpfilename);
 	gp_file_unref (file);
 	if (r < 0) 
 		return (r);
