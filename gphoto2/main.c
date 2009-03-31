@@ -785,8 +785,7 @@ capture_tethered (const char __unused__ *name)
 	printf ( _("Waiting for events from camera. Press Ctrl-C to abort.\n"));
 
 	while (1) {
-		result = gp_camera_wait_for_event (gp_params.camera, 10000, &event, &data, gp_params.context);
-
+		result = gp_camera_wait_for_event (gp_params.camera, 1000, &event, &data, gp_params.context);
 		if (result != GP_OK)
 			break;
 		switch (event) {
@@ -839,6 +838,7 @@ capture_tethered (const char __unused__ *name)
 			/*printf("FOLDERADDED %s %s\n",fn->name, fn->folder);*/
 			break;
         	}
+		if (glob_cancel) break;
 	}
         return GP_OK;
 }
