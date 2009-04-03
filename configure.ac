@@ -1,6 +1,6 @@
 AC_PREREQ(2.59)
-dnl Next stable release must be 2.4.3 or later
-AC_INIT([gphoto2 command line interface], [2.4.4], [gphoto-devel@lists.sourceforge.net], [gphoto2])
+dnl Next stable release must be 2.4.6 or later
+AC_INIT([gphoto2 command line interface], [2.4.5], [gphoto-devel@lists.sourceforge.net], [gphoto2])
 AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
@@ -62,7 +62,7 @@ dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
 GP_GETTEXT_HACK([],[Lutz Müller and others],[${MAIL_GPHOTO_TRANSLATION}])
-ALL_LINGUAS="az cs da de en_GB es eu fi fr hu it ja nb nl pa pl pt_BR ro ru rw sk sl sr sv uk vi zh_CN zh_TW"
+ALL_LINGUAS="az cs da de en_GB es eu fi fr hu it ja nl pa pl pt_BR ro ru rw sk sr sv uk vi zh_CN zh_TW"
 AM_GNU_GETTEXT_VERSION([0.14.1])
 AM_GNU_GETTEXT([external])
 AM_PO_SUBDIRS()
@@ -78,7 +78,7 @@ AM_CPPFLAGS="$AM_CPPFLAGS -DLOCALEDIR=\\\"${localedir}\\\""
 dnl ---------------------------------------------------------------------------
 dnl Check for libgphoto2
 dnl ---------------------------------------------------------------------------
-GP_CHECK_LIBRARY([LIBGPHOTO2], [libgphoto2], [>= 2.4.4])
+GP_CHECK_LIBRARY([LIBGPHOTO2], [libgphoto2], [>= 2.4.5])
 
 
 AC_CHECK_FUNCS([strptime])
