@@ -944,35 +944,41 @@ action_camera_capture_preview (GPParams *p)
 }
 
 int
-action_camera_wait_event (GPParams *p)
+action_camera_wait_event (GPParams *p, int count)
 {
 	int ret;
 	CameraEventType	event;
 	void	*data = NULL;
 	CameraFilePath	*fn;
 
-	ret = gp_camera_wait_for_event (p->camera, 10000, &event, &data, p->context);
-	if (ret != GP_OK)
-		return ret;
-	switch (event) {
-	case GP_EVENT_UNKNOWN:
-		if (data) {
-			printf("UNKNOWN %s\n", (char*)data);
-		} else {
-			printf("UNKNOWN\n");
+	if (!count) count = 1;
+	while (count--) {
+		ret = gp_camera_wait_for_event (p->camera, 1000, &event, &data, p->context);
+		if (ret != GP_OK)
+			return ret;
+		switch (event) {
+		case GP_EVENT_UNKNOWN:
+			if (data) {
+				printf("UNKNOWN %s\n", (char*)data);
+			} else {
+				printf("UNKNOWN\n");
+			}
+			break;
+		case GP_EVENT_TIMEOUT:
+			printf("TIMEOUT\n");
+			break;
+		case GP_EVENT_CAPTURE_COMPLETE:
+			printf("CAPTURECOMPLETE\n");
+			break;
+		case GP_EVENT_FILE_ADDED:
+			fn = (CameraFilePath*)data;
+			printf("FILEADDED %s %s\n",fn->name, fn->folder);
+			break;
+		case GP_EVENT_FOLDER_ADDED:
+			fn = (CameraFilePath*)data;
+			printf("FOLDERADDED %s %s\n",fn->name, fn->folder);
+			break;
 		}
-		break;
-	case GP_EVENT_TIMEOUT:
-		printf("TIMEOUT\n");
-		break;
-	case GP_EVENT_FILE_ADDED:
-		fn = (CameraFilePath*)data;
-		printf("FILEADDED %s %s\n",fn->name, fn->folder);
-		break;
-	case GP_EVENT_FOLDER_ADDED:
-		fn = (CameraFilePath*)data;
-		printf("FOLDERADDED %s %s\n",fn->name, fn->folder);
-		break;
 	}
 	return GP_OK;
 }
