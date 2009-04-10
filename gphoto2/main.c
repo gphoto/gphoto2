@@ -810,11 +810,13 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 		else
 			pathsep = "/";
 
-		if (gp_params.flags & FLAGS_QUIET)
-			printf ("%s%s%s\n", path.folder, pathsep, path.name);
-		else
+		if (gp_params.flags & FLAGS_QUIET) {
+			if (!(gp_params.flags & (FLAGS_STDOUT|FLAGS_STDOUT_SIZE)))
+				printf ("%s%s%s\n", path.folder, pathsep, path.name);
+		} else {
 			printf (_("New file is in location %s%s%s on the camera\n"),
 				path.folder, pathsep, path.name);
+		}
 
 		if (download) {
 			if (strcmp(path.folder, last.folder)) {
@@ -996,6 +998,7 @@ capture_tethered (const char __unused__ *name)
 			/*printf("FOLDERADDED %s %s\n",fn->name, fn->folder);*/
 			break;
         	}
+		if (glob_cancel) break;
 	}
         return GP_OK;
 }

@@ -102,6 +102,9 @@ ctx_progress_start_func (GPContext __unused__ *context, float target,
                 initialized = 1;
         }
 
+	if (p->flags & FLAGS_QUIET)
+		return 0;
+
         /*
          * If the message is too long, we will shorten it. If we have less
          * than 4 cols available, we won't display any message.
@@ -145,6 +148,9 @@ ctx_progress_update_func (GPContext __unused__ *context, unsigned int id,
         /* Guard against buggy camera drivers */
         if (id >= MAX_PROGRESS_STATES || ((int)id) < 0)
                 return;
+
+	if (p->flags & FLAGS_QUIET)
+		return;
 
         /* How much time until completion? */
         if ((time (NULL) - progress_states[id].last.time > 0) &&
@@ -207,6 +213,9 @@ ctx_progress_stop_func (GPContext __unused__ *context, unsigned int id,
         /* Guard against buggy camera drivers */
         if (id >= MAX_PROGRESS_STATES || ((int)id) < 0)
                 return;
+
+	if (p->flags & FLAGS_QUIET)
+		return;
 
         /* Clear the progress bar. */
         for (i = 0; i < p->cols; i++)
