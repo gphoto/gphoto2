@@ -6,6 +6,9 @@
 	* main.c: --capture-image, --capture-image-and-download:
 	  added a second implementation using "trigger capture" and "wait event".
 
+	* actions.c: ctrl-c can abort tethered capture now
+	* main.c: --capture made more quiet on --quiet
+
 2008-12-04  T E Dixon  <https://sourceforge.net/users/dixonte/>
 
 	* main.c: Allow graceful exiting interval capture with SIGUSR2.
