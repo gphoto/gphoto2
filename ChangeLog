@@ -1,3 +1,11 @@
+2009-04-10  Marcus Meissner  <marcus@jet.franken.de>
+
+	* main.c: --wait-event=x now can wait for "x" events,
+	  or 1 second timeouts. (so longest wait time will be "x" seconds).
+	* main.c: --trigger-capture to trigger the camera capture
+	* main.c: --capture-image, --capture-image-and-download:
+	  added a second implementation using "trigger capture" and "wait event".
+
 2008-12-04  T E Dixon  <https://sourceforge.net/users/dixonte/>
 
 	* main.c: Allow graceful exiting interval capture with SIGUSR2.
