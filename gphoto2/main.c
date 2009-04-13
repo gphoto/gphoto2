@@ -432,6 +432,71 @@ camera_file_exists (Camera *camera, GPContext *context, const char *folder,
 	}
 }
 
+struct privstr {
+	int fd;
+};
+
+static int x_size(void*priv,uint64_t *size) {
+	struct privstr *ps = priv;
+	int fd = ps->fd;
+	off_t res;
+
+	gp_log (GP_LOG_DEBUG, "x_size","(%p,%u)", priv, (unsigned int)*size);
+	res = lseek (fd, 0, SEEK_END);
+	if (res == -1) {
+		perror ("x_size: lseek SEEK_END");
+		return GP_ERROR_IO;
+	}
+	res = lseek (fd, 0, SEEK_CUR);
+	if (res == -1) {
+		perror ("x_size: lseek SEEK_CUR");
+		return GP_ERROR_IO;
+	}
+	*size = res;
+	res = lseek (fd, 0, SEEK_SET);
+	if (res == -1) {
+		perror ("x_size: lseek SEEK_SET");
+		return GP_ERROR_IO;
+	}
+	return GP_OK;
+}
+
+static int x_read(void*priv,unsigned char *data, uint64_t *size) {
+	struct privstr 	*ps = priv;
+	int 		fd = ps->fd;
+	uint64_t	curread = 0, xsize, res;
+
+	gp_log (GP_LOG_DEBUG, "x_read", "(%p,%p,%u)", priv, data, (unsigned int)*size);
+	xsize = *size;
+	while (curread < xsize) {
+		res = read (fd, data+curread, xsize-curread);
+		if (res == -1) return GP_ERROR_IO_READ;
+		if (!res) break;
+		curread += res;
+	}
+	*size = curread;
+	return GP_OK;
+}
+
+static int x_write(void*priv,unsigned char *data, uint64_t *size) {
+	struct privstr 	*ps = priv;
+	int 		fd = ps->fd;
+	uint64_t	curwritten = 0, xsize, res;
+
+	gp_log (GP_LOG_DEBUG, "x_write","(%p,%p,%u)", priv, data, (unsigned int)*size);
+	xsize = *size;
+	while (curwritten < xsize) {
+		res = write (fd, data+curwritten, xsize-curwritten);
+		if (res == -1) return GP_ERROR_IO_WRITE;
+		if (!res) break;
+		curwritten += res;
+	}
+	*size = curwritten;
+	return GP_OK;
+}
+
+static CameraFileHandler xhandler = { x_size, x_read, x_write };
+
 int
 save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 		   const char *folder, const char *filename,
@@ -440,6 +505,7 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
         int fd, res;
         CameraFile *file;
 	char	tmpname[20], *tmpfilename;
+	struct privstr *ps;
 
 	if (flags & FLAGS_NEW) {
 		CameraFileInfo info;
@@ -474,11 +540,26 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
         	CR (gp_file_new (&file));
 		tmpfilename = NULL;
 	} else {
-		res = gp_file_new_from_fd (&file, fd);
-		if (res < GP_OK) {
-			close (fd);
-			unlink (tmpname);
-			return res;
+		if (time(NULL) & 1) { /* to test both methods. */
+			gp_log (GP_LOG_DEBUG, "save_file_to_file","using fd method");
+			res = gp_file_new_from_fd (&file, fd);
+			if (res < GP_OK) {
+				close (fd);
+				unlink (tmpname);
+				return res;
+			}
+		} else {
+			gp_log (GP_LOG_DEBUG, "save_file_to_file","using handler method");
+			ps = malloc (sizeof(*ps));
+			if (!ps) return GP_ERROR_NO_MEMORY;
+			ps->fd = fd;
+			/* just pass in the file pointer as private */
+			res = gp_file_new_from_handler (&file, &xhandler, ps);
+			if (res < GP_OK) {
+				close (fd);
+				unlink (tmpname);
+				return res;
+			}
 		}
 		tmpfilename = tmpname;
 	}
