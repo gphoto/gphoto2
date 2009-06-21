@@ -60,7 +60,7 @@ int action_camera_upload_file     (GPParams *, const char *folder,
 int action_camera_upload_metadata (GPParams *, const char *folder,
 				   const char *path);
 int action_camera_capture_preview (GPParams *);
-int action_camera_wait_event (GPParams *);
+int action_camera_wait_event (GPParams *,int count);
 
 /* Other actions */
 int list_cameras_action    (GPParams *);
@@ -75,6 +75,8 @@ int debug_action           (GPParams *, const char *debug_logfile_name);
 int list_config_action     (GPParams *);
 int get_config_action      (GPParams *, const char *name);
 int set_config_action      (GPParams *, const char *name, const char *value);
+int set_config_index_action      (GPParams *, const char *name, const char *value);
+int set_config_value_action      (GPParams *, const char *name, const char *value);
 int print_storage_info     (GPParams *);
 
 void _get_portinfo_list	(GPParams *p);

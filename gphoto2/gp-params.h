@@ -25,8 +25,7 @@
 #include <gphoto2/gphoto2-abilities-list.h>
 #include <gphoto2/gphoto2-context.h>
 
-typedef enum _Flags Flags;
-enum _Flags {
+typedef enum {
 	FLAGS_RECURSE		= 1 << 0,
 	FLAGS_REVERSE		= 1 << 1,
 	FLAGS_QUIET		= 1 << 2,
@@ -35,15 +34,14 @@ enum _Flags {
 	FLAGS_STDOUT_SIZE	= 1 << 5,
 	FLAGS_NEW		= 1 << 6,
 	FLAGS_RESET_CAPTURE_INTERVAL = 1 << 7
-};
+} Flags;
 
-typedef enum _MultiType MultiType;
-enum _MultiType {
+typedef enum {
 	MULTI_UPLOAD,
 	MULTI_UPLOAD_META,
 	MULTI_DOWNLOAD,
 	MULTI_DELETE
-};
+} MultiType;
 
 typedef struct _GPParams GPParams;
 struct _GPParams {

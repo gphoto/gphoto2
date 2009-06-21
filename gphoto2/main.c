@@ -425,9 +425,14 @@ save_camera_file_to_file (
 		fflush (stdout);
         }
 	if (curname) {
+		int x;
+
 		unlink(s);
 		if (-1 == rename (curname, s))
 			perror("rename");
+		x = umask(0022); /* get umask */
+		umask(x);/* set it back to the old value */
+		chmod(curname,0666 & ~x);
 	}
 	res = gp_file_get_mtime (file, &mtime);
         if ((res == GP_OK) && (mtime)) {
@@ -999,6 +1004,8 @@ typedef enum {
 	ARG_GET_AUDIO_DATA,
 	ARG_GET_CONFIG,
 	ARG_SET_CONFIG,
+	ARG_SET_CONFIG_INDEX,
+	ARG_SET_CONFIG_VALUE,
 	ARG_GET_FILE,
 	ARG_GET_METADATA,
 	ARG_GET_RAW_DATA,
@@ -1391,8 +1398,38 @@ cb_arg_run (poptContext __unused__ ctx,
 		free (name);
 		break;
 	}
+	case ARG_SET_CONFIG_INDEX: {
+		char *name, *value;
+
+		if (strchr (arg, '=') == NULL) {
+			params->p.r = GP_ERROR_BAD_PARAMETERS;
+			break;
+		}
+		name  = strdup (arg);
+		value = strchr (name, '=');
+		*value = '\0';
+		value++;
+		params->p.r = set_config_index_action (&gp_params, name, value);
+		free (name);
+		break;
+	}
+	case ARG_SET_CONFIG_VALUE: {
+		char *name, *value;
+
+		if (strchr (arg, '=') == NULL) {
+			params->p.r = GP_ERROR_BAD_PARAMETERS;
+			break;
+		}
+		name  = strdup (arg);
+		value = strchr (name, '=');
+		*value = '\0';
+		value++;
+		params->p.r = set_config_value_action (&gp_params, name, value);
+		free (name);
+		break;
+	}
 	case ARG_WAIT_EVENT:
-		params->p.r = action_camera_wait_event (&gp_params);
+		params->p.r = action_camera_wait_event (&gp_params, atoi(arg));
 		break;
 	case ARG_STORAGE_INFO:
 		params->p.r = print_storage_info (&gp_params);
@@ -1560,7 +1597,7 @@ main (int argc, char **argv, char **envp)
 	const struct poptOption cameraOptions[] = {
 		GPHOTO2_POPT_CALLBACK
 		{"port", '\0', POPT_ARG_STRING, NULL, ARG_PORT,
-		 N_("Specify port device"), N_("FILENAME")},
+		 N_("Specify device port"), N_("FILENAME")},
 		{"speed", '\0', POPT_ARG_INT, NULL, ARG_SPEED,
 		 N_("Specify serial transfer speed"), N_("SPEED")},
 		{"camera", '\0', POPT_ARG_STRING, NULL, ARG_MODEL,
@@ -1597,8 +1634,8 @@ main (int argc, char **argv, char **envp)
 	};
 	const struct poptOption captureOptions[] = {
 		GPHOTO2_POPT_CALLBACK
-		{"wait-event", '\0', POPT_ARG_NONE, NULL, ARG_WAIT_EVENT,
-		 N_("Wait for event from camera"), NULL},
+		{"wait-event", '\0', POPT_ARG_INT, NULL, ARG_WAIT_EVENT,
+		 N_("Wait for event from camera"), N_("COUNT")},
 		{"capture-preview", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_PREVIEW,
 		 N_("Capture a quick preview"), NULL},
@@ -1664,7 +1701,7 @@ main (int argc, char **argv, char **envp)
 		{"delete-all-files", 'D', POPT_ARG_NONE, NULL,
 		 ARG_DELETE_ALL_FILES, N_("Delete all files in folder"), NULL},
 		{"upload-file", 'u', POPT_ARG_STRING, NULL, ARG_UPLOAD_FILE,
-		 N_("Upload a file to camera"), N_("filename")},
+		 N_("Upload a file to camera"), N_("FILENAME")},
 		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,
 		 N_("Specify a filename or filename pattern"), N_("FILENAME_PATTERN")},
 		{"folder", 'f', POPT_ARG_STRING, NULL, ARG_FOLDER,

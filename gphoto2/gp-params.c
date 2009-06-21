@@ -103,7 +103,7 @@ ctx_progress_start_func (GPContext __unused__ *context, float target,
         }
 
 	if (p->flags & FLAGS_QUIET)
-		return;
+		return 0;
 
         /*
          * If the message is too long, we will shorten it. If we have less
@@ -171,16 +171,16 @@ ctx_progress_update_func (GPContext __unused__ *context, unsigned int id,
         if ((int) sec >= 3600) {
                 snprintf (buf, sizeof (buf), "%2ih", (int) sec / 3600);
                 sec -= ((int) (sec / 3600) * 3600);
-                strncat (remaining, buf, sizeof (remaining) - 1);
+                strncat (remaining, buf, sizeof (remaining) - strlen (remaining) - 1);
         }
         if ((int) sec >= 60) {
                 snprintf (buf, sizeof (buf), "%2im", (int) sec / 60);
                 sec -= ((int) (sec / 60) * 60);
-                strncat (remaining, buf, sizeof (remaining) - 1);
+                strncat (remaining, buf, sizeof (remaining) - strlen (remaining) - 1);
         }
         if ((int) sec) {
                 snprintf (buf, sizeof (buf), "%2is", (int) sec);
-                strncat (remaining, buf, sizeof (remaining) - 1);
+                strncat (remaining, buf, sizeof (remaining) - strlen (remaining) - 1);
         }
 
         /* Determine the width of the progress bar and the current position */
@@ -448,54 +448,64 @@ internal_run_hook(const char *const hook_script,
 	 * Most of the code here creates and destructs the
 	 * char *child_argv[] and char *child_envp[] to be passed to 
 	 * spawnve() and thus execve().
+	 *
+	 * Error handling is simple:
+	 *  * If malloc() or calloc() fail, abort the whole program.
 	 */
 
 	/* A note on program memory layout:
 	 *
-	 * child_argv and child_envp must be in writable memory. It
-	 * may be possible that on some systems, we should malloc()
-	 * them instead of just defining them within this function.
-	 *
-	 * Anyway... do not define them as const char *foo[].
+	 * child_argv and child_envp MUST be in writable memory, so we
+	 * malloc() them.
 	 */
 	
+	char *my_hook_script = strdup(hook_script);
 	unsigned int i;
 
 	/* run hook using execve(2) */
-	char *child_argv[] = {
-		hook_script,
-		NULL
+	char **child_argv = calloc(2, sizeof(child_argv[0]));
+
+	/* envars not to copy */
+	const char *const varlist[] = {
+		"ACTION", "ARGUMENT", NULL
 	};
 
+	/* environment variables for child process, and index going through them */
+	char **child_envp;
+	unsigned int envi = 0;
+
+	int retcode;
+	
 	/* count number of environment variables currently set */
 	unsigned int envar_count;
 	for (envar_count=0; envp[envar_count] != NULL; envar_count++) {
 		/* printf("%3d: \"%s\"\n", envar_count, envp[envar_count]); */
 	}
 
-	/* envars not to copy */
-	char *varlist[] = {
-		"ACTION", "ARGUMENT", NULL
-	};
+	ASSERT(my_hook_script != NULL);
+	child_argv[0] = my_hook_script;
 
 	/* Initialize environment. Start with newly defined vars, then copy
-	 * all the existing ones. Finally fill up with NULLs.
+	 * all the existing ones. calloc() does the initialization with NULL.
 	 * Total amount of char* is
 	 *     number of existing envars (envar_count)
 	 *   + max number of new envars (2)
 	 *   + NULL list terminator (1)
 	 */
-	char *child_envp[envar_count+((sizeof(varlist)/sizeof(varlist[0]))-1)+1];
-	unsigned int envi = 0;
-	
+	child_envp = calloc(envar_count+((sizeof(varlist)/sizeof(varlist[0]))-1)+1, 
+			    sizeof(child_envp[0]));
+	ASSERT(child_envp != NULL);
+
 	/* own envars */
 	if (NULL != action) {
-		child_envp[envi++] = alloc_envar("ACTION", action);
-		if (!child_envp[envi-1]) return 1;
+		char *envar = alloc_envar("ACTION", action);
+		ASSERT(envar != NULL);
+		child_envp[envi++] = envar;
 	}
 	if (NULL != argument) {
-		child_envp[envi++] = alloc_envar("ARGUMENT", argument);
-		if (!child_envp[envi-1]) return 1;
+		char *envar = alloc_envar("ARGUMENT", argument);
+		ASSERT(envar != NULL);
+		child_envp[envi++] = envar;
 	}
 	
 	/* copy envars except for those in varlist */
@@ -515,18 +525,20 @@ internal_run_hook(const char *const hook_script,
 		}
 	}
 	
-	/* fill up with NULL */
-	while (envi<(sizeof(child_envp)/sizeof(child_envp[0]))) {
-		child_envp[envi++] = NULL;
-	}
-
-	const int retcode = spawnve(hook_script, child_argv, child_envp);
-
-	/* Free envp memory */
+	/* Actually run the hook script */
+	retcode = spawnve(hook_script, child_argv, child_envp);
+		
+	/* Free all memory */
 	for (i=0; child_envp[i] != NULL; i++) {
 		free(child_envp[i]);
 	}
+	free(child_envp);
+	for (i=0; child_argv[i] != NULL; i++) {
+		free(child_argv[i]);
+	}
+	free(child_argv);
 
+	/* And finally return to caller */
 	if (retcode != 0) {
 		fprintf(stderr, "Hook script returned error code %d (0x%x)\n",
 			retcode, retcode);
