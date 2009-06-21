@@ -1442,7 +1442,6 @@ int
 set_config_action (GPParams *p, const char *name, const char *value) {
 	CameraWidget *rootconfig,*child;
 	int	ret;
-	const char *label;
 	CameraWidgetType	type;
 
 	ret = _find_widget_by_name (p, name, &child, &rootconfig);
@@ -1450,11 +1449,6 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 		return ret;
 
 	ret = gp_widget_get_type (child, &type);
-	if (ret != GP_OK) {
-		gp_widget_free (rootconfig);
-		return ret;
-	}
-	ret = gp_widget_get_label (child, &label);
 	if (ret != GP_OK) {
 		gp_widget_free (rootconfig);
 		return ret;
@@ -1569,6 +1563,211 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 				break;
 			}
 		}
+		gp_context_error (p->context, _("Choice %s not found within list of choices."), value);
+		break;
+	}
+
+	/* ignore: */
+	case GP_WIDGET_WINDOW:
+	case GP_WIDGET_SECTION:
+	case GP_WIDGET_BUTTON:
+		gp_context_error (p->context, _("The %s widget is not configurable."), name);
+		ret = GP_ERROR_BAD_PARAMETERS;
+		break;
+	}
+	if (ret == GP_OK) {
+		ret = gp_camera_set_config (p->camera, rootconfig, p->context);
+		if (ret != GP_OK)
+			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s."), value, name);
+	}
+	gp_widget_free (rootconfig);
+	return (ret);
+}
+
+int
+set_config_index_action (GPParams *p, const char *name, const char *value) {
+	CameraWidget *rootconfig,*child;
+	int	ret;
+	const char *label;
+	CameraWidgetType	type;
+
+	ret = _find_widget_by_name (p, name, &child, &rootconfig);
+	if (ret != GP_OK)
+		return ret;
+
+	ret = gp_widget_get_type (child, &type);
+	if (ret != GP_OK) {
+		gp_widget_free (rootconfig);
+		return ret;
+	}
+	ret = gp_widget_get_label (child, &label);
+	if (ret != GP_OK) {
+		gp_widget_free (rootconfig);
+		return ret;
+	}
+
+	switch (type) {
+	case GP_WIDGET_MENU:
+	case GP_WIDGET_RADIO: { /* char *		*/
+		int cnt, i;
+
+		cnt = gp_widget_count_choices (child);
+		if (cnt < GP_OK) {
+			ret = cnt;
+			break;
+		}
+		ret = GP_ERROR_BAD_PARAMETERS;
+		if (sscanf (value, "%d", &i)) {
+			if ((i>= 0) && (i < cnt)) {
+				const char *choice;
+
+				ret = gp_widget_get_choice (child, i, &choice);
+				if (ret == GP_OK)
+					ret = gp_widget_set_value (child, choice);
+				break;
+			}
+		}
+		gp_context_error (p->context, _("Choice %s not found within list of choices."), value);
+		break;
+	}
+
+	/* ignore: */
+	case GP_WIDGET_TOGGLE:
+	case GP_WIDGET_TEXT:
+	case GP_WIDGET_RANGE:
+	case GP_WIDGET_DATE: 
+	case GP_WIDGET_WINDOW:
+	case GP_WIDGET_SECTION:
+	case GP_WIDGET_BUTTON:
+		gp_context_error (p->context, _("The %s widget has no indexed list of choices. Use --set-config-value instead."), name);
+		ret = GP_ERROR_BAD_PARAMETERS;
+		break;
+	}
+	if (ret == GP_OK) {
+		ret = gp_camera_set_config (p->camera, rootconfig, p->context);
+		if (ret != GP_OK)
+			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s."), value, name);
+	}
+	gp_widget_free (rootconfig);
+	return (ret);
+}
+
+
+int
+set_config_value_action (GPParams *p, const char *name, const char *value) {
+	CameraWidget *rootconfig,*child;
+	int	ret;
+	CameraWidgetType	type;
+
+	ret = _find_widget_by_name (p, name, &child, &rootconfig);
+	if (ret != GP_OK)
+		return ret;
+
+	ret = gp_widget_get_type (child, &type);
+	if (ret != GP_OK) {
+		gp_widget_free (rootconfig);
+		return ret;
+	}
+
+	switch (type) {
+	case GP_WIDGET_TEXT: {		/* char *		*/
+		ret = gp_widget_set_value (child, value);
+		if (ret != GP_OK)
+			gp_context_error (p->context, _("Failed to set the value of text widget %s to %s."), name, value);
+		break;
+	}
+	case GP_WIDGET_RANGE: {	/* float		*/
+		float	f,t,b,s;
+
+		ret = gp_widget_get_range (child, &b, &t, &s);
+		if (ret != GP_OK)
+			break;
+		if (!sscanf (value, "%f", &f)) {
+			gp_context_error (p->context, _("The passed value %s is not a floating point value."), value);
+			ret = GP_ERROR_BAD_PARAMETERS;
+			break;
+		}
+		if ((f < b) || (f > t)) {
+			gp_context_error (p->context, _("The passed value %f is not within the expected range %f - %f."), f, b, t);
+			ret = GP_ERROR_BAD_PARAMETERS;
+			break;
+		}
+		ret = gp_widget_set_value (child, &f);
+		if (ret != GP_OK)
+			gp_context_error (p->context, _("Failed to set the value of range widget %s to %f."), name, f);
+		break;
+	}
+	case GP_WIDGET_TOGGLE: {	/* int		*/
+		int	t;
+
+		t = 2;
+		if (	!strcasecmp (value, "off")	|| !strcasecmp (value, "no")	||
+			!strcasecmp (value, "false")	|| !strcmp (value, "0")		||
+			!strcasecmp (value, _("off"))	|| !strcasecmp (value, _("no"))	||
+			!strcasecmp (value, _("false"))
+		)
+			t = 0;
+		if (	!strcasecmp (value, "on")	|| !strcasecmp (value, "yes")	||
+			!strcasecmp (value, "true")	|| !strcmp (value, "1")		||
+			!strcasecmp (value, _("on"))	|| !strcasecmp (value, _("yes"))	||
+			!strcasecmp (value, _("true"))
+		)
+			t = 1;
+		/*fprintf (stderr," value %s, t %d\n", value, t);*/
+		if (t == 2) {
+			gp_context_error (p->context, _("The passed value %s is not a valid toggle value."), value);
+			ret = GP_ERROR_BAD_PARAMETERS;
+			break;
+		}
+		ret = gp_widget_set_value (child, &t);
+		if (ret != GP_OK)
+			gp_context_error (p->context, _("Failed to set values %s of toggle widget %s."), value, name);
+		break;
+	}
+	case GP_WIDGET_DATE:  {		/* int			*/
+		int	t = -1;
+		struct tm xtm;
+
+#ifdef HAVE_STRPTIME
+		if (strptime (value, "%c", &xtm) || strptime (value, "%Ec", &xtm))
+			t = mktime (&xtm);
+#endif
+		if (t == -1) {
+			if (!sscanf (value, "%d", &t)) {
+				gp_context_error (p->context, _("The passed value %s is neither a valid time nor an integer."), value);
+				ret = GP_ERROR_BAD_PARAMETERS;
+				break;
+			}
+		}
+		ret = gp_widget_set_value (child, &t);
+		if (ret != GP_OK)
+			gp_context_error (p->context, _("Failed to set new time of date/time widget %s to %s."), name, value);
+		break;
+	}
+	case GP_WIDGET_MENU:
+	case GP_WIDGET_RADIO: { /* char *		*/
+		int cnt, i;
+
+		cnt = gp_widget_count_choices (child);
+		if (cnt < GP_OK) {
+			ret = cnt;
+			break;
+		}
+		ret = GP_ERROR_BAD_PARAMETERS;
+		for ( i=0; i<cnt; i++) {
+			const char *choice;
+
+			ret = gp_widget_get_choice (child, i, &choice);
+			if (ret != GP_OK)
+				continue;
+			if (!strcmp (choice, value)) {
+				ret = gp_widget_set_value (child, value);
+				break;
+			}
+		}
+		if (i != cnt)
+			break;
+
 		gp_context_error (p->context, _("Choice %s not found within list of choices."), value);
 		break;
 	}

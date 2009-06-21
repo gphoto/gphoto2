@@ -1,3 +1,11 @@
+2009-06-21  Marcus Meissner  <marcus@jet.franken.de>
+
+	* main.c,action.c,shell.c: 
+	  Added seperate --set-config-index and --set-config-value functions
+	  for menu choice settings.
+
+	* main.c: Save files with current umask, not 0600.
+
 2009-04-10  Marcus Meissner  <marcus@jet.franken.de>
 
 	* main.c: --wait-event=x now can wait for "x" events,

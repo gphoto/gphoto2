@@ -395,9 +395,14 @@ save_camera_file_to_file (
 		fflush (stdout);
         }
 	if (curname) {
+		int x;
+
 		unlink(s);
 		if (-1 == rename (curname, s))
 			perror("rename");
+		x = umask(0022); /* get umask */
+		umask(x);/* set it back to the old value */
+		chmod(curname,0666 & ~x);
 	}
 	res = gp_file_get_mtime (file, &mtime);
         if ((res == GP_OK) && (mtime)) {
@@ -840,7 +845,7 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 		cli_error_print(_("Could not get capabilities?"));
 		return (result);
 	}
-	if (a.operations & GP_OPERATION_TRIGGER_CAPTURE)
+	if (0 && (a.operations & GP_OPERATION_TRIGGER_CAPTURE))
 		return capture_generic_trigger (download);
 
 	memset(&last, 0, sizeof(last));
@@ -1239,6 +1244,8 @@ typedef enum {
 	ARG_GET_AUDIO_DATA,
 	ARG_GET_CONFIG,
 	ARG_SET_CONFIG,
+	ARG_SET_CONFIG_INDEX,
+	ARG_SET_CONFIG_VALUE,
 	ARG_GET_FILE,
 	ARG_GET_METADATA,
 	ARG_GET_RAW_DATA,
@@ -1631,6 +1638,36 @@ cb_arg_run (poptContext __unused__ ctx,
 		*value = '\0';
 		value++;
 		params->p.r = set_config_action (&gp_params, name, value);
+		free (name);
+		break;
+	}
+	case ARG_SET_CONFIG_INDEX: {
+		char *name, *value;
+
+		if (strchr (arg, '=') == NULL) {
+			params->p.r = GP_ERROR_BAD_PARAMETERS;
+			break;
+		}
+		name  = strdup (arg);
+		value = strchr (name, '=');
+		*value = '\0';
+		value++;
+		params->p.r = set_config_index_action (&gp_params, name, value);
+		free (name);
+		break;
+	}
+	case ARG_SET_CONFIG_VALUE: {
+		char *name, *value;
+
+		if (strchr (arg, '=') == NULL) {
+			params->p.r = GP_ERROR_BAD_PARAMETERS;
+			break;
+		}
+		name  = strdup (arg);
+		value = strchr (name, '=');
+		*value = '\0';
+		value++;
+		params->p.r = set_config_value_action (&gp_params, name, value);
 		free (name);
 		break;
 	}

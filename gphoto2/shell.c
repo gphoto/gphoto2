@@ -7,10 +7,10 @@
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful, 
- * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details. 
+ * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
@@ -92,6 +92,8 @@ static int shell_show_exif     (Camera *, const char *);
 static int shell_list_config   (Camera *, const char *);
 static int shell_get_config    (Camera *, const char *);
 static int shell_set_config    (Camera *, const char *);
+static int shell_set_config_index    (Camera *, const char *);
+static int shell_set_config_value    (Camera *, const char *);
 static int shell_capture_image (Camera *, const char *);
 static int shell_capture_image_and_download (Camera *, const char *);
 static int shell_mkdir         (Camera *, const char *);
@@ -140,6 +142,8 @@ static const struct _ShellFunctionTable {
 	{"list-config", shell_list_config, N_("List configuration variables"), NULL, 0},
 	{"get-config", shell_get_config, N_("Get configuration variable"), N_("name"), 1},
 	{"set-config", shell_set_config, N_("Set configuration variable"), N_("name=value"), 1},
+	{"set-config-index", shell_set_config_index, N_("Set configuration variable index"), N_("name=valueindex"), 1},
+	{"set-config-value", shell_set_config_value, N_("Set configuration variable"), N_("name=value"), 1},
 	{"capture-image", shell_capture_image, N_("Capture a single image"), NULL, 0},
 	{"capture-image-and-download", shell_capture_image_and_download, N_("Capture a single image and download it"), NULL, 0},
 	{"q", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
@@ -158,7 +162,7 @@ shell_arg_count (const char *args)
 	size_t x=0;
 	int in_arg=0;
 	unsigned int count=0;
-	
+
 	while (x < strlen (args)) {
 		if ((!isspace((int)(args[x]))) && (!in_arg)) {
 			in_arg = 1;
@@ -198,7 +202,7 @@ shell_read_line (void)
 	if (line)
 		add_history (line);
 	else
-		return (NULL);      
+		return (NULL);
 #else
 	line = malloc (1024);
 	if (!line)
@@ -208,7 +212,7 @@ shell_read_line (void)
 	tmp = fgets (line, 1023, stdin);
 	if (tmp == NULL)
 		return (NULL);
-	line[strlen (line) - 1] = '\0'; 
+	line[strlen (line) - 1] = '\0';
 #endif
 	return (line);
 }
@@ -314,7 +318,7 @@ shell_path_generator (const char *text, int state)
 			if (r < 0)
 				return (NULL);
 			if (!strncmp (name, basename, len)) {
-				x++; 
+				x++;
 				slash = strrchr (text, '/');
 				if (!slash) {
 					path = malloc (strlen (name) + 2);
@@ -456,7 +460,7 @@ shell_prompt (GPParams *params)
 			free (line);
 			continue;
 		}
-		
+
 		shell_arg (line, 0, cmd);
 		strcpy (arg, &line[strlen (cmd)]);
 		free (line);
@@ -541,7 +545,7 @@ shell_construct_path (const char *folder_orig, const char *rel_path,
 		if (strcmp (rel_path, "") && (slash || !dest_filename)) {
 
 			/*
-			 * We need to go down one folder. Append a 
+			 * We need to go down one folder. Append a
 			 * trailing slash
 			 */
 			if (dest_folder[strlen (dest_folder) - 1] != '/')
@@ -575,7 +579,7 @@ shell_lcd (Camera __unused__ *camera, const char *arg)
 	if (!arg_count) {
 		if (!getenv ("HOME")) {
 			cli_error_print (_("Could not find home directory."));
-			return (GP_OK); 
+			return (GP_OK);
 		}
 		strncpy (new_cwd, getenv ("HOME"), sizeof(new_cwd)-1);
 		new_cwd[sizeof(new_cwd)-1] = '\0';
@@ -605,7 +609,7 @@ shell_cd (Camera __unused__ *camera, const char *arg)
 		return (GP_OK);
 
 	/* shell_arg(arg, 0, arg_dir); */
-	
+
 	if (strlen (arg) > 1023) {
 		cli_error_print ("Folder value is too long");
 		return (GP_ERROR);
@@ -687,7 +691,7 @@ shell_ls (Camera __unused__ *camera, const char *arg)
 }
 
 static int
-shell_file_action (Camera __unused__ *camera, GPContext __unused__ *context, 
+shell_file_action (Camera __unused__ *camera, GPContext __unused__ *context,
 		   const char *folder,
 		   const char *args, FileAction action)
 {
@@ -701,8 +705,8 @@ shell_file_action (Camera __unused__ *camera, GPContext __unused__ *context,
 					     dest_folder, dest_filename));
 		CHECK (action (p, dest_filename));
 	}
-	
-	return (GP_OK);      
+
+	return (GP_OK);
 }
 
 static int
@@ -772,8 +776,8 @@ shell_put (Camera __unused__ *camera, const char *args) {
 		CHECK (shell_construct_path ("/", arg, dest_folder, dest_filename));
 		CHECK (action_camera_upload_file (p, dest_folder, dest_filename));
 	}
-	
-	return (GP_OK);      
+
+	return (GP_OK);
 }
 
 static int
@@ -808,7 +812,7 @@ shell_rmdir (Camera *camera, const char *args) {
 static int
 shell_list_config (Camera __unused__ *camera, const char __unused__ *args) {
 	CHECK (list_config_action (p));
-	return (GP_OK);      
+	return (GP_OK);
 }
 
 static int
@@ -820,7 +824,7 @@ shell_get_config (Camera __unused__ *camera, const char *args) {
 		CHECK (shell_arg (args, x, arg));
 		CHECK (get_config_action (p, arg));
 	}
-	return (GP_OK);      
+	return (GP_OK);
 }
 
 static int
@@ -841,8 +845,51 @@ shell_set_config (Camera __unused__ *camera, const char *args) {
 		return set_config_action (p, x, s+1);
 	}
 	fprintf (stderr, _("set-config needs a second argument.\n"));
-	return (GP_OK);      
+	return (GP_OK);
 }
+
+static int
+shell_set_config_value (Camera __unused__ *camera, const char *args) {
+	char arg[1024];
+	char *s,*x;
+
+	strncpy (arg, args, sizeof(arg));
+	arg[1023]='\0';
+	/* need to skip spaces */
+	x = arg; while (*x == ' ') x++;
+	if ((s=strchr(x,'='))) {
+		*s='\0';
+		return set_config_value_action (p, x, s+1);
+	}
+	if ((s=strchr(x,' '))) {
+		*s='\0';
+		return set_config_value_action (p, x, s+1);
+	}
+	fprintf (stderr, _("set-config-value needs a second argument.\n"));
+	return (GP_OK);
+}
+
+static int
+shell_set_config_index (Camera __unused__ *camera, const char *args) {
+	char arg[1024];
+	char *s,*x;
+
+	strncpy (arg, args, sizeof(arg));
+	arg[1023]='\0';
+	/* need to skip spaces */
+	x = arg; while (*x == ' ') x++;
+	if ((s=strchr(x,'='))) {
+		*s='\0';
+		return set_config_index_action (p, x, s+1);
+	}
+	if ((s=strchr(x,' '))) {
+		*s='\0';
+		return set_config_index_action (p, x, s+1);
+	}
+	fprintf (stderr, _("set-config-index needs a second argument.\n"));
+	return (GP_OK);
+}
+
 
 static int
 shell_capture_image (Camera __unused__ *camera, const char __unused__ *args) {
@@ -890,7 +937,7 @@ shell_help_command (Camera __unused__ *camera, const char *arg)
 	printf ("\n\t%s\n\n", _(func[x].description));
 	printf (_("* Arguments in brackets [] are optional"));
 	putchar ('\n');
-	
+
 	return (GP_OK);
 }
 
