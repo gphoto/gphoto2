@@ -402,7 +402,7 @@ save_camera_file_to_file (
 			perror("rename");
 		x = umask(0022); /* get umask */
 		umask(x);/* set it back to the old value */
-		chmod(curname,0666 & ~x);
+		chmod(s,0666 & ~x);
 	}
 	res = gp_file_get_mtime (file, &mtime);
         if ((res == GP_OK) && (mtime)) {
