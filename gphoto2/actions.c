@@ -69,6 +69,7 @@ action_camera_upload_file (GPParams *p, const char *folder, const char *path)
 {
 	CameraFile *file;
 	int res;
+	char *fn;
 
 	gp_log (GP_LOG_DEBUG, "main", "Uploading file...");
 
@@ -78,8 +79,12 @@ action_camera_upload_file (GPParams *p, const char *folder, const char *path)
 		gp_file_unref (file);
 		return res;
 	}
+	if (p->filename && strcmp (p->filename, ""))
+		fn = p->filename;
+	else
+		fn = basename (path);
 
-	res = gp_camera_folder_put_file (p->camera, folder, p->filename, GP_FILE_TYPE_NORMAL, file,
+	res = gp_camera_folder_put_file (p->camera, folder, fn, GP_FILE_TYPE_NORMAL, file,
 					 p->context);
 	gp_file_unref (file);
 	return (res);
