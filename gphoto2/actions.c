@@ -949,12 +949,13 @@ action_camera_capture_preview (GPParams *p)
 }
 
 int
-action_camera_wait_event (GPParams *p, int count)
+action_camera_wait_event (GPParams *p, int download, int count)
 {
 	int ret;
 	CameraEventType	event;
 	void	*data = NULL;
 	CameraFilePath	*fn;
+	CameraFilePath last;
 
 	if (!count) count = 1;
 	while (count--) {
@@ -978,12 +979,43 @@ action_camera_wait_event (GPParams *p, int count)
 		case GP_EVENT_FILE_ADDED:
 			fn = (CameraFilePath*)data;
 			printf("FILEADDED %s %s\n",fn->name, fn->folder);
+
+			if(strcmp(fn->folder, last.folder)) {
+				strcpy(last.folder, fn->folder);
+				ret = set_folder_action(p, fn->folder);
+				if (ret != GP_OK) {
+					cli_error_print(_("Could not set folder."));
+					return (ret);
+				}
+			}
+			ret = get_file_common (fn->name, GP_FILE_TYPE_NORMAL);
+			if (ret != GP_OK) {
+				cli_error_print (_("Could not get image."));
+				if(ret == GP_ERROR_FILE_NOT_FOUND) {
+					/* Buggy libcanon.so?
+					* Can happen if this was the first capture after a
+					* CF card format, or during a directory roll-over,
+					* ie: CANON100 -> CANON101
+					*/
+					cli_error_print ( _("Buggy libcanon.so?"));
+				}
+				return (ret);
+			}
+
+			do {
+				ret = delete_file_action (p, fn->name);
+			} while (ret == GP_ERROR_CAMERA_BUSY);
+			if (ret != GP_OK) {
+				cli_error_print ( _("Could not delete image."));
+				/* continue in event loop */
+			}
 			break;
 		case GP_EVENT_FOLDER_ADDED:
 			fn = (CameraFilePath*)data;
 			printf("FOLDERADDED %s %s\n",fn->name, fn->folder);
 			break;
 		}
+		if (glob_cancel) break;
 	}
 	return GP_OK;
 }

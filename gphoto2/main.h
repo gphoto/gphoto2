@@ -42,6 +42,10 @@ int	save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 			   CameraFileType type);
 int	save_camera_file_to_file (const char *folder, const char *fn, CameraFileType type, CameraFile *file, const char *tmpname);
 int	capture_generic (CameraCaptureType type, const char *name, int download);
+int	get_file_common (const char *arg, CameraFileType type );
+
+
+
 int	trigger_capture (void);
 
 #endif /* __MAIN_H__ */

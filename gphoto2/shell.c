@@ -95,9 +95,11 @@ static int shell_set_config    (Camera *, const char *);
 static int shell_set_config_index    (Camera *, const char *);
 static int shell_set_config_value    (Camera *, const char *);
 static int shell_capture_image (Camera *, const char *);
+static int shell_capture_tethered (Camera *, const char *);
 static int shell_capture_image_and_download (Camera *, const char *);
 static int shell_mkdir         (Camera *, const char *);
 static int shell_rmdir         (Camera *, const char *);
+static int shell_wait_event    (Camera *, const char *);
 
 #define MAX_FOLDER_LEN 1024
 #define MAX_FILE_LEN 1024
@@ -146,6 +148,8 @@ static const struct _ShellFunctionTable {
 	{"set-config-value", shell_set_config_value, N_("Set configuration variable"), N_("name=value"), 1},
 	{"capture-image", shell_capture_image, N_("Capture a single image"), NULL, 0},
 	{"capture-image-and-download", shell_capture_image_and_download, N_("Capture a single image and download it"), NULL, 0},
+	{"wait-event", shell_wait_event, N_("Wait for an event"), NULL, 0},
+	{"capture-tethered", shell_capture_tethered, N_("Wait for 1 image to be captured and download it"), NULL, 0},
 	{"q", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"quit", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"?", shell_help, N_("Displays command usage"), N_("[command]"), 0},
@@ -900,6 +904,17 @@ static int
 shell_capture_image_and_download (Camera __unused__ *camera, const char __unused__ *args) {
 	return capture_generic (GP_CAPTURE_IMAGE, NULL, 1);
 }
+
+static int
+shell_wait_event (Camera *camera, const char __unused__ *args) {
+	return action_camera_wait_event (p, 0, 1);
+}
+
+static int
+shell_capture_tethered (Camera *camera, const char __unused__ *args) {
+	return action_camera_wait_event (p, 1, 1);
+}
+
 
 int
 shell_exit (Camera __unused__ *camera, const char __unused__ *arg)
