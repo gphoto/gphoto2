@@ -550,7 +550,7 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
  *         thumbnails according to thumbnail argument, and save to files.
  */
 
-static int
+int
 get_file_common (const char *arg, CameraFileType type )
 {
         gp_log (GP_LOG_DEBUG, "main", "Getting '%s'...", arg);
@@ -779,78 +779,6 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 	signal(SIGUSR1, SIG_DFL);
 	return (GP_OK);
 }
-
-static int
-capture_tethered (const char __unused__ *name)
-{
-	CameraFilePath last;
-	int result;
-        CameraEventType event;
-        CameraFilePath  *fn;
-        void    *data = NULL;
-
-	printf ( _("Waiting for events from camera. Press Ctrl-C to abort.\n"));
-
-	while (1) {
-		result = gp_camera_wait_for_event (gp_params.camera, 1000, &event, &data, gp_params.context);
-		if (result != GP_OK)
-			break;
-		switch (event) {
-		case GP_EVENT_UNKNOWN:
-			if (data) {
-				printf("UNKNOWN %s\n", (char*)data);
-			} else {
-				printf("UNKNOWN\n");
-			}
-			break;
-		case GP_EVENT_TIMEOUT:
-			/* just continue and wait for next one. */
-			break;
-		case GP_EVENT_FILE_ADDED:
-			fn = (CameraFilePath*)data;
-			printf( _("New file %s/%s, downloading...\n"),fn->folder, fn->name);
-
-			if(strcmp(fn->folder, last.folder)) {
-				strcpy(last.folder, fn->folder);
-				result = set_folder_action(&gp_params, fn->folder);
-				if (result != GP_OK) {
-					cli_error_print(_("Could not set folder."));
-					return (result);
-				}
-			}
-			result = get_file_common (fn->name, GP_FILE_TYPE_NORMAL);
-			if (result != GP_OK) {
-				cli_error_print (_("Could not get image."));
-				if(result == GP_ERROR_FILE_NOT_FOUND) {
-					/* Buggy libcanon.so?
-					 * Can happen if this was the first capture after a
-					 * CF card format, or during a directory roll-over,
-					 * ie: CANON100 -> CANON101
-					 */
-					cli_error_print ( _("Buggy libcanon.so?"));
-				}
-				return (result);
-			}
-
-			do {
-				result = delete_file_action (&gp_params, fn->name);
-			} while (result == GP_ERROR_CAMERA_BUSY);
-			if (result != GP_OK) {
-				cli_error_print ( _("Could not delete image."));
-				/* continue in tethered loop */
-			}
-			break;
-		case GP_EVENT_FOLDER_ADDED:
-			fn = (CameraFilePath*)data;
-			/*printf("FOLDERADDED %s %s\n",fn->name, fn->folder);*/
-			break;
-        	}
-		if (glob_cancel) break;
-	}
-        return GP_OK;
-}
-
-
 
 /* Set/init global variables                                    */
 /* ------------------------------------------------------------ */
@@ -1258,7 +1186,8 @@ cb_arg_run (poptContext __unused__ ctx,
 		params->p.r = capture_generic (GP_CAPTURE_SOUND, arg, 0);
 		break;
 	case ARG_CAPTURE_TETHERED:
-		params->p.r = capture_tethered (arg);
+		printf ( _("Waiting for events from camera. Press Ctrl-C to abort.\n"));
+		params->p.r = action_camera_wait_event (&gp_params, 1, 100000/*events*/);
 		break;
 	case ARG_CONFIG:
 #ifdef HAVE_CDK
@@ -1429,7 +1358,7 @@ cb_arg_run (poptContext __unused__ ctx,
 		break;
 	}
 	case ARG_WAIT_EVENT:
-		params->p.r = action_camera_wait_event (&gp_params, atoi(arg));
+		params->p.r = action_camera_wait_event (&gp_params, 0, atoi(arg));
 		break;
 	case ARG_STORAGE_INFO:
 		params->p.r = print_storage_info (&gp_params);

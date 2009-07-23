@@ -1,3 +1,12 @@
+2009-07-23  Marcus Meissner  <marcus@jet.franken.de>
+
+	* shell.c,action.c,main.c:
+	  --capture-tethered ported to be just --wait-event + downloading
+
+	  Added 2 new shell commands:
+	  wait-event		(just like wait-event with 1 instance)
+	  capture-tethered	(just like capture-tethered but just for 1 image)
+
 2009-06-21  Marcus Meissner  <marcus@jet.franken.de>
 
 	* main.c,action.c,shell.c: 
