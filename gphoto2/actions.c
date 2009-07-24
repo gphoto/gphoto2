@@ -245,7 +245,7 @@ print_info_action (GPParams *p, const char *filename)
 		if (info.file.fields & GP_FILE_INFO_TYPE)
 			printf (_("  Mime type:   '%s'\n"), info.file.type);
 		if (info.file.fields & GP_FILE_INFO_SIZE)
-			printf (_("  Size:        %li byte(s)\n"), info.file.size);
+			printf (_("  Size:        %lu byte(s)\n"), (unsigned long int)info.file.size);
 		if (info.file.fields & GP_FILE_INFO_WIDTH)
 			printf (_("  Width:       %i pixel(s)\n"), info.file.width);
 		if (info.file.fields & GP_FILE_INFO_HEIGHT)
@@ -277,7 +277,7 @@ print_info_action (GPParams *p, const char *filename)
 		if (info.preview.fields & GP_FILE_INFO_TYPE)
 			printf (_("  Mime type:   '%s'\n"), info.preview.type);
 		if (info.preview.fields & GP_FILE_INFO_SIZE)
-			printf (_("  Size:        %li byte(s)\n"), info.preview.size);
+			printf (_("  Size:        %lu byte(s)\n"), (unsigned long int)info.preview.size);
 		if (info.preview.fields & GP_FILE_INFO_WIDTH)
 			printf (_("  Width:       %i pixel(s)\n"), info.preview.width);
 		if (info.preview.fields & GP_FILE_INFO_HEIGHT)
@@ -293,7 +293,7 @@ print_info_action (GPParams *p, const char *filename)
 		if (info.audio.fields & GP_FILE_INFO_TYPE)
 			printf (_("  Mime type:  '%s'\n"), info.audio.type);
 		if (info.audio.fields & GP_FILE_INFO_SIZE)
-			printf (_("  Size:       %li byte(s)\n"), info.audio.size);
+			printf (_("  Size:       %lu byte(s)\n"), (unsigned long int)info.audio.size);
 		if (info.audio.fields & GP_FILE_INFO_STATUS)
 			printf (_("  Downloaded: %s\n"),
 				(info.audio.status == GP_FILE_STATUS_DOWNLOADED) ? _("yes") : _("no"));
@@ -332,7 +332,7 @@ print_file_action (GPParams *p, const char *filename)
 			       (info.file.permissions & GP_FILE_PERM_DELETE) ? "d" : "-");
 		    }
 		    if (info.file.fields & GP_FILE_INFO_SIZE)
-			printf(" %5ld KB", (info.file.size+1023) / 1024);
+			printf(" %5ld KB", (unsigned long int)((info.file.size+1023) / 1024));
 		    if ((info.file.fields & GP_FILE_INFO_WIDTH) && +
 			    (info.file.fields & GP_FILE_INFO_HEIGHT))
 			printf(" %4dx%-4d", info.file.width, info.file.height);
@@ -948,18 +948,39 @@ action_camera_capture_preview (GPParams *p)
 	return (GP_OK);
 }
 
+/* count < 0 means exact seconds timer.
+ * count > 0 means number of events (with 1 second timeout events).
+ */
 int
-action_camera_wait_event (GPParams *p, int download, int count)
+action_camera_wait_event (GPParams *p, int dodownload, int count)
 {
 	int ret;
 	CameraEventType	event;
 	void	*data = NULL;
 	CameraFilePath	*fn;
 	CameraFilePath last;
+	struct timeval	xtime;
+
+	gettimeofday (&xtime, NULL);
 
 	if (!count) count = 1;
-	while (count--) {
-		ret = gp_camera_wait_for_event (p->camera, 1000, &event, &data, p->context);
+	while (1) {
+		int 		leftoverms = 1000;
+		struct timeval	ytime;
+		int		x;
+
+		if (glob_cancel) break;
+		if (!count) break;
+		if (count > 0) count--;
+
+		if (count < 0) { /* in exact seconds */
+			gettimeofday (&ytime, NULL);
+
+			x = (ytime.tv_usec-xtime.tv_usec)+(ytime.tv_sec-xtime.tv_sec)*1000000;
+			if (leftoverms > (x / 1000)) leftoverms = x/1000;
+		}
+
+		ret = gp_camera_wait_for_event (p->camera, leftoverms, &event, &data, p->context);
 		if (ret != GP_OK)
 			return ret;
 		switch (event) {
@@ -971,15 +992,19 @@ action_camera_wait_event (GPParams *p, int download, int count)
 			}
 			break;
 		case GP_EVENT_TIMEOUT:
-			printf("TIMEOUT\n");
+			/*printf("TIMEOUT\n");*/
 			break;
 		case GP_EVENT_CAPTURE_COMPLETE:
 			printf("CAPTURECOMPLETE\n");
 			break;
 		case GP_EVENT_FILE_ADDED:
 			fn = (CameraFilePath*)data;
-			printf("FILEADDED %s %s\n",fn->name, fn->folder);
 
+			if (!dodownload) {
+				printf("FILEADDED %s %s\n",fn->name, fn->folder);
+				continue;
+			}
+			/* Otherwise download the image and continue... */
 			if(strcmp(fn->folder, last.folder)) {
 				strcpy(last.folder, fn->folder);
 				ret = set_folder_action(p, fn->folder);
@@ -1007,7 +1032,7 @@ action_camera_wait_event (GPParams *p, int download, int count)
 			} while (ret == GP_ERROR_CAMERA_BUSY);
 			if (ret != GP_OK) {
 				cli_error_print ( _("Could not delete image."));
-				/* continue in event loop */
+				/* dont continue in event loop */
 			}
 			break;
 		case GP_EVENT_FOLDER_ADDED:
@@ -1015,7 +1040,6 @@ action_camera_wait_event (GPParams *p, int download, int count)
 			printf("FOLDERADDED %s %s\n",fn->name, fn->folder);
 			break;
 		}
-		if (glob_cancel) break;
 	}
 	return GP_OK;
 }
@@ -1100,11 +1124,11 @@ print_storage_info (GPParams *p)
 			printf("\n");
 		}
 		if (sinfos[i].fields & GP_STORAGEINFO_MAXCAPACITY)
-			printf ("totalcapacity=%ld KB\n", sinfos[i].capacitykbytes);
+			printf ("totalcapacity=%lu KB\n", (unsigned long)sinfos[i].capacitykbytes);
 		if (sinfos[i].fields & GP_STORAGEINFO_FREESPACEKBYTES)
-			printf ("free=%ld KB\n", sinfos[i].freekbytes);
+			printf ("free=%lu KB\n", (unsigned long)sinfos[i].freekbytes);
 		if (sinfos[i].fields & GP_STORAGEINFO_FREESPACEIMAGES)
-			printf ("freeimages=%ld\n", sinfos[i].freeimages);
+			printf ("freeimages=%lu\n", (unsigned long)sinfos[i].freeimages);
 	}
 	return GP_OK;
 }
