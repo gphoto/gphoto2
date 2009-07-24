@@ -1187,7 +1187,7 @@ cb_arg_run (poptContext __unused__ ctx,
 		break;
 	case ARG_CAPTURE_TETHERED:
 		printf ( _("Waiting for events from camera. Press Ctrl-C to abort.\n"));
-		params->p.r = action_camera_wait_event (&gp_params, 1, 100000/*events*/);
+		params->p.r = action_camera_wait_event (&gp_params, 1, -1000000/*seconds*/);
 		break;
 	case ARG_CONFIG:
 #ifdef HAVE_CDK
@@ -1358,7 +1358,11 @@ cb_arg_run (poptContext __unused__ ctx,
 		break;
 	}
 	case ARG_WAIT_EVENT:
-		params->p.r = action_camera_wait_event (&gp_params, 0, atoi(arg));
+		if (strchr(arg,'s')) { /* exact seconds */
+			params->p.r = action_camera_wait_event (&gp_params, 0, -atoi(arg));
+		} else { /* count of events */
+			params->p.r = action_camera_wait_event (&gp_params, 0, atoi(arg));
+		}
 		break;
 	case ARG_STORAGE_INFO:
 		params->p.r = print_storage_info (&gp_params);
