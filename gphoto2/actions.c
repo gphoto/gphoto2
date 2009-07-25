@@ -829,11 +829,8 @@ action_camera_set_speed (GPParams *p, unsigned int speed)
 		}
 		return (GP_ERROR_BAD_PARAMETERS);
 	}
-
 	/* Set the speed. */
-	CR (gp_camera_set_port_speed (p->camera, speed));
-
-	return (GP_OK);
+	return gp_camera_set_port_speed (p->camera, speed);
 }
 
 int
@@ -988,6 +985,7 @@ action_camera_wait_event (GPParams *p, int dodownload, int count)
 
 			x = (ytime.tv_usec-xtime.tv_usec)+(ytime.tv_sec-xtime.tv_sec)*1000000;
 			if (leftoverms > (x / 1000)) leftoverms = x/1000;
+			if ((x/1000000) > -count) break;
 		}
 
 		ret = gp_camera_wait_for_event (p->camera, leftoverms, &event, &data, p->context);
