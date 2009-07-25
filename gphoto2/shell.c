@@ -150,6 +150,7 @@ static const struct _ShellFunctionTable {
 	{"capture-image-and-download", shell_capture_image_and_download, N_("Capture a single image and download it"), NULL, 0},
 	{"wait-event", shell_wait_event, N_("Wait for an event"), N_("count or seconds"), 0},
 	{"capture-tethered", shell_capture_tethered, N_("Wait for images to be captured and download it"), N_("count or seconds"), 0},
+	{"wait-event-and-download", shell_capture_tethered, N_("Wait for events and images to be captured and download it"), N_("count or seconds"), 0},
 	{"q", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"quit", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"?", shell_help, N_("Displays command usage"), N_("[command]"), 0},
