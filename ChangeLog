@@ -3,9 +3,15 @@
 	* shell.c,action.c,main.c:
 	  --capture-tethered ported to be just --wait-event + downloading
 
-	  Added 2 new shell commands:
-	  wait-event		(just like wait-event with 1 instance)
-	  capture-tethered	(just like capture-tethered but just for 1 image)
+          New --wait-event-and-download commandline option.
+
+	  --capture-tethered and --wait-event-and-download take optional
+	  counts or seconds, default is infinite waiting.
+
+	  Added 3 new shell commands:
+	  wait-event=x			(just like wait-event cmdline option, default 1)
+	  capture-tethered=x		(just like capture-tethered cmdline option, default 1)
+	  wait-event-and-download=x	(just like wait-event-and-download cmdline option, default 1)
 
 2009-06-21  Marcus Meissner  <marcus@jet.franken.de>
 

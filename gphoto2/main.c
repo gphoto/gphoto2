@@ -1185,10 +1185,6 @@ cb_arg_run (poptContext __unused__ ctx,
 	case ARG_CAPTURE_SOUND:
 		params->p.r = capture_generic (GP_CAPTURE_SOUND, arg, 0);
 		break;
-	case ARG_CAPTURE_TETHERED:
-		printf ( _("Waiting for events from camera. Press Ctrl-C to abort.\n"));
-		params->p.r = action_camera_wait_event (&gp_params, 1, -1000000/*seconds*/);
-		break;
 	case ARG_CONFIG:
 #ifdef HAVE_CDK
 		params->p.r = gp_cmd_config (gp_params.camera, gp_params.context);
@@ -1358,12 +1354,29 @@ cb_arg_run (poptContext __unused__ ctx,
 		break;
 	}
 	case ARG_WAIT_EVENT:
-		if (strchr(arg,'s')) { /* exact seconds */
-			params->p.r = action_camera_wait_event (&gp_params, 0, -atoi(arg));
-		} else { /* count of events */
-			params->p.r = action_camera_wait_event (&gp_params, 0, atoi(arg));
+	case ARG_CAPTURE_TETHERED: {
+		int count = -1000000/*seconds*/;
+		if (!arg) {
+			printf ( _("Waiting for events from camera. Press Ctrl-C to abort.\n"));
+		} else {
+			if (strchr(arg,'s')) { /* exact seconds */ 
+				count=-atoi(arg);
+				printf ( _("Waiting for %d seconds for events from camera. Press Ctrl-C to abort.\n"), -count);
+			} else {
+				count=atoi(arg);
+				printf ( _("Waiting for %d events from camera. Press Ctrl-C to abort.\n"), count);
+			}
+		}
+		switch (opt->val) {
+		case ARG_WAIT_EVENT:
+			params->p.r = action_camera_wait_event (&gp_params, 0, count);
+			break;
+		case ARG_CAPTURE_TETHERED:
+			params->p.r = action_camera_wait_event (&gp_params, 1, count);
+			break;
 		}
 		break;
+	}
 	case ARG_STORAGE_INFO:
 		params->p.r = print_storage_info (&gp_params);
 		break;
@@ -1562,13 +1575,19 @@ main (int argc, char **argv, char **envp)
 		{"get-config", '\0', POPT_ARG_STRING, NULL, ARG_GET_CONFIG,
 		 N_("Get configuration value"), NULL},
 		{"set-config", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG,
+		 N_("Set configuration value or index in choices"), NULL},
+		{"set-config-index", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG_INDEX,
+		 N_("Set configuration value index in choices"), NULL},
+		{"set-config-value", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG_VALUE,
 		 N_("Set configuration value"), NULL},
 		POPT_TABLEEND
 	};
 	const struct poptOption captureOptions[] = {
 		GPHOTO2_POPT_CALLBACK
-		{"wait-event", '\0', POPT_ARG_INT, NULL, ARG_WAIT_EVENT,
-		 N_("Wait for event from camera"), N_("COUNT")},
+		{"wait-event", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL, ARG_WAIT_EVENT,
+		 N_("Wait for event(s) from camera"), N_("COUNT")},
+		{"wait-event-and-download", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL,
+		 ARG_CAPTURE_TETHERED, N_("Wait for event(s) from the camera and download new images"), N_("COUNT")},
 		{"capture-preview", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_PREVIEW,
 		 N_("Capture a quick preview"), NULL},
@@ -1586,8 +1605,8 @@ main (int argc, char **argv, char **envp)
 		 ARG_CAPTURE_MOVIE, N_("Capture a movie"), NULL},
 		{"capture-sound", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_SOUND, N_("Capture an audio clip"), NULL},
-		{"capture-tethered", '\0', POPT_ARG_NONE, NULL,
-		 ARG_CAPTURE_TETHERED, N_("Wait for shutter release on the camera and download"), NULL},
+		{"capture-tethered", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL,
+		 ARG_CAPTURE_TETHERED, N_("Wait for shutter release on the camera and download"), N_("COUNT")},
 		POPT_TABLEEND
 	};
 	const struct poptOption fileOptions[] = {
