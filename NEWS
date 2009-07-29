@@ -1,9 +1,9 @@
-gphoto2 2.4.5.1
+gphoto2 2.4.5.2
 
  * New cmdline options: --set-config-index and --set-config-value
    to avoid ambiguity of the --set-config supporting both modes.
  * --wait-event can take "5s" as argument for 5 seconds of event taking
- * Added AC_SYS_LARGEFILE, enabling support to download files > 2GB.
+ * added --wait-event-and-download=x (same as --wait-event but with download)
  * New shell commands:
 	   wait-event (events or seconds)
 	   wait-event-and-download (events or seconds)
@@ -11,6 +11,7 @@ gphoto2 2.4.5.1
 	   set-config-index entry=value
 	   set-config-value entry=value
  * Enhanced --quietness.
+ * Added AC_SYS_LARGEFILE, enabling support to download files > 2GB.
  * Updated translations.
 
 gphoto2 2.4.5
