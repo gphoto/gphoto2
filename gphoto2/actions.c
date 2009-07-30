@@ -969,6 +969,7 @@ action_camera_wait_event (GPParams *p, int dodownload, int count)
 	struct timeval	xtime;
 
 	gettimeofday (&xtime, NULL);
+	memset(&last,0,sizeof(last));
 
 	if (!count) count = 1;
 	while (1) {
