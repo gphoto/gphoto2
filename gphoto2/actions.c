@@ -985,8 +985,10 @@ action_camera_wait_event (GPParams *p, int dodownload, int count)
 			gettimeofday (&ytime, NULL);
 
 			x = (ytime.tv_usec-xtime.tv_usec)+(ytime.tv_sec-xtime.tv_sec)*1000000;
-			if (leftoverms > (x / 1000)) leftoverms = x/1000;
-			if ((x/1000000) > -count) break;
+			if (x > (-count*1000000)) break;
+			/* if left over time is < 1s, set it... otherwise wait at most 1s */
+			if ((x+(count*1000000)) < leftoverms*1000)
+				leftoverms = (x+(count*1000000))/1000;
 		}
 
 		ret = gp_camera_wait_for_event (p->camera, leftoverms, &event, &data, p->context);
