@@ -1,4 +1,4 @@
-gphoto2 2.4.5.2
+gphoto2 2.4.7
 
  * New cmdline options: --set-config-index and --set-config-value
    to avoid ambiguity of the --set-config supporting both modes.
@@ -8,11 +8,12 @@ gphoto2 2.4.5.2
 	   wait-event (events or seconds)
 	   wait-event-and-download (events or seconds)
 	   capture-tethered 
-	   set-config-index entry=value
+	   set-config-index entry=choiceindex
 	   set-config-value entry=value
  * Enhanced --quietness.
  * Added AC_SYS_LARGEFILE, enabling support to download files > 2GB.
  * Updated translations.
+ * Various bugfixes.
 
 gphoto2 2.4.5
 
