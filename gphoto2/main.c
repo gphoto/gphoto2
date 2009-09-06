@@ -1355,7 +1355,7 @@ cb_arg_run (poptContext __unused__ ctx,
 	}
 	case ARG_WAIT_EVENT:
 	case ARG_CAPTURE_TETHERED: {
-		int count = -1000000/*seconds*/;
+		int count = 1000000/*events*/;
 		if (!arg) {
 			printf ( _("Waiting for events from camera. Press Ctrl-C to abort.\n"));
 		} else {
