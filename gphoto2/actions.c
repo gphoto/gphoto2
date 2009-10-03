@@ -1180,11 +1180,7 @@ override_usbids_action (GPParams *p, int usb_vendor, int usb_product,
 static struct timeval glob_tv_zero = { 0, 0 };
 
 static void
-#ifdef __GNUC__
-		__attribute__((__format__(printf,3,0)))
-#endif
-debug_func (GPLogLevel level, const char *domain, const char *format,
-	    va_list args, void *data)
+debug_func (GPLogLevel level, const char *domain, const char *str, void *data)
 {
 	struct timeval tv;
 	long sec, usec;
@@ -1194,9 +1190,7 @@ debug_func (GPLogLevel level, const char *domain, const char *format,
 	sec = tv.tv_sec  - glob_tv_zero.tv_sec;
 	usec = tv.tv_usec - glob_tv_zero.tv_usec;
 	if (usec < 0) {sec--; usec += 1000000L;}
-	fprintf (logfile, "%li.%06li %s(%i): ", sec, usec, domain, level);
-	vfprintf (logfile, format, args);
-	fputc ('\n', logfile);
+	fprintf (logfile, "%li.%06li %s(%i): %s\n", sec, usec, domain, level, str);
 }
 
 int
@@ -1223,7 +1217,7 @@ debug_action (GPParams *p, const char *debug_logfile_name)
 
 	gettimeofday (&glob_tv_zero, NULL);
 
-	CR (p->debug_func_id = gp_log_add_func (GP_LOG_ALL, debug_func, (void *) logfile));
+	CR (p->debug_func_id = gp_log_simple_add_func (GP_LOG_ALL, debug_func, (void *) logfile));
 	gp_log (GP_LOG_DEBUG, "main", _("ALWAYS INCLUDE THE FOLLOWING LINES "
 					"WHEN SENDING DEBUG MESSAGES TO THE "
 					"MAILING LIST:"));
