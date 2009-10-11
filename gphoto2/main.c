@@ -85,6 +85,7 @@ static int  glob_debug = -1;
 char glob_cancel = 0;
 static int  glob_frames = 0;
 static int  glob_interval = 0;
+static int	glob_bulblength = 0;
 
 GPParams gp_params;
 
@@ -584,7 +585,8 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 
 		if (flags & FLAGS_STDOUT_SIZE) /* this will be difficult in fd mode */
                         printf ("%li\n", size);
-                fwrite (data, sizeof(char), size, stdout);
+                if (1!=fwrite (data, size, 1, stdout))
+			fprintf(stderr,"fwrite failed writing to stdout.\n");
                 gp_file_unref (file);
 		unlink (tmpname);
                 return (GP_OK);
@@ -836,7 +838,7 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 	CameraFilePath path, last;
 	char *pathsep;
 	int result, frames = 0;
-	time_t next_pic_time, now;
+	time_t next_pic_time, now, expose_end_time;
 	int waittime;
 	CameraAbilities	a;
 
@@ -859,6 +861,14 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 				printf (_("Standing by waiting for SIGUSR1 to capture.\n"));
 		}
 	}
+
+	if(glob_bulblength) {
+		if (!(gp_params.flags & FLAGS_QUIET)) {
+			printf (_("Bulb mode enabled (exposure time: %ds).\n"),
+				glob_bulblength);
+		}
+	}
+
 	capture_now = 0;
 	signal(SIGUSR1, sig_handler_capture_now);
 	end_next = 0;
@@ -874,10 +884,37 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 
 		fflush(stdout);
 
-		result =  gp_camera_capture (gp_params.camera, type, &path, gp_params.context);
+		if(!glob_bulblength)
+			result =  gp_camera_capture (gp_params.camera, type, &path, gp_params.context);
+		else
+			result = set_config_action (&gp_params, "bulb", "1");
+
 		if (result != GP_OK) {
 			cli_error_print(_("Could not capture."));
 			return (result);
+		}
+		
+		expose_end_time = time (NULL) + glob_bulblength;	/*Set end time here, otherwise the time it takes to autofocus cuts into the exposure time */
+
+		if(glob_bulblength) {
+			CameraEventType type;
+			void *data = NULL;
+			waittime = expose_end_time - time(NULL);
+			while(waittime > 0) {
+				sleep(waittime);
+				waittime = expose_end_time - time(NULL);
+			}
+			result = set_config_action (&gp_params, "bulb", "0");
+			if (result != GP_OK) {
+				cli_error_print(_("Could not end capture (bulb mode)."));
+				return (result);
+			}
+			result = gp_camera_wait_for_event(gp_params.camera, 5000, &type, &data, gp_params.context);
+			if ((result != GP_OK) || (type != GP_EVENT_FILE_ADDED)) {
+				cli_error_print(_("Could not get filename (bulb mode)."));
+				return (result);
+			}
+			path = *(CameraFilePath *)data;
 		}
 
 		/* If my Canon EOS 10D is set to auto-focus and it is unable to
@@ -984,8 +1021,9 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 				if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
 					printf (_("not sleeping (%d seconds behind schedule)\n"), - waittime);
 			}
-			if (capture_now && (gp_params.flags & FLAGS_RESET_CAPTURE_INTERVAL))
+			if (capture_now && (gp_params.flags & FLAGS_RESET_CAPTURE_INTERVAL)) {
 				next_pic_time = time(NULL) + glob_interval;
+			}
 			else if (!capture_now) {
 				now = time(NULL) - glob_interval;
 				/*
@@ -1146,6 +1184,7 @@ typedef enum {
 	ARG_AUTO_DETECT,
 	ARG_CAPTURE_FRAMES,
 	ARG_CAPTURE_INTERVAL,
+	ARG_CAPTURE_BULB,
 	ARG_TRIGGER_CAPTURE,
 	ARG_CAPTURE_IMAGE,
 	ARG_CAPTURE_IMAGE_AND_DOWNLOAD,
@@ -1376,6 +1415,9 @@ cb_arg_init (poptContext __unused__ ctx,
 		break;
 	case ARG_CAPTURE_INTERVAL:
 		glob_interval = atoi(arg);
+		break;
+	case ARG_CAPTURE_BULB:
+		glob_bulblength = atoi(arg);
 		break;
 
 	case ARG_VERSION:
@@ -1831,6 +1873,8 @@ main (int argc, char **argv, char **envp)
 		{"capture-preview", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_PREVIEW,
 		 N_("Capture a quick preview"), NULL},
+		{"bulb", 'B', POPT_ARG_INT, NULL, ARG_CAPTURE_BULB,
+		 N_("Set bulb exposure time in seconds"), N_("SECONDS")},
 		{"frames", 'F', POPT_ARG_INT, NULL, ARG_CAPTURE_FRAMES,
 		 N_("Set number of frames to capture (default=infinite)"), N_("COUNT")},
 		{"interval", 'I', POPT_ARG_INT, NULL, ARG_CAPTURE_INTERVAL,

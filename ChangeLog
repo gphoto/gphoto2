@@ -1,3 +1,13 @@
+2009-09-30  Jonathan McIlnay-Moe <jmacmoe@gmail.com>
+
+        * main.c: Added a "bulb" option for capture.
+
+          --capture-image-and-download -B 5  ... 
+          --capture-image-and-download --bulb 5  ...
+
+          It requires a camera with "bulb" support (currently
+          newer EOS cameras only).
+
 2009-07-23  Marcus Meissner  <marcus@jet.franken.de>
 
 	* shell.c,action.c,main.c:
