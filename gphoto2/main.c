@@ -425,6 +425,13 @@ save_camera_file_to_file (
                 printf (_("Saving file as %s\n"), s);
 		fflush (stdout);
         }
+	path = s;
+	while ((path = strchr (path, gp_system_dir_delim))){
+		*path = '\0';
+		if(!gp_system_is_dir (s))
+			gp_system_mkdir (s);
+		*path++ = gp_system_dir_delim;
+	}
 	if (curname) {
 		int x;
 
