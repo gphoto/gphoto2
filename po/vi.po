@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.4.4\n"
+"Project-Id-Version: gphoto2 2.4.7\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2009-01-18 23:20+0100\n"
-"PO-Revision-Date: 2009-01-25 23:30+1030\n"
+"POT-Creation-Date: 2009-08-21 08:39+0200\n"
+"PO-Revision-Date: 2009-09-18 22:58+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -66,8 +66,8 @@ msgstr "  Kiểu MIME:   « %s »\n"
 
 #: gphoto2/actions.c:262 gphoto2/actions.c:294
 #, c-format
-msgid "  Size:        %li byte(s)\n"
-msgstr "  Cỡ :        %li byte\n"
+msgid "  Size:        %lu byte(s)\n"
+msgstr "  Cỡ :        %lu byte\n"
 
 #: gphoto2/actions.c:264 gphoto2/actions.c:296
 #, c-format
@@ -87,14 +87,14 @@ msgstr "  Đã tải về:  %s\n"
 #: gphoto2/actions.c:269 gphoto2/actions.c:301 gphoto2/actions.c:313
 #: gphoto2/actions.c:663 gphoto2/actions.c:665 gphoto2/actions.c:693
 #: gphoto2/actions.c:696 gphoto2/actions.c:699 gphoto2/actions.c:702
-#: gphoto2/actions.c:705 gphoto2/actions.c:1512
+#: gphoto2/actions.c:705 gphoto2/actions.c:1566 gphoto2/actions.c:1781
 msgid "yes"
 msgstr "có"
 
 #: gphoto2/actions.c:269 gphoto2/actions.c:301 gphoto2/actions.c:313
 #: gphoto2/actions.c:663 gphoto2/actions.c:665 gphoto2/actions.c:693
 #: gphoto2/actions.c:696 gphoto2/actions.c:699 gphoto2/actions.c:702
-#: gphoto2/actions.c:705 gphoto2/actions.c:1506
+#: gphoto2/actions.c:705 gphoto2/actions.c:1560 gphoto2/actions.c:1775
 msgid "no"
 msgstr "không"
 
@@ -145,8 +145,8 @@ msgstr "  Kiểu MIME:  '%s'\n"
 
 #: gphoto2/actions.c:310
 #, c-format
-msgid "  Size:       %li byte(s)\n"
-msgstr "  Cỡ :       %li byte\n"
+msgid "  Size:       %lu byte(s)\n"
+msgstr "  Cỡ :       %lu byte\n"
 
 #: gphoto2/actions.c:312
 #, c-format
@@ -348,11 +348,11 @@ msgstr "Sổ tay máy ảnh:"
 msgid "You can only specify speeds for serial ports."
 msgstr "Bạn có thể ghi rõ tốc độ chỉ cho cổng nối tiếp thôi."
 
-#: gphoto2/actions.c:879
+#: gphoto2/actions.c:876
 msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "Chuyển sang OS/2 bởi Bart van Leeuwen\n"
 
-#: gphoto2/actions.c:883
+#: gphoto2/actions.c:880
 #, c-format
 msgid ""
 "gphoto2 %s\n"
@@ -379,185 +379,206 @@ msgstr ""
 "Phiên bản gphoto2 này có dùng các phiên bản phần mềm\n"
 "và tùy chọn sau :\n"
 
-#: gphoto2/actions.c:1004
+#: gphoto2/actions.c:1020 gphoto2/main.c:678
+msgid "Could not set folder."
+msgstr "Không thể đặt thư mục."
+
+#: gphoto2/actions.c:1026 gphoto2/main.c:685
+msgid "Could not get image."
+msgstr "Không thể lấy ảnh."
+
+#: gphoto2/actions.c:1033 gphoto2/main.c:692
+msgid "Buggy libcanon.so?"
+msgstr "libcanon.so có lỗi không?"
+
+#: gphoto2/actions.c:1042 gphoto2/main.c:703
+msgid "Could not delete image."
+msgstr "Không thể xóa bỏ ảnh."
+
+#: gphoto2/actions.c:1064
 #, c-format
 msgid "Getting storage information not supported for this camera.\n"
 msgstr "Đang lấy thông tin cất giữ không được hỗ trợ cho máy ảnh này.\n"
 
-#: gphoto2/actions.c:1019
+#: gphoto2/actions.c:1079
 #, c-format
 msgid "Read-Write"
 msgstr "Đọc-Ghi"
 
-#: gphoto2/actions.c:1022
+#: gphoto2/actions.c:1082
 #, c-format
 msgid "Read-Only"
 msgstr "Chỉ-Đọc"
 
-#: gphoto2/actions.c:1025
+#: gphoto2/actions.c:1085
 #, c-format
 msgid "Read-only with delete"
 msgstr "Chỉ-Đọc có xoá"
 
-#: gphoto2/actions.c:1028 gphoto2/actions.c:1038
+#: gphoto2/actions.c:1088 gphoto2/actions.c:1098
 #, c-format
 msgid "Unknown"
 msgstr "Không rõ"
 
-#: gphoto2/actions.c:1041
+#: gphoto2/actions.c:1101
 #, c-format
 msgid "Fixed ROM"
 msgstr "ROM cố định"
 
-#: gphoto2/actions.c:1044
+#: gphoto2/actions.c:1104
 #, c-format
 msgid "Removable ROM"
 msgstr "ROM rời"
 
-#: gphoto2/actions.c:1047
+#: gphoto2/actions.c:1107
 #, c-format
 msgid "Fixed RAM"
 msgstr "RAM cố định"
 
-#: gphoto2/actions.c:1050
+#: gphoto2/actions.c:1110
 #, c-format
 msgid "Removable RAM"
 msgstr "RAM rời"
 
-#: gphoto2/actions.c:1060
+#: gphoto2/actions.c:1120
 #, c-format
 msgid "Undefined"
 msgstr "Chưa xác định"
 
-#: gphoto2/actions.c:1063
+#: gphoto2/actions.c:1123
 #, c-format
 msgid "Generic Flat"
 msgstr "Phẳng giống loài"
 
-#: gphoto2/actions.c:1066
+#: gphoto2/actions.c:1126
 #, c-format
 msgid "Generic Hierarchical"
 msgstr "Phân cấp giống loài"
 
-#: gphoto2/actions.c:1069
+#: gphoto2/actions.c:1129
 #, c-format
 msgid "Camera layout (DCIM)"
 msgstr "Bố trí máy ảnh (DCM)"
 
-#: gphoto2/actions.c:1107
+#: gphoto2/actions.c:1167
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Đang đè lên mã hiệu sản phẩm/nhà bán USB 0x%x/0x%x bằng 0x%x/0x%x"
 
-#: gphoto2/actions.c:1171
+#: gphoto2/actions.c:1231
 msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
 msgstr "LUÔN LUÔN HÃY GỒM NHỮNG DÒNG THEO ĐÂY KHI THÔNG BÁO LỖI CHO HỘP THƯ CHUNG:"
 
-#: gphoto2/actions.c:1186
+#: gphoto2/actions.c:1246
 #, c-format
 msgid "%s has been compiled with the following options:"
 msgstr "%s đã được biên dịch với những tùy chọn theo đây:"
 
-#: gphoto2/actions.c:1304
+#: gphoto2/actions.c:1364
 #, c-format
 msgid "%s not found in configuration tree."
 msgstr "Không tìm thấy %s trong cây cấu hình."
 
-#: gphoto2/actions.c:1364
+#: gphoto2/actions.c:1424
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr "Việc lấy giá trị của ô điều khiển chữ %s bị lỗi."
 
-#: gphoto2/actions.c:1381
+#: gphoto2/actions.c:1441
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr "Việc lấy giá trị của ô điều khiển phạm vị %s bị lỗi"
 
-#: gphoto2/actions.c:1393
+#: gphoto2/actions.c:1453
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr "Việc lấy giá trị của ô điều khiển bật/tắt %s bị lỗi"
 
-#: gphoto2/actions.c:1405
+#: gphoto2/actions.c:1465
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr "Việc lấy giá trị của ô điều khiển ngày/giờ %s bị lỗi"
 
-#: gphoto2/actions.c:1435
+#: gphoto2/actions.c:1495
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr "Việc lấy giá trị của ô điều khiển chọn một %s bị lỗi"
 
-#: gphoto2/actions.c:1476
+#: gphoto2/actions.c:1530 gphoto2/actions.c:1745
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr "Việc đặt giá trị của ô điều khiển chữ %s thành %s bị lỗi."
 
-#: gphoto2/actions.c:1486
+#: gphoto2/actions.c:1540 gphoto2/actions.c:1755
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr "Giá trị %s được gởi qua không phải là giá trị với điểm phù động."
 
-#: gphoto2/actions.c:1491
+#: gphoto2/actions.c:1545 gphoto2/actions.c:1760
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr "Giá trị %f được gởi qua không phải nằm ở trong phạm vị đã ngờ %f - %f."
 
-#: gphoto2/actions.c:1497
+#: gphoto2/actions.c:1551 gphoto2/actions.c:1766
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr "Việc đặt giá trị của ô điều khiển phạm vị %s thành %f bị lỗi."
 
-#: gphoto2/actions.c:1506
+#: gphoto2/actions.c:1560 gphoto2/actions.c:1775
 msgid "off"
 msgstr "tắt"
 
-#: gphoto2/actions.c:1507
+#: gphoto2/actions.c:1561 gphoto2/actions.c:1776
 msgid "false"
 msgstr "sai"
 
-#: gphoto2/actions.c:1512
+#: gphoto2/actions.c:1566 gphoto2/actions.c:1781
 msgid "on"
 msgstr "bật"
 
-#: gphoto2/actions.c:1513
+#: gphoto2/actions.c:1567 gphoto2/actions.c:1782
 msgid "true"
 msgstr "đúng"
 
-#: gphoto2/actions.c:1518
+#: gphoto2/actions.c:1572 gphoto2/actions.c:1787
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
 msgstr "Giá trị đã gởi qua %s không phải là giá trị bật/tắt hợp lệ."
 
-#: gphoto2/actions.c:1524
+#: gphoto2/actions.c:1578 gphoto2/actions.c:1793
 #, c-format
 msgid "Failed to set values %s of toggle widget %s."
 msgstr "Việc đặt giá trị %s của ô điều khiển bật/tắt %s bị lỗi."
 
-#: gphoto2/actions.c:1537
+#: gphoto2/actions.c:1591 gphoto2/actions.c:1806
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr "Giá trị đã gởi qua %s không phải là giờ hợp lệ, cũng không phải là số nguyên."
 
-#: gphoto2/actions.c:1544
+#: gphoto2/actions.c:1598 gphoto2/actions.c:1813
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr "Việc đặt giờ mới của ô điều khiển ngày/giờ %s thành %s bị lỗi."
 
-#: gphoto2/actions.c:1581
+#: gphoto2/actions.c:1635 gphoto2/actions.c:1699 gphoto2/actions.c:1840
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr "Không tìm thấy tùy chọn %s trong danh sách các tùy chọn."
 
-#: gphoto2/actions.c:1589
+#: gphoto2/actions.c:1643 gphoto2/actions.c:1848
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr "Không thể cấu hình ô điều khiển %s."
 
-#: gphoto2/actions.c:1596
+#: gphoto2/actions.c:1650 gphoto2/actions.c:1718 gphoto2/actions.c:1855
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr "Việc đặt giá trị cấu hình mới %s cho mục nhập cấu hình %s bị lỗi."
+
+#: gphoto2/actions.c:1711
+#, c-format
+msgid "The %s widget has no indexed list of choices. Use --set-config-value instead."
+msgstr "Ô điều khiển %s không có chỉ mục các sự chọn sẵn sàng. Hãy dùng « --set-config-value » để thay thế."
 
 #: gphoto2/foreach.c:254
 #, c-format
@@ -584,12 +605,12 @@ msgstr "Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có %i tập tin
 msgid "*** Error ***              \n"
 msgstr "••• Lỗi •••              \n"
 
-#: gphoto2/gp-params.c:244
+#: gphoto2/gp-params.c:253
 #, c-format
 msgid "Press any key to continue.\n"
 msgstr "Hãy bấm bất cứ phím nào để tiếp tục.\n"
 
-#: gphoto2/gp-params.c:266
+#: gphoto2/gp-params.c:275
 #, c-format
 msgid "Not enough memory."
 msgstr "Không đủ bộ nhớ."
@@ -684,96 +705,70 @@ msgstr "Nhập tên tập tin mới: "
 msgid "Saving file as %s\n"
 msgstr "Đang lưu tập tin dạng « %s »\n"
 
-#: gphoto2/main.c:616
+#: gphoto2/main.c:621
 #, c-format
 msgid "Time-lapse mode enabled (interval: %ds).\n"
 msgstr "Chế độ khoảng thời gian được bật (thời gian: %dg).\n"
 
-#: gphoto2/main.c:619
+#: gphoto2/main.c:624
 #, c-format
 msgid "Standing by waiting for SIGUSR1 to capture.\n"
 msgstr "Đang đợi SIGUSR1 bắt.\n"
 
-#: gphoto2/main.c:630
+#: gphoto2/main.c:635
 #, c-format
 msgid "Capturing frame #%d...\n"
 msgstr "Đang bắt khung #%d...\n"
 
-#: gphoto2/main.c:632
+#: gphoto2/main.c:637
 #, c-format
 msgid "Capturing frame #%d/%d...\n"
 msgstr "Đang bắt khung #%d/%d...\n"
 
-#: gphoto2/main.c:639
+#: gphoto2/main.c:644
 msgid "Could not capture."
 msgstr "Không thể bắt."
 
-#: gphoto2/main.c:648
+#: gphoto2/main.c:653
 #, c-format
 msgid "Capture failed (auto-focus problem?)...\n"
 msgstr "Việc bắt bị lỗi (lỗi tiêu điểm tự động?)...\n"
 
-#: gphoto2/main.c:662
+#: gphoto2/main.c:668
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "Tập tin mới nằm tại vị trí « %s%s%s » trên máy ảnh\n"
 
-#: gphoto2/main.c:671 gphoto2/main.c:811
-msgid "Could not set folder."
-msgstr "Không thể đặt thư mục."
-
-#: gphoto2/main.c:678 gphoto2/main.c:817
-msgid "Could not get image."
-msgstr "Không thể lấy ảnh."
-
-#: gphoto2/main.c:685 gphoto2/main.c:824
-msgid "Buggy libcanon.so?"
-msgstr "libcanon.so có lỗi không?"
-
-#: gphoto2/main.c:691
+#: gphoto2/main.c:698
 #, c-format
 msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Đang xóa bỏ tập tin « %s%s%s » trên máy ảnh\n"
 
-#: gphoto2/main.c:696 gphoto2/main.c:833
-msgid "Could not delete image."
-msgstr "Không thể xóa bỏ ảnh."
-
-#: gphoto2/main.c:721
+#: gphoto2/main.c:728
 msgid "Could not close camera connection."
 msgstr "Không thể đóng kết nối với máy ảnh."
 
-#: gphoto2/main.c:735
+#: gphoto2/main.c:742
 #, c-format
 msgid "Sleeping for %d second(s)...\n"
 msgstr "Ngủ được %d giây...\n"
 
-#: gphoto2/main.c:740 gphoto2/main.c:768
+#: gphoto2/main.c:747 gphoto2/main.c:775
 #, c-format
 msgid "Awakened by SIGUSR1...\n"
 msgstr "Do SIGUSR1 kích hoạt...\n"
 
-#: gphoto2/main.c:743
+#: gphoto2/main.c:750
 #, c-format
 msgid "not sleeping (%d seconds behind schedule)\n"
 msgstr "không ngủ (trễ %d giây)\n"
 
-#: gphoto2/main.c:785
-#, c-format
-msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
-msgstr "Đợi dữ kiện từ máy ảnh. Bấm Ctrl-C để hủy bỏ.\n"
-
-#: gphoto2/main.c:805
-#, c-format
-msgid "New file %s/%s, downloading...\n"
-msgstr "Tập tin mới %s/%s, đang tải về...\n"
-
-#: gphoto2/main.c:929
+#: gphoto2/main.c:864
 #, c-format
 msgid "ERROR: "
 msgstr "LỖI: "
 
-#: gphoto2/main.c:952
+#: gphoto2/main.c:887
 #, c-format
 msgid ""
 "\n"
@@ -782,12 +777,12 @@ msgstr ""
 "\n"
 "Hủy bỏ...\n"
 
-#: gphoto2/main.c:958
+#: gphoto2/main.c:893
 #, c-format
 msgid "Aborted.\n"
 msgstr "Bị hủy bỏ.\n"
 
-#: gphoto2/main.c:963
+#: gphoto2/main.c:898
 #, c-format
 msgid ""
 "\n"
@@ -796,21 +791,36 @@ msgstr ""
 "\n"
 "Thôi...\n"
 
-#: gphoto2/main.c:1102
+#: gphoto2/main.c:1039
 #, c-format
 msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
 msgstr "Hãy sử dụng cú pháp « a:b=c:d » để xử lý thiết bị USB nào được phát hiện như « a:b » thành « c:d » thay thế. « a b c d » nên là số dạng hệ thập lục phân bắt đầu với « 0x ».\n"
 
-#: gphoto2/main.c:1259
+#: gphoto2/main.c:1193
 msgid "gphoto2 has been compiled without support for CDK."
 msgstr "Trình gphoto2 đã được biên dịch không có khả năng hỗ trợ CDK."
 
-#: gphoto2/main.c:1447
+#: gphoto2/main.c:1360
+#, c-format
+msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
+msgstr "Đợi dữ kiện từ máy ảnh. Bấm Ctrl-C để hủy bỏ.\n"
+
+#: gphoto2/main.c:1364
+#, c-format
+msgid "Waiting for %d seconds for events from camera. Press Ctrl-C to abort.\n"
+msgstr "Đợi (trong %d giây) dữ kiện từ máy ảnh. Bấm Ctrl-C để hủy bỏ.\n"
+
+#: gphoto2/main.c:1367
+#, c-format
+msgid "Waiting for %d events from camera. Press Ctrl-C to abort.\n"
+msgstr "Đợi %d dữ kiện từ máy ảnh. Bấm Ctrl-C để hủy bỏ.\n"
+
+#: gphoto2/main.c:1432
 #, c-format
 msgid "Operation cancelled.\n"
 msgstr "Tháo tác bị thôi.\n"
 
-#: gphoto2/main.c:1451
+#: gphoto2/main.c:1436
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -819,7 +829,7 @@ msgstr ""
 "••• Lỗi (%i: « %s ») •••       \n"
 "\n"
 
-#: gphoto2/main.c:1455
+#: gphoto2/main.c:1440
 #, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
@@ -835,328 +845,338 @@ msgstr ""
 "nhà phát triển gphoto <gphoto-devel@lists.sourceforge.net>,\n"
 "trước khi gởi thông điệp, hãy chạy gphoto2 như theo đây:\n"
 
-#: gphoto2/main.c:1544
+#: gphoto2/main.c:1529
 msgid "Print complete help message on program usage"
 msgstr "In ra toàn bộ trợ giúp về cách sử dụng chương trình"
 
-#: gphoto2/main.c:1546
+#: gphoto2/main.c:1531
 msgid "Print short message on program usage"
 msgstr "In ra trợ giúp ngắn về cách sử dụng chương trình"
 
-#: gphoto2/main.c:1548
+#: gphoto2/main.c:1533
 msgid "Turn on debugging"
 msgstr "Bật gỡ lỗi"
 
-#: gphoto2/main.c:1550
+#: gphoto2/main.c:1535
 msgid "Name of file to write debug info to"
 msgstr "Tên tập tin vào đó cần ghi thông tin gỡ lỗi"
 
-#: gphoto2/main.c:1550 gphoto2/main.c:1555 gphoto2/main.c:1561
+#: gphoto2/main.c:1535 gphoto2/main.c:1540 gphoto2/main.c:1546
+#: gphoto2/main.c:1656
 msgid "FILENAME"
 msgstr "TÊN TẬP TIN"
 
-#: gphoto2/main.c:1552
+#: gphoto2/main.c:1537
 msgid "Quiet output (default=verbose)"
 msgstr "Xuất im (mặc định là chi tiết)"
 
-#: gphoto2/main.c:1554
+#: gphoto2/main.c:1539
 msgid "Hook script to call after downloads, captures, etc."
 msgstr "Văn lệnh móc vào cần chạy sau khi tải về, bắt v.v."
 
-#: gphoto2/main.c:1561
-msgid "Specify port device"
-msgstr "Xác định thiết bị cổng"
+#: gphoto2/main.c:1546
+msgid "Specify device port"
+msgstr "Đặt cổng thiết bị"
 
-#: gphoto2/main.c:1563
+#: gphoto2/main.c:1548
 msgid "Specify serial transfer speed"
-msgstr "Xác định tốc độ truyền nối tiếp"
+msgstr "Đặt tốc độ truyền nối tiếp"
 
-#: gphoto2/main.c:1563
+#: gphoto2/main.c:1548
 msgid "SPEED"
 msgstr "TỐC ĐỘ"
 
-#: gphoto2/main.c:1565
+#: gphoto2/main.c:1550
 msgid "Specify camera model"
-msgstr "Xác định mô hình máy ảnh"
+msgstr "Đặt mô hình máy ảnh"
 
-#: gphoto2/main.c:1565
+#: gphoto2/main.c:1550
 msgid "MODEL"
 msgstr "MÔ HÌNH"
 
-#: gphoto2/main.c:1567
+#: gphoto2/main.c:1552
 msgid "(expert only) Override USB IDs"
 msgstr "(chỉ cấp cao) Đè lên mã hiệu USB"
 
-#: gphoto2/main.c:1567
+#: gphoto2/main.c:1552
 msgid "USBIDs"
 msgstr "USBID"
 
-#: gphoto2/main.c:1573
+#: gphoto2/main.c:1558
 msgid "Display version and exit"
 msgstr "Hiển thị phiên bản rồi thoát"
 
-#: gphoto2/main.c:1575
+#: gphoto2/main.c:1560
 msgid "List supported camera models"
 msgstr "Liệt kê các mô hình máy ảnh được hỗ trợ"
 
-#: gphoto2/main.c:1577
+#: gphoto2/main.c:1562
 msgid "List supported port devices"
 msgstr "Liệt kê các thiết bị cổng được hỗ trợ"
 
-#: gphoto2/main.c:1579
+#: gphoto2/main.c:1564
 msgid "Display camera/driver abilities"
 msgstr "Hiển thị các khả năng máy ảnh/trình điều khiển"
 
-#: gphoto2/main.c:1586
+#: gphoto2/main.c:1571
 msgid "Configure"
 msgstr "Cấu hình"
 
-#: gphoto2/main.c:1589
+#: gphoto2/main.c:1574
 msgid "List configuration tree"
 msgstr "Liệt kê cây cấu hình"
 
-#: gphoto2/main.c:1591
+#: gphoto2/main.c:1576
 msgid "Get configuration value"
 msgstr "Lấy giá trị cấu hình"
 
-#: gphoto2/main.c:1593
+#: gphoto2/main.c:1578
+msgid "Set configuration value or index in choices"
+msgstr "Đặt giá trị cấu hình hoặc chỉ mục trong các sự chọn"
+
+#: gphoto2/main.c:1580
+msgid "Set configuration value index in choices"
+msgstr "Đặt chỉ mục giá trị cấu hình trong các sự chọn"
+
+#: gphoto2/main.c:1582
 msgid "Set configuration value"
 msgstr "Đặt giá trị cấu hình"
 
-#: gphoto2/main.c:1599
-msgid "Wait for event from camera"
-msgstr "Đợi một sự kiện từ máy ảnh"
+#: gphoto2/main.c:1588
+msgid "Wait for event(s) from camera"
+msgstr "Đợi sự kiện từ máy ảnh"
 
-#: gphoto2/main.c:1602
-msgid "Capture a quick preview"
-msgstr "Bắt một ảnh xem thử nhanh"
-
-#: gphoto2/main.c:1604
-msgid "Set number of frames to capture (default=infinite)"
-msgstr "Đặt tổng số khung cần bắt (mặc định là vô hạn)"
-
-#: gphoto2/main.c:1604
+#: gphoto2/main.c:1588 gphoto2/main.c:1590 gphoto2/main.c:1595
+#: gphoto2/main.c:1609
 msgid "COUNT"
 msgstr "SỐ ĐẾM"
 
-#: gphoto2/main.c:1606
+#: gphoto2/main.c:1590
+msgid "Wait for event(s) from the camera and download new images"
+msgstr "Đợi sự kiện từ máy ảnh và tải xuống ảnh mới"
+
+#: gphoto2/main.c:1593
+msgid "Capture a quick preview"
+msgstr "Bắt một ảnh xem thử nhanh"
+
+#: gphoto2/main.c:1595
+msgid "Set number of frames to capture (default=infinite)"
+msgstr "Đặt tổng số khung cần bắt (mặc định là vô hạn)"
+
+#: gphoto2/main.c:1597
 msgid "Set capture interval in seconds"
 msgstr "Đặt thời gian giữa hai lần bắt, theo giây"
 
-#: gphoto2/main.c:1606
+#: gphoto2/main.c:1597
 msgid "SECONDS"
 msgstr "GIÂY"
 
-#: gphoto2/main.c:1608
+#: gphoto2/main.c:1599
 msgid "Reset capture interval on signal (default=no)"
 msgstr "Đặt lại thời gian giữa hai lần bắt khi nhận tin hiệu (mặc định là Không)"
 
-#: gphoto2/main.c:1610
+#: gphoto2/main.c:1601
 msgid "Capture an image"
 msgstr "Bắt một ảnh"
 
-#: gphoto2/main.c:1612
+#: gphoto2/main.c:1603
 msgid "Capture an image and download it"
 msgstr "Bắt một ảnh và tải nó về"
 
-#: gphoto2/main.c:1614
+#: gphoto2/main.c:1605
 msgid "Capture a movie"
 msgstr "Bắt một phim"
 
-#: gphoto2/main.c:1616
+#: gphoto2/main.c:1607
 msgid "Capture an audio clip"
 msgstr "Bắt một trích đoạn âm thanh"
 
-#: gphoto2/main.c:1618
+#: gphoto2/main.c:1609
 msgid "Wait for shutter release on the camera and download"
 msgstr "Đợi buông ra chập trên máy ảnh và tải về"
 
-#: gphoto2/main.c:1624
+#: gphoto2/main.c:1615
 msgid "List folders in folder"
 msgstr "Liệt kê các thư mục nằm trong thư mục"
 
-#: gphoto2/main.c:1626
+#: gphoto2/main.c:1617
 msgid "List files in folder"
 msgstr "Liệt kê các tập tin nằm trong thư mục"
 
-#: gphoto2/main.c:1628
+#: gphoto2/main.c:1619
 msgid "Create a directory"
 msgstr "Tạo thư mục"
 
-#: gphoto2/main.c:1628 gphoto2/main.c:1630
+#: gphoto2/main.c:1619 gphoto2/main.c:1621
 msgid "DIRNAME"
 msgstr "TÊN THƯ MỤC"
 
-#: gphoto2/main.c:1630
+#: gphoto2/main.c:1621
 msgid "Remove a directory"
 msgstr "Gỡ bỏ thư mục"
 
-#: gphoto2/main.c:1632
+#: gphoto2/main.c:1623
 msgid "Display number of files"
 msgstr "Hiển thị tổng số tập tin"
 
-#: gphoto2/main.c:1634
+#: gphoto2/main.c:1625
 msgid "Get files given in range"
 msgstr "Lấy các tập tin đưa ra trong phạm vị"
 
-#: gphoto2/main.c:1634 gphoto2/main.c:1638 gphoto2/main.c:1643
-#: gphoto2/main.c:1650 gphoto2/main.c:1656 gphoto2/main.c:1661
+#: gphoto2/main.c:1625 gphoto2/main.c:1629 gphoto2/main.c:1634
+#: gphoto2/main.c:1641 gphoto2/main.c:1647 gphoto2/main.c:1652
 msgid "RANGE"
 msgstr "PHẠM VỊ"
 
-#: gphoto2/main.c:1636
+#: gphoto2/main.c:1627
 msgid "Get all files from folder"
 msgstr "Lấy các tập tin từ thư mục"
 
-#: gphoto2/main.c:1638
+#: gphoto2/main.c:1629
 msgid "Get thumbnails given in range"
 msgstr "Lấy các hình thu nhỏ đưa ra trong phạm vị"
 
-#: gphoto2/main.c:1641
+#: gphoto2/main.c:1632
 msgid "Get all thumbnails from folder"
 msgstr "Lấy các hình thu nhỏ từ thư mục"
 
-#: gphoto2/main.c:1643
+#: gphoto2/main.c:1634
 msgid "Get metadata given in range"
 msgstr "Lấy siêu dữ liệu đưa ra trong phạm vị"
 
-#: gphoto2/main.c:1645
+#: gphoto2/main.c:1636
 msgid "Get all metadata from folder"
 msgstr "Lấy toàn bộ siêu dữ liệu từ thư mục"
 
-#: gphoto2/main.c:1647
+#: gphoto2/main.c:1638
 msgid "Upload metadata for file"
 msgstr "Tải lên siêu dữ liệu về tập tin"
 
-#: gphoto2/main.c:1650
+#: gphoto2/main.c:1641
 msgid "Get raw data given in range"
 msgstr "Lấy dữ liệu thô đưa ra trong phạm vị"
 
-#: gphoto2/main.c:1653
+#: gphoto2/main.c:1644
 msgid "Get all raw data from folder"
 msgstr "Lấy toàn bộ dữ liệu thô từ thư mục"
 
-#: gphoto2/main.c:1656
+#: gphoto2/main.c:1647
 msgid "Get audio data given in range"
 msgstr "Lấy dữ liệu âm thanh đưa ra trong phạm vị"
 
-#: gphoto2/main.c:1659
+#: gphoto2/main.c:1650
 msgid "Get all audio data from folder"
 msgstr "Lấy toàn bộ dữ liệu âm thanh từ thư mục"
 
-#: gphoto2/main.c:1661
+#: gphoto2/main.c:1652
 msgid "Delete files given in range"
 msgstr "Xóa bỏ các tập tin đưa ra trong phạm vị"
 
-#: gphoto2/main.c:1663
+#: gphoto2/main.c:1654
 msgid "Delete all files in folder"
 msgstr "Xóa bỏ mọi tập tin trong thư mục"
 
-#: gphoto2/main.c:1665
+#: gphoto2/main.c:1656
 msgid "Upload a file to camera"
 msgstr "Tải một tập tin lên máy ảnh"
 
-#: gphoto2/main.c:1665
-msgid "filename"
-msgstr "tên tập tin"
-
-#: gphoto2/main.c:1667
+#: gphoto2/main.c:1658
 msgid "Specify a filename or filename pattern"
 msgstr "Xác định tên tập tin hay mẫu tên tập tin"
 
-#: gphoto2/main.c:1667
+#: gphoto2/main.c:1658
 msgid "FILENAME_PATTERN"
 msgstr "MẪU TÊN TẬP TIN"
 
-#: gphoto2/main.c:1669
+#: gphoto2/main.c:1660
 msgid "Specify camera folder (default=\"/\")"
 msgstr "Xác định thư mục máy ảnh (mặc định là « / »)"
 
-#: gphoto2/main.c:1669
+#: gphoto2/main.c:1660
 msgid "FOLDER"
 msgstr "THƯ MỤC"
 
-#: gphoto2/main.c:1671
+#: gphoto2/main.c:1662
 msgid "Recursion (default for download)"
 msgstr "Đệ qui (mặc định khi tải về)"
 
-#: gphoto2/main.c:1673
+#: gphoto2/main.c:1664
 msgid "No recursion (default for deletion)"
 msgstr "Không đệ qui (mặc định khi xóa bỏ)"
 
-#: gphoto2/main.c:1675
+#: gphoto2/main.c:1666
 msgid "Process new files only"
 msgstr "Xử lý chỉ tập tin mới"
 
-#: gphoto2/main.c:1677
+#: gphoto2/main.c:1668
 msgid "Overwrite files without asking"
 msgstr "Tự động ghi đè lên tập tin"
 
-#: gphoto2/main.c:1683
+#: gphoto2/main.c:1674
 msgid "Send file to stdout"
 msgstr "Gởi tập tin cho thiết bị xuất chuẩn"
 
-#: gphoto2/main.c:1685
+#: gphoto2/main.c:1676
 msgid "Print filesize before data"
 msgstr "In kích cỡ tập tin nằm trước dữ liệu"
 
-#: gphoto2/main.c:1687
+#: gphoto2/main.c:1678
 msgid "List auto-detected cameras"
 msgstr "Liệt kê các máy ảnh được phát hiện tự động"
 
-#: gphoto2/main.c:1691 gphoto2/shell.c:133
+#: gphoto2/main.c:1682 gphoto2/shell.c:137
 msgid "Show EXIF information"
 msgstr "Hiện thông tin EXIF"
 
-#: gphoto2/main.c:1694 gphoto2/shell.c:127
+#: gphoto2/main.c:1685 gphoto2/shell.c:131
 msgid "Show info"
 msgstr "Hiện thông tin"
 
-#: gphoto2/main.c:1696
+#: gphoto2/main.c:1687
 msgid "Show summary"
 msgstr "Hiện bản tóm tắt"
 
-#: gphoto2/main.c:1698
+#: gphoto2/main.c:1689
 msgid "Show camera driver manual"
 msgstr "Hiện sổ tay trình điều khiển máy ảnh"
 
-#: gphoto2/main.c:1700
+#: gphoto2/main.c:1691
 msgid "About the camera driver manual"
 msgstr "Thông tin về sổ tay trình điều khiển máy ảnh"
 
-#: gphoto2/main.c:1702
+#: gphoto2/main.c:1693
 msgid "Show storage information"
 msgstr "Hiện thông tin cất giữ"
 
-#: gphoto2/main.c:1704
+#: gphoto2/main.c:1695
 msgid "gPhoto shell"
 msgstr "Trình bao gPhoto"
 
-#: gphoto2/main.c:1710
+#: gphoto2/main.c:1701
 msgid "Common options"
 msgstr "Tùy chọn chung"
 
-#: gphoto2/main.c:1712
+#: gphoto2/main.c:1703
 msgid "Miscellaneous options (unsorted)"
 msgstr "Tùy chọn lặt vặt (chưa sắp xếp)"
 
-#: gphoto2/main.c:1714
+#: gphoto2/main.c:1705
 msgid "Get information on software and host system (not from the camera)"
 msgstr "Lấy thông tin về phần mềm và hệ thống chủ (không phải từ máy ảnh)"
 
-#: gphoto2/main.c:1716
+#: gphoto2/main.c:1707
 msgid "Specify the camera to use"
 msgstr "Xác định máy ảnh cần dùng"
 
-#: gphoto2/main.c:1718
+#: gphoto2/main.c:1709
 msgid "Camera and software configuration"
 msgstr "Cấu hình máy ảnh và phần mềm"
 
-#: gphoto2/main.c:1720
+#: gphoto2/main.c:1711
 msgid "Capture an image from or on the camera"
 msgstr "Bắt ảnh từ hay trên máy ảnh"
 
-#: gphoto2/main.c:1722
+#: gphoto2/main.c:1713
 msgid "Downloading, uploading and manipulating files"
 msgstr "Tải xuống/lên và thao tác tập tin"
 
@@ -1219,169 +1239,203 @@ msgstr ""
 msgid "*** Error (%i: '%s') ***"
 msgstr "••• Lỗi (%i: « %s ») •••"
 
-#: gphoto2/shell.c:116
+#: gphoto2/shell.c:120
 msgid "Change to a directory on the camera"
 msgstr "Chuyển đổi sang một thư mục nằm trên máy ảnh"
 
-#: gphoto2/shell.c:117 gphoto2/shell.c:119 gphoto2/shell.c:130
-#: gphoto2/shell.c:131
+#: gphoto2/shell.c:121 gphoto2/shell.c:123 gphoto2/shell.c:134
+#: gphoto2/shell.c:135
 msgid "directory"
 msgstr "thư mục"
 
-#: gphoto2/shell.c:118
+#: gphoto2/shell.c:122
 msgid "Change to a directory on the local drive"
 msgstr "Chuyển đổi sang một thư mục nằm trên đĩa cục bộ"
 
-#: gphoto2/shell.c:120 gphoto2/shell.c:145 gphoto2/shell.c:146
+#: gphoto2/shell.c:124 gphoto2/shell.c:154 gphoto2/shell.c:155
 msgid "Exit the gPhoto shell"
 msgstr "Thoát khởi trình bao gPhoto"
 
-#: gphoto2/shell.c:121
+#: gphoto2/shell.c:125
 msgid "Download a file"
 msgstr "Tải về một tập tin"
 
-#: gphoto2/shell.c:121 gphoto2/shell.c:122 gphoto2/shell.c:124
-#: gphoto2/shell.c:126 gphoto2/shell.c:128 gphoto2/shell.c:129
-#: gphoto2/shell.c:134
+#: gphoto2/shell.c:125 gphoto2/shell.c:126 gphoto2/shell.c:128
+#: gphoto2/shell.c:130 gphoto2/shell.c:132 gphoto2/shell.c:133
+#: gphoto2/shell.c:138
 msgid "[directory/]filename"
 msgstr "[thư_mục/]tên_tập_tin"
 
-#: gphoto2/shell.c:122
+#: gphoto2/shell.c:126
 msgid "Upload a file"
 msgstr "Tải lên một tập tin"
 
-#: gphoto2/shell.c:123
+#: gphoto2/shell.c:127
 msgid "Download a thumbnail"
 msgstr "Tải về một hình thu nhỏ"
 
-#: gphoto2/shell.c:125
+#: gphoto2/shell.c:129
 msgid "Download raw data"
 msgstr "Tải về dữ liệu thô"
 
-#: gphoto2/shell.c:129
+#: gphoto2/shell.c:133
 msgid "Delete"
 msgstr "Xóa bỏ"
 
-#: gphoto2/shell.c:130
+#: gphoto2/shell.c:134
 msgid "Create Directory"
 msgstr "Tạo thư mục"
 
-#: gphoto2/shell.c:131
+#: gphoto2/shell.c:135
 msgid "Remove Directory"
 msgstr "Gỡ bỏ thư mục"
 
-#: gphoto2/shell.c:136 gphoto2/shell.c:147
+#: gphoto2/shell.c:140 gphoto2/shell.c:156
 msgid "Displays command usage"
 msgstr "Hiển thị cách sử dụng lệnh"
 
-#: gphoto2/shell.c:137 gphoto2/shell.c:147
+#: gphoto2/shell.c:141 gphoto2/shell.c:156
 msgid "[command]"
 msgstr "[lệnh]"
 
-#: gphoto2/shell.c:138
+#: gphoto2/shell.c:142
 msgid "List the contents of the current directory"
 msgstr "Liệt kê nội dung của thư mục hiện có"
 
-#: gphoto2/shell.c:139
+#: gphoto2/shell.c:143
 msgid "[directory/]"
 msgstr "[thư_mục/]"
 
-#: gphoto2/shell.c:140
+#: gphoto2/shell.c:144
 msgid "List configuration variables"
 msgstr "Liệt kê các biến cấu hình"
 
-#: gphoto2/shell.c:141
+#: gphoto2/shell.c:145
 msgid "Get configuration variable"
 msgstr "Lấy biến cấu hình"
 
-#: gphoto2/shell.c:141
+#: gphoto2/shell.c:145
 msgid "name"
 msgstr "tên"
 
-#: gphoto2/shell.c:142
+#: gphoto2/shell.c:146 gphoto2/shell.c:148
 msgid "Set configuration variable"
 msgstr "Đặt biến cấu hình"
 
-#: gphoto2/shell.c:142
+#: gphoto2/shell.c:146 gphoto2/shell.c:148
 msgid "name=value"
 msgstr "tên=giá_trị"
 
-#: gphoto2/shell.c:143
+#: gphoto2/shell.c:147
+msgid "Set configuration variable index"
+msgstr "Đặt chỉ mục biến cấu hình"
+
+#: gphoto2/shell.c:147
+msgid "name=valueindex"
+msgstr "tên=chỉ_mục_giá_trị"
+
+#: gphoto2/shell.c:149
 msgid "Capture a single image"
 msgstr "Bắt một ảnh riêng lẻ"
 
-#: gphoto2/shell.c:144
+#: gphoto2/shell.c:150
 msgid "Capture a single image and download it"
 msgstr "Bắt một ảnh riêng lẻ và tải nó về"
 
-#: gphoto2/shell.c:469
+#: gphoto2/shell.c:151
+msgid "Wait for an event"
+msgstr "Đợi một sự kiện"
+
+#: gphoto2/shell.c:151 gphoto2/shell.c:152 gphoto2/shell.c:153
+msgid "count or seconds"
+msgstr "đếm hoặc giây"
+
+#: gphoto2/shell.c:152
+msgid "Wait for images to be captured and download it"
+msgstr "Đợi bắt ảnh và tải xuống"
+
+#: gphoto2/shell.c:153
+msgid "Wait for events and images to be captured and download it"
+msgstr "Đợi sự kiện và bắt ảnh và tải xuống"
+
+#: gphoto2/shell.c:478
 msgid "Invalid command."
 msgstr "Lệnh không hợp lệ."
 
-#: gphoto2/shell.c:478
+#: gphoto2/shell.c:487
 #, c-format
 msgid "The command '%s' requires an argument."
 msgstr "Lệnh « %s » cần đến một đối số."
 
-#: gphoto2/shell.c:531
+#: gphoto2/shell.c:540
 msgid "Invalid path."
 msgstr "Đường dẫn không hợp lệ."
 
-#: gphoto2/shell.c:577
+#: gphoto2/shell.c:586
 msgid "Could not find home directory."
 msgstr "Không tìm thấy thư mục chính."
 
-#: gphoto2/shell.c:586
+#: gphoto2/shell.c:595
 #, c-format
 msgid "Could not change to local directory '%s'."
 msgstr "Không thể chuyển đổi sang thư mục cục bộ « %s »."
 
-#: gphoto2/shell.c:589
+#: gphoto2/shell.c:598
 #, c-format
 msgid "Local directory now '%s'."
 msgstr "Thư mục cục bộ lúc bây giờ là « %s »."
 
-#: gphoto2/shell.c:627
+#: gphoto2/shell.c:636
 #, c-format
 msgid "Remote directory now '%s'."
 msgstr "Thư mục ở xa lúc bây giờ là « %s »."
 
-#: gphoto2/shell.c:843
+#: gphoto2/shell.c:852
 #, c-format
 msgid "set-config needs a second argument.\n"
-msgstr "Lệnh đặt cấu hình « set-config » cần đến đối số thứ hai:\n"
+msgstr "Lệnh đặt cấu hình « set-config » yêu cầu đối số thứ hai.\n"
 
-#: gphoto2/shell.c:877
+#: gphoto2/shell.c:873
+#, c-format
+msgid "set-config-value needs a second argument.\n"
+msgstr "Lệnh đặt giá trị cấu hình « set-config-value » yêu cầu đối số thứ hai.\n"
+
+#: gphoto2/shell.c:894
+#, c-format
+msgid "set-config-index needs a second argument.\n"
+msgstr "Lệnh đặt chỉ mục cấu hình « set-config-index » yêu cầu đối số thứ hai.\n"
+
+#: gphoto2/shell.c:954
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
 msgstr "Không tìm thấy lệnh « %s ». Hãy sử dụng lệnh « help » (trợ giúp) để xem danh sách các lệnh sẵn sàng."
 
-#: gphoto2/shell.c:884
+#: gphoto2/shell.c:961
 #, c-format
 msgid "Help on \"%s\":"
 msgstr "Trợ giúp về « %s »:"
 
-#: gphoto2/shell.c:886
+#: gphoto2/shell.c:963
 #, c-format
 msgid "Usage:"
 msgstr "Cách sử dụng:"
 
-#: gphoto2/shell.c:889
+#: gphoto2/shell.c:966
 #, c-format
 msgid "Description:"
 msgstr "Mô tả:"
 
-#: gphoto2/shell.c:891
+#: gphoto2/shell.c:968
 #, c-format
 msgid "* Arguments in brackets [] are optional"
 msgstr "• Mỗi đối số nằm trong ngoặc vu là tùy chọn"
 
-#: gphoto2/shell.c:912
+#: gphoto2/shell.c:989
 #, c-format
 msgid "Available commands:"
 msgstr "Lệnh sẵn sàng:"
 
-#: gphoto2/shell.c:917
+#: gphoto2/shell.c:994
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
 msgstr "Để xem trợ giúp về một lệnh nào đó, hãy gõ « help tên_lệnh »."
