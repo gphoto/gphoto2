@@ -1,4 +1,4 @@
-# translation of de.po to Deutsch
+# translation of de.po to German
 # translation of de.po to
 # German Translation for gphoto2.
 # Copyright (C) 2000, 2001, 2002, 2003 Scott Fritzinger <scottf@unr.edu> et al.
@@ -7,15 +7,15 @@
 # Marcus Meissner, 2005.
 # Lutz Müller <urc8@rz.uni-karlsruhe.de>, 2000.
 # Colin Marquardt <colin@marquardt-home.de>, 2001, 2002, 2003.
-# Marcus Meissner <marcus@jet.franken.de>, 2005, 2006, 2007, 2008.
+# Marcus Meissner <marcus@jet.franken.de>, 2005, 2006, 2007, 2008, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: libexif 0.6.16\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2009-07-29 08:39+0200\n"
-"PO-Revision-Date: 2008-10-19 19:40+0200\n"
+"PO-Revision-Date: 2010-01-17 15:06+0100\n"
 "Last-Translator: Marcus Meissner <marcus@jet.franken.de>\n"
-"Language-Team: Deutsch <German <translation-team-de@lists.sourceforge.net>>\n"
+"Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -72,9 +72,9 @@ msgid "  Mime type:   '%s'\n"
 msgstr "  MIME-Typ:   »%s«\n"
 
 #: gphoto2/actions.c:262 gphoto2/actions.c:294
-#, fuzzy, c-format
+#, c-format
 msgid "  Size:        %lu byte(s)\n"
-msgstr "  Größe:       %li Byte(s)\n"
+msgstr "  Größe:       %lu Byte(s)\n"
 
 #: gphoto2/actions.c:264 gphoto2/actions.c:296
 #, c-format
@@ -151,9 +151,9 @@ msgid "  Mime type:  '%s'\n"
 msgstr "  MIME-Typ:  »%s«\n"
 
 #: gphoto2/actions.c:310
-#, fuzzy, c-format
+#, c-format
 msgid "  Size:       %lu byte(s)\n"
-msgstr "  Größe:      %li byte(s)\n"
+msgstr "  Größe:      %lu byte(s)\n"
 
 #: gphoto2/actions.c:312
 #, c-format
@@ -295,8 +295,7 @@ msgstr "                                 : Bildvorschau\n"
 
 #: gphoto2/actions.c:690
 #, c-format
-msgid ""
-"                                 : Capture not supported by the driver\n"
+msgid "                                 : Capture not supported by the driver\n"
 msgstr ""
 "                                 : Aufnahme wird nicht durch Treiber "
 "unterstützt\n"
@@ -604,9 +603,8 @@ msgstr "Konnte den neuen Wert %s für die Konfiguration %s nicht setzen."
 
 #: gphoto2/actions.c:1708
 #, c-format
-msgid ""
-"The %s widget has no indexed list of choices. Use --set-config-value instead."
-msgstr ""
+msgid "The %s widget has no indexed list of choices. Use --set-config-value instead."
+msgstr "Das Widget %s hat keine indizierte List von Werten. Benutzen sie --set-config-value statt dessen."
 
 #: gphoto2/foreach.c:254
 #, c-format
@@ -629,8 +627,7 @@ msgstr "Es gibt keine Datei im Verzeichnis »%s«."
 msgid ""
 "Bad file number. You specified %i, but there is only 1 file available in '%"
 "s'."
-msgstr ""
-"Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
+msgstr "Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
 
 #: gphoto2/foreach.c:293
 #, c-format
@@ -721,8 +718,7 @@ msgstr ""
 #: gphoto2/main.c:288
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr ""
-"Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
+msgstr "Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
 
 #: gphoto2/main.c:343
 #, c-format
@@ -856,14 +852,14 @@ msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
 msgstr "Warte auf Ereignisse von der Kamera. Drücke Ctrl-C zum abbrechen.\n"
 
 #: gphoto2/main.c:1364
-#, fuzzy, c-format
+#, c-format
 msgid "Waiting for %d seconds for events from camera. Press Ctrl-C to abort.\n"
-msgstr "Warte auf Ereignisse von der Kamera. Drücke Ctrl-C zum abbrechen.\n"
+msgstr "Warte %d Sekunden auf Ereignisse von der Kamera. Drücke Ctrl-C zum abbrechen.\n"
 
 #: gphoto2/main.c:1367
-#, fuzzy, c-format
+#, c-format
 msgid "Waiting for %d events from camera. Press Ctrl-C to abort.\n"
-msgstr "Warte auf Ereignisse von der Kamera. Drücke Ctrl-C zum abbrechen.\n"
+msgstr "Warte auf %d Ereignisse von der Kamera. Drücke Ctrl-C zum abbrechen.\n"
 
 #: gphoto2/main.c:1432
 #, c-format
@@ -926,7 +922,6 @@ msgid "Hook script to call after downloads, captures, etc."
 msgstr "Hook-Skript, das nach Herunterladen, Aufnahme, etc. gestartet wird"
 
 #: gphoto2/main.c:1546
-#, fuzzy
 msgid "Specify device port"
 msgstr "Angabe des Port-Geräts"
 
@@ -983,23 +978,20 @@ msgid "Get configuration value"
 msgstr "Hole Konfigurationswert"
 
 #: gphoto2/main.c:1578
-#, fuzzy
 msgid "Set configuration value or index in choices"
-msgstr "Setze einen Konfigurationswert"
+msgstr "Setze einen Konfigurationswert oder den Konfigurationsindex in die Werteliste"
 
 #: gphoto2/main.c:1580
-#, fuzzy
 msgid "Set configuration value index in choices"
-msgstr "Setze einen Konfigurationswert"
+msgstr "Setze den Konfigurationswert als Index der Werteliste"
 
 #: gphoto2/main.c:1582
 msgid "Set configuration value"
 msgstr "Setze Konfigurationswert"
 
 #: gphoto2/main.c:1588
-#, fuzzy
 msgid "Wait for event(s) from camera"
-msgstr "Warte auf ein Kameraereigniss"
+msgstr "Warte auf Ereignisse von der Kamera"
 
 #: gphoto2/main.c:1588 gphoto2/main.c:1590 gphoto2/main.c:1595
 #: gphoto2/main.c:1609
@@ -1007,9 +999,8 @@ msgid "COUNT"
 msgstr "ANZAHL"
 
 #: gphoto2/main.c:1590
-#, fuzzy
 msgid "Wait for event(s) from the camera and download new images"
-msgstr "Warte auf Auslöserdruck an der Kamera und lade Bilder herunter"
+msgstr "Warte auf Ereignisse von der Kamera und lade neu hinzugefügte Bilder herunter"
 
 #: gphoto2/main.c:1593
 msgid "Capture a quick preview"
@@ -1218,8 +1209,7 @@ msgstr "Weitere Optionen (unsortiert)"
 
 #: gphoto2/main.c:1705
 msgid "Get information on software and host system (not from the camera)"
-msgstr ""
-"Frage Informationen über Software und Maschine ab (nicht von der Kamera)"
+msgstr "Frage Informationen über Software und Maschine ab (nicht von der Kamera)"
 
 #: gphoto2/main.c:1707
 msgid "Specify the camera to use"
@@ -1384,14 +1374,12 @@ msgid "name=value"
 msgstr "Name=Wert"
 
 #: gphoto2/shell.c:147
-#, fuzzy
 msgid "Set configuration variable index"
-msgstr "Setze einen Konfigurationswert"
+msgstr "Setze einen Konfigurationswert mittels Index in die Werteliste"
 
 #: gphoto2/shell.c:147
-#, fuzzy
 msgid "name=valueindex"
-msgstr "Name=Wert"
+msgstr "Name=Wertindex"
 
 #: gphoto2/shell.c:149
 msgid "Capture a single image"
@@ -1402,23 +1390,20 @@ msgid "Capture a single image and download it"
 msgstr "Ein Bild aufnahmen und herunterladen"
 
 #: gphoto2/shell.c:151
-#, fuzzy
 msgid "Wait for an event"
 msgstr "Warte auf ein Kameraereigniss"
 
 #: gphoto2/shell.c:151 gphoto2/shell.c:152 gphoto2/shell.c:153
 msgid "count or seconds"
-msgstr ""
+msgstr "Anzahl an Sekunden"
 
 #: gphoto2/shell.c:152
-#, fuzzy
 msgid "Wait for images to be captured and download it"
-msgstr "Warte auf Auslöserdruck an der Kamera und lade Bilder herunter"
+msgstr "Warte auf neue aufgenommene Bilder auf der Kamera und lade diese herunter"
 
 #: gphoto2/shell.c:153
-#, fuzzy
 msgid "Wait for events and images to be captured and download it"
-msgstr "Eine Bild aufnehmen und herunterladen"
+msgstr "Warte auf Ereignisse und neu aufgenommene Bilder und lade diese herunter"
 
 #: gphoto2/shell.c:478
 msgid "Invalid command."
@@ -1458,14 +1443,14 @@ msgid "set-config needs a second argument.\n"
 msgstr "set-config benötigt ein zweites Argument.\n"
 
 #: gphoto2/shell.c:873
-#, fuzzy, c-format
+#, c-format
 msgid "set-config-value needs a second argument.\n"
-msgstr "set-config benötigt ein zweites Argument.\n"
+msgstr "set-config-value benötigt ein zweites Argument.\n"
 
 #: gphoto2/shell.c:894
-#, fuzzy, c-format
+#, c-format
 msgid "set-config-index needs a second argument.\n"
-msgstr "set-config benötigt ein zweites Argument.\n"
+msgstr "set-config-index benötigt ein zweites Argument.\n"
 
 #: gphoto2/shell.c:954
 #, c-format
@@ -1506,8 +1491,3 @@ msgstr ""
 "Um Hilfe zu einem bestimmten Befehl zu erhalten, verwenden Sie »help "
 "Befehlsname«."
 
-#~ msgid "New file %s/%s, downloading...\n"
-#~ msgstr "Neue Datei %s/%s, lade herunter...\n"
-
-#~ msgid "filename"
-#~ msgstr "Dateiname"
