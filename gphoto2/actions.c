@@ -1005,6 +1005,9 @@ action_camera_wait_event (GPParams *p, int dodownload, int count)
 		case GP_EVENT_TIMEOUT:
 			/*printf("TIMEOUT\n");*/
 			break;
+		case GP_EVENT_CAPTURE_COMPLETE:
+			printf("CAPTURECOMPLETE\n");
+			break;
 		case GP_EVENT_FILE_ADDED:
 			fn = (CameraFilePath*)data;
 
