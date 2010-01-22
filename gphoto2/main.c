@@ -81,7 +81,7 @@
 #define __unused__
 #endif
 
-static int  glob_debug = -1;
+static int  debug_option_given = 0;
 char glob_cancel = 0;
 static int  glob_frames = 0;
 static int  glob_interval = 0;
@@ -1724,7 +1724,7 @@ report_failure (int result, int argc, char **argv)
 
 	fprintf (stderr, _("*** Error (%i: '%s') ***       \n\n"), result,
 		gp_result_as_string (result));
-	if (glob_debug == -1) {
+	if (!debug_option_given) {
 		int n;
 		printf (_("For debugging messages, please use "
 			  "the --debug option.\n"
@@ -1808,7 +1808,6 @@ main (int argc, char **argv, char **envp)
 {
 	CallbackParams cb_params;
 	poptContext ctx;
-	int debug_option_given = 0;
 	int help_option_given = 0;
 	int usage_option_given = 0;
 	char *debug_logfile_name = NULL;
