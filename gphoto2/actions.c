@@ -1513,13 +1513,23 @@ get_config_action (GPParams *p, const char *name) {
 int
 set_config_action (GPParams *p, const char *name, const char *value) {
 	CameraWidget *rootconfig,*child;
-	int	ret;
+	int	ret, ro;
 	CameraWidgetType	type;
 
 	ret = _find_widget_by_name (p, name, &child, &rootconfig);
 	if (ret != GP_OK)
 		return ret;
 
+	ret = gp_widget_get_readonly (child, &ro);
+	if (ret != GP_OK) {
+		gp_widget_free (rootconfig);
+		return ret;
+	}
+	if (ro == 1) {
+		gp_context_error (p->context, _("Property %s is read only."), name);
+		gp_widget_free (rootconfig);
+		return GP_ERROR;
+	}
 	ret = gp_widget_get_type (child, &type);
 	if (ret != GP_OK) {
 		gp_widget_free (rootconfig);
