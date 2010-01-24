@@ -97,6 +97,7 @@ static int shell_set_config_value    (Camera *, const char *);
 static int shell_capture_image (Camera *, const char *);
 static int shell_capture_tethered (Camera *, const char *);
 static int shell_capture_image_and_download (Camera *, const char *);
+static int shell_capture_preview (Camera *, const char *);
 static int shell_mkdir         (Camera *, const char *);
 static int shell_rmdir         (Camera *, const char *);
 static int shell_wait_event    (Camera *, const char *);
@@ -148,6 +149,7 @@ static const struct _ShellFunctionTable {
 	{"set-config-value", shell_set_config_value, N_("Set configuration variable"), N_("name=value"), 1},
 	{"capture-image", shell_capture_image, N_("Capture a single image"), NULL, 0},
 	{"capture-image-and-download", shell_capture_image_and_download, N_("Capture a single image and download it"), NULL, 0},
+	{"capture-preview", shell_capture_preview, N_("Capture a preview image"), NULL, 0},
 	{"wait-event", shell_wait_event, N_("Wait for an event"), N_("count or seconds"), 0},
 	{"capture-tethered", shell_capture_tethered, N_("Wait for images to be captured and download it"), N_("count or seconds"), 0},
 	{"wait-event-and-download", shell_capture_tethered, N_("Wait for events and images to be captured and download it"), N_("count or seconds"), 0},
@@ -905,6 +907,12 @@ static int
 shell_capture_image_and_download (Camera __unused__ *camera, const char __unused__ *args) {
 	return capture_generic (GP_CAPTURE_IMAGE, NULL, 1);
 }
+
+static int
+shell_capture_preview (Camera __unused__ *camera, const char __unused__ *args) {
+	return action_camera_capture_preview (p);
+}
+
 
 static int
 shell_wait_event (Camera *camera, const char *args) {
