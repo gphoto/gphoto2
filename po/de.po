@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: libexif 0.6.16\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2010-01-24 17:46+0100\n"
-"PO-Revision-Date: 2010-01-17 15:06+0100\n"
+"PO-Revision-Date: 2010-01-25 23:12+0100\n"
 "Last-Translator: Marcus Meissner <marcus@jet.franken.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -295,8 +295,7 @@ msgstr "                                 : Bildvorschau\n"
 
 #: gphoto2/actions.c:690
 #, c-format
-msgid ""
-"                                 : Capture not supported by the driver\n"
+msgid "                                 : Capture not supported by the driver\n"
 msgstr ""
 "                                 : Aufnahme wird nicht durch Treiber "
 "unterstützt\n"
@@ -532,7 +531,7 @@ msgstr "Konnte die Werte der Auswahl %s nicht holen."
 #: gphoto2/actions.c:1529
 #, c-format
 msgid "Property %s is read only."
-msgstr ""
+msgstr "Property %s kann nur gelesen werden."
 
 #: gphoto2/actions.c:1543 gphoto2/actions.c:1758
 #, c-format
@@ -609,8 +608,7 @@ msgstr "Konnte den neuen Wert %s für die Konfiguration %s nicht setzen."
 
 #: gphoto2/actions.c:1724
 #, c-format
-msgid ""
-"The %s widget has no indexed list of choices. Use --set-config-value instead."
+msgid "The %s widget has no indexed list of choices. Use --set-config-value instead."
 msgstr ""
 "Das Widget %s hat keine indizierte List von Werten. Benutzen sie --set-"
 "config-value statt dessen."
@@ -636,8 +634,7 @@ msgstr "Es gibt keine Datei im Verzeichnis »%s«."
 msgid ""
 "Bad file number. You specified %i, but there is only 1 file available in '%"
 "s'."
-msgstr ""
-"Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
+msgstr "Fehlerhafte Dateinummer. Sie gaben %i an, aber es gibt nur 1 Datei in »%s«."
 
 #: gphoto2/foreach.c:293
 #, c-format
@@ -728,8 +725,7 @@ msgstr ""
 #: gphoto2/main.c:289
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr ""
-"Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
+msgstr "Der von der Kamera gelieferte Filename (»%s«) enthält keine Dateiendung."
 
 #: gphoto2/main.c:344
 #, c-format
@@ -768,9 +764,9 @@ msgid "Standing by waiting for SIGUSR1 to capture.\n"
 msgstr "Warte auf SIGUSR1 um Aufnahme zu starten.\n"
 
 #: gphoto2/main.c:638
-#, fuzzy, c-format
+#, c-format
 msgid "Bulb mode enabled (exposure time: %ds).\n"
-msgstr "Zeitlupen Modus aktiviert (Intervall: %ds).\n"
+msgstr "Langzeitbelichtungsmodus aktiviert (Intervall: %ds).\n"
 
 #: gphoto2/main.c:651
 #, c-format
@@ -787,14 +783,12 @@ msgid "Could not capture."
 msgstr "Konnte nicht aufnehmen."
 
 #: gphoto2/main.c:680
-#, fuzzy
 msgid "Could not end capture (bulb mode)."
-msgstr "Konnte nicht aufnehmen."
+msgstr "Konnte Langzeitmodus nicht beenden."
 
 #: gphoto2/main.c:685
-#, fuzzy
 msgid "Could not get filename (bulb mode)."
-msgstr "Konnte Bild nicht holen."
+msgstr "Konnte Bild nicht holen im Langzeitmodus."
 
 #: gphoto2/main.c:696
 #, c-format
@@ -1007,8 +1001,7 @@ msgstr "Hole Konfigurationswert"
 
 #: gphoto2/main.c:1625
 msgid "Set configuration value or index in choices"
-msgstr ""
-"Setze einen Konfigurationswert oder den Konfigurationsindex in die Werteliste"
+msgstr "Setze einen Konfigurationswert oder den Konfigurationsindex in die Werteliste"
 
 #: gphoto2/main.c:1627
 msgid "Set configuration value index in choices"
@@ -1029,17 +1022,15 @@ msgstr "ANZAHL"
 
 #: gphoto2/main.c:1637
 msgid "Wait for event(s) from the camera and download new images"
-msgstr ""
-"Warte auf Ereignisse von der Kamera und lade neu hinzugefügte Bilder herunter"
+msgstr "Warte auf Ereignisse von der Kamera und lade neu hinzugefügte Bilder herunter"
 
 #: gphoto2/main.c:1640
 msgid "Capture a quick preview"
 msgstr "Mache eine Vorschaubild-Aufnahme"
 
 #: gphoto2/main.c:1642
-#, fuzzy
 msgid "Set bulb exposure time in seconds"
-msgstr "Setze das Aufnahmeintervall in Sekunden"
+msgstr "Setze die Langzeit Aufnahmezeitl in Sekunden"
 
 #: gphoto2/main.c:1642 gphoto2/main.c:1646
 msgid "SECONDS"
@@ -1244,8 +1235,7 @@ msgstr "Weitere Optionen (unsortiert)"
 
 #: gphoto2/main.c:1754
 msgid "Get information on software and host system (not from the camera)"
-msgstr ""
-"Frage Informationen über Software und Maschine ab (nicht von der Kamera)"
+msgstr "Frage Informationen über Software und Maschine ab (nicht von der Kamera)"
 
 #: gphoto2/main.c:1756
 msgid "Specify the camera to use"
@@ -1426,9 +1416,8 @@ msgid "Capture a single image and download it"
 msgstr "Ein Bild aufnahmen und herunterladen"
 
 #: gphoto2/shell.c:152
-#, fuzzy
 msgid "Capture a preview image"
-msgstr "Eine Bildaufnahme machen"
+msgstr "Eine Vorschauaufnahme machen"
 
 #: gphoto2/shell.c:153
 msgid "Wait for an event"
@@ -1440,13 +1429,11 @@ msgstr "Anzahl an Sekunden"
 
 #: gphoto2/shell.c:154
 msgid "Wait for images to be captured and download it"
-msgstr ""
-"Warte auf neue aufgenommene Bilder auf der Kamera und lade diese herunter"
+msgstr "Warte auf neue aufgenommene Bilder auf der Kamera und lade diese herunter"
 
 #: gphoto2/shell.c:155
 msgid "Wait for events and images to be captured and download it"
-msgstr ""
-"Warte auf Ereignisse und neu aufgenommene Bilder und lade diese herunter"
+msgstr "Warte auf Ereignisse und neu aufgenommene Bilder und lade diese herunter"
 
 #: gphoto2/shell.c:480
 msgid "Invalid command."
@@ -1533,3 +1520,4 @@ msgid "To get help on a particular command, type in 'help command-name'."
 msgstr ""
 "Um Hilfe zu einem bestimmten Befehl zu erhalten, verwenden Sie »help "
 "Befehlsname«."
+
