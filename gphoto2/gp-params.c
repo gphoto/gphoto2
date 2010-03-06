@@ -48,29 +48,21 @@
 
 
 static void
-#ifdef __GNUC__
-__attribute__((__format__(printf,2,0)))
-#endif
-ctx_status_func (GPContext __unused__ *context, const char *format, va_list args,
+ctx_status_func (GPContext __unused__ *context, const char *str,
                  void __unused__ *data)
 {
-        vfprintf (stderr, format, args);
-        fprintf  (stderr, "\n");
-        fflush   (stderr);
+        fprintf (stderr, "%s\n", str);
+        fflush  (stderr);
 }
 
 static void
-#ifdef __GNUC__
-__attribute__((__format__(printf,2,0)))
-#endif
-ctx_error_func (GPContext __unused__ *context, const char *format, va_list args,
+ctx_error_func (GPContext __unused__ *context, const char *str, 
                 void __unused__ *data)
 {
-        fprintf  (stderr, "\n");
-        fprintf  (stderr, _("*** Error ***              \n"));
-        vfprintf (stderr, format, args);
-        fprintf  (stderr, "\n");
-        fflush   (stderr);
+        fprintf (stderr, "\n");
+        fprintf (stderr, _("*** Error ***              \n"));
+        fprintf (stderr, "%s\n", str);
+        fflush  (stderr);
 }
 
 #define MAX_PROGRESS_STATES 16
@@ -87,11 +79,8 @@ static struct {
 } progress_states[MAX_PROGRESS_STATES];
 
 static unsigned int
-#ifdef __GNUC__
-__attribute__((__format__(printf,3,0)))
-#endif
 ctx_progress_start_func (GPContext __unused__ *context, float target,
-                         const char *format, va_list args, void *data)
+                         const char *str, void *data)
 {
 	GPParams *p = data;
         unsigned int id, len;
@@ -118,7 +107,7 @@ ctx_progress_start_func (GPContext __unused__ *context, float target,
         if (id == MAX_PROGRESS_STATES)
                 id--;
         progress_states[id].target = target;
-        vsnprintf (progress_states[id].message, len + 1, format, args);
+        snprintf (progress_states[id].message, len + 1, "%s", str);
         progress_states[id].count = 0;
         progress_states[id].last.time = time (NULL);
         progress_states[id].last.current = progress_states[id].last.left = 0.;
@@ -237,24 +226,20 @@ ctx_cancel_func (GPContext __unused__ *context, void __unused__ *data)
 }
 
 static void
-#ifdef __GNUC__
-__attribute__((__format__(printf,2,0)))
-#endif
-ctx_message_func (GPContext __unused__ *context, const char *format, 
-		  va_list args, void __unused__ *data)
+ctx_message_func (GPContext __unused__ *context, const char *str, 
+		  void __unused__ *data)
 {
         int c;
 
-        vprintf (format, args);
-        putchar ('\n');
+	printf ("%s\n", str);
 
-        /* Only ask for confirmation if the user can give it. */
-        if (isatty (STDOUT_FILENO) && isatty (STDIN_FILENO)) {
-                printf (_("Press any key to continue.\n"));
-                fflush (stdout);
-                c = fgetc (stdin);
-        } else
-                fflush (stdout);
+	/* Only ask for confirmation if the user can give it. */
+	if (isatty (STDOUT_FILENO) && isatty (STDIN_FILENO)) {
+		printf (_("Press any key to continue.\n"));
+		fflush (stdout);
+		c = fgetc (stdin);
+	} else
+		fflush (stdout);
 }
 
 
