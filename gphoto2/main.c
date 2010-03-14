@@ -383,8 +383,10 @@ save_camera_file_to_file (
 			} while ((c[0]!='y')&&(c[0]!='Y')&&
 				 (c[0]!='n')&&(c[0]!='N'));
 
-			if (!((c[0]=='y') || (c[0]=='Y')))
+			if (!((c[0]=='y') || (c[0]=='Y'))) {
+				if (curname) unlink (curname);
 				return (GP_OK);
+			}
 
 			printf (_("Enter new filename: "));
 			fflush (stdout);
