@@ -1217,7 +1217,7 @@ debug_action (GPParams *p, const char *debug_logfile_name)
 
 	gettimeofday (&glob_tv_zero, NULL);
 
-	CR (p->debug_func_id = gp_log_simple_add_func (GP_LOG_ALL, debug_func, (void *) logfile));
+	CR (p->debug_func_id = gp_log_add_func (GP_LOG_ALL, debug_func, (void *) logfile));
 	gp_log (GP_LOG_DEBUG, "main", _("ALWAYS INCLUDE THE FOLLOWING LINES "
 					"WHEN SENDING DEBUG MESSAGES TO THE "
 					"MAILING LIST:"));

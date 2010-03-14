@@ -56,8 +56,7 @@ ctx_status_func (GPContext __unused__ *context, const char *str,
 }
 
 static void
-ctx_error_func (GPContext __unused__ *context, const char *str, 
-                void __unused__ *data)
+ctx_error_func (GPContext __unused__ *context, const char *str, void __unused__ *data)
 {
         fprintf (stderr, "\n");
         fprintf (stderr, _("*** Error ***              \n"));
@@ -107,7 +106,7 @@ ctx_progress_start_func (GPContext __unused__ *context, float target,
         if (id == MAX_PROGRESS_STATES)
                 id--;
         progress_states[id].target = target;
-        snprintf (progress_states[id].message, len + 1, "%s", str);
+        strncpy (progress_states[id].message, str, len + 1);
         progress_states[id].count = 0;
         progress_states[id].last.time = time (NULL);
         progress_states[id].last.current = progress_states[id].last.left = 0.;
@@ -231,7 +230,7 @@ ctx_message_func (GPContext __unused__ *context, const char *str,
 {
         int c;
 
-	printf ("%s\n", str);
+        printf ("%s\n", str);
 
 	/* Only ask for confirmation if the user can give it. */
 	if (isatty (STDOUT_FILENO) && isatty (STDIN_FILENO)) {
