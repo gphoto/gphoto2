@@ -520,7 +520,7 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
         int fd, res;
         CameraFile *file;
 	char	tmpname[20], *tmpfilename;
-	struct privstr *ps;
+	struct privstr *ps = NULL;
 
 	if (flags & FLAGS_NEW) {
 		CameraFileInfo info;
@@ -570,7 +570,6 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 			ps->fd = fd;
 			/* just pass in the file pointer as private */
 			res = gp_file_new_from_handler (&file, &xhandler, ps);
-			free (ps);
 			if (res < GP_OK) {
 				close (fd);
 				unlink (tmpname);
@@ -581,6 +580,7 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 	}
         res = gp_camera_file_get (camera, folder, filename, type,
 				  file, context);
+	if (ps) free (ps);
 	if (res < GP_OK) {
 		gp_file_unref (file);
 		if (tmpfilename) unlink (tmpfilename);
