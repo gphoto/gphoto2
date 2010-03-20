@@ -984,6 +984,7 @@ action_camera_wait_event (GPParams *p, int dodownload, int count)
 				leftoverms = (-(count*1000000)-x)/1000;
 		}
 
+		data = NULL;
 		ret = gp_camera_wait_for_event (p->camera, leftoverms, &event, &data, p->context);
 		if (ret != GP_OK)
 			return ret;
@@ -1044,6 +1045,7 @@ action_camera_wait_event (GPParams *p, int dodownload, int count)
 			printf("FOLDERADDED %s %s\n",fn->name, fn->folder);
 			break;
 		}
+		free (data);
 	}
 	return GP_OK;
 }
