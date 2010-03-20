@@ -570,6 +570,7 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 			ps->fd = fd;
 			/* just pass in the file pointer as private */
 			res = gp_file_new_from_handler (&file, &xhandler, ps);
+			free (ps);
 			if (res < GP_OK) {
 				close (fd);
 				unlink (tmpname);
