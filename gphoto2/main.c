@@ -1767,6 +1767,7 @@ report_failure (int result, int argc, char **argv)
 			gp_params_run_hook(&gp_params, "stop", NULL);	\
 									\
 			gp_params_exit (&gp_params);			\
+                	poptFreeContext(ctx);				\
 			return (EXIT_FAILURE);				\
 		}							\
 	} while (0)
