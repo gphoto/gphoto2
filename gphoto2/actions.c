@@ -991,6 +991,7 @@ action_camera_wait_event (GPParams *p, int dodownload, int count)
 				leftoverms = (-(count*1000000)-x)/1000;
 		}
 
+		data = NULL;
 		ret = gp_camera_wait_for_event (p->camera, leftoverms, &event, &data, p->context);
 		if (ret != GP_OK)
 			return ret;
@@ -1051,6 +1052,7 @@ action_camera_wait_event (GPParams *p, int dodownload, int count)
 			printf("FOLDERADDED %s %s\n",fn->name, fn->folder);
 			break;
 		}
+		free (data);
 	}
 	return GP_OK;
 }
@@ -1614,6 +1616,7 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 	case GP_WIDGET_MENU:
 	case GP_WIDGET_RADIO: { /* char *		*/
 		int cnt, i;
+		char *endptr;
 
 		cnt = gp_widget_count_choices (child);
 		if (cnt < GP_OK) {
@@ -1635,7 +1638,11 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 		if (i != cnt)
 			break;
 
-		if (sscanf (value, "%d", &i)) {
+		/* make sure we parse just 1 integer, and there is nothing more. 
+		 * sscanf just does not provide this, we need strtol.
+		 */
+		i = strtol (value, &endptr, 10);
+		if ((value != endptr) && (*endptr == '\0')) {
 			if ((i>= 0) && (i < cnt)) {
 				const char *choice;
 
@@ -1645,6 +1652,11 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 				break;
 			}
 		}
+		/* Lets just try setting the value directly, in case we have flexible setters,
+		 * like PTP shutterspeed. */
+		ret = gp_widget_set_value (child, value);
+		if (ret == GP_OK)
+			break;
 		gp_context_error (p->context, _("Choice %s not found within list of choices."), value);
 		break;
 	}
@@ -1849,7 +1861,10 @@ set_config_value_action (GPParams *p, const char *name, const char *value) {
 		}
 		if (i != cnt)
 			break;
-
+		/* Lets just try setting the value directly, in case we have flexible setters,
+		 * like PTP shutterspeed. */
+		ret = gp_widget_set_value (child, value);
+		if (ret == GP_OK) break;
 		gp_context_error (p->context, _("Choice %s not found within list of choices."), value);
 		break;
 	}
