@@ -868,35 +868,39 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 			result = GP_ERROR_NOT_SUPPORTED;
 			if (a.operations & GP_OPERATION_TRIGGER_CAPTURE) {
 				result = gp_camera_trigger_capture (gp_params.camera, gp_params.context);
-				if (result != GP_OK) {
+				if ((result != GP_OK) && (result != GP_ERROR_NOT_SUPPORTED))
 					cli_error_print(_("Could not trigger image capture."));
-					return (result);
-				}
 				/* The downloads will be handled by wait_event */
 			}
 			if (result == GP_ERROR_NOT_SUPPORTED) {
 				result = gp_camera_capture (gp_params.camera, type, &path, gp_params.context);
 				if (result != GP_OK) {
 					cli_error_print(_("Could not capture image."));
-					return (result);
-				}
-				/* If my Canon EOS 10D is set to auto-focus and it is unable to
-				 * get focus lock - it will return with *UNKNOWN* as the filename.
-				 */
-				if (glob_interval && strcmp(path.name, "*UNKNOWN*") == 0) {
-					if (!(gp_params.flags & FLAGS_QUIET)) {
-						printf (_("Capture failed (auto-focus problem?)...\n"));
-						sleep(1);
-						continue;
+				} else {
+					/* If my Canon EOS 10D is set to auto-focus and it is unable to
+					 * get focus lock - it will return with *UNKNOWN* as the filename.
+					 */
+					if (glob_interval && strcmp(path.name, "*UNKNOWN*") == 0) {
+						if (!(gp_params.flags & FLAGS_QUIET)) {
+							printf (_("Capture failed (auto-focus problem?)...\n"));
+							sleep(1);
+							continue;
+						}
 					}
+					result = save_captured_file (&path, download);
+					if (result != GP_OK)
+						break;
 				}
-				result = save_captured_file (&path, download);
-				if (result != GP_OK)
-					break;
 			}
 			if (result != GP_OK) {
 				cli_error_print(_("Could not capture."));
-				return (result);
+				if (	(result == GP_ERROR_NOT_SUPPORTED)	||
+					(result == GP_ERROR_NO_MEMORY)		||
+					(result == GP_ERROR_CANCEL)		||
+					(result == GP_ERROR_NO_SPACE)		||
+					(result == GP_ERROR_OS_FAILURE)
+				)
+					return (result);
 			}
 		}
 
@@ -935,6 +939,12 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 					waittime = timediff_now (&next_pic_time);
 				} while (waittime > 0);
 			} else {
+				/* drain the queue first though, even though there is no time. */
+				while (1) {
+					result = wait_and_handle_event (1, &evtype, download);
+					if ((result != GP_OK) || (evtype == GP_EVENT_TIMEOUT))
+						break;
+				}
 				if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
 					printf (_("not sleeping (%ld seconds behind schedule)\n"), -waittime/1000);
 			}

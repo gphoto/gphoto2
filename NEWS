@@ -3,12 +3,68 @@ gphoto2 2.4.99.2
  * Updated for new GPPortInfo in libgphoto2 2.5.0
  * Updated for various changed file interfaces in libgphoto2 2.5.0
 
+ * Capture mainloop changed to handle JPEG+RAW capture (one release
+   resulting in 1 or more files).
+   (Also: refactored and rewritten to be more beautiful)
+ * Capture mainloop uses trigger capture + waitevent if present.
+
+gphoto2 2.4.8
+
+ * Output CAPTURECOMPLETE on waitevent
+ * On --filename "foo/bar/berk.jpg" create subdirectories if
+   not yet present.
+ * New shell command:
+	capture-preview
+ * Added Bulb Mode in interval capture with -B / --bulb <seconds>
+
+gphoto2 2.4.7
+
+ * New cmdline options: --set-config-index and --set-config-value
+   to avoid ambiguity of the --set-config supporting both modes.
+ * --wait-event can take "5s" as argument for 5 seconds of event taking
+ * added --wait-event-and-download=x (same as --wait-event but with download)
+ * New shell commands:
+	   wait-event (events or seconds)
+	   wait-event-and-download (events or seconds)
+	   capture-tethered 
+	   set-config-index entry=choiceindex
+	   set-config-value entry=value
+ * Enhanced --quietness.
+ * Added AC_SYS_LARGEFILE, enabling support to download files > 2GB.
+ * Updated translations.
+ * Various bugfixes.
+
+gphoto2 2.4.5
+
+ * Updated translations.
+ * Handle ctrl-c on tethered capture.
+
+gphoto2 2.4.4
+
+ * Updated translations.
+ * SIGUSR2 added ... "exit interval capture after next shot"
+
+gphoto2 2.4.3
+
+ * Updated translations.
+ * For multiple cameras, specifying with --port usb:xxx,yyy is now
+   sufficient (previously needed --port and --camera).
+
+gphoto2 2.4.2
+
+ * Updated translations.
+ * Major change in behaviour:
+
+   --capture-image split into:
+	 --capture-image		: Just captures image, no download.
+	 --capture-image-and-download	: captures image and downloads it.
+
 gphoto2 2.4.1
 
- * --capture-image split into 
-	--capture-image
-   and
-	--capture-image-and-download
+ * Made capture preview that saves to files work
+ * capture-image has no arguments
+ * version check for libgphoto2 fixed
+ * cs,da,it,vi translations updated
  * Fix a few C99isms.
 
 gphoto2 2.4.0
