@@ -1,3 +1,10 @@
+gphoto2 2.4.9
+
+ * Capture main event loop rewritten to always use wait event
+   to also support multiple image captures. (JPEG+RAW)
+ * Fixed various bugs and memory leaks.
+ * Translation updates.
+
 gphoto2 2.4.8
 
  * Output CAPTURECOMPLETE on waitevent
