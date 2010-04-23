@@ -1658,9 +1658,12 @@ report_failure (int result, int argc, char **argv)
 		fprintf (stderr, _("Operation cancelled.\n"));
 		return;
 	}
-
-	fprintf (stderr, _("*** Error (%i: '%s') ***       \n\n"), result,
-		gp_result_as_string (result));
+	if (result == -2000) {
+		fprintf (stderr, _("*** Error: No camera found. ***\n\n"));
+	} else {
+		fprintf (stderr, _("*** Error (%i: '%s') ***       \n\n"), result,
+			gp_result_as_string (result));
+	}
 	if (!debug_option_given) {
 		int n;
 		printf (_("For debugging messages, please use "
@@ -2138,6 +2141,7 @@ main (int argc, char **argv, char **envp)
 			CR_MAIN (action_camera_set_port (&gp_params, path));
 
                 } else if (!count) {
+			int ret;
 			/*
 			 * No camera detected. Have a look at the settings.
 			 * Ignore errors here, it might be a serial one.
@@ -2146,7 +2150,12 @@ main (int argc, char **argv, char **envp)
 				action_camera_set_model (&gp_params, buf);
 			if (gp_setting_get ("gphoto2", "port", buf) >= 0)
 				action_camera_set_port (&gp_params, buf);
-
+			ret = gp_camera_init (gp_params.camera, gp_params.context);
+			if (ret != GP_OK) {
+				if (ret == GP_ERROR_BAD_PARAMETERS)
+					ret = -2000;
+				CR_MAIN (ret);
+			}
 		} else {
 			/* If --port override, search the model with the same port. */
 			if (type != GP_PORT_NONE) {
