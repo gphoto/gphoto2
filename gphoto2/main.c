@@ -757,6 +757,7 @@ wait_and_handle_event (long waittime, CameraEventType *type, int download) {
 	data = NULL;
 	result = gp_camera_wait_for_event(gp_params.camera, waittime, type, &data, gp_params.context);
 	if (result == GP_ERROR_NOT_SUPPORTED) {
+		*type = GP_EVENT_TIMEOUT;
 		usleep(waittime*1000);
 		return GP_OK;
 	}
