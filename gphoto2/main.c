@@ -1885,7 +1885,7 @@ main (int argc, char **argv, char **envp)
 		{"delete-file", 'd', POPT_ARG_STRING, NULL, ARG_DELETE_FILE,
 		 N_("Delete files given in range"), N_("RANGE")},
 		{"delete-all-files", 'D', POPT_ARG_NONE, NULL,
-		 ARG_DELETE_ALL_FILES, N_("Delete all files in folder"), NULL},
+		 ARG_DELETE_ALL_FILES, N_("Delete all files in folder (--no-recurse by default)"), NULL},
 		{"upload-file", 'u', POPT_ARG_STRING, NULL, ARG_UPLOAD_FILE,
 		 N_("Upload a file to camera"), N_("FILENAME")},
 		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,
