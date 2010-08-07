@@ -982,16 +982,16 @@ action_camera_capture_movie (GPParams *p, const char *arg)
 	}
 	if (!arg) {
 		mm = MOVIE_ENDLESS;
-		cli_error_print(_("Capturing preview frames as movie to '%s'. Press Ctrl-C to abort."), xname);
+		fprintf(stderr,_("Capturing preview frames as movie to '%s'. Press Ctrl-C to abort.\n"), xname);
 	} else {
 		if (strchr(arg,'s')) {
 			sscanf (arg, "%ds", &frames);
-			cli_error_print(_("Capturing preview frames as movie to '%s' for %d seconds."), xname);
+			fprintf(stderr,_("Capturing preview frames as movie to '%s' for %d seconds.\n"), xname, frames);
 			mm = MOVIE_SECONDS;
 			time (&st);
 		} else {
 			sscanf (arg, "%d", &frames);
-			cli_error_print(_("Capturing %d preview frames as movie to '%s'."), xname);
+			fprintf(stderr,_("Capturing %d preview frames as movie to '%s'.\n"), frames, xname);
 			mm = MOVIE_FRAMES;
 		}
 	}
@@ -1010,7 +1010,7 @@ action_camera_capture_movie (GPParams *p, const char *arg)
 		}
 
 		if (glob_cancel) {
-			cli_error_print(_("Ctrl-C pressed ... Exiting."));
+			fprintf(stderr, _("Ctrl-C pressed ... Exiting.\n"));
 			break;
 		}
 		if (mm == MOVIE_FRAMES) {
