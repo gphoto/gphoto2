@@ -1330,7 +1330,7 @@ cb_arg_run (poptContext __unused__ ctx,
 		params->p.r = capture_generic (GP_CAPTURE_IMAGE, arg, 1);
 		break;
 	case ARG_CAPTURE_MOVIE:
-		params->p.r = capture_generic (GP_CAPTURE_MOVIE, arg, 0);
+		params->p.r = action_camera_capture_movie (&gp_params, arg);
 		break;
 	case ARG_CAPTURE_PREVIEW:
 		params->p.r = action_camera_capture_preview (&gp_params);
