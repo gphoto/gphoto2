@@ -1404,7 +1404,7 @@ cb_arg_run (poptContext __unused__ ctx,
 		params->p.r = capture_generic (GP_CAPTURE_IMAGE, arg, 1);
 		break;
 	case ARG_CAPTURE_MOVIE:
-		params->p.r = capture_generic (GP_CAPTURE_MOVIE, arg, 0);
+		params->p.r = action_camera_capture_movie (&gp_params, arg);
 		break;
 	case ARG_CAPTURE_PREVIEW:
 		params->p.r = action_camera_capture_preview (&gp_params);
@@ -1833,10 +1833,8 @@ main (int argc, char **argv, char **envp)
 		 ARG_CAPTURE_IMAGE, N_("Capture an image"), NULL},
 		{"capture-image-and-download", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_IMAGE_AND_DOWNLOAD, N_("Capture an image and download it"), NULL},
-		{"trigger-capture", '\0', POPT_ARG_NONE, NULL,
-		 ARG_TRIGGER_CAPTURE, N_("Trigger image capture"), NULL},
-		{"capture-movie", '\0', POPT_ARG_NONE, NULL,
-		 ARG_CAPTURE_MOVIE, N_("Capture a movie"), NULL},
+		{"capture-movie", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL,
+		 ARG_CAPTURE_MOVIE, N_("Capture a movie"), N_("COUNT or SECONDS")},
 		{"capture-sound", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_SOUND, N_("Capture an audio clip"), NULL},
 		{"capture-tethered", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL,

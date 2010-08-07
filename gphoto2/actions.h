@@ -60,6 +60,7 @@ int action_camera_upload_file     (GPParams *, const char *folder,
 int action_camera_upload_metadata (GPParams *, const char *folder,
 				   const char *path);
 int action_camera_capture_preview (GPParams *);
+int action_camera_capture_movie (GPParams *, const char *arg);
 int action_camera_wait_event (GPParams *,int downloadflag, int count);
 
 /* Other actions */

@@ -30,6 +30,7 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <fcntl.h>
 #include <stdlib.h>
 
 #include <time.h>
@@ -949,6 +950,79 @@ action_camera_capture_preview (GPParams *p)
 	}
 	return (GP_OK);
 }
+
+enum moviemode { MOVIE_ENDLESS, MOVIE_FRAMES, MOVIE_SECONDS };
+
+int
+action_camera_capture_movie (GPParams *p, const char *arg)
+{
+	CameraFile	*file;
+	int		r;
+	int		fd;
+	time_t		st;
+	enum moviemode	mm;
+	int		frames;
+	char		*xname;
+
+	if (p->flags & FLAGS_STDOUT) {
+		fd = dup(fileno(stdout));
+		xname = "stdout";
+	} else {
+		fd = open("movie.mjpg",O_WRONLY|O_CREAT,0660);
+		if (fd == -1) {
+			cli_error_print(_("Could not open 'movie.mjpg'."));
+			return GP_ERROR;
+		}
+		xname = "movie.mjpg";
+	}
+	if (!arg) {
+		mm = MOVIE_ENDLESS;
+		fprintf(stderr,_("Capturing preview frames as movie to '%s'. Press Ctrl-C to abort.\n"), xname);
+	} else {
+		if (strchr(arg,'s')) {
+			sscanf (arg, "%ds", &frames);
+			fprintf(stderr,_("Capturing preview frames as movie to '%s' for %d seconds.\n"), xname, frames);
+			mm = MOVIE_SECONDS;
+			time (&st);
+		} else {
+			sscanf (arg, "%d", &frames);
+			fprintf(stderr,_("Capturing %d preview frames as movie to '%s'.\n"), frames, xname);
+			mm = MOVIE_FRAMES;
+		}
+	}
+	CR (gp_file_new_from_fd (&file, fd));
+	while (1) {
+		const char *mime;
+		r = gp_camera_capture_preview (p->camera, file, p->context);
+		if (r < 0) {
+			cli_error_print(_("Movie capture error... Exiting."));
+			break;
+		}
+		gp_file_get_mime_type (file, &mime);
+                if (strcmp (mime, GP_MIME_JPEG)) {
+			cli_error_print(_("Movie capture error... Unhandled MIME type '%s'."), mime);
+			break;
+		}
+
+		if (glob_cancel) {
+			fprintf(stderr, _("Ctrl-C pressed ... Exiting.\n"));
+			break;
+		}
+		if (mm == MOVIE_FRAMES) {
+			if (!frames--)
+				break;
+		}
+		if (mm == MOVIE_SECONDS) {
+			time_t	xt;
+			time (&xt);
+			if (xt >= st + frames)
+				break;
+		}
+	}
+	gp_file_unref (file);
+	return (GP_OK);
+}
+
 
 /* count < 0 means exact seconds timer.
  * count > 0 means number of events (with 1 second timeout events).
