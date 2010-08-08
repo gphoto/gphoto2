@@ -945,6 +945,8 @@ action_camera_capture_preview (GPParams *p)
 #endif
 	if (r < 0) {
 		gp_file_unref (file);
+		if (fd != -1)
+			unlink (tmpname);
 		return (r);
 	}
 
