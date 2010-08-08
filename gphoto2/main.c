@@ -787,7 +787,7 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 			gettimeofday (&expose_end_time, NULL);
 			expose_end_time.tv_sec += glob_bulblength;
 			waittime = timediff_now (&expose_end_time);
-			while(waittime > 0) {
+			while (waittime > 0) {
 				result = wait_and_handle_event(waittime, &evtype, download);
 				if (result != GP_OK)
 					return result;
@@ -874,8 +874,13 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 					waittime = timediff_now (&next_pic_time);
 				} while (waittime > 0);
 			} else {
-				/* even though we have no time, drain the queue */
-				result = wait_and_handle_event (1, NULL, download);
+				/* even though we have no time, we need to drain the queue to capture downloads to-do */
+				evtype = GP_EVENT_UNKNOWN;
+				while (evtype != GP_EVENT_TIMEOUT) {
+					result = wait_and_handle_event (1, &evtype, download);
+					if (result != GP_OK)
+						break;
+				}
 				if (result != GP_OK)
 					break;
 				if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
