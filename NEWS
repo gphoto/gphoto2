@@ -1,3 +1,17 @@
+gphoto2 2.4.9.2
+
+ * Event loop handling non-waitevent able cameras.
+
+ * --capture-movie (optional arguments: frames, or seconds)
+   now loops over preview capture as fast as possible
+   and writes the frames continously.
+
+   The resulting file is "MotionJPEG" and can be postprocessed
+   or displayed (by mplayer).
+
+   Also output to stdout is possible for pipeing like:
+	   gphoto2 --stdout --capture-movie | someotherprogram
+
 gphoto2 2.4.9
 
  * Capture main event loop rewritten to always use wait event
