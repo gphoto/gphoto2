@@ -582,8 +582,8 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 	}
         res = gp_camera_file_get (camera, folder, filename, type,
 				  file, context);
-	if (ps) free (ps);
 	if (res < GP_OK) {
+		free (ps);
 		gp_file_unref (file);
 		if (tmpfilename) unlink (tmpfilename);
 		return res;
@@ -599,12 +599,14 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
                         printf ("%li\n", size);
                 if (1!=fwrite (data, size, 1, stdout))
 			fprintf(stderr,"fwrite failed writing to stdout.\n");
-                gp_file_unref (file);
+		free (ps);
+		gp_file_unref (file);
 		unlink (tmpname);
-                return (GP_OK);
-        }
-        res = save_camera_file_to_file (folder, filename, type, file, tmpfilename);
-        gp_file_unref (file);
+		return (GP_OK);
+	}
+	res = save_camera_file_to_file (folder, filename, type, file, tmpfilename);
+	free (ps);
+	gp_file_unref (file);
 	if ((res!=GP_OK) && tmpfilename)
 		unlink (tmpfilename);
         return (res);
