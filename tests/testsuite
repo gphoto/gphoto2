@@ -68,6 +68,10 @@ for TEST in $TESTLIST ; do
 	if ! eval $PRECOMMAND ; then
 		echo Test $TESTNAME FAILED: pre test command failure
   		TESTRESULT=1
+		# Unconditionally run post command to clean up
+		if [ -n "$POSTCOMMAND" ] ; then
+			eval $POSTCOMMAND
+		fi
   		continue
   	fi
   fi
@@ -75,10 +79,10 @@ for TEST in $TESTLIST ; do
   echo "$COMMAND"
   eval $COMMAND
   EXITCODE=$?
-  if  [ $EXITCODE != "$RESULTCODE" ] ; then
+  if [ $EXITCODE -ne "$RESULTCODE" ] ; then
   	echo "Test $TESTNAME FAILED: got exit $EXITCODE, expected $RESULTCODE"
+	# Don't abort now--run the post-test command to clean up first
   	TESTRESULT=1
-  	continue
   fi
 
   # Run a post-test command
@@ -88,6 +92,11 @@ for TEST in $TESTLIST ; do
   		TESTRESULT=1
   		continue
   	fi
+  fi
+
+  if  [ $EXITCODE -ne "$RESULTCODE" ] ; then
+	# Delayed exit
+	continue
   fi
 
   if [ -n "$SEDCOMMAND" ] ; then
