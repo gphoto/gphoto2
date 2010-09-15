@@ -8,6 +8,7 @@ gphoto2 2.4.99.2
    (Also: refactored and rewritten to be more beautiful)
  * Capture mainloop uses trigger capture + waitevent if present.
  * Fixed use-after-free problem in file save
+ * Fixed %n to use an incremental counter, instead of a filesystem index.
 
 gphoto2 2.4.8
 

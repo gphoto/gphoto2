@@ -147,11 +147,11 @@ static int
 get_path_for_file (const char *folder, const char *name, CameraFileType type, CameraFile *file, char **path)
 {
 	unsigned int i, l;
-	int n;
 	char *s, b[1024];
 	time_t t;
 	struct tm *tm;
 	int hour12;
+	static int filenr = 1;
 
 	if (!file || !path)
 		return (GP_ERROR_BAD_PARAMETERS);
@@ -223,35 +223,21 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 			}
 			switch (gp_params.filename[i]) {
 			case 'n':
-
 				/*
-				 * Get the number of the file. This can only
-				 * be done with persistent files!
+ 				 * Previously this used an folder index number.
+				 * Now this uses a linear increasing number.
 				 */
-				if (!folder) {
-					gp_context_error (gp_params.context, 
-						_("You cannot use '%%n' "
-						  "in combination with "
-						  "non-persistent files!"));
-					return (GP_ERROR_BAD_PARAMETERS);
-				}
-				n = gp_filesystem_number (gp_params.camera->fs,
-					folder, name, gp_params.context);
-				if (n < 0) {
-					free (*path);
-					*path = NULL;
-					return (n);
-				}
 				if (precision > 1) {
 					char padfmt[16];
 					strcpy(padfmt, "%!.*i");
 					padfmt[1] = padding;
 					snprintf (b, sizeof (b), padfmt,
-						  precision, n + 1);
+						  precision, filenr);
 				} else {
 					snprintf (b, sizeof (b), "%i",
-						  n + 1);
+						  filenr);
 				}
+				filenr++;
 				break;
 
 			case 'C':
