@@ -17,4 +17,7 @@ test015.param test015.result	\
 test016.param test016.result	\
 test017.param test017.result	\
 test018.param test018.result	\
-test019.param			
+test019.param			\
+test020.param			\
+test021.param			\
+test022.param test022.result	
