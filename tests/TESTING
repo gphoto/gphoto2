@@ -47,7 +47,8 @@ $DATADIR - path to the data directory (data/)
 $ERRFILE - path to the default standard error output file for this test
 $LOGDIR - path to the log directory (log/)
 $OUTFILE - path to the default test output file for this test
-$PROGRAM - path to the gphoto2 executable (../gphoto2)
+$PROGRAM - path to the gphoto2 executable (../gphoto2); this should not be
+           quoted to allow specifying a helper app like valgrind first
 $STAGINGDIR - path to an area containing sample files and directories
   (staging/)
 
@@ -68,9 +69,14 @@ should first create a test area in $LOGDIR in the PRECOMMAND.
 INVOCATION
 ==========
 Start the tests with the command "./testsuite".  If parameters are given,
-they are to specific tests to run, e.g. "./testsuite data/test2.param"
-will run only test 2.  When running outside the build tree, the
-environment variable "srcdir" must be set to the absolute path of the
-tests source directory.  The program will exit with a non-zero status
-code if at least one test failed.
+they are to specific test case files to run,
+e.g. "./testsuite data/test002.param" will run only test 2.  When
+running outside the build tree, the environment variable "srcdir" must
+be set to the absolute path of the tests source directory.  The program
+will exit with a non-zero status code if at least one test failed.
+If the -v option is given, more verbose information about test failures
+is provided.
 
+Some test cases don't do a good job of cleaning up after themselves after
+failures. If you get persistent test failures, try deleting the 'log'
+directory and running the tests again.

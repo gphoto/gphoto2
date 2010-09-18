@@ -4,10 +4,14 @@
 
 # we expect english text... 
 export LANG=C
+export LANGUAGE=C
 
-if [ -z "$srcdir" ] ; then
-	srcdir=`pwd`
+if [ "$1" = "-v" ] ; then
+	shift
+	VERBOSECOMMAND='set -x ;'
 fi
+
+test -z "$srcdir" && srcdir=`pwd`
 
 DATADIR="$srcdir/data"
 if [ ! -e "$DATADIR" ] ; then
@@ -25,13 +29,14 @@ else
 	mkdir "$LOGDIR"
 fi
 
-TESTLIST="$DATADIR"/*.param
 
 if [ -n "$1" ] ; then
-  TESTLIST="$@"
+	TESTLIST="$@"
+else
+	TESTLIST="$DATADIR"/*.param
 fi
 
-TESTRESULT=0
+FAILEDTESTS=0
 
 for TEST in $TESTLIST ; do
   echo ''
@@ -41,7 +46,7 @@ for TEST in $TESTLIST ; do
   RESULTFILE="$DATADIR/$TESTNAME.result"
 
   # Initialize variables that can be used within the test parameters file
-  PROGRAM=../gphoto2/gphoto2
+  test -z "$PROGRAM" && PROGRAM=../gphoto2/gphoto2
   OUTFILE="$LOGDIR/$TESTNAME.out"
   ERRFILE="$LOGDIR/$TESTNAME.err"
 
@@ -56,7 +61,7 @@ for TEST in $TESTLIST ; do
   # Load the test parameters, which can override the above
   if [ ! -e "$TEST" ] ; then
   	echo "Test $TESTNAME FAILED: invalid test parameter file $TEST"
-  	TESTRESULT=1
+  	FAILEDTESTS=$(($FAILEDTESTS + 1))
   	continue
   fi
   . "$TEST"
@@ -67,7 +72,7 @@ for TEST in $TESTLIST ; do
   if [ -n "$PRECOMMAND" ] ; then
 	if ! eval $PRECOMMAND ; then
 		echo Test $TESTNAME FAILED: pre test command failure
-  		TESTRESULT=1
+		FAILEDTESTS=$(($FAILEDTESTS + 1))
 		# Unconditionally run post command to clean up
 		if [ -n "$POSTCOMMAND" ] ; then
 			eval $POSTCOMMAND
@@ -76,20 +81,22 @@ for TEST in $TESTLIST ; do
   	fi
   fi
 
-  echo "$COMMAND"
-  eval $COMMAND
+  #eval echo `echo "$COMMAND" | sed -e 's/>/\\\\>/g' -e "s/'/\\\\'/g" -e 's/\"/\\\\"/g'`
+  eval $VERBOSECOMMAND $COMMAND
   EXITCODE=$?
+  set +x
   if [ $EXITCODE -ne "$RESULTCODE" ] ; then
   	echo "Test $TESTNAME FAILED: got exit $EXITCODE, expected $RESULTCODE"
 	# Don't abort now--run the post-test command to clean up first
-  	TESTRESULT=1
+	FAILEDTESTS=$(($FAILEDTESTS + 1))
+	test -n "$VERBOSECOMMAND" && cat "$ERRFILE"
   fi
 
   # Run a post-test command
   if [ -n "$POSTCOMMAND" ] ; then
 	if ! eval $POSTCOMMAND ; then
 		echo Test $TESTNAME FAILED: post test command failure
-  		TESTRESULT=1
+		FAILEDTESTS=$(($FAILEDTESTS + 1))
   		continue
   	fi
   fi
@@ -106,8 +113,8 @@ for TEST in $TESTLIST ; do
 
   if ! cmp "$RESULTFILE" "$OUTFILE" >/dev/null ; then
   	echo Test $TESTNAME FAILED: unexpected output:
-  	diff -u "$RESULTFILE" "$OUTFILE"
-  	TESTRESULT=1
+	test -n "$VERBOSECOMMAND" && diff -u "$RESULTFILE" "$OUTFILE"
+	FAILEDTESTS=$(($FAILEDTESTS + 1))
   	continue
   fi
 
@@ -115,12 +122,11 @@ for TEST in $TESTLIST ; do
 done
 
 echo ''
-if [ $TESTRESULT == 0 ] ; then
+if [ $FAILEDTESTS -eq 0 ] ; then
   echo All tests have PASSED
 else
-  echo "Test(s) have FAILED"
+  echo "$FAILEDTESTS test(s) have FAILED"
 fi
-exit $TESTRESULT
 
-
-
+# Set the exit code
+test "$FAILEDTESTS" -eq 0
