@@ -20,4 +20,16 @@ test018.param test018.result	\
 test019.param			\
 test020.param			\
 test021.param			\
-test022.param test022.result	
+test022.param test022.result	\
+test023.param test023.result	\
+test024.param			\
+test025.param			\
+test026.param			\
+test027.param test027.result	\
+test028.param test028.result	\
+test029.param test029.result	\
+test030.param test030.result	\
+test031.param test031.result	\
+test032.param test032.result	\
+test033.param test033.result	\
+test034.param test034.result
