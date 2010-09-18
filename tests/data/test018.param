@@ -1,4 +1,4 @@
 TITLE='File upload with name'
 PRECOMMAND='mkdir "$LOGDIR/uploaddir"'
-COMMAND='"$PROGRAM" --camera="Directory Browse" --port=disk:"$LOGDIR" -f /uploaddir --upload-file="$STAGINGDIR/subdir1/architecture.png" --filename=uploadedfile 2> "$ERRFILE" > /dev/null'
+COMMAND='$PROGRAM --camera="Directory Browse" --port=disk:"$LOGDIR" -f /uploaddir --upload-file="$STAGINGDIR/subdir1/architecture.png" --filename=uploadedfile 2> "$ERRFILE" > /dev/null'
 POSTCOMMAND='mv -f "$LOGDIR/uploaddir/uploadedfile" "$OUTFILE" && rmdir "$LOGDIR/uploaddir"'
