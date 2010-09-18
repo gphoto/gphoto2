@@ -1,0 +1,5 @@
+TITLE='Hook script on upload'
+PRECOMMAND='mkdir "$LOGDIR/uploaddir"'
+COMMAND='$PROGRAM --camera="Directory Browse" --port=disk:"$LOGDIR" --hook-script=/usr/bin/env -f /uploaddir --upload-file="$STAGINGDIR/subdir1/architecture.png" 2> "$ERRFILE" > "$OUTFILE"'
+SEDCOMMAND='/^ACTION=\|^ARGUMENT=\|^Saving/!d'
+POSTCOMMAND='rm "$LOGDIR/uploaddir/architecture.png" && rmdir "$LOGDIR/uploaddir"'

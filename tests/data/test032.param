@@ -1,0 +1,4 @@
+TITLE='Hook script on download'
+COMMAND='$PROGRAM --camera="Directory Browse" --port=disk:"$STAGINGDIR" --hook-script=/usr/bin/env --get-file=1 2> "$ERRFILE" > "$OUTFILE"'
+SEDCOMMAND='/^ACTION=\|^ARGUMENT=\|^Saving/!d'
+POSTCOMMAND='rm gphotobutton.jpg'

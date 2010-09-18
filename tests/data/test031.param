@@ -1,0 +1,3 @@
+TITLE='Get storage info'
+COMMAND='$PROGRAM --camera="Directory Browse" --port=disk:"$STAGINGDIR" --storage-info 2> "$ERRFILE" > "$OUTFILE"'
+SEDCOMMAND='s@\(totalcapacity=\|free=\).*$@\1@'
