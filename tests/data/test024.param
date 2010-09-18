@@ -1,0 +1,5 @@
+TITLE='Delete all files'
+PRECOMMAND='mkdir "$LOGDIR/deletedir" && cp "$STAGINGDIR/gphotobutton.jpg" "$STAGINGDIR/smalllogo.png" "$LOGDIR/deletedir/"'
+COMMAND='$PROGRAM --camera="Directory Browse" --port=disk:"$LOGDIR" -f /deletedir --delete-all-files 2> "$ERRFILE" > "$OUTFILE"'
+POSTCOMMAND='rmdir "$LOGDIR/deletedir"'
+RESULTFILE=/dev/null

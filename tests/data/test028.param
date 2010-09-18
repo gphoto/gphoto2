@@ -1,0 +1,4 @@
+TITLE='File download with overwrite'
+PRECOMMAND='echo DO NOT OVERWRITE > gphotobutton.jpg'
+COMMAND='$PROGRAM --camera="Directory Browse" --port=disk:"$STAGINGDIR" --get-file=1 --force-overwrite 2> "$ERRFILE" > /dev/null'
+POSTCOMMAND='mv -f gphotobutton.jpg "$OUTFILE"'

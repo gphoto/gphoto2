@@ -1,3 +1,3 @@
 TITLE='Filename percent operators'
-COMMAND='$PROGRAM --camera="Directory Browse" --port=disk:"$STAGINGDIR" --get-file=1 --filename='testfile%C-%04n-%f.bin' 2> "$ERRFILE" > /dev/null'
-POSTCOMMAND='mv -f testfilejpg-0001-gphotobutton.bin "$OUTFILE"'
+COMMAND='$PROGRAM --camera="Directory Browse" --port=disk:"$STAGINGDIR" --get-file=4 --filename='testfile%C-%04n-%f.bin' 2> "$ERRFILE" > /dev/null'
+POSTCOMMAND='mv -f testfilepng-0001-architecture.bin "$OUTFILE"'

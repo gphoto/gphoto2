@@ -1,0 +1,5 @@
+TITLE='Recursive delete all files with subdirs'
+PRECOMMAND='mkdir "$LOGDIR/deletedir" "$LOGDIR/deletedir/subdir" && cp "$STAGINGDIR/gphotobutton.jpg" "$STAGINGDIR/smalllogo.png" "$LOGDIR/deletedir/" && cp "$STAGINGDIR/gphotobutton.jpg" "$LOGDIR/deletedir/subdir/"'
+COMMAND='$PROGRAM --camera="Directory Browse" --port=disk:"$LOGDIR" -f /deletedir --delete-all-files --recurse 2> "$ERRFILE" > "$OUTFILE"'
+POSTCOMMAND='rmdir "$LOGDIR/deletedir/subdir" "$LOGDIR/deletedir"'
+RESULTFILE=/dev/null
