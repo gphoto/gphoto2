@@ -1,0 +1,5 @@
+TITLE='Get all thumbnails'
+COMMAND='$PROGRAM --camera="Directory Browse" --port=disk:"$STAGINGDIR" --get-all-thumbnails 2> "$ERRFILE" > "$OUTFILE"'
+RESULTCODE=1
+SEDCOMMAND='/^For debugging messages/,$d'
+RESULTFILE=/dev/null

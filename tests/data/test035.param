@@ -1,0 +1,3 @@
+TITLE='Thumbnail download'
+COMMAND='$PROGRAM --camera="Directory Browse" --port=disk:"$STAGINGDIR" --get-thumbnail=4 2> "$ERRFILE" > /dev/null'
+POSTCOMMAND='mv -f thumb_xexif.jpg "$OUTFILE"'

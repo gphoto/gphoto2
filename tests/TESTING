@@ -47,8 +47,9 @@ $DATADIR - path to the data directory (data/)
 $ERRFILE - path to the default standard error output file for this test
 $LOGDIR - path to the log directory (log/)
 $OUTFILE - path to the default test output file for this test
-$PROGRAM - path to the gphoto2 executable (../gphoto2); this should not be
-           quoted to allow specifying a helper app like valgrind first
+$PROGRAM - path to the gphoto2 executable (../gphoto2/gphoto2); this should
+           not be quoted in the params file so that the user can specify
+           a helper app like valgrind or gdb along with gphoto2
 $STAGINGDIR - path to an area containing sample files and directories
   (staging/)
 
