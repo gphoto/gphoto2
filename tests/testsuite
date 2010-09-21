@@ -36,6 +36,10 @@ else
 	TESTLIST="$DATADIR"/*.param
 fi
 
+POSTCOMMAND=
+# Clean up on test abort
+trap 'eval $POSTCOMMAND; exit 1' SIGINT SIGHUP SIGTERM
+
 FAILEDTESTS=0
 
 for TEST in $TESTLIST ; do
@@ -51,11 +55,11 @@ for TEST in $TESTLIST ; do
   ERRFILE="$LOGDIR/$TESTNAME.err"
 
   # Initialize variables that must be set for each test
-  TITLE=''
-  COMMAND=''
-  PRECOMMAND=''
-  POSTCOMMAND=''
-  SEDCOMMAND=''
+  TITLE=
+  COMMAND=
+  PRECOMMAND=
+  POSTCOMMAND=
+  SEDCOMMAND=
   RESULTCODE=0
 
   # Load the test parameters, which can override the above
@@ -69,16 +73,12 @@ for TEST in $TESTLIST ; do
   echo '***' Running \"$TITLE\" test
 
   # Run a pre-test command
-  if [ -n "$PRECOMMAND" ] ; then
-	if ! eval $PRECOMMAND ; then
-		echo Test $TESTNAME FAILED: pre test command failure
-		FAILEDTESTS=$(($FAILEDTESTS + 1))
-		# Unconditionally run post command to clean up
-		if [ -n "$POSTCOMMAND" ] ; then
-			eval $POSTCOMMAND
-		fi
-  		continue
-  	fi
+  if ! eval $PRECOMMAND ; then
+	echo Test $TESTNAME FAILED: pre test command failure
+	FAILEDTESTS=$(($FAILEDTESTS + 1))
+	# Unconditionally run post command to clean up
+	eval $POSTCOMMAND
+  	continue
   fi
 
   #eval echo `echo "$COMMAND" | sed -e 's/>/\\\\>/g' -e "s/'/\\\\'/g" -e 's/\"/\\\\"/g'`
@@ -93,12 +93,10 @@ for TEST in $TESTLIST ; do
   fi
 
   # Run a post-test command
-  if [ -n "$POSTCOMMAND" ] ; then
-	if ! eval $POSTCOMMAND ; then
-		echo Test $TESTNAME FAILED: post test command failure
-		FAILEDTESTS=$(($FAILEDTESTS + 1))
-  		continue
-  	fi
+  if ! eval $POSTCOMMAND ; then
+	echo Test $TESTNAME FAILED: post test command failure
+	FAILEDTESTS=$(($FAILEDTESTS + 1))
+  	continue
   fi
 
   if  [ $EXITCODE -ne "$RESULTCODE" ] ; then
@@ -112,7 +110,7 @@ for TEST in $TESTLIST ; do
   fi
 
   if ! cmp "$RESULTFILE" "$OUTFILE" >/dev/null ; then
-  	echo Test $TESTNAME FAILED: unexpected output:
+  	echo Test $TESTNAME FAILED: unexpected output
 	test -n "$VERBOSECOMMAND" && diff -u "$RESULTFILE" "$OUTFILE"
 	FAILEDTESTS=$(($FAILEDTESTS + 1))
   	continue
