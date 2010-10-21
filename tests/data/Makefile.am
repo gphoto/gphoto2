@@ -32,4 +32,10 @@ test030.param test030.result	\
 test031.param test031.result	\
 test032.param test032.result	\
 test033.param test033.result	\
-test034.param test034.result
+test034.param test034.result	\
+test035.param test035.result	\
+test036.param			\
+test037.param test037.result	\
+test038.param			\
+test039.param			\
+test040.param
