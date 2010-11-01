@@ -18,6 +18,8 @@ at one of the following URLs:
 	http://www.gphoto.org/
 	http://gphoto.sourceforge.net/
 
+The man page is in the file doc/gphoto2.1
+
 
 How do I build it?
 ------------------
@@ -28,3 +30,12 @@ How do I build it?
   * make install
 
 Out-of-tree builds are supported. "configure --help" may help.
+
+
+How do I test it?
+------------------
+
+  * make check
+
+The test suite checks the installation and basic functionality of the gphoto2
+program and the 'Directory Browse' libgphoto2 camera driver.
