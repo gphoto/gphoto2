@@ -44,6 +44,7 @@
 #include <fcntl.h>
 #include <utime.h>
 #include <limits.h>
+#include <errno.h>
 #include <sys/time.h>
 
 #ifdef HAVE_POPT
@@ -540,6 +541,10 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 	strcpy (tmpname, "tmpfileXXXXXX");
 	fd = mkstemp(tmpname);
 	if (fd == -1) {
+	    if (errno == EACCES) {
+	        gp_context_error (context, _("Permission denied"));
+	        return GP_ERROR;
+	    }
         	CR (gp_file_new (&file));
 		tmpfilename = NULL;
 	} else {
@@ -1819,6 +1824,8 @@ main (int argc, char **argv, char **envp)
 		 N_("Reset capture interval on signal (default=no)"), NULL},
 		{"capture-image", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_IMAGE, N_("Capture an image"), NULL},
+		{"trigger-capture", '\0', POPT_ARG_NONE, NULL,
+		 ARG_TRIGGER_CAPTURE, N_("Trigger capture of an image"), NULL},
 		{"capture-image-and-download", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_IMAGE_AND_DOWNLOAD, N_("Capture an image and download it"), NULL},
 		{"capture-movie", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL,
