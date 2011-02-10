@@ -44,6 +44,7 @@
 #include <fcntl.h>
 #include <utime.h>
 #include <limits.h>
+#include <errno.h>
 #include <sys/time.h>
 
 #ifdef HAVE_POPT
@@ -502,6 +503,10 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 	strcpy (tmpname, "tmpfileXXXXXX");
 	fd = mkstemp(tmpname);
 	if (fd == -1) {
+		if (errno == EACCES) {
+			gp_context_error (context, _("Permission denied"));
+			return GP_ERROR;
+		}
         	CR (gp_file_new (&file));
 		tmpfilename = NULL;
 	} else {
