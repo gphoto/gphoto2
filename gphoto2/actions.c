@@ -49,9 +49,9 @@
 #  include <libexif/exif-data.h>
 #endif
 
-#define CR(result)       {int r=(result); if (r<0) return r;}
-#define CRU(result,file) {int r=(result); if (r<0) {gp_file_unref(file);return r;}}
-#define CL(result,list)  {int r=(result); if (r<0) {gp_list_free(list); return r;}}
+#define CR(result)       {int __r=(result); if (__r<0) return __r;}
+#define CRU(result,file) {int __r=(result); if (__r<0) {gp_file_unref(file);return __r;}}
+#define CL(result,list)  {int __r=(result); if (__r<0) {gp_list_free(list); return __r;}}
 
 #ifdef __GNUC__
 #define __unused__ __attribute__((unused))
@@ -1523,7 +1523,7 @@ get_config_action (GPParams *p, const char *name) {
 		break;
 	}
 	case GP_WIDGET_DATE:  {		/* int			*/
-		int	ret, t;
+		int	t;
 		time_t	xtime;
 		struct tm *xtm;
 		char	timebuf[200];
