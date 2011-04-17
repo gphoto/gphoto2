@@ -1,6 +1,6 @@
 AC_PREREQ(2.59)
 dnl Next stable release must be 2.4.11 or later
-AC_INIT([gphoto2 command line interface], [2.4.10.1], [gphoto-devel@lists.sourceforge.net], [gphoto2])
+AC_INIT([gphoto2 command line interface], [2.4.11], [gphoto-devel@lists.sourceforge.net], [gphoto2])
 AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
@@ -79,7 +79,7 @@ AM_CPPFLAGS="$AM_CPPFLAGS -DLOCALEDIR=\\\"${localedir}\\\""
 dnl ---------------------------------------------------------------------------
 dnl Check for libgphoto2
 dnl ---------------------------------------------------------------------------
-GP_CHECK_LIBRARY([LIBGPHOTO2], [libgphoto2], [>= 2.4.10])
+GP_CHECK_LIBRARY([LIBGPHOTO2], [libgphoto2], [>= 2.4.11])
 
 
 AC_CHECK_FUNCS([strptime])
