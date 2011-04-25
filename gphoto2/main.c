@@ -590,12 +590,14 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
                         printf ("%li\n", size);
                 if (1!=fwrite (data, size, 1, stdout))
 			fprintf(stderr,"fwrite failed writing to stdout.\n");
+		if (ps && ps->fd) close (ps->fd);
 		free (ps);
 		gp_file_unref (file);
 		unlink (tmpname);
 		return (GP_OK);
 	}
 	res = save_camera_file_to_file (folder, filename, type, file, tmpfilename);
+	if (ps && ps->fd) close (ps->fd);
 	free (ps);
 	gp_file_unref (file);
 	if ((res!=GP_OK) && tmpfilename)
@@ -1834,6 +1836,8 @@ main (int argc, char **argv, char **envp)
 		 ARG_CAPTURE_SOUND, N_("Capture an audio clip"), NULL},
 		{"capture-tethered", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL,
 		 ARG_CAPTURE_TETHERED, N_("Wait for shutter release on the camera and download"), N_("COUNT")},
+		{"trigger-capture", '\0', POPT_ARG_NONE, NULL,
+		 ARG_TRIGGER_CAPTURE, N_("Trigger image capture"), NULL},
 		POPT_TABLEEND
 	};
 	const struct poptOption fileOptions[] = {
