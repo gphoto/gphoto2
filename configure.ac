@@ -147,8 +147,14 @@ if $try_cdk; then
         CPPFLAGS="-I$cdk_prefix/include $CPPFLAGS"
         AC_CHECK_HEADER([cdk/cdk.h], [
                 have_cdk=:
-                CDK_CFLAGS="-I$cdk_prefix/include"
-                CDK_LIBS="-L$cdk_prefix/lib -lcdk -lncurses"
+                AC_PATH_PROG([CDK_CONFIG], [cdk5-config])
+                if test -n "${CDK_CONFIG}"; then
+                        CDK_CFLAGS=`$CDK_CONFIG --cflags`
+                        CDK_LIBS=`$CDK_CONFIG --libs`
+                else
+                        CDK_CFLAGS="-I$cdk_prefix/include"
+                        CDK_LIBS="-L$cdk_prefix/lib -lcdk -lncurses"
+                fi
                 AC_DEFINE([HAVE_CDK],1,[whether we have CDK])
                 LDFLAGS_save="$LDFLAGS"
                 LDFLAGS="$CDK_LIBS"
@@ -249,11 +255,11 @@ dnl        see the preview. This is where aalib fits in - it gives you the
 dnl        possibility to view life-previews on any console.
 dnl ---------------------------------------------------------------------------
 aa_msg="no (http://www.sourceforge.net/projects/aa-project)"
-try_aa=:
+try_aa=false
 have_aa=false
-AC_ARG_WITH([aalib],AS_HELP_STRING([--without-aalib],[Do not use aalib]),[
-        if test x$withval = xno; then
-                try_aa=false
+AC_ARG_WITH([aalib],AS_HELP_STRING([--with-aalib],[Do use aalib for preview ASCII rendering]),[
+        if test x$withval = xyes; then
+                try_aa=:
         fi
 ])
 if $try_aa; then
