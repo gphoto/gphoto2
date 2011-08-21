@@ -1054,17 +1054,17 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 		printf ( _("Waiting for events from camera. Press Ctrl-C to abort.\n"));
 	} else {
 		int x;
-		if (sscanf(arg,"%df", &x)) { /* exact nr of frames */ 
+		if ((arg[strlen(arg)-1]=='f') && sscanf(arg,"%df", &x)) { /* exact nr of frames */ 
 			wp.type			= WAIT_FRAMES;
-			wp.u.events		= x;
+			wp.u.frames		= x;
 			printf ( _("Waiting for %d frames from the camera. Press Ctrl-C to abort.\n"), x);
 		}
-		if (sscanf(arg,"%dms",&x)) { /* exact milliseconds */ 
+		if ((strlen(arg)>2) && (!strcmp(&arg[strlen(arg)-2],"ms")) && sscanf(arg,"%dms",&x)) { /* exact milliseconds */ 
 			wp.type			= WAIT_TIME;
 			wp.u.milliseconds	= x;
 			printf ( _("Waiting for %d milliseconds for events from camera. Press Ctrl-C to abort.\n"), x);
 		}
-		if (sscanf(arg,"%ds", &x)) { /* exact seconds */ 
+		if ((arg[strlen(arg)-1]=='s') && sscanf(arg,"%ds", &x)) { /* exact seconds */ 
 			wp.type = WAIT_TIME;
 			wp.u.milliseconds = x*1000;
 			printf ( _("Waiting for %d seconds for events from camera. Press Ctrl-C to abort.\n"), x);
@@ -1100,6 +1100,7 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 			if ((wp.u.milliseconds-x) < leftoverms)
 				leftoverms = wp.u.milliseconds-x;
 		}
+		if (exitloop) break;
 
 		data = NULL;
 		ret = gp_camera_wait_for_event (p->camera, leftoverms, &event, &data, p->context);
