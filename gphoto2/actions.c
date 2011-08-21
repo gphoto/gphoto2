@@ -59,6 +59,8 @@
 #define __unused__
 #endif
 
+static int print_widget (GPParams *p, const char*name, CameraWidget *widget);
+
 int
 delete_all_action (GPParams *p)
 {
@@ -1024,46 +1026,86 @@ action_camera_capture_movie (GPParams *p, const char *arg)
 }
 
 
-/* count < 0 means exact seconds timer.
- * count > 0 means number of events (with 1 second timeout events).
+/* 
+ * arg can be:
+ * events as number			e.g.: 1000
+ * frames as number with suffix f 	e.g.: 100f
+ * seconds as number with suffix s 	e.g.: 50s
+ * milliseconds as number with suffix mse.g.: 200ms
  */
 int
-action_camera_wait_event (GPParams *p, int dodownload, int count)
+action_camera_wait_event (GPParams *p, enum download_type downloadtype, const char*arg)
 {
 	int ret;
+	struct waitparams wp;
 	CameraEventType	event;
 	void	*data = NULL;
 	CameraFilePath	*fn;
 	CameraFilePath last;
 	struct timeval	xtime;
+	int events, frames;
 
 	gettimeofday (&xtime, NULL);
 	memset(&last,0,sizeof(last));
 
-	if (!count) count = 1;
+	wp.type = WAIT_EVENTS;
+	wp.u.events = 1000000;
+	if (!arg) {
+		printf ( _("Waiting for events from camera. Press Ctrl-C to abort.\n"));
+	} else {
+		int x;
+		if (sscanf(arg,"%df", &x)) { /* exact nr of frames */ 
+			wp.type			= WAIT_FRAMES;
+			wp.u.events		= x;
+			printf ( _("Waiting for %d frames from the camera. Press Ctrl-C to abort.\n"), x);
+		}
+		if (sscanf(arg,"%dms",&x)) { /* exact milliseconds */ 
+			wp.type			= WAIT_TIME;
+			wp.u.milliseconds	= x;
+			printf ( _("Waiting for %d milliseconds for events from camera. Press Ctrl-C to abort.\n"), x);
+		}
+		if (sscanf(arg,"%ds", &x)) { /* exact seconds */ 
+			wp.type = WAIT_TIME;
+			wp.u.milliseconds = x*1000;
+			printf ( _("Waiting for %d seconds for events from camera. Press Ctrl-C to abort.\n"), x);
+		}
+		if (wp.type == WAIT_EVENTS) {
+			wp.u.events = atoi(arg);
+			printf ( _("Waiting for %d events from camera. Press Ctrl-C to abort.\n"), wp.u.events);
+		}
+	}
+
+	events = frames = 0;
 	while (1) {
 		int 		leftoverms = 1000;
 		struct timeval	ytime;
-		int		x;
+		int		x, exitloop;
 
 		if (glob_cancel) break;
-		if (!count) break;
-		if (count > 0) count--;
 
-		if (count < 0) { /* in exact seconds */
+		exitloop = 0;
+		switch (wp.type) {
+		case WAIT_EVENTS:
+			if (events >= wp.u.events) exitloop = 1;
+			break;
+		case WAIT_FRAMES:
+			if (frames >= wp.u.frames) exitloop = 1;
+			break;
+		case WAIT_TIME:
 			gettimeofday (&ytime, NULL);
 
-			x = (ytime.tv_usec-xtime.tv_usec)+(ytime.tv_sec-xtime.tv_sec)*1000000;
-			if (x > (-count*1000000)) break;
+			x = ((ytime.tv_usec-xtime.tv_usec)+(ytime.tv_sec-xtime.tv_sec)*1000000)/1000;
+			if (x >= wp.u.milliseconds) { exitloop = 1; break; }
 			/* if left over time is < 1s, set it... otherwise wait at most 1s */
-			if ((-(count*1000000)-x) < leftoverms*1000)
-				leftoverms = (-(count*1000000)-x)/1000;
+			if ((wp.u.milliseconds-x) < leftoverms)
+				leftoverms = wp.u.milliseconds-x;
 		}
 
 		data = NULL;
 		ret = gp_camera_wait_for_event (p->camera, leftoverms, &event, &data, p->context);
 		if (ret != GP_OK)
 			return ret;
+		events++;
 		switch (event) {
 		case GP_EVENT_UNKNOWN:
 			if (data) {
@@ -1079,9 +1121,11 @@ action_camera_wait_event (GPParams *p, int dodownload, int count)
 			printf("CAPTURECOMPLETE\n");
 			break;
 		case GP_EVENT_FILE_ADDED:
+			frames++;
+
 			fn = (CameraFilePath*)data;
 
-			if (!dodownload) {
+			if (downloadtype == DT_NO_DOWNLOAD) {
 				printf("FILEADDED %s %s\n",fn->name, fn->folder);
 				continue;
 			}
@@ -1108,12 +1152,14 @@ action_camera_wait_event (GPParams *p, int dodownload, int count)
 				return (ret);
 			}
 
-			do {
-				ret = delete_file_action (p, fn->name);
-			} while (ret == GP_ERROR_CAMERA_BUSY);
-			if (ret != GP_OK) {
-				cli_error_print ( _("Could not delete image."));
-				/* dont continue in event loop */
+			if (!(p->flags & FLAGS_KEEP)) {
+				do {
+					ret = delete_file_action (p, fn->name);
+				} while (ret == GP_ERROR_CAMERA_BUSY);
+				if (ret != GP_OK) {
+					cli_error_print ( _("Could not delete image."));
+					/* dont continue in event loop */
+				}
 			}
 			break;
 		case GP_EVENT_FOLDER_ADDED:
@@ -1340,7 +1386,7 @@ debug_action (GPParams *p, const char *debug_logfile_name)
 }
 
 static void
-display_widgets (CameraWidget *widget, char *prefix) {
+display_widgets (GPParams *p, CameraWidget *widget, char *prefix, int dumpval) {
 	int 	ret, n, i;
 	char	*newprefix;
 	const char *label, *name, *uselabel;
@@ -1364,20 +1410,33 @@ display_widgets (CameraWidget *widget, char *prefix) {
 		abort();
 	sprintf(newprefix,"%s/%s",prefix,uselabel);
 
-	if ((type != GP_WIDGET_WINDOW) && (type != GP_WIDGET_SECTION))
+	if ((type != GP_WIDGET_WINDOW) && (type != GP_WIDGET_SECTION)) {
 		printf("%s\n",newprefix);
+		if (dumpval) print_widget (p, newprefix, widget);
+	}
 	for (i=0; i<n; i++) {
 		CameraWidget *child;
 	
 		ret = gp_widget_get_child (widget, i, &child);
 		if (ret != GP_OK)
 			continue;
-		display_widgets (child, newprefix);
+		display_widgets (p, child, newprefix, dumpval);
 	}
 	free(newprefix);
 }
 
 
+int
+list_all_config_action (GPParams *p) {
+	CameraWidget *rootconfig;
+	int	ret;
+
+	ret = gp_camera_get_config (p->camera, &rootconfig, p->context);
+	if (ret != GP_OK) return ret;
+	display_widgets (p, rootconfig, "", 1);
+	gp_widget_free (rootconfig);
+	return (GP_OK);
+}
 int
 list_config_action (GPParams *p) {
 	CameraWidget *rootconfig;
@@ -1385,7 +1444,7 @@ list_config_action (GPParams *p) {
 
 	ret = gp_camera_get_config (p->camera, &rootconfig, p->context);
 	if (ret != GP_OK) return ret;
-	display_widgets (rootconfig, "");
+	display_widgets (p, rootconfig, "", 0);
 	gp_widget_free (rootconfig);
 	return (GP_OK);
 }
@@ -1455,36 +1514,25 @@ my_strftime(char *s, size_t max, const char *fmt, const struct tm *tm)
 	return strftime(s, max, fmt, tm);
 }
 
-
-
-int
-get_config_action (GPParams *p, const char *name) {
-	CameraWidget *rootconfig,*child;
-	int	ret;
+static int
+print_widget (GPParams *p, const char *name, CameraWidget *widget) {
 	const char *label;
 	CameraWidgetType	type;
+	int ret;
 
-	ret = _find_widget_by_name (p, name, &child, &rootconfig);
+	ret = gp_widget_get_type (widget, &type);
 	if (ret != GP_OK)
 		return ret;
-
-	ret = gp_widget_get_type (child, &type);
-	if (ret != GP_OK) {
-		gp_widget_free (rootconfig);
+	ret = gp_widget_get_label (widget, &label);
+	if (ret != GP_OK)
 		return ret;
-	}
-	ret = gp_widget_get_label (child, &label);
-	if (ret != GP_OK) {
-		gp_widget_free (rootconfig);
-		return ret;
-	}
 
 	printf ("Label: %s\n", label); /* "Label:" is not i18ned, the "label" variable is */
 	switch (type) {
 	case GP_WIDGET_TEXT: {		/* char *		*/
 		char *txt;
 
-		ret = gp_widget_get_value (child, &txt);
+		ret = gp_widget_get_value (widget, &txt);
 		if (ret == GP_OK) {
 			printf ("Type: TEXT\n"); /* parsed by scripts, no i18n */
 			printf ("Current: %s\n",txt);
@@ -1496,9 +1544,9 @@ get_config_action (GPParams *p, const char *name) {
 	case GP_WIDGET_RANGE: {	/* float		*/
 		float	f, t,b,s;
 
-		ret = gp_widget_get_range (child, &b, &t, &s);
+		ret = gp_widget_get_range (widget, &b, &t, &s);
 		if (ret == GP_OK)
-			ret = gp_widget_get_value (child, &f);
+			ret = gp_widget_get_value (widget, &f);
 		if (ret == GP_OK) {
 			printf ("Type: RANGE\n");	/* parsed by scripts, no i18n */
 			printf ("Current: %g\n", f);	/* parsed by scripts, no i18n */
@@ -1513,7 +1561,7 @@ get_config_action (GPParams *p, const char *name) {
 	case GP_WIDGET_TOGGLE: {	/* int		*/
 		int	t;
 
-		ret = gp_widget_get_value (child, &t);
+		ret = gp_widget_get_value (widget, &t);
 		if (ret == GP_OK) {
 			printf ("Type: TOGGLE\n");
 			printf ("Current: %d\n",t);
@@ -1528,7 +1576,7 @@ get_config_action (GPParams *p, const char *name) {
 		struct tm *xtm;
 		char	timebuf[200];
 
-		ret = gp_widget_get_value (child, &t);
+		ret = gp_widget_get_value (widget, &t);
 		if (ret != GP_OK) {
 			gp_context_error (p->context, _("Failed to retrieve values of date/time widget %s."), name);
 			break;
@@ -1546,9 +1594,9 @@ get_config_action (GPParams *p, const char *name) {
 		int cnt, i;
 		char *current;
 
-		ret = gp_widget_get_value (child, &current);
+		ret = gp_widget_get_value (widget, &current);
 		if (ret == GP_OK) {
-			cnt = gp_widget_count_choices (child);
+			cnt = gp_widget_count_choices (widget);
 			if (type == GP_WIDGET_MENU)
 				printf ("Type: MENU\n");
 			else
@@ -1556,7 +1604,7 @@ get_config_action (GPParams *p, const char *name) {
 			printf ("Current: %s\n",current);
 			for ( i=0; i<cnt; i++) {
 				const char *choice;
-				ret = gp_widget_get_choice (child, i, &choice);
+				ret = gp_widget_get_choice (widget, i, &choice);
 				printf ("Choice: %d %s\n", i, choice);
 			}
 		} else {
@@ -1571,8 +1619,21 @@ get_config_action (GPParams *p, const char *name) {
 	case GP_WIDGET_BUTTON:
 		break;
 	}
+	return GP_OK;
+}
+
+
+int
+get_config_action (GPParams *p, const char *name) {
+	CameraWidget *rootconfig,*child;
+	int	ret;
+
+	ret = _find_widget_by_name (p, name, &child, &rootconfig);
+	if (ret != GP_OK)
+		return ret;
+	ret = print_widget (p, name, child);
 	gp_widget_free (rootconfig);
-	return (GP_OK);
+	return ret;
 }
 
 int

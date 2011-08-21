@@ -916,26 +916,12 @@ shell_capture_preview (Camera __unused__ *camera, const char __unused__ *args) {
 
 static int
 shell_wait_event (Camera *camera, const char *args) {
-	int evts = 1;
-	if (args) {
-		if (strchr(args,'s'))
-			evts=-atoi(args);
-		else
-			evts=atoi(args);
-	}
-	return action_camera_wait_event (p, 0, evts);
+	return action_camera_wait_event (p, DT_NO_DOWNLOAD, args);
 }
 
 static int
 shell_capture_tethered (Camera *camera, const char *args) {
-	int evts = 1;
-	if (args) {
-		if (strchr(args,'s'))
-			evts=-atoi(args);
-		else
-			evts=atoi(args);
-	}
-	return action_camera_wait_event (p, 1, evts);
+	return action_camera_wait_event (p, DT_DOWNLOAD, args);
 }
 
 

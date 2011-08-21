@@ -26,6 +26,22 @@
 
 #include <gp-params.h>
 
+enum wait_type {
+	WAIT_TIME,
+	WAIT_EVENTS,
+	WAIT_FRAMES,
+};
+enum download_type { DT_NO_DOWNLOAD, DT_DOWNLOAD };
+struct waitparams {
+	union {
+		int milliseconds;
+		int events;
+		int frames;
+	} u;
+	enum wait_type type;
+	enum download_type downloadtype;
+};
+
 /* Image actions */
 typedef int FileAction    (GPParams *, const char *filename);
 int print_file_action     (GPParams *, const char *filename);
@@ -61,7 +77,7 @@ int action_camera_upload_metadata (GPParams *, const char *folder,
 				   const char *path);
 int action_camera_capture_preview (GPParams *);
 int action_camera_capture_movie (GPParams *, const char *arg);
-int action_camera_wait_event (GPParams *,int downloadflag, int count);
+int action_camera_wait_event (GPParams *, enum download_type dt, const char*args);
 
 /* Other actions */
 int list_cameras_action    (GPParams *);
@@ -74,6 +90,7 @@ int override_usbids_action (GPParams *, int usb_vendor, int usb_product,
 			    int usb_vendor_modified, int usb_product_modified);
 int debug_action           (GPParams *, const char *debug_logfile_name);
 int list_config_action     (GPParams *);
+int list_all_config_action (GPParams *);
 int get_config_action      (GPParams *, const char *name);
 int set_config_action      (GPParams *, const char *name, const char *value);
 int set_config_index_action      (GPParams *, const char *name, const char *value);

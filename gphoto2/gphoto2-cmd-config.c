@@ -147,13 +147,13 @@ show_date (CmdConfig *cmd_config, CameraWidget *date)
 {
 	CDKCALENDAR *calendar = NULL;
 	int day, month, year, selection;
-	time_t time;
+	time_t xtime;
 	struct tm *date_info;
 	const char *label;
 	char title[1024];
 
-	gp_widget_get_value (date, &time);
-	date_info = localtime (&time);
+	gp_widget_get_value (date, &xtime);
+	date_info = localtime (&xtime);
 
 	/* Month in CDK starts with 1 */
 	day = date_info->tm_mday;
@@ -177,15 +177,15 @@ show_date (CmdConfig *cmd_config, CameraWidget *date)
 	selection = activateCDKCalendar (calendar, 0);
 
 	if (calendar->exitType == vNORMAL) {
-		date_info = localtime (&time);
+		date_info = localtime (&xtime);
 
 		/* Month in CDK starts with 1 */
 		date_info->tm_mday = calendar->day;
 		date_info->tm_mon = calendar->month - 1;
 		date_info->tm_year = calendar->year - 1900;
 
-		time = mktime (date_info);
-		gp_widget_set_value (date, &time);
+		xtime = mktime (date_info);
+		gp_widget_set_value (date, &xtime);
 		set_config (cmd_config);
 	}
 
@@ -244,7 +244,7 @@ show_time (CmdConfig *cmd_config, CameraWidget *date)
 	CDKENTRY *entry = NULL;
 	const char *label, *info;
 	char title[1024], time_string[9];
-	time_t time;
+	time_t xtime;
 	struct tm *date_info;
 
 	gp_widget_get_label (date, &label);
@@ -256,8 +256,8 @@ show_time (CmdConfig *cmd_config, CameraWidget *date)
 	if (!entry)
 		return (GP_ERROR);
 
-	gp_widget_get_value (date, &time);
-	date_info = localtime (&time);
+	gp_widget_get_value (date, &xtime);
+	date_info = localtime (&xtime);
 	snprintf (time_string, sizeof (time_string), "%2i:%02i:%02i",
 		  date_info->tm_hour, date_info->tm_min, date_info->tm_sec);
 	setCDKEntryValue (entry, time_string);
@@ -266,11 +266,11 @@ show_time (CmdConfig *cmd_config, CameraWidget *date)
 
 	info = activateCDKEntry (entry, 0);
 	if (entry->exitType == vNORMAL) {
-		date_info = localtime (&time);
+		date_info = localtime (&xtime);
 		sscanf (info, "%d:%d:%d", &date_info->tm_hour,
 			&date_info->tm_min, &date_info->tm_sec);
-		time = mktime (date_info);
-		gp_widget_set_value (date, &time);
+		xtime = mktime (date_info);
+		gp_widget_set_value (date, &xtime);
 		set_config (cmd_config);
 	} 
 	destroyCDKEntry (entry);

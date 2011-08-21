@@ -84,11 +84,11 @@
 #define __unused__
 #endif
 
-static int  debug_option_given = 0;
+static int debug_option_given = 0;
 char glob_cancel = 0;
-static int  glob_frames = 0;
-static int  glob_interval = 0;
-static int	glob_bulblength = 0;
+static int glob_frames = 0;
+static int glob_interval = 0;
+static int glob_bulblength = 0;
 
 GPParams gp_params;
 
@@ -727,14 +727,20 @@ save_captured_file (CameraFilePath *path, int download) {
 			return (result);
 		}
 
-		if (!(gp_params.flags & FLAGS_QUIET))
-			printf (_("Deleting file %s%s%s on the camera\n"),
-				path->folder, pathsep, path->name);
+		if (!(gp_params.flags & FLAGS_KEEP)) {
+			if (!(gp_params.flags & FLAGS_QUIET))
+				printf (_("Deleting file %s%s%s on the camera\n"),
+					path->folder, pathsep, path->name);
 
-		result = delete_file_action (&gp_params, path->name);
-		if (result != GP_OK) {
-			cli_error_print ( _("Could not delete image."));
-			return (result);
+			result = delete_file_action (&gp_params, path->name);
+			if (result != GP_OK) {
+				cli_error_print ( _("Could not delete image."));
+				return (result);
+			}
+		} else {
+			if (!(gp_params.flags & FLAGS_QUIET))
+				printf (_("Keeping file %s%s%s on the camera\n"),
+					path->folder, pathsep, path->name);
 		}
 	}
 	return GP_OK;
@@ -1132,6 +1138,7 @@ typedef enum {
 	ARG_CAPTURE_PREVIEW,
 	ARG_CAPTURE_SOUND,
 	ARG_CAPTURE_TETHERED,
+	ARG_CAPTURE_TETHERED_KEEP,
 	ARG_CONFIG,
 	ARG_DEBUG,
 	ARG_DEBUG_LOGFILE,
@@ -1156,7 +1163,9 @@ typedef enum {
 	ARG_GET_THUMBNAIL,
 	ARG_HELP,
 	ARG_HOOK_SCRIPT,
+	ARG_KEEP,
 	ARG_LIST_CAMERAS,
+	ARG_LIST_ALL_CONFIG,
 	ARG_LIST_CONFIG,
 	ARG_LIST_FILES,
 	ARG_LIST_FOLDERS,
@@ -1165,6 +1174,7 @@ typedef enum {
 	ARG_MKDIR,
 	ARG_MODEL,
 	ARG_NEW,
+	ARG_NO_KEEP,
 	ARG_NO_RECURSE,
 	ARG_NUM_FILES,
 	ARG_PORT,
@@ -1294,6 +1304,13 @@ cb_arg_init (poptContext __unused__ ctx,
 	case ARG_NEW:
 		gp_params.flags |= FLAGS_NEW;
 		break;
+	case ARG_KEEP:
+		gp_params.flags &= ~FLAGS_KEEP;
+		break;
+	case ARG_NO_KEEP:
+		gp_params.flags |= FLAGS_KEEP;
+		break;
+
 	case ARG_NO_RECURSE:
 		gp_params.flags &= ~FLAGS_RECURSE;
 		break;
@@ -1524,6 +1541,9 @@ cb_arg_run (poptContext __unused__ ctx,
 		gp_params.multi_type = MULTI_UPLOAD_META;
 		params->p.r = action_camera_upload_metadata (&gp_params, gp_params.folder, arg);
 		break;
+	case ARG_LIST_ALL_CONFIG:
+		params->p.r = list_all_config_action (&gp_params);
+		break;
 	case ARG_LIST_CONFIG:
 		params->p.r = list_config_action (&gp_params);
 		break;
@@ -1576,29 +1596,11 @@ cb_arg_run (poptContext __unused__ ctx,
 		break;
 	}
 	case ARG_WAIT_EVENT:
-	case ARG_CAPTURE_TETHERED: {
-		int count = 1000000/*events*/;
-		if (!arg) {
-			printf ( _("Waiting for events from camera. Press Ctrl-C to abort.\n"));
-		} else {
-			if (strchr(arg,'s')) { /* exact seconds */ 
-				count=-atoi(arg);
-				printf ( _("Waiting for %d seconds for events from camera. Press Ctrl-C to abort.\n"), -count);
-			} else {
-				count=atoi(arg);
-				printf ( _("Waiting for %d events from camera. Press Ctrl-C to abort.\n"), count);
-			}
-		}
-		switch (opt->val) {
-		case ARG_WAIT_EVENT:
-			params->p.r = action_camera_wait_event (&gp_params, 0, count);
-			break;
-		case ARG_CAPTURE_TETHERED:
-			params->p.r = action_camera_wait_event (&gp_params, 1, count);
-			break;
-		}
+		params->p.r = action_camera_wait_event (&gp_params, DT_NO_DOWNLOAD, arg);
 		break;
-	}
+	case ARG_CAPTURE_TETHERED:
+		params->p.r = action_camera_wait_event (&gp_params, DT_DOWNLOAD, arg);
+		break;
 	case ARG_STORAGE_INFO:
 		params->p.r = print_storage_info (&gp_params);
 		break;
@@ -1797,6 +1799,8 @@ main (int argc, char **argv, char **envp)
 #endif
 		{"list-config", '\0', POPT_ARG_NONE, NULL, ARG_LIST_CONFIG,
 		 N_("List configuration tree"), NULL},
+		{"list-all-config", '\0', POPT_ARG_NONE, NULL, ARG_LIST_ALL_CONFIG,
+		 N_("Dump full configuration tree"), NULL},
 		{"get-config", '\0', POPT_ARG_STRING, NULL, ARG_GET_CONFIG,
 		 N_("Get configuration value"), NULL},
 		{"set-config", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG,
@@ -1809,6 +1813,10 @@ main (int argc, char **argv, char **envp)
 	};
 	const struct poptOption captureOptions[] = {
 		GPHOTO2_POPT_CALLBACK
+		{"keep", '\0', POPT_ARG_NONE, NULL, ARG_KEEP,
+		 N_("Keep images on camera after capturing"), NULL},
+		{"no-keep", '\0', POPT_ARG_NONE, NULL, ARG_NO_KEEP,
+		 N_("Remove images from camera after capturing"), NULL},
 		{"wait-event", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL, ARG_WAIT_EVENT,
 		 N_("Wait for event(s) from camera"), N_("COUNT")},
 		{"wait-event-and-download", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL,
@@ -2060,6 +2068,7 @@ main (int argc, char **argv, char **envp)
 	CHECK_OPT (ARG_CAPTURE_PREVIEW);
 	CHECK_OPT (ARG_CAPTURE_SOUND);
 	CHECK_OPT (ARG_CAPTURE_TETHERED);
+	CHECK_OPT (ARG_CAPTURE_TETHERED_KEEP);
 	CHECK_OPT (ARG_CONFIG);
 	CHECK_OPT (ARG_DELETE_ALL_FILES);
 	CHECK_OPT (ARG_DELETE_FILE);
