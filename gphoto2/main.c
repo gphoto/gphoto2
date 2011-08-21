@@ -545,8 +545,8 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 	        gp_context_error (context, _("Permission denied"));
 	        return GP_ERROR;
 	    }
-        	CR (gp_file_new (&file));
-		tmpfilename = NULL;
+	    CR (gp_file_new (&file));
+	    tmpfilename = NULL;
 	} else {
 		if (time(NULL) & 1) { /* to test both methods. */
 			gp_log (GP_LOG_DEBUG, "save_file_to_file","using fd method");
