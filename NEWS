@@ -1,3 +1,16 @@
+gphoto2 2.4.99.3
+
+ * Added "--keep" and "--no-keep" options for capture tethered
+   and capture image.
+
+ * --wait-event and --capture-tethered can now do:
+   * nr of events (200)
+   * seconds      (100s)
+   * milliseconds (200ms) (1/1000 of a second)
+   * frames       (50f) (number of images)
+
+ * New --list-all-config gives the full config tree.
+
 gphoto2 2.4.99.2
 
  * Updated for new GPPortInfo in libgphoto2 2.5.0
@@ -9,6 +22,32 @@ gphoto2 2.4.99.2
  * Capture mainloop uses trigger capture + waitevent if present.
  * Fixed use-after-free problem in file save
  * Fixed %n to use an incremental counter, instead of a filesystem index.
+
+gphoto2 2.4.10.1
+
+ * Switched %n behaviour to be linear increasing, instead of
+   a folder index.
+
+gphoto2 2.4.10
+
+ * Event loop handling non-waitevent able cameras.
+
+ * --capture-movie (optional arguments: frames, or seconds)
+   now loops over preview capture as fast as possible
+   and writes the frames continously.
+
+   The resulting file is "MotionJPEG" and can be postprocessed
+   or displayed (by mplayer).
+
+   Also output to stdout is possible for pipeing like:
+           gphoto2 --stdout --capture-movie | someotherprogram
+
+gphoto2 2.4.9
+
+ * Capture main event loop rewritten to always use wait event
+   to also support multiple image captures. (JPEG+RAW)
+ * Fixed various bugs and memory leaks.
+ * Translation updates.
 
 gphoto2 2.4.8
 

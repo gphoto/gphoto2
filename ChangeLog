@@ -1,3 +1,16 @@
+2011-08-19  Marcus Meissner  <marcus@jet.franken.de>
+
+	* Added "--keep" and "--no-keep" options for capture tethered
+	  and capture image.
+
+	* --wait-event and --capture-tethered can now do:
+	  * nr of events (200)
+	  * seconds	 (100s)
+	  * milliseconds (200ms) (1/1000 of a second)
+	  * frames	 (50f) (number of images)
+
+	* New --list-all-config gives the full config tree.
+
 2009-09-30  Jonathan McIlnay-Moe <jmacmoe@gmail.com>
 
         * main.c: Added a "bulb" option for capture.
