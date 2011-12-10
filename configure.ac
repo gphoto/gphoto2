@@ -91,6 +91,8 @@ AC_CHECK_FUNCS([signal pause sleep])
 AC_HEADER_STDC
 AC_CHECK_HEADERS([fcntl.h])
 
+AC_CHECK_LIB(m,floor)
+
 
 dnl ---------------------------------------------------------------------------
 dnl pthread: The gphoto2 shell (--shell) keeps up a connection to the 
