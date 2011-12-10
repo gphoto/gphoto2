@@ -28,6 +28,7 @@ GP_CONFIG_MSG([Source code location],[${srcdir}])
 AM_CPPFLAGS="$CPPFLAGS"
 AM_LDFLAGS="$LDFLAGS"
 
+AC_CHECK_LIB(m,floor)
 
 dnl ---------------------------------------------------------------------------
 dnl Some programs we need
