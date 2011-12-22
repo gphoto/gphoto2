@@ -678,8 +678,8 @@ wait_and_handle_event (long waittime, CameraEventType *type, int download) {
 	CameraFilePath	*path;
 
 	if (!type) type = &evtype;
-	data = NULL;
 	evtype = GP_EVENT_UNKNOWN;
+	data = NULL;
 	result = gp_camera_wait_for_event(gp_params.camera, waittime, type, &data, gp_params.context);
 	if (result == GP_ERROR_NOT_SUPPORTED) {
 		*type = GP_EVENT_TIMEOUT;
@@ -778,7 +778,7 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 			gettimeofday (&expose_end_time, NULL);
 			expose_end_time.tv_sec += glob_bulblength;
 			waittime = timediff_now (&expose_end_time);
-			while (waittime > 0) {
+			while(waittime > 0) {
 				result = wait_and_handle_event(waittime, &evtype, download);
 				if (result != GP_OK)
 					return result;
@@ -1087,6 +1087,7 @@ typedef enum {
 	ARG_HELP,
 	ARG_HOOK_SCRIPT,
 	ARG_LIST_CAMERAS,
+	ARG_LIST_ALL_CONFIG,
 	ARG_LIST_CONFIG,
 	ARG_LIST_FILES,
 	ARG_LIST_FOLDERS,
@@ -1451,6 +1452,9 @@ cb_arg_run (poptContext __unused__ ctx,
 		gp_params.multi_type = MULTI_UPLOAD_META;
 		params->p.r = action_camera_upload_metadata (&gp_params, gp_params.folder, arg);
 		break;
+	case ARG_LIST_ALL_CONFIG:
+		params->p.r = list_all_config_action (&gp_params);
+		break;
 	case ARG_LIST_CONFIG:
 		params->p.r = list_config_action (&gp_params);
 		break;
@@ -1724,6 +1728,8 @@ main (int argc, char **argv, char **envp)
 #endif
 		{"list-config", '\0', POPT_ARG_NONE, NULL, ARG_LIST_CONFIG,
 		 N_("List configuration tree"), NULL},
+		{"list-all-config", '\0', POPT_ARG_NONE, NULL, ARG_LIST_ALL_CONFIG,
+		 N_("Dump full configuration tree"), NULL},
 		{"get-config", '\0', POPT_ARG_STRING, NULL, ARG_GET_CONFIG,
 		 N_("Get configuration value"), NULL},
 		{"set-config", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG,
@@ -1805,7 +1811,7 @@ main (int argc, char **argv, char **envp)
 		{"delete-file", 'd', POPT_ARG_STRING, NULL, ARG_DELETE_FILE,
 		 N_("Delete files given in range"), N_("RANGE")},
 		{"delete-all-files", 'D', POPT_ARG_NONE, NULL,
-		 ARG_DELETE_ALL_FILES, N_("Delete all files in folder"), NULL},
+		 ARG_DELETE_ALL_FILES, N_("Delete all files in folder (--no-recurse by default)"), NULL},
 		{"upload-file", 'u', POPT_ARG_STRING, NULL, ARG_UPLOAD_FILE,
 		 N_("Upload a file to camera"), N_("FILENAME")},
 		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,

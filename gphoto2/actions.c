@@ -59,6 +59,8 @@
 #define __unused__
 #endif
 
+static int print_widget (GPParams *p, const char*name, CameraWidget *widget);
+
 int
 delete_all_action (GPParams *p)
 {
@@ -1352,7 +1354,7 @@ debug_action (GPParams *p, const char *debug_logfile_name)
 }
 
 static void
-display_widgets (CameraWidget *widget, char *prefix) {
+display_widgets (GPParams *p, CameraWidget *widget, char *prefix, int dumpval) {
 	int 	ret, n, i;
 	char	*newprefix;
 	const char *label, *name, *uselabel;
@@ -1376,20 +1378,33 @@ display_widgets (CameraWidget *widget, char *prefix) {
 		abort();
 	sprintf(newprefix,"%s/%s",prefix,uselabel);
 
-	if ((type != GP_WIDGET_WINDOW) && (type != GP_WIDGET_SECTION))
+	if ((type != GP_WIDGET_WINDOW) && (type != GP_WIDGET_SECTION)) {
 		printf("%s\n",newprefix);
+		if (dumpval) print_widget (p, newprefix, widget);
+	}
 	for (i=0; i<n; i++) {
 		CameraWidget *child;
 	
 		ret = gp_widget_get_child (widget, i, &child);
 		if (ret != GP_OK)
 			continue;
-		display_widgets (child, newprefix);
+		display_widgets (p, child, newprefix, dumpval);
 	}
 	free(newprefix);
 }
 
 
+int
+list_all_config_action (GPParams *p) {
+	CameraWidget *rootconfig;
+	int	ret;
+
+	ret = gp_camera_get_config (p->camera, &rootconfig, p->context);
+	if (ret != GP_OK) return ret;
+	display_widgets (p, rootconfig, "", 1);
+	gp_widget_free (rootconfig);
+	return (GP_OK);
+}
 int
 list_config_action (GPParams *p) {
 	CameraWidget *rootconfig;
@@ -1397,7 +1412,7 @@ list_config_action (GPParams *p) {
 
 	ret = gp_camera_get_config (p->camera, &rootconfig, p->context);
 	if (ret != GP_OK) return ret;
-	display_widgets (rootconfig, "");
+	display_widgets (p, rootconfig, "", 0);
 	gp_widget_free (rootconfig);
 	return (GP_OK);
 }
@@ -1467,36 +1482,25 @@ my_strftime(char *s, size_t max, const char *fmt, const struct tm *tm)
 	return strftime(s, max, fmt, tm);
 }
 
-
-
-int
-get_config_action (GPParams *p, const char *name) {
-	CameraWidget *rootconfig,*child;
-	int	ret;
+static int
+print_widget (GPParams *p, const char *name, CameraWidget *widget) {
 	const char *label;
 	CameraWidgetType	type;
+	int ret;
 
-	ret = _find_widget_by_name (p, name, &child, &rootconfig);
+	ret = gp_widget_get_type (widget, &type);
 	if (ret != GP_OK)
 		return ret;
-
-	ret = gp_widget_get_type (child, &type);
-	if (ret != GP_OK) {
-		gp_widget_free (rootconfig);
+	ret = gp_widget_get_label (widget, &label);
+	if (ret != GP_OK)
 		return ret;
-	}
-	ret = gp_widget_get_label (child, &label);
-	if (ret != GP_OK) {
-		gp_widget_free (rootconfig);
-		return ret;
-	}
 
 	printf ("Label: %s\n", label); /* "Label:" is not i18ned, the "label" variable is */
 	switch (type) {
 	case GP_WIDGET_TEXT: {		/* char *		*/
 		char *txt;
 
-		ret = gp_widget_get_value (child, &txt);
+		ret = gp_widget_get_value (widget, &txt);
 		if (ret == GP_OK) {
 			printf ("Type: TEXT\n"); /* parsed by scripts, no i18n */
 			printf ("Current: %s\n",txt);
@@ -1508,9 +1512,9 @@ get_config_action (GPParams *p, const char *name) {
 	case GP_WIDGET_RANGE: {	/* float		*/
 		float	f, t,b,s;
 
-		ret = gp_widget_get_range (child, &b, &t, &s);
+		ret = gp_widget_get_range (widget, &b, &t, &s);
 		if (ret == GP_OK)
-			ret = gp_widget_get_value (child, &f);
+			ret = gp_widget_get_value (widget, &f);
 		if (ret == GP_OK) {
 			printf ("Type: RANGE\n");	/* parsed by scripts, no i18n */
 			printf ("Current: %g\n", f);	/* parsed by scripts, no i18n */
@@ -1525,7 +1529,7 @@ get_config_action (GPParams *p, const char *name) {
 	case GP_WIDGET_TOGGLE: {	/* int		*/
 		int	t;
 
-		ret = gp_widget_get_value (child, &t);
+		ret = gp_widget_get_value (widget, &t);
 		if (ret == GP_OK) {
 			printf ("Type: TOGGLE\n");
 			printf ("Current: %d\n",t);
@@ -1535,12 +1539,12 @@ get_config_action (GPParams *p, const char *name) {
 		break;
 	}
 	case GP_WIDGET_DATE:  {		/* int			*/
-		int	ret, t;
+		int	t;
 		time_t	xtime;
 		struct tm *xtm;
 		char	timebuf[200];
 
-		ret = gp_widget_get_value (child, &t);
+		ret = gp_widget_get_value (widget, &t);
 		if (ret != GP_OK) {
 			gp_context_error (p->context, _("Failed to retrieve values of date/time widget %s."), name);
 			break;
@@ -1558,9 +1562,9 @@ get_config_action (GPParams *p, const char *name) {
 		int cnt, i;
 		char *current;
 
-		ret = gp_widget_get_value (child, &current);
+		ret = gp_widget_get_value (widget, &current);
 		if (ret == GP_OK) {
-			cnt = gp_widget_count_choices (child);
+			cnt = gp_widget_count_choices (widget);
 			if (type == GP_WIDGET_MENU)
 				printf ("Type: MENU\n");
 			else
@@ -1568,7 +1572,7 @@ get_config_action (GPParams *p, const char *name) {
 			printf ("Current: %s\n",current);
 			for ( i=0; i<cnt; i++) {
 				const char *choice;
-				ret = gp_widget_get_choice (child, i, &choice);
+				ret = gp_widget_get_choice (widget, i, &choice);
 				printf ("Choice: %d %s\n", i, choice);
 			}
 		} else {
@@ -1583,8 +1587,21 @@ get_config_action (GPParams *p, const char *name) {
 	case GP_WIDGET_BUTTON:
 		break;
 	}
+	return GP_OK;
+}
+
+
+int
+get_config_action (GPParams *p, const char *name) {
+	CameraWidget *rootconfig,*child;
+	int	ret;
+
+	ret = _find_widget_by_name (p, name, &child, &rootconfig);
+	if (ret != GP_OK)
+		return ret;
+	ret = print_widget (p, name, child);
 	gp_widget_free (rootconfig);
-	return (GP_OK);
+	return ret;
 }
 
 int
