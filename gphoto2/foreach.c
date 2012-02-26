@@ -326,7 +326,11 @@ for_each_file_in_range (GPParams *p, FileAction action,
 			if (index[i]) {
 				CR (get_path_for_id (p, p->folder,
 					(unsigned int) i, ffolder, ffile));
-				CR (action (p, ffile));
+				r = action (p, ffile);
+				if (r == GP_OK) continue;
+				/* some cameras do not support downloads of some files */
+				if (r == GP_ERROR_NOT_SUPPORTED) continue;
+				return r;
 			}
 	} else {
 		unsigned int count;
@@ -348,7 +352,8 @@ for_each_file_in_range (GPParams *p, FileAction action,
 				p->folder = ffolder;
 				r = action (p, ffile);
 				p->folder = f;
-				CR (r);
+				/* some cameras do not support downloads of some files */
+				if ((r != GP_OK) && (r != GP_ERROR_NOT_SUPPORTED)) return r;
 				if (action == delete_file_action)
 					count++;
 			}
