@@ -1675,8 +1675,7 @@ report_failure (int result, int argc, char **argv)
 			  "gphoto2 as follows:\n\n"));
 
 		/*
-		 * Print the exact command line to assist
-		 * l^Husers
+		 * Print the exact command line to assist bugreporters
 		 */
 		printf ("    env LANG=C gphoto2 --debug --debug-logfile=my-logfile.txt");
 		for (n = 1; n < argc; n++) {
@@ -1686,8 +1685,8 @@ report_failure (int result, int argc, char **argv)
 				printf(" \"%s\"",argv[n]);
 		}
 		printf ("\n\n");
-		printf ("Please make sure there is sufficient quoting "
-			"around the arguments.\n\n");
+		printf (_("Please make sure there is sufficient quoting "
+			"around the arguments.\n\n"));
 	}
 }
 
