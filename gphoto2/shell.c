@@ -214,7 +214,7 @@ shell_read_line (void)
 	line = malloc (1024);
 	if (!line)
 		return (NULL);
-	printf (SHELL_PROMPT, prompt, p->folder);
+	fputs (prompt, stdout);
 	fflush(stdout);
 	tmp = fgets (line, 1023, stdin);
 	if (tmp == NULL)
