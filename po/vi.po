@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: gphoto2-2.4.14\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2012-04-15 18:07+0200\n"
-"PO-Revision-Date: 2012-04-24 08:31+0700\n"
+"PO-Revision-Date: 2012-06-19 15:54+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
 "Language: vi\n"
@@ -25,29 +25,29 @@ msgstr ""
 #: gphoto2/actions.c:170
 #, c-format
 msgid "Number of files in folder '%s': %i\n"
-msgstr "Tổng tập tin nằm trong thư mục « %s »: %i\n"
+msgstr "Số lượng tập tin nằm trong thư mục \"%s\": %i\n"
 
 #: gphoto2/actions.c:190
 #, c-format
 msgid "There is %d folder in folder '%s'.\n"
 msgid_plural "There are %d folders in folder '%s'.\n"
-msgstr[0] "Có %d thư mục nằm trong thư mục « %s »:\n"
+msgstr[0] "Có %d thư mục nằm trong thư mục \"%s\":\n"
 
 #: gphoto2/actions.c:230
 #, c-format
 msgid "There is no file in folder '%s'.\n"
-msgstr "Không có tập tin nằm trong thư mục « %s »:\n"
+msgstr "Không có tập tin nằm trong thư mục \"%s\":\n"
 
 #: gphoto2/actions.c:233
 #, c-format
 msgid "There is %d file in folder '%s'.\n"
 msgid_plural "There are %d files in folder '%s'.\n"
-msgstr[0] "Có %d tập tin nằm trong thư mục « %s »:\n"
+msgstr[0] "Có %d tập tin nằm trong thư mục \"%s\":\n"
 
 #: gphoto2/actions.c:254
 #, c-format
 msgid "Information on file '%s' (folder '%s'):\n"
-msgstr "Thông tin về tập tin « %s » (thư mục « %s »):\n"
+msgstr "Thông tin về tập tin \"%s\" (thư mục \"%s\"):\n"
 
 #: gphoto2/actions.c:256
 #, c-format
@@ -57,17 +57,17 @@ msgstr "Tập tin:\n"
 #: gphoto2/actions.c:258 gphoto2/actions.c:292 gphoto2/actions.c:308
 #, c-format
 msgid "  None available.\n"
-msgstr "  Không có gì sẵn sàng.\n"
+msgstr "  Không có gì sẵn dùng cả.\n"
 
 #: gphoto2/actions.c:261
 #, c-format
 msgid "  Name:        '%s'\n"
-msgstr "  Tên:        « %s »\n"
+msgstr "  Tên:        \"%s\"\n"
 
 #: gphoto2/actions.c:263 gphoto2/actions.c:295
 #, c-format
 msgid "  Mime type:   '%s'\n"
-msgstr "  Kiểu MIME:   « %s »\n"
+msgstr "  Kiểu MIME:   \"%s\"\n"
 
 #: gphoto2/actions.c:265 gphoto2/actions.c:297
 #, c-format
@@ -182,7 +182,7 @@ msgstr "Dữ liệu EXIF chứa một hình thu nhỏ (%i byte)."
 
 #: gphoto2/actions.c:530
 msgid "gphoto2 has been compiled without EXIF support."
-msgstr "Trình gphoto2 đã được biên dịch không có khả năng hỗ trợ EXIF."
+msgstr "Trình gphoto2 đã được biên dịch mà không có sự hỗ trợ của thư viện EXIF."
 
 #: gphoto2/actions.c:548
 #, c-format
@@ -197,7 +197,7 @@ msgstr "Máy ảnh được hỗ trợ:\n"
 #: gphoto2/actions.c:562
 #, c-format
 msgid "\t\"%s\" (TESTING)\n"
-msgstr "\t\"%s\" (THỬ RA)\n"
+msgstr "\t\"%s\" (THỬ)\n"
 
 #: gphoto2/actions.c:565
 #, c-format
@@ -221,8 +221,8 @@ msgid ""
 "Path                             Description\n"
 "--------------------------------------------------------------\n"
 msgstr ""
-"Đường dẫn\t\tMô tả\n"
-"⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n"
+"Đường dẫn                             Mô tả\n"
+"⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n"
 
 #: gphoto2/actions.c:645 gphoto2/actions.c:650
 #, c-format
@@ -240,7 +240,7 @@ msgstr "Cổng"
 #: gphoto2/actions.c:646
 #, c-format
 msgid "----------------------------------------------------------\n"
-msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n"
+msgstr "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n"
 
 #: gphoto2/actions.c:664
 #, c-format
@@ -271,7 +271,7 @@ msgstr "                                 : %i\n"
 #: gphoto2/actions.c:675
 #, c-format
 msgid "Capture choices                  :\n"
-msgstr "Tùy chọn bắt\t\t\t:\n"
+msgstr "Tùy chọn chụp                  :\n"
 
 #: gphoto2/actions.c:677
 #, c-format
@@ -296,7 +296,7 @@ msgstr "                                 : Xem thử\n"
 #: gphoto2/actions.c:693
 #, c-format
 msgid "                                 : Capture not supported by the driver\n"
-msgstr "                                 : Trình điều khiển không hỗ trợ khả năng bắt\n"
+msgstr "                                 : Trình điều khiển không hỗ trợ khả năng chụp\n"
 
 #: gphoto2/actions.c:695
 #, c-format
@@ -316,22 +316,22 @@ msgstr "Xóa bỏ mọi tập tin nằm trên máy ảnh: %s\n"
 #: gphoto2/actions.c:703
 #, c-format
 msgid "File preview (thumbnail) support : %s\n"
-msgstr "Hỗ trợ xem thử tập tin (hình thu nhỏ): %s\n"
+msgstr "Hỗ trợ xem thử tập tin (dạng thu nhỏ): %s\n"
 
 #: gphoto2/actions.c:706
 #, c-format
 msgid "File upload support              : %s\n"
-msgstr "Hỗ trợ tải tập tin lên\t  : %s\n"
+msgstr "Hỗ trợ tải tập tin lên           : %s\n"
 
 #: gphoto2/actions.c:722
 #, c-format
 msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
-msgstr "Cổng phải có dạng như « serial:/dev/ttyS0 » hay « usb: », nhưng còn thiếu « %s » nên trình này sẽ đoán bạn có ý kiến nào."
+msgstr "Cổng phải có dạng như \"serial:/dev/ttyS0\" hay \"usb:\", nhưng còn thiếu \"%s\" nên tôi đang đoán bạn có ý gì."
 
 #: gphoto2/actions.c:756
 #, c-format
 msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
-msgstr "Bạn đã xác định một cổng (« %s ») không thể được tìm. Hãy xác định một của những cổng được tìm bởi lệnh « gphoto2 --list-ports » và kiểm tra xem lại bạn đã gõ đúng chính tả (tực là có tiền tố « serial: » hay « usb: »)."
+msgstr "Bạn đã xác định một cổng (\"%s\") không thể được tìm. Hãy xác định một của những cổng được tìm bởi lệnh \"gphoto2 --list-ports\" và kiểm tra xem lại bạn đã gõ đúng chính tả (tực là có tiền tố \"serial:\" hay \"usb:\")."
 
 #: gphoto2/actions.c:788
 #, c-format
@@ -386,31 +386,31 @@ msgstr ""
 
 #: gphoto2/actions.c:982
 msgid "Could not open 'movie.mjpg'."
-msgstr "Không thể mở tập tin « movie.mjpg »."
+msgstr "Không thể mở tập tin \"movie.mjpg\"."
 
 #: gphoto2/actions.c:989
 #, c-format
 msgid "Capturing preview frames as movie to '%s'. Press Ctrl-C to abort.\n"
-msgstr "Đang bắt vào « %s » các khung xem thử dưới dạng phim. Bấm Ctrl-C để hủy bỏ.\n"
+msgstr "Đang bắt vào \"%s\" các khung xem thử dưới dạng phim. Bấm Ctrl-C để hủy bỏ.\n"
 
 #: gphoto2/actions.c:993
 #, c-format
 msgid "Capturing preview frames as movie to '%s' for %d seconds.\n"
-msgstr "Đang bắt vào « %s » trong %d giây các khung xem thử dưới dạng phim.\n"
+msgstr "Đang bắt vào \"%s\" trong %d giây các khung xem thử dưới dạng phim.\n"
 
 #: gphoto2/actions.c:998
 #, c-format
 msgid "Capturing %d preview frames as movie to '%s'.\n"
-msgstr "Đang bắt vào « %2$s » %1$d khung xem thử dưới dạng phim.\n"
+msgstr "Đang bắt vào \"%2$s\" %1$d khung xem thử dưới dạng phim.\n"
 
 #: gphoto2/actions.c:1007
 msgid "Movie capture error... Exiting."
-msgstr "Lỗi bắt phim... đang thoát."
+msgstr "Lỗi quay phim... Đang thoát."
 
 #: gphoto2/actions.c:1012
 #, c-format
 msgid "Movie capture error... Unhandled MIME type '%s'."
-msgstr "Lỗi bắt phim... gặp dạng MIME không quản lý « %s »."
+msgstr "Lỗi quay phim... Gặp dạng MIME không quản lý \"%s\"."
 
 #: gphoto2/actions.c:1017
 #, c-format
@@ -451,7 +451,7 @@ msgstr "Chỉ-Đọc"
 #: gphoto2/actions.c:1167
 #, c-format
 msgid "Read-only with delete"
-msgstr "Chỉ-Đọc có xoá"
+msgstr "Chỉ-đọc có xoá"
 
 #: gphoto2/actions.c:1170 gphoto2/actions.c:1180
 #, c-format
@@ -486,7 +486,7 @@ msgstr "Chưa xác định"
 #: gphoto2/actions.c:1205
 #, c-format
 msgid "Generic Flat"
-msgstr "Phẳng giống loài"
+msgstr "Phẳng chung chung"
 
 #: gphoto2/actions.c:1208
 #, c-format
@@ -560,7 +560,7 @@ msgstr "Giá trị %s được gởi qua không phải là giá trị với đi�
 #: gphoto2/actions.c:1652 gphoto2/actions.c:1877
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
-msgstr "Giá trị %f được gởi qua không phải nằm ở trong phạm vị đã ngờ %f - %f."
+msgstr "Giá trị %f được gửi qua không phải nằm ở trong phạm vị đã ngờ %f - %f."
 
 #: gphoto2/actions.c:1658 gphoto2/actions.c:1883
 #, c-format
@@ -586,7 +586,7 @@ msgstr "đúng"
 #: gphoto2/actions.c:1679 gphoto2/actions.c:1904
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
-msgstr "Giá trị đã gởi qua %s không phải là giá trị bật/tắt hợp lệ."
+msgstr "Giá trị đã gửi qua %s không phải là giá trị bật/tắt hợp lệ."
 
 #: gphoto2/actions.c:1685 gphoto2/actions.c:1910
 #, c-format
@@ -596,7 +596,7 @@ msgstr "Việc đặt giá trị %s của ô điều khiển bật/tắt %s bị
 #: gphoto2/actions.c:1698 gphoto2/actions.c:1923
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
-msgstr "Giá trị đã gởi qua %s không phải là giờ hợp lệ, cũng không phải là số nguyên."
+msgstr "Giá trị đã gửi qua %s không phải là giờ hợp lệ, cũng không phải là số nguyên."
 
 #: gphoto2/actions.c:1705 gphoto2/actions.c:1930
 #, c-format
@@ -621,27 +621,27 @@ msgstr "Việc đặt giá trị cấu hình mới %s cho mục nhập cấu hì
 #: gphoto2/actions.c:1828
 #, c-format
 msgid "The %s widget has no indexed list of choices. Use --set-config-value instead."
-msgstr "Ô điều khiển %s không có chỉ mục các sự chọn sẵn sàng. Hãy dùng « --set-config-value » để thay thế."
+msgstr "Ô điều khiển %s không có chỉ mục các sự chọn sẵn sàng. Hãy dùng \"--set-config-value\" để thay thế."
 
 #: gphoto2/foreach.c:254
 #, c-format
 msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
-msgstr "Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có %i tập tin sẵn sàng nằm trong « %s » hay các thư mục con của nó. Hãy lấy một số tập tin hợp lệ từ danh sách tập tin trước tiên."
+msgstr "Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có %i tập tin sẵn sàng nằm trong \"%s\" hay các thư mục con của nó. Hãy lấy một số tập tin hợp lệ từ danh sách tập tin trước tiên."
 
 #: gphoto2/foreach.c:279
 #, c-format
 msgid "There are no files in folder '%s'."
-msgstr "Không có tập tin nằm trong thư mục « %s »."
+msgstr "Không có tập tin nằm trong thư mục \"%s\"."
 
 #: gphoto2/foreach.c:285
 #, c-format
 msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
-msgstr "Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có 1 tập tin sẵn sàng nằm trong « %s » thôi."
+msgstr "Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có 1 tập tin sẵn sàng nằm trong \"%s\" thôi."
 
 #: gphoto2/foreach.c:293
 #, c-format
 msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
-msgstr "Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có %i tập tin sẵn sàng nằm trong « %s ». Hãy lấy một số tập tin hợp lệ từ danh sách tập tin trước tiên."
+msgstr "Số tập tin sai. Bạn đã ghi rõ %i, nhưng chỉ có %i tập tin sẵn sàng nằm trong \"%s\". Hãy lấy một số tập tin hợp lệ từ danh sách tập tin trước tiên."
 
 #: gphoto2/gp-params.c:70
 #, c-format
@@ -711,17 +711,17 @@ msgstr "Chỉ có khả năng đệm bằng số không những số trong tên 
 #: gphoto2/main.c:245
 #, c-format
 msgid "You cannot use %%n zero padding without a precision value!"
-msgstr "Bạn không thể sử dụng khả năng đệm bằng số không kiểu « %%n » khi không có giá trị chính xác !"
+msgstr "Bạn không thể sử dụng khả năng đệm bằng số không kiểu \"%%n\" khi không có giá trị chính xác !"
 
 #: gphoto2/main.c:278
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr "Máy ảnh đã cung cấp một tên tập tin không có hậu tố: « %s »."
+msgstr "Máy ảnh đã cung cấp một tên tập tin không có hậu tố: \"%s\"."
 
 #: gphoto2/main.c:333
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
-msgstr "Định dạng không hợp lệ « %s » (gặp lỗi tại vị trí %i)."
+msgstr "Định dạng không hợp lệ \"%s\" (gặp lỗi tại vị trí %i)."
 
 #: gphoto2/main.c:386
 #, c-format
@@ -741,7 +741,7 @@ msgstr "Nhập tên tập tin mới: "
 #: gphoto2/main.c:414
 #, c-format
 msgid "Saving file as %s\n"
-msgstr "Đang lưu tập tin dạng « %s »\n"
+msgstr "Đang lưu tập tin dạng \"%s\"\n"
 
 #: gphoto2/main.c:507
 msgid "Permission denied"
@@ -750,22 +750,22 @@ msgstr "Quyền bị từ chối"
 #: gphoto2/main.c:632
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
-msgstr "Tập tin mới nằm tại vị trí « %s%s%s » trên máy ảnh\n"
+msgstr "Tập tin mới nằm tại vị trí \"%s%s%s\" trên máy ảnh\n"
 
 #: gphoto2/main.c:661
 #, c-format
 msgid "Deleting file %s%s%s on the camera\n"
-msgstr "Đang xóa bỏ tập tin « %s%s%s » trên máy ảnh\n"
+msgstr "Đang xóa bỏ tập tin \"%s%s%s\" trên máy ảnh\n"
 
 #: gphoto2/main.c:699
 #, c-format
 msgid "Event FOLDER_ADDED %s/%s during wait, ignoring.\n"
-msgstr "Sự kiện « FOLDER_ADDED » (thư mục được thêm) %s/%s xảy ra trong khi đợi nên bỏ qua.\n"
+msgstr "Sự kiện \"FOLDER_ADDED\" (thư mục được thêm) %s/%s xảy ra trong khi đợi nên bỏ qua.\n"
 
 #: gphoto2/main.c:709
 #, c-format
 msgid "Event UNKNOWN %s during wait, ignoring.\n"
-msgstr "Sự kiện « UNKNOWN » (không rõ) %s xảy ra trong khi đợi nên bỏ qua.\n"
+msgstr "Sự kiện \"UNKNOWN\" (không rõ) %s xảy ra trong khi đợi nên bỏ qua.\n"
 
 #: gphoto2/main.c:715
 #, c-format
@@ -808,7 +808,7 @@ msgstr "Không thể lập sự bắt bóng đèn nháy, kết quả %d."
 
 #: gphoto2/main.c:789
 msgid "Could not end capture (bulb mode)."
-msgstr "Không thể kết thúc bắt (chế độ bóng đèn)."
+msgstr "Không thể kết thúc chụp (chế độ bóng đèn)."
 
 #: gphoto2/main.c:801
 msgid "Could not trigger image capture."
@@ -816,12 +816,12 @@ msgstr "Không thể gây nên việc bắt ảnh."
 
 #: gphoto2/main.c:810
 msgid "Could not capture image."
-msgstr "Không thể bắt ảnh."
+msgstr "Không thể chụp ảnh."
 
 #: gphoto2/main.c:818
 #, c-format
 msgid "Capture failed (auto-focus problem?)...\n"
-msgstr "Việc bắt bị lỗi (lỗi tự động lập tiêu điểm ?)...\n"
+msgstr "Việc chụp bị lỗi (lỗi tự động lấy nét?)...\n"
 
 #: gphoto2/main.c:828
 msgid "Could not capture."
@@ -830,7 +830,7 @@ msgstr "Không thể bắt."
 #: gphoto2/main.c:853
 #, c-format
 msgid "Waiting for next capture slot %ld seconds...\n"
-msgstr "Đang đợi khe bắt kế tiếp (%ld giây)...\n"
+msgstr "Đang đợi khe chụp kế tiếp %ld giây...\n"
 
 #: gphoto2/main.c:862 gphoto2/main.c:906
 #, c-format
@@ -873,7 +873,7 @@ msgstr ""
 #: gphoto2/main.c:1186
 #, c-format
 msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
-msgstr "Hãy sử dụng cú pháp « a:b=c:d » để xử lý thiết bị USB nào được phát hiện như « a:b » thành « c:d » thay thế. « a b c d » nên là số dạng hệ thập lục phân bắt đầu với « 0x ».\n"
+msgstr "Hãy sử dụng cú pháp \"a:b=c:d\" để xử lý thiết bị USB nào được phát hiện như \"a:b\" thành \"c:d\" thay thế. \"a b c d\" nên là số dạng hệ thập lục phân bắt đầu với \"0x\".\n"
 
 #: gphoto2/main.c:1343
 msgid "gphoto2 has been compiled without support for CDK."
@@ -914,7 +914,7 @@ msgid ""
 "*** Error (%i: '%s') ***       \n"
 "\n"
 msgstr ""
-"••• Lỗi (%i: « %s ») •••       \n"
+"••• Lỗi (%i: \"%s\") •••       \n"
 "\n"
 
 #: gphoto2/main.c:1596
@@ -927,11 +927,11 @@ msgid ""
 "gphoto2 as follows:\n"
 "\n"
 msgstr ""
-"Để nhận thông điệp gỡ lỗi, hãy sử dụng tùy chọn « --debug ».\n"
+"Để nhận thông điệp gỡ lỗi, hãy sử dụng tùy chọn \"--debug\".\n"
 "Thông điệp gỡ lỗi có thể sẽ giúp đỡ bạn giải quyết vấn đề.\n"
-"Nếu bạn định gởi thông điệp lỗi hay gỡ lỗi cho hộp thư chung\n"
+"Nếu bạn định gửi thông điệp lỗi hay gỡ lỗi cho hộp thư chung\n"
 "nhà phát triển gphoto <gphoto-devel@lists.sourceforge.net>,\n"
-"trước khi gởi thông điệp, hãy chạy gphoto2 như theo đây:\n"
+"trước khi gửi thông điệp, hãy chạy gphoto2 như theo đây:\n"
 
 #: gphoto2/main.c:1617
 #, c-format
@@ -1058,7 +1058,7 @@ msgstr "Đợi sự kiện từ máy ảnh và tải xuống ảnh mới"
 
 #: gphoto2/main.c:1750
 msgid "Capture a quick preview"
-msgstr "Bắt một ảnh xem thử nhanh"
+msgstr "Chụp một ảnh xem thử nhanh"
 
 #: gphoto2/main.c:1752
 msgid "Set bulb exposure time in seconds"
@@ -1070,27 +1070,27 @@ msgstr "GIÂY"
 
 #: gphoto2/main.c:1754
 msgid "Set number of frames to capture (default=infinite)"
-msgstr "Đặt tổng số khung cần bắt (mặc định là vô hạn)"
+msgstr "Đặt tổng số khung cần chụp (mặc định là vô hạn)"
 
 #: gphoto2/main.c:1756
 msgid "Set capture interval in seconds"
-msgstr "Đặt thời gian giữa hai lần bắt, theo giây"
+msgstr "Đặt thời gian giữa hai lần chụp tính bằng giây"
 
 #: gphoto2/main.c:1758
 msgid "Reset capture interval on signal (default=no)"
-msgstr "Đặt lại thời gian giữa hai lần bắt khi nhận tin hiệu (mặc định là Không)"
+msgstr "Đặt lại thời gian giữa hai lần chụp khi nhận tin hiệu (mặc định=no Không)"
 
 #: gphoto2/main.c:1760
 msgid "Capture an image"
-msgstr "Bắt một ảnh"
+msgstr "Chụp một ảnh"
 
 #: gphoto2/main.c:1762
 msgid "Capture an image and download it"
-msgstr "Bắt một ảnh và tải nó về"
+msgstr "Chụp một ảnh và tải nó về"
 
 #: gphoto2/main.c:1764
 msgid "Capture a movie"
-msgstr "Bắt một phim"
+msgstr "Quay một phim"
 
 #: gphoto2/main.c:1764
 msgid "COUNT or SECONDS"
@@ -1098,7 +1098,7 @@ msgstr "ĐẾM hay GIÂY"
 
 #: gphoto2/main.c:1766
 msgid "Capture an audio clip"
-msgstr "Bắt một trích đoạn âm thanh"
+msgstr "Ghi một trích đoạn âm thanh"
 
 #: gphoto2/main.c:1768
 msgid "Wait for shutter release on the camera and download"
@@ -1199,7 +1199,7 @@ msgstr "MẪU TÊN TẬP TIN"
 
 #: gphoto2/main.c:1819
 msgid "Specify camera folder (default=\"/\")"
-msgstr "Chỉ định thư mục máy ảnh (mặc định là « / »)"
+msgstr "Chỉ định thư mục máy ảnh (mặc định là \"/\")"
 
 #: gphoto2/main.c:1819
 msgid "FOLDER"
@@ -1223,7 +1223,7 @@ msgstr "Tự động ghi đè lên tập tin"
 
 #: gphoto2/main.c:1833
 msgid "Send file to stdout"
-msgstr "Gởi tập tin cho thiết bị xuất chuẩn"
+msgstr "Gửi tập tin cho thiết bị xuất chuẩn"
 
 #: gphoto2/main.c:1835
 msgid "Print filesize before data"
@@ -1283,7 +1283,7 @@ msgstr "Cấu hình máy ảnh và phần mềm"
 
 #: gphoto2/main.c:1870
 msgid "Capture an image from or on the camera"
-msgstr "Bắt ảnh từ hay trên máy ảnh"
+msgstr "Chụp ảnh từ hoặc trên máy ảnh"
 
 #: gphoto2/main.c:1872
 msgid "Downloading, uploading and manipulating files"
@@ -1314,7 +1314,7 @@ msgid ""
 "Ranges must be separated by ','."
 msgstr ""
 "%s\n"
-"Phạm vị phải được định giới bằng dấu phẩy « , »."
+"Phạm vị phải được định giới bằng dấu phẩy \",\"."
 
 #: gphoto2/range.c:140
 #, c-format
@@ -1332,7 +1332,7 @@ msgid ""
 "Unexpected character '%c'."
 msgstr ""
 "%s\n"
-"Ký tự bất ngờ « %c »."
+"Ký tự bất ngờ \"%c\"."
 
 #: gphoto2/range.c:204
 #, c-format
@@ -1346,7 +1346,7 @@ msgstr ""
 #: gphoto2/shell.c:65
 #, c-format
 msgid "*** Error (%i: '%s') ***"
-msgstr "••• Lỗi (%i: « %s ») •••"
+msgstr "••• Lỗi (%i: \"%s\") •••"
 
 #: gphoto2/shell.c:121
 msgid "Change to a directory on the camera"
@@ -1445,7 +1445,7 @@ msgstr "tên=chỉ_mục_giá_trị"
 
 #: gphoto2/shell.c:150
 msgid "Capture a single image"
-msgstr "Bắt một ảnh riêng lẻ"
+msgstr "Chụp một ảnh riêng lẻ"
 
 #: gphoto2/shell.c:151
 msgid "Capture a single image and download it"
@@ -1453,7 +1453,7 @@ msgstr "Bắt một ảnh riêng lẻ và tải nó về"
 
 #: gphoto2/shell.c:152
 msgid "Capture a preview image"
-msgstr "Bắt một ảnh xem thử"
+msgstr "Chụp một ảnh xem thử"
 
 #: gphoto2/shell.c:153
 msgid "Wait for an event"
@@ -1478,7 +1478,7 @@ msgstr "Lệnh không hợp lệ."
 #: gphoto2/shell.c:489
 #, c-format
 msgid "The command '%s' requires an argument."
-msgstr "Lệnh « %s » cần đến một đối số."
+msgstr "Lệnh \"%s\" cần đến một đối số."
 
 #: gphoto2/shell.c:542
 msgid "Invalid path."
@@ -1491,42 +1491,42 @@ msgstr "Không tìm thấy thư mục chính."
 #: gphoto2/shell.c:597
 #, c-format
 msgid "Could not change to local directory '%s'."
-msgstr "Không thể chuyển đổi sang thư mục cục bộ « %s »."
+msgstr "Không thể chuyển đổi sang thư mục cục bộ \"%s\"."
 
 #: gphoto2/shell.c:600
 #, c-format
 msgid "Local directory now '%s'."
-msgstr "Thư mục cục bộ lúc bây giờ là « %s »."
+msgstr "Thư mục cục bộ lúc bây giờ là \"%s\"."
 
 #: gphoto2/shell.c:638
 #, c-format
 msgid "Remote directory now '%s'."
-msgstr "Thư mục ở xa lúc bây giờ là « %s »."
+msgstr "Thư mục ở xa lúc bây giờ là \"%s\"."
 
 #: gphoto2/shell.c:854
 #, c-format
 msgid "set-config needs a second argument.\n"
-msgstr "Lệnh đặt cấu hình « set-config » yêu cầu đối số thứ hai.\n"
+msgstr "Lệnh đặt cấu hình \"set-config\" yêu cầu đối số thứ hai.\n"
 
 #: gphoto2/shell.c:875
 #, c-format
 msgid "set-config-value needs a second argument.\n"
-msgstr "Lệnh đặt giá trị cấu hình « set-config-value » yêu cầu đối số thứ hai.\n"
+msgstr "Lệnh đặt giá trị cấu hình \"set-config-value\" yêu cầu đối số thứ hai.\n"
 
 #: gphoto2/shell.c:896
 #, c-format
 msgid "set-config-index needs a second argument.\n"
-msgstr "Lệnh đặt chỉ mục cấu hình « set-config-index » yêu cầu đối số thứ hai.\n"
+msgstr "Lệnh đặt chỉ mục cấu hình \"set-config-index\" yêu cầu đối số thứ hai.\n"
 
 #: gphoto2/shell.c:962
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
-msgstr "Không tìm thấy lệnh « %s ». Hãy sử dụng lệnh « help » (trợ giúp) để xem danh sách các lệnh sẵn sàng."
+msgstr "Không tìm thấy lệnh \"%s\". Hãy sử dụng lệnh \"help\" (trợ giúp) để xem danh sách các lệnh sẵn sàng."
 
 #: gphoto2/shell.c:969
 #, c-format
 msgid "Help on \"%s\":"
-msgstr "Trợ giúp về « %s »:"
+msgstr "Trợ giúp về \"%s\":"
 
 #: gphoto2/shell.c:971
 #, c-format
@@ -1551,7 +1551,7 @@ msgstr "Lệnh sẵn sàng:"
 #: gphoto2/shell.c:1002
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
-msgstr "Để xem trợ giúp về một lệnh nào đó, hãy gõ « help tên_lệnh »."
+msgstr "Để xem trợ giúp về một lệnh nào đó, hãy gõ \"help tên_lệnh\"."
 
 #~ msgid "You cannot use '%%n' in combination with non-persistent files!"
-#~ msgstr "Bạn không thể sử dụng « %%n » với tập tin không bền bỉ !"
+#~ msgstr "Bạn không thể sử dụng \"%%n\" với tập tin không bền bỉ !"
