@@ -1305,10 +1305,10 @@ cb_arg_init (poptContext __unused__ ctx,
 		gp_params.flags |= FLAGS_NEW;
 		break;
 	case ARG_KEEP:
-		gp_params.flags &= ~FLAGS_KEEP;
+		gp_params.flags |= FLAGS_KEEP;
 		break;
 	case ARG_NO_KEEP:
-		gp_params.flags |= FLAGS_KEEP;
+		gp_params.flags &= ~FLAGS_KEEP;
 		break;
 
 	case ARG_NO_RECURSE:
