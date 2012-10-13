@@ -225,18 +225,18 @@ list_files_action (GPParams *p)
         }
 	for (i = 0; i < count; i++) {
 		CL (gp_list_get_name (list, i, &name), list);
-		CL (print_file_action (p, name), list);
+		CL (print_file_action (p, p->folder, name), list);
 	}
 	gp_list_free (list);
 	return (GP_OK);
 }
 
 int
-print_info_action (GPParams *p, const char *filename)
+print_info_action (GPParams *p, const char *folder, const char *filename)
 {
 	CameraFileInfo info;
 
-	CR (gp_camera_file_get_info (p->camera, p->folder, filename, &info,
+	CR (gp_camera_file_get_info (p->camera, folder, filename, &info,
 				     p->context));
 
 	printf (_("Information on file '%s' (folder '%s'):\n"),
@@ -306,14 +306,14 @@ print_info_action (GPParams *p, const char *filename)
 }
 
 int
-print_file_action (GPParams *p, const char *filename)
+print_file_action (GPParams *p, const char *folder, const char *filename)
 {
 	static int x = 0;
 
 	if (p->flags & FLAGS_NEW) {
 		CameraFileInfo info;
 		
-		CR (gp_camera_file_get_info (p->camera, p->folder,
+		CR (gp_camera_file_get_info (p->camera, folder,
 					     filename, &info, p->context));
 		if (info.file.fields & GP_FILE_INFO_STATUS &&
 		    info.file.status == GP_FILE_STATUS_DOWNLOADED) {
@@ -326,7 +326,7 @@ print_file_action (GPParams *p, const char *filename)
 		printf ("\"%s\"\n", filename);
 	else {
 		CameraFileInfo info;
-		if (gp_camera_file_get_info (p->camera, p->folder, filename,
+		if (gp_camera_file_get_info (p->camera, folder, filename,
 					     &info, NULL) == GP_OK) {
 		    printf("#%-5i %-27s", x+1, filename);
 		    if (info.file.fields & GP_FILE_INFO_PERMISSIONS) {
@@ -350,72 +350,72 @@ print_file_action (GPParams *p, const char *filename)
 }
 
 int
-save_file_action (GPParams *p, const char *filename)
+save_file_action (GPParams *p, const char *folder, const char *filename)
 {
 	return (save_file_to_file (p->camera, p->context, p->flags,
-				   p->folder, filename, GP_FILE_TYPE_NORMAL));
+				   folder, filename, GP_FILE_TYPE_NORMAL));
 }
 
 int
-save_exif_action (GPParams *p, const char *filename)
+save_exif_action (GPParams *p, const char *folder, const char *filename)
 {
 	return (save_file_to_file (p->camera, p->context, p->flags,
-				   p->folder, filename, GP_FILE_TYPE_EXIF));
+				   folder, filename, GP_FILE_TYPE_EXIF));
 }
 
 int
-save_meta_action (GPParams *p, const char *filename)
+save_meta_action (GPParams *p, const char *folder, const char *filename)
 {
 	return (save_file_to_file (p->camera, p->context, p->flags,
-				   p->folder, filename, GP_FILE_TYPE_METADATA));
+				   folder, filename, GP_FILE_TYPE_METADATA));
 }
 
 int
-save_thumbnail_action (GPParams *p, const char *filename)
+save_thumbnail_action (GPParams *p, const char *folder, const char *filename)
 {
 	return (save_file_to_file (p->camera, p->context, p->flags,
-				   p->folder, filename, GP_FILE_TYPE_PREVIEW));
+				   folder, filename, GP_FILE_TYPE_PREVIEW));
 }
 
 int
-save_raw_action (GPParams *p, const char *filename)
+save_raw_action (GPParams *p, const char *folder, const char *filename)
 {
 	return (save_file_to_file (p->camera, p->context, p->flags,
-				   p->folder, filename, GP_FILE_TYPE_RAW));
+				   folder, filename, GP_FILE_TYPE_RAW));
 }
 
 int
-save_audio_action (GPParams *p, const char *filename)
+save_audio_action (GPParams *p, const char *folder, const char *filename)
 {
 	return (save_file_to_file (p->camera, p->context, p->flags,
-				   p->folder, filename, GP_FILE_TYPE_AUDIO));
+				   folder, filename, GP_FILE_TYPE_AUDIO));
 }
 
 int
-save_all_audio_action (GPParams *p, const char *filename)
+save_all_audio_action (GPParams *p, const char *folder, const char *filename)
 {
 	/* not every file has an associated audio file */
-	if (camera_file_exists(p->camera, p->context, p->folder, filename,
+	if (camera_file_exists(p->camera, p->context, folder, filename,
 			       GP_FILE_TYPE_AUDIO))
 		return (save_file_to_file (p->camera, p->context, p->flags,
-					   p->folder, filename,
+					   folder, filename,
 					   GP_FILE_TYPE_AUDIO));
 	return GP_OK;
 }
 
 int
-delete_file_action (GPParams *p, const char *filename)
+delete_file_action (GPParams *p, const char *folder, const char *filename)
 {
 	if (p->flags & FLAGS_NEW) {
 		CameraFileInfo info;
 		
-		CR (gp_camera_file_get_info (p->camera, p->folder, filename,
+		CR (gp_camera_file_get_info (p->camera, folder, filename,
 					     &info, p->context));
 		if (info.file.fields & GP_FILE_INFO_STATUS &&
 		    info.file.status == GP_FILE_STATUS_DOWNLOADED)
 			return (GP_OK);
 	}
-	return (gp_camera_file_delete (p->camera, p->folder, filename,
+	return (gp_camera_file_delete (p->camera, folder, filename,
 				       p->context));
 }
 
@@ -456,7 +456,7 @@ print_hline (void)
 #endif
 
 int
-print_exif_action (GPParams *p, const char *filename)
+print_exif_action (GPParams *p, const char *folder, const char *filename)
 {
 #ifdef HAVE_LIBEXIF
         CameraFile *file;
@@ -468,7 +468,7 @@ print_exif_action (GPParams *p, const char *filename)
 #endif
 
         CR (gp_file_new (&file));
-        CRU (gp_camera_file_get (p->camera, p->folder, filename,
+        CRU (gp_camera_file_get (p->camera, folder, filename,
 				 GP_FILE_TYPE_EXIF, file, p->context), file);
         CRU (gp_file_get_data_and_size (file, &data, &size), file);
         ed = exif_data_new_from_data ((unsigned char *)data, size);
@@ -1155,7 +1155,7 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 
 			if (!(p->flags & FLAGS_KEEP)) {
 				do {
-					ret = delete_file_action (p, fn->name);
+					ret = delete_file_action (p, p->folder, fn->name);
 				} while (ret == GP_ERROR_CAMERA_BUSY);
 				if (ret != GP_OK) {
 					cli_error_print ( _("Could not delete image."));

@@ -138,12 +138,12 @@ for_each_file (GPParams *p, FileAction action)
 	if (p->flags & FLAGS_REVERSE) {
 		for (i = count ; i--; ) {
 			CL (gp_list_get_name (list, i, &name), list);
-			CL (action (p, name), list);
+			CL (action (p, p->folder, name), list);
 		}
 	} else {
 		for (i = 0; i < count; i++) {
 			CL (gp_list_get_name (list, i, &name), list);
-			CL (action (p, name), list);
+			CL (action (p, p->folder, name), list);
 		}
 	}
 
@@ -313,7 +313,7 @@ for_each_file_in_range (GPParams *p, FileAction action,
 {
 	char	index[MAX_IMAGE_NUMBER];
 	int 	i, max = 0, r;
-	char ffolder[MAX_FOLDER_LEN], ffile[MAX_FILE_LEN], *f;
+	char ffolder[MAX_FOLDER_LEN], ffile[MAX_FILE_LEN];
 
 	memset(index, 0, MAX_IMAGE_NUMBER);
 
@@ -326,7 +326,7 @@ for_each_file_in_range (GPParams *p, FileAction action,
 			if (index[i]) {
 				CR (get_path_for_id (p, p->folder,
 					(unsigned int) i, ffolder, ffile));
-				r = action (p, ffile);
+				r = action (p, ffolder, ffile);
 				if (r == GP_OK) continue;
 				/* some cameras do not support downloads of some files */
 				if (r == GP_ERROR_NOT_SUPPORTED) continue;
@@ -348,10 +348,7 @@ for_each_file_in_range (GPParams *p, FileAction action,
 				CR (get_path_for_id (p, p->folder,
 					(unsigned int) i - count,
 					ffolder, ffile));
-				f = p->folder;
-				p->folder = ffolder;
-				r = action (p, ffile);
-				p->folder = f;
+				r = action (p, ffolder, ffile);
 				/* some cameras do not support downloads of some files */
 				if ((r != GP_OK) && (r != GP_ERROR_NOT_SUPPORTED)) return r;
 				if (action == delete_file_action)

@@ -605,6 +605,34 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
         return (res);
 }
 
+static void
+dissolve_filename (
+	const char *folder, const char *filename,
+	char **newfolder, char **newfilename
+) {
+	char *nfolder, *s;
+
+	s = strrchr (filename, '/');
+	if (!s) {
+		*newfolder = strdup (folder);
+		*newfilename = strdup (filename);
+		return;
+	}
+	while (filename[0] == '/')
+		filename++;
+	nfolder = malloc (strlen (folder) + 1 + (s-filename) + 1);
+	strcpy (nfolder, folder);
+	if (strcmp (nfolder, "/")) strcat (nfolder, "/"); /* if its not the root directory, append / */
+	memcpy (nfolder+strlen(nfolder), filename, (s-filename));
+	nfolder[strlen (folder) + 1 + (s-filename)-1] = '\0';
+	*newfolder   = nfolder;
+	*newfilename = strdup (s+1);
+#if 0
+	fprintf (stderr, "%s - %s dissolved to %s - %s\n", folder, filename, *newfolder, *newfilename);
+#endif
+}
+
+
 
 /*! \brief parse range, download specified files, or their
  *         thumbnails according to thumbnail argument, and save to files.
@@ -620,9 +648,16 @@ get_file_common (const char *arg, CameraFileType type )
 	 * If the user specified the file directly (and not a number),
 	 * get that file.
 	 */
-        if (strchr (arg, '.'))
-                return (save_file_to_file (gp_params.camera, gp_params.context, gp_params.flags,
-					   gp_params.folder, arg, type));
+        if (strchr (arg, '.')) {
+		int ret;
+		char *newfolder, *newfilename;
+
+		dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
+                ret = save_file_to_file (gp_params.camera, gp_params.context, gp_params.flags,
+					   newfolder, newfilename, type);
+		free (newfolder); free (newfilename);
+		return ret;
+	}
 
         switch (type) {
         case GP_FILE_TYPE_PREVIEW:
@@ -732,7 +767,7 @@ save_captured_file (CameraFilePath *path, int download) {
 				printf (_("Deleting file %s%s%s on the camera\n"),
 					path->folder, pathsep, path->name);
 
-			result = delete_file_action (&gp_params, path->name);
+			result = delete_file_action (&gp_params, path->folder, path->name);
 			if (result != GP_OK) {
 				cli_error_print ( _("Could not delete image."));
 				return (result);
@@ -1386,7 +1421,6 @@ cb_arg_init (poptContext __unused__ ctx,
 	}
 }
 
-
 /*! \brief popt callback with type CALLBACK_PARAMS_TYPE_RUN
  */
 
@@ -1396,6 +1430,8 @@ cb_arg_run (poptContext __unused__ ctx,
 	    const struct poptOption *opt, const char *arg,
 	    CallbackParams *params)
 {
+	char *newfilename = NULL, *newfolder = NULL;
+
 	switch (opt->val) {
 	case ARG_ABILITIES:
 		params->p.r = action_camera_show_abilities (&gp_params);
@@ -1441,7 +1477,9 @@ cb_arg_run (poptContext __unused__ ctx,
 		gp_params.multi_type = MULTI_DELETE;
 		/* Did the user specify a file or a range? */
 		if (strchr (arg, '.')) {
-			params->p.r = delete_file_action (&gp_params, arg);
+			dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
+			params->p.r = delete_file_action (&gp_params, newfolder, newfilename);
+			free (newfolder); free (newfilename);
 			break;
 		}
 		params->p.r = for_each_file_in_range (&gp_params,
@@ -1498,33 +1536,40 @@ cb_arg_run (poptContext __unused__ ctx,
 		params->p.r = action_camera_manual (&gp_params);
 		break;
 	case ARG_RMDIR:
+		dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
 		params->p.r = gp_camera_folder_remove_dir (gp_params.camera,
-							   gp_params.folder, arg, gp_params.context);
+							   newfolder, newfilename, gp_params.context);
+		free (newfolder); free (newfilename);
 		break;
 	case ARG_NUM_FILES:
 		params->p.r = num_files_action (&gp_params);
 		break;
 	case ARG_MKDIR:
+		dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
 		params->p.r = gp_camera_folder_make_dir (gp_params.camera,
-							 gp_params.folder, arg, gp_params.context);
+							 newfolder, newfilename, gp_params.context);
+		free (newfolder); free (newfilename);
 		break;
 	case ARG_SHELL:
 		params->p.r = shell_prompt (&gp_params);
 		break;
 	case ARG_SHOW_EXIF:
 		/* Did the user specify a file or a range? */
-		if (strchr (arg, '.')) { 
-			params->p.r = print_exif_action (&gp_params, arg); 
+		if (strchr (arg, '.')) {
+			dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
+			params->p.r = print_exif_action (&gp_params, newfolder, newfilename); 
+			free (newfolder); free (newfilename);
 			break; 
 		} 
 		params->p.r = for_each_file_in_range (&gp_params, 
 						      print_exif_action, arg); 
 		break;
 	case ARG_SHOW_INFO:
-
 		/* Did the user specify a file or a range? */
 		if (strchr (arg, '.')) {
-			params->p.r = print_info_action (&gp_params, arg);
+			dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
+			params->p.r = print_info_action (&gp_params, newfolder, newfilename);
+			free (newfolder); free (newfilename);
 			break;
 		}
 		params->p.r = for_each_file_in_range (&gp_params,
@@ -1535,10 +1580,12 @@ cb_arg_run (poptContext __unused__ ctx,
 		break;
 	case ARG_UPLOAD_FILE:
 		gp_params.multi_type = MULTI_UPLOAD;
+		/* Note: do not normalize folder/filename, as -u allows local filenames with paths */
 		params->p.r = action_camera_upload_file (&gp_params, gp_params.folder, arg);
 		break;
 	case ARG_UPLOAD_METADATA:
 		gp_params.multi_type = MULTI_UPLOAD_META;
+		/* Note: do not normalize folder/filename, as -u-meta allows local filenames with paths */
 		params->p.r = action_camera_upload_metadata (&gp_params, gp_params.folder, arg);
 		break;
 	case ARG_LIST_ALL_CONFIG:
@@ -2296,7 +2343,7 @@ main (int argc, char **argv, char **envp)
 		const char *arg;
 
 		while ((cb_params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
-			CR_MAIN (delete_file_action (&gp_params, arg));
+			CR_MAIN (delete_file_action (&gp_params, gp_params.folder, arg));
 		}
 		break;
 	}

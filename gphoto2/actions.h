@@ -43,18 +43,18 @@ struct waitparams {
 };
 
 /* Image actions */
-typedef int FileAction    (GPParams *, const char *filename);
-int print_file_action     (GPParams *, const char *filename);
-int print_exif_action     (GPParams *, const char *filename);
-int print_info_action     (GPParams *, const char *filename);
-int save_file_action      (GPParams *, const char *filename);
-int save_thumbnail_action (GPParams *, const char *filename);
-int save_raw_action       (GPParams *, const char *filename);
-int save_audio_action     (GPParams *, const char *filename);
-int save_all_audio_action (GPParams *, const char *filename);
-int save_exif_action      (GPParams *, const char *filename);
-int save_meta_action      (GPParams *, const char *filename);
-int delete_file_action    (GPParams *, const char *filename);
+typedef int FileAction    (GPParams *, const char *folder, const char *filename);
+int print_file_action     (GPParams *, const char *folder, const char *filename);
+int print_exif_action     (GPParams *, const char *folder, const char *filename);
+int print_info_action     (GPParams *, const char *folder, const char *filename);
+int save_file_action      (GPParams *, const char *folder, const char *filename);
+int save_thumbnail_action (GPParams *, const char *folder, const char *filename);
+int save_raw_action       (GPParams *, const char *folder, const char *filename);
+int save_audio_action     (GPParams *, const char *folder, const char *filename);
+int save_all_audio_action (GPParams *, const char *folder, const char *filename);
+int save_exif_action      (GPParams *, const char *folder, const char *filename);
+int save_meta_action      (GPParams *, const char *folder, const char *filename);
+int delete_file_action    (GPParams *, const char *folder, const char *filename);
 
 /* Folder actions */
 typedef int FolderAction  (GPParams *);

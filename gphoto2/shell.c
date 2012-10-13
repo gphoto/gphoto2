@@ -710,7 +710,7 @@ shell_file_action (Camera __unused__ *camera, GPContext __unused__ *context,
 		CHECK (shell_arg (args, x, arg));
 		CHECK (shell_construct_path (folder, arg,
 					     dest_folder, dest_filename));
-		CHECK (action (p, dest_filename));
+		CHECK (action (p, dest_folder, dest_filename));
 	}
 
 	return (GP_OK);

@@ -1,3 +1,12 @@
+gphoto2 2.5.0.1
+
+ * Allow passing absolute filenames to
+   -p, -d, -r/--rmdir, -m/--mkdir, -t, --show-info, --get-metadata,
+   --get-raw-data, --get-audio-data,
+
+   like e.g.:
+   gphoto2 -p /store_00010001/DCIM/100D7000/DSC_0001.JPG
+
 gphoto2 2.5.0
 
  * Added "--keep" and "--no-keep" options for capture tethered
