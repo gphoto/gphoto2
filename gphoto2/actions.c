@@ -174,14 +174,22 @@ list_folders_action (GPParams *p)
 	CL (gp_camera_folder_list_folders (p->camera, p->folder, list,
 					   p->context), list);
 	CL (count = gp_list_count (list), list);
-        printf(ngettext(
-		"There is %d folder in folder '%s'.\n", 
-		"There are %d folders in folder '%s'.\n",
-		count
-	), count, p->folder);
+	if (!(p->flags & FLAGS_QUIET))
+		printf(ngettext(
+			"There is %d folder in folder '%s'.\n", 
+			"There are %d folders in folder '%s'.\n",
+			count
+		), count, p->folder);
+
 	for (i = 0; i < count; i++) {
 		CL (gp_list_get_name (list, i, &name), list);
-		printf (" - %s\n", name);
+		if (p->flags & FLAGS_QUIET) {
+			if (!strcmp(p->folder,"/"))
+				printf ("/%s\n", name);
+			else
+				printf ("%s/%s\n", p->folder, name);
+		} else
+			printf (" - %s\n", name);
 	}
 	gp_list_free (list);
 	return (GP_OK);
@@ -213,16 +221,19 @@ list_files_action (GPParams *p)
 		}
 	}
 	else
-	  filecount = count;
-        if (filecount == 0) { /* 0 is weird still, despite ngettext() */
-	   printf(_("There is no file in folder '%s'.\n"), p->folder);
-        } else {
-	   printf(ngettext(
-		"There is %d file in folder '%s'.\n",
-		"There are %d files in folder '%s'.\n",
-		filecount
-	   ), filecount, p->folder);
-        }
+		filecount = count;
+
+	if (!(p->flags & FLAGS_QUIET)) { /* do not print that in quiet mode */
+        	if (filecount == 0) { /* 0 is weird still, despite ngettext() */
+			printf(_("There is no file in folder '%s'.\n"), p->folder);
+		} else {
+			printf(ngettext(
+				"There is %d file in folder '%s'.\n",
+				"There are %d files in folder '%s'.\n",
+				filecount
+			), filecount, p->folder);
+		}
+	}
 	for (i = 0; i < count; i++) {
 		CL (gp_list_get_name (list, i, &name), list);
 		CL (print_file_action (p, p->folder, name), list);
@@ -323,7 +334,7 @@ print_file_action (GPParams *p, const char *folder, const char *filename)
 	}
 
 	if (p->flags & FLAGS_QUIET)
-		printf ("\"%s\"\n", filename);
+		printf ("%s/%s\n", folder, filename);
 	else {
 		CameraFileInfo info;
 		if (gp_camera_file_get_info (p->camera, folder, filename,
