@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gphoto2 2.1.5\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-03 20:02+0200\n"
+"POT-Creation-Date: 2012-10-14 11:34+0200\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -451,21 +451,21 @@ msgstr ""
 msgid "Waiting for %d events from camera. Press Ctrl-C to abort.\n"
 msgstr ""
 
-#: gphoto2/actions.c:1138 gphoto2/main.c:711
+#: gphoto2/actions.c:1138 gphoto2/main.c:746
 #, fuzzy
 msgid "Could not set folder."
 msgstr "OYA Gushyiraho Ububiko"
 
-#: gphoto2/actions.c:1144 gphoto2/main.c:718
+#: gphoto2/actions.c:1144 gphoto2/main.c:753
 #, fuzzy
 msgid "Could not get image."
 msgstr "OYA Kubona Ishusho"
 
-#: gphoto2/actions.c:1151 gphoto2/main.c:725
+#: gphoto2/actions.c:1151 gphoto2/main.c:760
 msgid "Buggy libcanon.so?"
 msgstr ""
 
-#: gphoto2/actions.c:1161 gphoto2/main.c:737
+#: gphoto2/actions.c:1161 gphoto2/main.c:772
 #, fuzzy
 msgid "Could not delete image."
 msgstr "OYA Gusiba Ishusho"
@@ -807,160 +807,160 @@ msgstr "IDOSIYE Nka"
 msgid "Permission denied"
 msgstr "Uruhushya"
 
-#: gphoto2/main.c:672
+#: gphoto2/main.c:707
 #, fuzzy
 msgid "Could not trigger capture."
 msgstr "OYA"
 
-#: gphoto2/main.c:702
+#: gphoto2/main.c:737
 #, fuzzy, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "IDOSIYE ni in Ahantu ku i"
 
-#: gphoto2/main.c:732
+#: gphoto2/main.c:767
 #, fuzzy, c-format
 msgid "Deleting file %s%s%s on the camera\n"
 msgstr "IDOSIYE ku i"
 
-#: gphoto2/main.c:742
+#: gphoto2/main.c:777
 #, fuzzy, c-format
 msgid "Keeping file %s%s%s on the camera\n"
 msgstr "IDOSIYE ku i"
 
-#: gphoto2/main.c:775
+#: gphoto2/main.c:810
 #, c-format
 msgid "Event FOLDER_ADDED %s/%s during wait, ignoring.\n"
 msgstr ""
 
-#: gphoto2/main.c:785
+#: gphoto2/main.c:820
 #, c-format
 msgid "Event UNKNOWN %s during wait, ignoring.\n"
 msgstr ""
 
-#: gphoto2/main.c:791
+#: gphoto2/main.c:826
 #, c-format
 msgid "Unknown event type %d during bulb wait, ignoring.\n"
 msgstr ""
 
-#: gphoto2/main.c:809
+#: gphoto2/main.c:844
 #, fuzzy
 msgid "Could not get capabilities?"
 msgstr "OYA Kubona Ishusho"
 
-#: gphoto2/main.c:817
+#: gphoto2/main.c:852
 #, fuzzy, c-format
 msgid "Time-lapse mode enabled (interval: %ds).\n"
 msgstr "Ubwoko Bikora Intera"
 
-#: gphoto2/main.c:820
+#: gphoto2/main.c:855
 #, c-format
 msgid "Standing by waiting for SIGUSR1 to capture.\n"
 msgstr ""
 
-#: gphoto2/main.c:826
+#: gphoto2/main.c:861
 #, fuzzy, c-format
 msgid "Bulb mode enabled (exposure time: %ds).\n"
 msgstr "Ubwoko Bikora Intera"
 
-#: gphoto2/main.c:839
+#: gphoto2/main.c:874
 #, fuzzy, c-format
 msgid "Capturing frame #%d...\n"
 msgstr "Ikadiri"
 
-#: gphoto2/main.c:841
+#: gphoto2/main.c:876
 #, fuzzy, c-format
 msgid "Capturing frame #%d/%d...\n"
 msgstr "Ikadiri"
 
-#: gphoto2/main.c:851
+#: gphoto2/main.c:886
 #, fuzzy, c-format
 msgid "Could not set bulb capture, result %d."
 msgstr "OYA"
 
-#: gphoto2/main.c:865
+#: gphoto2/main.c:900
 #, fuzzy
 msgid "Could not end capture (bulb mode)."
 msgstr "OYA"
 
-#: gphoto2/main.c:876
+#: gphoto2/main.c:911
 #, fuzzy
 msgid "Could not trigger image capture."
 msgstr "OYA Kubona Ishusho"
 
-#: gphoto2/main.c:882
+#: gphoto2/main.c:917
 #, fuzzy
 msgid "Could not capture image."
 msgstr "OYA"
 
-#: gphoto2/main.c:889
+#: gphoto2/main.c:924
 #, fuzzy, c-format
 msgid "Capture failed (auto-focus problem?)...\n"
 msgstr "Byanze Ikiyega"
 
-#: gphoto2/main.c:900
+#: gphoto2/main.c:935
 #, fuzzy
 msgid "Could not capture."
 msgstr "OYA"
 
-#: gphoto2/main.c:931
+#: gphoto2/main.c:966
 #, c-format
 msgid "Waiting for next capture slot %ld seconds...\n"
 msgstr ""
 
-#: gphoto2/main.c:940 gphoto2/main.c:981
+#: gphoto2/main.c:975 gphoto2/main.c:1016
 #, c-format
 msgid "Awakened by SIGUSR1...\n"
 msgstr ""
 
-#: gphoto2/main.c:953
+#: gphoto2/main.c:988
 #, c-format
 msgid "not sleeping (%ld seconds behind schedule)\n"
 msgstr ""
 
 # starmath/source\smres.src:RID_ERR_IDENT.text
-#: gphoto2/main.c:1084
+#: gphoto2/main.c:1119
 #, fuzzy, c-format
 msgid "ERROR: "
 msgstr "IKOSA"
 
-#: gphoto2/main.c:1107
+#: gphoto2/main.c:1142
 #, c-format
 msgid ""
 "\n"
 "Aborting...\n"
 msgstr ""
 
-#: gphoto2/main.c:1113
+#: gphoto2/main.c:1148
 #, c-format
 msgid "Aborted.\n"
 msgstr ""
 
 # # @name NS_MSG_CANCELLING
-#: gphoto2/main.c:1118
+#: gphoto2/main.c:1153
 #, fuzzy, c-format
 msgid ""
 "\n"
 "Cancelling...\n"
 msgstr "Kureka..."
 
-#: gphoto2/main.c:1265
+#: gphoto2/main.c:1300
 #, fuzzy, c-format
 msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
 "c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
 msgstr "i a B C D Kuri APAREYE Nka a B Nka C D a B C D Imibare Itangiriro Na:"
 
-#: gphoto2/main.c:1432
+#: gphoto2/main.c:1468
 #, fuzzy
 msgid "gphoto2 has been compiled without support for CDK."
 msgstr "Gushigikira kugirango"
 
-#: gphoto2/main.c:1656
+#: gphoto2/main.c:1703
 #, fuzzy, c-format
 msgid "Operation cancelled.\n"
 msgstr "Kureka"
 
-#: gphoto2/main.c:1660
+#: gphoto2/main.c:1707
 #, c-format
 msgid ""
 "*** Error: No camera found. ***\n"
@@ -968,14 +968,14 @@ msgid ""
 msgstr ""
 
 # sw/source\ui\utlui\initui.src:RID_SW_SHELLRES.STR_CALC_DEFAULT.text
-#: gphoto2/main.c:1662
+#: gphoto2/main.c:1709
 #, fuzzy, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
 "\n"
 msgstr "***Ikosa**"
 
-#: gphoto2/main.c:1667
+#: gphoto2/main.c:1714
 #, fuzzy, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
@@ -989,434 +989,434 @@ msgstr ""
 "Kuri Kuri Kohereza Ikosa Cyangwa Kosora amakosa Ubutumwa Kuri i Urutonde "
 "Intonde Cyuzuye Nka"
 
-#: gphoto2/main.c:1688
+#: gphoto2/main.c:1735
 #, c-format
 msgid ""
 "Please make sure there is sufficient quoting around the arguments.\n"
 "\n"
 msgstr ""
 
-#: gphoto2/main.c:1755
+#: gphoto2/main.c:1802
 msgid "Print complete help message on program usage"
 msgstr ""
 
-#: gphoto2/main.c:1757
+#: gphoto2/main.c:1804
 msgid "Print short message on program usage"
 msgstr ""
 
-#: gphoto2/main.c:1759
+#: gphoto2/main.c:1806
 #, fuzzy
 msgid "Turn on debugging"
 msgstr "ku"
 
-#: gphoto2/main.c:1761
+#: gphoto2/main.c:1808
 msgid "Name of file to write debug info to"
 msgstr ""
 
-#: gphoto2/main.c:1761 gphoto2/main.c:1766 gphoto2/main.c:1772
-#: gphoto2/main.c:1894
+#: gphoto2/main.c:1808 gphoto2/main.c:1813 gphoto2/main.c:1819
+#: gphoto2/main.c:1941
 msgid "FILENAME"
 msgstr ""
 
-#: gphoto2/main.c:1763
+#: gphoto2/main.c:1810
 #, fuzzy
 msgid "Quiet output (default=verbose)"
 msgstr "Ibisohoka Mburabuzi"
 
-#: gphoto2/main.c:1765
+#: gphoto2/main.c:1812
 msgid "Hook script to call after downloads, captures, etc."
 msgstr ""
 
-#: gphoto2/main.c:1772
+#: gphoto2/main.c:1819
 #, fuzzy
 msgid "Specify device port"
 msgstr "Umuyoboro APAREYE"
 
-#: gphoto2/main.c:1774
+#: gphoto2/main.c:1821
 #, fuzzy
 msgid "Specify serial transfer speed"
 msgstr "Umuvuduko"
 
-#: gphoto2/main.c:1774
+#: gphoto2/main.c:1821
 msgid "SPEED"
 msgstr ""
 
-#: gphoto2/main.c:1776
+#: gphoto2/main.c:1823
 #, fuzzy
 msgid "Specify camera model"
 msgstr "Kamera Urugero"
 
-#: gphoto2/main.c:1776
+#: gphoto2/main.c:1823
 msgid "MODEL"
 msgstr ""
 
-#: gphoto2/main.c:1778
+#: gphoto2/main.c:1825
 msgid "(expert only) Override USB IDs"
 msgstr ""
 
-#: gphoto2/main.c:1778
+#: gphoto2/main.c:1825
 msgid "USBIDs"
 msgstr ""
 
-#: gphoto2/main.c:1784
+#: gphoto2/main.c:1831
 #, fuzzy
 msgid "Display version and exit"
 msgstr "Verisiyo Na Gusohoka"
 
-#: gphoto2/main.c:1786
+#: gphoto2/main.c:1833
 #, fuzzy
 msgid "List supported camera models"
 msgstr "Kamera Ingerofatizo"
 
-#: gphoto2/main.c:1788
+#: gphoto2/main.c:1835
 #, fuzzy
 msgid "List supported port devices"
 msgstr "Umuyoboro"
 
-#: gphoto2/main.c:1790
+#: gphoto2/main.c:1837
 #, fuzzy
 msgid "Display camera/driver abilities"
 msgstr "Kamera"
 
-#: gphoto2/main.c:1797
+#: gphoto2/main.c:1844
 msgid "Configure"
 msgstr "Kugena Imiterere"
 
-#: gphoto2/main.c:1800
+#: gphoto2/main.c:1847
 #, fuzzy
 msgid "List configuration tree"
 msgstr "Iboneza"
 
-#: gphoto2/main.c:1802
+#: gphoto2/main.c:1849
 #, fuzzy
 msgid "Dump full configuration tree"
 msgstr "Iboneza"
 
-#: gphoto2/main.c:1804
+#: gphoto2/main.c:1851
 #, fuzzy
 msgid "Get configuration value"
 msgstr "Iboneza Agaciro"
 
-#: gphoto2/main.c:1806
+#: gphoto2/main.c:1853
 #, fuzzy
 msgid "Set configuration value or index in choices"
 msgstr "Iboneza Agaciro"
 
-#: gphoto2/main.c:1808
+#: gphoto2/main.c:1855
 #, fuzzy
 msgid "Set configuration value index in choices"
 msgstr "Iboneza Agaciro"
 
-#: gphoto2/main.c:1810
+#: gphoto2/main.c:1857
 #, fuzzy
 msgid "Set configuration value"
 msgstr "Iboneza Agaciro"
 
-#: gphoto2/main.c:1816
+#: gphoto2/main.c:1863
 msgid "Keep images on camera after capturing"
 msgstr ""
 
-#: gphoto2/main.c:1818
+#: gphoto2/main.c:1865
 msgid "Remove images from camera after capturing"
 msgstr ""
 
-#: gphoto2/main.c:1820
+#: gphoto2/main.c:1867
 msgid "Wait for event(s) from camera"
 msgstr ""
 
-#: gphoto2/main.c:1820 gphoto2/main.c:1822 gphoto2/main.c:1829
-#: gphoto2/main.c:1845
+#: gphoto2/main.c:1867 gphoto2/main.c:1869 gphoto2/main.c:1876
+#: gphoto2/main.c:1892
 msgid "COUNT"
 msgstr ""
 
-#: gphoto2/main.c:1822
+#: gphoto2/main.c:1869
 msgid "Wait for event(s) from the camera and download new images"
 msgstr ""
 
-#: gphoto2/main.c:1825
+#: gphoto2/main.c:1872
 #, fuzzy
 msgid "Capture a quick preview"
 msgstr "a Igaragazambere"
 
-#: gphoto2/main.c:1827
+#: gphoto2/main.c:1874
 #, fuzzy
 msgid "Set bulb exposure time in seconds"
 msgstr "Intera in amasogonda"
 
-#: gphoto2/main.c:1827 gphoto2/main.c:1831
+#: gphoto2/main.c:1874 gphoto2/main.c:1878
 msgid "SECONDS"
 msgstr ""
 
-#: gphoto2/main.c:1829
+#: gphoto2/main.c:1876
 #, fuzzy
 msgid "Set number of frames to capture (default=infinite)"
 msgstr "Umubare Bya Amakadiri Kuri Mburabuzi Bidashira"
 
-#: gphoto2/main.c:1831
+#: gphoto2/main.c:1878
 #, fuzzy
 msgid "Set capture interval in seconds"
 msgstr "Intera in amasogonda"
 
-#: gphoto2/main.c:1833
+#: gphoto2/main.c:1880
 #, fuzzy
 msgid "Reset capture interval on signal (default=no)"
 msgstr "Intera in amasogonda"
 
-#: gphoto2/main.c:1835
+#: gphoto2/main.c:1882
 #, fuzzy
 msgid "Capture an image"
 msgstr "Ishusho"
 
-#: gphoto2/main.c:1837
+#: gphoto2/main.c:1884
 #, fuzzy
 msgid "Trigger capture of an image"
 msgstr "Ishusho"
 
-#: gphoto2/main.c:1839
+#: gphoto2/main.c:1886
 #, fuzzy
 msgid "Capture an image and download it"
 msgstr "Ishusho"
 
-#: gphoto2/main.c:1841
+#: gphoto2/main.c:1888
 #, fuzzy
 msgid "Capture a movie"
 msgstr "a"
 
-#: gphoto2/main.c:1841
+#: gphoto2/main.c:1888
 msgid "COUNT or SECONDS"
 msgstr ""
 
-#: gphoto2/main.c:1843
+#: gphoto2/main.c:1890
 msgid "Capture an audio clip"
 msgstr ""
 
-#: gphoto2/main.c:1845
+#: gphoto2/main.c:1892
 msgid "Wait for shutter release on the camera and download"
 msgstr ""
 
-#: gphoto2/main.c:1847
-msgid "Trigger image capture"
-msgstr ""
-
-#: gphoto2/main.c:1853
-#, fuzzy
-msgid "List folders in folder"
-msgstr "in Ububiko"
-
-#: gphoto2/main.c:1855
-#, fuzzy
-msgid "List files in folder"
-msgstr "Idosiye in Ububiko"
-
-#: gphoto2/main.c:1857
-#, fuzzy
-msgid "Create a directory"
-msgstr "a bushyinguro"
-
-#: gphoto2/main.c:1857 gphoto2/main.c:1859
-msgid "DIRNAME"
-msgstr ""
-
-#: gphoto2/main.c:1859
-#, fuzzy
-msgid "Remove a directory"
-msgstr "a bushyinguro"
-
-#: gphoto2/main.c:1861
-#, fuzzy
-msgid "Display number of files"
-msgstr "Umubare Bya Idosiye"
-
-#: gphoto2/main.c:1863
-#, fuzzy
-msgid "Get files given in range"
-msgstr "Idosiye in Urutonde"
-
-#: gphoto2/main.c:1863 gphoto2/main.c:1867 gphoto2/main.c:1872
-#: gphoto2/main.c:1879 gphoto2/main.c:1885 gphoto2/main.c:1890
-msgid "RANGE"
-msgstr ""
-
-#: gphoto2/main.c:1865
-#, fuzzy
-msgid "Get all files from folder"
-msgstr "Byose Idosiye Bivuye Ububiko"
-
-#: gphoto2/main.c:1867
-#, fuzzy
-msgid "Get thumbnails given in range"
-msgstr "in Urutonde"
-
-#: gphoto2/main.c:1870
-#, fuzzy
-msgid "Get all thumbnails from folder"
-msgstr "Byose Bivuye Ububiko"
-
-#: gphoto2/main.c:1872
-#, fuzzy
-msgid "Get metadata given in range"
-msgstr "Ibyatanzwe in Urutonde"
-
-#: gphoto2/main.c:1874
-#, fuzzy
-msgid "Get all metadata from folder"
-msgstr "Byose Ibyatanzwe Bivuye Ububiko"
-
-#: gphoto2/main.c:1876
-#, fuzzy
-msgid "Upload metadata for file"
-msgstr "a IDOSIYE"
-
-#: gphoto2/main.c:1879
-#, fuzzy
-msgid "Get raw data given in range"
-msgstr "Ibyatanzwe in Urutonde"
-
-#: gphoto2/main.c:1882
-#, fuzzy
-msgid "Get all raw data from folder"
-msgstr "Byose Ibyatanzwe Bivuye Ububiko"
-
-#: gphoto2/main.c:1885
-#, fuzzy
-msgid "Get audio data given in range"
-msgstr "Ibyatanzwe in Urutonde"
-
-#: gphoto2/main.c:1888
-#, fuzzy
-msgid "Get all audio data from folder"
-msgstr "Byose Ibyatanzwe Bivuye Ububiko"
-
-#: gphoto2/main.c:1890
-#, fuzzy
-msgid "Delete files given in range"
-msgstr "Idosiye in Urutonde"
-
-#: gphoto2/main.c:1892
-#, fuzzy
-msgid "Delete all files in folder (--no-recurse by default)"
-msgstr "Byose Idosiye in Ububiko"
-
 #: gphoto2/main.c:1894
-#, fuzzy
-msgid "Upload a file to camera"
-msgstr "a IDOSIYE Kuri Kamera"
-
-#: gphoto2/main.c:1896
-#, fuzzy
-msgid "Specify a filename or filename pattern"
-msgstr "a Izina ry'idosiye:"
-
-#: gphoto2/main.c:1896
-msgid "FILENAME_PATTERN"
-msgstr ""
-
-#: gphoto2/main.c:1898
-#, fuzzy
-msgid "Specify camera folder (default=\"/\")"
-msgstr "Kamera Ububiko Mburabuzi"
-
-#: gphoto2/main.c:1898
-msgid "FOLDER"
+msgid "Trigger image capture"
 msgstr ""
 
 #: gphoto2/main.c:1900
 #, fuzzy
-msgid "Recursion (default for download)"
-msgstr "Mburabuzi kugirango Gufungura"
+msgid "List folders in folder"
+msgstr "in Ububiko"
 
 #: gphoto2/main.c:1902
 #, fuzzy
-msgid "No recursion (default for deletion)"
-msgstr "Mburabuzi kugirango Isibwa"
+msgid "List files in folder"
+msgstr "Idosiye in Ububiko"
 
 #: gphoto2/main.c:1904
-msgid "Process new files only"
+#, fuzzy
+msgid "Create a directory"
+msgstr "a bushyinguro"
+
+#: gphoto2/main.c:1904 gphoto2/main.c:1906
+msgid "DIRNAME"
 msgstr ""
 
 #: gphoto2/main.c:1906
 #, fuzzy
-msgid "Overwrite files without asking"
-msgstr "Gusimbuza Idosiye"
+msgid "Remove a directory"
+msgstr "a bushyinguro"
+
+#: gphoto2/main.c:1908
+#, fuzzy
+msgid "Display number of files"
+msgstr "Umubare Bya Idosiye"
+
+#: gphoto2/main.c:1910
+#, fuzzy
+msgid "Get files given in range"
+msgstr "Idosiye in Urutonde"
+
+#: gphoto2/main.c:1910 gphoto2/main.c:1914 gphoto2/main.c:1919
+#: gphoto2/main.c:1926 gphoto2/main.c:1932 gphoto2/main.c:1937
+msgid "RANGE"
+msgstr ""
 
 #: gphoto2/main.c:1912
 #, fuzzy
-msgid "Send file to stdout"
-msgstr "IDOSIYE Kuri"
+msgid "Get all files from folder"
+msgstr "Byose Idosiye Bivuye Ububiko"
 
 #: gphoto2/main.c:1914
 #, fuzzy
-msgid "Print filesize before data"
-msgstr "Mbere Ibyatanzwe"
+msgid "Get thumbnails given in range"
+msgstr "in Urutonde"
 
-#: gphoto2/main.c:1916
+#: gphoto2/main.c:1917
 #, fuzzy
-msgid "List auto-detected cameras"
-msgstr "Ikiyega"
+msgid "Get all thumbnails from folder"
+msgstr "Byose Bivuye Ububiko"
 
-#: gphoto2/main.c:1920 gphoto2/shell.c:138
+#: gphoto2/main.c:1919
 #, fuzzy
-msgid "Show EXIF information"
-msgstr "Ibisobanuro"
+msgid "Get metadata given in range"
+msgstr "Ibyatanzwe in Urutonde"
 
-#: gphoto2/main.c:1923 gphoto2/shell.c:132
+#: gphoto2/main.c:1921
 #, fuzzy
-msgid "Show info"
-msgstr "Ibisobanuro"
+msgid "Get all metadata from folder"
+msgstr "Byose Ibyatanzwe Bivuye Ububiko"
 
-#: gphoto2/main.c:1925
+#: gphoto2/main.c:1923
 #, fuzzy
-msgid "Show summary"
-msgstr "Inshamake"
+msgid "Upload metadata for file"
+msgstr "a IDOSIYE"
 
-#: gphoto2/main.c:1927
+#: gphoto2/main.c:1926
 #, fuzzy
-msgid "Show camera driver manual"
-msgstr "Kamera Musomyi: Bikorwa"
+msgid "Get raw data given in range"
+msgstr "Ibyatanzwe in Urutonde"
 
 #: gphoto2/main.c:1929
 #, fuzzy
-msgid "About the camera driver manual"
-msgstr "i Kamera Musomyi: Bikorwa"
+msgid "Get all raw data from folder"
+msgstr "Byose Ibyatanzwe Bivuye Ububiko"
 
-#: gphoto2/main.c:1931
+#: gphoto2/main.c:1932
 #, fuzzy
-msgid "Show storage information"
-msgstr "Ibisobanuro"
+msgid "Get audio data given in range"
+msgstr "Ibyatanzwe in Urutonde"
 
-#: gphoto2/main.c:1933
+#: gphoto2/main.c:1935
 #, fuzzy
-msgid "gPhoto shell"
-msgstr "Igikonoshwa"
+msgid "Get all audio data from folder"
+msgstr "Byose Ibyatanzwe Bivuye Ububiko"
+
+#: gphoto2/main.c:1937
+#, fuzzy
+msgid "Delete files given in range"
+msgstr "Idosiye in Urutonde"
 
 #: gphoto2/main.c:1939
-msgid "Common options"
-msgstr ""
+#, fuzzy
+msgid "Delete all files in folder (--no-recurse by default)"
+msgstr "Byose Idosiye in Ububiko"
 
 #: gphoto2/main.c:1941
-msgid "Miscellaneous options (unsorted)"
-msgstr ""
+#, fuzzy
+msgid "Upload a file to camera"
+msgstr "a IDOSIYE Kuri Kamera"
 
 #: gphoto2/main.c:1943
-msgid "Get information on software and host system (not from the camera)"
+#, fuzzy
+msgid "Specify a filename or filename pattern"
+msgstr "a Izina ry'idosiye:"
+
+#: gphoto2/main.c:1943
+msgid "FILENAME_PATTERN"
 msgstr ""
 
 #: gphoto2/main.c:1945
 #, fuzzy
+msgid "Specify camera folder (default=\"/\")"
+msgstr "Kamera Ububiko Mburabuzi"
+
+#: gphoto2/main.c:1945
+msgid "FOLDER"
+msgstr ""
+
+#: gphoto2/main.c:1947
+#, fuzzy
+msgid "Recursion (default for download)"
+msgstr "Mburabuzi kugirango Gufungura"
+
+#: gphoto2/main.c:1949
+#, fuzzy
+msgid "No recursion (default for deletion)"
+msgstr "Mburabuzi kugirango Isibwa"
+
+#: gphoto2/main.c:1951
+msgid "Process new files only"
+msgstr ""
+
+#: gphoto2/main.c:1953
+#, fuzzy
+msgid "Overwrite files without asking"
+msgstr "Gusimbuza Idosiye"
+
+#: gphoto2/main.c:1959
+#, fuzzy
+msgid "Send file to stdout"
+msgstr "IDOSIYE Kuri"
+
+#: gphoto2/main.c:1961
+#, fuzzy
+msgid "Print filesize before data"
+msgstr "Mbere Ibyatanzwe"
+
+#: gphoto2/main.c:1963
+#, fuzzy
+msgid "List auto-detected cameras"
+msgstr "Ikiyega"
+
+#: gphoto2/main.c:1967 gphoto2/shell.c:138
+#, fuzzy
+msgid "Show EXIF information"
+msgstr "Ibisobanuro"
+
+#: gphoto2/main.c:1970 gphoto2/shell.c:132
+#, fuzzy
+msgid "Show info"
+msgstr "Ibisobanuro"
+
+#: gphoto2/main.c:1972
+#, fuzzy
+msgid "Show summary"
+msgstr "Inshamake"
+
+#: gphoto2/main.c:1974
+#, fuzzy
+msgid "Show camera driver manual"
+msgstr "Kamera Musomyi: Bikorwa"
+
+#: gphoto2/main.c:1976
+#, fuzzy
+msgid "About the camera driver manual"
+msgstr "i Kamera Musomyi: Bikorwa"
+
+#: gphoto2/main.c:1978
+#, fuzzy
+msgid "Show storage information"
+msgstr "Ibisobanuro"
+
+#: gphoto2/main.c:1980
+#, fuzzy
+msgid "gPhoto shell"
+msgstr "Igikonoshwa"
+
+#: gphoto2/main.c:1986
+msgid "Common options"
+msgstr ""
+
+#: gphoto2/main.c:1988
+msgid "Miscellaneous options (unsorted)"
+msgstr ""
+
+#: gphoto2/main.c:1990
+msgid "Get information on software and host system (not from the camera)"
+msgstr ""
+
+#: gphoto2/main.c:1992
+#, fuzzy
 msgid "Specify the camera to use"
 msgstr "Kamera Urugero"
 
-#: gphoto2/main.c:1947
+#: gphoto2/main.c:1994
 #, fuzzy
 msgid "Camera and software configuration"
 msgstr "OYA Gushyiraho Iboneza"
 
-#: gphoto2/main.c:1949
+#: gphoto2/main.c:1996
 #, fuzzy
 msgid "Capture an image from or on the camera"
 msgstr "Kuri a bushyinguro ku i Kamera"
 
-#: gphoto2/main.c:1951
+#: gphoto2/main.c:1998
 msgid "Downloading, uploading and manipulating files"
 msgstr ""
 

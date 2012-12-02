@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif 0.6.16\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-03 20:02+0200\n"
+"POT-Creation-Date: 2012-10-14 11:34+0200\n"
 "PO-Revision-Date: 2012-07-08 15:21+0200\n"
 "Last-Translator: Marcus Meissner\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -457,19 +457,19 @@ msgstr ""
 msgid "Waiting for %d events from camera. Press Ctrl-C to abort.\n"
 msgstr "Warte auf %d Ereignisse von der Kamera. Drücke Ctrl-C zum abbrechen.\n"
 
-#: gphoto2/actions.c:1138 gphoto2/main.c:711
+#: gphoto2/actions.c:1138 gphoto2/main.c:746
 msgid "Could not set folder."
 msgstr "Konnte Verzeichnis nicht setzen."
 
-#: gphoto2/actions.c:1144 gphoto2/main.c:718
+#: gphoto2/actions.c:1144 gphoto2/main.c:753
 msgid "Could not get image."
 msgstr "Konnte Bild nicht holen."
 
-#: gphoto2/actions.c:1151 gphoto2/main.c:725
+#: gphoto2/actions.c:1151 gphoto2/main.c:760
 msgid "Buggy libcanon.so?"
 msgstr "Kaputte libcanon.so?"
 
-#: gphoto2/actions.c:1161 gphoto2/main.c:737
+#: gphoto2/actions.c:1161 gphoto2/main.c:772
 msgid "Could not delete image."
 msgstr "Konnte Bild nicht löschen."
 
@@ -813,116 +813,116 @@ msgstr "Speichere Datei als %s\n"
 msgid "Permission denied"
 msgstr "Zugriff verweigert"
 
-#: gphoto2/main.c:672
+#: gphoto2/main.c:707
 msgid "Could not trigger capture."
 msgstr "Konnte nicht aufnehmen."
 
-#: gphoto2/main.c:702
+#: gphoto2/main.c:737
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "Neue Datei ist in %s%s%s auf der Kamera\n"
 
-#: gphoto2/main.c:732
+#: gphoto2/main.c:767
 #, c-format
 msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Lösche Datei %s%s%s auf der Kamera\n"
 
-#: gphoto2/main.c:742
+#: gphoto2/main.c:777
 #, c-format
 msgid "Keeping file %s%s%s on the camera\n"
 msgstr "Behalte Datei %s%s%s auf der Kamera\n"
 
-#: gphoto2/main.c:775
+#: gphoto2/main.c:810
 #, c-format
 msgid "Event FOLDER_ADDED %s/%s during wait, ignoring.\n"
 msgstr "Ereignis FOLDER_ADDED %s/%s, wird ignoriert.\n"
 
-#: gphoto2/main.c:785
+#: gphoto2/main.c:820
 #, c-format
 msgid "Event UNKNOWN %s during wait, ignoring.\n"
 msgstr "Ereignis UNKOWN %s, wird ignoriert.\n"
 
-#: gphoto2/main.c:791
+#: gphoto2/main.c:826
 #, c-format
 msgid "Unknown event type %d during bulb wait, ignoring.\n"
 msgstr "Unbekannter Ereignistyp %d, wird ignoriert.\n"
 
-#: gphoto2/main.c:809
+#: gphoto2/main.c:844
 msgid "Could not get capabilities?"
 msgstr "Konnte Fähigkeiten der Kamera nicht holen?"
 
-#: gphoto2/main.c:817
+#: gphoto2/main.c:852
 #, c-format
 msgid "Time-lapse mode enabled (interval: %ds).\n"
 msgstr "Zeitlupen Modus aktiviert (Intervall: %ds).\n"
 
-#: gphoto2/main.c:820
+#: gphoto2/main.c:855
 #, c-format
 msgid "Standing by waiting for SIGUSR1 to capture.\n"
 msgstr "Warte auf SIGUSR1 um Aufnahme zu starten.\n"
 
-#: gphoto2/main.c:826
+#: gphoto2/main.c:861
 #, c-format
 msgid "Bulb mode enabled (exposure time: %ds).\n"
 msgstr "Bulb Modus aktiviert (Aufnahmedauer: %ds).\n"
 
-#: gphoto2/main.c:839
+#: gphoto2/main.c:874
 #, c-format
 msgid "Capturing frame #%d...\n"
 msgstr "Nehme Bild %d auf...\n"
 
-#: gphoto2/main.c:841
+#: gphoto2/main.c:876
 #, c-format
 msgid "Capturing frame #%d/%d...\n"
 msgstr "Nehme Bild %d von %d auf...\n"
 
-#: gphoto2/main.c:851
+#: gphoto2/main.c:886
 #, c-format
 msgid "Could not set bulb capture, result %d."
 msgstr "Konnte Bulb Modus nicht setzen, Fehler %d."
 
-#: gphoto2/main.c:865
+#: gphoto2/main.c:900
 msgid "Could not end capture (bulb mode)."
 msgstr "Konnte Bulb Modus nicht beenden."
 
-#: gphoto2/main.c:876
+#: gphoto2/main.c:911
 msgid "Could not trigger image capture."
 msgstr "Konnte Bild Aufnahme nicht starten."
 
-#: gphoto2/main.c:882
+#: gphoto2/main.c:917
 msgid "Could not capture image."
 msgstr "Konnte Bild nicht aufnehmen."
 
-#: gphoto2/main.c:889
+#: gphoto2/main.c:924
 #, c-format
 msgid "Capture failed (auto-focus problem?)...\n"
 msgstr "Aufnahme fehlgeschlagen (Auto Fokus Problem?)...\n"
 
-#: gphoto2/main.c:900
+#: gphoto2/main.c:935
 msgid "Could not capture."
 msgstr "Konnte nicht aufnehmen."
 
-#: gphoto2/main.c:931
+#: gphoto2/main.c:966
 #, c-format
 msgid "Waiting for next capture slot %ld seconds...\n"
 msgstr "Warte %ld Sekunden auf den nächsten Aufnahme Slot...\n"
 
-#: gphoto2/main.c:940 gphoto2/main.c:981
+#: gphoto2/main.c:975 gphoto2/main.c:1016
 #, c-format
 msgid "Awakened by SIGUSR1...\n"
 msgstr "Aufgeweckt durch SIGUSR1...\n"
 
-#: gphoto2/main.c:953
+#: gphoto2/main.c:988
 #, c-format
 msgid "not sleeping (%ld seconds behind schedule)\n"
 msgstr "Keine Pause (%ld Sekunden zurück)\n"
 
-#: gphoto2/main.c:1084
+#: gphoto2/main.c:1119
 #, c-format
 msgid "ERROR: "
 msgstr "FEHLER: "
 
-#: gphoto2/main.c:1107
+#: gphoto2/main.c:1142
 #, c-format
 msgid ""
 "\n"
@@ -931,12 +931,12 @@ msgstr ""
 "\n"
 "Harter Abbruch...\n"
 
-#: gphoto2/main.c:1113
+#: gphoto2/main.c:1148
 #, c-format
 msgid "Aborted.\n"
 msgstr "Abgebrochen.\n"
 
-#: gphoto2/main.c:1118
+#: gphoto2/main.c:1153
 #, c-format
 msgid ""
 "\n"
@@ -945,7 +945,7 @@ msgstr ""
 "\n"
 "Abbruch...\n"
 
-#: gphoto2/main.c:1265
+#: gphoto2/main.c:1300
 #, c-format
 msgid ""
 "Use the following syntax a:b=c:d to treat any USB device detected as a:b as "
@@ -955,16 +955,16 @@ msgstr ""
 "»c:d« zu behandeln.\n"
 "a b c d sind hexadezimale Angaben, die mit »0x« beginnen müssen.\n"
 
-#: gphoto2/main.c:1432
+#: gphoto2/main.c:1468
 msgid "gphoto2 has been compiled without support for CDK."
 msgstr "gphoto2 wurde ohne Unterstützung für CDK kompiliert."
 
-#: gphoto2/main.c:1656
+#: gphoto2/main.c:1703
 #, c-format
 msgid "Operation cancelled.\n"
 msgstr "Operation abgebrochen.\n"
 
-#: gphoto2/main.c:1660
+#: gphoto2/main.c:1707
 #, c-format
 msgid ""
 "*** Error: No camera found. ***\n"
@@ -973,7 +973,7 @@ msgstr ""
 "*** Fehler: Keine Kamera gefunden. ***\n"
 "\n"
 
-#: gphoto2/main.c:1662
+#: gphoto2/main.c:1709
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -982,7 +982,7 @@ msgstr ""
 "*** Fehler (%i: »%s«) ***      \n"
 "\n"
 
-#: gphoto2/main.c:1667
+#: gphoto2/main.c:1714
 #, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
@@ -999,7 +999,7 @@ msgstr ""
 "so starten sie gphoto2 bitte wie folgt:\n"
 "\n"
 
-#: gphoto2/main.c:1688
+#: gphoto2/main.c:1735
 #, c-format
 msgid ""
 "Please make sure there is sufficient quoting around the arguments.\n"
@@ -1009,367 +1009,367 @@ msgstr ""
 "sind.\n"
 "\n"
 
-#: gphoto2/main.c:1755
+#: gphoto2/main.c:1802
 msgid "Print complete help message on program usage"
 msgstr "Gebe kompletten Hilfstext zur Benutzung aus"
 
-#: gphoto2/main.c:1757
+#: gphoto2/main.c:1804
 msgid "Print short message on program usage"
 msgstr "Gebe kurzen Hilfstext zur Benutzung aus"
 
-#: gphoto2/main.c:1759
+#: gphoto2/main.c:1806
 msgid "Turn on debugging"
 msgstr "Schalte Debugging ein"
 
-#: gphoto2/main.c:1761
+#: gphoto2/main.c:1808
 msgid "Name of file to write debug info to"
 msgstr "Dateinamen für Debug Informationen"
 
-#: gphoto2/main.c:1761 gphoto2/main.c:1766 gphoto2/main.c:1772
-#: gphoto2/main.c:1894
+#: gphoto2/main.c:1808 gphoto2/main.c:1813 gphoto2/main.c:1819
+#: gphoto2/main.c:1941
 msgid "FILENAME"
 msgstr "DATEINAME"
 
-#: gphoto2/main.c:1763
+#: gphoto2/main.c:1810
 msgid "Quiet output (default=verbose)"
 msgstr "Wenige Ausgaben (Vorgabe=gesprächig)"
 
-#: gphoto2/main.c:1765
+#: gphoto2/main.c:1812
 msgid "Hook script to call after downloads, captures, etc."
 msgstr "Hook-Skript, das nach Herunterladen, Aufnahme, etc. gestartet wird"
 
-#: gphoto2/main.c:1772
+#: gphoto2/main.c:1819
 msgid "Specify device port"
 msgstr "Angabe des Port-Geräts"
 
-#: gphoto2/main.c:1774
+#: gphoto2/main.c:1821
 msgid "Specify serial transfer speed"
 msgstr "Angabe der seriellen Datenrate"
 
-#: gphoto2/main.c:1774
+#: gphoto2/main.c:1821
 msgid "SPEED"
 msgstr "GESCHWINDIGKEIT"
 
-#: gphoto2/main.c:1776
+#: gphoto2/main.c:1823
 msgid "Specify camera model"
 msgstr "Angabe des Kameramodells"
 
-#: gphoto2/main.c:1776
+#: gphoto2/main.c:1823
 msgid "MODEL"
 msgstr "MODELL"
 
-#: gphoto2/main.c:1778
+#: gphoto2/main.c:1825
 msgid "(expert only) Override USB IDs"
 msgstr "(für Experten) Überschreibe USB-IDs"
 
-#: gphoto2/main.c:1778
+#: gphoto2/main.c:1825
 msgid "USBIDs"
 msgstr "USBIDs"
 
-#: gphoto2/main.c:1784
+#: gphoto2/main.c:1831
 msgid "Display version and exit"
 msgstr "Zeige Version und beende"
 
-#: gphoto2/main.c:1786
+#: gphoto2/main.c:1833
 msgid "List supported camera models"
 msgstr "Zeige unterstützte Kameramodelle"
 
-#: gphoto2/main.c:1788
+#: gphoto2/main.c:1835
 msgid "List supported port devices"
 msgstr "Liste unterstützte Port-Geräte"
 
-#: gphoto2/main.c:1790
+#: gphoto2/main.c:1837
 msgid "Display camera/driver abilities"
 msgstr "Zeige Kamera-/Treiberfähigkeiten"
 
-#: gphoto2/main.c:1797
+#: gphoto2/main.c:1844
 msgid "Configure"
 msgstr "Konfigurieren"
 
-#: gphoto2/main.c:1800
+#: gphoto2/main.c:1847
 msgid "List configuration tree"
 msgstr "Zeige Konfigurationsbaum"
 
-#: gphoto2/main.c:1802
+#: gphoto2/main.c:1849
 msgid "Dump full configuration tree"
 msgstr "Zeige vollen Konfigurationsbaum"
 
-#: gphoto2/main.c:1804
+#: gphoto2/main.c:1851
 msgid "Get configuration value"
 msgstr "Hole Konfigurationswert"
 
-#: gphoto2/main.c:1806
+#: gphoto2/main.c:1853
 msgid "Set configuration value or index in choices"
 msgstr "Setze Konfigurationswert oder -Index im Menü"
 
-#: gphoto2/main.c:1808
+#: gphoto2/main.c:1855
 msgid "Set configuration value index in choices"
 msgstr "Setze Konfigurationswert Index im Menü"
 
-#: gphoto2/main.c:1810
+#: gphoto2/main.c:1857
 msgid "Set configuration value"
 msgstr "Setze Konfigurationswert"
 
-#: gphoto2/main.c:1816
+#: gphoto2/main.c:1863
 msgid "Keep images on camera after capturing"
 msgstr "Behalte Bilder auf der Kamera nach der Aufnahme"
 
-#: gphoto2/main.c:1818
+#: gphoto2/main.c:1865
 msgid "Remove images from camera after capturing"
 msgstr "Lösche Bilder von der Kamera nach der Aufnahme"
 
-#: gphoto2/main.c:1820
+#: gphoto2/main.c:1867
 msgid "Wait for event(s) from camera"
 msgstr "Warte auf Kameraereignisse"
 
-#: gphoto2/main.c:1820 gphoto2/main.c:1822 gphoto2/main.c:1829
-#: gphoto2/main.c:1845
+#: gphoto2/main.c:1867 gphoto2/main.c:1869 gphoto2/main.c:1876
+#: gphoto2/main.c:1892
 msgid "COUNT"
 msgstr "ANZAHL"
 
-#: gphoto2/main.c:1822
+#: gphoto2/main.c:1869
 msgid "Wait for event(s) from the camera and download new images"
 msgstr "Warte auf Ereignisse von der Kamera und lade neue Bilder herunter"
 
-#: gphoto2/main.c:1825
+#: gphoto2/main.c:1872
 msgid "Capture a quick preview"
 msgstr "Mache eine Vorschaubild-Aufnahme"
 
-#: gphoto2/main.c:1827
+#: gphoto2/main.c:1874
 msgid "Set bulb exposure time in seconds"
 msgstr "Setze die Zeit der Bulb Aufnahme in Sekunden"
 
-#: gphoto2/main.c:1827 gphoto2/main.c:1831
+#: gphoto2/main.c:1874 gphoto2/main.c:1878
 msgid "SECONDS"
 msgstr "SEKUNDEN"
 
-#: gphoto2/main.c:1829
+#: gphoto2/main.c:1876
 msgid "Set number of frames to capture (default=infinite)"
 msgstr "Setze die Anzahl der aufzunehmenden Bilder (default=unendlich)"
 
-#: gphoto2/main.c:1831
+#: gphoto2/main.c:1878
 msgid "Set capture interval in seconds"
 msgstr "Setze das Aufnahmeintervall in Sekunden"
 
-#: gphoto2/main.c:1833
+#: gphoto2/main.c:1880
 msgid "Reset capture interval on signal (default=no)"
 msgstr "Setze Aufnahmeinterval nach Signal zurück (default=nein)"
 
-#: gphoto2/main.c:1835
+#: gphoto2/main.c:1882
 msgid "Capture an image"
 msgstr "Eine Bildaufnahme machen"
 
-#: gphoto2/main.c:1837
+#: gphoto2/main.c:1884
 msgid "Trigger capture of an image"
 msgstr "Eine Bildaufnahme auslösen"
 
-#: gphoto2/main.c:1839
+#: gphoto2/main.c:1886
 msgid "Capture an image and download it"
 msgstr "Eine Bildaufnahme machen und herunterladen"
 
-#: gphoto2/main.c:1841
+#: gphoto2/main.c:1888
 msgid "Capture a movie"
 msgstr "Eine Filmaufnahme machen"
 
-#: gphoto2/main.c:1841
+#: gphoto2/main.c:1888
 msgid "COUNT or SECONDS"
 msgstr "ANZAHL oder SEKUNDEN"
 
-#: gphoto2/main.c:1843
+#: gphoto2/main.c:1890
 msgid "Capture an audio clip"
 msgstr "Eine Audioaufnahme machen"
 
-#: gphoto2/main.c:1845
+#: gphoto2/main.c:1892
 msgid "Wait for shutter release on the camera and download"
 msgstr "Warte auf Auslöserdruck an der Kamera und lade Bilder herunter"
 
-#: gphoto2/main.c:1847
+#: gphoto2/main.c:1894
 msgid "Trigger image capture"
 msgstr "Starte Bildaufnahme"
 
-#: gphoto2/main.c:1853
+#: gphoto2/main.c:1900
 msgid "List folders in folder"
 msgstr "Liste Verzeichnisse in Verzeichnis"
 
-#: gphoto2/main.c:1855
+#: gphoto2/main.c:1902
 msgid "List files in folder"
 msgstr "Liste Dateien in Verzeichnis"
 
-#: gphoto2/main.c:1857
+#: gphoto2/main.c:1904
 msgid "Create a directory"
 msgstr "Verzeichnis anlegen"
 
-#: gphoto2/main.c:1857 gphoto2/main.c:1859
+#: gphoto2/main.c:1904 gphoto2/main.c:1906
 msgid "DIRNAME"
 msgstr "VERZEICHNIS"
 
-#: gphoto2/main.c:1859
+#: gphoto2/main.c:1906
 msgid "Remove a directory"
 msgstr "Verzeichnis löschen"
 
-#: gphoto2/main.c:1861
+#: gphoto2/main.c:1908
 msgid "Display number of files"
 msgstr "Zeige Anzahl der Dateien"
 
-#: gphoto2/main.c:1863
+#: gphoto2/main.c:1910
 msgid "Get files given in range"
 msgstr "Hole Dateien im angegebenen Bereich"
 
-#: gphoto2/main.c:1863 gphoto2/main.c:1867 gphoto2/main.c:1872
-#: gphoto2/main.c:1879 gphoto2/main.c:1885 gphoto2/main.c:1890
+#: gphoto2/main.c:1910 gphoto2/main.c:1914 gphoto2/main.c:1919
+#: gphoto2/main.c:1926 gphoto2/main.c:1932 gphoto2/main.c:1937
 msgid "RANGE"
 msgstr "BEREICH"
 
-#: gphoto2/main.c:1865
+#: gphoto2/main.c:1912
 msgid "Get all files from folder"
 msgstr "Hole alle Dateien im Verzeichnis"
 
-#: gphoto2/main.c:1867
+#: gphoto2/main.c:1914
 msgid "Get thumbnails given in range"
 msgstr "Hole Vorschaubilder im angegebenen Bereich"
 
-#: gphoto2/main.c:1870
+#: gphoto2/main.c:1917
 msgid "Get all thumbnails from folder"
 msgstr "Hole alle Vorschaubilder im Verzeichnis"
 
-#: gphoto2/main.c:1872
+#: gphoto2/main.c:1919
 msgid "Get metadata given in range"
 msgstr "Hole Metadaten im angegebenen Bereich"
 
-#: gphoto2/main.c:1874
+#: gphoto2/main.c:1921
 msgid "Get all metadata from folder"
 msgstr "Hole alle Metadaten im Verzeichnis"
 
-#: gphoto2/main.c:1876
+#: gphoto2/main.c:1923
 msgid "Upload metadata for file"
 msgstr "Lade Metadaten herunter für Datei"
 
-#: gphoto2/main.c:1879
+#: gphoto2/main.c:1926
 msgid "Get raw data given in range"
 msgstr "Hole Rohdaten im angegebenen Bereich"
 
-#: gphoto2/main.c:1882
+#: gphoto2/main.c:1929
 msgid "Get all raw data from folder"
 msgstr "Hole alle Rohdaten im Verzeichnis"
 
-#: gphoto2/main.c:1885
+#: gphoto2/main.c:1932
 msgid "Get audio data given in range"
 msgstr "Hole Audiodaten im angegebenen Bereich"
 
-#: gphoto2/main.c:1888
+#: gphoto2/main.c:1935
 msgid "Get all audio data from folder"
 msgstr "Hole alle Audiodaten im Verzeichnis"
 
-#: gphoto2/main.c:1890
+#: gphoto2/main.c:1937
 msgid "Delete files given in range"
 msgstr "Lösche Dateien im angegebenen Bereich"
 
-#: gphoto2/main.c:1892
+#: gphoto2/main.c:1939
 msgid "Delete all files in folder (--no-recurse by default)"
 msgstr "Lösche alle Dateien im Verzeichnis (--no-recurse als default)"
 
-#: gphoto2/main.c:1894
+#: gphoto2/main.c:1941
 msgid "Upload a file to camera"
 msgstr "Datei auf Kamera hochladen"
 
-#: gphoto2/main.c:1896
+#: gphoto2/main.c:1943
 msgid "Specify a filename or filename pattern"
 msgstr "Geben Sie einen Dateinamen oder ein Dateinamensmuster an"
 
-#: gphoto2/main.c:1896
+#: gphoto2/main.c:1943
 msgid "FILENAME_PATTERN"
 msgstr "DATEINAMENS_MUSTER"
 
-#: gphoto2/main.c:1898
+#: gphoto2/main.c:1945
 msgid "Specify camera folder (default=\"/\")"
 msgstr "Angabe des Kameraverzeichnisses (Vorgabe=\"/\")"
 
-#: gphoto2/main.c:1898
+#: gphoto2/main.c:1945
 msgid "FOLDER"
 msgstr "VERZEICHNIS"
 
-#: gphoto2/main.c:1900
+#: gphoto2/main.c:1947
 msgid "Recursion (default for download)"
 msgstr "Rekursion (Vorgabe für das Herunterladen)"
 
-#: gphoto2/main.c:1902
+#: gphoto2/main.c:1949
 msgid "No recursion (default for deletion)"
 msgstr "Keine Rekursion (Vorgabe für das Löschen)"
 
-#: gphoto2/main.c:1904
+#: gphoto2/main.c:1951
 msgid "Process new files only"
 msgstr "Bearbeite nur neue Dateien"
 
-#: gphoto2/main.c:1906
+#: gphoto2/main.c:1953
 msgid "Overwrite files without asking"
 msgstr "Dateien ohne Nachfragen überschreiben"
 
-#: gphoto2/main.c:1912
+#: gphoto2/main.c:1959
 msgid "Send file to stdout"
 msgstr "Sende Datei auf die Standardausgabe"
 
-#: gphoto2/main.c:1914
+#: gphoto2/main.c:1961
 msgid "Print filesize before data"
 msgstr "Dateigröße vor Daten ausgeben"
 
-#: gphoto2/main.c:1916
+#: gphoto2/main.c:1963
 msgid "List auto-detected cameras"
 msgstr "Liste automatisch erkannte Kameras"
 
-#: gphoto2/main.c:1920 gphoto2/shell.c:138
+#: gphoto2/main.c:1967 gphoto2/shell.c:138
 msgid "Show EXIF information"
 msgstr "Zeige EXIF-Informationen"
 
-#: gphoto2/main.c:1923 gphoto2/shell.c:132
+#: gphoto2/main.c:1970 gphoto2/shell.c:132
 msgid "Show info"
 msgstr "Zeige Info"
 
-#: gphoto2/main.c:1925
+#: gphoto2/main.c:1972
 msgid "Show summary"
 msgstr "Zusammenfassung zeigen"
 
-#: gphoto2/main.c:1927
+#: gphoto2/main.c:1974
 msgid "Show camera driver manual"
 msgstr "Anleitung für Kameratreiber zeigen"
 
-#: gphoto2/main.c:1929
+#: gphoto2/main.c:1976
 msgid "About the camera driver manual"
 msgstr "Die Kameratreiberhilfe anzeigen"
 
-#: gphoto2/main.c:1931
+#: gphoto2/main.c:1978
 msgid "Show storage information"
 msgstr "Zeige Speicher-Informationen"
 
-#: gphoto2/main.c:1933
+#: gphoto2/main.c:1980
 msgid "gPhoto shell"
 msgstr "gPhoto-Shell"
 
-#: gphoto2/main.c:1939
+#: gphoto2/main.c:1986
 msgid "Common options"
 msgstr "Gebräuchliche Optionen"
 
-#: gphoto2/main.c:1941
+#: gphoto2/main.c:1988
 msgid "Miscellaneous options (unsorted)"
 msgstr "Weitere Optionen (unsortiert)"
 
-#: gphoto2/main.c:1943
+#: gphoto2/main.c:1990
 msgid "Get information on software and host system (not from the camera)"
 msgstr ""
 "Frage Informationen über Software und Maschine ab (nicht von der Kamera)"
 
-#: gphoto2/main.c:1945
+#: gphoto2/main.c:1992
 msgid "Specify the camera to use"
 msgstr "Angabe der zu benutzenden Kamera"
 
-#: gphoto2/main.c:1947
+#: gphoto2/main.c:1994
 msgid "Camera and software configuration"
 msgstr "Konfiguration von Kamera und Software"
 
-#: gphoto2/main.c:1949
+#: gphoto2/main.c:1996
 msgid "Capture an image from or on the camera"
 msgstr "Nehme ein Bild mit der Kamera auf"
 
-#: gphoto2/main.c:1951
+#: gphoto2/main.c:1998
 msgid "Downloading, uploading and manipulating files"
 msgstr "Herunterladen, hochladen und manipulieren von Dateien"
 
