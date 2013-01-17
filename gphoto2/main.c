@@ -1019,11 +1019,12 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 	/* The final capture will fall out of the loop into this case,
 	 * so make sure we wait a bit for the the camera to finish stuff.
 	 */
+	gettimeofday (&expose_end_time, NULL);
 	waittime = 100;
 	if (glob_frames || end_next || !glob_interval || glob_bulblength) waittime = 2000;
 	/* Drain the event queue at the end and download left over added images */
-	while (1) {
-		result = wait_and_handle_event(waittime, &evtype, download);
+	while ((-timediff_now(&expose_end_time)) < waittime) {
+		result = wait_and_handle_event(waittime - (-timediff_now(&expose_end_time)), &evtype, download);
 		if ((result != GP_OK) || (evtype == GP_EVENT_TIMEOUT))
 			break;
 		if (evtype == GP_EVENT_CAPTURE_COMPLETE)
