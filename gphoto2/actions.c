@@ -895,7 +895,7 @@ print_version_action (GPParams __unused__ *p)
 		  "\n"
 		  "This version of gphoto2 is using the following software versions and options:\n"),
 		VERSION,
-		2012, /* year of release! */
+		2013, /* year of release! */
 		port_message
 		);
 
