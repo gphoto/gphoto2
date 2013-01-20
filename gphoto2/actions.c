@@ -61,6 +61,16 @@
 
 static int print_widget (GPParams *p, const char*name, CameraWidget *widget);
 
+static long
+timediff_now (struct timeval *target) {
+	struct timeval now;
+
+	gettimeofday (&now, NULL);
+	return	(target->tv_sec-now.tv_sec)*1000+
+		(target->tv_usec-now.tv_usec)/1000;
+}
+
+
 int
 delete_all_action (GPParams *p)
 {
@@ -974,8 +984,9 @@ action_camera_capture_movie (GPParams *p, const char *arg)
 	int		fd;
 	time_t		st;
 	enum moviemode	mm;
-	int		frames;
+	int		frames,captured_frames=0;
 	char		*xname;
+	struct timeval	starttime;
 
 	if (p->flags & FLAGS_STDOUT) {
 		fd = dup(fileno(stdout));
@@ -1004,6 +1015,7 @@ action_camera_capture_movie (GPParams *p, const char *arg)
 		}
 	}
 	CR (gp_file_new_from_fd (&file, fd));
+	gettimeofday (&starttime, NULL);
 	while (1) {
 		const char *mime;
 		r = gp_camera_capture_preview (p->camera, file, p->context);
@@ -1017,6 +1029,8 @@ action_camera_capture_movie (GPParams *p, const char *arg)
 			break;
 		}
 
+		captured_frames++;
+
 		if (glob_cancel) {
 			fprintf(stderr, _("Ctrl-C pressed ... Exiting.\n"));
 			break;
@@ -1026,14 +1040,14 @@ action_camera_capture_movie (GPParams *p, const char *arg)
 				break;
 		}
 		if (mm == MOVIE_SECONDS) {
-			time_t	xt;
-			time (&xt);
-			if (xt >= st + frames)
+			if ((-timediff_now (&starttime)) >= frames*1000)
 				break;
 		}
 	}
 	gp_file_unref (file);
-	return (GP_OK);
+
+	fprintf(stderr,_("Movie capture finished (%d frames)\n"), captured_frames);
+	return GP_OK;
 }
 
 
