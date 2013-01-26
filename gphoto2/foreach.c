@@ -138,12 +138,18 @@ for_each_file (GPParams *p, FileAction action)
 	if (p->flags & FLAGS_REVERSE) {
 		for (i = count ; i--; ) {
 			CL (gp_list_get_name (list, i, &name), list);
-			CL (action (p, p->folder, name), list);
+			r = action (p, p->folder, name);
+			if (r == GP_ERROR_NOT_SUPPORTED) /* can go on */
+				r = GP_OK;
+			CL (r, list);
 		}
 	} else {
 		for (i = 0; i < count; i++) {
 			CL (gp_list_get_name (list, i, &name), list);
-			CL (action (p, p->folder, name), list);
+			r = action (p, p->folder, name);
+			if (r == GP_ERROR_NOT_SUPPORTED) /* can go on */
+				r = GP_OK;
+			CL (r, list);
 		}
 	}
 
