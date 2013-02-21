@@ -35,6 +35,7 @@ dnl ---------------------------------------------------------------------------
 AC_PROG_CC
 AC_PROG_CPP
 AM_PROG_CC_C_O
+m4_pattern_allow([AM_PROG_AR], [AM_PROG_AR])
 AM_PROG_LIBTOOL
 AC_PROG_INSTALL
 AC_SYS_LARGEFILE
