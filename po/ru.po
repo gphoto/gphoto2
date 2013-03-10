@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the gphoto2 package.
 #
 # Vyacheslav Dikonov <sdiconov@mail.ru>, 2005.
-# Yuri Kozlov <yuray@komyakino.ru>, 2009, 2010, 2011, 2012.
+# Yuri Kozlov <yuray@komyakino.ru>, 2009, 2010, 2011, 2012, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.5.0\n"
+"Project-Id-Version: gphoto2 2.5.1\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-06-03 20:02+0200\n"
-"PO-Revision-Date: 2012-07-29 12:03+0400\n"
+"POT-Creation-Date: 2013-01-27 21:10+0100\n"
+"PO-Revision-Date: 2013-02-04 21:01+0400\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <gnu@mx.ru>\n"
 "Language: ru\n"
@@ -19,12 +19,12 @@ msgstr ""
 "X-Generator: Lokalize 1.4\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: gphoto2/actions.c:158
+#: gphoto2/actions.c:168
 #, c-format
 msgid "Number of files in folder '%s': %i\n"
 msgstr "Количество файлов в каталоге «%s»: %i\n"
 
-#: gphoto2/actions.c:178
+#: gphoto2/actions.c:189
 #, c-format
 msgid "There is %d folder in folder '%s'.\n"
 msgid_plural "There are %d folders in folder '%s'.\n"
@@ -32,12 +32,12 @@ msgstr[0] "%d каталог в каталоге «%s».\n"
 msgstr[1] "%d каталога в каталоге «%s».\n"
 msgstr[2] "%d каталогов в каталоге «%s».\n"
 
-#: gphoto2/actions.c:218
+#: gphoto2/actions.c:238
 #, c-format
 msgid "There is no file in folder '%s'.\n"
 msgstr "В каталоге «%s» файлы отсутствуют.\n"
 
-#: gphoto2/actions.c:221
+#: gphoto2/actions.c:241
 #, c-format
 msgid "There is %d file in folder '%s'.\n"
 msgid_plural "There are %d files in folder '%s'.\n"
@@ -45,172 +45,172 @@ msgstr[0] "%d файл в каталоге «%s».\n"
 msgstr[1] "%d файла в каталоге «%s».\n"
 msgstr[2] "%d файлов в каталоге «%s».\n"
 
-#: gphoto2/actions.c:242
+#: gphoto2/actions.c:263
 #, c-format
 msgid "Information on file '%s' (folder '%s'):\n"
 msgstr "Сведения о файле «%s» (каталог «%s»):\n"
 
-#: gphoto2/actions.c:244
+#: gphoto2/actions.c:265
 #, c-format
 msgid "File:\n"
 msgstr "Файл:\n"
 
-#: gphoto2/actions.c:246 gphoto2/actions.c:278 gphoto2/actions.c:294
+#: gphoto2/actions.c:267 gphoto2/actions.c:299 gphoto2/actions.c:315
 #, c-format
 msgid "  None available.\n"
 msgstr "  Нет ничего.\n"
 
-#: gphoto2/actions.c:249 gphoto2/actions.c:281
+#: gphoto2/actions.c:270 gphoto2/actions.c:302
 #, c-format
 msgid "  Mime type:   '%s'\n"
 msgstr "  Тип MIME:    «%s»\n"
 
-#: gphoto2/actions.c:251 gphoto2/actions.c:283
+#: gphoto2/actions.c:272 gphoto2/actions.c:304
 #, c-format
 msgid "  Size:        %lu byte(s)\n"
 msgstr "  Размер:      %lu байт(ов)\n"
 
-#: gphoto2/actions.c:253 gphoto2/actions.c:285
+#: gphoto2/actions.c:274 gphoto2/actions.c:306
 #, c-format
 msgid "  Width:       %i pixel(s)\n"
 msgstr "  Ширина:      %i пиксель(ей)\n"
 
-#: gphoto2/actions.c:255 gphoto2/actions.c:287
+#: gphoto2/actions.c:276 gphoto2/actions.c:308
 #, c-format
 msgid "  Height:      %i pixel(s)\n"
 msgstr "  Высота:       %i пиксель(ей)\n"
 
-#: gphoto2/actions.c:257 gphoto2/actions.c:289
+#: gphoto2/actions.c:278 gphoto2/actions.c:310
 #, c-format
 msgid "  Downloaded:  %s\n"
 msgstr "  Скачано:  %s\n"
 
-#: gphoto2/actions.c:258 gphoto2/actions.c:290 gphoto2/actions.c:302
-#: gphoto2/actions.c:655 gphoto2/actions.c:657 gphoto2/actions.c:685
-#: gphoto2/actions.c:688 gphoto2/actions.c:691 gphoto2/actions.c:694
-#: gphoto2/actions.c:697 gphoto2/actions.c:1706 gphoto2/actions.c:1931
+#: gphoto2/actions.c:279 gphoto2/actions.c:311 gphoto2/actions.c:323
+#: gphoto2/actions.c:676 gphoto2/actions.c:678 gphoto2/actions.c:706
+#: gphoto2/actions.c:709 gphoto2/actions.c:712 gphoto2/actions.c:715
+#: gphoto2/actions.c:718 gphoto2/actions.c:1731 gphoto2/actions.c:1956
 msgid "yes"
 msgstr "да"
 
-#: gphoto2/actions.c:258 gphoto2/actions.c:290 gphoto2/actions.c:302
-#: gphoto2/actions.c:655 gphoto2/actions.c:657 gphoto2/actions.c:685
-#: gphoto2/actions.c:688 gphoto2/actions.c:691 gphoto2/actions.c:694
-#: gphoto2/actions.c:697 gphoto2/actions.c:1700 gphoto2/actions.c:1925
+#: gphoto2/actions.c:279 gphoto2/actions.c:311 gphoto2/actions.c:323
+#: gphoto2/actions.c:676 gphoto2/actions.c:678 gphoto2/actions.c:706
+#: gphoto2/actions.c:709 gphoto2/actions.c:712 gphoto2/actions.c:715
+#: gphoto2/actions.c:718 gphoto2/actions.c:1725 gphoto2/actions.c:1950
 msgid "no"
 msgstr "нет"
 
-#: gphoto2/actions.c:260
+#: gphoto2/actions.c:281
 #, c-format
 msgid "  Permissions: "
 msgstr "  Права доступа: "
 
-#: gphoto2/actions.c:263
+#: gphoto2/actions.c:284
 #, c-format
 msgid "read/delete"
 msgstr "чтение/удаление"
 
-#: gphoto2/actions.c:265
+#: gphoto2/actions.c:286
 #, c-format
 msgid "read"
 msgstr "чтение"
 
-#: gphoto2/actions.c:267
+#: gphoto2/actions.c:288
 #, c-format
 msgid "delete"
 msgstr "удаление"
 
-#: gphoto2/actions.c:269
+#: gphoto2/actions.c:290
 #, c-format
 msgid "none"
 msgstr "ничего"
 
-#: gphoto2/actions.c:273
+#: gphoto2/actions.c:294
 #, c-format
 msgid "  Time:        %s"
 msgstr "  Время:       %s"
 
-#: gphoto2/actions.c:276
+#: gphoto2/actions.c:297
 #, c-format
 msgid "Thumbnail:\n"
 msgstr "Миниатюра:\n"
 
-#: gphoto2/actions.c:292
+#: gphoto2/actions.c:313
 #, c-format
 msgid "Audio data:\n"
 msgstr "Звукозапись:\n"
 
-#: gphoto2/actions.c:297
+#: gphoto2/actions.c:318
 #, c-format
 msgid "  Mime type:  '%s'\n"
 msgstr "  Тип MIME:   «%s»\n"
 
-#: gphoto2/actions.c:299
+#: gphoto2/actions.c:320
 #, c-format
 msgid "  Size:       %lu byte(s)\n"
 msgstr "  Размер:     %lu байт(ов)\n"
 
-#: gphoto2/actions.c:301
+#: gphoto2/actions.c:322
 #, c-format
 msgid "  Downloaded: %s\n"
 msgstr "  Скачано: %s\n"
 
-#: gphoto2/actions.c:477
+#: gphoto2/actions.c:498
 msgid "Could not parse EXIF data."
 msgstr "Невозможно прочесть данные EXIF."
 
-#: gphoto2/actions.c:481
+#: gphoto2/actions.c:502
 #, c-format
 msgid "EXIF tags:"
 msgstr "Метки EXIF:"
 
-#: gphoto2/actions.c:484
+#: gphoto2/actions.c:505
 msgid "Tag"
 msgstr "Метка"
 
-#: gphoto2/actions.c:486
+#: gphoto2/actions.c:507
 msgid "Value"
 msgstr "Значение"
 
-#: gphoto2/actions.c:507
+#: gphoto2/actions.c:528
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
 msgstr "Данные EXIF содержат миниатюру (%i байт)."
 
-#: gphoto2/actions.c:516
+#: gphoto2/actions.c:537
 msgid "gphoto2 has been compiled without EXIF support."
 msgstr "Программа gphoto2 собрана без поддержки EXIF."
 
-#: gphoto2/actions.c:534
+#: gphoto2/actions.c:555
 #, c-format
 msgid "Number of supported cameras: %i\n"
 msgstr "Число поддерживаемых фотоаппаратов: %i\n"
 
-#: gphoto2/actions.c:535
+#: gphoto2/actions.c:556
 #, c-format
 msgid "Supported cameras:\n"
 msgstr "Поддерживаемые фотоаппараты:\n"
 
-#: gphoto2/actions.c:548
+#: gphoto2/actions.c:569
 #, c-format
 msgid "\t\"%s\" (TESTING)\n"
 msgstr "\t«%s» (ТЕСТ)\n"
 
-#: gphoto2/actions.c:551
+#: gphoto2/actions.c:572
 #, c-format
 msgid "\t\"%s\" (EXPERIMENTAL)\n"
 msgstr "\t«%s» (ЭКСПЕРИМЕНТАЛЬНЫЙ)\n"
 
-#: gphoto2/actions.c:556
+#: gphoto2/actions.c:577
 #, c-format
 msgid "\t\"%s\"\n"
 msgstr "\t«%s»\n"
 
-#: gphoto2/actions.c:600
+#: gphoto2/actions.c:621
 #, c-format
 msgid "Devices found: %i\n"
 msgstr "Найдено устройств: %i\n"
 
-#: gphoto2/actions.c:601
+#: gphoto2/actions.c:622
 #, c-format
 msgid ""
 "Path                             Description\n"
@@ -219,139 +219,139 @@ msgstr ""
 "Путь                             Описание\n"
 "--------------------------------------------------------------\n"
 
-#: gphoto2/actions.c:634 gphoto2/actions.c:639
+#: gphoto2/actions.c:655 gphoto2/actions.c:660
 #, c-format
 msgid "%-30s %-16s\n"
 msgstr "%-30s %-16s\n"
 
-#: gphoto2/actions.c:634
+#: gphoto2/actions.c:655
 msgid "Model"
 msgstr "Модель"
 
-#: gphoto2/actions.c:634
+#: gphoto2/actions.c:655
 msgid "Port"
 msgstr "Порт"
 
-#: gphoto2/actions.c:635
+#: gphoto2/actions.c:656
 #, c-format
 msgid "----------------------------------------------------------\n"
 msgstr "----------------------------------------------------------\n"
 
-#: gphoto2/actions.c:653
+#: gphoto2/actions.c:674
 #, c-format
 msgid "Abilities for camera             : %s\n"
 msgstr "Функции фотоаппарата             : %s\n"
 
-#: gphoto2/actions.c:654
+#: gphoto2/actions.c:675
 #, c-format
 msgid "Serial port support              : %s\n"
 msgstr "Поддержка послед. порта          : %s\n"
 
-#: gphoto2/actions.c:656
+#: gphoto2/actions.c:677
 #, c-format
 msgid "USB support                      : %s\n"
 msgstr "Поддержка USB                    : %s\n"
 
-#: gphoto2/actions.c:659
+#: gphoto2/actions.c:680
 #, c-format
 msgid "Transfer speeds supported        :\n"
 msgstr "Поддерживаемые скорости передачи :\n"
 
-#: gphoto2/actions.c:661
+#: gphoto2/actions.c:682
 #, c-format
 msgid "                                 : %i\n"
 msgstr "                                 : %i\n"
 
-#: gphoto2/actions.c:664
+#: gphoto2/actions.c:685
 #, c-format
 msgid "Capture choices                  :\n"
 msgstr "Режимы съёмки                    :\n"
 
-#: gphoto2/actions.c:666
+#: gphoto2/actions.c:687
 #, c-format
 msgid "                                 : Image\n"
 msgstr "                                 : Фото\n"
 
-#: gphoto2/actions.c:670
+#: gphoto2/actions.c:691
 #, c-format
 msgid "                                 : Video\n"
 msgstr "                                 : Видео\n"
 
-#: gphoto2/actions.c:674
+#: gphoto2/actions.c:695
 #, c-format
 msgid "                                 : Audio\n"
 msgstr "                                 : Аудио\n"
 
-#: gphoto2/actions.c:678
+#: gphoto2/actions.c:699
 #, c-format
 msgid "                                 : Preview\n"
 msgstr "                                 : Предв. просмотр\n"
 
-#: gphoto2/actions.c:682
+#: gphoto2/actions.c:703
 #, c-format
 msgid "                                 : Capture not supported by the driver\n"
 msgstr "                                 : Драйвер не поддерживает режим съёмки\n"
 
-#: gphoto2/actions.c:684
+#: gphoto2/actions.c:705
 #, c-format
 msgid "Configuration support            : %s\n"
 msgstr "Поддержка настройки             : %s\n"
 
-#: gphoto2/actions.c:686
+#: gphoto2/actions.c:707
 #, c-format
 msgid "Delete selected files on camera  : %s\n"
 msgstr "Удаление выбранных файлов с фотоаппарата: %s\n"
 
-#: gphoto2/actions.c:689
+#: gphoto2/actions.c:710
 #, c-format
 msgid "Delete all files on camera       : %s\n"
 msgstr "Удаление всех файлов с фотоаппарата: %s\n"
 
-#: gphoto2/actions.c:692
+#: gphoto2/actions.c:713
 #, c-format
 msgid "File preview (thumbnail) support : %s\n"
 msgstr "Поддержка миниатюр               : %s\n"
 
-#: gphoto2/actions.c:695
+#: gphoto2/actions.c:716
 #, c-format
 msgid "File upload support              : %s\n"
 msgstr "Поддержка загрузки файлов        : %s\n"
 
-#: gphoto2/actions.c:712
+#: gphoto2/actions.c:733
 #, c-format
 msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
 msgstr "Порт должен быть указан так: «serial:/dev/ttyS0» или «usb:», но в строке «%s» нет двоеточия. Программа попытается угадать, чего вы хотите."
 
-#: gphoto2/actions.c:746
+#: gphoto2/actions.c:767
 #, c-format
 msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
 msgstr "Указанный порт («%s») не найден. Пожалуйста, выберите один из портов обнаруженных командой «gphoto2 --list-ports» и убедитесь, что нет опечаток (например в префиксах «serial:» и «usb:»)."
 
-#: gphoto2/actions.c:779
+#: gphoto2/actions.c:800
 #, c-format
 msgid "About the camera driver:"
 msgstr "О драйвере фотоаппарата:"
 
-#: gphoto2/actions.c:792
+#: gphoto2/actions.c:813
 #, c-format
 msgid "Camera summary:"
 msgstr "Краткие сведения о фотоаппарате:"
 
-#: gphoto2/actions.c:805
+#: gphoto2/actions.c:826
 #, c-format
 msgid "Camera manual:"
 msgstr "Руководство пользователя фотоаппарата:"
 
-#: gphoto2/actions.c:822
+#: gphoto2/actions.c:843
 #, c-format
 msgid "You can only specify speeds for serial ports."
 msgstr "Скорость можно указывать только для последовательных портов."
 
-#: gphoto2/actions.c:872
+#: gphoto2/actions.c:893
 msgid "OS/2 port by Bart van Leeuwen\n"
 msgstr "Версия для OS/2 написана Бартом ван Лёвином\n"
 
-#: gphoto2/actions.c:876
+#: gphoto2/actions.c:897
 #, c-format
 msgid ""
 "gphoto2 %s\n"
@@ -374,286 +374,291 @@ msgstr ""
 "\n"
 "Данная версия gphoto2 использует следующие версии программного обеспечения и настройки:\n"
 
-#: gphoto2/actions.c:975
+#: gphoto2/actions.c:997
 msgid "Could not open 'movie.mjpg'."
 msgstr "Не удалось открыть movie.mjpg."
 
-#: gphoto2/actions.c:982
+#: gphoto2/actions.c:1004
 #, c-format
 msgid "Capturing preview frames as movie to '%s'. Press Ctrl-C to abort.\n"
 msgstr "Идёт съёмка пробных кадров фильма в «%s». Чтобы прервать, нажмите Ctrl-C.\n"
 
-#: gphoto2/actions.c:986
+#: gphoto2/actions.c:1008
 #, c-format
 msgid "Capturing preview frames as movie to '%s' for %d seconds.\n"
 msgstr "Идёт съёмка %2$d секунд пробных кадров фильма в «%1$s».\n"
 
-#: gphoto2/actions.c:991
+#: gphoto2/actions.c:1013
 #, c-format
 msgid "Capturing %d preview frames as movie to '%s'.\n"
 msgstr "Идёт съёмка %d пробных кадров фильма в «%s».\n"
 
-#: gphoto2/actions.c:1000
+#: gphoto2/actions.c:1023
 msgid "Movie capture error... Exiting."
 msgstr "Ошибка съёмки фильма... Завершение."
 
-#: gphoto2/actions.c:1005
+#: gphoto2/actions.c:1028
 #, c-format
 msgid "Movie capture error... Unhandled MIME type '%s'."
 msgstr "Ошибка съёмки фильма... Необработанный тип MIME «%s»."
 
-#: gphoto2/actions.c:1010
+#: gphoto2/actions.c:1035
 #, c-format
 msgid "Ctrl-C pressed ... Exiting.\n"
 msgstr "Нажата Ctrl-C... Завершение.\n"
 
-#: gphoto2/actions.c:1054
+#: gphoto2/actions.c:1049
+#, c-format
+msgid "Movie capture finished (%d frames)\n"
+msgstr "Съёмка фильма закончена (количество кадров: %d)\n"
+
+#: gphoto2/actions.c:1079
 #, c-format
 msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
 msgstr "Ожидание событий фотоаппарата. Чтобы прервать, нажмите Ctrl-C.\n"
 
-#: gphoto2/actions.c:1060
+#: gphoto2/actions.c:1085
 #, c-format
 msgid "Waiting for %d frames from the camera. Press Ctrl-C to abort.\n"
 msgstr "Ожидание %d кадров фотоаппарата. Чтобы прервать, нажмите Ctrl-C.\n"
 
-#: gphoto2/actions.c:1065
+#: gphoto2/actions.c:1090
 #, c-format
 msgid "Waiting for %d milliseconds for events from camera. Press Ctrl-C to abort.\n"
 msgstr "Ожидание событий фотоаппарата в течение %d миллисекунд. Чтобы прервать, нажмите Ctrl-C.\n"
 
-#: gphoto2/actions.c:1070
+#: gphoto2/actions.c:1095
 #, c-format
 msgid "Waiting for %d seconds for events from camera. Press Ctrl-C to abort.\n"
 msgstr "Ожидание событий фотоаппарата в течение %d секунд. Чтобы прервать, нажмите Ctrl-C.\n"
 
-#: gphoto2/actions.c:1074
+#: gphoto2/actions.c:1099
 #, c-format
 msgid "Waiting for %d events from camera. Press Ctrl-C to abort.\n"
 msgstr "Ожидание %d событий фотоаппарата. Чтобы прервать, нажмите Ctrl-C.\n"
 
-#: gphoto2/actions.c:1138 gphoto2/main.c:711
+#: gphoto2/actions.c:1163 gphoto2/main.c:746
 msgid "Could not set folder."
 msgstr "Невозможно задать каталог."
 
-#: gphoto2/actions.c:1144 gphoto2/main.c:718
+#: gphoto2/actions.c:1169 gphoto2/main.c:753
 msgid "Could not get image."
 msgstr "Невозможно извлечь снимок."
 
-#: gphoto2/actions.c:1151 gphoto2/main.c:725
+#: gphoto2/actions.c:1176 gphoto2/main.c:760
 msgid "Buggy libcanon.so?"
 msgstr "Ошибка в файле libcanon.so?"
 
-#: gphoto2/actions.c:1161 gphoto2/main.c:737
+#: gphoto2/actions.c:1186 gphoto2/main.c:772
 msgid "Could not delete image."
 msgstr "Невозможно удалить снимок."
 
-#: gphoto2/actions.c:1185
+#: gphoto2/actions.c:1210
 #, c-format
 msgid "Getting storage information not supported for this camera.\n"
 msgstr "Получение информации о хранилище не поддерживается данным фотоаппаратом.\n"
 
-#: gphoto2/actions.c:1200
+#: gphoto2/actions.c:1225
 #, c-format
 msgid "Read-Write"
 msgstr "Чтение-Запись"
 
-#: gphoto2/actions.c:1203
+#: gphoto2/actions.c:1228
 #, c-format
 msgid "Read-Only"
 msgstr "Только-Чтение"
 
-#: gphoto2/actions.c:1206
+#: gphoto2/actions.c:1231
 #, c-format
 msgid "Read-only with delete"
 msgstr "Только-чтение с удалением"
 
-#: gphoto2/actions.c:1209 gphoto2/actions.c:1219
+#: gphoto2/actions.c:1234 gphoto2/actions.c:1244
 #, c-format
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: gphoto2/actions.c:1222
+#: gphoto2/actions.c:1247
 #, c-format
 msgid "Fixed ROM"
 msgstr "Несъёмная ROM"
 
-#: gphoto2/actions.c:1225
+#: gphoto2/actions.c:1250
 #, c-format
 msgid "Removable ROM"
 msgstr "Съёмная ROM"
 
-#: gphoto2/actions.c:1228
+#: gphoto2/actions.c:1253
 #, c-format
 msgid "Fixed RAM"
 msgstr "Несъёмная RAM"
 
-#: gphoto2/actions.c:1231
+#: gphoto2/actions.c:1256
 #, c-format
 msgid "Removable RAM"
 msgstr "Съёмная RAM"
 
-#: gphoto2/actions.c:1241
+#: gphoto2/actions.c:1266
 #, c-format
 msgid "Undefined"
 msgstr "Не определено"
 
-#: gphoto2/actions.c:1244
+#: gphoto2/actions.c:1269
 #, c-format
 msgid "Generic Flat"
 msgstr "Обычная плоская"
 
-#: gphoto2/actions.c:1247
+#: gphoto2/actions.c:1272
 #, c-format
 msgid "Generic Hierarchical"
 msgstr "Обычная иерархическая"
 
-#: gphoto2/actions.c:1250
+#: gphoto2/actions.c:1275
 #, c-format
 msgid "Camera layout (DCIM)"
 msgstr "Расположение камеры (DCIM)"
 
-#: gphoto2/actions.c:1288
+#: gphoto2/actions.c:1313
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Подмена ID изготовителя/модели USB устройства 0x%x/0x%x на 0x%x/0x%x"
 
-#: gphoto2/actions.c:1346
+#: gphoto2/actions.c:1371
 msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
 msgstr "ОТСЫЛАЯ ОТЛАДОЧНЫЕ СООБЩЕНИЯ В СПИСОК РАССЫЛКИ ВСЕГДА ВКЛЮЧАЙТЕ В НИХ СЛЕДУЮЩИЕ СТРОКИ:"
 
-#: gphoto2/actions.c:1361
+#: gphoto2/actions.c:1386
 #, c-format
 msgid "%s has been compiled with the following options:"
 msgstr "%s собрана со следующими параметрами:"
 
-#: gphoto2/actions.c:1492
+#: gphoto2/actions.c:1517
 #, c-format
 msgid "%s not found in configuration tree."
 msgstr "%s не найден в дереве настроек."
 
-#: gphoto2/actions.c:1541
+#: gphoto2/actions.c:1566
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr "Невозможно получить содержимое текстового поля %s."
 
-#: gphoto2/actions.c:1558
+#: gphoto2/actions.c:1583
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr "Невозможно получить крайние значения диапазона из %s."
 
-#: gphoto2/actions.c:1570
+#: gphoto2/actions.c:1595
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr "Невозможно получить значения переключателя %s."
 
-#: gphoto2/actions.c:1582
+#: gphoto2/actions.c:1607
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr "Невозможно получить значения даты/времени %s."
 
-#: gphoto2/actions.c:1612
+#: gphoto2/actions.c:1637
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr "Невозможно получить состояние радиокопки %s."
 
-#: gphoto2/actions.c:1656
+#: gphoto2/actions.c:1681
 #, c-format
 msgid "Property %s is read only."
 msgstr "Свойство %s доступно только для чтения."
 
-#: gphoto2/actions.c:1670 gphoto2/actions.c:1895
+#: gphoto2/actions.c:1695 gphoto2/actions.c:1920
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr "Невозможно задать значение текстового поля %s в %s."
 
-#: gphoto2/actions.c:1680 gphoto2/actions.c:1905
+#: gphoto2/actions.c:1705 gphoto2/actions.c:1930
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr "Переданное значение %s не является значением с плавающей точкой."
 
-#: gphoto2/actions.c:1685 gphoto2/actions.c:1910
+#: gphoto2/actions.c:1710 gphoto2/actions.c:1935
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr "Переданное значение %f вне пределов диапазона %f - %f."
 
-#: gphoto2/actions.c:1691 gphoto2/actions.c:1916
+#: gphoto2/actions.c:1716 gphoto2/actions.c:1941
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr "Невозможно задать крайние значения диапазона %s в %f."
 
-#: gphoto2/actions.c:1700 gphoto2/actions.c:1925
+#: gphoto2/actions.c:1725 gphoto2/actions.c:1950
 msgid "off"
 msgstr "выкл"
 
-#: gphoto2/actions.c:1701 gphoto2/actions.c:1926
+#: gphoto2/actions.c:1726 gphoto2/actions.c:1951
 msgid "false"
 msgstr "ложно"
 
-#: gphoto2/actions.c:1706 gphoto2/actions.c:1931
+#: gphoto2/actions.c:1731 gphoto2/actions.c:1956
 msgid "on"
 msgstr "вкл"
 
-#: gphoto2/actions.c:1707 gphoto2/actions.c:1932
+#: gphoto2/actions.c:1732 gphoto2/actions.c:1957
 msgid "true"
 msgstr "истинно"
 
-#: gphoto2/actions.c:1712 gphoto2/actions.c:1937
+#: gphoto2/actions.c:1737 gphoto2/actions.c:1962
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
 msgstr "Переданное значение %s не является значением переключателя."
 
-#: gphoto2/actions.c:1718 gphoto2/actions.c:1943
+#: gphoto2/actions.c:1743 gphoto2/actions.c:1968
 #, c-format
 msgid "Failed to set values %s of toggle widget %s."
 msgstr "Невозможно задать значения %s для переключателя %s."
 
-#: gphoto2/actions.c:1731 gphoto2/actions.c:1956
+#: gphoto2/actions.c:1756 gphoto2/actions.c:1981
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr "Переданное значение %s не является числом или временем."
 
-#: gphoto2/actions.c:1738 gphoto2/actions.c:1963
+#: gphoto2/actions.c:1763 gphoto2/actions.c:1988
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr "Невозможно задать новое значение для даты/времени %s в %s."
 
-#: gphoto2/actions.c:1785 gphoto2/actions.c:1849 gphoto2/actions.c:1993
+#: gphoto2/actions.c:1810 gphoto2/actions.c:1874 gphoto2/actions.c:2018
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr "Вариант %s не найден в списке вариантов."
 
-#: gphoto2/actions.c:1793 gphoto2/actions.c:2001
+#: gphoto2/actions.c:1818 gphoto2/actions.c:2026
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr "Элемент интерфейса %s не настраиваем."
 
-#: gphoto2/actions.c:1800 gphoto2/actions.c:1868 gphoto2/actions.c:2008
+#: gphoto2/actions.c:1825 gphoto2/actions.c:1893 gphoto2/actions.c:2033
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr "Невозможно задать новое значение настройки %s для настроечной единицы %s."
 
-#: gphoto2/actions.c:1861
+#: gphoto2/actions.c:1886
 #, c-format
 msgid "The %s widget has no indexed list of choices. Use --set-config-value instead."
 msgstr "Граф. элемент %s не имеет проиндексированного списка выбора. Вместо этого используйте --set-config-value."
 
-#: gphoto2/foreach.c:254
+#: gphoto2/foreach.c:260
 #, c-format
 msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
 msgstr "Неверное число файлов. Было задано %1$i, но в каталоге «%3$s» и его подкаталогах находится лишь %2$i файл(ов). Правильное число можно узнать из списка файлов."
 
-#: gphoto2/foreach.c:279
+#: gphoto2/foreach.c:285
 #, c-format
 msgid "There are no files in folder '%s'."
 msgstr "В каталоге «%s» нет файлов."
 
-#: gphoto2/foreach.c:285
+#: gphoto2/foreach.c:291
 #, c-format
 msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
 msgstr "Неверное число файлов. Было задано %i, но в каталоге «%s» и его подкаталогах находится лишь 1 файл."
 
-#: gphoto2/foreach.c:293
+#: gphoto2/foreach.c:299
 #, c-format
 msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
 msgstr "Неверное число файлов. Было задано %1$i, но в каталоге «%3$s» находится лишь %2$i файл(ов). Правильное число можно узнать из списка файлов."
@@ -762,116 +767,116 @@ msgstr "Файл сохраняется с именем %s\n"
 msgid "Permission denied"
 msgstr "Отказано в доступе"
 
-#: gphoto2/main.c:672
+#: gphoto2/main.c:707
 msgid "Could not trigger capture."
 msgstr "Невозможно запустить процесс съёмки."
 
-#: gphoto2/main.c:702
+#: gphoto2/main.c:737
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "Новый файл находится в фотоаппарате в %s%s%s\n"
 
-#: gphoto2/main.c:732
+#: gphoto2/main.c:767
 #, c-format
 msgid "Deleting file %s%s%s on the camera\n"
 msgstr "Удаляется файл %s%s%s в фотоаппарате\n"
 
-#: gphoto2/main.c:742
+#: gphoto2/main.c:777
 #, c-format
 msgid "Keeping file %s%s%s on the camera\n"
 msgstr "Оставляется файл %s%s%s в фотоаппарате\n"
 
-#: gphoto2/main.c:775
+#: gphoto2/main.c:810
 #, c-format
 msgid "Event FOLDER_ADDED %s/%s during wait, ignoring.\n"
 msgstr "Во время ожидания произошло событие FOLDER_ADDED %s/%s, игнорируется.\n"
 
-#: gphoto2/main.c:785
+#: gphoto2/main.c:820
 #, c-format
 msgid "Event UNKNOWN %s during wait, ignoring.\n"
 msgstr "Во время ожидания произошло событие UNKNOWN %s, игнорируется.\n"
 
-#: gphoto2/main.c:791
+#: gphoto2/main.c:826
 #, c-format
 msgid "Unknown event type %d during bulb wait, ignoring.\n"
 msgstr "Во время ожидания с ручной выдержкой произошло событие %d неизвестного типа, игнорируется.\n"
 
-#: gphoto2/main.c:809
+#: gphoto2/main.c:844
 msgid "Could not get capabilities?"
 msgstr "Не удалось определить возможности?"
 
-#: gphoto2/main.c:817
+#: gphoto2/main.c:852
 #, c-format
 msgid "Time-lapse mode enabled (interval: %ds).\n"
 msgstr "Включён режим отложенного спуска (задержка: %dсек).\n"
 
-#: gphoto2/main.c:820
+#: gphoto2/main.c:855
 #, c-format
 msgid "Standing by waiting for SIGUSR1 to capture.\n"
 msgstr "Ожидание SIGUSR1 для съёмки.\n"
 
-#: gphoto2/main.c:826
+#: gphoto2/main.c:861
 #, c-format
 msgid "Bulb mode enabled (exposure time: %ds).\n"
 msgstr "Включён режим ручной выдержки (время экспозиции: %dсек).\n"
 
-#: gphoto2/main.c:839
+#: gphoto2/main.c:874
 #, c-format
 msgid "Capturing frame #%d...\n"
 msgstr "Снимается кадр %d...\n"
 
-#: gphoto2/main.c:841
+#: gphoto2/main.c:876
 #, c-format
 msgid "Capturing frame #%d/%d...\n"
 msgstr "Снимается кадр %d/%d...\n"
 
-#: gphoto2/main.c:851
+#: gphoto2/main.c:886
 #, c-format
 msgid "Could not set bulb capture, result %d."
 msgstr "Невозможно включить съёмку с выдержкой от руки, результат %d."
 
-#: gphoto2/main.c:865
+#: gphoto2/main.c:900
 msgid "Could not end capture (bulb mode)."
 msgstr "Невозможно завершить съёмку (режим выдержки от руки)."
 
-#: gphoto2/main.c:876
+#: gphoto2/main.c:911
 msgid "Could not trigger image capture."
 msgstr "Невозможно запустить процесс съёмки снимка."
 
-#: gphoto2/main.c:882
+#: gphoto2/main.c:917
 msgid "Could not capture image."
 msgstr "Невозможно сделать снимок."
 
-#: gphoto2/main.c:889
+#: gphoto2/main.c:924
 #, c-format
 msgid "Capture failed (auto-focus problem?)...\n"
 msgstr "Съёмка не удалась (проблема с автофокусировкой?)...\n"
 
-#: gphoto2/main.c:900
+#: gphoto2/main.c:935
 msgid "Could not capture."
 msgstr "Невозможно сделать снимок."
 
-#: gphoto2/main.c:931
+#: gphoto2/main.c:966
 #, c-format
 msgid "Waiting for next capture slot %ld seconds...\n"
 msgstr "Ожидание %ld секунд перед следующим снимком...\n"
 
-#: gphoto2/main.c:940 gphoto2/main.c:981
+#: gphoto2/main.c:975 gphoto2/main.c:1016
 #, c-format
 msgid "Awakened by SIGUSR1...\n"
 msgstr "Начало работы по сигналу SIGUSR1...\n"
 
-#: gphoto2/main.c:953
+#: gphoto2/main.c:988
 #, c-format
 msgid "not sleeping (%ld seconds behind schedule)\n"
 msgstr "без ожидания (%ld секунд до запланированного времени)\n"
 
-#: gphoto2/main.c:1084
+#: gphoto2/main.c:1120
 #, c-format
 msgid "ERROR: "
 msgstr "ОШИБКА: "
 
-#: gphoto2/main.c:1107
+#: gphoto2/main.c:1143
 #, c-format
 msgid ""
 "\n"
@@ -880,12 +885,12 @@ msgstr ""
 "\n"
 "Прерывание...\n"
 
-#: gphoto2/main.c:1113
+#: gphoto2/main.c:1149
 #, c-format
 msgid "Aborted.\n"
 msgstr "Прервано.\n"
 
-#: gphoto2/main.c:1118
+#: gphoto2/main.c:1154
 #, c-format
 msgid ""
 "\n"
@@ -894,21 +899,21 @@ msgstr ""
 "\n"
 "Отмена...\n"
 
-#: gphoto2/main.c:1265
+#: gphoto2/main.c:1301
 #, c-format
 msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
 msgstr "Используйте следующую запись: a:b=c:d чтобы работать с любым устройством USB, определяемым как a:b, как с устройством c:d. a b c d - шестнадцатеричные числа, начинающиеся с «0x».\n"
 
-#: gphoto2/main.c:1432
+#: gphoto2/main.c:1469
 msgid "gphoto2 has been compiled without support for CDK."
 msgstr "Программа gphoto2 собрана без поддержки CDK."
 
-#: gphoto2/main.c:1656
+#: gphoto2/main.c:1704
 #, c-format
 msgid "Operation cancelled.\n"
 msgstr "Действие отменено.\n"
 
-#: gphoto2/main.c:1660
+#: gphoto2/main.c:1708
 #, c-format
 msgid ""
 "*** Error: No camera found. ***\n"
@@ -917,7 +922,7 @@ msgstr ""
 "*** Ошибка: фотоаппарат не найден. ***\n"
 "\n"
 
-#: gphoto2/main.c:1662
+#: gphoto2/main.c:1710
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -926,7 +931,7 @@ msgstr ""
 "*** Ошибка (%i: «%s») ***       \n"
 "\n"
 
-#: gphoto2/main.c:1667
+#: gphoto2/main.c:1715
 #, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
@@ -943,7 +948,7 @@ msgstr ""
 "gphoto2 со следующими параметрами:\n"
 "\n"
 
-#: gphoto2/main.c:1688
+#: gphoto2/main.c:1736
 #, c-format
 msgid ""
 "Please make sure there is sufficient quoting around the arguments.\n"
@@ -952,366 +957,366 @@ msgstr ""
 "Проверьте, что аргументы надёжно экранированы.\n"
 "\n"
 
-#: gphoto2/main.c:1755
+#: gphoto2/main.c:1803
 msgid "Print complete help message on program usage"
 msgstr "Показ полной справки по работе с программой"
 
-#: gphoto2/main.c:1757
+#: gphoto2/main.c:1805
 msgid "Print short message on program usage"
 msgstr "Показ короткой справки по работе с программой"
 
-#: gphoto2/main.c:1759
+#: gphoto2/main.c:1807
 msgid "Turn on debugging"
 msgstr "Включить режим отладки"
 
-#: gphoto2/main.c:1761
+#: gphoto2/main.c:1809
 msgid "Name of file to write debug info to"
 msgstr "Имя файла, куда будет писаться отладочная информация"
 
-#: gphoto2/main.c:1761 gphoto2/main.c:1766 gphoto2/main.c:1772
-#: gphoto2/main.c:1894
+#: gphoto2/main.c:1809 gphoto2/main.c:1814 gphoto2/main.c:1820
+#: gphoto2/main.c:1942
 msgid "FILENAME"
 msgstr "ИМЯ_ФАЙЛА"
 
-#: gphoto2/main.c:1763
+#: gphoto2/main.c:1811
 msgid "Quiet output (default=verbose)"
 msgstr "Не выводить сообщения (по умолчанию - выводить все)"
 
-#: gphoto2/main.c:1765
+#: gphoto2/main.c:1813
 msgid "Hook script to call after downloads, captures, etc."
 msgstr "Сценарий, выполняющийся после скачивания, съёмки и т.д."
 
-#: gphoto2/main.c:1772
+#: gphoto2/main.c:1820
 msgid "Specify device port"
 msgstr "Задать порт устройства"
 
-#: gphoto2/main.c:1774
+#: gphoto2/main.c:1822
 msgid "Specify serial transfer speed"
 msgstr "Задать скорость передачи по последовательному порту"
 
-#: gphoto2/main.c:1774
+#: gphoto2/main.c:1822
 msgid "SPEED"
 msgstr "СКОРОСТЬ"
 
-#: gphoto2/main.c:1776
+#: gphoto2/main.c:1824
 msgid "Specify camera model"
 msgstr "Задать модель фотоаппарата"
 
-#: gphoto2/main.c:1776
+#: gphoto2/main.c:1824
 msgid "MODEL"
 msgstr "МОДЕЛЬ"
 
-#: gphoto2/main.c:1778
+#: gphoto2/main.c:1826
 msgid "(expert only) Override USB IDs"
 msgstr "(для специалистов) Подмена ID USB устройств"
 
-#: gphoto2/main.c:1778
+#: gphoto2/main.c:1826
 msgid "USBIDs"
 msgstr "USBID"
 
-#: gphoto2/main.c:1784
+#: gphoto2/main.c:1832
 msgid "Display version and exit"
 msgstr "Показать версию и выйти"
 
-#: gphoto2/main.c:1786
+#: gphoto2/main.c:1834
 msgid "List supported camera models"
 msgstr "Показать список поддерживаемых моделей"
 
-#: gphoto2/main.c:1788
+#: gphoto2/main.c:1836
 msgid "List supported port devices"
 msgstr "Показать список поддерживаемых портов"
 
-#: gphoto2/main.c:1790
+#: gphoto2/main.c:1838
 msgid "Display camera/driver abilities"
 msgstr "Показать возможности фотоаппарата/драйвера"
 
-#: gphoto2/main.c:1797
+#: gphoto2/main.c:1845
 msgid "Configure"
 msgstr "Настроить"
 
-#: gphoto2/main.c:1800
+#: gphoto2/main.c:1848
 msgid "List configuration tree"
 msgstr "Показать дерево настроек"
 
-#: gphoto2/main.c:1802
+#: gphoto2/main.c:1850
 msgid "Dump full configuration tree"
 msgstr "Дамп всего дерева настроек"
 
-#: gphoto2/main.c:1804
+#: gphoto2/main.c:1852
 msgid "Get configuration value"
 msgstr "Получить значение параметра настройки"
 
-#: gphoto2/main.c:1806
+#: gphoto2/main.c:1854
 msgid "Set configuration value or index in choices"
 msgstr "Задать значение параметра настройки или индекс из списков выбора"
 
-#: gphoto2/main.c:1808
+#: gphoto2/main.c:1856
 msgid "Set configuration value index in choices"
 msgstr "Задать значение настройки индекса из списков выбора"
 
-#: gphoto2/main.c:1810
+#: gphoto2/main.c:1858
 msgid "Set configuration value"
 msgstr "Задать значение параметра настройки"
 
-#: gphoto2/main.c:1816
+#: gphoto2/main.c:1864
 msgid "Keep images on camera after capturing"
 msgstr "Оставлять снимки в камере после съёмки"
 
-#: gphoto2/main.c:1818
+#: gphoto2/main.c:1866
 msgid "Remove images from camera after capturing"
 msgstr "Удалять снимки в камере после съёмки"
 
-#: gphoto2/main.c:1820
+#: gphoto2/main.c:1868
 msgid "Wait for event(s) from camera"
 msgstr "Ждать события(й) от фотоаппарата"
 
-#: gphoto2/main.c:1820 gphoto2/main.c:1822 gphoto2/main.c:1829
-#: gphoto2/main.c:1845
+#: gphoto2/main.c:1868 gphoto2/main.c:1870 gphoto2/main.c:1877
+#: gphoto2/main.c:1893
 msgid "COUNT"
 msgstr "ЧИСЛО"
 
-#: gphoto2/main.c:1822
+#: gphoto2/main.c:1870
 msgid "Wait for event(s) from the camera and download new images"
 msgstr "Ждать события(й) от фотоаппарата и скачать новые снимки"
 
-#: gphoto2/main.c:1825
+#: gphoto2/main.c:1873
 msgid "Capture a quick preview"
 msgstr "Сделать пробный снимок"
 
-#: gphoto2/main.c:1827
+#: gphoto2/main.c:1875
 msgid "Set bulb exposure time in seconds"
 msgstr "Задать время экcпозиции при ручной выдержке в секундах"
 
-#: gphoto2/main.c:1827 gphoto2/main.c:1831
+#: gphoto2/main.c:1875 gphoto2/main.c:1879
 msgid "SECONDS"
 msgstr "СЕКУНДЫ"
 
-#: gphoto2/main.c:1829
+#: gphoto2/main.c:1877
 msgid "Set number of frames to capture (default=infinite)"
 msgstr "Задать число снимаемых кадров (по умолчанию — бесконечное)"
 
-#: gphoto2/main.c:1831
+#: gphoto2/main.c:1879
 msgid "Set capture interval in seconds"
 msgstr "Задать интервал между снимками"
 
-#: gphoto2/main.c:1833
+#: gphoto2/main.c:1881
 msgid "Reset capture interval on signal (default=no)"
 msgstr "Сбрасывать интервал между снимками по сигналу (по умолчанию — нет)"
 
-#: gphoto2/main.c:1835
+#: gphoto2/main.c:1883
 msgid "Capture an image"
 msgstr "Сделать снимок"
 
-#: gphoto2/main.c:1837
+#: gphoto2/main.c:1885
 msgid "Trigger capture of an image"
 msgstr "Запустить процесс съёмки снимка"
 
-#: gphoto2/main.c:1839
+#: gphoto2/main.c:1887
 msgid "Capture an image and download it"
 msgstr "Сделать снимок и скачать его"
 
-#: gphoto2/main.c:1841
+#: gphoto2/main.c:1889
 msgid "Capture a movie"
 msgstr "Снять фильм"
 
-#: gphoto2/main.c:1841
+#: gphoto2/main.c:1889
 msgid "COUNT or SECONDS"
 msgstr "КОЛИЧЕСТВО или СЕКУНД"
 
-#: gphoto2/main.c:1843
+#: gphoto2/main.c:1891
 msgid "Capture an audio clip"
 msgstr "Сделать звукозапись"
 
-#: gphoto2/main.c:1845
+#: gphoto2/main.c:1893
 msgid "Wait for shutter release on the camera and download"
 msgstr "Ждать спуска затвора фотоаппарата и скачать"
 
-#: gphoto2/main.c:1847
+#: gphoto2/main.c:1895
 msgid "Trigger image capture"
 msgstr "Запустить процесс съёмки"
 
-#: gphoto2/main.c:1853
+#: gphoto2/main.c:1901
 msgid "List folders in folder"
 msgstr "Показать список каталогов внутри каталога"
 
-#: gphoto2/main.c:1855
+#: gphoto2/main.c:1903
 msgid "List files in folder"
 msgstr "Показать список файлов в каталоге"
 
-#: gphoto2/main.c:1857
+#: gphoto2/main.c:1905
 msgid "Create a directory"
 msgstr "Создать каталог"
 
-#: gphoto2/main.c:1857 gphoto2/main.c:1859
+#: gphoto2/main.c:1905 gphoto2/main.c:1907
 msgid "DIRNAME"
 msgstr "ИМЯ_КАТАЛОГА"
 
-#: gphoto2/main.c:1859
+#: gphoto2/main.c:1907
 msgid "Remove a directory"
 msgstr "Удалить каталог"
 
-#: gphoto2/main.c:1861
+#: gphoto2/main.c:1909
 msgid "Display number of files"
 msgstr "Показать количество файлов"
 
-#: gphoto2/main.c:1863
+#: gphoto2/main.c:1911
 msgid "Get files given in range"
 msgstr "Извлечь файлы в диапазоне"
 
-#: gphoto2/main.c:1863 gphoto2/main.c:1867 gphoto2/main.c:1872
-#: gphoto2/main.c:1879 gphoto2/main.c:1885 gphoto2/main.c:1890
+#: gphoto2/main.c:1911 gphoto2/main.c:1915 gphoto2/main.c:1920
+#: gphoto2/main.c:1927 gphoto2/main.c:1933 gphoto2/main.c:1938
 msgid "RANGE"
 msgstr "ДИАПАЗОН"
 
-#: gphoto2/main.c:1865
+#: gphoto2/main.c:1913
 msgid "Get all files from folder"
 msgstr "Извлечь все файлы из каталога"
 
-#: gphoto2/main.c:1867
+#: gphoto2/main.c:1915
 msgid "Get thumbnails given in range"
 msgstr "Извлечь миниатюры в диапазоне"
 
-#: gphoto2/main.c:1870
+#: gphoto2/main.c:1918
 msgid "Get all thumbnails from folder"
 msgstr "Извлечь все миниатюры из каталога"
 
-#: gphoto2/main.c:1872
+#: gphoto2/main.c:1920
 msgid "Get metadata given in range"
 msgstr "Извлечь метаданные в диапазоне"
 
-#: gphoto2/main.c:1874
+#: gphoto2/main.c:1922
 msgid "Get all metadata from folder"
 msgstr "Извлечь все метаданные из каталога"
 
-#: gphoto2/main.c:1876
+#: gphoto2/main.c:1924
 msgid "Upload metadata for file"
 msgstr "Загрузить метаданные файла"
 
-#: gphoto2/main.c:1879
+#: gphoto2/main.c:1927
 msgid "Get raw data given in range"
 msgstr "Извлечь исходные данные в диапазоне"
 
-#: gphoto2/main.c:1882
+#: gphoto2/main.c:1930
 msgid "Get all raw data from folder"
 msgstr "Извлечь все исходные данные из каталога"
 
-#: gphoto2/main.c:1885
+#: gphoto2/main.c:1933
 msgid "Get audio data given in range"
 msgstr "Извлечь звукозаписи в диапазоне"
 
-#: gphoto2/main.c:1888
+#: gphoto2/main.c:1936
 msgid "Get all audio data from folder"
 msgstr "Извлечь все звукозаписи из каталога"
 
-#: gphoto2/main.c:1890
+#: gphoto2/main.c:1938
 msgid "Delete files given in range"
 msgstr "Удалить файлы в диапазоне"
 
-#: gphoto2/main.c:1892
+#: gphoto2/main.c:1940
 msgid "Delete all files in folder (--no-recurse by default)"
 msgstr "Удалить все файлы в каталоге (--no-recurse по умолчанию включён)"
 
-#: gphoto2/main.c:1894
+#: gphoto2/main.c:1942
 msgid "Upload a file to camera"
 msgstr "Загрузить файл в память фотоаппарата"
 
-#: gphoto2/main.c:1896
+#: gphoto2/main.c:1944
 msgid "Specify a filename or filename pattern"
 msgstr "Указать имя файла или шаблон"
 
-#: gphoto2/main.c:1896
+#: gphoto2/main.c:1944
 msgid "FILENAME_PATTERN"
 msgstr "ИМЯ_ФАЙЛА_ШАБЛОН"
 
-#: gphoto2/main.c:1898
+#: gphoto2/main.c:1946
 msgid "Specify camera folder (default=\"/\")"
 msgstr "Указать каталог фотоаппарата (по умолчанию — «/»)"
 
-#: gphoto2/main.c:1898
+#: gphoto2/main.c:1946
 msgid "FOLDER"
 msgstr "КАТАЛОГ"
 
-#: gphoto2/main.c:1900
+#: gphoto2/main.c:1948
 msgid "Recursion (default for download)"
 msgstr "Рекурсивно (по умолчанию при копировании)"
 
-#: gphoto2/main.c:1902
+#: gphoto2/main.c:1950
 msgid "No recursion (default for deletion)"
 msgstr "Нерекурсивно (по умолчанию при удалении)"
 
-#: gphoto2/main.c:1904
+#: gphoto2/main.c:1952
 msgid "Process new files only"
 msgstr "Обработать только новые файлы"
 
-#: gphoto2/main.c:1906
+#: gphoto2/main.c:1954
 msgid "Overwrite files without asking"
 msgstr "Перезаписывать файлы не спрашивая"
 
-#: gphoto2/main.c:1912
+#: gphoto2/main.c:1960
 msgid "Send file to stdout"
 msgstr "Послать файл на стандартный вывод"
 
-#: gphoto2/main.c:1914
+#: gphoto2/main.c:1962
 msgid "Print filesize before data"
 msgstr "Выводить размер файла перед датой"
 
-#: gphoto2/main.c:1916
+#: gphoto2/main.c:1964
 msgid "List auto-detected cameras"
 msgstr "Показать список автоматически распознаваемых фотоаппаратов"
 
-#: gphoto2/main.c:1920 gphoto2/shell.c:138
+#: gphoto2/main.c:1968 gphoto2/shell.c:138
 msgid "Show EXIF information"
 msgstr "Показать данные EXIF"
 
-#: gphoto2/main.c:1923 gphoto2/shell.c:132
+#: gphoto2/main.c:1971 gphoto2/shell.c:132
 msgid "Show info"
 msgstr "Показать сведения"
 
-#: gphoto2/main.c:1925
+#: gphoto2/main.c:1973
 msgid "Show summary"
 msgstr "Показать итог"
 
-#: gphoto2/main.c:1927
+#: gphoto2/main.c:1975
 msgid "Show camera driver manual"
 msgstr "Показать описание драйвера фотоаппарата"
 
-#: gphoto2/main.c:1929
+#: gphoto2/main.c:1977
 msgid "About the camera driver manual"
 msgstr "Об описании драйвера фотоаппарата"
 
-#: gphoto2/main.c:1931
+#: gphoto2/main.c:1979
 msgid "Show storage information"
 msgstr "Показать данные о хранилище"
 
-#: gphoto2/main.c:1933
+#: gphoto2/main.c:1981
 msgid "gPhoto shell"
 msgstr "Интерпретатор команд gPhoto"
 
-#: gphoto2/main.c:1939
+#: gphoto2/main.c:1987
 msgid "Common options"
 msgstr "Общие параметры"
 
-#: gphoto2/main.c:1941
+#: gphoto2/main.c:1989
 msgid "Miscellaneous options (unsorted)"
 msgstr "Прочие параметры (без сортировки)"
 
-#: gphoto2/main.c:1943
+#: gphoto2/main.c:1991
 msgid "Get information on software and host system (not from the camera)"
 msgstr "Получить информацию о ПО и компьютере (не фотоаппарата)"
 
-#: gphoto2/main.c:1945
+#: gphoto2/main.c:1993
 msgid "Specify the camera to use"
 msgstr "Указать модель фотоаппарата"
 
-#: gphoto2/main.c:1947
+#: gphoto2/main.c:1995
 msgid "Camera and software configuration"
 msgstr "Настройки фотоаппарата и ПО"
 
-#: gphoto2/main.c:1949
+#: gphoto2/main.c:1997
 msgid "Capture an image from or on the camera"
 msgstr "Сделать снимок с или на фотоаппарат"
 
-#: gphoto2/main.c:1951
+#: gphoto2/main.c:1999
 msgid "Downloading, uploading and manipulating files"
 msgstr "Скачивание, загрузка и управление файлами"
 
