@@ -40,6 +40,7 @@ gphoto2_SOURCES = 		\
 #gphoto2_LDFLAGS = -export-dynamic
 
 gphoto2_CFLAGS =					\
+	-I$(top_srcdir) -I$(top_srcdir)/gphoto2		\
 	$(LIBGPHOTO2_CFLAGS) $(AM_CPPFLAGS) $(CPPFLAGS)	\
 	$(CDK_CFLAGS) $(AA_CFLAGS)			\
 	$(LIBEXIF_CFLAGS) $(RL_CFLAGS) $(POPT_CFLAGS)
