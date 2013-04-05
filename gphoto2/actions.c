@@ -1089,9 +1089,9 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 			wp.u.milliseconds	= x;
 			printf ( _("Waiting for %d milliseconds for events from camera. Press Ctrl-C to abort.\n"), x);
 		}
-		if ((arg[strlen(arg)-1]=='s') && sscanf(arg,"%ds", &x)) { /* exact seconds */ 
-			wp.type = WAIT_TIME;
-			wp.u.milliseconds = x*1000;
+		if ((wp.type != WAIT_TIME) && (arg[strlen(arg)-1]=='s') && sscanf(arg,"%ds", &x)) { /* exact seconds */ 
+			wp.type			= WAIT_TIME;
+			wp.u.milliseconds	= x*1000;
 			printf ( _("Waiting for %d seconds for events from camera. Press Ctrl-C to abort.\n"), x);
 		}
 		if (wp.type == WAIT_EVENTS) {
