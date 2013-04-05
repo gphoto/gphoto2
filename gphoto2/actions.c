@@ -1747,8 +1747,10 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 		int	t = -1;
 		struct tm xtm;
 
+		if (!strcasecmp (value, "now")	|| !strcasecmp (value, _("now")))
+			t = time(NULL);
 #ifdef HAVE_STRPTIME
-		if (strptime (value, "%c", &xtm) || strptime (value, "%Ec", &xtm))
+		else if (strptime (value, "%c", &xtm) || strptime (value, "%Ec", &xtm))
 			t = mktime (&xtm);
 #endif
 		if (t == -1) {
