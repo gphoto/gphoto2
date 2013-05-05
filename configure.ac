@@ -25,8 +25,8 @@ fi
 GP_CHECK_SHELL_ENVIRONMENT
 GP_CONFIG_MSG([Build])
 GP_CONFIG_MSG([Source code location],[${srcdir}])
-AM_CPPFLAGS="$CPPFLAGS"
-AM_LDFLAGS="$LDFLAGS"
+AM_CPPFLAGS=""
+AM_LDFLAGS=""
 
 
 dnl ---------------------------------------------------------------------------
@@ -43,9 +43,6 @@ GP_PKG_CONFIG
 
 GP_CONFIG_MSG([Compiler],[${CC}])
 AC_DEFINE_UNQUOTED([HAVE_CC],"$CC",[The C compiler we're using])
-
-AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_srcdir)"
-AM_CPPFLAGS="$AM_CPPFLAGS -I\$(top_srcdir)/gphoto2"
 
 dnl AC_STRUCT_TIMEZONE
 
@@ -345,12 +342,11 @@ dnl ---------------------------------------------------------------------------
 dnl Turn on all warnings when using gcc
 dnl ---------------------------------------------------------------------------
 if test "$GCC" = "yes"; then
-	AM_CPPFLAGS="$AM_CPPFLAGS -Wall"
-	AM_CPPFLAGS="$AM_CPPFLAGS -Wmissing-declarations -Wmissing-prototypes"
-	AM_LDFLAGS="$AM_LDFLAGS -Wall"
+	CFLAGS="$CFLAGS -Wall"
+	CFLAGS="$CFLAGS -Wmissing-declarations -Wmissing-prototypes"
 	# FIXME: Check for --enable-debug here
-	AM_CPPFLAGS="$AM_CPPFLAGS -g"
-	AM_LDFLAGS="$AM_LDFLAGS -g"
+	CFLAGS="$CFLAGS -g"
+	LDFLAGS="$LDFLAGS -g"
 fi
 
 AM_CPPFLAGS="$AM_CPPFLAGS -D_GPHOTO2_INTERNAL_CODE"
