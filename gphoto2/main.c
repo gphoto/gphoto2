@@ -159,6 +159,10 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 
 	*path = NULL;
 	CR (gp_file_get_mtime (file, &t));
+	
+	if (!t)	/* use the current time as fallback if the camera did not return it. */
+		t = time(NULL);
+
 	tm = localtime (&t);
 	hour12 = tm->tm_hour % 12;
 	if (hour12 == 0) {
@@ -1216,6 +1220,7 @@ typedef enum {
 	ARG_PORT,
 	ARG_QUIET,
 	ARG_RECURSE,
+	ARG_RESET,
 	ARG_RESET_INTERVAL,
 	ARG_RMDIR,
 	ARG_SHELL,
@@ -1533,6 +1538,35 @@ cb_arg_run (poptContext __unused__ ctx,
 	case ARG_LIST_PORTS:
 		params->p.r = list_ports_action (&gp_params);
 		break;
+	case ARG_RESET: {
+		GPPort		*port;
+		GPPortInfo	info;
+
+		params->p.r = gp_port_new (&port);
+		if (params->p.r != GP_OK) {
+			gp_log(GP_LOG_ERROR,"port_reset", "new failed");
+			break;
+		}
+		params->p.r = gp_camera_get_port_info (gp_params.camera, &info);
+		if (params->p.r != GP_OK) {
+			gp_log(GP_LOG_ERROR,"port_reset", "camera_get_port_info failed");
+			break;
+		}
+		params->p.r = gp_port_set_info (port, info);
+		if (params->p.r != GP_OK) {
+			gp_log(GP_LOG_ERROR,"port_reset", "port_set_info failed");
+			break;
+		}
+		params->p.r = gp_port_open (port);
+		if (params->p.r != GP_OK) {
+			gp_log(GP_LOG_ERROR,"port_reset", "open failed");
+			break;
+		}
+		params->p.r = gp_port_reset (port);
+		gp_port_close (port);
+		gp_port_free (port);
+		break;
+	}
 	case ARG_MANUAL:
 		params->p.r = action_camera_manual (&gp_params);
 		break;
@@ -1856,6 +1890,8 @@ main (int argc, char **argv, char **envp)
 		 N_("Set configuration value index in choices"), NULL},
 		{"set-config-value", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG_VALUE,
 		 N_("Set configuration value"), NULL},
+		{"reset", '\0', POPT_ARG_NONE, NULL, ARG_RESET,
+		 N_("Reset device port"), NULL},
 		POPT_TABLEEND
 	};
 	const struct poptOption captureOptions[] = {
@@ -2134,6 +2170,7 @@ main (int argc, char **argv, char **envp)
 	CHECK_OPT (ARG_MANUAL);
 	CHECK_OPT (ARG_MKDIR);
 	CHECK_OPT (ARG_NUM_FILES);
+	CHECK_OPT (ARG_RESET);
 	CHECK_OPT (ARG_RMDIR);
 	CHECK_OPT (ARG_SET_CONFIG);
 	CHECK_OPT (ARG_SET_CONFIG_INDEX);
