@@ -1544,7 +1544,7 @@ cb_arg_run (poptContext __unused__ ctx,
 
 		params->p.r = gp_port_new (&port);
 		if (params->p.r != GP_OK) {
-			gp_log(GP_LOG_ERROR,"port_reset", "new failed");
+			gp_log(GP_LOG_ERROR,"port_reset", "new failed %d", params->p.r);
 			break;
 		}
 		params->p.r = gp_camera_get_port_info (gp_params.camera, &info);
@@ -1559,7 +1559,7 @@ cb_arg_run (poptContext __unused__ ctx,
 		}
 		params->p.r = gp_port_open (port);
 		if (params->p.r != GP_OK) {
-			gp_log(GP_LOG_ERROR,"port_reset", "open failed");
+			gp_log(GP_LOG_ERROR,"port_reset", "open failed %d", params->p.r);
 			break;
 		}
 		params->p.r = gp_port_reset (port);
