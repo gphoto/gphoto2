@@ -1,217 +1,214 @@
-# Serbian translation of `gphoto2'.
-# Copyright (C) 2007 Free Software Foundation, Inc.
+# Serbian translation of gphoto2.
+# Copyright (C) 2013 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gphoto2 package.
 # Aleksandar Jelenak <jelenak@verizon.net>, 2007.
-# This file is distributed under the same license as the `gphoto2' package.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.3.0\n"
+"Project-Id-Version: gphoto2-2.5.2\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2006-12-01 12:05-0500\n"
-"PO-Revision-Date: 2007-02-02 16:16-0500\n"
-"Last-Translator: Aleksandar Jelenak <jelenak@verizon.net>\n"
-"Language-Team: Serbian <gnu@prevod.org>\n"
+"POT-Creation-Date: 2013-05-05 21:52+0200\n"
+"PO-Revision-Date: 2013-11-17 21:17+0200\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian <(nothing)>\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: gphoto2/actions.c:166
+#: gphoto2/actions.c:168
 #, c-format
 msgid "Number of files in folder '%s': %i\n"
-msgstr "Број датотека у директоријуму „%s“: %i\n"
+msgstr "Број датотека у фасцикли „%s“: %i\n"
 
-#: gphoto2/actions.c:186
+#: gphoto2/actions.c:189
 #, c-format
 msgid "There is %d folder in folder '%s'.\n"
 msgid_plural "There are %d folders in folder '%s'.\n"
-msgstr[0] "%d директоријума је у директоријуму „%s“.\n"
-msgstr[1] "%d директоријума је у директоријуму „%s“.\n"
-msgstr[2] "%d директоријума је у директоријуму „%s“.\n"
+msgstr[0] "%d фасцикла је у фасцикли „%s“.\n"
+msgstr[1] "%d фасцикле су у фасцикли „%s“.\n"
+msgstr[2] "%d фасцикли је у фасцикли „%s“.\n"
 
-#: gphoto2/actions.c:226
+#: gphoto2/actions.c:238
 #, c-format
 msgid "There is no file in folder '%s'.\n"
-msgstr "Нема датотека у директоријуму „%s“.\n"
+msgstr "Нема датотека у фасцикли „%s“.\n"
 
-#: gphoto2/actions.c:229
+#: gphoto2/actions.c:241
 #, c-format
 msgid "There is %d file in folder '%s'.\n"
 msgid_plural "There are %d files in folder '%s'.\n"
-msgstr[0] "%d датотека је у директоријуму „%s“.\n"
-msgstr[1] "%d датотека је у директоријуму „%s“.\n"
-msgstr[2] "%d датотека је у директоријуму „%s“.\n"
+msgstr[0] "%d датотека је у фасцикли „%s“.\n"
+msgstr[1] "%d датотеке су у фасцикли „%s“.\n"
+msgstr[2] "%d датотека је у фасцикли „%s“.\n"
 
-#: gphoto2/actions.c:250
+#: gphoto2/actions.c:263
 #, c-format
 msgid "Information on file '%s' (folder '%s'):\n"
-msgstr "Подаци о датотеци „%s“ (директоријум „%s“):\n"
+msgstr "Подаци о датотеци „%s“ (фасцикла „%s“):\n"
 
-#: gphoto2/actions.c:252
+#: gphoto2/actions.c:265
 #, c-format
 msgid "File:\n"
 msgstr "Датотека:\n"
 
-#: gphoto2/actions.c:254 gphoto2/actions.c:288 gphoto2/actions.c:304
+#: gphoto2/actions.c:267 gphoto2/actions.c:299 gphoto2/actions.c:315
 #, c-format
 msgid "  None available.\n"
-msgstr "  Ниједан доступан.\n"
+msgstr "  Ништа није доступно.\n"
 
-#: gphoto2/actions.c:257
-#, c-format
-msgid "  Name:        '%s'\n"
-msgstr "  Име:         „%s“\n"
-
-#: gphoto2/actions.c:259 gphoto2/actions.c:291
+#: gphoto2/actions.c:270 gphoto2/actions.c:302
 #, c-format
 msgid "  Mime type:   '%s'\n"
-msgstr "  MIME врста:  '%s'\n"
+msgstr "  МИМЕ врста:  „%s“\n"
 
-#: gphoto2/actions.c:261 gphoto2/actions.c:293
+#: gphoto2/actions.c:272 gphoto2/actions.c:304
 #, c-format
-msgid "  Size:        %li byte(s)\n"
-msgstr "  Величина:    %li бајт(а/ова)\n"
+msgid "  Size:        %lu byte(s)\n"
+msgstr "  Величина:    %lu бајт(а/ова)\n"
 
-#: gphoto2/actions.c:263 gphoto2/actions.c:295
+#: gphoto2/actions.c:274 gphoto2/actions.c:306
 #, c-format
 msgid "  Width:       %i pixel(s)\n"
 msgstr "  Ширина:      %i пиксел(а)\n"
 
-#: gphoto2/actions.c:265 gphoto2/actions.c:297
+#: gphoto2/actions.c:276 gphoto2/actions.c:308
 #, c-format
 msgid "  Height:      %i pixel(s)\n"
 msgstr "  Висина:      %i пиксел(а)\n"
 
-#: gphoto2/actions.c:267 gphoto2/actions.c:299
+#: gphoto2/actions.c:278 gphoto2/actions.c:310
 #, c-format
 msgid "  Downloaded:  %s\n"
 msgstr "  Преузето:    %s\n"
 
-#: gphoto2/actions.c:268 gphoto2/actions.c:300 gphoto2/actions.c:312
-#: gphoto2/actions.c:662 gphoto2/actions.c:664 gphoto2/actions.c:692
-#: gphoto2/actions.c:695 gphoto2/actions.c:698 gphoto2/actions.c:701
-#: gphoto2/actions.c:704 gphoto2/actions.c:1404
+#: gphoto2/actions.c:279 gphoto2/actions.c:311 gphoto2/actions.c:323
+#: gphoto2/actions.c:676 gphoto2/actions.c:678 gphoto2/actions.c:706
+#: gphoto2/actions.c:709 gphoto2/actions.c:712 gphoto2/actions.c:715
+#: gphoto2/actions.c:718 gphoto2/actions.c:1731 gphoto2/actions.c:1958
 msgid "yes"
 msgstr "да"
 
-#: gphoto2/actions.c:268 gphoto2/actions.c:300 gphoto2/actions.c:312
-#: gphoto2/actions.c:662 gphoto2/actions.c:664 gphoto2/actions.c:692
-#: gphoto2/actions.c:695 gphoto2/actions.c:698 gphoto2/actions.c:701
-#: gphoto2/actions.c:704 gphoto2/actions.c:1398
+#: gphoto2/actions.c:279 gphoto2/actions.c:311 gphoto2/actions.c:323
+#: gphoto2/actions.c:676 gphoto2/actions.c:678 gphoto2/actions.c:706
+#: gphoto2/actions.c:709 gphoto2/actions.c:712 gphoto2/actions.c:715
+#: gphoto2/actions.c:718 gphoto2/actions.c:1725 gphoto2/actions.c:1952
 msgid "no"
 msgstr "не"
 
-#: gphoto2/actions.c:270
+#: gphoto2/actions.c:281
 #, c-format
 msgid "  Permissions: "
 msgstr "  Дозволе:     "
 
-#: gphoto2/actions.c:273
+#: gphoto2/actions.c:284
 #, c-format
 msgid "read/delete"
-msgstr "читај/бриши"
+msgstr "чита/брише"
 
-#: gphoto2/actions.c:275
+#: gphoto2/actions.c:286
 #, c-format
 msgid "read"
-msgstr "читај"
+msgstr "чита"
 
-#: gphoto2/actions.c:277
+#: gphoto2/actions.c:288
 #, c-format
 msgid "delete"
-msgstr "бриши"
+msgstr "брише"
 
-#: gphoto2/actions.c:279
+#: gphoto2/actions.c:290
 #, c-format
 msgid "none"
-msgstr "ниједан"
+msgstr "ништа"
 
-#: gphoto2/actions.c:283
+#: gphoto2/actions.c:294
 #, c-format
 msgid "  Time:        %s"
 msgstr "  Време:       %s"
 
-#: gphoto2/actions.c:286
+#: gphoto2/actions.c:297
 #, c-format
 msgid "Thumbnail:\n"
 msgstr "Сличица:\n"
 
-#: gphoto2/actions.c:302
+#: gphoto2/actions.c:313
 #, c-format
 msgid "Audio data:\n"
 msgstr "Звучни записи:\n"
 
-#: gphoto2/actions.c:307
+#: gphoto2/actions.c:318
 #, c-format
 msgid "  Mime type:  '%s'\n"
-msgstr "  MIME врста: „%s“\n"
+msgstr "  МИМЕ врста: „%s“\n"
 
-#: gphoto2/actions.c:309
+#: gphoto2/actions.c:320
 #, c-format
-msgid "  Size:       %li byte(s)\n"
-msgstr "  Величина:   %li бајт(а/ова)\n"
+msgid "  Size:       %lu byte(s)\n"
+msgstr "  Величина:   %lu бајт(а/ова)\n"
 
-#: gphoto2/actions.c:311
+#: gphoto2/actions.c:322
 #, c-format
 msgid "  Downloaded: %s\n"
 msgstr "  Преузето:   %s\n"
 
-#: gphoto2/actions.c:487
+#: gphoto2/actions.c:498
 msgid "Could not parse EXIF data."
-msgstr "Нисам могао да тумачим EXIF податке."
+msgstr "Не могу да обрадим ЕКСИФ податке."
 
-#: gphoto2/actions.c:491
+#: gphoto2/actions.c:502
 #, c-format
 msgid "EXIF tags:"
-msgstr "EXIF ознаке:"
+msgstr "ЕКСИФ ознаке:"
 
-#: gphoto2/actions.c:494
+#: gphoto2/actions.c:505
 msgid "Tag"
 msgstr "Ознака"
 
-#: gphoto2/actions.c:496
+#: gphoto2/actions.c:507
 msgid "Value"
 msgstr "Вредност"
 
-#: gphoto2/actions.c:517
+#: gphoto2/actions.c:528
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
-msgstr "EXIF подаци садрже сличицу (%i бајтова)."
+msgstr "ЕКСИФ подаци садрже сличицу (%i бајта)."
 
-#: gphoto2/actions.c:526
+#: gphoto2/actions.c:537
 msgid "gphoto2 has been compiled without EXIF support."
-msgstr "Гфото2 је преведен без EXIF подршке."
+msgstr "Гфото2 је преведен без ЕКСИФ подршке."
 
-#: gphoto2/actions.c:544
+#: gphoto2/actions.c:555
 #, c-format
 msgid "Number of supported cameras: %i\n"
 msgstr "Број подржаних камера: %i\n"
 
-#: gphoto2/actions.c:545
+#: gphoto2/actions.c:556
 #, c-format
 msgid "Supported cameras:\n"
 msgstr "Подржане камере:\n"
 
-#: gphoto2/actions.c:558
+#: gphoto2/actions.c:569
 #, c-format
 msgid "\t\"%s\" (TESTING)\n"
 msgstr "\t„%s“ (ПРОБНО)\n"
 
-#: gphoto2/actions.c:561
+#: gphoto2/actions.c:572
 #, c-format
 msgid "\t\"%s\" (EXPERIMENTAL)\n"
 msgstr "\t„%s“ (ЕКСПЕРИМЕНТАЛНО)\n"
 
-#: gphoto2/actions.c:566
+#: gphoto2/actions.c:577
 #, c-format
 msgid "\t\"%s\"\n"
 msgstr "\t„%s“\n"
 
-#: gphoto2/actions.c:610
+#: gphoto2/actions.c:621
 #, c-format
 msgid "Devices found: %i\n"
 msgstr "Нађених уређаја: %i\n"
 
-#: gphoto2/actions.c:611
+#: gphoto2/actions.c:622
 #, c-format
 msgid ""
 "Path                             Description\n"
@@ -220,139 +217,139 @@ msgstr ""
 "Путања                           Опис\n"
 "--------------------------------------------------------------\n"
 
-#: gphoto2/actions.c:641 gphoto2/actions.c:646
+#: gphoto2/actions.c:655 gphoto2/actions.c:660
 #, c-format
 msgid "%-30s %-16s\n"
 msgstr "%-30s %-16s\n"
 
-#: gphoto2/actions.c:641
+#: gphoto2/actions.c:655
 msgid "Model"
 msgstr "Модел"
 
-#: gphoto2/actions.c:641
+#: gphoto2/actions.c:655
 msgid "Port"
-msgstr "Порт"
+msgstr "Прикључник"
 
-#: gphoto2/actions.c:642
+#: gphoto2/actions.c:656
 #, c-format
 msgid "----------------------------------------------------------\n"
 msgstr "----------------------------------------------------------\n"
 
-#: gphoto2/actions.c:660
+#: gphoto2/actions.c:674
 #, c-format
 msgid "Abilities for camera             : %s\n"
-msgstr "Могућности камере               : %s\n"
+msgstr "Могућности камере                : %s\n"
 
-#: gphoto2/actions.c:661
+#: gphoto2/actions.c:675
 #, c-format
 msgid "Serial port support              : %s\n"
-msgstr "Подршка серијског порта          : %s\n"
+msgstr "Подршка серијског прикључника    : %s\n"
 
-#: gphoto2/actions.c:663
+#: gphoto2/actions.c:677
 #, c-format
 msgid "USB support                      : %s\n"
-msgstr "USB подршка                      : %s\n"
+msgstr "УСБ подршка                      : %s\n"
 
-#: gphoto2/actions.c:666
+#: gphoto2/actions.c:680
 #, c-format
 msgid "Transfer speeds supported        :\n"
 msgstr "Подржане брзине преноса          :\n"
 
-#: gphoto2/actions.c:668
+#: gphoto2/actions.c:682
 #, c-format
 msgid "                                 : %i\n"
 msgstr "                                 : %i\n"
 
-#: gphoto2/actions.c:671
+#: gphoto2/actions.c:685
 #, c-format
 msgid "Capture choices                  :\n"
 msgstr "Одабир снимања                   :\n"
 
-#: gphoto2/actions.c:673
+#: gphoto2/actions.c:687
 #, c-format
 msgid "                                 : Image\n"
 msgstr "                                 : Слика\n"
 
-#: gphoto2/actions.c:677
+#: gphoto2/actions.c:691
 #, c-format
 msgid "                                 : Video\n"
 msgstr "                                 : Видео\n"
 
-#: gphoto2/actions.c:681
+#: gphoto2/actions.c:695
 #, c-format
 msgid "                                 : Audio\n"
 msgstr "                                 : Звук\n"
 
-#: gphoto2/actions.c:685
+#: gphoto2/actions.c:699
 #, c-format
 msgid "                                 : Preview\n"
-msgstr "                                 : Предглед\n"
+msgstr "                                 : Преглед\n"
 
-#: gphoto2/actions.c:689
+#: gphoto2/actions.c:703
 #, c-format
 msgid "                                 : Capture not supported by the driver\n"
-msgstr "                                 : Гонич не подржава захватање\n"
+msgstr "                                 : Управљачки програм не подржава снимањ\n"
 
-#: gphoto2/actions.c:691
+#: gphoto2/actions.c:705
 #, c-format
 msgid "Configuration support            : %s\n"
 msgstr "Подршка за подешавање            : %s\n"
 
-#: gphoto2/actions.c:693
+#: gphoto2/actions.c:707
 #, c-format
 msgid "Delete selected files on camera  : %s\n"
-msgstr "Брисање означених датотека у камери: %s\n"
+msgstr "Брише означене датотеке на камери: %s\n"
 
-#: gphoto2/actions.c:696
+#: gphoto2/actions.c:710
 #, c-format
 msgid "Delete all files on camera       : %s\n"
-msgstr "Брисање свих датотека у камери     : %s\n"
+msgstr "Брише све датотеке на камери     : %s\n"
 
-#: gphoto2/actions.c:699
+#: gphoto2/actions.c:713
 #, c-format
 msgid "File preview (thumbnail) support : %s\n"
-msgstr "Предглед датотека (сличице)      : %s\n"
+msgstr "Преглед датотека (сличице)       : %s\n"
 
-#: gphoto2/actions.c:702
+#: gphoto2/actions.c:716
 #, c-format
 msgid "File upload support              : %s\n"
-msgstr "Подршка за натовар датотека      : %s\n"
+msgstr "Подршка слања датотека           : %s\n"
 
-#: gphoto2/actions.c:718
+#: gphoto2/actions.c:733
 #, c-format
 msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
-msgstr "Портови морају да изгледају као „serial:/dev/ttyS0“ или „usb:“, али „%s“ недостаје двотачка па ћу да нагађам шта сте мислили."
+msgstr "Прикључници морају да изгледају као „serial:/dev/ttyS0“ или „usb:“, али „%s“ недостаје двотачка па ћу да нагађам шта сте мислили."
 
-#: gphoto2/actions.c:752
+#: gphoto2/actions.c:767
 #, c-format
 msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
-msgstr "Задати порт („%s“) не може бити нађен. Задајте један од портова нађених са „gphoto2 --list-ports“ и побрините се да је редослед слова тачан (нпр. префикс „serial:“ или „usb:“)."
+msgstr "Прикључник који сте навели („%s“) не може бити нађен. Наведите један од прикључника које сте нашли уз „gphoto2 --list-ports“ и побрините се да је редослед слова тачан (нпр. префикс „serial:“ или „usb:“)."
 
-#: gphoto2/actions.c:784
+#: gphoto2/actions.c:800
 #, c-format
 msgid "About the camera driver:"
-msgstr "О гоничу камере:"
+msgstr "О управљачком програму камере:"
 
-#: gphoto2/actions.c:797
+#: gphoto2/actions.c:813
 #, c-format
 msgid "Camera summary:"
-msgstr "Сажетак о камери:"
+msgstr "Сажетак камере:"
 
-#: gphoto2/actions.c:810
+#: gphoto2/actions.c:826
 #, c-format
 msgid "Camera manual:"
-msgstr "Упутство за камеру:"
+msgstr "Упутство камере:"
 
-#: gphoto2/actions.c:825
+#: gphoto2/actions.c:843
 #, c-format
 msgid "You can only specify speeds for serial ports."
-msgstr "Можете задавати само брзине серијских портова."
+msgstr "Можете да наведете само брзине серијских прикључника."
 
-#: gphoto2/actions.c:878
+#: gphoto2/actions.c:893
 msgid "OS/2 port by Bart van Leeuwen\n"
-msgstr "OS/2 верзија: Bart van Leeuwen\n"
+msgstr "ОС/2 прикључник: Bart van Leeuwen\n"
 
-#: gphoto2/actions.c:882
+#: gphoto2/actions.c:897
 #, c-format
 msgid ""
 "gphoto2 %s\n"
@@ -375,159 +372,317 @@ msgstr ""
 "\n"
 "Ова верзија Гфото2 користи следеће опције и верзије софтвера:\n"
 
-#: gphoto2/actions.c:1002
+#: gphoto2/actions.c:997
+msgid "Could not open 'movie.mjpg'."
+msgstr "Не могу да отворим „movie.mjpg“."
+
+#: gphoto2/actions.c:1004
+#, c-format
+msgid "Capturing preview frames as movie to '%s'. Press Ctrl-C to abort.\n"
+msgstr "Снимам кадрове прегледа као филм у „%s“. Притисните Ктрл-Ц да прекинете.\n"
+
+#: gphoto2/actions.c:1008
+#, c-format
+msgid "Capturing preview frames as movie to '%s' for %d seconds.\n"
+msgstr "Снимам кадрове прегледа као филм у „%s“ за %d секунде.\n"
+
+#: gphoto2/actions.c:1013
+#, c-format
+msgid "Capturing %d preview frames as movie to '%s'.\n"
+msgstr "Снимам %d кадра прегледа као филм у „%s“.\n"
+
+#: gphoto2/actions.c:1023
+msgid "Movie capture error... Exiting."
+msgstr "Грешка снимања филма... Излазим."
+
+#: gphoto2/actions.c:1028
+#, c-format
+msgid "Movie capture error... Unhandled MIME type '%s'."
+msgstr "Грешка снимања филма... Нерукована МИМЕ врста „%s“."
+
+#: gphoto2/actions.c:1035
+#, c-format
+msgid "Ctrl-C pressed ... Exiting.\n"
+msgstr "Ктрл-Ц је притиснуто ... Излазим.\n"
+
+#: gphoto2/actions.c:1049
+#, c-format
+msgid "Movie capture finished (%d frames)\n"
+msgstr "Снимање филма је завршено (%d кадра)\n"
+
+#: gphoto2/actions.c:1079
+#, c-format
+msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
+msgstr "Чекам за догађаје са камере. Притисните Ктрл-Ц да прекинете.\n"
+
+#: gphoto2/actions.c:1085
+#, c-format
+msgid "Waiting for %d frames from the camera. Press Ctrl-C to abort.\n"
+msgstr "Чекам на %d кадра са камере. Притисните Ктрл-Ц да прекинете.\n"
+
+#: gphoto2/actions.c:1090
+#, c-format
+msgid "Waiting for %d milliseconds for events from camera. Press Ctrl-C to abort.\n"
+msgstr "Чекам на %d милисекунде за догађаје са камере. Притисните Ктрл-Ц да прекинете.\n"
+
+#: gphoto2/actions.c:1095
+#, c-format
+msgid "Waiting for %d seconds for events from camera. Press Ctrl-C to abort.\n"
+msgstr "Чекам на %d секунде за догађаје са камере. Притисните Ктрл-Ц да прекинете.\n"
+
+#: gphoto2/actions.c:1099
+#, c-format
+msgid "Waiting for %d events from camera. Press Ctrl-C to abort.\n"
+msgstr "Чекам на %d догађаја са камере. Притисните Ктрл-Ц да прекинете.\n"
+
+#: gphoto2/actions.c:1163 gphoto2/main.c:750
+msgid "Could not set folder."
+msgstr "Не могу да подесим фасциклу."
+
+#: gphoto2/actions.c:1169 gphoto2/main.c:757
+msgid "Could not get image."
+msgstr "Не могу да добавим слику."
+
+#: gphoto2/actions.c:1176 gphoto2/main.c:764
+msgid "Buggy libcanon.so?"
+msgstr "„libcanon.so“ пун грешака?"
+
+#: gphoto2/actions.c:1186 gphoto2/main.c:776
+msgid "Could not delete image."
+msgstr "Не могу да обришем слику."
+
+#: gphoto2/actions.c:1210
+#, c-format
+msgid "Getting storage information not supported for this camera.\n"
+msgstr "Добављање података о складиштењу није подржано за ову камеру.\n"
+
+#: gphoto2/actions.c:1225
+#, c-format
+msgid "Read-Write"
+msgstr "Чита-пише"
+
+#: gphoto2/actions.c:1228
+#, c-format
+msgid "Read-Only"
+msgstr "Само чита"
+
+#: gphoto2/actions.c:1231
+#, c-format
+msgid "Read-only with delete"
+msgstr "Само чита са брисањем"
+
+#: gphoto2/actions.c:1234 gphoto2/actions.c:1244
+#, c-format
+msgid "Unknown"
+msgstr "Непознато"
+
+#: gphoto2/actions.c:1247
+#, c-format
+msgid "Fixed ROM"
+msgstr "Стални РОМ"
+
+#: gphoto2/actions.c:1250
+#, c-format
+msgid "Removable ROM"
+msgstr "Уклоњиви РОМ"
+
+#: gphoto2/actions.c:1253
+#, c-format
+msgid "Fixed RAM"
+msgstr "Стални РАМ"
+
+#: gphoto2/actions.c:1256
+#, c-format
+msgid "Removable RAM"
+msgstr "Уклоњиви РАМ"
+
+#: gphoto2/actions.c:1266
+#, c-format
+msgid "Undefined"
+msgstr "Неодређено"
+
+#: gphoto2/actions.c:1269
+#, c-format
+msgid "Generic Flat"
+msgstr "Општи раван"
+
+#: gphoto2/actions.c:1272
+#, c-format
+msgid "Generic Hierarchical"
+msgstr "Општи хијерархијски"
+
+#: gphoto2/actions.c:1275
+#, c-format
+msgid "Camera layout (DCIM)"
+msgstr "Камера (ДЦИМ)"
+
+#: gphoto2/actions.c:1313
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
-msgstr "Замењујем УСБ произвођач/производ ид. 0x%x/0x%x са 0x%x/0x%x"
+msgstr "Замењујем УСБ иб произвођача/производа 0x%x/0x%x са 0x%x/0x%x"
 
-#: gphoto2/actions.c:1066
+#: gphoto2/actions.c:1371
 msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
-msgstr "УВЕК УВРСТИТЕ СЛЕДЕЋЕ РЕДОВЕ КАДА ШАЉЕТЕ ПОПРАВЉАЧКЕ ПОРУКЕ ДОПИСНОМ ДРУШТВУ:"
+msgstr "УВЕК УВРСТИТЕ СЛЕДЕЋЕ РЕДОВЕ КАДА ШАЉЕТЕ ПОРУКЕ ЗА ИСПРАВЉАЊЕ ГРЕШАКА НА ДОПИСНУ ЛИСТУ:"
 
-#: gphoto2/actions.c:1081
+#: gphoto2/actions.c:1386
 #, c-format
 msgid "%s has been compiled with the following options:"
 msgstr "%s је био преведен са следећим опцијама:"
 
-#: gphoto2/actions.c:1197
+#: gphoto2/actions.c:1517
 #, c-format
 msgid "%s not found in configuration tree."
 msgstr "%s није нађен у стаблу подешавања."
 
-#: gphoto2/actions.c:1256
+#: gphoto2/actions.c:1566
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
-msgstr "Неуспело прибављање вредности текстуалног графичког објекта %s."
+msgstr "Нисам успео да довучем вредности текстуалног графичког објекта %s."
 
-#: gphoto2/actions.c:1273
+#: gphoto2/actions.c:1583
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
-msgstr "Неуспело прибављање вредности графичког објекта за опсег %s."
+msgstr "Нисам успео да довучем вредности графичког објекта опсега %s."
 
-#: gphoto2/actions.c:1285
+#: gphoto2/actions.c:1595
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
-msgstr "Неуспело прибављање вредности преклопног графичког објекта %s."
+msgstr "Нисам успео да довучем вредности преклопног графичког објекта %s."
 
-#: gphoto2/actions.c:1297
+#: gphoto2/actions.c:1607
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
-msgstr "Неуспело прибављање вредности графичког објекта за датум/време %s."
+msgstr "Нисам успео да довучем вредности графичког објекта за датум/време %s."
 
-#: gphoto2/actions.c:1327
+#: gphoto2/actions.c:1637
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
-msgstr "Неуспело прибављање вредности радио графичког објекта %s."
+msgstr "Нисам успео да довучем вредности радио графичког објекта %s."
 
-#: gphoto2/actions.c:1368
+#: gphoto2/actions.c:1681
+#, c-format
+msgid "Property %s is read only."
+msgstr "Својство „%s“ је само за читање."
+
+#: gphoto2/actions.c:1695 gphoto2/actions.c:1922
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
-msgstr "Неуспело постављање вредности текстуалног графичког објекта %s на %s."
+msgstr "Нисам успео да подесим вредност текстуалног графичког објекта %s на %s."
 
-#: gphoto2/actions.c:1378
+#: gphoto2/actions.c:1705 gphoto2/actions.c:1932
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr "Прослеђена вредност %s није у облику покретног зареза."
 
-#: gphoto2/actions.c:1383
+#: gphoto2/actions.c:1710 gphoto2/actions.c:1937
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr "Прослеђена вредност %f није у очекиваном опсегу %f – %f."
 
-#: gphoto2/actions.c:1389
+#: gphoto2/actions.c:1716 gphoto2/actions.c:1943
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
-msgstr "Постављање вредности графичког објекта за опсег %s на %f није успело."
+msgstr "Нисам успео да подесим вредност графичког објекта за опсег %s на %f."
 
-#: gphoto2/actions.c:1398
+#: gphoto2/actions.c:1725 gphoto2/actions.c:1952
 msgid "off"
 msgstr "искључено"
 
-#: gphoto2/actions.c:1399
+#: gphoto2/actions.c:1726 gphoto2/actions.c:1953
 msgid "false"
 msgstr "нетачно"
 
-#: gphoto2/actions.c:1404
+#: gphoto2/actions.c:1731 gphoto2/actions.c:1958
 msgid "on"
 msgstr "укључено"
 
-#: gphoto2/actions.c:1405
+#: gphoto2/actions.c:1732 gphoto2/actions.c:1959
 msgid "true"
 msgstr "тачно"
 
-#: gphoto2/actions.c:1409
+#: gphoto2/actions.c:1737 gphoto2/actions.c:1964
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
-msgstr "Прослеђена вредност %s није исправна за преклопник."
+msgstr "Прослеђена вредност „%s“ није исправна вредност преклопника."
 
-#: gphoto2/actions.c:1415
+#: gphoto2/actions.c:1743 gphoto2/actions.c:1970
 #, c-format
 msgid "Failed to set values %s of toggle widget %s."
-msgstr "Задавање вредности %s преклопном графичком објекту %s није успело."
+msgstr "Нисам успео да подесим вредности %s преклопног графичког објекта %s."
 
-#: gphoto2/actions.c:1428
+#: gphoto2/actions.c:1750
+msgid "now"
+msgstr "сада"
+
+#: gphoto2/actions.c:1758 gphoto2/actions.c:1983
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
-msgstr "Прослеђена вредност %s нити је исправно време нити цели број."
+msgstr "Прослеђена вредност %s није ни исправно време ни цео број."
 
-#: gphoto2/actions.c:1435
+#: gphoto2/actions.c:1765 gphoto2/actions.c:1990
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
-msgstr "Постављање новог времена графичком објекту за датум/време %s на %s није успело."
+msgstr "Нисам успео да подесим ново време графичког објекта датума/времена %s на %s."
 
-#: gphoto2/actions.c:1472
+#: gphoto2/actions.c:1812 gphoto2/actions.c:1876 gphoto2/actions.c:2020
 #, c-format
 msgid "Choice %s not found within list of choices."
-msgstr "Избор %s није нађен у списку."
+msgstr "Нисма пронашао избор %s унутар списка избора."
 
-#: gphoto2/actions.c:1480
+#: gphoto2/actions.c:1820 gphoto2/actions.c:2028
 #, c-format
 msgid "The %s widget is not configurable."
-msgstr "Елемент %s графичког окружења није за подешавање."
+msgstr "Елемент %s није за подешавање."
 
-#: gphoto2/actions.c:1487
+#: gphoto2/actions.c:1827 gphoto2/actions.c:1895 gphoto2/actions.c:2035
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
-msgstr "Задавање нове вредности %s ставки подешавања %s није успело."
+msgstr "Нисам успео да подесим нову вредност подешавања %s за ставку подешавања %s."
 
-#: gphoto2/foreach.c:254
+#: gphoto2/actions.c:1888
+#, c-format
+msgid "The %s widget has no indexed list of choices. Use --set-config-value instead."
+msgstr "Елемент „%s“ нема пописан списак избора. Користите „--set-config-value“."
+
+#: gphoto2/foreach.c:260
 #, c-format
 msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
-msgstr "Лош број датотеке. Задали сте %i, а доступно је свега %i датотека у „%s“ или његовим поддиректоријумима. Сазнајте прво тачан број из списка датотека."
-
-#: gphoto2/foreach.c:279
-#, c-format
-msgid "There are no files in folder '%s'."
-msgstr "Нема датотека у директоријуму „%s“."
+msgstr "Лош број датотеке. Задали сте %i, а доступно је само %i датотека у „%s“ или његовим подфасциклама. Сазнајте прво тачан број из списка датотека."
 
 #: gphoto2/foreach.c:285
+#, c-format
+msgid "There are no files in folder '%s'."
+msgstr "Нема датотека у фасцикли „%s“."
+
+#: gphoto2/foreach.c:291
 #, c-format
 msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
 msgstr "Лош број датотеке. Задали сте %i, а доступна је само 1 датотека у „%s“."
 
-#: gphoto2/foreach.c:293
+#: gphoto2/foreach.c:299
 #, c-format
 msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
 msgstr "Лош број датотеке. Задали сте %i, а доступно је свега %i датотека у „%s“. Прибавите прво исправан број датотеке из списка датотека."
 
-#: gphoto2/gp-params.c:67
+#: gphoto2/gp-params.c:62
 #, c-format
 msgid "*** Error ***              \n"
 msgstr "*** Грешка ***             \n"
 
-#: gphoto2/gp-params.c:241
+#: gphoto2/gp-params.c:237
 #, c-format
 msgid "Press any key to continue.\n"
-msgstr "Притиснути било које дугме за наставак.\n"
+msgstr "Притисните било који тастер да наставите.\n"
 
-#: gphoto2/gp-params.c:258
+#: gphoto2/gp-params.c:259
 #, c-format
 msgid "Not enough memory."
-msgstr "Недовољно меморије."
+msgstr "Нема довољно меморије."
 
 #: gphoto2/gphoto2-cmd-capture.c:211
 msgid "Operation cancelled"
-msgstr "Поступак поништен"
+msgstr "Радња је отказана"
 
 #: gphoto2/gphoto2-cmd-config.c:55
 msgid "</B/24>Continue"
@@ -535,7 +690,7 @@ msgstr "</B/24>Настави"
 
 #: gphoto2/gphoto2-cmd-config.c:55
 msgid "</B16>Cancel"
-msgstr "</B16>Поништи"
+msgstr "</B16>Откажи"
 
 #: gphoto2/gphoto2-cmd-config.c:61
 msgid "<C></5>Error"
@@ -543,15 +698,15 @@ msgstr "<C></5>Грешка"
 
 #: gphoto2/gphoto2-cmd-config.c:63
 msgid "Could not set configuration:"
-msgstr "Нисам могао да поставим подешавање:"
+msgstr "Не могу да поставим подешавање:"
 
 #: gphoto2/gphoto2-cmd-config.c:107
 msgid "Exit"
-msgstr "Излаз"
+msgstr "Изађи"
 
 #: gphoto2/gphoto2-cmd-config.c:109
 msgid "Back"
-msgstr "Натраг"
+msgstr "Назад"
 
 #: gphoto2/gphoto2-cmd-config.c:254
 msgid "Time: "
@@ -570,121 +725,160 @@ msgstr "Да"
 msgid "No"
 msgstr "Не"
 
-#: gphoto2/main.c:225
+#: gphoto2/main.c:213
 #, c-format
 msgid "Zero padding numbers in file names is only possible with %%n."
-msgstr "Бројеви нулте попуне у именима датотека једино могући са „%%n“."
+msgstr "Бројеви попуњени нулом у називима датотека су једино могући са „%%n“."
 
-#: gphoto2/main.c:234
+#: gphoto2/main.c:222
 #, c-format
 msgid "You cannot use %%n zero padding without a precision value!"
-msgstr "Не можете користити „%%n“ нулту попуну без вредности тачности!"
+msgstr "Не можете користити „%%n“ попуњавање нулом без вредности тачности!"
 
-#: gphoto2/main.c:250
-#, c-format
-msgid "You cannot use '%%n' in combination with non-persistent files!"
-msgstr "Не можете користити „%%n“ заједно са краткотрајним датотекама!"
-
-#: gphoto2/main.c:281
+#: gphoto2/main.c:255
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr "Име датотеке дато од камере („%s“) не садржи наставак!"
+msgstr "Назив датотеке који даје камера („%s“) не садржи наставак!"
 
-#: gphoto2/main.c:336
+#: gphoto2/main.c:310
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
-msgstr "Неважећи облик „%s“ (грешка на месту %i)."
+msgstr "Неисправан запис „%s“ (грешка на положају %i)."
 
-#: gphoto2/main.c:385
+#: gphoto2/main.c:360
 #, c-format
 msgid "File %s exists. Overwrite? [y|n] "
-msgstr "Датотека „%s“ постоји. Пребрисати? [y|n] "
+msgstr "Датотека „%s“ постоји. Да је препишем? [y|n] "
 
-#: gphoto2/main.c:397
+#: gphoto2/main.c:372
 #, c-format
 msgid "Specify new filename? [y|n] "
-msgstr "Задати ново име? [y|n] "
+msgstr "Да наведем нови назив датотеке? [y|n] "
 
-#: gphoto2/main.c:407
+#: gphoto2/main.c:384
 #, c-format
 msgid "Enter new filename: "
-msgstr "Унесите ново име датотеке: "
+msgstr "Унесите нови назив датотеке: "
 
-#: gphoto2/main.c:413
+#: gphoto2/main.c:390
 #, c-format
 msgid "Saving file as %s\n"
-msgstr "Снимање датотеке као „%s“\n"
+msgstr "Чувам датотеку као „%s“\n"
 
-#: gphoto2/main.c:563
-#, c-format
-msgid "Time-lapse mode enabled (interval: %ds).\n"
-msgstr "Режим временског клизања омогућен (размак: %ds).\n"
+#: gphoto2/main.c:549
+msgid "Permission denied"
+msgstr "Овлашћење је одбијено"
 
-#: gphoto2/main.c:570
-#, c-format
-msgid "Capturing frame #%d...\n"
-msgstr "Захватам слику број %d...\n"
+#: gphoto2/main.c:711
+msgid "Could not trigger capture."
+msgstr "Не могу да окинем снимање."
 
-#: gphoto2/main.c:572
-#, c-format
-msgid "Capturing frame #%d/%d...\n"
-msgstr "Захватам слику #%d/%d...\n"
-
-#: gphoto2/main.c:579
-msgid "Could not capture."
-msgstr "Нисам могао да захватим."
-
-#: gphoto2/main.c:588
-#, c-format
-msgid "Capture failed (auto-focus problem?)...\n"
-msgstr "Захватање није успело (ауто-фокус проблем?)...\n"
-
-#: gphoto2/main.c:602
+#: gphoto2/main.c:741
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
-msgstr "Нова датотека је на месту „%s%s%s“ у камери\n"
+msgstr "Нова датотека је на месту „%s%s%s“ на камери\n"
 
-#: gphoto2/main.c:612
-msgid "Could not set folder."
-msgstr "Нисам могао да подесим директоријум."
-
-#: gphoto2/main.c:637
-msgid "Could not get image."
-msgstr "Нисам могао да добијем слику."
-
-#: gphoto2/main.c:644
-msgid "Buggy libcanon.so?"
-msgstr "libcanon.so пун грешака?"
-
-#: gphoto2/main.c:650
+#: gphoto2/main.c:771
 #, c-format
 msgid "Deleting file %s%s%s on the camera\n"
-msgstr "Бришем датотеку „%s%s%s“ у камери\n"
+msgstr "Бришем датотеку „%s%s%s“ на камери\n"
 
-#: gphoto2/main.c:655
-msgid "Could not delete image."
-msgstr "Нисам могао да избришем слику."
-
-#: gphoto2/main.c:675
-msgid "Could not close camera connection."
-msgstr "Нисам могао да прекинем везу са камером."
-
-#: gphoto2/main.c:681
+#: gphoto2/main.c:781
 #, c-format
-msgid "Sleeping for %d second(s)...\n"
-msgstr "Спавам %d секунди...\n"
+msgid "Keeping file %s%s%s on the camera\n"
+msgstr "Задржавам датотеку „%s%s%s“ на камери\n"
 
-#: gphoto2/main.c:685
+#: gphoto2/main.c:814
 #, c-format
-msgid "not sleeping (%d seconds behind schedule)\n"
-msgstr "не спавам (%d секунди иза плана)\n"
+msgid "Event FOLDER_ADDED %s/%s during wait, ignoring.\n"
+msgstr "Догађај ДОДАТА_ФАСЦИКЛА %s/%s за време чекања, занемарујем.\n"
 
-#: gphoto2/main.c:775
+#: gphoto2/main.c:824
+#, c-format
+msgid "Event UNKNOWN %s during wait, ignoring.\n"
+msgstr "Догађај НЕПОЗНАТО %s за време чекања, занемарујем.\n"
+
+#: gphoto2/main.c:830
+#, c-format
+msgid "Unknown event type %d during bulb wait, ignoring.\n"
+msgstr "Непознат догађај врсте %d за време чекања блица, занемарујем.\n"
+
+#: gphoto2/main.c:848
+msgid "Could not get capabilities?"
+msgstr "Не могу да добавим могућности?"
+
+#: gphoto2/main.c:856
+#, c-format
+msgid "Time-lapse mode enabled (interval: %ds).\n"
+msgstr "Режим временског клизања је укључен (период: %dс).\n"
+
+#: gphoto2/main.c:859
+#, c-format
+msgid "Standing by waiting for SIGUSR1 to capture.\n"
+msgstr "Приправнност чека да „SIGUSR1“ снима.\n"
+
+#: gphoto2/main.c:865
+#, c-format
+msgid "Bulb mode enabled (exposure time: %ds).\n"
+msgstr "Режим блица је укључен (време излагања: %dс).\n"
+
+#: gphoto2/main.c:878
+#, c-format
+msgid "Capturing frame #%d...\n"
+msgstr "Снимам кадар бр. %d...\n"
+
+#: gphoto2/main.c:880
+#, c-format
+msgid "Capturing frame #%d/%d...\n"
+msgstr "Снимам кадар бр. %d/%d...\n"
+
+#: gphoto2/main.c:890
+#, c-format
+msgid "Could not set bulb capture, result %d."
+msgstr "Не могу да подесим снимање блица, резултат %d."
+
+#: gphoto2/main.c:904
+msgid "Could not end capture (bulb mode)."
+msgstr "Не могу да завршим снимање (режим блица)."
+
+#: gphoto2/main.c:915
+msgid "Could not trigger image capture."
+msgstr "Не могу да окинем снимање слике."
+
+#: gphoto2/main.c:921
+msgid "Could not capture image."
+msgstr "Не могу да снимим слику."
+
+#: gphoto2/main.c:928
+#, c-format
+msgid "Capture failed (auto-focus problem?)...\n"
+msgstr "Снимање није успело (проблем само-фокуса?)...\n"
+
+#: gphoto2/main.c:939
+msgid "Could not capture."
+msgstr "Не могу да снимим."
+
+#: gphoto2/main.c:970
+#, c-format
+msgid "Waiting for next capture slot %ld seconds...\n"
+msgstr "Чекам на следећи прикључак снимања %ld секунде...\n"
+
+#: gphoto2/main.c:979 gphoto2/main.c:1020
+#, c-format
+msgid "Awakened by SIGUSR1...\n"
+msgstr "Пробуђен сам „SIGUSR1“...\n"
+
+#: gphoto2/main.c:992
+#, c-format
+msgid "not sleeping (%ld seconds behind schedule)\n"
+msgstr "не спавам (%ld секунде иза планираног)\n"
+
+#: gphoto2/main.c:1124
 #, c-format
 msgid "ERROR: "
 msgstr "ГРЕШКА: "
 
-#: gphoto2/main.c:798
+#: gphoto2/main.c:1147
 #, c-format
 msgid ""
 "\n"
@@ -693,35 +887,44 @@ msgstr ""
 "\n"
 "Прекидам...\n"
 
-#: gphoto2/main.c:804
+#: gphoto2/main.c:1153
 #, c-format
 msgid "Aborted.\n"
 msgstr "Прекинуто.\n"
 
-#: gphoto2/main.c:809
+#: gphoto2/main.c:1158
 #, c-format
 msgid ""
 "\n"
 "Cancelling...\n"
 msgstr ""
 "\n"
-"Поништавам...\n"
+"Отказујем...\n"
 
-#: gphoto2/main.c:943
+#: gphoto2/main.c:1306
 #, c-format
 msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
-msgstr "Користите следећу синтаксу „a:b=c:d“ за преименовање сваког откривеног USB уређаја из „a:b“ у „c:d“. a b c d требају бити хексадецимални бројеви и почињати са „0x“.\n"
+msgstr "Користите следећу синтаксу „a:b=c:d“ за преименовање сваког откривеног УСБ уређаја као „a:b“ у „c:d“. a b c d треба да буду хексадецимални бројеви и да почињу на „0x“.\n"
 
-#: gphoto2/main.c:1071
+#: gphoto2/main.c:1474
 msgid "gphoto2 has been compiled without support for CDK."
-msgstr "Гфото2 је преведен без подршке за CDK."
+msgstr "Гфото2 је преведен без подршке за ЦДК."
 
-#: gphoto2/main.c:1256
+#: gphoto2/main.c:1738
 #, c-format
 msgid "Operation cancelled.\n"
-msgstr "Поступак поништен.\n"
+msgstr "Радња је отказана.\n"
 
-#: gphoto2/main.c:1260
+#: gphoto2/main.c:1742
+#, c-format
+msgid ""
+"*** Error: No camera found. ***\n"
+"\n"
+msgstr ""
+"*** Грешка: Нисам пронашао камеру. ***\n"
+"\n"
+
+#: gphoto2/main.c:1744
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -730,7 +933,7 @@ msgstr ""
 "*** Грешка (%i: „%s“) ***      \n"
 "\n"
 
-#: gphoto2/main.c:1264
+#: gphoto2/main.c:1749
 #, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
@@ -741,343 +944,386 @@ msgid ""
 "\n"
 msgstr ""
 "Користите опцију „--debug“ за поруке за откривање грешака. Овакве поруке\n"
-"могу да помогну при решавању Ваших проблема. Уколико намеравате да пошаљете\n"
-"поруку грешака за Гфото развојно дописно друштво <gphoto-devel@lists.sourceforge.net>,\n"
+"могу да помогну при решавању ваших проблема. Уколико намеравате да пошаљете\n"
+"поруке о грешкама или за исправљање грешака на дописну листу програмера гфотоа <gphoto-devel@lists.sourceforge.net>,\n"
 "покрените Гфото2 на следећи начин:\n"
 "\n"
 
-#: gphoto2/main.c:1349
+#: gphoto2/main.c:1770
+#, c-format
+msgid ""
+"Please make sure there is sufficient quoting around the arguments.\n"
+"\n"
+msgstr ""
+"Уверите се да има довољно цитирања око аргумената.\n"
+"\n"
+
+#: gphoto2/main.c:1837
 msgid "Print complete help message on program usage"
-msgstr "Испиши потпуну поруку о употреби програма"
+msgstr "Исписује потпуну поруку о употреби програма"
 
-#: gphoto2/main.c:1351
+#: gphoto2/main.c:1839
 msgid "Print short message on program usage"
-msgstr "Испиши кратку поруку о употреби програма"
+msgstr "Исписује кратку поруку о употреби програма"
 
-#: gphoto2/main.c:1353
+#: gphoto2/main.c:1841
 msgid "Turn on debugging"
-msgstr "Укључи откривање грешака"
+msgstr "Укључује откривање грешака"
 
-#: gphoto2/main.c:1355
+#: gphoto2/main.c:1843
 msgid "Name of file to write debug info to"
-msgstr "Име датотеке за упис порука грешке"
+msgstr "Назив датотеке за упис података о уклањању грешака"
 
-#: gphoto2/main.c:1355 gphoto2/main.c:1363
+#: gphoto2/main.c:1843 gphoto2/main.c:1848 gphoto2/main.c:1854
+#: gphoto2/main.c:1978
 msgid "FILENAME"
 msgstr "ДАТОТЕКА"
 
-#: gphoto2/main.c:1357
+#: gphoto2/main.c:1845
 msgid "Quiet output (default=verbose)"
-msgstr "Тихи излаз (почетно=опширно)"
+msgstr "Тихи излаз (основно=опширно)"
 
-#: gphoto2/main.c:1363
-msgid "Specify port device"
-msgstr "Задај портовни уређај"
+#: gphoto2/main.c:1847
+msgid "Hook script to call after downloads, captures, etc."
+msgstr "Прикачи скрипту на позив након преузимања, снимања, итд."
 
-#: gphoto2/main.c:1365
+#: gphoto2/main.c:1854
+msgid "Specify device port"
+msgstr "Наводи прикључник уређаја"
+
+#: gphoto2/main.c:1856
 msgid "Specify serial transfer speed"
-msgstr "Задај брзину серијског преноса"
+msgstr "Наводи брзину серијског преноса"
 
-#: gphoto2/main.c:1365
+#: gphoto2/main.c:1856
 msgid "SPEED"
 msgstr "БРЗИНА"
 
-#: gphoto2/main.c:1367
+#: gphoto2/main.c:1858
 msgid "Specify camera model"
-msgstr "Задај модел камере"
+msgstr "Наводи модел камере"
 
-#: gphoto2/main.c:1367
+#: gphoto2/main.c:1858
 msgid "MODEL"
 msgstr "МОДЕЛ"
 
-#: gphoto2/main.c:1369
+#: gphoto2/main.c:1860
 msgid "(expert only) Override USB IDs"
-msgstr "(само за стручњака) Заобиђи USB ID-ове"
+msgstr "(само за стручњаке) Заобилази ИБ-ове УСБ-а"
 
-#: gphoto2/main.c:1369
+#: gphoto2/main.c:1860
 msgid "USBIDs"
-msgstr "USBID-ови"
+msgstr "УСБИБ-ови"
 
-#: gphoto2/main.c:1375
+#: gphoto2/main.c:1866
 msgid "Display version and exit"
-msgstr "Прикажи верзију и заврши"
+msgstr "Приказује издање и излази"
 
-#: gphoto2/main.c:1377
+#: gphoto2/main.c:1868
 msgid "List supported camera models"
-msgstr "Наведи моделе подржаних камера"
+msgstr "Исписује моделе подржаних камера"
 
-#: gphoto2/main.c:1379
+#: gphoto2/main.c:1870
 msgid "List supported port devices"
-msgstr "Наведи подржане портовне уређаје"
+msgstr "Исписује подржане уређаје прикључника"
 
-#: gphoto2/main.c:1381
+#: gphoto2/main.c:1872
 msgid "Display camera/driver abilities"
-msgstr "Наведи могућности камере/гонича"
+msgstr "Приказује могућности камере/управљачког програма"
 
-#: gphoto2/main.c:1388
+#: gphoto2/main.c:1879
 msgid "Configure"
-msgstr "Подешавање"
+msgstr "Подешава"
 
-#: gphoto2/main.c:1391
+#: gphoto2/main.c:1882
 msgid "List configuration tree"
-msgstr "Излистај стабло подешавања"
+msgstr "Исписује стабло подешавања"
 
-#: gphoto2/main.c:1393
+#: gphoto2/main.c:1884
+msgid "Dump full configuration tree"
+msgstr "Избацује читаво стабло подешавања"
+
+#: gphoto2/main.c:1886
 msgid "Get configuration value"
-msgstr "Прибави вредност подешавања"
+msgstr "Добавља вредност подешавања"
 
-#: gphoto2/main.c:1395
+#: gphoto2/main.c:1888
+msgid "Set configuration value or index in choices"
+msgstr "Подешава вредност подешавања или попис у изборима"
+
+#: gphoto2/main.c:1890
+msgid "Set configuration value index in choices"
+msgstr "Подешава попис вредности подешавања у изборима"
+
+#: gphoto2/main.c:1892
 msgid "Set configuration value"
-msgstr "Задај вредност подешавања"
+msgstr "Поставља вредност подешавања"
 
-#: gphoto2/main.c:1401
-msgid "Wait for event from camera"
-msgstr "Чекај на догађај са камере"
+#: gphoto2/main.c:1894
+msgid "Reset device port"
+msgstr "Враћа прикључник уређаја"
 
-#: gphoto2/main.c:1404
-msgid "Capture a quick preview"
-msgstr "Захвати брзи предглед"
+#: gphoto2/main.c:1900
+msgid "Keep images on camera after capturing"
+msgstr "Задржава слике на камери након снимања"
 
-#: gphoto2/main.c:1406
-msgid "Set number of frames to capture (default=infinite)"
-msgstr "Задај број слика за захватање (подразумевано=неограничен)"
+#: gphoto2/main.c:1902
+msgid "Remove images from camera after capturing"
+msgstr "Уклања слике са камере након снимања"
 
-#: gphoto2/main.c:1406
+#: gphoto2/main.c:1904
+msgid "Wait for event(s) from camera"
+msgstr "Чека на догађај(е) са камере"
+
+#: gphoto2/main.c:1904 gphoto2/main.c:1906 gphoto2/main.c:1913
+#: gphoto2/main.c:1929
 msgid "COUNT"
 msgstr "БРОЈ"
 
-#: gphoto2/main.c:1408
-msgid "Set capture interval in seconds"
-msgstr "Задај размак захватања у секундама"
+#: gphoto2/main.c:1906
+msgid "Wait for event(s) from the camera and download new images"
+msgstr "Чека на догађај(е) са камере и преузима нове слике"
 
-#: gphoto2/main.c:1408
+#: gphoto2/main.c:1909
+msgid "Capture a quick preview"
+msgstr "Снима брзи преглед"
+
+#: gphoto2/main.c:1911
+msgid "Set bulb exposure time in seconds"
+msgstr "Подешава време излагање блица у секундама"
+
+#: gphoto2/main.c:1911 gphoto2/main.c:1915
 msgid "SECONDS"
 msgstr "СЕКУНДЕ"
 
-#: gphoto2/main.c:1410
+#: gphoto2/main.c:1913
+msgid "Set number of frames to capture (default=infinite)"
+msgstr "Подешава број кадрова за снимање (подразумевано=infinite)"
+
+#: gphoto2/main.c:1915
+msgid "Set capture interval in seconds"
+msgstr "Подешава период снимања у секундама"
+
+#: gphoto2/main.c:1917
+msgid "Reset capture interval on signal (default=no)"
+msgstr "Враћа период снимања на сигналу (основно=no)"
+
+#: gphoto2/main.c:1919
 msgid "Capture an image"
-msgstr "Захвати слику"
+msgstr "Снима слику"
 
-#: gphoto2/main.c:1412
+#: gphoto2/main.c:1921
+msgid "Trigger capture of an image"
+msgstr "Окида снимање слике"
+
+#: gphoto2/main.c:1923
+msgid "Capture an image and download it"
+msgstr "Снима слику и прузима је"
+
+#: gphoto2/main.c:1925
 msgid "Capture a movie"
-msgstr "Захвати филм"
+msgstr "Снима филм"
 
-#: gphoto2/main.c:1414
+#: gphoto2/main.c:1925
+msgid "COUNT or SECONDS"
+msgstr "БРОЈ или СЕКУНДЕ"
+
+#: gphoto2/main.c:1927
 msgid "Capture an audio clip"
-msgstr "Захвати звучни одломак"
+msgstr "Снима звучни одломак"
 
-#: gphoto2/main.c:1420
+#: gphoto2/main.c:1929
+msgid "Wait for shutter release on the camera and download"
+msgstr "Чека на отпуштање бленде на камери и преузима"
+
+#: gphoto2/main.c:1931
+msgid "Trigger image capture"
+msgstr "Окида снимање слике"
+
+#: gphoto2/main.c:1937
 msgid "List folders in folder"
-msgstr "Наброј поддиректоријуме у директоријуму"
+msgstr "Исписује подфасцикле у фасцикли"
 
-#: gphoto2/main.c:1422
+#: gphoto2/main.c:1939
 msgid "List files in folder"
-msgstr "Наброј датотеке у директоријуму"
+msgstr "Наброј датотеке у фасцикли"
 
-#: gphoto2/main.c:1424
+#: gphoto2/main.c:1941
 msgid "Create a directory"
-msgstr "Направи директоријум"
+msgstr "Прави фасциклу"
 
-#: gphoto2/main.c:1424 gphoto2/main.c:1426
+#: gphoto2/main.c:1941 gphoto2/main.c:1943
 msgid "DIRNAME"
-msgstr "ИМЕ ДИР."
+msgstr "НАЗИВДИР."
 
-#: gphoto2/main.c:1426
+#: gphoto2/main.c:1943
 msgid "Remove a directory"
-msgstr "Уклони директоријум"
+msgstr "Уклања фасциклу"
 
-#: gphoto2/main.c:1428
+#: gphoto2/main.c:1945
 msgid "Display number of files"
-msgstr "Прикажи број датотека"
+msgstr "Приказује број датотека"
 
-#: gphoto2/main.c:1430
+#: gphoto2/main.c:1947
 msgid "Get files given in range"
-msgstr "Узми датотеке у датом опсегу"
+msgstr "Добавља датотеке у датом опсегу"
 
-#: gphoto2/main.c:1430 gphoto2/main.c:1434 gphoto2/main.c:1439
-#: gphoto2/main.c:1446 gphoto2/main.c:1452 gphoto2/main.c:1457
+#: gphoto2/main.c:1947 gphoto2/main.c:1951 gphoto2/main.c:1956
+#: gphoto2/main.c:1963 gphoto2/main.c:1969 gphoto2/main.c:1974
 msgid "RANGE"
-msgstr "РАСПОН"
+msgstr "ОПСЕГ"
 
-#: gphoto2/main.c:1432
+#: gphoto2/main.c:1949
 msgid "Get all files from folder"
-msgstr "Узми све датотеке из директоријума"
+msgstr "Добавља све датотеке из фасцикле"
 
-#: gphoto2/main.c:1434
+#: gphoto2/main.c:1951
 msgid "Get thumbnails given in range"
-msgstr "Узми сличице у датом опсегу"
+msgstr "Добавља сличице у датом опсегу"
 
-#: gphoto2/main.c:1437
+#: gphoto2/main.c:1954
 msgid "Get all thumbnails from folder"
-msgstr "Узми све сличице из директоријума"
+msgstr "Добавља све сличице из фасцикле"
 
-#: gphoto2/main.c:1439
+#: gphoto2/main.c:1956
 msgid "Get metadata given in range"
-msgstr "Прибави метаподатке у датом опсегу"
+msgstr "Добавља метаподатке у датом опсегу"
 
-#: gphoto2/main.c:1441
+#: gphoto2/main.c:1958
 msgid "Get all metadata from folder"
-msgstr "Узми све метаподатке из директоријума"
+msgstr "Добавља све метаподатке из фасцикле"
 
-#: gphoto2/main.c:1443
+#: gphoto2/main.c:1960
 msgid "Upload metadata for file"
-msgstr "Пошаљи метаподатке за датотеку"
+msgstr "Шаље метаподатке за датотеку"
 
-#: gphoto2/main.c:1446
+#: gphoto2/main.c:1963
 msgid "Get raw data given in range"
-msgstr "Узми сирове података у датом опсегу"
+msgstr "Добавља сирове податке у датом опсегу"
 
-#: gphoto2/main.c:1449
+#: gphoto2/main.c:1966
 msgid "Get all raw data from folder"
-msgstr "Узми све сирове податке из директоријума"
+msgstr "Добавља све сирове податке из фасцикле"
 
-#: gphoto2/main.c:1452
+#: gphoto2/main.c:1969
 msgid "Get audio data given in range"
-msgstr "Узми звучне записе у датом опсегу"
+msgstr "Добавља звучне записе у датом опсегу"
 
-#: gphoto2/main.c:1455
+#: gphoto2/main.c:1972
 msgid "Get all audio data from folder"
-msgstr "Узми све звучне записе из директоријума"
+msgstr "Добавља све звучне записе из фасцикле"
 
-#: gphoto2/main.c:1457
+#: gphoto2/main.c:1974
 msgid "Delete files given in range"
-msgstr "Избриши датотеке у датом опсегу"
+msgstr "Брише датотеке у датом опсегу"
 
-#: gphoto2/main.c:1459
-msgid "Delete all files in folder"
-msgstr "Избриши све датотеке у директоријуму"
+#: gphoto2/main.c:1976
+msgid "Delete all files in folder (--no-recurse by default)"
+msgstr "Брише све дтотеке у фасцикли („--no-recurse“ је основно)"
 
-#: gphoto2/main.c:1461
+#: gphoto2/main.c:1978
 msgid "Upload a file to camera"
-msgstr "Убаци датотеку у камеру"
+msgstr "Шаље датотеку камери"
 
-#: gphoto2/main.c:1461
-msgid "filename"
-msgstr "име датотеке"
-
-#: gphoto2/main.c:1463
+#: gphoto2/main.c:1980
 msgid "Specify a filename or filename pattern"
-msgstr "Задај име датотеке или образац имена"
+msgstr "Наводи назив датотеке или образац назива датотеке"
 
-#: gphoto2/main.c:1463
+#: gphoto2/main.c:1980
 msgid "FILENAME_PATTERN"
-msgstr "ОБРАЗАЦ_ИМЕ_ДАТОТЕКЕ"
+msgstr "ОБРАЗАЦ_НАЗИВА_ДАТОТЕКЕ"
 
-#: gphoto2/main.c:1465
+#: gphoto2/main.c:1982
 msgid "Specify camera folder (default=\"/\")"
-msgstr "Задај директоријум за камеру (почетно=„/“)"
+msgstr "Наводи фасциклу за камеру (основно=„/“)"
 
-#: gphoto2/main.c:1465
+#: gphoto2/main.c:1982
 msgid "FOLDER"
 msgstr "ФАСЦИКЛА"
 
-#: gphoto2/main.c:1467
+#: gphoto2/main.c:1984
 msgid "Recursion (default for download)"
-msgstr "Рекурзија (подразумевано код преузимања)"
+msgstr "Дубачење (основно за преузимање)"
 
-#: gphoto2/main.c:1469
+#: gphoto2/main.c:1986
 msgid "No recursion (default for deletion)"
-msgstr "Без рекурзије (подразумевано за брисање)"
+msgstr "Без дубачења (основно за брисање)"
 
-#: gphoto2/main.c:1471
+#: gphoto2/main.c:1988
 msgid "Process new files only"
-msgstr "Обради само нове датотеке"
+msgstr "Обрађује само нове датотеке"
 
-#: gphoto2/main.c:1473
+#: gphoto2/main.c:1990
 msgid "Overwrite files without asking"
-msgstr "Пребриши датотеке без питања."
+msgstr "Пребрисава датотеке без питања"
 
-#: gphoto2/main.c:1479
+#: gphoto2/main.c:1996
 msgid "Send file to stdout"
-msgstr "Шаљи датотеку на стандардни излаз"
+msgstr "Шаље датотеку на стандардни излаз"
 
-#: gphoto2/main.c:1481
+#: gphoto2/main.c:1998
 msgid "Print filesize before data"
-msgstr "Испиши величину датотеке пре података"
+msgstr "Исписује величину датотеке пре података"
 
-#: gphoto2/main.c:1483
+#: gphoto2/main.c:2000
 msgid "List auto-detected cameras"
-msgstr "Наведи самонађене камере"
+msgstr "Наводи самостално откривене камере"
 
-#: gphoto2/main.c:1487 gphoto2/shell.c:132
+#: gphoto2/main.c:2004 gphoto2/shell.c:138
 msgid "Show EXIF information"
-msgstr "Прикажи EXIF податке"
+msgstr "Приказује ЕКСИФ податке"
 
-#: gphoto2/main.c:1490 gphoto2/shell.c:126
+#: gphoto2/main.c:2007 gphoto2/shell.c:132
 msgid "Show info"
-msgstr "Прикажи податке"
+msgstr "Приказује податке"
 
-#: gphoto2/main.c:1492
+#: gphoto2/main.c:2009
 msgid "Show summary"
-msgstr "Прикажи сажетак"
+msgstr "Приказује сажетак"
 
-#: gphoto2/main.c:1494
+#: gphoto2/main.c:2011
 msgid "Show camera driver manual"
-msgstr "Прикажи упутство гонича камере"
+msgstr "Приказује упутство управљача камере"
 
-#: gphoto2/main.c:1496
+#: gphoto2/main.c:2013
 msgid "About the camera driver manual"
-msgstr "О упутству за гонич камере"
+msgstr "О упутству управљача камере"
 
-#: gphoto2/main.c:1498
+#: gphoto2/main.c:2015
+msgid "Show storage information"
+msgstr "Приказује податке складишта"
+
+#: gphoto2/main.c:2017
 msgid "gPhoto shell"
-msgstr "gPhoto љуске"
+msgstr "Љуска гФотоа"
 
-#: gphoto2/main.c:1504
+#: gphoto2/main.c:2023
 msgid "Common options"
 msgstr "Заједничке опције"
 
-#: gphoto2/main.c:1506
+#: gphoto2/main.c:2025
 msgid "Miscellaneous options (unsorted)"
 msgstr "Разноврсне опције (непоређане)"
 
-#: gphoto2/main.c:1508
+#: gphoto2/main.c:2027
 msgid "Get information on software and host system (not from the camera)"
-msgstr "Добави податке о софтверу и домаћину (не од камере)"
+msgstr "Добавља податке о софтверу и домаћину (не од камере)"
 
-#: gphoto2/main.c:1510
+#: gphoto2/main.c:2029
 msgid "Specify the camera to use"
-msgstr "Наведи камеру за коришћење"
+msgstr "Наводи камеру за коришћење"
 
-#: gphoto2/main.c:1512
+#: gphoto2/main.c:2031
 msgid "Camera and software configuration"
 msgstr "Подешавања камере и софтвера"
 
-#: gphoto2/main.c:1514
+#: gphoto2/main.c:2033
 msgid "Capture an image from or on the camera"
-msgstr "Захвати слику од или са камере"
+msgstr "Снима слику од или са камере"
 
-#: gphoto2/main.c:1516
+#: gphoto2/main.c:2035
 msgid "Downloading, uploading and manipulating files"
-msgstr "Скидање, качење и обрада датотека"
-
-#: gphoto2/options.c:181
-#, c-format
-msgid "Usage:\n"
-msgstr "Употреба:\n"
-
-#: gphoto2/options.c:184
-#, c-format
-msgid ""
-"Short/long options (& argument)        Description\n"
-"--------------------------------------------------------------------------------\n"
-msgstr ""
-"Кратке/дугачке опције (и аргумент)     Опис\n"
-"--------------------------------------------------------------------------------\n"
-
-#: gphoto2/options.c:209
-#, c-format
-msgid "%-38s %s\n"
-msgstr "%-38s %s\n"
-
-#: gphoto2/options.c:214
-#, c-format
-msgid ""
-"--------------------------------------------------------------------------------\n"
-"[Use double-quotes around arguments]        [Picture numbers begin with one (1)]\n"
-msgstr ""
-"--------------------------------------------------------------------------------\n"
-"[Ставите наводнике (\") око аргумената]     [Бројање слика почиње од један (1)]\n"
+msgstr "Преузима, шаље и управља датотекама"
 
 #: gphoto2/range.c:104 gphoto2/range.c:158
 #, c-format
@@ -1086,7 +1332,7 @@ msgid ""
 "Image IDs must be a number greater than zero."
 msgstr ""
 "%s\n"
-"Идентификација слика мора да буде број већи од нуле."
+"ИБ слике мора да буде број већи од нуле."
 
 #: gphoto2/range.c:110 gphoto2/range.c:164
 #, c-format
@@ -1095,7 +1341,7 @@ msgid ""
 "Image ID %i too high."
 msgstr ""
 "%s\n"
-"Идентификација слике превелика:  %i"
+"ИБ слике је превелик %i."
 
 #: gphoto2/range.c:126
 #, c-format
@@ -1104,7 +1350,7 @@ msgid ""
 "Ranges must be separated by ','."
 msgstr ""
 "%s\n"
-"Опсези морају бити раздвојени са „,“."
+"Опсези морају бити раздвојени зарезима (,)."
 
 #: gphoto2/range.c:140
 #, c-format
@@ -1138,340 +1384,207 @@ msgstr ""
 msgid "*** Error (%i: '%s') ***"
 msgstr "*** Грешка (%i: „%s“) ***"
 
-#: gphoto2/shell.c:115
-msgid "Change to a directory on the camera"
-msgstr "Пређи у директоријум на камери"
-
-#: gphoto2/shell.c:116 gphoto2/shell.c:118 gphoto2/shell.c:129
-#: gphoto2/shell.c:130
-msgid "directory"
-msgstr "директоријум"
-
-#: gphoto2/shell.c:117
-msgid "Change to a directory on the local drive"
-msgstr "Пређи у директоријум на локалном диску"
-
-#: gphoto2/shell.c:119 gphoto2/shell.c:143 gphoto2/shell.c:144
-msgid "Exit the gPhoto shell"
-msgstr "Напусти Гфото љуску"
-
-#: gphoto2/shell.c:120
-msgid "Download a file"
-msgstr "Преузми датотеку"
-
-#: gphoto2/shell.c:120 gphoto2/shell.c:121 gphoto2/shell.c:123
-#: gphoto2/shell.c:125 gphoto2/shell.c:127 gphoto2/shell.c:128
-#: gphoto2/shell.c:133
-msgid "[directory/]filename"
-msgstr "[директоријум/]датотека"
-
 #: gphoto2/shell.c:121
+msgid "Change to a directory on the camera"
+msgstr "Прелази у фасциклу на камери"
+
+#: gphoto2/shell.c:122 gphoto2/shell.c:124 gphoto2/shell.c:135
+#: gphoto2/shell.c:136
+msgid "directory"
+msgstr "фасцикла"
+
+#: gphoto2/shell.c:123
+msgid "Change to a directory on the local drive"
+msgstr "Прелази у фасциклу на месном уређају"
+
+#: gphoto2/shell.c:125 gphoto2/shell.c:156 gphoto2/shell.c:157
+msgid "Exit the gPhoto shell"
+msgstr "Напушта љуску Гфотоа"
+
+#: gphoto2/shell.c:126
+msgid "Download a file"
+msgstr "Преузима датотеку"
+
+#: gphoto2/shell.c:126 gphoto2/shell.c:127 gphoto2/shell.c:129
+#: gphoto2/shell.c:131 gphoto2/shell.c:133 gphoto2/shell.c:134
+#: gphoto2/shell.c:139
+msgid "[directory/]filename"
+msgstr "[фасцикла/]датотека"
+
+#: gphoto2/shell.c:127
 msgid "Upload a file"
-msgstr "Пошаљи датотеку"
-
-#: gphoto2/shell.c:122
-msgid "Download a thumbnail"
-msgstr "Преузми сличицу"
-
-#: gphoto2/shell.c:124
-msgid "Download raw data"
-msgstr "Преузми сирове податке"
+msgstr "Шаље датотеку"
 
 #: gphoto2/shell.c:128
-msgid "Delete"
-msgstr "Избриши"
-
-#: gphoto2/shell.c:129
-msgid "Create Directory"
-msgstr "Направи директоријум"
+msgid "Download a thumbnail"
+msgstr "Преузима сличицу"
 
 #: gphoto2/shell.c:130
-msgid "Remove Directory"
-msgstr "Уклони директоријум"
+msgid "Download raw data"
+msgstr "Преузима сирове податке"
 
-#: gphoto2/shell.c:135 gphoto2/shell.c:145
+#: gphoto2/shell.c:134
+msgid "Delete"
+msgstr "Брише"
+
+#: gphoto2/shell.c:135
+msgid "Create Directory"
+msgstr "Прави фасциклу"
+
+#: gphoto2/shell.c:136
+msgid "Remove Directory"
+msgstr "Уклања фасциклу"
+
+#: gphoto2/shell.c:141 gphoto2/shell.c:158
 msgid "Displays command usage"
 msgstr "Приказује употребу наредби"
 
-#: gphoto2/shell.c:136 gphoto2/shell.c:145
+#: gphoto2/shell.c:142 gphoto2/shell.c:158
 msgid "[command]"
 msgstr "[наредба]"
 
-#: gphoto2/shell.c:137
+#: gphoto2/shell.c:143
 msgid "List the contents of the current directory"
-msgstr "Испиши садржај тренутног директоријума"
+msgstr "Исписује садржај тренутне фасцикле"
 
-#: gphoto2/shell.c:138
+#: gphoto2/shell.c:144
 msgid "[directory/]"
-msgstr "[директоријум/]"
+msgstr "[фасцикла/]"
 
-#: gphoto2/shell.c:139
+#: gphoto2/shell.c:145
 msgid "List configuration variables"
-msgstr "Испиши променљиве подешавања"
+msgstr "Исписује променљиве подешавања"
 
-#: gphoto2/shell.c:140
+#: gphoto2/shell.c:146
 msgid "Get configuration variable"
-msgstr "Добави променљиву подешавања"
+msgstr "Добавља променљиву подешавања"
 
-#: gphoto2/shell.c:140
+#: gphoto2/shell.c:146
 msgid "name"
-msgstr "име"
+msgstr "назив"
 
-#: gphoto2/shell.c:141
+#: gphoto2/shell.c:147 gphoto2/shell.c:149
 msgid "Set configuration variable"
-msgstr "Постави променљиву подешавања"
+msgstr "Поставља променљиву подешавања"
 
-#: gphoto2/shell.c:141
+#: gphoto2/shell.c:147 gphoto2/shell.c:149
 msgid "name=value"
-msgstr "име=износ"
+msgstr "назив=вредност"
 
-#: gphoto2/shell.c:142
+#: gphoto2/shell.c:148
+msgid "Set configuration variable index"
+msgstr "Поставља попис променљиве подешавања"
+
+#: gphoto2/shell.c:148
+msgid "name=valueindex"
+msgstr "назив=попис вредности"
+
+#: gphoto2/shell.c:150
 msgid "Capture a single image"
-msgstr "Захвати једну слику"
+msgstr "Снима једну слику"
 
-#: gphoto2/shell.c:142
-msgid "[name]"
-msgstr "[име]"
+#: gphoto2/shell.c:151
+msgid "Capture a single image and download it"
+msgstr "Снима једну слику и прузима је"
 
-#: gphoto2/shell.c:467
+#: gphoto2/shell.c:152
+msgid "Capture a preview image"
+msgstr "Снима слику прегледа"
+
+#: gphoto2/shell.c:153
+msgid "Wait for an event"
+msgstr "Чека на догађај"
+
+#: gphoto2/shell.c:153 gphoto2/shell.c:154 gphoto2/shell.c:155
+msgid "count or seconds"
+msgstr "износ или секунде"
+
+#: gphoto2/shell.c:154
+msgid "Wait for images to be captured and download it"
+msgstr "Чека на слике да буду снимљене и преузима их"
+
+#: gphoto2/shell.c:155
+msgid "Wait for events and images to be captured and download it"
+msgstr "Чека на догађаје и слике да буду снимљене и преузима их"
+
+#: gphoto2/shell.c:480
 msgid "Invalid command."
 msgstr "Погрешна наредба."
 
-#: gphoto2/shell.c:476
+#: gphoto2/shell.c:489
 #, c-format
 msgid "The command '%s' requires an argument."
 msgstr "Наредба „%s“ захтева аргумент."
 
-#: gphoto2/shell.c:529
+#: gphoto2/shell.c:542
 msgid "Invalid path."
 msgstr "Погрешна путања."
 
-#: gphoto2/shell.c:575
+#: gphoto2/shell.c:588
 msgid "Could not find home directory."
-msgstr "Није могао да нађе домаћи директоријум."
+msgstr "Не могу да нађем личну фасциклу."
 
-#: gphoto2/shell.c:583
+#: gphoto2/shell.c:597
 #, c-format
 msgid "Could not change to local directory '%s'."
-msgstr "Није могао да пређе у локални директоријум „%s“."
+msgstr "Не могу да пређем у месну фасциклу „%s“."
 
-#: gphoto2/shell.c:586
+#: gphoto2/shell.c:600
 #, c-format
 msgid "Local directory now '%s'."
-msgstr "Локални директоријум сада „%s“."
+msgstr "Месна фасцикла сада „%s“."
 
-#: gphoto2/shell.c:624
+#: gphoto2/shell.c:638
 #, c-format
 msgid "Remote directory now '%s'."
-msgstr "Удаљени директоријум сада „ %s“."
+msgstr "Удаљена фасцикла сада „%s“."
 
-#: gphoto2/shell.c:840
+#: gphoto2/shell.c:854
 #, c-format
 msgid "set-config needs a second argument.\n"
-msgstr "set-config тражи и други аргумент.\n"
+msgstr "„set-config“ тражи и други аргумент.\n"
 
-#: gphoto2/shell.c:870
+#: gphoto2/shell.c:875
+#, c-format
+msgid "set-config-value needs a second argument.\n"
+msgstr "„set-config-value“ тражи и други аргумент.\n"
+
+#: gphoto2/shell.c:896
+#, c-format
+msgid "set-config-index needs a second argument.\n"
+msgstr "„set-config-index“ тражи и други аргумент.\n"
+
+#: gphoto2/shell.c:948
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
 msgstr "Наредба „%s“ не постоји. Употребите „help“ за списак доступних наредби."
 
-#: gphoto2/shell.c:877
+#: gphoto2/shell.c:955
 #, c-format
 msgid "Help on \"%s\":"
 msgstr "Објашњење за „%s“:"
 
-#: gphoto2/shell.c:879
+#: gphoto2/shell.c:957
 #, c-format
 msgid "Usage:"
 msgstr "Употреба:"
 
-#: gphoto2/shell.c:882
+#: gphoto2/shell.c:960
 #, c-format
 msgid "Description:"
 msgstr "Опис:"
 
-#: gphoto2/shell.c:884
+#: gphoto2/shell.c:962
 #, c-format
 msgid "* Arguments in brackets [] are optional"
 msgstr "* Аргументи у [] заградама су необавезни"
 
-#: gphoto2/shell.c:905
+#: gphoto2/shell.c:983
 #, c-format
 msgid "Available commands:"
 msgstr "Доступне наредбе:"
 
-#: gphoto2/shell.c:910
+#: gphoto2/shell.c:988
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
-msgstr "За објашњење неке наредбе куцајте „help име-наредбе“."
-
-#~ msgid "Displays this help screen"
-#~ msgstr "Приказује ово објашњење"
-
-#~ msgid "Get metadata from file"
-#~ msgstr "Узми метаподатке из датотеке"
-
-#~ msgid "List the configuration tree"
-#~ msgstr "Излистај стабло подешавања"
-
-#~ msgid "Get a configuration variable"
-#~ msgstr "Добави променљиву подешавања"
-
-#~ msgid "Set a configuration variable"
-#~ msgstr "Постави променљиву подешавања"
-
-#~ msgid "Capture a movie "
-#~ msgstr "Захвати филм"
-
-#~ msgid "Summary of camera status"
-#~ msgstr "Сажетак стања камере"
-
-#~ msgid "Camera driver manual"
-#~ msgstr "Упутство за гонич камере"
-
-#~ msgid "About the camera driver"
-#~ msgstr "О гоничу камере"
-
-#~ msgid "path"
-#~ msgstr "путања"
-
-#~ msgid "speed"
-#~ msgstr "брзина"
-
-#~ msgid "model"
-#~ msgstr "модел"
-
-#~ msgid "usbid"
-#~ msgstr "usbid"
-
-#~ msgid "folder"
-#~ msgstr "директоријум"
-
-#~ msgid "count"
-#~ msgstr "број"
-
-#~ msgid "seconds"
-#~ msgstr "секунди"
-
-#~ msgid "gPhoto2 for OS/2 requires you to set the enviroment value CAMLIBS to the location of the camera libraries. e.g. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
-#~ msgstr "Гфото2 за OS/2 захтева да подесите вредност променљиве окружења CAMLIBS на место библиотека за камеру, нпр. SET CAMLIBS=C:\\GPHOTO2\\CAM\n"
-
-#~ msgid "gPhoto2 for OS/2 requires you to set the enviroment value IOLIBS to the location of the io libraries. e.g. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-#~ msgstr "Гфото2 за OS/2 захтева да подесите вредност промељиве окружења IOLIBS наместо У/И библиотека, нпр. SET IOLIBS=C:\\GPHOTO2\\IOLIB\n"
-
-#~ msgid "There are no folders in folder '%s'."
-#~ msgstr "Ниједан директоријум у „%s“."
-
-#~ msgid "There are %i folders in folder '%s':"
-#~ msgstr "Има %i директоријума у „%s“:"
-
-#~ msgid "There are %i files in folder '%s':"
-#~ msgstr "Има %i датотека у директоријуму „%s“:"
-
-#~ msgid "Jan"
-#~ msgstr "јан."
-
-#~ msgid "January"
-#~ msgstr "Јануар"
-
-#~ msgid "Feb"
-#~ msgstr "феб."
-
-#~ msgid "February"
-#~ msgstr "фебруар"
-
-#~ msgid "Mar"
-#~ msgstr "мар."
-
-#~ msgid "March"
-#~ msgstr "март"
-
-#~ msgid "Apr"
-#~ msgstr "апр."
-
-#~ msgid "April"
-#~ msgstr "април"
-
-#~ msgid "May"
-#~ msgstr "мај"
-
-#~ msgid "Jun"
-#~ msgstr "јун"
-
-#~ msgid "June"
-#~ msgstr "јун"
-
-#~ msgid "Jul"
-#~ msgstr "јул"
-
-#~ msgid "July"
-#~ msgstr "јул"
-
-#~ msgid "Aug"
-#~ msgstr "авг."
-
-#~ msgid "August"
-#~ msgstr "август"
-
-#~ msgid "Sep"
-#~ msgstr "сеп."
-
-#~ msgid "September"
-#~ msgstr "септембар"
-
-#~ msgid "Oct"
-#~ msgstr "окт."
-
-#~ msgid "October"
-#~ msgstr "октобар"
-
-#~ msgid "Nov"
-#~ msgstr "нов."
-
-#~ msgid "November"
-#~ msgstr "новембар"
-
-#~ msgid "Dec"
-#~ msgstr "дец."
-
-#~ msgid "December"
-#~ msgstr "децембар"
-
-#~ msgid "Sun"
-#~ msgstr "нед."
-
-#~ msgid "Sunday"
-#~ msgstr "недеља"
-
-#~ msgid "Monday"
-#~ msgstr "понедељак"
-
-#~ msgid "Tue"
-#~ msgstr "уто."
-
-#~ msgid "Tuesday"
-#~ msgstr "уторак"
-
-#~ msgid "Wed"
-#~ msgstr "сре."
-
-#~ msgid "Wednesday"
-#~ msgstr "среда"
-
-#~ msgid "Thu"
-#~ msgstr "чет."
-
-#~ msgid "Thursday"
-#~ msgstr "четвртак"
-
-#~ msgid "Fri"
-#~ msgstr "пет."
-
-#~ msgid "Friday"
-#~ msgstr "петак"
-
-#~ msgid "Sat"
-#~ msgstr "суб."
-
-#~ msgid "Saturday"
-#~ msgstr "субота"
+msgstr "За објашњење неке наредбе куцајте „help назив-наредбе“."
