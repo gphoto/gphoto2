@@ -261,7 +261,7 @@ print_info_action (GPParams *p, const char *folder, const char *filename)
 				     p->context));
 
 	printf (_("Information on file '%s' (folder '%s'):\n"),
-		filename, p->folder);
+		filename, folder);
 	printf (_("File:\n"));
 	if (info.file.fields == GP_FILE_INFO_NONE)
 		printf (_("  None available.\n"));
