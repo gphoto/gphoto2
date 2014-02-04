@@ -275,6 +275,18 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 				}
 				break;
 
+			case 'F':
+				/* Get the folder name */
+				{
+					const char *f = folder ? folder : "";
+					if (f[0] == '/') f++; /* Skip first '/' */
+					if (!f[0]) f = "."; /* replace empty folder name by '.' */
+
+					strncpy (b, f, sizeof (b) - 1 - strlen(b));
+					b[sizeof(b) - 1] = '\0';
+				}
+				break;
+
 			case 'a':
 			case 'A':
 			case 'b':
