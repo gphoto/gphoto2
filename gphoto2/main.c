@@ -149,19 +149,21 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 {
 	unsigned int i, l;
 	char *s, b[1024];
-	time_t t;
+	time_t t = 0;
 	struct tm *tm;
 	int hour12;
 	static int filenr = 1;
 
-	if (!file || !path)
+	if (!path)
 		return (GP_ERROR_BAD_PARAMETERS);
 
 	*path = NULL;
-	CR (gp_file_get_mtime (file, &t));
+	if (file) {
+		CR (gp_file_get_mtime (file, &t));
 	
-	if (!t)	/* use the current time as fallback if the camera did not return it. */
-		t = time(NULL);
+		if (!t)	/* use the current time as fallback if the camera did not return it. */
+			t = time(NULL);
+	}
 
 	tm = localtime (&t);
 	hour12 = tm->tm_hour % 12;
@@ -173,8 +175,17 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 	 * If the user didn't specify a filename, use the original name 
 	 * (and prefix).
 	 */
-	if (!gp_params.filename || !strcmp (gp_params.filename, ""))
-		return gp_file_get_name_by_type (file, name, type, path);
+	if (!gp_params.filename || !strcmp (gp_params.filename, "")) {
+		if (file) {
+			return gp_file_get_name_by_type (file, name, type, path);
+		} else if ((type == GP_FILE_TYPE_NORMAL) && strchr(name,'.')) {
+			/* return the original name */
+			*path = strdup(name);
+			return (GP_OK);
+		} else
+			/* Download required to get the path from CameraFile *file */
+			return (GP_ERROR_BAD_PARAMETERS);
+	}
 
 	/* The user did specify a filename. Use it. */
 	b[sizeof (b) - 1] = '\0';
@@ -304,6 +315,8 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 			case 'Y':
 				{
 					char fmt[3] = { '%', '\0', '\0' };
+					if (!file) return (GP_ERROR_BAD_PARAMETERS); /* mtime unknown */
+
 					fmt[1] = gp_params.filename[i]; /* the letter of this 'case' */
 					strftime(b, sizeof (b), fmt, tm);
 					break;
@@ -364,6 +377,15 @@ save_camera_file_to_file (
 	free (path);
 	path = NULL;
 
+        if ((gp_params.flags & FLAGS_SKIP_EXISTING) && gp_system_is_file (s)) {
+		if ((gp_params.flags & FLAGS_QUIET) == 0) {
+			printf (_("Skip existing file %s\n"), s);
+			fflush (stdout);
+		}
+		if (curname)
+			unlink (curname);
+		return (GP_OK);
+	}
         if ((gp_params.flags & FLAGS_QUIET) == 0) {
                 while ((gp_params.flags & FLAGS_FORCE_OVERWRITE) == 0 &&
 		       gp_system_is_file (s)) {
@@ -526,6 +548,22 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
         CameraFile *file;
 	char	tmpname[20], *tmpfilename;
 	struct privstr *ps = NULL;
+
+	if (flags & FLAGS_SKIP_EXISTING && !(flags & FLAGS_STDOUT)) {
+		char *path = NULL;
+		/* Check if the file is present before downloading it. */
+		res = get_path_for_file (folder, filename, type, NULL, &path);
+
+		if (res == (GP_OK) && gp_system_is_file (path)) {
+			/* File name pattern do not require CameraFile and target file
+			   exists: Skip this file. */
+			if ((gp_params.flags & FLAGS_QUIET) == 0) {
+				printf (_("Skip existing file %s\n"), path);
+				fflush (stdout);
+			}
+			return (GP_OK);
+		}
+	}
 
 	if (flags & FLAGS_NEW) {
 		CameraFileInfo info;
@@ -1239,6 +1277,7 @@ typedef enum {
 	ARG_SHELL,
 	ARG_SHOW_EXIF,
 	ARG_SHOW_INFO,
+	ARG_SKIP_EXISTING,
 	ARG_SPEED,
 	ARG_STDOUT,
 	ARG_STDOUT_SIZE,
@@ -1382,6 +1421,11 @@ cb_arg_init (poptContext __unused__ ctx,
 			"option ('%s')...", arg);
 		params->p.r = action_camera_set_port (&gp_params, arg);
 		break;
+
+	case ARG_SKIP_EXISTING:
+		gp_params.flags |= FLAGS_SKIP_EXISTING;
+		break;
+
 	case ARG_SPEED:
 		params->p.r = action_camera_set_speed (&gp_params, atoi (arg));
 		break;
@@ -2001,6 +2045,8 @@ main (int argc, char **argv, char **envp)
 		 N_("Process new files only"), NULL},
 		{"force-overwrite", '\0', POPT_ARG_NONE, NULL,
 		 ARG_FORCE_OVERWRITE, N_("Overwrite files without asking"), NULL},
+		{"skip-existing", '\0', POPT_ARG_NONE, NULL,
+		 ARG_SKIP_EXISTING, N_("Skip existing files"), NULL},
 		POPT_TABLEEND
 	};
 	const struct poptOption miscOptions[] = {

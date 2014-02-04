@@ -34,7 +34,8 @@ typedef enum {
 	FLAGS_STDOUT_SIZE	= 1 << 5,
 	FLAGS_NEW		= 1 << 6,
 	FLAGS_RESET_CAPTURE_INTERVAL = 1 << 7,
-	FLAGS_KEEP 		= 1 << 8
+	FLAGS_KEEP 		= 1 << 8,
+	FLAGS_SKIP_EXISTING	= 1 << 9
 } Flags;
 
 typedef enum {
