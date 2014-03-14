@@ -1,6 +1,6 @@
 /*
- * Copyright 2002 Lutz Müller <lutz@users.sourceforge.net>
- * Copyright 2004-2010 Marcus Meissner <marcus@jet.franken.de>
+ * Copyright 2002 Lutz Mueller <lutz@users.sourceforge.net>
+ * Copyright 2004-2013 Marcus Meissner <marcus@jet.franken.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -1078,7 +1078,9 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 	waittime = 100;
 	if (glob_frames || end_next || !glob_interval || glob_bulblength) waittime = 2000;
 	/* Drain the event queue at the end and download left over added images */
-	while ((-timediff_now(&expose_end_time)) < waittime) {
+	while (1) {
+		int realwait = waittime - (-timediff_now(&expose_end_time));
+		if (realwait < 0) realwait = 0; /* just drain the queue now */
 		result = wait_and_handle_event(waittime - (-timediff_now(&expose_end_time)), &evtype, download);
 		if ((result != GP_OK) || (evtype == GP_EVENT_TIMEOUT))
 			break;
@@ -1885,7 +1887,7 @@ main (int argc, char **argv, char **envp)
 {
 	CallbackParams cb_params;
 	poptContext ctx;
-	int help_option_given = 0;
+	int i, help_option_given = 0;
 	int usage_option_given = 0;
 	char *debug_logfile_name = NULL;
 	const struct poptOption generalOptions[] = {
@@ -2152,6 +2154,11 @@ main (int argc, char **argv, char **envp)
 	if (debug_option_given) {
 		CR_MAIN (debug_action (&gp_params, debug_logfile_name));
 	}
+
+	gp_log (GP_LOG_DEBUG, "main", "invoked with following arguments:");
+	for (i=1;i<argc;i++)
+		gp_log (GP_LOG_DEBUG, "main", "  %s", argv[i]);
+
 
 	/* Initialize. */
 #ifdef HAVE_PTHREAD
