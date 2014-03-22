@@ -23,18 +23,24 @@
 #define __EXTENSIONS__	/* for solaris to get back strdup and strcasecmp */
 
 #include "config.h"
+
+#include <string.h>
+#include <stdio.h>
+#ifdef HAVE_FCNTL_H
+# include <fcntl.h>
+#endif
+#include <stdlib.h>
+
+#include <time.h>
+#ifdef HAVE_SYS_TIME_H
+# include <sys/time.h>
+#endif
+
 #include "actions.h"
 #include "i18n.h"
 #include "main.h"
 #include "version.h"
 
-#include <string.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <stdlib.h>
-
-#include <time.h>
-#include <sys/time.h>
 
 #include <gphoto2/gphoto2-port-log.h>
 #include <gphoto2/gphoto2-setting.h>
