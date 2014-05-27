@@ -1,19 +1,36 @@
+'\" t
 .\"     Title: gphoto2
 .\"    Author: The gPhoto2 Team
-.\" Generator: DocBook XSL Stylesheets v1.73.2 <http://docbook.sf.net/>
+.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
 .\"      Date: <pubdate>2009-08-09</pubdate>August 2006
 .\"    Manual: The gPhoto2 Reference (the man pages)
-.\"    Source: 
+.\"    Source: [FIXME: source]
+.\"  Language: English
 .\"
-.TH "GPHOTO2" "1" "<pubdate>2009-08-09</pubdate>August 2006" "" "The gPhoto2 Reference (the man"
+.TH "GPHOTO2" "1" "<pubdate>2009-08-09</pubdate>August 2006" "[FIXME: source]" "The gPhoto2 Reference (the man"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
 .\" disable hyphenation
 .nh
 .\" disable justification (adjust text to left margin only)
 .ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
 .SH "NAME"
-gphoto2 - command-line gphoto2 client
+gphoto2 \- command\-line gphoto2 client
 .SH "SYNOPSIS"
-.HP 8
+.HP \w'\fBgphoto2\fR\ 'u
 \fBgphoto2\fR [\-\-debug] [\-\-debug\-logfile\ \fIFILENAME\fR] [[\-q] | [\-\-quiet]] [[\-v] | [\-\-verbose]] [[\-h] | [\-\-help]]
 .br
 [\-\-hook\-script\ \fIFILENAME\fR]
@@ -64,7 +81,7 @@ gphoto2 - command-line gphoto2 client
 .br
 [\-\-reset\-interval]
 .br
-[\-\-capture\-image] [\-\-capture\-movie] [\-\-capture\-sound]
+[\-\-capture\-image] [\-\-trigger\-capture] [\-\-capture\-movie] [\-\-capture\-sound]
 .br
 [\-\-capture\-tethered\ \fISECONDS\ or\ COUNT\fR]
 .br
@@ -80,179 +97,175 @@ gphoto2 - command-line gphoto2 client
 libgphoto2(3)
 is a cross\-platform digital camera library, and
 gphoto2(1)
-is a command\-line client for it\.
+is a command\-line client for it\&.
 .PP
 Where an option takes a
 \fIRANGE\fR
-of files, thumbnails, or other data, they are numbered beginning at 1\. A range is a comma\-separated list of numbers or spans (\(lq\fIfirst\fR\-\fIlast\fR\(rq)\. Ranges are XOR (exclusive or), so that
+of files, thumbnails, or other data, they are numbered beginning at 1\&. A range is a comma\-separated list of numbers or spans (\(lq\fIfirst\fR\-\fIlast\fR\(rq)\&. Ranges are XOR (exclusive or), so that
 \(lq1\-5,3,7\(rq
 is equivalent to
-\(lq1,2,4,5,7\(rq\.
+\(lq1,2,4,5,7\(rq\&.
 .PP
 \fB\-\-debug\fR
 .RS 4
-Turn on debugging output\. Debugging output is written to stderr by default, or to the filename given to the
+Turn on debugging output\&. Debugging output is written to stderr by default, or to the filename given to the
 \fB\-\-debug\-logfile\fR
-option\.
+option\&.
 .RE
 .PP
-\fB\-\-debug\-logfile\fR \fIFILENAME\fR (since 2\.3\.0)
+\fB\-\-debug\-logfile\fR \fIFILENAME\fR (since 2\&.3\&.0)
 .RS 4
 The logfile to write the debugging info to, if
 \fB\-\-debug\fR
-is given\.
+is given\&.
 .RE
 .PP
-\fB\-\-hook\-script\fR \fIFILENAME\fR (new after 2\.3\.0)
+\fB\-\-hook\-script\fR \fIFILENAME\fR (new after 2\&.3\&.0)
 .RS 4
 Execute the hook script
 \fIFILENAME\fR
 every time a certain event happens within
-\fBgphoto2\fR\. The hook script reads the environment variable
-\fBACTION\fR\. It must ignore
+\fBgphoto2\fR\&. The hook script reads the environment variable
+\fBACTION\fR\&. It must ignore
 \fBACTION\fR
-values unknown to it\.
+values unknown to it\&.
 .PP
 \fBACTION\fR=init
 .RS 4
-
 \fBgphoto2\fR
-has just been initialized\. If the hook script returns with a non\-zero exit code now,
+has just been initialized\&. If the hook script returns with a non\-zero exit code now,
 \fBgphoto2\fR
-will abort\.
+will abort\&.
 .RE
 .PP
 \fBACTION\fR=start
 .RS 4
-
 \fBgphoto2\fR
-has just finished parsing the command line and is about to start executing the commands given on the command line\.
+has just finished parsing the command line and is about to start executing the commands given on the command line\&.
 .RE
 .PP
 \fBACTION\fR=download
 .RS 4
-
 \fBgphoto2\fR
 has just downloaded a file to the computer, storing it in the file indicated by the environment variable
-\fBARGUMENT\fR\.
+\fBARGUMENT\fR\&.
 .RE
 .PP
 \fBACTION\fR=stop
 .RS 4
-
 \fBgphoto2\fR
-is about to finish\. Do your final cleanups here\.
+is about to finish\&. Do your final cleanups here\&.
 .RE
 .sp
-All other environment variables are passed to the hook script unchanged\. You can make use of that to pass data to the hook script\.
+All other environment variables are passed to the hook script unchanged\&. You can make use of that to pass data to the hook script\&.
 .sp
 Hook script may be specified in the
-\fI~/\.gphoto/settings\fR
+~/\&.gphoto/settings
 file as
-\fBgphoto2=hook\-script=\fR\fIfilename\fR\.
+\fBgphoto2=hook\-script=\fR\fIfilename\fR\&.
 .RE
 .PP
 \fB\-q\fR, \fB\-\-quiet\fR
 .RS 4
-Quiet output (default=verbose)\.
+Quiet output (default=verbose)\&.
 .RE
 .PP
 \fB\-v\fR, \fB\-\-version\fR
 .RS 4
-Display version and exit\.
+Display version and exit\&.
 .RE
 .PP
 \fB\-h\fR, \fB\-\-help\fR
 .RS 4
-Display a short usage message\.
+Display a short usage message\&.
 .RE
 .PP
 \fB\-\-list\-cameras\fR
 .RS 4
-List supported camera models\.
+List supported camera models\&.
 .RE
 .PP
 \fB\-\-list\-ports\fR
 .RS 4
-List supported port devices\.
+List supported port devices\&.
 .RE
 .PP
 \fB\-\-stdout\fR
 .RS 4
-Send file to stdout\.
+Send file to stdout\&.
 .RE
 .PP
 \fB\-\-stdout\-size\fR
 .RS 4
-Print filesize before data\.
+Print filesize before data\&.
 .RE
 .PP
 \fB\-\-auto\-detect\fR
 .RS 4
-List auto\-detected cameras and the ports to which they are connected\.
+List auto\-detected cameras and the ports to which they are connected\&.
 .RE
 .PP
 \fB\-\-port\fR \fIPATH\fR
 .RS 4
-Specify port device\. The
+Specify port device\&. The
 \fB\-\-list\-ports\fR
-prints a list of valid, usable ports\. In case of multiple USB cameras, the
+prints a list of valid, usable ports\&. In case of multiple USB cameras, the
 \fB\-\-auto\-detect\fR
-shows you the specific port each camera is connected to\.
+shows you the specific port each camera is connected to\&.
 .RE
 .PP
 \fB\-\-speed\fR \fISPEED\fR
 .RS 4
-Specify serial transfer speed\.
+Specify serial transfer speed\&.
 .RE
 .PP
 \fB\-\-camera\fR \fIMODEL\fR
 .RS 4
-Specify camera model\. The
+Specify camera model\&. The
 \fB\-\-list\-cameras\fR
-option prints a list of all explicitly supported cameras\.
+option prints a list of all explicitly supported cameras\&.
 .sp
-Most model names contain spaces: remember to enclose the name in quotes so that the shell knows it is one parameter\. For example:
-\fB\fB\-\-camera\fR\fR\fB "Kodak DC240"\fR\.
+Most model names contain spaces: remember to enclose the name in quotes so that the shell knows it is one parameter\&. For example:
+\fB\fB\-\-camera\fR\fR\fB "Kodak DC240"\fR\&.
 .sp
 Note that if you specify
 \fB\fB\-\-camera\fR\fR, you must also specify
-\fB\fB\-\-port\fR\fR\. Otherwise the
+\fB\fB\-\-port\fR\fR\&. Otherwise the
 \fB\fB\-\-camera\fR\fR
-option will be silently ignored\.
+option will be silently ignored\&.
 .RE
 .PP
 \fB\-\-filename\fR \fIFILENAME\fR
 .RS 4
-When downloading files from the camera, specify the file name or file name pattern to use when storing the downloaded file on the local disk\. When uploading a file to the camera, specify the filename to store the uploaded file as on the camera\.
+When downloading files from the camera, specify the file name or file name pattern to use when storing the downloaded file on the local disk\&. When uploading a file to the camera, specify the filename to store the uploaded file as on the camera\&.
 .sp
 The
 \fB\-\-filename\fR
-option accepts %a, %A, %b, %B, %d, %H, %k, %I, %l, %j, %m, %M, %S, %y, %%, (see date(1)) and, in addition, %n for the number, %C for the filename suffix, %f for the filename without suffix, %F for the foldername, %: for the complete filename in lowercase\.
+option accepts %a, %A, %b, %B, %d, %H, %k, %I, %l, %j, %m, %M, %S, %y, %%, (see date(1)) and, in addition, %n for the number, %C for the filename suffix, %f for the filename without suffix, %F for the foldername, %: for the complete filename in lowercase\&.
 .sp
-Note that %: is still in alpha stage, and the actual character or syntax may still be changed\. E\.g\. it might be possible to use %#f and %#C for lower case versions, and %^f and %^C for upper case versions\.
+Note that %: is still in alpha stage, and the actual character or syntax may still be changed\&. E\&.g\&. it might be possible to use %#f and %#C for lower case versions, and %^f and %^C for upper case versions\&.
 .sp
-%n is the only conversion specifier to accept a padding character and width: %03n will pad with zeros to width 3 (e\.g\. print the number 7 as
-\(lq007\(rq)\. Leaving out the padding character (e\.g\. %3n) will use an implementation specific default padding character which may or may not be suitable for use in file names\.
+%n is the only conversion specifier to accept a padding character and width: %03n will pad with zeros to width 3 (e\&.g\&. print the number 7 as
+\(lq007\(rq)\&. Leaving out the padding character (e\&.g\&. %3n) will use an implementation specific default padding character which may or may not be suitable for use in file names\&.
 .sp
 Default value for this option can be specified in the
-\fI~/\.gphoto/settings\fR
+~/\&.gphoto/settings
 file as
-\fBgphoto2=filename=value\fR\.
+\fBgphoto2=filename=value\fR\&.
 .RE
 .PP
 \fB\-\-usbid\fR \fI\fIUSBIDS\fR\fR
 .RS 4
 (Expert only) Override
 USB
-IDs\.
+IDs\&.
 \fI \fR\fI\fIUSBIDS\fR\fRmust be of the form
 \fI \fR\fI\fIDetectedVendorID\fR\fR\fI:\fR\fI\fIDetectedProductID\fR\fR\fI=\fR\fI\fITreatAsVendorID\fR\fR\fI:\fR\fI\fITreatAsProductID\fR\fR
 to treat any USB device detected as
 \fI\fIDetectedVendorID\fR\fR\fI:\fR\fI\fIDetectedProductID\fR\fR
 as
 \fI\fITreatAsVendorID\fR\fR\fI:\fR\fI\fITreatAsProductID\fR\fR
-instead\. All the VendorIDs and ProductIDs should be hexadecimal numbers beginning in C notation, i\.e\. beginning with \'0x\'\.
+instead\&. All the VendorIDs and ProductIDs should be hexadecimal numbers beginning in C notation, i\&.e\&. beginning with \*(Aq0x\*(Aq\&.
 .sp
 Example:
 \fB\-\-usbid \fR\fB\fI0x4a9:0x306b=0x4a9:0x306c\fR\fR
@@ -260,278 +273,293 @@ Example:
 .PP
 \fB\-a\fR, \fB\-\-abilities\fR
 .RS 4
-Display camera abilities\.
+Display camera abilities\&.
 .RE
 .PP
 \fB\-f\fR, \fB\-\-folder\fR \fIFOLDER\fR
 .RS 4
-Specify camera folder (default="/")\.
+Specify camera folder (default="/")\&.
 .RE
 .PP
 \fB\-R\fR, \fB\-\-recurse\fR
 .RS 4
-Recursion (default for download)\.
+Recursion (default for download)\&.
 .RE
 .PP
 \fB\-\-no\-recurse\fR
 .RS 4
-No recursion (default for deletion)\.
+No recursion (default for deletion)\&.
 .RE
 .PP
 \fB\-l\fR, \fB\-\-list\-folders\fR
 .RS 4
-List folders in folder\.
+List folders in folder\&.
 .RE
 .PP
 \fB\-L\fR, \fB\-\-list\-files\fR
 .RS 4
-List files in folder\.
+List files in folder\&.
 .RE
 .PP
 \fB\-m\fR, \fB\-\-mkdir\fR \fINAME\fR
 .RS 4
-Create a directory\.
+Create a directory\&.
 .RE
 .PP
 \fB\-r\fR, \fB\-\-rmdir\fR \fINAME\fR
 .RS 4
-Remove a directory\.
+Remove a directory\&.
 .RE
 .PP
 \fB\-n\fR, \fB\-\-num\-files\fR
 .RS 4
-Display number of files\.
+Display number of files\&.
 .RE
 .PP
 \fB\-p\fR, \fB\-\-get\-file\fR \fIRANGE\fR
 .RS 4
-Get files given in range\.
+Get files given in range\&.
 .RE
 .PP
 \fB\-P\fR, \fB\-\-get\-all\-files\fR
 .RS 4
-Get all files from folder\.
+Get all files from folder\&.
 .RE
 .PP
 \fB\-t\fR, \fB\-\-get\-thumbnail\fR \fIRANGE\fR
 .RS 4
-Get thumbnails given in range\.
+Get thumbnails given in range\&.
 .RE
 .PP
 \fB\-T\fR, \fB\-\-get\-all\-thumbnails\fR
 .RS 4
-Get all thumbnails from folder\.
+Get all thumbnails from folder\&.
 .RE
 .PP
 \fB\-\-get\-raw\-data\fR \fIRANGE\fR
 .RS 4
-Get raw data given in range\.
+Get raw data given in range\&.
 .RE
 .PP
 \fB\-\-get\-all\-raw\-data\fR
 .RS 4
-Get all raw data from folder\.
+Get all raw data from folder\&.
 .RE
 .PP
 \fB\-\-get\-audio\-data\fR \fIRANGE\fR
 .RS 4
-Get audio data given in range\.
+Get audio data given in range\&.
 .RE
 .PP
 \fB\-\-get\-all\-audio\-data\fR
 .RS 4
-Get all audio data from folder\.
+Get all audio data from folder\&.
 .RE
 .PP
 \fB\-\-force\-overwrite\fR
 .RS 4
-Overwrite files without asking\.
+Overwrite files without asking\&.
 .RE
 .PP
 \fB\-\-skip\-existing\fR
 .RS 4
-Skip files that already exist\.
+Skip files if they exist already on the local directory\&.
 .RE
 .PP
 \fB\-\-new\fR
 .RS 4
-Only get not already downloaded files\. This option depends on camera support of flagging already downloaded images and is not available for all drivers\.
+Only get not already downloaded files\&. This option depends on camera support of flagging already downloaded images and is not available for all drivers\&.
 .RE
 .PP
 \fB\-d\fR, \fB\-\-delete\-file\fR \fIRANGE\fR
 .RS 4
-Delete files given in range\.
+Delete files given in range\&.
 .RE
 .PP
 \fB\-D\fR, \fB\-\-delete\-all\-files\fR
 .RS 4
 Delete all files in folder (defaults to
-\fB\-\-no\-recurse\fR)\.
+\fB\-\-no\-recurse\fR)\&.
 .RE
 .PP
 \fB\-u\fR, \fB\-\-upload\-file\fR \fIFILENAME\fR
 .RS 4
-Upload a file to camera\.
+Upload a file to camera\&.
 .RE
 .PP
 \fB\-\-capture\-preview\fR
 .RS 4
-Capture a quick preview\.
+Capture a quick preview\&.
 .RE
 .PP
 \fB\-F \fR\fB\fICOUNT\fR\fR, \fB\-\-frames \fR\fB\fICOUNT\fR\fR
 .RS 4
-Number of frames to capture in one run\. Default is infinite number of frames\.
+Number of frames to capture in one run\&. Default is infinite number of frames\&.
 .RE
 .PP
 \fB\-I \fR\fB\fISECONDS\fR\fR, \fB\-\-interval \fR\fB\fISECONDS\fR\fR
 .RS 4
-Time between capture of multiple frames\.
+Time between capture of multiple frames\&.
 .sp
-(Since 2\.4) If
+(Since 2\&.4) If
 SIGUSR1 signal
 is received, a picture is taken immediately without waiting for the end of the current interval period (see
-the section called \(lqSIGNALS\(rq)\. A value of \-1 will let gphoto2 wait forever, i\.e\. until a signal arrives\. See also
-\fB\-\-reset\-interval\fR (since 2\.4)\.
+the section called \(lqSIGNALS\(rq)\&. A value of \-1 will let gphoto2 wait forever, i\&.e\&. until a signal arrives\&. See also
+\fB\-\-reset\-interval\fR (since 2.4)\&.
 .RE
 .PP
-\fB\-\-reset\-interval\fR (since 2\.4)
+\fB\-\-reset\-interval\fR (since 2\&.4)
 .RS 4
 Setting this option will reset the time interval to the value given by the
 \fB\-I|\-\-interval\fR option
 when a
 SIGUSR1 signal
-is received in time\-lapse mode\.
+is received in time\-lapse mode\&.
 .RE
 .PP
 \fB\-\-capture\-image\fR
 .RS 4
-Capture an image and keep it on the camera\.
+Capture an image and keep it on the camera\&.
+.RE
+.PP
+\fB\-\-trigger\-capture\fR
+.RS 4
+Trigger the capture an image and return\&. If you want to get the image downloaded, see \-\-wait\-event\-and\-download
 .RE
 .PP
 \fB\-\-capture\-image\-and\-download\fR
 .RS 4
-Capture an image and download it immediately to the computer\.
+Capture an image and download it immediately to the computer\&.
+.RE
+.PP
+\fB\-\-keep\fR
+.RS 4
+When doing \-\-capture\-image\-and\-download or interval capture, this option will keep the images on the memory card of the camera\&.
+.RE
+.PP
+\fB\-\-no\-keep\fR
+.RS 4
+When doing \-\-capture\-image\-and\-download or interval capture, this option will not keep the images on the memory card of the camera after downloading them during capture\&. (default)
 .RE
 .PP
 \fB\-\-capture\-movie\fR
 .RS 4
-Capture a movie\. (No driver supports this at this time\.)
+Capture a movie\&. If the camera supports previews, this will capture a stream of previews (motion\-jpeg) as fast as the camera can\&.
 .RE
 .PP
 \fB\-\-capture\-sound\fR
 .RS 4
-Capture an audio clip\.
+Capture an audio clip\&. (No driver supports this at this time\&.)
 .RE
 .PP
 \fB\-\-capture\-tethered\fR
 .RS 4
-Lets gphoto2 wait for notifications from the camera that an object was added\. This is useful for tethered capture, where pressing the shutter on the camera immediately transfer the image to the machine for processing\.
+Lets gphoto2 wait for notifications from the camera that an object was added\&. This is useful for tethered capture, where pressing the shutter on the camera immediately transfer the image to the machine for processing\&.
 .sp
 Together with the
 \fB\-\-hook\-script\fR
-to immediately postprocess or display the images this can help a studio workflow\.
+to immediately postprocess or display the images this can help a studio workflow\&.
 .sp
-This option requires support in the driver and by the camera, currently newer Canon EOS and Nikon DSC are known to work\.
+This option requires support in the driver and by the camera, currently newer Canon EOS and Nikon DSC are known to work\&.
 .RE
 .PP
 \fB\-\-wait\-event \fR\fB\fISECONDS or COUNT\fR\fR, \fB\-\-wait\-event\-and\-download \fR\fB\fISECONDS or COUNT\fR\fR
 .RS 4
-Lets gphoto2 wait for notifications from the camera for various things\. This is useful for seeing what the camera does and waiting for objects to be added\. The objects are kept on camera in the
+Lets gphoto2 wait for notifications from the camera for various things\&. This is useful for seeing what the camera does and waiting for objects to be added\&. The objects are kept on camera in the
 \(lq\-\-wait\-event\(rq
 version, with
 \(lq\-\-wait\-event\-and\-download\(rq
-they are downloaded\.
+they are downloaded\&.
 .sp
-\-\-wait\-event\-and\-download is equivalent to \-\-capture\-tethered\.
+\-\-wait\-event\-and\-download is equivalent to \-\-capture\-tethered\&.
 .sp
-The time to wait can be either specified as full seconds with a "s" suffix, or as a number of events (just a number)\. If nothing happens, a timeout is generated after 1 second, so a
+The time to wait can be either specified as full seconds with a "s" suffix, or as a number of events (just a number)\&. If nothing happens, a timeout is generated after 1 second, so a
 \(lqwait\-event=5\(rq
-will take at most 5 seconds\. A
+will take at most 5 seconds\&. A
 \(lq\-\-wait\-event=5s\(rq
-will take exactly 5 second\.
+will take exactly 5 second\&.
 .sp
-If no argument is given, the wait time is 1 million events (basically forever)\.
+If no argument is given, the wait time is 1 million events (basically forever)\&.
 .sp
 In the download variant this can be used together with the
 \fB\-\-hook\-script\fR
-to immediately postprocess or display the images this can help a studio workflow\.
+to immediately postprocess or display the images this can help a studio workflow\&.
 .sp
-This option requires support in the driver and by the camera, currently newer Canon EOS and Nikon DSC are known to work\.
+This option requires support in the driver and by the camera, currently newer Canon EOS and Nikon DSC are known to work\&.
 .RE
 .PP
 \fB\-\-show\-info\fR \fIRANGE\fR
 .RS 4
-Show info\.
+Show info\&.
 .RE
 .PP
 \fB\-\-list\-config\fR
 .RS 4
-List all configuration entries\.
+List all configuration entries\&.
 .RE
 .PP
 \fB\-\-get\-config\fR \fICONFIGENTRY\fR
 .RS 4
-Get the specified configuration entry\.
+Get the specified configuration entry\&.
 .sp
-This command will list the type, the current value and also the available options of this configuration value\.
+This command will list the type, the current value and also the available options of this configuration value\&.
 .RE
 .PP
 \fB\-\-set\-config\fR \fICONFIGENTRY=CONFIGVALUE\fR
 .RS 4
-Set the specified configuration entry\. For lists of choices of values this setting first looks up CONFIGVALUE as value and then as index into the choice list\. Since this is not fully clear, you can use
+Set the specified configuration entry\&. For lists of choices of values this setting first looks up CONFIGVALUE as value and then as index into the choice list\&. Since this is not fully clear, you can use
 \fB\-\-set\-config\-index\fR
 or
 \fB\-\-set\-config\-value\fR
-to be more clear what is searched for\.
+to be more clear what is searched for\&.
 .sp
 Look at the output of
 \fB\-\-get\-config\fR
-to see what values are possible to set here\.
+to see what values are possible to set here\&.
 .RE
 .PP
 \fB\-\-set\-config\-index\fR \fICONFIGENTRY=CONFIGINDEX\fR
 .RS 4
-Set the specified configuration entry by specifying the index into the list of choices for the configuration value\. This of course only works for configuration settings that offer list of choices\.
+Set the specified configuration entry by specifying the index into the list of choices for the configuration value\&. This of course only works for configuration settings that offer list of choices\&.
 .sp
 Look at the output of
 \fB\-\-get\-config\fR
-to see what indices are possible to set here\.
+to see what indices are possible to set here\&.
 .RE
 .PP
 \fB\-\-set\-config\-value\fR \fICONFIGENTRY=CONFIGVALUE\fR
 .RS 4
-Set the specified configuration entry by specifying its new value\. For lists of choices the value is looked up and set\.
+Set the specified configuration entry by specifying its new value\&. For lists of choices the value is looked up and set\&.
 .sp
 Look at the output of
 \fB\-\-get\-config\fR
-to see what indices are possible to set here\.
+to see what indices are possible to set here\&.
 .RE
 .PP
 \fB\-\-storage\-info\fR
 .RS 4
-Display information about the camera\'s storage media\.
+Display information about the camera\*(Aqs storage media\&.
 .RE
 .PP
 \fB\-\-summary\fR
 .RS 4
-Summary of camera status\.
+Summary of camera status\&.
 .RE
 .PP
 \fB\-\-manual\fR
 .RS 4
-Camera driver manual\.
+Camera driver manual\&.
 .RE
 .PP
 \fB\-\-about\fR
 .RS 4
-About the camera driver\.
+About the camera driver\&.
 .RE
 .PP
 \fB\-\-shell\fR
 .RS 4
-Start the gphoto2 shell, an interactive environment\. See
-SHELL MODEfor a detailed description\.
+Start the gphoto2 shell, an interactive environment\&. See
+SHELL MODEfor a detailed description\&.
 .RE
 .SH "SHELL MODE"
 .PP
@@ -539,80 +567,80 @@ The following commands are available:
 .PP
 cd
 .RS 4
-Change to a directory on the camera\.
+Change to a directory on the camera\&.
 .RE
 .PP
 ls
 .RS 4
-List the contents of the current directory on the camera\.
+List the contents of the current directory on the camera\&.
 .RE
 .PP
 lcd
 .RS 4
-Change to a directory on the local machine\.
+Change to a directory on the local machine\&.
 .RE
 .PP
 get
 .RS 4
-Download the file to the current directory\.
+Download the file to the current directory\&.
 .RE
 .PP
 get\-thumbnail
 .RS 4
-Download the thumbnail to the current directory\.
+Download the thumbnail to the current directory\&.
 .RE
 .PP
 get\-raw
 .RS 4
-Download raw data to the current directory\.
+Download raw data to the current directory\&.
 .RE
 .PP
 show\-info
 .RS 4
-Show information\.
+Show information\&.
 .RE
 .PP
 delete
 .RS 4
-Delete a file or directory\.
+Delete a file or directory\&.
 .RE
 .PP
 mkdir \fIDIRECTORY\fR
 .RS 4
 Creates a directory named
-\(lqDIRECTORY\(rq\.
+\(lqDIRECTORY\(rq\&.
 .RE
 .PP
 rmdir \fIDIRECTORY\fR
 .RS 4
 Removes a directory named
-\(lqDIRECTORY\(rq\.
+\(lqDIRECTORY\(rq\&.
 .RE
 .PP
 show\-exif
 .RS 4
-Show EXIF information (only if compiled with EXIF support)\.
+Show EXIF information (only if compiled with EXIF support)\&.
 .RE
 .PP
 capture\-image
 .RS 4
-Captures a single image and keeps it on the camera\.
+Captures a single image and keeps it on the camera\&.
 .RE
 .PP
 capture\-image\-and\-download
 .RS 4
-Captures a single image and downloads it from the camera\.
+Captures a single image and downloads it from the camera\&.
 .RE
 .PP
 list\-config
 .RS 4
-Lists all configuration values\.
+Lists all configuration values\&.
 .RE
 .PP
 get\-config \fINAME\fR
 .RS 4
 Gets the configuration specified by
-\(lqNAME\(rq\.
+\(lqNAME\(rq\&.
 .RE
 .PP
 set\-config \fINAME=VALUE\fR
@@ -620,7 +648,7 @@ set\-config \fINAME=VALUE\fR
 Sets the configuration specified by
 \(lqNAME\(rq
 to
-\(lqVALUE\(rq\.
+\(lqVALUE\(rq\&.
 .RE
 .PP
 set\-config\-value \fINAME=VALUE\fR
@@ -628,7 +656,7 @@ set\-config\-value \fINAME=VALUE\fR
 Sets the configuration specified by
 \(lqNAME\(rq
 to
-\(lqVALUE\(rq\.
+\(lqVALUE\(rq\&.
 .RE
 .PP
 set\-config\-index \fINAME=VALUE\fR
@@ -637,31 +665,31 @@ Sets the configuration specified by
 \(lqNAME\(rq
 to the
 \(lqINDEX\(rq
-into the list of choices\. Works only for Menu or Radio button entries\.
+into the list of choices\&. Works only for Menu or Radio button entries\&.
 .RE
 .PP
 wait\-event \fICOUNT or SECONDS\fR
 .RS 4
-Waits for events from the camera for the specified time in SECONDS (if suffixed with s) or the COUNT of events from the camera, where every seconds a timeout event happens\. Newly added images are kept on the camera\.
+Waits for events from the camera for the specified time in SECONDS (if suffixed with s) or the COUNT of events from the camera, where every seconds a timeout event happens\&. Newly added images are kept on the camera\&.
 .sp
-Default is 1 event\.
+Default is 1 event\&.
 .RE
 .PP
 wait\-event\-and\-download \fICOUNT or SECONDS\fR, capture\-tethered \fICOUNT or SECONDS\fR
 .RS 4
-Waits for events from the camera for the specified time in SECONDS (if suffixed with s) or the COUNT of events from the camera, where every seconds a timeout event happens\. Newly added images are downloaded from the camera\.
+Waits for events from the camera for the specified time in SECONDS (if suffixed with s) or the COUNT of events from the camera, where every seconds a timeout event happens\&. Newly added images are downloaded from the camera\&.
 .sp
-Default is 1 event\.
+Default is 1 event\&.
 .RE
 .PP
 help, ?
 .RS 4
-Displays command usage\.
+Displays command usage\&.
 .RE
 .PP
 exit, quit, q
 .RS 4
-Exit the gphoto2 shell\.
+Exit the gphoto2 shell\&.
 .RE
 .SH "ENVIRONMENT VARIABLES"
 .PP
@@ -669,14 +697,14 @@ Exit the gphoto2 shell\.
 .RS 4
 If set, defines the directory where the
 libgphoto2
-library looks for its camera drivers (camlibs)\. You only need to set this on OS/2 systems and broken/test installations\.
+library looks for its camera drivers (camlibs)\&. You only need to set this on OS/2 systems and broken/test installations\&.
 .RE
 .PP
 \fBIOLIBS\fR
 .RS 4
 If set, defines the directory where the
 libgphoto2_port
-library looks for its I/O drivers (iolibs)\. You only need to set this on OS/2 systems and broken/test installations\.
+library looks for its I/O drivers (iolibs)\&. You only need to set this on OS/2 systems and broken/test installations\&.
 .RE
 .PP
 \fBLD_DEBUG\fR
@@ -685,62 +713,60 @@ Set this to
 \fIall\fR
 to receive lots of debug information regarding library loading on
 \fBld\fR
-based systems\.
+based systems\&.
 .RE
 .PP
 \fBUSB_DEBUG\fR
 .RS 4
 If set, defines the numeric debug level with which the
 libusb
-library will print messages\. In order to get some debug output, set it to
-\fI1\fR\.
+library will print messages\&. In order to get some debug output, set it to
+\fI1\fR\&.
 .RE
 .SH "SIGNALS"
 .PP
-SIGUSR1 (since 2\.4)
+SIGUSR1 (since 2\&.4)
 .RS 4
-In time\-lapse capture mode, receiving a SIGUSR1 signal makes gphoto2 take a picture immediately\.
+In time\-lapse capture mode, receiving a SIGUSR1 signal makes gphoto2 take a picture immediately\&.
 .sp
 If the
 \fB\-\-reset\-interval\fR option
 is given, the time counter is reset to the value given by the
-\fB\-I|\-\-interval\fR option\. Note that the camera will need some time (from 50ms to a few seconds) to actually capture the image\.
+\fB\-I|\-\-interval\fR option\&. Note that the camera will need some time (from 50ms to a few seconds) to actually capture the image\&.
 .RE
 .SH "SEE ALSO"
 .PP
-
 libgphoto2(3),
-\fIThe gPhoto2 Manual\fR\&[1],
-
-\fIThe gphoto\.org website\fR\&[2],
-\fIDigital Camera Support for UNIX, Linux and BSD\fR\&[3]
+\m[blue]\fBThe gPhoto2 Manual\fR\m[]\&\s-2\u[1]\d\s+2,
+\m[blue]\fBThe gphoto\&.org website\fR\m[]\&\s-2\u[2]\d\s+2,
+\m[blue]\fBDigital Camera Support for UNIX, Linux and BSD\fR\m[]\&\s-2\u[3]\d\s+2
 .SH "EXAMPLES"
 .PP
 \fBgphoto2 \fR\fB\fB\-\-list\-ports\fR\fR
 .RS 4
 Shows what kinds of ports (USB
-and serial) you have\.
+and serial) you have\&.
 .RE
 .PP
 \fBgphoto2 \fR\fB\fB\-\-auto\-detect\fR\fR
 .RS 4
-Shows what camera(s) you have connected\.
+Shows what camera(s) you have connected\&.
 .RE
 .PP
 \fBgphoto2 \fR\fB\fB\-\-list\-files\fR\fR
 .RS 4
-List files on camera\.
+List files on camera\&.
 .RE
 .PP
 \fBgphoto2 \fR\fB\fB\-\-get\-file\fR\fR\fB \fR\fB\fI7\-13\fR\fR
 .RS 4
 Get files number 7 through 13 from the list output by
-\fB\fBgphoto2\fR\fR\fB \fR\fB\fB\-\-list\-files\fR\fR\.
+\fB\fBgphoto2\fR\fR\fB \fR\fB\fB\-\-list\-files\fR\fR\&.
 .RE
 .PP
-\fBgphoto2 \fR\fB\fB\-\-capture\-image\fR\fR\fB \fR\fB\fB\-\-interval\fR\fR\fB \fR\fB\fI60\fR\fR\fB \fR\fB\fB\-\-hook\-script\fR\fR\fB \fR\fB\fI/usr/share/doc/gphoto2/test\-hook\.sh\fR\fR
+\fBgphoto2 \fR\fB\fB\-\-capture\-image\fR\fR\fB \fR\fB\fB\-\-interval\fR\fR\fB \fR\fB\fI60\fR\fR\fB \fR\fB\fB\-\-hook\-script\fR\fR\fB \fR\fB\fI/usr/share/doc/gphoto2/test\-hook\&.sh\fR\fR
 .RS 4
-Capture one image every 60 seconds from now to eternity\. The example hook script will be called after each captured image has been stored on the computer\.
+Capture one image every 60 seconds from now to eternity\&. The example hook script will be called after each captured image has been stored on the computer\&.
 .RE
 .PP
 To track down errors, you can add the
@@ -748,45 +774,45 @@ To track down errors, you can add the
 parameter to the
 \fBgphoto2\fR
 command line and, if dealing with USB problems, setting the environment variable
-\fBUSB_DEBUG\fR\fI=1\fR\.
+\fBUSB_DEBUG\fR\fI=1\fR\&.
 .SH "AUTHORS"
 .PP
 \fBTim Waugh\fR
-.sp -1n
-.IP "" 4
+.RS 4
 Author.
+.RE
 .PP
 \fBHans Ulrich Niedermann, current maintainer\fR <\&gp@n-dimensional.de\&>
-.sp -1n
-.IP "" 4
+.RS 4
 Author.
+.RE
 .PP
 \fBMichael J. Rensing\fR
-.sp -1n
-.IP "" 4
+.RS 4
 Author.
+.RE
 .PP
 \fBMarcus Meissner\fR <\&marcus@jet.franken.de\&>
-.sp -1n
-.IP "" 4
+.RS 4
 Author.
+.RE
 .PP
 \fBMiscellanous Contributors.\fR
 .PP
 \fBThe gPhoto2 Team\fR
-.sp -1n
-.IP "" 4
+.RS 4
 Author.
+.RE
 .PP
-\fBTim Waugh\fR <\&twaugh@redhat\.com\&>
-.sp -1n
-.IP "" 4
-Original man page author\.
+\fBTim Waugh\fR <\&twaugh@redhat\&.com\&>
+.RS 4
+Original man page author\&.
+.RE
 .PP
-\fBHans Ulrich Niedermann\fR <\&gp@n\-dimensional\.de\&>
-.sp -1n
-.IP "" 4
-Current man page editor\.
+\fBHans Ulrich Niedermann\fR <\&gp@n\-dimensional\&.de\&>
+.RS 4
+Current man page editor\&.
+.RE
 .SH "NOTES"
 .IP " 1." 4
 The gPhoto2 Manual
