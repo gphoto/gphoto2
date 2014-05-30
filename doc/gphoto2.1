@@ -31,7 +31,7 @@
 gphoto2 \- command\-line gphoto2 client
 .SH "SYNOPSIS"
 .HP \w'\fBgphoto2\fR\ 'u
-\fBgphoto2\fR [\-\-debug] [\-\-debug\-logfile\ \fIFILENAME\fR] [[\-q] | [\-\-quiet]] [[\-v] | [\-\-verbose]] [[\-h] | [\-\-help]]
+\fBgphoto2\fR [\-\-debug] [\-\-debug\-logfile\ \fIFILENAME\fR] [[\-q] | [\-\-quiet]] [[\-v] | [\-\-verbose]] [[\-h] | [\-\-help]] [\-\-usage]
 .br
 [\-\-hook\-script\ \fIFILENAME\fR]
 .br
@@ -63,6 +63,8 @@ gphoto2 \- command\-line gphoto2 client
 .br
 [\-\-get\-audio\-data\ \fIRANGE\fR] [\-\-get\-all\-audio\-data]
 .br
+[\-\-get\-meta\-data\ \fIRANGE\fR] [\-\-get\-all\-meta\-data] [\-\-upload\-meta\-data\ \fIFILENAME\fR]
+.br
 [\-\-force\-overwrite]
 .br
 [\-\-new]
@@ -71,9 +73,9 @@ gphoto2 \- command\-line gphoto2 client
 .br
 [[\-u\ \fIFILENAME\fR] | [\-\-upload\-file\ \fIFILENAME\fR]] [\-\-config]
 .br
-[\-\-list\-config]
+[\-\-list\-config] [\-\-list\-all\-config]
 .br
-[\-\-get\-config\ \fICONFIGENTRY\fR] [\-\-set\-config\ \fICONFIGENTRY=CONFIGVALUE\fR] [\-\-set\-config\-index\ \fICONFIGENTRY=CONFIGINDEX\fR] [\-\-set\-config\-value\ \fICONFIGENTRY=CONFIGVALUE\fR]
+[\-\-get\-config\ \fICONFIGENTRY\fR] [\-\-set\-config\ \fICONFIGENTRY=CONFIGVALUE\fR] [\-\-set\-config\-index\ \fICONFIGENTRY=CONFIGINDEX\fR] [\-\-set\-config\-value\ \fICONFIGENTRY=CONFIGVALUE\fR] [\-\-reset]
 .br
 [\-\-capture\-preview]
 .br
@@ -81,17 +83,27 @@ gphoto2 \- command\-line gphoto2 client
 .br
 [\-\-reset\-interval]
 .br
-[\-\-capture\-image] [\-\-trigger\-capture] [\-\-capture\-movie] [\-\-capture\-sound]
+[\-\-capture\-image] [\-\-trigger\-capture] [\-\-capture\-movie\ \fISECONDS\ or\ COUNT\fR] [\-\-capture\-sound]
 .br
 [\-\-capture\-tethered\ \fISECONDS\ or\ COUNT\fR]
 .br
 [\-\-wait\-event\ \fISECONDS\ or\ COUNT\fR] [\-\-wait\-event\-and\-download\ \fISECONDS\ or\ COUNT\fR]
 .br
+[\-\-keep] [\-\-no\-keep]
+.br
 [\-\-show\-info\ \fIRANGE\fR]
 .br
 [\-\-show\-exif\ \fIRANGE\fR]
 .br
-[\-\-storage\-info] [\-\-summary] [\-\-manual] [\-\-about] [\-\-shell]
+[\-\-storage\-info]
+.br
+[\-\-summary]
+.br
+[\-\-manual]
+.br
+[\-\-about]
+.br
+[\-\-shell]
 .SH "DESCRIPTION"
 .PP
 libgphoto2(3)
@@ -176,6 +188,11 @@ Display version and exit\&.
 .RE
 .PP
 \fB\-h\fR, \fB\-\-help\fR
+.RS 4
+Display options and short description\&.
+.RE
+.PP
+\fB\-\-usage\fR
 .RS 4
 Display a short usage message\&.
 .RE
@@ -356,6 +373,21 @@ Get audio data given in range\&.
 Get all audio data from folder\&.
 .RE
 .PP
+\fB\-\-upload\-meta\-data\fR \fIFILENAME\fR
+.RS 4
+Upload meta data for the specific file, taken from a file prefix with meta_ \&.
+.RE
+.PP
+\fB\-\-get\-meta\-data\fR \fIRANGE\fR
+.RS 4
+Get meta data given in range\&.
+.RE
+.PP
+\fB\-\-get\-all\-meta\-data\fR
+.RS 4
+Get all meta data from folder\&.
+.RE
+.PP
 \fB\-\-force\-overwrite\fR
 .RS 4
 Overwrite files without asking\&.
@@ -405,10 +437,10 @@ Time between capture of multiple frames\&.
 SIGUSR1 signal
 is received, a picture is taken immediately without waiting for the end of the current interval period (see
 the section called \(lqSIGNALS\(rq)\&. A value of \-1 will let gphoto2 wait forever, i\&.e\&. until a signal arrives\&. See also
-\fB\-\-reset\-interval\fR (since 2.4)\&.
+\fB\-\-reset\-interval\fR\&.
 .RE
 .PP
-\fB\-\-reset\-interval\fR (since 2\&.4)
+\fB\-\-reset\-interval\fR
 .RS 4
 Setting this option will reset the time interval to the value given by the
 \fB\-I|\-\-interval\fR option
@@ -424,7 +456,9 @@ Capture an image and keep it on the camera\&.
 .PP
 \fB\-\-trigger\-capture\fR
 .RS 4
-Trigger the capture an image and return\&. If you want to get the image downloaded, see \-\-wait\-event\-and\-download
+Trigger the capture an image and return\&. If you want to get the image downloaded, see \-\-wait\-event\-and\-download\&.
+.sp
+This feature is only available for some camera brands and drivers\&.
 .RE
 .PP
 \fB\-\-capture\-image\-and\-download\fR
@@ -442,14 +476,16 @@ When doing \-\-capture\-image\-and\-download or interval capture, this option wi
 When doing \-\-capture\-image\-and\-download or interval capture, this option will not keep the images on the memory card of the camera after downloading them during capture\&. (default)
 .RE
 .PP
-\fB\-\-capture\-movie\fR
+\fB\-\-capture\-movie \fR\fB\fISECONDS\fR\fR
 .RS 4
 Capture a movie\&. If the camera supports previews, this will capture a stream of previews (motion\-jpeg) as fast as the camera can\&.
+.sp
+If not argument is specified, it will capture preview frames until you press Ctrl\-C\&. Arguments that can be specified are either seconds of capture or number of preview frames\&.
 .RE
 .PP
 \fB\-\-capture\-sound\fR
 .RS 4
-Capture an audio clip\&. (No driver supports this at this time\&.)
+Capture an audio clip\&. No driver supports this at this time\&.
 .RE
 .PP
 \fB\-\-capture\-tethered\fR
@@ -490,12 +526,28 @@ This option requires support in the driver and by the camera, currently newer Ca
 .PP
 \fB\-\-show\-info\fR \fIRANGE\fR
 .RS 4
-Show info\&.
+Show information for a single or multiple images\&.
+.RE
+.PP
+\fB\-\-config\fR
+.RS 4
+Starts a ncurses based text configuration menu\&. gphoto2 needs to built against CDK for this feature\&.
 .RE
 .PP
 \fB\-\-list\-config\fR
 .RS 4
 List all configuration entries\&.
+.RE
+.PP
+\fB\-\-list\-all\-config\fR
+.RS 4
+List all configuration entries and their values and choices\&.
+.sp
+This command is a combination of
+\fB\-\-list\-config\fR
+and calling
+\fB\-\-get\-config\fR
+on all the entries\&.
 .RE
 .PP
 \fB\-\-get\-config\fR \fICONFIGENTRY\fR
@@ -533,7 +585,15 @@ Set the specified configuration entry by specifying its new value\&. For lists o
 .sp
 Look at the output of
 \fB\-\-get\-config\fR
-to see what indices are possible to set here\&.
+to see what values are possible to set here\&.
+.RE
+.PP
+\fB\-\-reset\fR
+.RS 4
+Resets the specified (or autodetected) USB port\&.
+.sp
+This command resets the USB port of either the first auto\-detected camera, or the port specified with
+\fB\-\-port usb:XXX,YYY\fR\&. This option is useful if somehow the protocol talking to the camera locked up and simulates plugging out and in the camera\&.
 .RE
 .PP
 \fB\-\-storage\-info\fR
