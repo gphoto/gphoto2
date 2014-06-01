@@ -1619,6 +1619,7 @@ print_widget (GPParams *p, const char *name, CameraWidget *widget) {
 		printf ("Type: DATE\n");
 		printf ("Current: %d\n", t);
 		printf ("Printable: %s\n", timebuf);
+		printf ("Help: %s\n", _("Use 'now' as the current time when setting.\n"));
 		break;
 	}
 	case GP_WIDGET_MENU:
