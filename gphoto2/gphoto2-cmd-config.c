@@ -18,6 +18,8 @@
  * Boston, MA  02110-1301  USA
  */
 
+#define _XOPEN_SOURCE
+#define _GNU_SOURCE
 #include "config.h"
 #include "gphoto2-cmd-config.h"
 #include "i18n.h"
