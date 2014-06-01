@@ -1750,21 +1750,31 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 		break;
 	}
 	case GP_WIDGET_DATE:  {		/* int			*/
-		int	t = -1;
+		time_t	t = -1;
 		struct tm xtm;
+
+		memset(&xtm,0,sizeof(xtm));
+
+		/* We need to set UNIX time in seconds since Epoch */
+		/* We get ... local time */
 
 		if (!strcasecmp (value, "now")	|| !strcasecmp (value, _("now")))
 			t = time(NULL);
 #ifdef HAVE_STRPTIME
-		else if (strptime (value, "%c", &xtm) || strptime (value, "%Ec", &xtm))
+		else if (strptime (value, "%c", &xtm) || strptime (value, "%Ec", &xtm)) {
+			xtm.tm_isdst = -1;
 			t = mktime (&xtm);
+		}
 #endif
 		if (t == -1) {
-			if (!sscanf (value, "%d", &t)) {
+			unsigned long lt;
+
+			if (!sscanf (value, "%ld", &lt)) {
 				gp_context_error (p->context, _("The passed value %s is neither a valid time nor an integer."), value);
 				ret = GP_ERROR_BAD_PARAMETERS;
 				break;
 			}
+			t = lt;
 		}
 		ret = gp_widget_set_value (child, &t);
 		if (ret != GP_OK)
