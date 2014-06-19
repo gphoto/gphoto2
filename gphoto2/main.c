@@ -1075,7 +1075,8 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 	 * so make sure we wait a bit for the the camera to finish stuff.
 	 */
 	gettimeofday (&expose_end_time, NULL);
-	waittime = 2000;
+	waittime = 3000;
+	printf("Capture done, waiting %gs.\n",waittime/1000.0);
 	/* tricky, this loop might need to download both JPG and RAW. so wait longer. */
 	/*if (glob_frames || end_next || !glob_interval || glob_bulblength) waittime = 2000;*/
 	/* Drain the event queue at the end and download left over added images */
@@ -1083,12 +1084,18 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 		int realwait = waittime - (-timediff_now(&expose_end_time));
 		if (realwait < 0) realwait = 0; /* just drain the queue now */
 		result = wait_and_handle_event(waittime - (-timediff_now(&expose_end_time)), &evtype, download);
-		if ((result != GP_OK) || (evtype == GP_EVENT_TIMEOUT))
+		if ((result != GP_OK) || (evtype == GP_EVENT_TIMEOUT)) {
+			/*printf("Timeout or error, leaving loop.\n");*/
 			break;
-		if (evtype == GP_EVENT_CAPTURE_COMPLETE)
+		}
+		if (evtype == GP_EVENT_CAPTURE_COMPLETE) {
+			/*printf("Capture complete, waiting final 0.1s.\n");*/
 			waittime = 100;
-		if (evtype == GP_EVENT_FILE_ADDED) /* Restart timer, more image data might come. */
+		}
+		if (evtype == GP_EVENT_FILE_ADDED) { /* Restart timer, more image data might come. */
+			/*printf("File added, waiting more %gs.\n", waittime/1000.0);*/
 			gettimeofday (&expose_end_time, NULL);
+		}
 	}
 
 	signal(SIGUSR1, SIG_DFL);
