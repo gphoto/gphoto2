@@ -88,7 +88,7 @@ int set_filename_action    (GPParams *, const char *filename);
 int print_version_action   (GPParams *);
 int override_usbids_action (GPParams *, int usb_vendor, int usb_product, 
 			    int usb_vendor_modified, int usb_product_modified);
-int debug_action           (GPParams *, const char *debug_logfile_name);
+int debug_action           (GPParams *, const char *debug_loglevel, const char *debug_logfile_name);
 int list_config_action     (GPParams *);
 int list_all_config_action (GPParams *);
 int get_config_action      (GPParams *, const char *name);

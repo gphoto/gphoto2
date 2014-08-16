@@ -1244,6 +1244,7 @@ typedef enum {
 	ARG_CAPTURE_TETHERED_KEEP,
 	ARG_CONFIG,
 	ARG_DEBUG,
+	ARG_DEBUG_LOGLEVEL,
 	ARG_DEBUG_LOGFILE,
 	ARG_DELETE_ALL_FILES,
 	ARG_DELETE_FILE,
@@ -1899,7 +1900,7 @@ main (int argc, char **argv, char **envp)
 	poptContext ctx;
 	int i, help_option_given = 0;
 	int usage_option_given = 0;
-	char *debug_logfile_name = NULL;
+	char *debug_logfile_name = NULL, *debug_loglevel = NULL;
 	const struct poptOption generalOptions[] = {
 		GPHOTO2_POPT_CALLBACK
 		{"help", '?', POPT_ARG_NONE, (void *) &help_option_given, ARG_HELP,
@@ -1908,6 +1909,8 @@ main (int argc, char **argv, char **envp)
 		 N_("Print short message on program usage"), NULL},
 		{"debug", '\0', POPT_ARG_NONE, (void *) &debug_option_given, ARG_DEBUG,
 		 N_("Turn on debugging"), NULL},
+		{"debug-loglevel", '\0', POPT_ARG_STRING, (void *) &debug_loglevel, ARG_DEBUG_LOGLEVEL,
+		 N_("Set debug level [error|debug|data|all]"), NULL},
 		{"debug-logfile", '\0', POPT_ARG_STRING, (void *) &debug_logfile_name, ARG_DEBUG_LOGFILE,
 		 N_("Name of file to write debug info to"), N_("FILENAME")},
 		{"quiet", '\0', POPT_ARG_NONE, NULL, ARG_QUIET,
@@ -2162,7 +2165,7 @@ main (int argc, char **argv, char **envp)
 		return 0;
 	}
 	if (debug_option_given) {
-		CR_MAIN (debug_action (&gp_params, debug_logfile_name));
+		CR_MAIN (debug_action (&gp_params, debug_loglevel, debug_logfile_name));
 	}
 
 	gp_log (GP_LOG_DEBUG, "main", "invoked with following arguments:");

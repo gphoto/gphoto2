@@ -1346,20 +1346,30 @@ debug_func (GPLogLevel level, const char *domain, const char *str, void *data)
 	sec = tv.tv_sec  - glob_tv_zero.tv_sec;
 	usec = tv.tv_usec - glob_tv_zero.tv_usec;
 	if (usec < 0) {sec--; usec += 1000000L;}
-	fprintf (logfile, "%li.%06li %s(%i): %s\n", sec, usec, domain, level, str);
+	fprintf (logfile, "%li.%06li %-28s(%i): %s\n", sec, usec, domain, level, str);
 }
 
 int
-debug_action (GPParams *p, const char *debug_logfile_name)
+debug_action (GPParams *p, const char *debug_loglevel, const char *debug_logfile_name)
 {
 	int n;
 	FILE *logfile = NULL;
+	GPLogLevel loglevel = GP_LOG_ALL;
 
 	/* make sure we're only executed once */
 	static int debug_flag = 0;
 	if (debug_flag != 0)
 		return(GP_OK);
 	debug_flag = 1;
+
+	if (debug_loglevel && !strcmp(debug_loglevel, "error"))
+		loglevel = GP_LOG_ERROR;
+	else if (debug_loglevel && !strcmp(debug_loglevel, "debug"))
+		loglevel = GP_LOG_DEBUG;
+	else if (debug_loglevel && !strcmp(debug_loglevel, "data"))
+		loglevel = GP_LOG_DATA;
+	else if (debug_loglevel && !strcmp(debug_loglevel, "all"))
+		loglevel = GP_LOG_ALL;
 
 	if (debug_logfile_name != NULL) {
 	  /* FIXME: Handle fopen() error besides using stderr? */
@@ -1373,7 +1383,7 @@ debug_action (GPParams *p, const char *debug_logfile_name)
 
 	gettimeofday (&glob_tv_zero, NULL);
 
-	CR (p->debug_func_id = gp_log_add_func (GP_LOG_ALL, debug_func, (void *) logfile));
+	CR (p->debug_func_id = gp_log_add_func (loglevel, debug_func, (void *) logfile));
 	gp_log (GP_LOG_DEBUG, "main", _("ALWAYS INCLUDE THE FOLLOWING LINES "
 					"WHEN SENDING DEBUG MESSAGES TO THE "
 					"MAILING LIST:"));
