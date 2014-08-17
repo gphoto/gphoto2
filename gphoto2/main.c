@@ -435,8 +435,32 @@ save_camera_file_to_file (
 		int x;
 
 		unlink(s);
-		if (-1 == rename (curname, s))
-			perror("rename");
+		if (-1 == rename (curname, s)) {
+			/* happens if the user specified a absolute path with --filename */
+			if (errno == EXDEV) {
+				char buf[8192];
+				int in_fd, out_fd;
+
+				in_fd = open(curname, O_RDONLY);
+				if (in_fd < 0)
+					perror("Can't open file for reading");
+
+				out_fd = open(s, O_CREAT | O_WRONLY, 0644);
+				if (out_fd < 0)
+					perror("Can't open file for writing");
+
+				while (1) {
+					ssize_t result = read(in_fd, buf, sizeof(buf));
+					if (!result) break;
+					if (-1 == write(out_fd, buf, result)) {
+						perror("write");
+						break;
+					}
+				}
+				unlink(curname);
+			} else
+				perror("rename");
+		}
 		x = umask(0022); /* get umask */
 		umask(x);/* set it back to the old value */
 		chmod(s,0666 & ~x);
