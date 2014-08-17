@@ -31,7 +31,7 @@
 gphoto2 \- command\-line gphoto2 client
 .SH "SYNOPSIS"
 .HP \w'\fBgphoto2\fR\ 'u
-\fBgphoto2\fR [\-\-debug] [\-\-debug\-logfile\ \fIFILENAME\fR] [[\-q] | [\-\-quiet]] [[\-v] | [\-\-verbose]] [[\-h] | [\-\-help]] [\-\-usage]
+\fBgphoto2\fR [\-\-debug] [\-\-debug\-logfile\ \fIFILENAME\fR] [\-\-debug\-loglevel\ \fILEVEL\fR] [[\-q] | [\-\-quiet]] [[\-v] | [\-\-verbose]] [[\-h] | [\-\-help]] [\-\-usage]
 .br
 [\-\-hook\-script\ \fIFILENAME\fR]
 .br
@@ -130,6 +130,16 @@ option\&.
 The logfile to write the debugging info to, if
 \fB\-\-debug\fR
 is given\&.
+.RE
+.PP
+\fB\-\-debug\-loglevel\fR \fILEVEL\fR (since 2\&.5\&.5)
+.RS 4
+The verbosity of debug logging\&. Possible values with incrementing verbosity are:
+\fBerror\fR,
+\fBdebug\fR,
+\fBdata\fR,
+\fBall\fR\&. Default is
+\fBall\fR\&.
 .RE
 .PP
 \fB\-\-hook\-script\fR \fIFILENAME\fR (new after 2\&.3\&.0)
