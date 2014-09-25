@@ -1089,20 +1089,23 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 			wp.type			= WAIT_FRAMES;
 			wp.u.frames		= x;
 			printf ( _("Waiting for %d frames from the camera. Press Ctrl-C to abort.\n"), x);
-		}
+		} else
 		if ((strlen(arg)>2) && (!strcmp(&arg[strlen(arg)-2],"ms")) && sscanf(arg,"%dms",&x)) { /* exact milliseconds */ 
 			wp.type			= WAIT_TIME;
 			wp.u.milliseconds	= x;
 			printf ( _("Waiting for %d milliseconds for events from camera. Press Ctrl-C to abort.\n"), x);
-		}
+		} else
 		if ((wp.type != WAIT_TIME) && (arg[strlen(arg)-1]=='s') && sscanf(arg,"%ds", &x)) { /* exact seconds */ 
 			wp.type			= WAIT_TIME;
 			wp.u.milliseconds	= x*1000;
 			printf ( _("Waiting for %d seconds for events from camera. Press Ctrl-C to abort.\n"), x);
-		}
-		if (wp.type == WAIT_EVENTS) {
+		} else if ((wp.type == WAIT_EVENTS) && sscanf(arg,"%d", &x)) {
 			wp.u.events = atoi(arg);
 			printf ( _("Waiting for %d events from camera. Press Ctrl-C to abort.\n"), wp.u.events);
+		} else {
+			wp.type = WAIT_STRING;
+			wp.u.str = arg;
+			printf ( _("Waiting for %s event from camera. Press Ctrl-C to abort.\n"), wp.u.str);
 		}
 	}
 
@@ -1116,6 +1119,8 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 
 		exitloop = 0;
 		switch (wp.type) {
+		case WAIT_STRING:
+			break;
 		case WAIT_EVENTS:
 			if (events >= wp.u.events) exitloop = 1;
 			break;
@@ -1142,6 +1147,12 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 		case GP_EVENT_UNKNOWN:
 			if (data) {
 				printf("UNKNOWN %s\n", (char*)data);
+				if (wp.type == WAIT_STRING) {
+					if (strstr(data,wp.u.str)) {
+						printf(_("event found, stopping wait!\n"));
+						return GP_OK;
+					}
+				}
 			} else {
 				printf("UNKNOWN\n");
 			}
@@ -1151,6 +1162,10 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 			break;
 		case GP_EVENT_CAPTURE_COMPLETE:
 			printf("CAPTURECOMPLETE\n");
+			if (strstr("CAPTURECOMPLETE",wp.u.str)) {
+				printf(_("event found, stopping wait!\n"));
+				return GP_OK;
+			}
 			break;
 		case GP_EVENT_FILE_ADDED:
 			frames++;

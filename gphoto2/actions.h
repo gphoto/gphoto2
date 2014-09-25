@@ -30,6 +30,7 @@ enum wait_type {
 	WAIT_TIME,
 	WAIT_EVENTS,
 	WAIT_FRAMES,
+	WAIT_STRING,
 };
 enum download_type { DT_NO_DOWNLOAD, DT_DOWNLOAD };
 struct waitparams {
@@ -37,6 +38,7 @@ struct waitparams {
 		int milliseconds;
 		int events;
 		int frames;
+		char *str;
 	} u;
 	enum wait_type type;
 	enum download_type downloadtype;
