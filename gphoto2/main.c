@@ -1100,7 +1100,6 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 	 */
 	gettimeofday (&expose_end_time, NULL);
 	waittime = 3000;
-	printf("Capture done, waiting %gs.\n",waittime/1000.0);
 	/* tricky, this loop might need to download both JPG and RAW. so wait longer. */
 	/*if (glob_frames || end_next || !glob_interval || glob_bulblength) waittime = 2000;*/
 	/* Drain the event queue at the end and download left over added images */

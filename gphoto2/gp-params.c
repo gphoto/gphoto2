@@ -49,8 +49,12 @@
 
 static void
 ctx_status_func (GPContext __unused__ *context, const char *str,
-                 void __unused__ *data)
+                 void *data)
 {
+	GPParams *params = data;
+
+	if (params->flags & FLAGS_QUIET)
+		return;
         fprintf (stderr, "%s\n", str);
         fflush  (stderr);
 }
