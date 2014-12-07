@@ -983,12 +983,15 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 			 */
 		} else {
 			result = GP_ERROR_NOT_SUPPORTED;
+#if 0
+			/* Not a good idea, as we do not know how long to wait after capture ... */
 			if (a.operations & GP_OPERATION_TRIGGER_CAPTURE) {
 				result = gp_camera_trigger_capture (gp_params.camera, gp_params.context);
 				if ((result != GP_OK) && (result != GP_ERROR_NOT_SUPPORTED))
 					cli_error_print(_("Could not trigger image capture."));
 				/* The downloads will be handled by wait_event */
 			}
+#endif
 			if (result == GP_ERROR_NOT_SUPPORTED) {
 				result = gp_camera_capture (gp_params.camera, type, &path, gp_params.context);
 				if (result != GP_OK) {
