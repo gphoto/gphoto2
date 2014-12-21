@@ -1162,7 +1162,7 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 			break;
 		case GP_EVENT_CAPTURE_COMPLETE:
 			printf("CAPTURECOMPLETE\n");
-			if (strstr("CAPTURECOMPLETE",wp.u.str)) {
+			if ((wp.type == WAIT_STRING) && strstr("CAPTURECOMPLETE",wp.u.str)) {
 				printf(_("event found, stopping wait!\n"));
 				return GP_OK;
 			}
@@ -1174,6 +1174,10 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 
 			if (downloadtype == DT_NO_DOWNLOAD) {
 				printf("FILEADDED %s %s\n",fn->name, fn->folder);
+				if ((wp.type == WAIT_STRING) && strstr("FILEADDED",wp.u.str)) {
+					printf(_("event found, stopping wait!\n"));
+					return GP_OK;
+				}
 				continue;
 			}
 			/* Otherwise download the image and continue... */
@@ -1208,10 +1212,18 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 					/* dont continue in event loop */
 				}
 			}
+			if ((wp.type == WAIT_STRING) && strstr("FILEADDED",wp.u.str)) {
+				printf(_("event found, stopping wait!\n"));
+				return GP_OK;
+			}
 			break;
 		case GP_EVENT_FOLDER_ADDED:
 			fn = (CameraFilePath*)data;
 			printf("FOLDERADDED %s %s\n",fn->name, fn->folder);
+			if ((wp.type == WAIT_STRING) && strstr("FOLDERADDED",wp.u.str)) {
+				printf(_("event found, stopping wait!\n"));
+				return GP_OK;
+			}
 			break;
 		}
 		free (data);
