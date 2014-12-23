@@ -1,6 +1,6 @@
 AC_PREREQ(2.59)
 dnl Next stable release must be 2.5.7 or later
-AC_INIT([gphoto2 command line interface], [2.5.6], [gphoto-devel@lists.sourceforge.net], [gphoto2])
+AC_INIT([gphoto2 command line interface], [2.5.6.1], [gphoto-devel@lists.sourceforge.net], [gphoto2])
 AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
