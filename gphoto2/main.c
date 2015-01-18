@@ -2101,12 +2101,12 @@ main (int argc, char **argv, char **envp)
 
 #ifdef HAVE_LIBEXIF
 		{"show-exif", '\0', POPT_ARG_STRING, NULL, ARG_SHOW_EXIF,
-		 N_("Show EXIF information"), NULL},
+		 N_("Show EXIF information of JPEG images"), NULL},
 #endif
 		{"show-info", '\0', POPT_ARG_STRING, NULL, ARG_SHOW_INFO,
-		 N_("Show info"), NULL},
+		 N_("Show image information, like width, height, and capture time"), NULL},
 		{"summary", '\0', POPT_ARG_NONE, NULL, ARG_SUMMARY,
-		 N_("Show summary"), NULL},
+		 N_("Show camera summary"), NULL},
 		{"manual", '\0', POPT_ARG_NONE, NULL, ARG_MANUAL,
 		 N_("Show camera driver manual"), NULL},
 		{"about", '\0', POPT_ARG_NONE, NULL, ARG_ABOUT,

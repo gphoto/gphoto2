@@ -129,13 +129,13 @@ static const struct _ShellFunctionTable {
 	 N_("[directory/]filename"), 1},
 	{"get-raw", shell_get_raw, N_("Download raw data"),
 	 N_("[directory/]filename"), 1},
-	{"show-info", shell_show_info, N_("Show info"),
+	{"show-info", shell_show_info, N_("Show image information, like width, height, and capture time"),
 	 N_("[directory/]filename"), 1},
 	{"delete", shell_del, N_("Delete"), N_("[directory/]filename"), 1},
 	{"mkdir", shell_mkdir, N_("Create Directory"), N_("directory"), 1},
 	{"rmdir", shell_rmdir, N_("Remove Directory"), N_("directory"), 1},
 #ifdef HAVE_LIBEXIF
-	{"show-exif", shell_show_exif, N_("Show EXIF information"),
+	{"show-exif", shell_show_exif, N_("Show EXIF information of JPEG images"),
 	 N_("[directory/]filename"), 1},
 #endif
 	{"help", shell_help, N_("Displays command usage"),
