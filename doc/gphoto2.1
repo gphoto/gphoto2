@@ -53,23 +53,23 @@ gphoto2 \- command\-line gphoto2 client
 .br
 [[\-r\ \fINAME\fR] | [\-\-rmdir\ \fINAME\fR]] [[\-n] | [\-\-num\-files]]
 .br
-[[\-p\ \fIRANGE\fR] | [\-\-get\-file\ \fIRANGE\fR]] [[\-P] | [\-\-get\-all\-files]]
+[[\-p\ \fIRANGE\ or\ NAME\fR] | [\-\-get\-file\ \fIRANGE\ or\ NAME\fR]] [[\-P] | [\-\-get\-all\-files]]
 .br
-[[\-t\ \fIRANGE\fR] | [\-\-get\-thumbnail\ \fIRANGE\fR]]
+[[\-t\ \fIRANGE\ or\ NAME\fR] | [\-\-get\-thumbnail\ \fIRANGE\ or\ NAME\fR]]
 .br
 [[\-T] | [\-\-get\-all\-thumbnails]]
 .br
-[\-\-get\-raw\-data\ \fIRANGE\fR] [\-\-get\-all\-raw\-data]
+[\-\-get\-raw\-data\ \fIRANGE\ or\ NAME\fR] [\-\-get\-all\-raw\-data]
 .br
-[\-\-get\-audio\-data\ \fIRANGE\fR] [\-\-get\-all\-audio\-data]
+[\-\-get\-audio\-data\ \fIRANGE\ or\ NAME\fR] [\-\-get\-all\-audio\-data]
 .br
-[\-\-get\-meta\-data\ \fIRANGE\fR] [\-\-get\-all\-meta\-data] [\-\-upload\-meta\-data\ \fIFILENAME\fR]
+[\-\-get\-meta\-data\ \fIRANGE\ or\ NAME\fR] [\-\-get\-all\-meta\-data] [\-\-upload\-meta\-data\ \fIFILENAME\fR]
 .br
 [\-\-force\-overwrite]
 .br
 [\-\-new]
 .br
-[[\-d\ \fIRANGE\fR] | [\-\-delete\-file\ \fIRANGE\fR]] [[\-D] | [\-\-delete\-all\-files]]
+[[\-d\ \fIRANGE\ or\ NAME\fR] | [\-\-delete\-file\ \fIRANGE\ or\ NAME\fR]] [[\-D] | [\-\-delete\-all\-files]]
 .br
 [[\-u\ \fIFILENAME\fR] | [\-\-upload\-file\ \fIFILENAME\fR]] [\-\-config]
 .br
@@ -85,15 +85,15 @@ gphoto2 \- command\-line gphoto2 client
 .br
 [\-\-capture\-image] [\-\-trigger\-capture] [\-\-capture\-movie\ \fISECONDS\ or\ COUNT\fR] [\-\-capture\-sound]
 .br
-[\-\-capture\-tethered\ \fISECONDS\ or\ COUNT\fR]
+[\-\-capture\-tethered\ \fISECONDS,\ COUNT\ or\ STRING\fR]
 .br
-[\-\-wait\-event\ \fISECONDS\ or\ COUNT\fR] [\-\-wait\-event\-and\-download\ \fISECONDS\ or\ COUNT\fR]
+[\-\-wait\-event\ \fISECONDS,\ COUNT\ or\ STRING\fR] [\-\-wait\-event\-and\-download\ \fISECONDS,\ COUNT\ or\ STRING\fR]
 .br
 [\-\-keep] [\-\-no\-keep]
 .br
-[\-\-show\-info\ \fIRANGE\fR]
+[\-\-show\-info\ \fIRANGE\ or\ NAME\fR]
 .br
-[\-\-show\-exif\ \fIRANGE\fR]
+[\-\-show\-exif\ \fIRANGE\ or\ NAME\fR]
 .br
 [\-\-storage\-info]
 .br
@@ -536,7 +536,7 @@ This option requires support in the driver and by the camera, currently newer Ca
 .PP
 \fB\-\-show\-info\fR \fIRANGE\fR
 .RS 4
-Show information for a single or multiple images\&.
+Show information for a single or multiple images, like width, height, size and/or the capture time
 .RE
 .PP
 \fB\-\-config\fR
@@ -635,9 +635,9 @@ SHELL MODEfor a detailed description\&.
 .PP
 The following commands are available:
 .PP
-cd
+cd \fIDIRECTORY\fR
 .RS 4
-Change to a directory on the camera\&.
+Change to the specified directory on the camera\&.
 .RE
 .PP
 ls
@@ -645,34 +645,39 @@ ls
 List the contents of the current directory on the camera\&.
 .RE
 .PP
-lcd
+lcd \fIDIRECTORY\fR
 .RS 4
-Change to a directory on the local machine\&.
+Change to the specified directory on the local machine\&.
 .RE
 .PP
-get
+get \fIFILENAME\fR
 .RS 4
-Download the file to the current directory\&.
+Download the specified file to the current directory\&.
 .RE
 .PP
-get\-thumbnail
+put \fIFILENAME\fR
 .RS 4
-Download the thumbnail to the current directory\&.
+Upload the specified file from the current system directory to the cameras current directory\&.
 .RE
 .PP
-get\-raw
+get\-thumbnail \fIFILENAME\fR
 .RS 4
-Download raw data to the current directory\&.
+Download the specified thumbnail to the current directory\&.
 .RE
 .PP
-show\-info
+get\-raw \fIFILENAME\fR
 .RS 4
-Show information\&.
+Download the specified raw data to the current directory\&.
 .RE
 .PP
-delete
+show\-info \fIFILENAME\fR
 .RS 4
-Delete a file or directory\&.
+Show information of the specified file\&.
+.RE
+.PP
+delete \fIFILENAME\fR
+.RS 4
+Delete the specified file or directory\&.
 .RE
 .PP
 mkdir \fIDIRECTORY\fR
@@ -687,7 +692,7 @@ Removes a directory named
 \(lqDIRECTORY\(rq\&.
 .RE
 .PP
-show\-exif
+show\-exif \fIFILENAME\fR
 .RS 4
 Show EXIF information (only if compiled with EXIF support)\&.
 .RE
@@ -700,6 +705,11 @@ Captures a single image and keeps it on the camera\&.
 capture\-image\-and\-download
 .RS 4
 Captures a single image and downloads it from the camera\&.
+.RE
+.PP
+capture\-preview
+.RS 4
+Captures a preview image and downloads it from the camera\&.
 .RE
 .PP
 list\-config
