@@ -825,6 +825,14 @@ save_captured_file (CameraFilePath *path, int download) {
 				return (result);
 			}
 		}
+		if (	(gp_params.flags & FLAGS_KEEP_RAW) &&
+			(!strstr(path->name,".jpg") && !strstr(path->name,".JPG"))
+		) {
+			if (!(gp_params.flags & FLAGS_QUIET))
+				printf (_("Keeping file %s%s%s on the camera\n"),
+					path->folder, pathsep, path->name);
+			return GP_OK;
+		}
 
 		result = get_file_common (path->name, GP_FILE_TYPE_NORMAL);
 		if (result != GP_OK) {
@@ -1267,7 +1275,6 @@ typedef enum {
 	ARG_CAPTURE_PREVIEW,
 	ARG_CAPTURE_SOUND,
 	ARG_CAPTURE_TETHERED,
-	ARG_CAPTURE_TETHERED_KEEP,
 	ARG_CONFIG,
 	ARG_DEBUG,
 	ARG_DEBUG_LOGLEVEL,
@@ -1294,6 +1301,7 @@ typedef enum {
 	ARG_HELP,
 	ARG_HOOK_SCRIPT,
 	ARG_KEEP,
+	ARG_KEEP_RAW,
 	ARG_LIST_CAMERAS,
 	ARG_LIST_ALL_CONFIG,
 	ARG_LIST_CONFIG,
@@ -1436,6 +1444,10 @@ cb_arg_init (poptContext __unused__ ctx,
 	case ARG_NEW:
 		gp_params.flags |= FLAGS_NEW;
 		break;
+	case ARG_KEEP_RAW:
+		gp_params.flags |= FLAGS_KEEP_RAW;
+		break;
+
 	case ARG_KEEP:
 		gp_params.flags |= FLAGS_KEEP;
 		break;
@@ -1996,6 +2008,8 @@ main (int argc, char **argv, char **envp)
 		GPHOTO2_POPT_CALLBACK
 		{"keep", '\0', POPT_ARG_NONE, NULL, ARG_KEEP,
 		 N_("Keep images on camera after capturing"), NULL},
+		{"keep-raw", '\0', POPT_ARG_NONE, NULL, ARG_KEEP_RAW,
+		 N_("Keep RAW images on camera after capturing"), NULL},
 		{"no-keep", '\0', POPT_ARG_NONE, NULL, ARG_NO_KEEP,
 		 N_("Remove images from camera after capturing"), NULL},
 		{"wait-event", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL, ARG_WAIT_EVENT,
@@ -2256,7 +2270,6 @@ main (int argc, char **argv, char **envp)
 	CHECK_OPT (ARG_CAPTURE_PREVIEW);
 	CHECK_OPT (ARG_CAPTURE_SOUND);
 	CHECK_OPT (ARG_CAPTURE_TETHERED);
-	CHECK_OPT (ARG_CAPTURE_TETHERED_KEEP);
 	CHECK_OPT (ARG_CONFIG);
 	CHECK_OPT (ARG_DELETE_ALL_FILES);
 	CHECK_OPT (ARG_DELETE_FILE);

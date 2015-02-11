@@ -1172,7 +1172,11 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 
 			fn = (CameraFilePath*)data;
 
-			if (downloadtype == DT_NO_DOWNLOAD) {
+			if (	(downloadtype == DT_NO_DOWNLOAD)	||
+				(	(p->flags & FLAGS_KEEP_RAW) &&
+				 	( !strstr(fn->name,".jpg") && !strstr(fn->name,".JPG")) 
+				)
+			) {
 				printf("FILEADDED %s %s\n",fn->name, fn->folder);
 				if ((wp.type == WAIT_STRING) && strstr("FILEADDED",wp.u.str)) {
 					printf(_("event found, stopping wait!\n"));
