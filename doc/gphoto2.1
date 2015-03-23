@@ -464,16 +464,16 @@ is received in time\-lapse mode\&.
 Capture an image and keep it on the camera\&.
 .RE
 .PP
-\fB\-\-trigger\-capture\fR
-.RS 4
-Trigger the capture an image and return\&. If you want to get the image downloaded, see \-\-wait\-event\-and\-download\&.
-.sp
-This feature is only available for some camera brands and drivers\&.
-.RE
-.PP
 \fB\-\-capture\-image\-and\-download\fR
 .RS 4
 Capture an image and download it immediately to the computer\&.
+.RE
+.PP
+\fB\-\-trigger\-capture\fR
+.RS 4
+Triggers the capture an image and return\&. If you want to get the image downloaded, see \-\-wait\-event\-and\-download\&.
+.sp
+This feature is only available for some camera brands and drivers\&.
 .RE
 .PP
 \fB\-\-keep\fR
@@ -503,7 +503,7 @@ If not argument is specified, it will capture preview frames until you press Ctr
 Capture an audio clip\&. No driver supports this at this time\&.
 .RE
 .PP
-\fB\-\-capture\-tethered\fR
+\fB\-\-capture\-tethered \fR\fB\fISECONDS, MILLISECONDS, COUNT or MATCHSTRING\fR\fR
 .RS 4
 Lets gphoto2 wait for notifications from the camera that an object was added\&. This is useful for tethered capture, where pressing the shutter on the camera immediately transfer the image to the machine for processing\&.
 .sp
@@ -511,12 +511,12 @@ Together with the
 \fB\-\-hook\-script\fR
 to immediately postprocess or display the images this can help a studio workflow\&.
 .sp
-This option requires support in the driver and by the camera, currently newer Canon EOS and Nikon DSC are known to work\&.
+This option requires support in the driver and by the camera, currently newer Canon EOS and Nikon DLSR work\&.
 .RE
 .PP
-\fB\-\-wait\-event \fR\fB\fISECONDS or COUNT\fR\fR, \fB\-\-wait\-event\-and\-download \fR\fB\fISECONDS or COUNT\fR\fR
+\fB\-\-wait\-event \fR\fB\fISECONDS, MILLISECONDS, COUNT or MATCHSTRING\fR\fR, \fB\-\-wait\-event\-and\-download \fR\fB\fISECONDS, MILLISECONDS, COUNT or MATCHSTRING\fR\fR
 .RS 4
-Lets gphoto2 wait for notifications from the camera for various things\&. This is useful for seeing what the camera does and waiting for objects to be added\&. The objects are kept on camera in the
+Lets gphoto2 wait for notifications from the camera for various events\&. This is useful for seeing what the camera does and waiting for objects to be added\&. The objects are kept on camera in the
 \(lq\-\-wait\-event\(rq
 version, with
 \(lq\-\-wait\-event\-and\-download\(rq
@@ -524,7 +524,7 @@ they are downloaded\&.
 .sp
 \-\-wait\-event\-and\-download is equivalent to \-\-capture\-tethered\&.
 .sp
-The time to wait can be either specified as full seconds with a "s" suffix, or as a number of events (just a number)\&. If nothing happens, a timeout is generated after 1 second, so a
+The time to wait can be either specified as full seconds with a "s" suffix, a number of milliseconds with a "ms" suffix, as a number of events (just a number), or a sub\-string to match\&. If nothing happens, a timeout is generated after 1 second, so a
 \(lqwait\-event=5\(rq
 will take at most 5 seconds\&. A
 \(lq\-\-wait\-event=5s\(rq
