@@ -2457,6 +2457,7 @@ main (int argc, char **argv, char **envp)
 	}
 
         signal (SIGINT, signal_exit);
+        signal (SIGTERM, signal_exit);
 
 	/* If we are told to be quiet, be so. *
 	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
