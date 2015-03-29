@@ -1979,7 +1979,7 @@ main (int argc, char **argv, char **envp)
 		{"list-ports", '\0', POPT_ARG_NONE, NULL, ARG_LIST_PORTS,
 		 N_("List supported port devices"), NULL},
 		{"abilities", 'a', POPT_ARG_NONE, NULL, ARG_ABILITIES,
-		 N_("Display camera/driver abilities"), NULL},
+		 N_("Display the camera/driver abilities in the libgphoto2 database"), NULL},
 		POPT_TABLEEND
 	};
 	const struct poptOption configOptions[] = {
