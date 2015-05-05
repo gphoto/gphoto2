@@ -254,7 +254,7 @@ dnl        see the preview. This is where aalib fits in - it gives you the
 dnl        possibility to view life-previews on any console.
 dnl ---------------------------------------------------------------------------
 aa_msg="no (http://www.sourceforge.net/projects/aa-project)"
-try_aa=false
+try_aa=:
 have_aa=false
 AC_ARG_WITH([aalib],AS_HELP_STRING([--with-aalib],[Do use aalib for preview ASCII rendering]),[
         if test x$withval = xyes; then
