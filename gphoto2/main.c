@@ -1273,6 +1273,7 @@ typedef enum {
 	ARG_CAPTURE_IMAGE_AND_DOWNLOAD,
 	ARG_CAPTURE_MOVIE,
 	ARG_CAPTURE_PREVIEW,
+	ARG_SHOW_PREVIEW,
 	ARG_CAPTURE_SOUND,
 	ARG_CAPTURE_TETHERED,
 	ARG_CONFIG,
@@ -1570,6 +1571,9 @@ cb_arg_run (poptContext __unused__ ctx,
 		break;
 	case ARG_CAPTURE_PREVIEW:
 		params->p.r = action_camera_capture_preview (&gp_params);
+		break;
+	case ARG_SHOW_PREVIEW:
+		params->p.r = action_camera_show_preview (&gp_params);
 		break;
 	case ARG_CAPTURE_SOUND:
 		params->p.r = capture_generic (GP_CAPTURE_SOUND, arg, 0);
@@ -2019,6 +2023,9 @@ main (int argc, char **argv, char **envp)
 		{"capture-preview", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_PREVIEW,
 		 N_("Capture a quick preview"), NULL},
+		{"show-preview", '\0', POPT_ARG_NONE, NULL,
+		 ARG_SHOW_PREVIEW,
+		 N_("Show a quick preview as Ascii Art"), NULL},
 		{"bulb", 'B', POPT_ARG_INT, NULL, ARG_CAPTURE_BULB,
 		 N_("Set bulb exposure time in seconds"), N_("SECONDS")},
 		{"frames", 'F', POPT_ARG_INT, NULL, ARG_CAPTURE_FRAMES,
@@ -2268,6 +2275,7 @@ main (int argc, char **argv, char **envp)
 	CHECK_OPT (ARG_CAPTURE_IMAGE_AND_DOWNLOAD);
 	CHECK_OPT (ARG_CAPTURE_MOVIE);
 	CHECK_OPT (ARG_CAPTURE_PREVIEW);
+	CHECK_OPT (ARG_SHOW_PREVIEW);
 	CHECK_OPT (ARG_CAPTURE_SOUND);
 	CHECK_OPT (ARG_CAPTURE_TETHERED);
 	CHECK_OPT (ARG_CONFIG);

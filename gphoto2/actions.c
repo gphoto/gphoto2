@@ -938,8 +938,8 @@ print_version_action (GPParams __unused__ *p)
 	return (GP_OK);
 }
 
-int
-action_camera_capture_preview (GPParams *p)
+static int
+_action_camera_capture_preview (GPParams *p, int viewasciiart)
 {
 	CameraFile *file;
 	int	r, fd;
@@ -961,10 +961,12 @@ action_camera_capture_preview (GPParams *p)
 	}
 
 #ifdef HAVE_AA
-	r = gp_cmd_capture_preview (p->camera, file, p->context);
-#else
-	r = gp_camera_capture_preview (p->camera, file, p->context);
+	if (viewasciiart)
+		r = gp_cmd_capture_preview (p->camera, file, p->context);
+	else
 #endif
+		r = gp_camera_capture_preview (p->camera, file, p->context);
+
 	if (r < 0) {
 		gp_file_unref (file);
 		unlink (tmpname);
@@ -978,6 +980,16 @@ action_camera_capture_preview (GPParams *p)
 		return (r);
 	}
 	return (GP_OK);
+}
+
+int
+action_camera_capture_preview (GPParams *p) {
+	return _action_camera_capture_preview (p, 0);
+}
+
+int
+action_camera_show_preview (GPParams *p) {
+	return _action_camera_capture_preview (p, 1);
 }
 
 enum moviemode { MOVIE_ENDLESS, MOVIE_FRAMES, MOVIE_SECONDS };

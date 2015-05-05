@@ -77,7 +77,7 @@ gphoto2 \- command\-line gphoto2 client
 .br
 [\-\-get\-config\ \fICONFIGENTRY\fR] [\-\-set\-config\ \fICONFIGENTRY=CONFIGVALUE\fR] [\-\-set\-config\-index\ \fICONFIGENTRY=CONFIGINDEX\fR] [\-\-set\-config\-value\ \fICONFIGENTRY=CONFIGVALUE\fR] [\-\-reset]
 .br
-[\-\-capture\-preview]
+[\-\-capture\-preview] [\-\-show\-preview]
 .br
 [[\-F\ \fICOUNT\fR] | [\-\-frames\ \fICOUNT\fR]] [[\-I\ \fISECONDS\fR] | [\-\-interval\ \fISECONDS\fR]]
 .br
@@ -434,6 +434,11 @@ Upload a file to camera\&.
 \fB\-\-capture\-preview\fR
 .RS 4
 Capture a quick preview\&.
+.RE
+.PP
+\fB\-\-show\-preview\fR
+.RS 4
+Capture a quick preview and displays it in the terminal using Ascii Art (if aalib was used during build)\&.
 .RE
 .PP
 \fB\-F \fR\fB\fICOUNT\fR\fR, \fB\-\-frames \fR\fB\fICOUNT\fR\fR
