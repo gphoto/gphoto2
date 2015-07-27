@@ -1955,7 +1955,7 @@ main (int argc, char **argv, char **envp)
 		 N_("Set debug level [error|debug|data|all]"), NULL},
 		{"debug-logfile", '\0', POPT_ARG_STRING, (void *) &debug_logfile_name, ARG_DEBUG_LOGFILE,
 		 N_("Name of file to write debug info to"), N_("FILENAME")},
-		{"quiet", '\0', POPT_ARG_NONE, NULL, ARG_QUIET,
+		{"quiet", 'q', POPT_ARG_NONE, NULL, ARG_QUIET,
 		 N_("Quiet output (default=verbose)"), NULL},
 		{"hook-script", '\0', POPT_ARG_STRING, NULL, ARG_HOOK_SCRIPT,
 		 N_("Hook script to call after downloads, captures, etc."),
