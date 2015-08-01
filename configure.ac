@@ -7,16 +7,12 @@ AC_CONFIG_MACRO_DIR([auto-m4])
 AC_CONFIG_AUX_DIR([auto-aux])
 AM_INIT_AUTOMAKE([-Wall -Werror gnu 1.9 dist-bzip2 check-news])
 
-if test ! -d "$srcdir/m4m"; then
+if test ! -d "$srcdir/gphoto-m4"; then
 AC_MSG_ERROR([
-You are missing the m4m/ directory in your top
+You are missing the gphoto-m4/ directory in your top
 $PACKAGE_TARNAME source directory.
 
-You are probably using an ill-maintained SVN tree.
-Running
-
-    cd $srcdir
-    svn up
+copying it from the gphoto/gphoto-m4 github repository
 
 and re-running autogen.sh might help.
 ])
@@ -361,7 +357,7 @@ AC_CONFIG_FILES([
 po/Makefile.in 
 Makefile
 gphoto2/Makefile
-m4m/Makefile
+gphoto-m4/Makefile
 doc/Makefile
 contrib/Makefile
 packaging/Makefile
