@@ -14,8 +14,8 @@ before_install:
  - sudo apt-get install autopoint libgphoto2-dev $EXTRALIBS
 
 compiler:
- - clang
  - gcc
+ - clang
 
 script:
  - autoreconf -i -f
