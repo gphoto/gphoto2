@@ -973,7 +973,7 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 		return (r);
 	}
 
-	r = save_camera_file_to_file (NULL, "capture_preview", GP_FILE_TYPE_NORMAL, file, tmpfilename);
+	r = save_camera_file_to_file (NULL, "capture_preview", GP_FILE_TYPE_PREVIEW, file, tmpfilename);
 	gp_file_unref (file);
 	if (r < 0) {
 		unlink (tmpname);

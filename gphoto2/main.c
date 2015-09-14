@@ -358,6 +358,14 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 		}
 	}
 
+	/**
+	 * If the file is a capture_preview,
+	 * apply prefix over the calculated basename
+	 */
+	if (type == GP_FILE_TYPE_PREVIEW) {
+		return gp_file_get_name_by_type (file, s, type, path);
+	}
+
 	return (GP_OK);
 }
 
