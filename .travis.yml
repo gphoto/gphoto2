@@ -11,7 +11,7 @@ env:
 
 before_install:
  - sudo apt-get update -qq || brew update
- - sudo apt-get install autopoint $EXTRALIBS || brew install gettext
+ - sudo apt-get install autopoint $EXTRALIBS || brew install gettext popt
 
 compiler:
  - gcc
