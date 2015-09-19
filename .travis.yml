@@ -20,7 +20,7 @@ compiler:
 script:
  - mkdir lg2 ; cd lg2 ; git clone https://github.com/gphoto/libgphoto2.git ; cd libgphoto2 ; autoreconf -i -f ; ./configure --prefix=/usr --libdir=/usr/lib && make && sudo make install ; cd ../../
  - autoreconf -i -f
- - ./configure && make && make check
+ - ./configure && make && make check || cat tests/log/test037.out
 
 notifications:
   recipient:
