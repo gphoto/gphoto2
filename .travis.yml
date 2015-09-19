@@ -5,13 +5,13 @@ os:
  - osx
 
 env:
- - EXTRALIBS=""
- - EXTRALIBS="libaa1-dev"
- - EXTRALIBS="libcdk5-dev"
+ - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev"
+ - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libaa1-dev"
+ - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libaa1-dev libcdk5-dev"
 
 before_install:
- - sudo apt-get update -qq
- - sudo apt-get install autopoint libgphoto2-dev $EXTRALIBS
+ - sudo apt-get update -qq || brew update
+ - sudo apt-get install autopoint $EXTRALIBS || brew install gettext
 
 compiler:
  - gcc
