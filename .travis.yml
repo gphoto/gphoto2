@@ -5,9 +5,9 @@ os:
  - osx
 
 env:
- - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev popt-dev"
- - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev popt-dev libaa1-dev"
- - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev popt-dev libaa1-dev libcdk5-dev"
+ - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev"
+ - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev libaa1-dev"
+ - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev libaa1-dev libcdk5-dev"
 
 before_install:
  - sudo apt-get update -qq || brew update
