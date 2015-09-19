@@ -2,7 +2,6 @@ language: c
 
 os:
  - linux
- - osx
 
 env:
  - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev"
@@ -15,7 +14,6 @@ before_install:
 
 compiler:
  - gcc
- - clang
 
 script:
  - export PATH=/usr/local/opt/gettext/bin:$PATH:. ; mkdir lg2 ; cd lg2 ; git clone https://github.com/gphoto/libgphoto2.git ; cd libgphoto2 ; autoreconf -i -f ; ./configure --prefix=/usr --libdir=/usr/lib && make && sudo make install ; cd ../../
