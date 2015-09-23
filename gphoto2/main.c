@@ -465,6 +465,8 @@ save_camera_file_to_file (
 						break;
 					}
 				}
+				close(out_fd);
+				close(in_fd);
 				unlink(curname);
 			} else
 				perror("rename");
