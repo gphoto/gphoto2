@@ -7,10 +7,6 @@ What is gphoto2?
 
 gphoto2 is a command-line frontend to libgphoto2.
 
-Additional Packages Needed (after installing libgphoto2)
---------------------------------------------------------
-libpopt-dev
-
 Where can I find more information?
 ----------------------------------
 
@@ -20,6 +16,8 @@ at one of the following URLs:
 	http://www.gphoto.com/
 	http://www.gphoto.org/
 	http://gphoto.sourceforge.net/
+	https://github.com/gphoto/
+	http://sf.net/projects/gphoto
 
 The man page is in the file doc/gphoto2.1
 
@@ -34,7 +32,8 @@ How do I build it?
 
 Out-of-tree builds are supported. "configure --help" may help.
 
-To build you will need besides the common build tools:
+To build gphoto2 you will need besides the common build tools:
+- The libgphoto2 library.
 - The popt libraries (for commandline option handling), package named popt-devel or popt-dev 
 
 Optional:
