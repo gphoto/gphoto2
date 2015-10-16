@@ -34,6 +34,14 @@ How do I build it?
 
 Out-of-tree builds are supported. "configure --help" may help.
 
+To build you will need besides the common build tools:
+- The popt libraries (for commandline option handling), package named popt-devel or popt-dev 
+
+Optional:
+- The EXIF library. (libexif-devel, libexif-dev or similar)
+- The JPEG library. (libjpeg-devel, libjpeg-dev, or jpeg-dev or similar)
+- The CDK library (for ncurses based configuration UI). (cdk-devel or similar)
+- The AALIB library (for ascii art rendering of previews). (aalib-devel or similar)
 
 How do I test it?
 ------------------
