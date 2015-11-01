@@ -180,11 +180,14 @@ my $rawformat;
 my $bothformat;
 foreach (@allconfig) {
 	if (/^Label:/) {
-		last if ($imageformat);
+		#last if ($imageformat);
 		$inimageformat = 0;
 	}
 	if (/^Label: Image Quality 2/) { # Nikon 1
 		$imageformat = "imagequality2";
+		undef $jpgformat;
+		undef $rawformat;
+		undef $bothformat;
 		$inimageformat = 1;
 		next;
 	}
