@@ -17,12 +17,8 @@ GP_REF(	[URL_GPHOTO_HOME],
 	[http://www.gphoto.org/], 
 	[gphoto project home page])dnl
 
-GP_REF(	[URL_GPHOTO_GITHUB],
-	[http://github.com/gphoto/],
-	[gphoto github project page])
-
 GP_REF(	[URL_GPHOTO_PROJECT], 
-	[http://sourceforge.net/projects/gphoto], 
+	[https://github.com/gphoto],
 	[gphoto sourceforge project page])
 
 GP_REF(	[URL_DIGICAM_LIST],
