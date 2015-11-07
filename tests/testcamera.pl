@@ -5,6 +5,7 @@ $ENV{'LANG'} = 'C';
 
 my $gphoto2 = "gphoto2";
 
+my $debug = 0;
 
 ##################################################
 
@@ -16,10 +17,19 @@ my $havepreview = 0;
 my $havecapturetarget = 0;
 my %formats = ();
 
+# internal
+
+my $debugcnt = 0;
+
 my @lastresult = ();
 # returns TRUE on success, FALSE on fail
 sub run_gphoto2(@) {
 	my @cmdline = @_;
+
+	if ($debug) {
+		push @cmdline,"--debug","--debug-logfile=logfile.debug.$debugcnt";
+		$debugcnt++;
+	}
 
 	@lastresult = ();
 	print STDERR "running: " . join(" ",$gphoto2,@ARGV,@cmdline) . "\n";
@@ -116,6 +126,8 @@ sub run_gphoto2_capture_formats($$@) {
 		&run_gphoto2_capture($nrimages,$text,@cmd);
 	}
 }
+
+# START
 
 my $workdir = `mktemp -d /tmp/testcamera.XXXXXX`;
 chomp $workdir;
