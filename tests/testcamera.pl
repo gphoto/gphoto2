@@ -75,8 +75,9 @@ sub run_gphoto2_capture_target($$@) {
 
 	my @files = <*>;
 	if ($nrimages+1 != @files) {
-		print STDERR "*** expected $nrimages files, got " . @files . "\n";
-		print LOGFILE "*** expected $nrimages files, got " . @files . "\n";
+		my $nrfiles = @files;
+		print STDERR "*** expected $nrimages files, got " . ($nrfiles-1) . "\n";
+		print LOGFILE "*** expected $nrimages files, got " . ($nrfiles-1) . "\n";
 	}
 	&remove_all_files();
 }
@@ -145,6 +146,7 @@ if (!run_gphoto2("-L")) {
 }
 
 # Basics
+ok(run_gphoto2("--auto-detect"),"testing --auto-detect");
 ok(run_gphoto2("-L"),"testing -L");
 ok(run_gphoto2("-l"),"testing -l");
 
@@ -256,6 +258,14 @@ if ($havecapture) {
 if ($havetriggercapture) {
 	run_gphoto2_capture_formats(1,"trigger capture","--trigger-capture","--wait-event-and-download=5s");
 }
+if (grep (/eosremoterelease/,@allconfig)) {
+	run_gphoto2_capture(1,"eos remote release","--set-config","eosremoterelease=Immediate","--wait-event=2s","--set-config","eosremoterelease='Release Full'","--wait-event-and-download=5s");
+}
+
+if (grep (/eosremoterelease/,@allconfig)) {
+	run_gphoto2_capture(1,"eos remote release","--set-config","eosremoterelease=Immediate","--wait-event-and-download=2s","--set-config","eosremoterelease=Release Full","--wait-event-and-download=5s");
+}
+
 if ($havepreview) {
 	ok(run_gphoto2("--capture-preview"),"testing --capture-preview");
 	remove_all_files();
