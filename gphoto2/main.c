@@ -148,7 +148,7 @@ static int
 get_path_for_file (const char *folder, const char *name, CameraFileType type, CameraFile *file, char **path)
 {
 	unsigned int i, l;
-	char *s, b[1024];
+	char *s = NULL, b[1024];
 	time_t t = 0;
 	struct tm *tm;
 	int hour12;
@@ -1663,6 +1663,12 @@ cb_arg_run (poptContext __unused__ ctx,
 	case ARG_RESET: {
 		GPPort		*port;
 		GPPortInfo	info;
+
+		/* If a camera is already open, close it, as we need a new port */
+		if (gp_params.camera) {
+			gp_camera_exit (gp_params.camera, gp_params.context);
+			/* exit, not free. will reopen on next command. */
+		}
 
 		params->p.r = gp_port_new (&port);
 		if (params->p.r != GP_OK) {
