@@ -206,6 +206,7 @@ foreach (@allconfig) {
 		next;
 	}
 	if (/^Label: Image Quality/) {	# Nikon
+		last if ($imageformat eq "imagequality2");
 		$imageformat = "imagequality";
 		$inimageformat = 1;
 		next;
