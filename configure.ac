@@ -245,9 +245,9 @@ GP_CHECK_LIBRARY([LIBEXIF],[libexif],[>= 0.3.2],
 
 dnl ---------------------------------------------------------------------------
 dnl aalib: gphoto2 (the frontend) has been designed as a command-line tool.
-dnl        However, life previews make only sense when you can actually 
+dnl        However, live previews make only sense when you can actually
 dnl        see the preview. This is where aalib fits in - it gives you the
-dnl        possibility to view life-previews on any console.
+dnl        possibility to view live previews on any console.
 dnl ---------------------------------------------------------------------------
 aa_msg="no (http://www.sourceforge.net/projects/aa-project)"
 try_aa=:
