@@ -26,7 +26,7 @@ install:
   - git_sha=$(git rev-parse HEAD); echo git checkout -qf ${git_sha}; git checkout -qf ${git_sha}
   - echo $PATH; which autopoint; which gettext
   - autoreconf -vis
-  - ./configure --prefix=/usr --libdir=/usr/lib --enable-silent-rules
+  - ./configure --prefix=/usr --libdir=/usr/lib --enable-silent-rules --with-camlibs=directory
   - make && sudo make install
   - cd ..
 
