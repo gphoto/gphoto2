@@ -11,14 +11,30 @@ env:
  - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev libaa1-dev"
  - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev libaa1-dev libcdk5-dev"
 
+# Note: Keep the sudo commands in .travis.yml - they do not work from
+#       a helper shell script.
 before_install:
- - sudo apt-get update -qq || brew update
- - sudo apt-get install autopoint $EXTRALIBS || brew install gettext popt
+  - travis_retry git clone --depth=50 https://github.com/gphoto/libgphoto2.git lgp2
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update > /dev/null; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install $(sh lgp2/.travis-translate-pkgs $EXTRALIBS); fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export PATH=/usr/local/opt/gettext/bin:$PATH; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y $(sh lgp2/.travis-translate-pkgs $EXTRALIBS); fi
+
+install:
+  - cd lgp2
+  - git_sha=$(git rev-parse HEAD); echo git checkout -qf ${git_sha}; git checkout -qf ${git_sha}
+  - echo $PATH; which autopoint; which gettext
+  - autoreconf -vis
+  - ./configure --prefix=/usr --libdir=/usr/lib --enable-silent-rules
+  - make && sudo make install
+  - cd ..
 
 script:
- - export PATH=/usr/local/opt/gettext/bin:$PATH ; mkdir lg2 ; cd lg2 ; git clone https://github.com/gphoto/libgphoto2.git ; cd libgphoto2 ; autoreconf -i -f ; ./configure --prefix=/usr --libdir=/usr/lib && make && sudo make install ; cd ../../
- - autoreconf -i -f
- - ./configure && make && make check || cat tests/log/test037.out
+  - autoreconf -v -i -f
+  - ./configure --prefix=$PWD/_i
+  - make && make check || cat tests/log/test037.out
+  - make && make install && make installcheck
 
 notifications:
   email:
