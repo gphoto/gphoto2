@@ -3,6 +3,9 @@ language: c
 os:
  - linux
 
+compiler:
+ - gcc
+
 env:
  - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev"
  - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev libaa1-dev"
@@ -11,9 +14,6 @@ env:
 before_install:
  - sudo apt-get update -qq || brew update
  - sudo apt-get install autopoint $EXTRALIBS || brew install gettext popt
-
-compiler:
- - gcc
 
 script:
  - export PATH=/usr/local/opt/gettext/bin:$PATH ; mkdir lg2 ; cd lg2 ; git clone https://github.com/gphoto/libgphoto2.git ; cd libgphoto2 ; autoreconf -i -f ; ./configure --prefix=/usr --libdir=/usr/lib && make && sudo make install ; cd ../../
