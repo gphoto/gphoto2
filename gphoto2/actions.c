@@ -1,6 +1,6 @@
 /* actions.c
  *
- * Copyright 2002 Lutz Müller <lutz@users.sourceforge.net>
+ * Copyright 2002 Lutz Mueller <lutz@users.sourceforge.net>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -1543,6 +1543,13 @@ static int
 _find_widget_by_name (GPParams *p, const char *name, CameraWidget **child, CameraWidget **rootconfig) {
 	int	ret;
 
+	*rootconfig = NULL;
+	ret = gp_camera_get_single_config (p->camera, name, child, p->context);
+	if (ret == GP_OK) {
+		rootconfig = child;
+		return GP_OK;
+	}
+
 	ret = gp_camera_get_config (p->camera, rootconfig, p->context);
 	if (ret != GP_OK) return ret;
 	ret = gp_widget_get_child_by_name (*rootconfig, name, child);
@@ -1897,7 +1904,7 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 		break;
 	}
 	if (ret == GP_OK) {
-		ret = gp_camera_set_config (p->camera, rootconfig, p->context);
+		ret = gp_camera_set_single_config (p->camera, name, child, p->context);
 		if (ret != GP_OK)
 			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s."), value, name);
 	}
@@ -1965,7 +1972,7 @@ set_config_index_action (GPParams *p, const char *name, const char *value) {
 		break;
 	}
 	if (ret == GP_OK) {
-		ret = gp_camera_set_config (p->camera, rootconfig, p->context);
+		ret = gp_camera_set_single_config (p->camera, name, child, p->context);
 		if (ret != GP_OK)
 			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s."), value, name);
 	}
@@ -2105,7 +2112,7 @@ set_config_value_action (GPParams *p, const char *name, const char *value) {
 		break;
 	}
 	if (ret == GP_OK) {
-		ret = gp_camera_set_config (p->camera, rootconfig, p->context);
+		ret = gp_camera_set_single_config (p->camera, name, child, p->context);
 		if (ret != GP_OK)
 			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s."), value, name);
 	}
