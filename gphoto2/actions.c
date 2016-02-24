@@ -1904,7 +1904,10 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 		break;
 	}
 	if (ret == GP_OK) {
-		ret = gp_camera_set_single_config (p->camera, name, child, p->context);
+		if (child == rootconfig)
+			ret = gp_camera_set_single_config (p->camera, name, child, p->context);
+		else
+			ret = gp_camera_set_config (p->camera, rootconfig, p->context);
 		if (ret != GP_OK)
 			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s."), value, name);
 	}
@@ -1972,7 +1975,10 @@ set_config_index_action (GPParams *p, const char *name, const char *value) {
 		break;
 	}
 	if (ret == GP_OK) {
-		ret = gp_camera_set_single_config (p->camera, name, child, p->context);
+		if (child == rootconfig)
+			ret = gp_camera_set_single_config (p->camera, name, child, p->context);
+		else
+			ret = gp_camera_set_config (p->camera, rootconfig, p->context);
 		if (ret != GP_OK)
 			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s."), value, name);
 	}
@@ -2112,7 +2118,10 @@ set_config_value_action (GPParams *p, const char *name, const char *value) {
 		break;
 	}
 	if (ret == GP_OK) {
-		ret = gp_camera_set_single_config (p->camera, name, child, p->context);
+		if (child == rootconfig)
+			ret = gp_camera_set_single_config (p->camera, name, child, p->context);
+		else
+			ret = gp_camera_set_config (p->camera, rootconfig, p->context);
 		if (ret != GP_OK)
 			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s."), value, name);
 	}
