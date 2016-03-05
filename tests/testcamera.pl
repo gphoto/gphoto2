@@ -245,6 +245,13 @@ if ($imageformat)  {
 	$formats{'jpg'} = "$imageformat=$jpgformat";
 	$formats{'both'} = "$imageformat=$bothformat";
 	$formats{'raw'} = "$imageformat=$rawformat";
+
+	print "jpg is $formats{'jpg'}\n";
+	print "both is $formats{'both'}\n";
+	print "raw is $formats{'raw'}\n";
+	print LOGFILE "jpg is $formats{'jpg'}\n";
+	print LOGFILE "both is $formats{'both'}\n";
+	print LOGFILE "raw is $formats{'raw'}\n";
 } else {
 	print "NO imageformat ... just jpeg?\n";
 }
