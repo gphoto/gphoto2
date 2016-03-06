@@ -1546,7 +1546,7 @@ _find_widget_by_name (GPParams *p, const char *name, CameraWidget **child, Camer
 	*rootconfig = NULL;
 	ret = gp_camera_get_single_config (p->camera, name, child, p->context);
 	if (ret == GP_OK) {
-		rootconfig = child;
+		*rootconfig = *child;
 		return GP_OK;
 	}
 
@@ -1578,19 +1578,19 @@ _find_widget_by_name (GPParams *p, const char *name, CameraWidget **child, Camer
 			if (ret != GP_OK)
 				break;
 			*child = tmp;
-			if (!s) /* end of path */
-				break;
+			if (!s) {
+				/* end of path */
+				free (newname);
+				return GP_OK;
+			}
 			part = s+1;
 			while (part[0] == '/')
 				part++;
 		}
-		if (s) { /* if we have stuff left over, we failed */
-			gp_context_error (p->context, _("%s not found in configuration tree."), newname);
-			free (newname);
-			gp_widget_free (*rootconfig);
-			return GP_ERROR;
-		}
+		gp_context_error (p->context, _("%s not found in configuration tree."), newname);
 		free (newname);
+		gp_widget_free (*rootconfig);
+		return GP_ERROR;
 	}
 	return GP_OK;
 }
