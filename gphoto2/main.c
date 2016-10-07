@@ -445,7 +445,8 @@ save_camera_file_to_file (
 		unlink(s);
 		if (-1 == rename (curname, s)) {
 			/* happens if the user specified a absolute path with --filename */
-			if (errno == EXDEV) {
+			/* EPERM happens on windows, see https://github.com/gphoto/libgphoto2/issues/97 */
+			if ((errno == EXDEV) || (errno == EPERM)) {
 				char buf[8192];
 				int in_fd, out_fd;
 
