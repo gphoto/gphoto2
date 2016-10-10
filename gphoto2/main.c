@@ -1038,6 +1038,8 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 					(result == GP_ERROR_CANCEL)		||
 					(result == GP_ERROR_NO_SPACE)		||
 					(result == GP_ERROR_IO_USB_CLAIM)	||
+					(result == GP_ERROR_IO_LOCK)		||
+					(result == GP_ERROR_CAMERA_BUSY)	||
 					(result == GP_ERROR_OS_FAILURE)
 				)
 					return (result);
