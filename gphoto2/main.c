@@ -1104,7 +1104,7 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 				 */
 				do {
 					next_pic_time.tv_sec += glob_interval;
-				} while (timediff_now (&next_pic_time) < 0);
+				} while (glob_interval && (timediff_now (&next_pic_time) < 0));
 			}
 			capture_now = 0;
 		} else {
