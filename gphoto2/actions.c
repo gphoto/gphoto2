@@ -1,6 +1,7 @@
 /* actions.c
  *
  * Copyright 2002 Lutz Mueller <lutz@users.sourceforge.net>
+ * Copyright 2016 Marcus Meissner <marcus@jet.franken.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
