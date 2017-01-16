@@ -277,4 +277,6 @@ if (grep (/eosremoterelease/,@allconfig)) {
 if ($havepreview) {
 	ok(run_gphoto2("--capture-preview"),"testing --capture-preview");
 	remove_all_files();
+	ok(run_gphoto2("--capture-preview"),"testing --capture-preview 2nd time");
+	remove_all_files();
 }
