@@ -1,13 +1,13 @@
 '\" t
 .\"     Title: gphoto2
 .\"    Author: The gPhoto2 Team
-.\" Generator: DocBook XSL Stylesheets v1.78.1 <http://docbook.sf.net/>
-.\"      Date: <pubdate>2009-08-09</pubdate>August 2006
+.\" Generator: DocBook XSL Stylesheets v1.79.0 <http://docbook.sf.net/>
+.\"      Date: <pubdate>2015-08-01</pubdate>August 2006
 .\"    Manual: The gPhoto2 Reference (the man pages)
 .\"    Source: [FIXME: source]
 .\"  Language: English
 .\"
-.TH "GPHOTO2" "1" "<pubdate>2009-08-09</pubdate>August 2006" "[FIXME: source]" "The gPhoto2 Reference (the man"
+.TH "GPHOTO2" "1" "<pubdate>2015-08-01</pubdate>August 2006" "[FIXME: source]" "The gPhoto2 Reference (the man"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -63,7 +63,7 @@ gphoto2 \- command\-line gphoto2 client
 .br
 [\-\-get\-audio\-data\ \fIRANGE\ or\ NAME\fR] [\-\-get\-all\-audio\-data]
 .br
-[\-\-get\-meta\-data\ \fIRANGE\ or\ NAME\fR] [\-\-get\-all\-meta\-data] [\-\-upload\-meta\-data\ \fIFILENAME\fR]
+[\-\-get\-metadata\ \fIRANGE\ or\ NAME\fR] [\-\-get\-all\-metadata] [\-\-upload\-metadata\ \fIFILENAME\fR]
 .br
 [\-\-force\-overwrite]
 .br
@@ -385,17 +385,17 @@ Get audio data given in range\&.
 Get all audio data from folder\&.
 .RE
 .PP
-\fB\-\-upload\-meta\-data\fR \fIFILENAME\fR
+\fB\-\-upload\-metadata\fR \fIFILENAME\fR
 .RS 4
 Upload meta data for the specific file, taken from a file prefix with meta_ \&.
 .RE
 .PP
-\fB\-\-get\-meta\-data\fR \fIRANGE\fR
+\fB\-\-get\-metadata\fR \fIRANGE\fR
 .RS 4
 Get meta data given in range\&.
 .RE
 .PP
-\fB\-\-get\-all\-meta\-data\fR
+\fB\-\-get\-all\-metadata\fR
 .RS 4
 Get all meta data from folder\&.
 .RE
@@ -434,6 +434,11 @@ Upload a file to camera\&.
 \fB\-\-capture\-preview\fR
 .RS 4
 Capture a quick preview\&.
+.RE
+.PP
+\fB\-B\fR\fB\-\-bulb\fR \fISECONDS\fR
+.RS 4
+Do a bulb capture for the specified amount of seconds\&.
 .RE
 .PP
 \fB\-\-show\-preview\fR
@@ -830,6 +835,7 @@ is given, the time counter is reset to the value given by the
 .PP
 libgphoto2(3),
 \m[blue]\fBThe gPhoto2 Manual\fR\m[]\&\s-2\u[1]\d\s+2,
+
 \m[blue]\fBThe gphoto\&.org website\fR\m[]\&\s-2\u[2]\d\s+2,
 \m[blue]\fBDigital Camera Support for UNIX, Linux and BSD\fR\m[]\&\s-2\u[3]\d\s+2
 .SH "EXAMPLES"
