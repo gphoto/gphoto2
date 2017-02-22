@@ -82,7 +82,9 @@ AC_CHECK_FUNCS([signal pause sleep])
 
 
 AC_HEADER_STDC
-AC_CHECK_HEADERS([fcntl.h sys/time.h])
+AC_CHECK_HEADERS([fcntl.h process.h signal.h sys/time.h sys/wait.h])
+
+AC_CHECK_FUNCS([spawnve])
 
 AC_CHECK_LIB(m,floor)
 
@@ -167,6 +169,58 @@ AC_SUBST([CDK_CFLAGS])
 AC_SUBST([CDK_LIBS])
 GP_CONFIG_MSG([Interactive config support],[$cdk_msg])
 
+dnl We emulate signals in Windows
+dnl This is taken from: https://github.com/OpenVPN/openvpn/blob/master/configure.ac
+AC_CHECK_DECLS(
+	[SIGHUP],
+	,
+	[AC_DEFINE([SIGHUP], [1], [SIGHUP replacement])],
+	[[
+		#ifdef HAVE_SIGNAL_H
+		#include <signal.h>
+		#endif
+	]]
+)
+AC_CHECK_DECLS(
+	[SIGINT],
+	,
+	[AC_DEFINE([SIGINT], [2], [SIGINT replacement])],
+	[[
+		#ifdef HAVE_SIGNAL_H
+		#include <signal.h>
+		#endif
+	]]
+)
+AC_CHECK_DECLS(
+	[SIGUSR1],
+	,
+	[AC_DEFINE([SIGUSR1], [10], [SIGUSR1 replacement])],
+	[[
+		#ifdef HAVE_SIGNAL_H
+		#include <signal.h>
+		#endif
+	]]
+)
+AC_CHECK_DECLS(
+	[SIGUSR2],
+	,
+	[AC_DEFINE([SIGUSR2], [12], [SIGUSR2 replacement])],
+	[[
+		#ifdef HAVE_SIGNAL_H
+		#include <signal.h>
+		#endif
+	]]
+)
+AC_CHECK_DECLS(
+	[SIGTERM],
+	,
+	[AC_DEFINE([SIGTERM], [15], [SIGTERM replacement])],
+	[[
+		#ifdef HAVE_SIGNAL_H
+		#include <signal.h>
+		#endif
+	]]
+)
 
 dnl ---------------------------------------------------------------------------
 dnl libjpeg: Right now, libjpeg is only used to interpret JPEG previews in

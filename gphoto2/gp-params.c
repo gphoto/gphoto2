@@ -30,7 +30,9 @@
 #include <stdio.h>
 #include <errno.h>
 
+#ifndef HAVE_SPAWNVE
 #include "spawnve.h"
+#endif
 
 #ifndef MAX
 #define MAX(x, y) (((x)>(y))?(x):(y))

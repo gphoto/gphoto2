@@ -19,6 +19,9 @@
  */
 
 #include "config.h"
+#if defined (HAVE_SIGNAL_H)
+#include <signal.h>
+#endif
 #include "actions.h"
 #include "foreach.h"
 #include <gphoto2/gphoto2-port-info-list.h>
