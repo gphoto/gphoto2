@@ -1,10 +1,9 @@
+# gphoto2
 
-#gphoto2
-
-##What is gphoto2?
+## What is gphoto2?
 gphoto2 is a command-line frontend to libgphoto2.
 
-##Where can I find more information?
+## Where can I find more information?
 Visit the gphoto project web site. It should always be found at least
 at one of the following URLs:
  - http://www.gphoto.com/
@@ -15,7 +14,7 @@ at one of the following URLs:
 
 The man page is in the file doc/gphoto2.1
 
-##How do I build it?
+## How do I build it?
 ```
 autoreconf -is  #If using SVN source
 configure
@@ -35,7 +34,7 @@ Optional:
 - The CDK library (for ncurses based configuration UI). (cdk-devel or similar)
 - The AALIB library (for ascii art rendering of previews). (aalib-devel or similar)
 
-##How do I test it?
+## How do I test it?
 ```
 make check
 ```
