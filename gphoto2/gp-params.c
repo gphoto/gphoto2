@@ -136,7 +136,7 @@ ctx_progress_update_func (GPContext __unused__ *context, unsigned int id,
         static const char spinner[] = "\\|/-";
         unsigned int i, width, pos;
         float rate;
-        char remaining[10], buf[4];
+        char remaining[10], buf[10];
         time_t sec = 0;
 
         /* Guard against buggy camera drivers */
