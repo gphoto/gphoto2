@@ -1616,7 +1616,7 @@ static int
 print_widget (GPParams *p, const char *name, CameraWidget *widget) {
 	const char *label;
 	CameraWidgetType	type;
-	int ret;
+	int ret, readonly;
 
 	ret = gp_widget_get_type (widget, &type);
 	if (ret != GP_OK)
@@ -1624,8 +1624,13 @@ print_widget (GPParams *p, const char *name, CameraWidget *widget) {
 	ret = gp_widget_get_label (widget, &label);
 	if (ret != GP_OK)
 		return ret;
+		
+	ret = gp_widget_get_readonly (widget, &readonly);
+	if (ret != GP_OK)
+		return ret;
 
 	printf ("Label: %s\n", label); /* "Label:" is not i18ned, the "label" variable is */
+	printf ("Readonly: %d\n", readonly);
 	switch (type) {
 	case GP_WIDGET_TEXT: {		/* char *		*/
 		char *txt;
