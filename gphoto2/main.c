@@ -1546,7 +1546,9 @@ cb_arg_init (poptContext __unused__ ctx,
 	case ARG_VERSION:
 		params->p.r = print_version_action (&gp_params);
 		break;
-
+	case ARG_SHELL:
+		gp_params.flags |= FLAGS_SHELL;
+		break;
 	default:
 		break;
 	}

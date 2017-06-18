@@ -948,42 +948,51 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 {
 	CameraFile *file;
 	int	r, fd;
-        char    tmpname[20], *tmpfilename;
-
-	strcpy (tmpname, "tmpfileXXXXXX");
-	fd = mkstemp(tmpname);
-	if (fd == -1) {
-		CR (gp_file_new (&file));
-		tmpfilename = NULL;
-	} else {
-		r = gp_file_new_from_fd (&file, fd);
-		if (r < GP_OK) {
-			close (fd);
-			unlink (tmpname);
-			return r;
+	char tmpname[20], *tmpfilename;
+	
+	if (p->flags & FLAGS_STDOUT) {
+		fd = dup(fileno(stdout));
+	}else{
+		strcpy (tmpname, "tmpfileXXXXXX");
+		fd = mkstemp(tmpname);
+		if (fd == -1) {
+			CR (gp_file_new (&file));
+			tmpfilename = NULL;
+		} else {
+			r = gp_file_new_from_fd (&file, fd);
+			if (r < GP_OK) {
+				close (fd);
+				unlink (tmpname);
+				return r;
+			}
+			tmpfilename = tmpname;
 		}
-		tmpfilename = tmpname;
 	}
-
+	CR (gp_file_new_from_fd (&file, fd));
+	
 #ifdef HAVE_AA
 	if (viewasciiart)
 		r = gp_cmd_capture_preview (p->camera, file, p->context);
 	else
 #endif
 		r = gp_camera_capture_preview (p->camera, file, p->context);
-
+	fflush(stdout);
 	if (r < 0) {
-		gp_file_unref (file);
+		if(!p->flags & FLAGS_SHELL){
+			gp_file_unref (file);
+		}
 		unlink (tmpname);
 		return (r);
 	}
 
 	/* name it file_%filename if --filename is set, otherwise capture_preview */
-	r = save_camera_file_to_file (NULL, "capture_preview", p->filename?GP_FILE_TYPE_PREVIEW:GP_FILE_TYPE_NORMAL, file, tmpfilename);
-	gp_file_unref (file);
-	if (r < 0) {
-		unlink (tmpname);
-		return (r);
+	if(!p->flags & FLAGS_SHELL){
+		r = save_camera_file_to_file (NULL, "capture_preview", p->filename?GP_FILE_TYPE_PREVIEW:GP_FILE_TYPE_NORMAL, file, tmpfilename);
+		gp_file_unref (file);
+		if (r < 0) {
+			unlink (tmpname);
+			return (r);
+		}
 	}
 	return (GP_OK);
 }
@@ -1011,7 +1020,7 @@ action_camera_capture_movie (GPParams *p, const char *arg)
 	int		frames,captured_frames=0;
 	char		*xname;
 	struct timeval	starttime;
-
+	
 	if (p->flags & FLAGS_STDOUT) {
 		fd = dup(fileno(stdout));
 		xname = "stdout";
