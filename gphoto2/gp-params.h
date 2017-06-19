@@ -36,7 +36,8 @@ typedef enum {
 	FLAGS_RESET_CAPTURE_INTERVAL = 1 << 7,
 	FLAGS_KEEP 		= 1 << 8,
 	FLAGS_KEEP_RAW 		= 1 << 9,
-	FLAGS_SKIP_EXISTING	= 1 << 10
+	FLAGS_SKIP_EXISTING	= 1 << 10,
+	FLAGS_SHELL	= 1 << 11
 } Flags;
 
 typedef enum {
