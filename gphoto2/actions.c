@@ -1732,6 +1732,8 @@ print_widget (GPParams *p, const char *name, CameraWidget *widget) {
 	case GP_WIDGET_BUTTON:
 		break;
 	}
+	
+	printf ("END\n");
 	return GP_OK;
 }
 
