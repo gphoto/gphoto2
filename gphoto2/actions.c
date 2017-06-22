@@ -948,11 +948,11 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 {
 	CameraFile *file;
 	int	r, fd;
-	char tmpname[20], *tmpfilename;
+	char tmpname[20], *tmpfilename = NULL;
 	
 	if (p->flags & FLAGS_STDOUT) {
 		fd = dup(fileno(stdout));
-	}else{
+	} else {
 		strcpy (tmpname, "tmpfileXXXXXX");
 		fd = mkstemp(tmpname);
 		if (fd == -1) {
@@ -969,7 +969,7 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 		}
 	}
 	CR (gp_file_new_from_fd (&file, fd));
-	
+
 #ifdef HAVE_AA
 	if (viewasciiart)
 		r = gp_cmd_capture_preview (p->camera, file, p->context);
@@ -978,15 +978,14 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 		r = gp_camera_capture_preview (p->camera, file, p->context);
 	fflush(stdout);
 	if (r < 0) {
-		if(!p->flags & FLAGS_SHELL){
+		if(!(p->flags & FLAGS_STDOUT))
 			gp_file_unref (file);
-		}
 		unlink (tmpname);
-		return (r);
+		return r;
 	}
 
 	/* name it file_%filename if --filename is set, otherwise capture_preview */
-	if(!p->flags & FLAGS_SHELL){
+	if(!(p->flags & FLAGS_STDOUT)) {
 		r = save_camera_file_to_file (NULL, "capture_preview", p->filename?GP_FILE_TYPE_PREVIEW:GP_FILE_TYPE_NORMAL, file, tmpfilename);
 		gp_file_unref (file);
 		if (r < 0) {
@@ -994,7 +993,7 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 			return (r);
 		}
 	}
-	return (GP_OK);
+	return GP_OK;
 }
 
 int
