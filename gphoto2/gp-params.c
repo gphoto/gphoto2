@@ -234,15 +234,13 @@ static void
 ctx_message_func (GPContext __unused__ *context, const char *str, 
 		  void __unused__ *data)
 {
-        int c;
-
         printf ("%s\n", str);
 
 	/* Only ask for confirmation if the user can give it. */
 	if (isatty (STDOUT_FILENO) && isatty (STDIN_FILENO)) {
 		printf (_("Press any key to continue.\n"));
 		fflush (stdout);
-		c = fgetc (stdin);
+		fgetc (stdin);
 	} else
 		fflush (stdout);
 }
