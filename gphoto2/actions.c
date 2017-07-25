@@ -1347,6 +1347,9 @@ print_storage_info (GPParams *p)
 		if (sinfos[i].fields & GP_STORAGEINFO_FREESPACEIMAGES)
 			printf ("freeimages=%lu\n", (unsigned long)sinfos[i].freeimages);
 	}
+	if (sinfos)
+		free(sinfos);
+
 	return GP_OK;
 }
 
