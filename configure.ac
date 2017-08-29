@@ -35,7 +35,6 @@ m4_pattern_allow([AM_PROG_AR], [AM_PROG_AR])
 AM_PROG_LIBTOOL
 AC_PROG_INSTALL
 AC_SYS_LARGEFILE
-GP_PKG_CONFIG
 
 GP_CONFIG_MSG([Compiler],[${CC}])
 AC_DEFINE_UNQUOTED([HAVE_CC],"$CC",[The C compiler we're using])
