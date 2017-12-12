@@ -121,7 +121,7 @@ static const struct _ShellFunctionTable {
 	{"cd", shell_cd, N_("Change to a directory on the camera"),
 	 N_("directory"), 1},
 	{"lcd", shell_lcd, N_("Change to a directory on the local drive"),
-	 N_("directory"), 1},
+	 N_("directory"), 0},
 	{"exit", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"get", shell_get, N_("Download a file"), N_("[directory/]filename"), 1},
 	{"put", shell_put, N_("Upload a file"), N_("[directory/]filename"), 1},
@@ -613,7 +613,7 @@ shell_cd (Camera __unused__ *camera, const char *arg)
 	int arg_count = shell_arg_count (arg);
 
 	if (!arg_count)
-		return (GP_OK);
+		return GP_OK;
 
 	/* shell_arg(arg, 0, arg_dir); */
 
@@ -916,12 +916,18 @@ shell_capture_preview (Camera __unused__ *camera, const char __unused__ *args) {
 
 static int
 shell_wait_event (Camera *camera, const char *args) {
-	return action_camera_wait_event (p, DT_NO_DOWNLOAD, args);
+	char argument[1024];
+
+	shell_arg (args, 0, argument);
+	return action_camera_wait_event (p, DT_NO_DOWNLOAD, argument);
 }
 
 static int
 shell_capture_tethered (Camera *camera, const char *args) {
-	return action_camera_wait_event (p, DT_DOWNLOAD, args);
+	char argument[1024];
+
+	shell_arg (args, 0, argument);
+	return action_camera_wait_event (p, DT_DOWNLOAD, argument);
 }
 
 

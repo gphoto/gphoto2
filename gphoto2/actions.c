@@ -1131,7 +1131,7 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 		} else {
 			wp.type = WAIT_STRING;
 			wp.u.str = arg;
-			printf ( _("Waiting for %s event from camera. Press Ctrl-C to abort.\n"), wp.u.str);
+			printf ( _("Waiting for '%s' event from camera. Press Ctrl-C to abort.\n"), wp.u.str);
 		}
 	}
 
