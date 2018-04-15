@@ -1255,6 +1255,14 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 				return GP_OK;
 			}
 			break;
+		case GP_EVENT_FILE_CHANGED:
+			fn = (CameraFilePath*)data;
+			printf("FILECHANGED %s %s\n",fn->name, fn->folder);
+			if ((wp.type == WAIT_STRING) && strstr("FILECHANGED",wp.u.str)) {
+				printf(_("event found, stopping wait!\n"));
+				return GP_OK;
+			}
+			break;
 		}
 		free (data);
 	}
