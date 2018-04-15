@@ -240,18 +240,29 @@ foreach (@allconfig) {
 
 if ($imageformat)  {
 	die "no jpgformat found in $imageformat" unless (defined($jpgformat));
-	die "no bothformat found in $imageformat" unless (defined($bothformat));
-	die "no rawformat found in $imageformat" unless (defined($rawformat));
 	$formats{'jpg'} = "$imageformat=$jpgformat";
-	$formats{'both'} = "$imageformat=$bothformat";
-	$formats{'raw'} = "$imageformat=$rawformat";
-
 	print "jpg is $formats{'jpg'}\n";
-	print "both is $formats{'both'}\n";
-	print "raw is $formats{'raw'}\n";
 	print LOGFILE "jpg is $formats{'jpg'}\n";
-	print LOGFILE "both is $formats{'both'}\n";
-	print LOGFILE "raw is $formats{'raw'}\n";
+
+	if (defined($bothformat)) {
+		$formats{'both'} = "$imageformat=$bothformat";
+		print LOGFILE "both is $formats{'both'}\n";
+		print "both is $formats{'both'}\n";
+	} else {
+		warn "no bothformat found in $imageformat";
+	}
+
+	if (defined($rawformat)) {
+		$formats{'raw'} = "$imageformat=$rawformat";
+		print LOGFILE "raw is $formats{'raw'}\n";
+		print "raw is $formats{'raw'}\n";
+	} else {
+		warn "no rawformat found in $imageformat" 
+	}
+	if (!defined($rawformat) && !defined($bothformat)) {
+		undef %formats;
+	}
+
 } else {
 	print "NO imageformat ... just jpeg?\n";
 }
