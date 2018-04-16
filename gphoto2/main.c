@@ -910,6 +910,11 @@ wait_and_handle_event (long waittime, CameraEventType *type, int download) {
 			printf (_("Event FOLDER_ADDED %s/%s during wait, ignoring.\n"), path->folder, path->name);
 		free (data);
 		break;
+	case GP_EVENT_FILE_CHANGED:
+		if (!(gp_params.flags & FLAGS_QUIET))
+			printf (_("Event FILE_CHANGED %s/%s during wait, ignoring.\n"), path->folder, path->name);
+		free (data);
+		break;
 	case GP_EVENT_FILE_ADDED:
 		result = save_captured_file (path, download);
 		free (data);
