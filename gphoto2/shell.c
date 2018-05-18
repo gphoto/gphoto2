@@ -95,6 +95,7 @@ static int shell_set_config    (Camera *, const char *);
 static int shell_set_config_index    (Camera *, const char *);
 static int shell_set_config_value    (Camera *, const char *);
 static int shell_capture_image (Camera *, const char *);
+static int shell_trigger_capture (Camera *, const char *);
 static int shell_capture_tethered (Camera *, const char *);
 static int shell_capture_image_and_download (Camera *, const char *);
 static int shell_capture_preview (Camera *, const char *);
@@ -147,6 +148,7 @@ static const struct _ShellFunctionTable {
 	{"set-config", shell_set_config, N_("Set configuration variable"), N_("name=value"), 1},
 	{"set-config-index", shell_set_config_index, N_("Set configuration variable index"), N_("name=valueindex"), 1},
 	{"set-config-value", shell_set_config_value, N_("Set configuration variable"), N_("name=value"), 1},
+	{"trigger-capture", shell_trigger_capture, N_("Triggers the capture of a single image"), NULL, 0},
 	{"capture-image", shell_capture_image, N_("Capture a single image"), NULL, 0},
 	{"capture-image-and-download", shell_capture_image_and_download, N_("Capture a single image and download it"), NULL, 0},
 	{"capture-preview", shell_capture_preview, N_("Capture a preview image"), NULL, 0},
@@ -897,6 +899,11 @@ shell_set_config_index (Camera __unused__ *camera, const char *args) {
 	return (GP_OK);
 }
 
+
+static int
+shell_trigger_capture (Camera __unused__ *camera, const char __unused__ *args) {
+	return trigger_capture ();
+}
 
 static int
 shell_capture_image (Camera __unused__ *camera, const char __unused__ *args) {
