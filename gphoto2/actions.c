@@ -952,6 +952,7 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 	
 	if (p->flags & FLAGS_STDOUT) {
 		fd = dup(fileno(stdout));
+		CR (gp_file_new_from_fd (&file, fd));
 	} else {
 		strcpy (tmpname, "tmpfileXXXXXX");
 		fd = mkstemp(tmpname);
@@ -968,7 +969,6 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 			tmpfilename = tmpname;
 		}
 	}
-	CR (gp_file_new_from_fd (&file, fd));
 
 #ifdef HAVE_AA
 	if (viewasciiart)
