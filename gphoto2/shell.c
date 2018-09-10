@@ -102,6 +102,8 @@ static int shell_capture_preview (Camera *, const char *);
 static int shell_mkdir         (Camera *, const char *);
 static int shell_rmdir         (Camera *, const char *);
 static int shell_wait_event    (Camera *, const char *);
+static int shell_summary       (Camera *, const char *);
+static int shell_storage_info  (Camera *, const char *);
 
 #define MAX_FOLDER_LEN 1024
 #define MAX_FILE_LEN 1024
@@ -143,6 +145,8 @@ static const struct _ShellFunctionTable {
 	 N_("[command]"), 0},
 	{"ls", shell_ls, N_("List the contents of the current directory"),
 	 N_("[directory/]"), 0},
+	{"summary", shell_summary, N_("Show camera summary"), NULL, 0},
+	{"storage-info", shell_storage_info, N_("Show storage information"), NULL, 0},
 	{"list-config", shell_list_config, N_("List configuration variables"), NULL, 0},
 	{"get-config", shell_get_config, N_("Get configuration variable"), N_("name"), 1},
 	{"set-config", shell_set_config, N_("Set configuration variable"), N_("name=value"), 1},
@@ -822,6 +826,18 @@ static int
 shell_list_config (Camera __unused__ *camera, const char __unused__ *args) {
 	CHECK (list_config_action (p));
 	return (GP_OK);
+}
+
+static int
+shell_summary (Camera __unused__ *camera, const char __unused__ *args) {
+	CHECK (action_camera_summary (p));
+	return GP_OK;
+}
+
+static int
+shell_storage_info (Camera __unused__ *camera, const char __unused__ *args) {
+	CHECK (print_storage_info (p));
+	return GP_OK;
 }
 
 static int
