@@ -25,7 +25,7 @@
 #include <gphoto2/gphoto2-camera.h>
 #include <gp-params.h>
 
-#define MAX_IMAGE_NUMBER                16384
+#define MAX_IMAGE_NUMBER                65536
 
 #ifdef WIN32
 #include <io.h>

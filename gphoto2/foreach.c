@@ -317,11 +317,12 @@ int
 for_each_file_in_range (GPParams *p, FileAction action,
 			const char *range)
 {
-	char	index[MAX_IMAGE_NUMBER];
+	char	*index;
 	int 	i, max = 0, r;
-	char ffolder[MAX_FOLDER_LEN], ffile[MAX_FILE_LEN];
+	char 	ffolder[MAX_FOLDER_LEN], ffile[MAX_FILE_LEN];
 
-	memset(index, 0, MAX_IMAGE_NUMBER);
+	index = calloc(MAX_IMAGE_NUMBER,1);
+	if (!index) return GP_ERROR_NO_MEMORY;
 
 	CR (parse_range (range, index, p->context));
 
