@@ -1,5 +1,10 @@
 gphoto2 2.5.17.1 development
 
+* maximum number in file ranges bumped from 16384 to 65536
+* add shell commands to match commandline: summary, storage-info, trigger-capture
+* fixed a fd leak
+* translations: updated simplified chinese
+
 gphoto2 2.5.17 release
 
 * handle GP_EVENT_FILE_CHANGED event
