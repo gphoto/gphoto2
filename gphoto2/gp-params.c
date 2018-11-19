@@ -224,8 +224,8 @@ static GPContextFeedback
 ctx_cancel_func (GPContext __unused__ *context, void __unused__ *data)
 {
         if (glob_cancel) {
-                return (GP_CONTEXT_FEEDBACK_CANCEL);
                 glob_cancel = 0;
+                return (GP_CONTEXT_FEEDBACK_CANCEL);
         } else
                 return (GP_CONTEXT_FEEDBACK_OK);
 }
