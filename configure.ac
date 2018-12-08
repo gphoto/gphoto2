@@ -10,8 +10,6 @@ AM_INIT_AUTOMAKE([-Wall -Werror gnu 1.15 dist-xz check-news silent-rules])
 GP_CHECK_SHELL_ENVIRONMENT
 GP_CONFIG_MSG([Build])
 GP_CONFIG_MSG([Source code location],[${srcdir}])
-AM_CPPFLAGS=""
-AM_LDFLAGS=""
 
 
 dnl ---------------------------------------------------------------------------
@@ -48,11 +46,6 @@ AM_GNU_GETTEXT_VERSION([0.19.1])
 AM_GNU_GETTEXT([external])
 AM_ICONV()
 GP_GETTEXT_FLAGS()
-
-dnl We cannot use AC_DEFINE_UNQUOTED() for these definitions, as
-dnl we require make to do insert the proper $(datadir) value
-AC_SUBST([localedir],["\$(datadir)/locale"])
-AM_CPPFLAGS="$AM_CPPFLAGS -DLOCALEDIR=\\\"${localedir}\\\""
 
 
 dnl ---------------------------------------------------------------------------
@@ -382,10 +375,6 @@ if test "$GCC" = "yes"; then
 	CFLAGS="$CFLAGS -g"
 	LDFLAGS="$LDFLAGS -g"
 fi
-
-AM_CPPFLAGS="$AM_CPPFLAGS -D_GPHOTO2_INTERNAL_CODE"
-AC_SUBST([AM_CPPFLAGS])
-AC_SUBST([AM_LDFLAGS])
 
 
 # ---------------------------------------------------------------------------
