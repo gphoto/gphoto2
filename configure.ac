@@ -73,26 +73,26 @@ dnl          camera. Some cameras need to be sent keep-alive-messages
 dnl          in order to prevent a shut-down. This is what we need
 dnl          pthread for.
 dnl ---------------------------------------------------------------------------
-pthread_msg=no
-try_pthread=:
-AC_ARG_WITH(pthread, [  --without-pthread         Don't use pthread],
-        if test x$withval = xno; then
-                try_pthread=false
-        fi)
-if $try_pthread; then
+pthread_msg="no"
+AC_ARG_WITH([pthread],
+    AS_HELP_STRING([--without-pthread], [Don't use pthread]),
+    [],
+    [with_pthread=yes])
+
+AS_IF([test "$with_pthread" = "yes"], [
         AC_CHECK_HEADER(pthread.h, [
-                AC_CHECK_LIB(pthread, pthread_exit, [
+            AC_CHECK_LIB(pthread, pthread_exit, [
+                AC_DEFINE(HAVE_PTHREAD,1,[Define if we use pthread.h.])
+                pthread_msg="yes (-lpthread)"
+                PTHREAD_LIBS="-lpthread"],[
+                AC_CHECK_LIB(c_r, pthread_create, [
                     AC_DEFINE(HAVE_PTHREAD,1,[Define if we use pthread.h.])
-                    pthread_msg="yes (-lpthread)"
-                    PTHREAD_LIBS="-lpthread"],[
-                    AC_CHECK_LIB(c_r, pthread_create, [ 
-                        AC_DEFINE(HAVE_PTHREAD,1,[Define if we use pthread.h.])
-                        pthread_msg="yes (-pthread)"
-                        PTHREAD_LIBS="-pthread"
-                    ])
+                    pthread_msg="yes (-pthread)"
+                    PTHREAD_LIBS="-pthread"
                 ])
+            ])
         ])
-fi
+])
 AC_SUBST([PTHREAD_LIBS])
 GP_CONFIG_MSG([pthread support],[$pthread_msg])
 
@@ -104,32 +104,29 @@ dnl      command-line access to the config, you don't need CDK, though.
 dnl      Old versions of CDK don't include fscale, therefore check for it here.
 dnl ---------------------------------------------------------------------------
 cdk_msg="no (http://dickey.his.com/cdk/cdk.html)"
-try_cdk=:
 have_cdk=false
-AC_ARG_WITH([cdk],AS_HELP_STRING([--without-cdk],[Do not use cdk]), [
-        if test x$withval = xno; then
-                try_cdk=false
-                cdk_msg="no (not requested)"
-        fi
-])
-cdk_prefix=$ac_default_prefix
-AC_ARG_WITH([cdk-prefix],AS_HELP_STRING([--with-cdk-prefix=PREFIX],
-                                        [Location of cdk]), [
-        cdk_prefix="$withval"
-])
-if $try_cdk; then
+AC_ARG_WITH([cdk],
+    AS_HELP_STRING([--without-cdk],[Do not use cdk]),
+    [],
+    [with_cdk=auto])
+AC_ARG_WITH([cdk-prefix],
+    AS_HELP_STRING([--with-cdk-prefix=PREFIX], [Location of cdk]),
+    [],
+    [with_cdk_prefix=$ac_default_prefix])
+
+AS_IF([test "$with_cdk" != "no"], [
         CPPFLAGS_save="$CPPFLAGS"
-        CPPFLAGS="-I$cdk_prefix/include $CPPFLAGS"
+        CPPFLAGS="-I$with_cdk_prefix/include $CPPFLAGS"
         AC_CHECK_HEADER([cdk/cdk.h], [
                 have_cdk=:
                 AC_PATH_PROG([CDK_CONFIG], [cdk5-config])
-                if test -n "${CDK_CONFIG}"; then
+                AS_IF([test -n "${CDK_CONFIG}"], [
                         CDK_CFLAGS=`$CDK_CONFIG --cflags`
                         CDK_LIBS=`$CDK_CONFIG --libs`
-                else
-                        CDK_CFLAGS="-I$cdk_prefix/include"
-                        CDK_LIBS="-L$cdk_prefix/lib -lcdk -lncurses"
-                fi
+                ], [
+                        CDK_CFLAGS="-I$with_cdk_prefix/include"
+                        CDK_LIBS="-L$with_cdk_prefix/lib -lcdk -lncurses"
+                ])
                 AC_DEFINE([HAVE_CDK],1,[whether we have CDK])
                 LDFLAGS_save="$LDFLAGS"
                 LDFLAGS="$CDK_LIBS"
@@ -141,7 +138,9 @@ if $try_cdk; then
                 LDFLAGS="$LDFLAGS_save"
         ])
         CPPFLAGS="$CPPFLAGS_save"
-fi
+], [
+        cdk_msg="no (not requested)"
+])
 AM_CONDITIONAL([HAVE_CDK], [$have_cdk])
 AC_SUBST([CDK_CFLAGS])
 AC_SUBST([CDK_LIBS])
@@ -204,23 +203,20 @@ dnl ---------------------------------------------------------------------------
 dnl libjpeg: Right now, libjpeg is only used to interpret JPEG previews in
 dnl          order to feed them to aalib (see below).
 dnl ---------------------------------------------------------------------------
-jpeg_msg=no
-try_jpeg=:
+jpeg_msg="no"
 have_jpeg=false
-AC_ARG_WITH([jpeg],AS_HELP_STRING([--without-jpeg],[Do not use jpeg]),[
-        if test x$withval = xno; then
-                try_jpeg=false
-                jpeg_msg="no (not requested)"
-        fi
-])
-jpeg_prefix=$ac_default_prefix
-AC_ARG_WITH(jpeg-prefix, AS_HELP_STRING([--with-jpeg-prefix=PREFIX],
-                                        [Location of jpeg]), [
-        jpeg_prefix="$withval"
-])
-if $try_jpeg; then
+AC_ARG_WITH([jpeg],
+    AS_HELP_STRING([--without-jpeg],[Do not use jpeg]),
+    [],
+    [with_jpeg=auto])
+AC_ARG_WITH([jpeg-prefix],
+    AS_HELP_STRING([--with-jpeg-prefix=PREFIX], [Location of jpeg]),
+    [],
+    [with_jpeg_prefix=$ac_default_prefix])
+
+AS_IF([test "$with_jpeg" != "no"], [
         CPPFLAGS_save="$CPPFLAGS"
-        CPPFLAGS="-I$jpeg_prefix/include"
+        CPPFLAGS="-I$with_jpeg_prefix/include"
         AC_CHECK_HEADER([jpeglib.h], [
                 AC_CHECK_LIB([jpeg], [jpeg_read_scanlines], [
                         have_jpeg=:
@@ -230,22 +226,24 @@ if $try_jpeg; then
                         JPEG_CFLAGS=$CPPFLAGS
                 ], [
                         LDFLAGS_save="$LDFLAGS"
-                        LDFLAGS="-L$jpeg_prefix/lib"
+                        LDFLAGS="-L$with_jpeg_prefix/lib"
                         AC_CHECK_LIB([jpeg], [jpeg_stdio_src], [
                                 have_jpeg=:
-                                jpeg_msg="yes (in '$jpeg_prefix')"
+                                jpeg_msg="yes (in '$with_jpeg_prefix')"
                                 AC_DEFINE([HAVE_JPEG],1,
                                           [whether we use libjpeg])
-                                JPEG_LIBS="-L$jpeg_prefix/lib -ljpeg"
+                                JPEG_LIBS="-L$with_jpeg_prefix/lib -ljpeg"
                                 JPEG_CFLAGS=$CPPFLAGS
-				], [
-				jpeg_msg="no (could not link)"
-			])
+                        ], [
+                                jpeg_msg="no (could not link)"
+                        ])
                         LDFLAGS=$LDFLAGS_save
                 ])
         ])
         CPPFLAGS="$CPPFLAGS_save"
-fi
+], [
+        jpeg_msg="no (not requested)"
+])
 AM_CONDITIONAL([HAVE_JPEG], [$have_jpeg])
 AC_SUBST([JPEG_LIBS])
 AC_SUBST([JPEG_CFLAGS])
@@ -282,28 +280,28 @@ dnl        see the preview. This is where aalib fits in - it gives you the
 dnl        possibility to view live previews on any console.
 dnl ---------------------------------------------------------------------------
 aa_msg="no (http://www.sourceforge.net/projects/aa-project)"
-try_aa=:
 have_aa=false
-AC_ARG_WITH([aalib],AS_HELP_STRING([--with-aalib],[Do use aalib for preview ASCII rendering]),[
-        if test x$withval = xno; then
-                try_aa=false
-                aa_msg="no (not requested)"
-        fi
-])
-if $try_aa; then
+AC_ARG_WITH([aalib],
+    AS_HELP_STRING([--with-aalib],[Do use aalib for preview ASCII rendering]),
+    [],
+    [with_aalib=auto])
+
+AS_IF([test "$with_aalib" != "no"], [
         AC_CHECK_HEADER([aalib.h],[
                 have_aa=:
                 aa_msg=yes
                 AC_DEFINE([HAVE_AA], [1], [whether we use aalib])
                 AC_PATH_PROG([AALIB_CONFIG], [aalib-config])
-                if test -n "${AALIB_CONFIG}"; then
+                AS_IF([test -n "${AALIB_CONFIG}"], [
                         AA_CFLAGS=`$AALIB_CONFIG --cflags`
                         AA_LIBS=`$AALIB_CONFIG --libs`
-                else
+                ], [
                         AA_LIBS="-laa"
-                fi
-	])
-fi
+                ])
+        ])
+], [
+        aa_msg="no (not requested)"
+])
 AM_CONDITIONAL([HAVE_AA], [$have_aa])
 AC_SUBST([AA_LIBS])
 AC_SUBST([AA_CFLAGS])
@@ -322,16 +320,13 @@ dnl           commands in the gphoto2 shell or to use <up> or <down> to
 dnl           navigate through the history.
 dnl ---------------------------------------------------------------------------
 rl_msg="no (http://cnswww.cns.cwru.edu/~chet/readline/rltop.html)"
-try_readline=:
 have_readline=false
-AC_ARG_WITH([readline],AS_HELP_STRING([--without-readline],
-                                      [Do not use readline]),[
-        if test "x${withval}" = "xno"; then
-                try_readline=false
-                rl_msg="no (not requested)"
-        fi
-])
-if $try_readline; then
+AC_ARG_WITH([readline],
+    AS_HELP_STRING([--without-readline], [Do not use readline]),
+    [],
+    [with_readline=auto])
+
+AS_IF([test "$with_readline" != "no"], [
         AC_CHECK_HEADER([readline/readline.h], [
             AC_CHECK_LIB([readline], [rl_completion_append_character], [
                 AC_CHECK_LIB([readline], [rl_completion_matches], [
@@ -341,7 +336,7 @@ if $try_readline; then
                     RL_CFLAGS=""
                     AC_DEFINE([HAVE_RL], [1], [whether we use readline])
                 ], [
-		    rl_msg="no (available version too old)"
+                    rl_msg="no (available version too old)"
                 ])
             ], [
                 LDFLAGS_save="$LDFLAGS"
@@ -353,12 +348,14 @@ if $try_readline; then
                     RL_CFLAGS=""
                     AC_DEFINE(HAVE_RL,1,[whether we use readline])
                 ], [
-		    rl_msg="no (couldn't link against it or version too old)"
+                    rl_msg="no (couldn't link against it or version too old)"
                 ])
                 LDFLAGS="$LDFLAGS_save"
             ])
         ])
-fi
+], [
+        rl_msg="no (not requested)"
+])
 AM_CONDITIONAL([HAVE_RL], [$have_readline])
 AC_SUBST([RL_LIBS])
 AC_SUBST([RL_CFLAGS])
