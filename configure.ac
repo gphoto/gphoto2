@@ -306,8 +306,9 @@ aa_msg="no (http://www.sourceforge.net/projects/aa-project)"
 try_aa=:
 have_aa=false
 AC_ARG_WITH([aalib],AS_HELP_STRING([--with-aalib],[Do use aalib for preview ASCII rendering]),[
-        if test x$withval = xyes; then
-                try_aa=:
+        if test x$withval = xno; then
+                try_aa=false
+                aa_msg="no (not requested)"
         fi
 ])
 if $try_aa; then
@@ -323,8 +324,6 @@ if $try_aa; then
                         AA_LIBS="-laa"
                 fi
 	])
-else
-        aa_msg="no (not requested)"
 fi
 AM_CONDITIONAL([HAVE_AA], [$have_aa])
 AC_SUBST([AA_LIBS])
