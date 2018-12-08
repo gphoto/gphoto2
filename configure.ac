@@ -5,7 +5,7 @@ AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
 AC_CONFIG_AUX_DIR([auto-aux])
-AM_INIT_AUTOMAKE([-Wall -Werror gnu 1.15 dist-bzip2 check-news])
+AM_INIT_AUTOMAKE([-Wall -Werror gnu 1.15 dist-xz check-news])
 
 GP_CHECK_SHELL_ENVIRONMENT
 GP_CONFIG_MSG([Build])
