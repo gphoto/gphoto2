@@ -2,31 +2,38 @@
 
 # We need to add the source files to the list because 
 # sometimes people without aalib or cdk make dist.
-EXTRA_DIST = \
-	gphoto2-cmd-config.c gphoto2-cmd-config.h	\
-	gphoto2-cmd-capture.c gphoto2-cmd-capture.h	\
-	i18n.h test-hook.sh
+EXTRA_DIST = test-hook.sh
 
 bin_PROGRAMS = gphoto2
 
 doc_DATA = test-hook.sh
 
-if HAVE_CDK
-CDK_FILES = gphoto2-cmd-config.c gphoto2-cmd-config.h
-else
-CDK_FILES =
-endif
+gphoto2_SOURCES =
+gphoto2_CPPFLAGS = \
+	-DLOCALEDIR=\"$(localedir)\" \
+	-D_GPHOTO2_INTERNAL_CODE
+gphoto2_CFLAGS = \
+	-I$(top_srcdir) -I$(top_srcdir)/gphoto2		\
+	$(LIBGPHOTO2_CFLAGS)				\
+	$(LIBEXIF_CFLAGS) $(RL_CFLAGS) $(POPT_CFLAGS)
+gphoto2_LDADD = \
+	$(LIBGPHOTO2_LIBS) \
+	$(PTHREAD_LIBS) $(LIBEXIF_LIBS) $(INTLLIBS) $(RL_LIBS) $(POPT_LIBS)
 
 if HAVE_AA
-AA_FILES = gphoto2-cmd-capture.c gphoto2-cmd-capture.h
-else
-AA_FILES =
+gphoto2_SOURCES += gphoto2-cmd-capture.c gphoto2-cmd-capture.h
+gphoto2_CFLAGS += $(AA_CFLAGS) $(JPEG_CFLAGS)
+gphoto2_LDADD += $(AA_LIBS) $(JPEG_LIBS)
 endif
 
-gphoto2_SOURCES = 		\
-	$(AA_FILES)		\
-	$(CDK_FILES)		\
-	$(NO_POPT_FILES)	\
+if HAVE_CDK
+gphoto2_SOURCES += gphoto2-cmd-config.c gphoto2-cmd-config.h
+gphoto2_CFLAGS += $(CDK_CFLAGS)
+gphoto2_LDADD += $(CDK_LIBS)
+endif
+
+gphoto2_SOURCES += 		\
+	i18n.h 			\
 	actions.c actions.h 	\
 	foreach.c foreach.h 	\
 	globals.h 		\
@@ -36,21 +43,6 @@ gphoto2_SOURCES = 		\
 	version.c version.h	\
 	range.c range.h 	\
 	shell.c shell.h 
-
-#gphoto2_LDFLAGS = -export-dynamic
-
-gphoto2_CPPFLAGS = \
-	-DLOCALEDIR=\"$(localedir)\" \
-	-D_GPHOTO2_INTERNAL_CODE
-
-gphoto2_CFLAGS =					\
-	-I$(top_srcdir) -I$(top_srcdir)/gphoto2		\
-	$(LIBGPHOTO2_CFLAGS) $(CDK_CFLAGS) $(AA_CFLAGS)	\
-	$(LIBEXIF_CFLAGS) $(RL_CFLAGS) $(POPT_CFLAGS)
-
-gphoto2_LDADD =								\
-	$(LIBGPHOTO2_LIBS) $(CDK_LIBS) $(AA_LIBS) $(JPEG_LIBS) 		\
-	$(PTHREAD_LIBS) $(LIBEXIF_LIBS) $(INTLLIBS) $(RL_LIBS) $(POPT_LIBS)
 
 TESTS = spawntest
 
