@@ -1,11 +1,11 @@
-AC_PREREQ(2.59)
+AC_PREREQ([2.69])
 dnl Next stable release must be 2.5.21 or later
 AC_INIT([gphoto2 command line interface], [2.5.20.1], [gphoto-devel@lists.sourceforge.net], [gphoto2])
 AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
 AC_CONFIG_AUX_DIR([auto-aux])
-AM_INIT_AUTOMAKE([-Wall -Werror gnu 1.9 dist-bzip2 check-news])
+AM_INIT_AUTOMAKE([-Wall -Werror gnu 1.15 dist-bzip2 check-news])
 
 GP_CHECK_SHELL_ENVIRONMENT
 GP_CONFIG_MSG([Build])
