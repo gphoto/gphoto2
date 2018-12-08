@@ -119,7 +119,7 @@ AS_IF([test "$with_cdk" != "no"], [
         CPPFLAGS="-I$with_cdk_prefix/include $CPPFLAGS"
         AC_CHECK_HEADER([cdk/cdk.h], [
                 have_cdk=:
-                AC_PATH_PROG([CDK_CONFIG], [cdk5-config])
+                AC_CHECK_TOOL([CDK_CONFIG], [cdk5-config])
                 AS_IF([test -n "${CDK_CONFIG}"], [
                         CDK_CFLAGS=`$CDK_CONFIG --cflags`
                         CDK_LIBS=`$CDK_CONFIG --libs`
@@ -291,7 +291,7 @@ AS_IF([test "$with_aalib" != "no"], [
                 have_aa=:
                 aa_msg=yes
                 AC_DEFINE([HAVE_AA], [1], [whether we use aalib])
-                AC_PATH_PROG([AALIB_CONFIG], [aalib-config])
+                AC_CHECK_TOOL([AALIB_CONFIG], [aalib-config])
                 AS_IF([test -n "${AALIB_CONFIG}"], [
                         AA_CFLAGS=`$AALIB_CONFIG --cflags`
                         AA_LIBS=`$AALIB_CONFIG --libs`
