@@ -11,6 +11,9 @@ GP_CHECK_SHELL_ENVIRONMENT
 GP_CONFIG_MSG([Build])
 GP_CONFIG_MSG([Source code location],[${srcdir}])
 
+AX_IS_RELEASE([git-directory])
+AX_CHECK_ENABLE_DEBUG()
+
 
 dnl ---------------------------------------------------------------------------
 dnl Some programs we need
@@ -80,20 +83,11 @@ AC_ARG_WITH([pthread],
     [with_pthread=yes])
 
 AS_IF([test "$with_pthread" = "yes"], [
-        AC_CHECK_HEADER(pthread.h, [
-            AC_CHECK_LIB(pthread, pthread_exit, [
-                AC_DEFINE(HAVE_PTHREAD,1,[Define if we use pthread.h.])
-                pthread_msg="yes (-lpthread)"
-                PTHREAD_LIBS="-lpthread"],[
-                AC_CHECK_LIB(c_r, pthread_create, [
-                    AC_DEFINE(HAVE_PTHREAD,1,[Define if we use pthread.h.])
-                    pthread_msg="yes (-pthread)"
-                    PTHREAD_LIBS="-pthread"
-                ])
-            ])
-        ])
+    AX_PTHREAD([
+        AC_DEFINE(HAVE_PTHREAD,1,[Define if we use pthread.h.])
+        pthread_msg="yes"
+    ])
 ])
-AC_SUBST([PTHREAD_LIBS])
 GP_CONFIG_MSG([pthread support],[$pthread_msg])
 
 
@@ -365,13 +359,7 @@ GP_CONFIG_MSG([Readline support], [$rl_msg])
 dnl ---------------------------------------------------------------------------
 dnl Turn on all warnings when using gcc
 dnl ---------------------------------------------------------------------------
-if test "$GCC" = "yes"; then
-	CFLAGS="$CFLAGS -Wall"
-	CFLAGS="$CFLAGS -Wmissing-declarations -Wmissing-prototypes"
-	# FIXME: Check for --enable-debug here
-	CFLAGS="$CFLAGS -g"
-	LDFLAGS="$LDFLAGS -g"
-fi
+AX_APPEND_COMPILE_FLAGS([-Wall -Wmissing-declarations -Wmissing-prototypes])
 
 
 # ---------------------------------------------------------------------------
