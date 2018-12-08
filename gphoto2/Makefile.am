@@ -1,12 +1,8 @@
 ## Process this file with automake to create a GNU Makefile
 
-# We need to add the source files to the list because 
-# sometimes people without aalib or cdk make dist.
-EXTRA_DIST = test-hook.sh
-
 bin_PROGRAMS = gphoto2
 
-doc_DATA = test-hook.sh
+dist_doc_DATA = test-hook.sh
 
 gphoto2_SOURCES =
 gphoto2_CPPFLAGS = \
