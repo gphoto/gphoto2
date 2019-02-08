@@ -1072,6 +1072,7 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 		 */
 		if (glob_interval != -1) {
 			waittime = timediff_now (&next_pic_time);
+			result = GP_OK;
 			if (waittime > 0) {
 				if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
 					printf (_("Waiting for next capture slot %ld seconds...\n"), waittime/1000);
@@ -1098,6 +1099,7 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 				if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
 					printf (_("not sleeping (%ld seconds behind schedule)\n"), -waittime/1000);
 			}
+			if (result != GP_OK) break;
 			if (capture_now && (gp_params.flags & FLAGS_RESET_CAPTURE_INTERVAL)) {
 				gettimeofday (&next_pic_time, NULL);
 				next_pic_time.tv_sec += glob_interval;
@@ -1154,7 +1156,7 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 	}
 
 	signal(SIGUSR1, SIG_DFL);
-	return (GP_OK);
+	return GP_OK;
 }
 
 
