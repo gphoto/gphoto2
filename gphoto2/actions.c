@@ -907,7 +907,7 @@ print_version_action (GPParams __unused__ *p)
 #endif
 	printf (_("gphoto2 %s\n"
 		  "\n"
-		  "Copyright (c) 2000-%d Lutz Mueller and others\n"
+		  "Copyright (c) 2000-%d Marcus Meissner and others\n"
 		  "%s"
 		  "\n"
 		  "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
