@@ -2,14 +2,15 @@ language: c
 
 os:
  - linux
+dist: xenial
 
 compiler:
  - gcc
 
 env:
- - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev gettext"
- - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev libaa1-dev gettext"
- - EXTRALIBS="libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev libaa1-dev libcdk5-dev gettext"
+ - EXTRALIBS="autoconf-archive libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev gettext"
+ - EXTRALIBS="autoconf-archive libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev libaa1-dev gettext"
+ - EXTRALIBS="autoconf-archive libusb-1.0-0-dev libgd2-xpm-dev libpopt-dev libaa1-dev libcdk5-dev gettext"
 
 # Note: Keep the sudo commands in .travis.yml - they do not work from
 #       a helper shell script.
