@@ -1185,6 +1185,10 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 			break;
 		case GP_EVENT_TIMEOUT:
 			/*printf("TIMEOUT\n");*/
+			if ((wp.type == WAIT_STRING) && strstr("TIMEOUT",wp.u.str)) {
+				printf(_("event found, stopping wait!\n"));
+				return GP_OK;
+			}
 			break;
 		case GP_EVENT_CAPTURE_COMPLETE:
 			printf("CAPTURECOMPLETE\n");
