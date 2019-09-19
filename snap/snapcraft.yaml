@@ -1,0 +1,52 @@
+name: gphoto2
+version: latest
+summary: The gphoto2 command-line tool for accessing and controlling digital cameras.
+description: |
+  gPhoto2 is a free, redistributable, ready to use set of digital camera
+  software applications for Unix-like systems, written by a whole team of
+  dedicated volunteers around the world. It supports more than 2500 cameras
+
+  gPhoto2 runs on a large range of UNIX-like operating system, including Linux,
+  FreeBSD, NetBSD, MacOS X, etc. gPhoto is provided by major Linux 
+  distributions like Debian GNU/Linux, Ubuntu, Gentoo, Fedora, openSUSE,
+  Mandriva, etc.
+
+  libgphoto2 is freely available and distributed under the terms of the GNU 
+  LGPL.; the other gphoto programs are freely available and distributed under
+  the terms of the GNU GPL.
+
+  Newer libgphoto2 versions also support Media Transfer Protocol (MTP) based 
+  media players since their communications protocol is based on the Picture 
+  Transfer Protocol (PTP). 
+grade: stable
+confinement: strict
+base: core18
+
+layout:
+  /usr/lib/x86_64-linux-gnu/libgpm.so.2:
+    bind-file: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgpm.so
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2_port:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2_port
+
+apps:
+  gphoto2:
+    command: usr/bin/gphoto2
+    plugs:  
+      - camera
+      - raw-usb 
+      - mount-observe
+      - hardware-observe
+      - removable-media
+      - home
+
+parts:
+  gphoto2:
+    plugin: nil
+    stage-packages: 
+      - gphoto2
+      - libslang2
+      - libgpm2
+      - libreadline7
+      - libtinfo5
