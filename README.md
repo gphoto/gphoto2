@@ -17,12 +17,12 @@ The man page is in the file doc/gphoto2.1
 ## How do I build it?
 ```
 autoreconf -is  #If using SVN source
-configure
+./configure
 make
 make install
 ```
 
-Out-of-tree builds are supported. `configure --help` may help.
+Out-of-tree builds are supported. `./configure --help` may help.
 
 To build gphoto2 you will need besides the common build tools:
 - The libgphoto2 library.
