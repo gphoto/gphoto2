@@ -35,7 +35,7 @@ sub run_gphoto2(@) {
 	print STDERR "running: " . join(" ",$gphoto2,@ARGV,@cmdline) . "\n";
 
 	print LOGFILE "running: " . join(" ",$gphoto2,@ARGV,@cmdline) . "\n";
-	open(GPHOTO,'-|',$gphoto2,@ARGV,@cmdline)||die "open $gphoto2";
+	open(GPHOTO,join(" ",$gphoto2,@ARGV,@cmdline)." 2>&1|")||die "open $gphoto2";
 	while (<GPHOTO>) {
 		print;
 		print LOGFILE;
@@ -44,6 +44,8 @@ sub run_gphoto2(@) {
 	}
 	my $rc = close(GPHOTO);
 	print LOGFILE "returned: $rc\n";
+	die "camera crashed?" if (grep /No camera found/, @lastresult);
+	die "camera crashed?" if (grep /No such device/, @lastresult);
 	return $rc;
 }
 
@@ -289,5 +291,7 @@ if ($havepreview) {
 	ok(run_gphoto2("--capture-preview"),"testing --capture-preview");
 	remove_all_files();
 	ok(run_gphoto2("--capture-preview"),"testing --capture-preview 2nd time");
+	remove_all_files();
+	ok(run_gphoto2("--capture-movie=5s"),"testing --capture-movie=5s");
 	remove_all_files();
 }
