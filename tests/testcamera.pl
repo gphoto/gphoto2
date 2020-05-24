@@ -284,7 +284,7 @@ if (grep (/eosremoterelease/,@allconfig)) {
 }
 
 if (grep (/eosremoterelease/,@allconfig)) {
-	run_gphoto2_capture(1,"eos remote release","--set-config","eosremoterelease=Immediate","--wait-event-and-download=2s","--set-config","eosremoterelease=Release Full","--wait-event-and-download=5s");
+	run_gphoto2_capture(1,"eos remote release","--set-config","eosremoterelease=Immediate","--wait-event-and-download=2s","--set-config","eosremoterelease='Release Full'","--wait-event-and-download=5s");
 }
 
 if ($havepreview) {
