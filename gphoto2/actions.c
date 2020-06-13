@@ -1012,7 +1012,7 @@ int
 action_camera_capture_movie (GPParams *p, const char *arg)
 {
 	CameraFile	*file;
-	int		r;
+	int		r, tries;
 	int		fd;
 	time_t		st;
 	enum moviemode	mm;
@@ -1048,13 +1048,20 @@ action_camera_capture_movie (GPParams *p, const char *arg)
 	}
 	CR (gp_file_new_from_fd (&file, fd));
 	gettimeofday (&starttime, NULL);
+	tries = 0;
 	while (1) {
 		const char *mime;
 		r = gp_camera_capture_preview (p->camera, file, p->context);
 		if (r < 0) {
+			if (r == GP_ERROR_CAMERA_BUSY) {
+				/* allow 20 busy tries */
+				if (tries++ < 20)
+					continue; /* just continue */
+			}
 			cli_error_print(_("Movie capture error... Exiting."));
 			break;
 		}
+		tries = 0;
 		gp_file_get_mime_type (file, &mime);
                 if (strcmp (mime, GP_MIME_JPEG)) {
 			cli_error_print(_("Movie capture error... Unhandled MIME type '%s'."), mime);
