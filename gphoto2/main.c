@@ -1156,6 +1156,7 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 	}
 
 	signal(SIGUSR1, SIG_DFL);
+	signal(SIGUSR2, SIG_DFL);
 	return GP_OK;
 }
 
