@@ -96,10 +96,10 @@ static int glob_bulblength = 0;
 GPParams gp_params;
 
 /* flag for SIGUSR1 handler */
-static volatile int capture_now = 0;
+volatile int capture_now = 0;
 
 /* flag for SIGUSR2 handler */
-static volatile int end_next = 0;
+volatile int end_next = 0;
 
 /*! \brief Copy string almost like strncpy, converting to lower case.
  *
@@ -968,11 +968,6 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 		}
 	}
 
-	capture_now = 0;
-	signal(SIGUSR1, sig_handler_capture_now);
-	end_next = 0;
-	signal(SIGUSR2, sig_handler_end_next);
-
 	while(++frames) {
 		if (!(gp_params.flags & FLAGS_QUIET) && glob_interval) {
 			if(!glob_frames)
@@ -1154,9 +1149,6 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 			gettimeofday (&expose_end_time, NULL);
 		}
 	}
-
-	signal(SIGUSR1, SIG_DFL);
-	signal(SIGUSR2, SIG_DFL);
 	return GP_OK;
 }
 
@@ -2193,6 +2185,12 @@ main (int argc, char **argv, char **envp)
 	setlocale (LC_ALL, "");
         bindtextdomain (PACKAGE, LOCALEDIR);
         textdomain (PACKAGE);
+
+	/* These are for people signaling us */
+	capture_now = 0;
+	signal(SIGUSR1, sig_handler_capture_now);
+	end_next = 0;
+	signal(SIGUSR2, sig_handler_end_next);
 
 	/* Create/Initialize the global variables before we first use
 	 * them. And the signal handlers and popt callback functions

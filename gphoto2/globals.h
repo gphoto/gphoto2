@@ -8,6 +8,12 @@ extern char	*glob_folder;
 extern char	glob_cwd[];
 extern int	glob_option_count;
 
+/* flag for SIGUSR1 handler */
+extern volatile int capture_now;
+
+/* flag for SIGUSR2 handler */
+extern volatile int end_next;
+
 #endif
 
 

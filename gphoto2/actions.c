@@ -24,6 +24,9 @@
 #define __EXTENSIONS__	/* for solaris to get back strdup and strcasecmp */
 
 #include "config.h"
+#if defined (HAVE_SIGNAL_H)
+#include <signal.h>
+#endif
 
 #include <string.h>
 #include <stdio.h>
@@ -1109,6 +1112,8 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 	struct timeval	xtime;
 	int events, frames;
 
+        end_next = 0;
+
 	gettimeofday (&xtime, NULL);
 	memset(&last,0,sizeof(last));
 
@@ -1149,6 +1154,12 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 		int		x, exitloop;
 
 		if (glob_cancel) break;
+
+		if (end_next) {
+			printf(_("SIGUSR2 signal received, stopping wait!\n"));
+			end_next = 0;
+			break;
+		}
 
 		exitloop = 0;
 		switch (wp.type) {
