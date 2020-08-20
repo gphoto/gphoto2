@@ -28,6 +28,7 @@
 #include <signal.h>
 #endif
 
+#include <libgen.h>
 #include <string.h>
 #include <stdio.h>
 #ifdef HAVE_FCNTL_H
