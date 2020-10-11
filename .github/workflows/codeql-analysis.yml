@@ -36,6 +36,22 @@ jobs:
         # a pull request then we can checkout the head.
         fetch-depth: 2
 
+    # install all necessary things for libgphoto2
+    - run: sudo apt-get update && sudo apt-get install -y autopoint gettext libusb-1.0-0-dev libcurl4-openssl-dev bison flex
+
+    # install gphoto2 specifics packages
+    - run: sudo apt-get install -y libpopt-dev
+
+    # clone current libgphoto2 git, build and install it
+    - run: |
+        git clone --depth=50 https://github.com/gphoto/libgphoto2.git lgp2
+        cd lgp2
+        autoreconf -vis
+        ./configure --prefix=/usr --libdir=/usr/lib --enable-silent-rules --with-camlibs=directory
+        make && sudo make install
+        cd ..
+
+
     # If this run was triggered by a pull request event, then checkout
     # the head of the pull request instead of the merge commit.
     - run: git checkout HEAD^2
