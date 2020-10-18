@@ -18,6 +18,8 @@
  * Boston, MA  02110-1301  USA
  */
 
+#define _DARWIN_C_SOURCE
+
 #include "config.h"
 #include "i18n.h"
 #include "main.h"

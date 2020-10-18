@@ -18,6 +18,8 @@
  * Boston, MA  02110-1301  USA
  */
 
+#define _DARWIN_C_SOURCE
+
 #include "config.h"
 #if defined (HAVE_SIGNAL_H)
 #include <signal.h>
