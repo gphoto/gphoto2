@@ -141,7 +141,7 @@ AC_ARG_WITH([cdk-prefix],AS_HELP_STRING([--with-cdk-prefix=PREFIX],
 if $try_cdk; then
         CPPFLAGS_save="$CPPFLAGS"
         CPPFLAGS="-I$cdk_prefix/include $CPPFLAGS"
-        AC_CHECK_HEADER([cdk/cdk.h], [
+        AC_CHECK_HEADERS([cdk/cdk.h cdk.h], [
                 have_cdk=:
                 AC_PATH_PROG([CDK_CONFIG], [cdk5-config])
                 if test -n "${CDK_CONFIG}"; then

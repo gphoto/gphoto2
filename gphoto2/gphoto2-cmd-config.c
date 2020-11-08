@@ -29,7 +29,13 @@
 
 #include <gphoto2/gphoto2-widget.h>
 
+#ifdef HAVE_CDK_CDK_H
 #include <cdk/cdk.h>
+#else
+#ifdef HAVE_CDK_H
+#include <cdk.h>
+#endif
+#endif
 
 #ifndef MAX
 # define MAX(a, b) ((a) > (b) ? (a) : (b))
