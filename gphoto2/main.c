@@ -735,6 +735,7 @@ dissolve_filename (
 int
 get_file_common (const char *arg, CameraFileType type )
 {
+	unsigned int mightberange = 1, i;
         gp_log (GP_LOG_DEBUG, "main", "Getting '%s'...", arg);
 
 	gp_params.download_type = type; /* remember for multi download */
@@ -742,7 +743,14 @@ get_file_common (const char *arg, CameraFileType type )
 	 * If the user specified the file directly (and not a number),
 	 * get that file.
 	 */
-        if (strchr (arg, '.')) {
+	for (i=0;i<strlen(arg);i++) {
+		if ((arg[i] != '-') && ((arg[i] < '0') || (arg[i] > '9'))) {
+			mightberange = 0;
+			break;
+		}
+	}
+
+	if (!mightberange) {
 		int ret;
 		char *newfolder, *newfilename;
 
