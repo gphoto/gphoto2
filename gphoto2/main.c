@@ -1144,6 +1144,8 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 	/* Drain the event queue at the end and download left over added images */
 	while (1) {
 		int realwait = waittime - (-timediff_now(&expose_end_time));
+		if (realwait < -3) break; /* wait at most 6 seconds */
+
 		if (realwait < 0) realwait = 0; /* just drain the queue now */
 		result = wait_and_handle_event(realwait, &evtype, download);
 		if ((result != GP_OK) || (evtype == GP_EVENT_TIMEOUT)) {
