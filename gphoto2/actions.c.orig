@@ -22,14 +22,9 @@
 #define _XOPEN_SOURCE	/* strptime proto, but this hides other prototypes */
 #define _GNU_SOURCE	/* get all the other prototypes */
 #define __EXTENSIONS__	/* for solaris to get back strdup and strcasecmp */
-#define _DARWIN_C_SOURCE
 
 #include "config.h"
-#if defined (HAVE_SIGNAL_H)
-#include <signal.h>
-#endif
 
-#include <libgen.h>
 #include <string.h>
 #include <stdio.h>
 #ifdef HAVE_FCNTL_H
@@ -912,7 +907,7 @@ print_version_action (GPParams __unused__ *p)
 #endif
 	printf (_("gphoto2 %s\n"
 		  "\n"
-		  "Copyright (c) 2000-%d Marcus Meissner and others\n"
+		  "Copyright (c) 2000-%d Lutz Mueller and others\n"
 		  "%s"
 		  "\n"
 		  "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
@@ -921,7 +916,7 @@ print_version_action (GPParams __unused__ *p)
 		  "\n"
 		  "This version of gphoto2 is using the following software versions and options:\n"),
 		VERSION,
-		2021, /* year of release! */
+		2017, /* year of release! */
 		port_message
 		);
 
@@ -957,7 +952,6 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 	
 	if (p->flags & FLAGS_STDOUT) {
 		fd = dup(fileno(stdout));
-		CR (gp_file_new_from_fd (&file, fd));
 	} else {
 		strcpy (tmpname, "tmpfileXXXXXX");
 		fd = mkstemp(tmpname);
@@ -974,6 +968,7 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 			tmpfilename = tmpname;
 		}
 	}
+	CR (gp_file_new_from_fd (&file, fd));
 
 #ifdef HAVE_AA
 	if (viewasciiart)
@@ -1017,7 +1012,7 @@ int
 action_camera_capture_movie (GPParams *p, const char *arg)
 {
 	CameraFile	*file;
-	int		r, tries;
+	int		r;
 	int		fd;
 	time_t		st;
 	enum moviemode	mm;
@@ -1053,20 +1048,13 @@ action_camera_capture_movie (GPParams *p, const char *arg)
 	}
 	CR (gp_file_new_from_fd (&file, fd));
 	gettimeofday (&starttime, NULL);
-	tries = 0;
 	while (1) {
 		const char *mime;
 		r = gp_camera_capture_preview (p->camera, file, p->context);
 		if (r < 0) {
-			if (r == GP_ERROR_CAMERA_BUSY) {
-				/* allow 20 busy tries */
-				if (tries++ < 20)
-					continue; /* just continue */
-			}
 			cli_error_print(_("Movie capture error... Exiting."));
 			break;
 		}
-		tries = 0;
 		gp_file_get_mime_type (file, &mime);
                 if (strcmp (mime, GP_MIME_JPEG)) {
 			cli_error_print(_("Movie capture error... Unhandled MIME type '%s'."), mime);
@@ -1114,8 +1102,6 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 	struct timeval	xtime;
 	int events, frames;
 
-        end_next = 0;
-
 	gettimeofday (&xtime, NULL);
 	memset(&last,0,sizeof(last));
 
@@ -1145,7 +1131,7 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 		} else {
 			wp.type = WAIT_STRING;
 			wp.u.str = arg;
-			printf ( _("Waiting for '%s' event from camera. Press Ctrl-C to abort.\n"), wp.u.str);
+			printf ( _("Waiting for %s event from camera. Press Ctrl-C to abort.\n"), wp.u.str);
 		}
 	}
 
@@ -1156,12 +1142,6 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 		int		x, exitloop;
 
 		if (glob_cancel) break;
-
-		if (end_next) {
-			printf(_("SIGUSR2 signal received, stopping wait!\n"));
-			end_next = 0;
-			break;
-		}
 
 		exitloop = 0;
 		switch (wp.type) {
@@ -1205,10 +1185,6 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 			break;
 		case GP_EVENT_TIMEOUT:
 			/*printf("TIMEOUT\n");*/
-			if ((wp.type == WAIT_STRING) && strstr("TIMEOUT",wp.u.str)) {
-				printf(_("event found, stopping wait!\n"));
-				return GP_OK;
-			}
 			break;
 		case GP_EVENT_CAPTURE_COMPLETE:
 			printf("CAPTURECOMPLETE\n");
@@ -1275,14 +1251,6 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 			fn = (CameraFilePath*)data;
 			printf("FOLDERADDED %s %s\n",fn->name, fn->folder);
 			if ((wp.type == WAIT_STRING) && strstr("FOLDERADDED",wp.u.str)) {
-				printf(_("event found, stopping wait!\n"));
-				return GP_OK;
-			}
-			break;
-		case GP_EVENT_FILE_CHANGED:
-			fn = (CameraFilePath*)data;
-			printf("FILECHANGED %s %s\n",fn->name, fn->folder);
-			if ((wp.type == WAIT_STRING) && strstr("FILECHANGED",wp.u.str)) {
 				printf(_("event found, stopping wait!\n"));
 				return GP_OK;
 			}
@@ -2113,10 +2081,8 @@ set_config_value_action (GPParams *p, const char *name, const char *value) {
 		int	t = -1;
 		struct tm xtm;
 
-		if (!strcasecmp (value, "now")  || !strcasecmp (value, _("now")))
-			t = time(NULL);
 #ifdef HAVE_STRPTIME
-		else if (strptime (value, "%c", &xtm) || strptime (value, "%Ec", &xtm))
+		if (strptime (value, "%c", &xtm) || strptime (value, "%Ec", &xtm))
 			t = mktime (&xtm);
 #endif
 		if (t == -1) {
