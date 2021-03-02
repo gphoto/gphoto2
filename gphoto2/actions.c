@@ -1157,6 +1157,19 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 
 		if (glob_cancel) break;
 
+		if (capture_now) {
+			capture_now = 0;
+			data = malloc(sizeof(CameraFilePath));
+			printf(_("SIGUSR1 signal received, triggering capture!\n"));
+			ret = gp_camera_capture (p->camera, GP_CAPTURE_IMAGE, (CameraFilePath*)data, p->context);
+			if (ret == GP_OK) {
+				event = GP_EVENT_FILE_ADDED;
+				goto afterevent;
+			} else {
+				free (data);
+				data = NULL;
+			}
+		}
 		if (end_next) {
 			printf(_("SIGUSR2 signal received, stopping wait!\n"));
 			end_next = 0;
@@ -1188,6 +1201,7 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 		ret = gp_camera_wait_for_event (p->camera, leftoverms, &event, &data, p->context);
 		if (ret != GP_OK)
 			return ret;
+afterevent:
 		events++;
 		switch (event) {
 		case GP_EVENT_UNKNOWN:
