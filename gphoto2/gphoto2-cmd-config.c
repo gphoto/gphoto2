@@ -59,8 +59,8 @@ static int
 set_config (CmdConfig *cmd_config)
 {
 	int result, selection;
-	char *msg[10];
-	char *buttons[] = {N_("</B/24>Continue"), N_("</B16>Cancel")};
+	const char *msg[10];
+	const char *buttons[] = {N_("</B/24>Continue"), N_("</B16>Cancel")};
 	CDKDIALOG *question = NULL;
 
 	result = gp_camera_set_config (cmd_config->camera, cmd_config->window, 
@@ -367,7 +367,8 @@ show_toggle (CmdConfig *cmd_config, CameraWidget *toggle)
 	CDKITEMLIST *list = NULL;
 	int value, selection;
 	const char *label;
-	char title[1024], *info[] = {N_("Yes"), N_("No")};
+	char title[1024];
+	const char *info[] = {N_("Yes"), N_("No")};
 
 	CHECK (gp_widget_get_value (toggle, &value));
 	CHECK (gp_widget_get_label (toggle, &label));
