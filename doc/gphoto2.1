@@ -1,7 +1,7 @@
 '\" t
 .\"     Title: gphoto2
 .\"    Author: The gPhoto2 Team
-.\" Generator: DocBook XSL Stylesheets v1.79.0 <http://docbook.sf.net/>
+.\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: <pubdate>2015-08-01</pubdate>August 2006
 .\"    Manual: The gPhoto2 Reference (the man pages)
 .\"    Source: [FIXME: source]
@@ -542,13 +542,20 @@ will take at most 5 seconds\&. A
 \(lq\-\-wait\-event=5s\(rq
 will take exactly 5 second\&.
 .sp
+It is also possible to wait for MATCHSTRING, for things like CAPTURECOMPLETE, FILEADDED, TIMEOUT or other events printed out\&.
+.sp
 If no argument is given, the wait time is 1 million events (basically forever)\&.
 .sp
 In the download variant this can be used together with the
 \fB\-\-hook\-script\fR
 to immediately postprocess or display the images this can help a studio workflow\&.
 .sp
-This option requires support in the driver and by the camera, currently newer Canon EOS and Nikon DSC are known to work\&.
+This option requires support in the driver and by the camera\&.
+.sp
+If gphoto2 receives a SIGUSR1 during the wait, it will immediately take a picture (similar to
+\(lq\-\-capture\-image\(rq), and depending on mode either leave it on camera or download it\&. (Since 2\&.5\&.28)
+.sp
+If gphoto2 receives a SIGUSR2 during the wait, it will safely end the tethering\&. (Since 2\&.5\&.25)
 .RE
 .PP
 \fB\-\-show\-info\fR \fIRANGE\fR
@@ -824,12 +831,17 @@ library will print messages\&. In order to get some debug output, set it to
 .PP
 SIGUSR1 (since 2\&.4)
 .RS 4
-In time\-lapse capture mode, receiving a SIGUSR1 signal makes gphoto2 take a picture immediately\&.
+In time\-lapse capture and in tethering or wait\-event mode, receiving a SIGUSR1 signal makes gphoto2 take a picture immediately\&.
 .sp
 If the
 \fB\-\-reset\-interval\fR option
 is given, the time counter is reset to the value given by the
 \fB\-I|\-\-interval\fR option\&. Note that the camera will need some time (from 50ms to a few seconds) to actually capture the image\&.
+.RE
+.PP
+SIGUSR2 (since 2\&.5\&.26)
+.RS 4
+In tethering or wait\-event mode, receiving a SIGUSR2 signal ends the tethering or wait\-event mode\&. This is useful if you do not know the end before hand, but still want to safely exit the waiting\&.
 .RE
 .SH "SEE ALSO"
 .PP
