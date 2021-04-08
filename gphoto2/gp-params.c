@@ -260,6 +260,7 @@ gp_params_init (GPParams *p, char **envp)
 
 	memset (p, 0, sizeof (GPParams));
 
+
 	p->folder = strdup ("/");
 	if (!p->folder) {
 		fprintf (stderr, _("Not enough memory."));
@@ -271,6 +272,7 @@ gp_params_init (GPParams *p, char **envp)
 
 	p->cols = 79;
 	p->flags = FLAGS_RECURSE;
+	p->filenr = 1;
 
 	/* Create a context. Report progress only if users will see it. */
 	p->context = gp_context_new ();

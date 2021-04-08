@@ -157,10 +157,9 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 	time_t t = 0;
 	struct tm *tm;
 	int hour12;
-	static int filenr = 1;
 
 	if (!path)
-		return (GP_ERROR_BAD_PARAMETERS);
+		return GP_ERROR_BAD_PARAMETERS;
 
 	*path = NULL;
 	if (file) {
@@ -253,12 +252,12 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 					strcpy(padfmt, "%!.*i");
 					padfmt[1] = padding;
 					snprintf (b, sizeof (b), padfmt,
-						  precision, filenr);
+						  precision, gp_params.filenr);
 				} else {
 					snprintf (b, sizeof (b), "%i",
-						  filenr);
+						  gp_params.filenr);
 				}
-				filenr++;
+				gp_params.filenr++;
 				break;
 
 			case 'C':
@@ -1311,6 +1310,7 @@ typedef enum {
 	ARG_DELETE_ALL_FILES,
 	ARG_DELETE_FILE,
 	ARG_FILENAME,
+	ARG_FILENUMBER,
 	ARG_FOLDER,
 	ARG_FORCE_OVERWRITE,
 	ARG_GET_ALL_AUDIO_DATA,
@@ -1462,6 +1462,10 @@ cb_arg_init (poptContext __unused__ ctx,
 
 	case ARG_FILENAME:
 		params->p.r = set_filename_action (&gp_params, arg);
+		break;
+	case ARG_FILENUMBER:
+		gp_params.filenr = atoi (arg);
+		params->p.r = GP_OK;
 		break;
 	case ARG_FOLDER:
 		params->p.r = set_folder_action (&gp_params, arg);
@@ -2128,6 +2132,8 @@ main (int argc, char **argv, char **envp)
 		 N_("Upload a file to camera"), N_("FILENAME")},
 		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,
 		 N_("Specify a filename or filename pattern"), N_("FILENAME_PATTERN")},
+		{"filenumber", '\0', POPT_ARG_INT, NULL, ARG_FILENUMBER,
+		 N_("Specify the number a filename %%n will starts with (default 1)"), N_("NUMBER")},
 		{"folder", 'f', POPT_ARG_STRING, NULL, ARG_FOLDER,
 		 N_("Specify camera folder (default=\"/\")"), N_("FOLDER")},
 		{"recurse", 'R', POPT_ARG_NONE, NULL, ARG_RECURSE,

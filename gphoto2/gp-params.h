@@ -48,28 +48,30 @@ typedef enum {
 
 typedef struct _GPParams GPParams;
 struct _GPParams {
-	Camera *camera;
-	GPContext *context;
-	char *folder;
-	char *filename;
+	Camera		*camera;
+	GPContext	*context;
+	char		*folder;
+	char		*filename;
 
-	unsigned int cols;
+	unsigned int	filenr;	/* for --filename %n */
 
-	Flags flags;
+	unsigned int	cols;
+
+	Flags		flags;
 
 	/** This field is supposed to be private. Usually, you use the
 	 * gp_camera_abilities_list() function to access it.
 	 */ 
 	CameraAbilitiesList *_abilities_list;
 
-	GPPortInfoList *portinfo_list;
-	int debug_func_id;
+	GPPortInfoList	*portinfo_list;
+	int		debug_func_id;
 
 	MultiType	multi_type;
 	CameraFileType	download_type; /* for multi download */
        
-	char *hook_script; /* If non-NULL, hook script to run */
-	char **envp;  /* envp from the main() function */
+	char		*hook_script; /* If non-NULL, hook script to run */
+	char		**envp;  /* envp from the main() function */
 };
 
 void gp_params_init (GPParams *params, char **envp);
