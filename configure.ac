@@ -334,7 +334,9 @@ GP_CONFIG_MSG([Text preview support],[$aa_msg])
 dnl ---------------------------------------------------------------------------
 dnl popt.h: Simplifies handling of command-line options enormously.
 dnl ---------------------------------------------------------------------------
-GP_CHECK_POPT([mandatory])
+PKG_CHECK_MODULES([POPT], [popt], [], [dnl
+AC_MSG_ERROR([pkg-config could not find popt.pc])
+])
 
 
 dnl ---------------------------------------------------------------------------
