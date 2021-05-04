@@ -334,7 +334,9 @@ GP_CONFIG_MSG([Text preview support],[$aa_msg])
 dnl ---------------------------------------------------------------------------
 dnl popt.h: Simplifies handling of command-line options enormously.
 dnl ---------------------------------------------------------------------------
-PKG_CHECK_MODULES([POPT], [popt], [], [dnl
+dnl
+dnl POPT_TABLEEND is only defined starting with popt 1.6.1
+PKG_CHECK_MODULES([POPT], [popt >= 1.6.1], [], [dnl
 AC_MSG_ERROR([pkg-config could not find popt.pc])
 ])
 

@@ -23,10 +23,6 @@
 
 #include <stdlib.h>
 
-#ifndef HAVE_POPT
-# error gphoto2 REQUIRES popt!
-#endif
-
 static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 {
 	/* we could also compute/parse the short strings from the long

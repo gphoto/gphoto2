@@ -52,15 +52,7 @@
 #include <errno.h>
 #include <sys/time.h>
 
-#ifdef HAVE_POPT
-#  include <popt.h>
-/* POPT_TABLEEND is only defined from popt 1.6.1 */
-# ifndef POPT_TABLEEND
-#  define POPT_TABLEEND { NULL, '\0', 0, 0, 0, NULL, NULL }
-# endif
-#else
-# error gphoto2 now REQUIRES the popt library!
-#endif
+#include <popt.h>
 
 #ifdef HAVE_RL
 #  include <readline/readline.h>
