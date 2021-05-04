@@ -72,7 +72,9 @@ AM_CPPFLAGS="$AM_CPPFLAGS -DLOCALEDIR=\\\"${localedir}\\\""
 dnl ---------------------------------------------------------------------------
 dnl Check for libgphoto2
 dnl ---------------------------------------------------------------------------
-GP_CHECK_LIBRARY([LIBGPHOTO2], [libgphoto2], [>= 2.5.17])
+PKG_CHECK_MODULES([LIBGPHOTO2], [libgphoto2 >= 2.5.17], [], [dnl
+AC_MSG_ERROR([pkg-config cannot find libgphoto2])
+])
 
 
 AC_CHECK_FUNCS([strptime])
