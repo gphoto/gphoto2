@@ -287,8 +287,8 @@ dnl 0.3.3 oldest supported version
 dnl 0.5.3 introduces exif-ifd.h which we use
 dnl 0.6.9 introduces exif-log.h which we use
 PKG_CHECK_MODULES([LIBEXIF], [libexif >= 0.6.9],
-                  [have_libexif=yes], [have_libexif=no])
-AM_CONDITIONAL([HAVE_LIBEXIF], [test "x$have_libexif" = xyes])
+                  [AC_DEFINE([HAVE_LIBEXIF], [1],
+                             [whether building with libexif])])
 
 
 dnl ---------------------------------------------------------------------------
