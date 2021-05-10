@@ -1345,6 +1345,7 @@ typedef enum {
 	ARG_SHELL,
 	ARG_SHOW_EXIF,
 	ARG_SHOW_INFO,
+	ARG_PARSABLE,
 	ARG_SKIP_EXISTING,
 	ARG_SPEED,
 	ARG_STDOUT,
@@ -1508,6 +1509,11 @@ cb_arg_init (poptContext __unused__ ctx,
 
 	case ARG_QUIET:
 		gp_params.flags |= FLAGS_QUIET;
+		break;
+
+	case ARG_PARSABLE:
+		gp_params.flags |= FLAGS_QUIET;
+		gp_params.flags |= FLAGS_PARSABLE;
 		break;
 
 	case ARG_RESET_INTERVAL:
@@ -1986,6 +1992,8 @@ main (int argc, char **argv, char **envp)
 		 N_("Name of file to write debug info to"), N_("FILENAME")},
 		{"quiet", 'q', POPT_ARG_NONE, NULL, ARG_QUIET,
 		 N_("Quiet output (default=verbose)"), NULL},
+		{"parsable", '\0', POPT_ARG_NONE, NULL, ARG_PARSABLE,
+		 N_("Simple parsable output (implies quiet)"), NULL},
 		{"hook-script", '\0', POPT_ARG_STRING, NULL, ARG_HOOK_SCRIPT,
 		 N_("Hook script to call after downloads, captures, etc."),
 		 N_("FILENAME")},
