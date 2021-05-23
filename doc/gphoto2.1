@@ -35,7 +35,7 @@ gphoto2 \- command\-line gphoto2 client
 .br
 [\-\-hook\-script\ \fIFILENAME\fR]
 .br
-[\-\-list\-cameras] [\-\-list\-ports] [\-\-stdout] [\-\-stdout\-size]
+[\-\-list\-cameras] [\-\-list\-ports] [\-\-stdout] [\-\-stdout\-size] [\-\-parsable]
 .br
 [\-\-auto\-detect] [\-\-port\ \fIPATH\fR] [\-\-speed\ \fISPEED\fR] [\-\-camera\ \fIMODEL\fR]
 .br
@@ -225,6 +225,11 @@ Send file to stdout\&.
 \fB\-\-stdout\-size\fR
 .RS 4
 Print filesize before data\&.
+.RE
+.PP
+\fB\-\-parsable\fR
+.RS 4
+Outputs the filelist in a line based format that could be passed into a shellscript or other filter\&.
 .RE
 .PP
 \fB\-\-auto\-detect\fR
