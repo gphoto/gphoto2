@@ -7,10 +7,10 @@
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful, 
- * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details. 
+ * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
@@ -76,7 +76,7 @@ for_each_folder (GPParams *p, FolderAction action)
 	/* Recursion requested. Descend into subfolders. */
 	CL (gp_camera_folder_list_folders (p->camera, p->folder, list,
 					   p->context), list);
-	CL (count = gp_list_count (list), list); 
+	CL (count = gp_list_count (list), list);
 	if (p->flags & FLAGS_REVERSE) {
 		for (i = count - 1; i >= 0; i--) {
 			CL (gp_list_get_name (list, i, &name), list);
@@ -101,7 +101,7 @@ for_each_folder (GPParams *p, FolderAction action)
 		for (i = 0; i < count; i++) {
 			CL (gp_list_get_name (list, i, &name), list);
 			f = p->folder;
-			p->folder = malloc (sizeof (char) * 
+			p->folder = malloc (sizeof (char) *
 				(strlen (f) + 1 + strlen (name) + 1));
 			if (!p->folder) {
 				p->folder = f;
@@ -287,7 +287,7 @@ get_path_for_id (GPParams *p, const char *base_folder,
 				gp_list_free (list);
 				return (GP_ERROR_BAD_PARAMETERS);
 			case 1:
-				gp_context_error (p->context, 
+				gp_context_error (p->context,
 					_("Bad file number. "
 					"You specified %i, but there is only "
 					"1 file available in '%s'."), id + 1,

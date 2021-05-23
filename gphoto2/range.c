@@ -7,10 +7,10 @@
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful, 
- * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details. 
+ * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
@@ -29,9 +29,9 @@
 #include <stdio.h>
 #include <string.h>
 
-/* 
-  str_grab_nat() - Grab positive decimal integer (natural number) from str 
-  	starting with pos byte. On return pos points to the first byte after 
+/*
+  str_grab_nat() - Grab positive decimal integer (natural number) from str
+  	starting with pos byte. On return pos points to the first byte after
 	grabbed integer.
 */
 
@@ -56,14 +56,14 @@ str_grab_nat(const char *str, int *pos)
   	of range is:
 		( m | m-n ) { , ( m | m-n ) }
 	where m,n are decimal integers with 1 <= m <= n <= MAX_IMAGE_NUMBER.
-	Ranges are XOR (exclusive or), so that 
+	Ranges are XOR (exclusive or), so that
 		1-5,3,7
 	is equivalent to
 		1,2,4,5,7	
-	Conversion from 1-based to 0-based numbering is performed, that is, 
-	n-th image corresponds to (n-1)-th byte in index. The value of 
-	index[n] is either 0 or 1. 0 means not selected, 1 selected. 
-	index passed to parse_range() must be an array of MAX_IMAGE_NUMBER 
+	Conversion from 1-based to 0-based numbering is performed, that is,
+	n-th image corresponds to (n-1)-th byte in index. The value of
+	index[n] is either 0 or 1. 0 means not selected, 1 selected.
+	index passed to parse_range() must be an array of MAX_IMAGE_NUMBER
 	char-s set to 0 (use memset() or bzero()).
 */
 		
@@ -170,7 +170,7 @@ parse_range_rec (const char *range, unsigned int start, char *index,
 			break;
 			
 		case '\0' :
-			break; 
+			break;
 			
 		default :
 			for (j = 0; j < start + i; j++) {
@@ -189,7 +189,7 @@ parse_range_rec (const char *range, unsigned int start, char *index,
 		 (range[start + i] != ','));
 
 	if (i) {
-		if (0 < r) { /* update range of bytes */ 
+		if (0 < r) { /* update range of bytes */
 			if (r < l) {
 				strncpy (buf, range, sizeof (buf) - strlen (buf) - 1);
 				buf[sizeof (buf) - 1] = 0;
@@ -219,7 +219,7 @@ parse_range_rec (const char *range, unsigned int start, char *index,
 	/*
 	 * If there is another range, parse it.
 	 */
-	if (range[start + i] == ',') 
+	if (range[start + i] == ',')
 		return parse_range_rec (range, start + i + 1, index, context);
 	
 	return (GP_OK);

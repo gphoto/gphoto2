@@ -7,10 +7,10 @@
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful, 
- * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details. 
+ * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
@@ -200,7 +200,7 @@ ctx_progress_update_func (GPContext __unused__ *context, unsigned int id,
 }
 
 static void
-ctx_progress_stop_func (GPContext __unused__ *context, unsigned int id, 
+ctx_progress_stop_func (GPContext __unused__ *context, unsigned int id,
 			void *data)
 {
 	GPParams *p = data;
@@ -233,7 +233,7 @@ ctx_cancel_func (GPContext __unused__ *context, void __unused__ *data)
 }
 
 static void
-ctx_message_func (GPContext __unused__ *context, const char *str, 
+ctx_message_func (GPContext __unused__ *context, const char *str,
 		  void __unused__ *data)
 {
         printf ("%s\n", str);
@@ -334,7 +334,7 @@ gp_params_exit (GPParams *p)
 /* #define CALL_VIA_SYSTEM */
 
 static int
-internal_run_hook(const char *const hook_script, 
+internal_run_hook(const char *const hook_script,
 		  const char *const action, const char *const argument,
 		  char **envp);
 
@@ -342,7 +342,7 @@ internal_run_hook(const char *const hook_script,
 int
 gp_params_run_hook (GPParams *params, const char *action, const char *argument)
 {
-	/* printf("gp_params_run_hook(params, \"%s\", \"%s\")\n", 
+	/* printf("gp_params_run_hook(params, \"%s\", \"%s\")\n",
 	   action, argument);
 	*/
 	if (params->hook_script == NULL) {
@@ -376,7 +376,7 @@ internal_putenv(const char *const varname, const char *const value)
 			/* clear variable */
 			if (unsetenv(varname)) {
 				int my_errno = errno;
-				fprintf(stderr, "unsetenv(\"%s\"): %s", 
+				fprintf(stderr, "unsetenv(\"%s\"): %s",
 					varname, strerror(my_errno));
 			}
 		}
@@ -416,7 +416,7 @@ alloc_envar(const char *varname, const char *value)
 
 
 static int
-internal_run_hook(const char *const hook_script, 
+internal_run_hook(const char *const hook_script,
 		  const char *const action, const char *const argument,
 		  char **envp)
 {
@@ -438,7 +438,7 @@ internal_run_hook(const char *const hook_script,
 	/* spawnve() based implementation of internal_run_hook()
 	 *
 	 * Most of the code here creates and destructs the
-	 * char *child_argv[] and char *child_envp[] to be passed to 
+	 * char *child_argv[] and char *child_envp[] to be passed to
 	 * spawnve() and thus execve().
 	 *
 	 * Error handling is simple:
@@ -484,7 +484,7 @@ internal_run_hook(const char *const hook_script,
 	 *   + max number of new envars (2)
 	 *   + NULL list terminator (1)
 	 */
-	child_envp = calloc(envar_count+((sizeof(varlist)/sizeof(varlist[0]))-1)+1, 
+	child_envp = calloc(envar_count+((sizeof(varlist)/sizeof(varlist[0]))-1)+1,
 			    sizeof(child_envp[0]));
 	ASSERT(child_envp != NULL);
 

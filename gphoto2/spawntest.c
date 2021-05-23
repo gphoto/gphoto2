@@ -63,14 +63,14 @@ main(const int argc, const char *argv[], const char **envp)
 
   char *hook_env = getenv("GPHOTO_HOOK");
   char *filename = (hook_env!=NULL)?hook_env:"./test-hook.sh";
-  
+
   /* We want this to be writable, so we explicitly define it as char[] */
   char params[7] = "params";
   char * const child_argv[] = {
     params,
     NULL,
   };
-  
+
   /* envars not to copy */
   static const char * const varlist[] = {
     "ACTION", "ARGUMENT", NULL
@@ -84,7 +84,7 @@ main(const int argc, const char *argv[], const char **envp)
   for (envar_count=0; envp[envar_count] != NULL; envar_count++) {
     /* printf("%3d: \"%s\"\n", envar_count, envp[envar_count]); */
   }
-  
+
   fprintf(out, "Before spawn...\n");
   fflush(out);
 

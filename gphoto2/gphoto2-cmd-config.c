@@ -7,10 +7,10 @@
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful, 
- * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details. 
+ * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
@@ -63,7 +63,7 @@ set_config (CmdConfig *cmd_config)
 	const char *buttons[] = {N_("</B/24>Continue"), N_("</B16>Cancel")};
 	CDKDIALOG *question = NULL;
 
-	result = gp_camera_set_config (cmd_config->camera, cmd_config->window, 
+	result = gp_camera_set_config (cmd_config->camera, cmd_config->window,
 				       cmd_config->context);
 	if (result < 0) {
 		msg[0] = N_("<C></5>Error");
@@ -280,7 +280,7 @@ show_time (CmdConfig *cmd_config, CameraWidget *date)
 		xtime = mktime (date_info);
 		gp_widget_set_value (date, &xtime);
 		set_config (cmd_config);
-	} 
+	}
 	destroyCDKEntry (entry);
 	return (GP_OK);
 }
@@ -408,7 +408,7 @@ show_range_int (CmdConfig *cmd_config, CameraWidget *range)
 	slider = newCDKSlider (cmd_config->screen, CENTER, CENTER, title,
 			       _("Value: "), '-',
 			       50, (int) value, min, max,
-			       increment, 
+			       increment,
 			       MAX (increment, (max - min)/20.0),
 			       TRUE,
 			       FALSE);
@@ -426,7 +426,7 @@ show_range_int (CmdConfig *cmd_config, CameraWidget *range)
 	return (GP_OK);
 }
 
-static int 
+static int
 get_digits (double d)
 {
 	/*
@@ -444,7 +444,7 @@ get_digits (double d)
 		 * arithmetic does not always give an exact 0.0 (and can
 		 * even give a -0.0).
 		 */
-		if (fabs (x - floor (x)) < 0.000001) 
+		if (fabs (x - floor (x)) < 0.000001)
 			return(i);
 		x = x * 10.0;
 	}
@@ -471,7 +471,7 @@ show_range_float (CmdConfig *cmd_config, CameraWidget *range)
         fscale = newCDKFScale (cmd_config->screen, CENTER, CENTER, title,
                                _("Value: "), A_STANDOUT,
                                50, value, min, max,
-                               increment, 
+                               increment,
 			       MAX (increment, (max - min) / 20.0),
 			       get_digits (increment),
 			       TRUE, FALSE);

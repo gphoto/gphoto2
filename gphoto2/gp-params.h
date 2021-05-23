@@ -7,10 +7,10 @@
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful, 
- * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details. 
+ * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
@@ -62,7 +62,7 @@ struct _GPParams {
 
 	/** This field is supposed to be private. Usually, you use the
 	 * gp_camera_abilities_list() function to access it.
-	 */ 
+	 */
 	CameraAbilitiesList *_abilities_list;
 
 	GPPortInfoList	*portinfo_list;
@@ -70,7 +70,7 @@ struct _GPParams {
 
 	MultiType	multi_type;
 	CameraFileType	download_type; /* for multi download */
-       
+ 
 	char		*hook_script; /* If non-NULL, hook script to run */
 	char		**envp;  /* envp from the main() function */
 };

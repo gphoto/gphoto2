@@ -7,10 +7,10 @@
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful, 
- * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details. 
+ * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
@@ -111,9 +111,9 @@ static size_t
 strncpy_lower(char *dst, const char *src, size_t count)
 {
 	unsigned int i;
-	if ((dst == NULL) || (src == NULL) 
-	    || (((unsigned long)count)>= 0x7fff)) { 
-		return -1; 
+	if ((dst == NULL) || (src == NULL)
+	    || (((unsigned long)count)>= 0x7fff)) {
+		return -1;
 	}
 	for (i=0; (i<count) && (src[i] != '\0'); i++) {
 		dst[i] = (char) tolower((int)src[i]);
@@ -168,7 +168,7 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 	}
 
 	/*
-	 * If the user didn't specify a filename, use the original name 
+	 * If the user didn't specify a filename, use the original name
 	 * (and prefix).
 	 */
 	if (!gp_params.filename || !strcmp (gp_params.filename, "")) {
@@ -208,7 +208,7 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 				long int _prec;
 				_prec = strtol(&gp_params.filename[i],
 					       &cp, 10);
-				if (_prec < 1) 
+				if (_prec < 1)
 					precision = 1;
 				else if (_prec > 20)
 					precision = 20;
@@ -406,9 +406,9 @@ save_camera_file_to_file (
 			if ((c[0]=='y') || (c[0]=='Y'))
 				break;
 
-			do { 
+			do {
 				printf (_("Specify new filename? [y|n] "));
-				fflush (stdout); 
+				fflush (stdout);
 				if (NULL == fgets (c, sizeof (c) - 1, stdin))
 					return GP_ERROR;
 			} while ((c[0]!='y')&&(c[0]!='Y')&&
@@ -1394,7 +1394,7 @@ struct _CallbackParams {
  */
 
 static void
-cb_arg_query (poptContext __unused__ ctx, 
+cb_arg_query (poptContext __unused__ ctx,
 	      enum poptCallbackReason __unused__ reason,
 	      const struct poptOption *opt, const char __unused__ *arg,
 	      CallbackParams *params)
@@ -1409,7 +1409,7 @@ cb_arg_query (poptContext __unused__ ctx,
  */
 
 static void
-cb_arg_preinit (poptContext __unused__ ctx, 
+cb_arg_preinit (poptContext __unused__ ctx,
 		enum poptCallbackReason __unused__ reason,
 		const struct poptOption *opt, const char *arg,
 		CallbackParams *params)
@@ -1446,7 +1446,7 @@ cb_arg_preinit (poptContext __unused__ ctx,
  */
 
 static void
-cb_arg_init (poptContext __unused__ ctx, 
+cb_arg_init (poptContext __unused__ ctx,
 	     enum poptCallbackReason __unused__ reason,
 	     const struct poptOption *opt, const char *arg,
 	     CallbackParams *params)
@@ -1543,7 +1543,7 @@ cb_arg_init (poptContext __unused__ ctx,
 		gp_params.flags |= FLAGS_QUIET | FLAGS_STDOUT;
 		break;
 	case ARG_STDOUT_SIZE:
-		gp_params.flags |= FLAGS_QUIET | FLAGS_STDOUT 
+		gp_params.flags |= FLAGS_QUIET | FLAGS_STDOUT
 			| FLAGS_STDOUT_SIZE;
 		break;
 
@@ -1569,7 +1569,7 @@ cb_arg_init (poptContext __unused__ ctx,
  */
 
 static void
-cb_arg_run (poptContext __unused__ ctx, 
+cb_arg_run (poptContext __unused__ ctx,
 	    enum poptCallbackReason __unused__ reason,
 	    const struct poptOption *opt, const char *arg,
 	    CallbackParams *params)
@@ -1739,12 +1739,12 @@ cb_arg_run (poptContext __unused__ ctx,
 		/* Did the user specify a file or a range? */
 		if (strchr (arg, '.')) {
 			dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
-			params->p.r = print_exif_action (&gp_params, newfolder, newfilename); 
+			params->p.r = print_exif_action (&gp_params, newfolder, newfilename);
 			free (newfolder); free (newfilename);
-			break; 
-		} 
-		params->p.r = for_each_file_in_range (&gp_params, 
-						      print_exif_action, arg); 
+			break;
+		}
+		params->p.r = for_each_file_in_range (&gp_params,
+						      print_exif_action, arg);
 		break;
 	case ARG_SHOW_INFO:
 		/* Did the user specify a file or a range? */
@@ -1846,7 +1846,7 @@ cb_arg_run (poptContext __unused__ ctx,
  */
 
 static void
-cb_arg (poptContext __unused__ ctx, 
+cb_arg (poptContext __unused__ ctx,
 	enum poptCallbackReason __unused__ reason,
 	const struct poptOption *opt, const char *arg,
 	void *data)
@@ -2231,7 +2231,7 @@ main (int argc, char **argv, char **envp)
 	}
 
 	/*
-	 * Do we need debugging output? While we are at it, scan the 
+	 * Do we need debugging output? While we are at it, scan the
 	 * options for bad ones.
 	 */
 	poptResetContext (ctx);
@@ -2368,7 +2368,7 @@ main (int argc, char **argv, char **envp)
 
 		_get_portinfo_list(&gp_params);
 		CR_MAIN (gp_list_new (&list)); /* no freeing below */
-		CR_MAIN (gp_abilities_list_detect (gp_params_abilities_list(&gp_params), 
+		CR_MAIN (gp_abilities_list_detect (gp_params_abilities_list(&gp_params),
 						   gp_params.portinfo_list,
 						   list, gp_params.context));
 		CR_MAIN (count = gp_list_count (list));
@@ -2381,7 +2381,7 @@ main (int argc, char **argv, char **envp)
 				int m;
 
 				CR_MAIN (m = gp_abilities_list_lookup_model (
-						 gp_params_abilities_list(&gp_params), 
+						 gp_params_abilities_list(&gp_params),
 						 model));
 				CR_MAIN (gp_abilities_list_get_abilities (
 						 gp_params_abilities_list(&gp_params),

@@ -51,7 +51,7 @@ spawnve(const char *filename, char *const argv[], char *const envp[])
     if (1) {
       const int retcode = execve(filename, argv, envp);
       const int s_errno = errno;
-      fprintf(stderr, "execve(\"%s\") failed: %s\n", 	    
+      fprintf(stderr, "execve(\"%s\") failed: %s\n",
 	      filename, strerror(s_errno));
       _exit(79);
       return retcode;
@@ -62,7 +62,7 @@ spawnve(const char *filename, char *const argv[], char *const envp[])
     const pid_t wait_pid = waitpid(pid, &status, 0);
     if (wait_pid == pid) {
       /* our child has exit()ed */
-      /* fprintf(stderr, "child has exited, status: %d (0x%08x)\n", 
+      /* fprintf(stderr, "child has exited, status: %d (0x%08x)\n",
 	 WEXITSTATUS(status), status); */
       if (status != 0) {
 	return 1;

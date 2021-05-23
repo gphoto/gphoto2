@@ -7,10 +7,10 @@
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful, 
- * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details. 
+ * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
@@ -89,7 +89,7 @@ int auto_detect_action     (GPParams *);
 int set_folder_action      (GPParams *, const char *folder);
 int set_filename_action    (GPParams *, const char *filename);
 int print_version_action   (GPParams *);
-int override_usbids_action (GPParams *, int usb_vendor, int usb_product, 
+int override_usbids_action (GPParams *, int usb_vendor, int usb_product,
 			    int usb_vendor_modified, int usb_product_modified);
 int debug_action           (GPParams *, const char *debug_loglevel, const char *debug_logfile_name);
 int list_config_action     (GPParams *);
