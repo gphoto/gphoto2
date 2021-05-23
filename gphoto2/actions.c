@@ -356,24 +356,52 @@ print_file_action (GPParams *p, const char *folder, const char *filename)
 	}
 
 	if (p->flags & FLAGS_QUIET)
-		printf ("%s/%s\n", folder, filename);
+        if (p->flags & FLAGS_PARSABLE) {
+            CameraFileInfo info;
+
+            printf ("FILENAME='%s/%s'", folder, filename);
+            if (gp_camera_file_get_info (p->camera, folder, filename,
+                             &info, NULL) == GP_OK) {
+                if (info.file.fields & GP_FILE_INFO_PERMISSIONS) {
+                    printf(" PERMS=%s%s",
+                           (info.file.permissions & GP_FILE_PERM_READ) ? "r" : "-",
+                           (info.file.permissions & GP_FILE_PERM_DELETE) ? "d" : "-");
+                }
+                if (info.file.fields & GP_FILE_INFO_SIZE)
+                    printf(" FILESIZE=%5ld", (unsigned long int)info.file.size);
+                if ((info.file.fields & GP_FILE_INFO_WIDTH) && +
+                    (info.file.fields & GP_FILE_INFO_HEIGHT)) {
+                    printf(" IMGWIDTH=%d", info.file.width);
+                    printf(" IMGHEIGHT=%d", info.file.height);
+                }
+                if (info.file.fields & GP_FILE_INFO_TYPE)
+                    printf(" FILETYPE=%s", info.file.type);
+                if (info.file.fields & GP_FILE_INFO_MTIME)
+                    printf(" FILEMTIME=%d", info.file.mtime);
+                printf("\n");
+            } else 
+                printf ("FILENAME='%s/%s'\n", folder, filename);
+        } else
+            printf ("%s/%s\n", folder, filename);
 	else {
 		CameraFileInfo info;
 		if (gp_camera_file_get_info (p->camera, folder, filename,
 					     &info, NULL) == GP_OK) {
 		    printf("#%-5i %-27s", x+1, filename);
 		    if (info.file.fields & GP_FILE_INFO_PERMISSIONS) {
-			printf("%s%s",
-			       (info.file.permissions & GP_FILE_PERM_READ) ? "r" : "-",
-			       (info.file.permissions & GP_FILE_PERM_DELETE) ? "d" : "-");
+                printf("%s%s",
+                       (info.file.permissions & GP_FILE_PERM_READ) ? "r" : "-",
+                       (info.file.permissions & GP_FILE_PERM_DELETE) ? "d" : "-");
 		    }
 		    if (info.file.fields & GP_FILE_INFO_SIZE)
-			printf(" %5ld KB", (unsigned long int)((info.file.size+1023) / 1024));
+                printf(" %5ld KB", (unsigned long int)((info.file.size+1023) / 1024));
 		    if ((info.file.fields & GP_FILE_INFO_WIDTH) && +
 			    (info.file.fields & GP_FILE_INFO_HEIGHT))
-			printf(" %4dx%-4d", info.file.width, info.file.height);
+                printf(" %4dx%-4d", info.file.width, info.file.height);
 		    if (info.file.fields & GP_FILE_INFO_TYPE)
-			printf(" %s", info.file.type);
+                printf(" %s", info.file.type);
+		    if (info.file.fields & GP_FILE_INFO_MTIME)
+                printf(" %d", info.file.mtime);
 		    putchar ('\n');
 		} else
 		    printf("#%-5i %s\n", x+1, filename);
