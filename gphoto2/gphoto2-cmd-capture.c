@@ -72,7 +72,7 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 
 	while (1) {
 		const char *data, *type;
-		long int size;
+		unsigned long int size;
 		unsigned char *bitmap;
 
 		gp_file_get_data_and_size (file, &data, &size);
@@ -94,13 +94,14 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 			jpeg_read_header (&cinfo, TRUE);
 			while (cinfo.scale_denom) {
 				jpeg_calc_output_dimensions (&cinfo);
+				gp_log (GP_LOG_DEBUG, "gphoto2", "JPEG size %dx%d, scale_denom %d", cinfo.output_width, cinfo.output_height, cinfo.scale_denom);
 				if ((aa_imgwidth (c) >= cinfo.output_width) &&
 				    (aa_imgheight (c) >= cinfo.output_height))
 					break;
 				cinfo.scale_denom *= 2;
 			}
 			if (!cinfo.scale_denom) {
-				gp_log (GP_LOG_DEBUG, "gphoto2", "Screen too small.");
+				gp_log (GP_LOG_DEBUG, "gphoto2", "Screen too small (aa is %dx%d, jpeg cinfo is now %dx%d.", aa_imgwidth(c), aa_imgheight(c), cinfo.output_width, cinfo.output_height);
 				jpeg_destroy_decompress (&cinfo);
 				aa_close (c);
 				return (GP_OK);
@@ -176,6 +177,7 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 		case AA_NONE:
 		case 32:
 			/* Space */
+			gp_file_clean (file);
 			result = gp_camera_capture_preview (camera, file,
 							    context);
 			if (result < 0) {
