@@ -51,15 +51,18 @@ gp_capture_jpeg_exit(j_common_ptr cinfo) {
 #endif
 
 int
-gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
+gp_cmd_capture_preview (Camera *camera, CameraFile *xfile, GPContext *context)
 {
 	int result, event, contrast, bright;
 	aa_context *c;
 	aa_renderparams *params;
+	CameraFile	*file;
 
 	c = aa_autoinit (&aa_defparams);
 	if (!c)
 		return (GP_ERROR);
+	/* otherwise we get a fd based file, and that can not be rewound */
+	gp_file_new (&file);
 	aa_autoinitkbd (c, 0);
 	params = aa_getrenderparams ();
 	contrast = params->contrast;
@@ -68,7 +71,7 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 
 	result = gp_camera_capture_preview (camera, file, context);
 	if (result < 0)
-		return (result);
+		return result;
 
 	while (1) {
 		const char *data, *type;
@@ -94,7 +97,6 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 			jpeg_read_header (&cinfo, TRUE);
 			while (cinfo.scale_denom) {
 				jpeg_calc_output_dimensions (&cinfo);
-				gp_log (GP_LOG_DEBUG, "gphoto2", "JPEG size %dx%d, scale_denom %d", cinfo.output_width, cinfo.output_height, cinfo.scale_denom);
 				if ((aa_imgwidth (c) >= cinfo.output_width) &&
 				    (aa_imgheight (c) >= cinfo.output_height))
 					break;
@@ -104,7 +106,8 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 				gp_log (GP_LOG_DEBUG, "gphoto2", "Screen too small (aa is %dx%d, jpeg cinfo is now %dx%d.", aa_imgwidth(c), aa_imgheight(c), cinfo.output_width, cinfo.output_height);
 				jpeg_destroy_decompress (&cinfo);
 				aa_close (c);
-				return (GP_OK);
+				gp_file_copy(xfile, file);
+				return GP_OK;
 			}
 			gp_log (GP_LOG_DEBUG, "gphoto2", "AA: (w,h) = (%i,%i)",
 				aa_imgwidth (c), aa_imgheight (c));
@@ -142,7 +145,7 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 		aa_render (c, params, 0, 0,
 			aa_scrwidth (c), aa_scrheight (c));
 		aa_flush (c);
-		
+
 		event = aa_getevent (c, 0);
 		switch (event) {
 		case 105:
@@ -192,13 +195,15 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *file, GPContext *context)
 			return (GP_ERROR_CANCEL);
 		default:
 			aa_close (c);
+			gp_file_copy(xfile, file);
 			return (GP_OK);
 		}
 	}
 
 	aa_close (c);
 
-	return (GP_OK);
+	gp_file_copy(xfile, file);
+	return GP_OK;
 }
 
 
