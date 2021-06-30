@@ -58,6 +58,9 @@ gp_cmd_capture_preview (Camera *camera, CameraFile *xfile, GPContext *context)
 	aa_renderparams *params;
 	CameraFile	*file;
 
+	if (!aa_parseoptions(NULL, NULL, NULL, NULL))
+		gp_log (GP_LOG_DEBUG, "gphoto2", "aa_parseoptions did not work!.");
+
 	c = aa_autoinit (&aa_defparams);
 	if (!c)
 		return (GP_ERROR);
