@@ -2054,9 +2054,9 @@ main (int argc, char **argv, char **envp)
 		{"no-keep", '\0', POPT_ARG_NONE, NULL, ARG_NO_KEEP,
 		 N_("Remove images from camera after capturing"), NULL},
 		{"wait-event", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL, ARG_WAIT_EVENT,
-		 N_("Wait for event(s) from camera"), N_("COUNT, SECONDS, MILLISECONDS or MATCHSTRING")},
+		 N_("Wait for event(s) from camera"), N_("EVENT")},
 		{"wait-event-and-download", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL,
-		 ARG_CAPTURE_TETHERED, N_("Wait for event(s) from the camera and download new images"), N_("COUNT, SECONDS, MILLISECONDS or MATCHSTRING")},
+		 ARG_CAPTURE_TETHERED, N_("Wait for event(s) from the camera and download new images"), N_("EVENT")},
 		{"capture-preview", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_PREVIEW,
 		 N_("Capture a quick preview"), NULL},
@@ -2082,7 +2082,7 @@ main (int argc, char **argv, char **envp)
 		{"capture-sound", '\0', POPT_ARG_NONE, NULL,
 		 ARG_CAPTURE_SOUND, N_("Capture an audio clip"), NULL},
 		{"capture-tethered", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL,
-		 ARG_CAPTURE_TETHERED, N_("Wait for shutter release on the camera and download"), N_("COUNT, SECONDS, MILLISECONDS or MATCHSTRING")},
+		 ARG_CAPTURE_TETHERED, N_("Wait for shutter release on the camera and download"), N_("EVENT")},
 		POPT_TABLEEND
 	};
 	const struct poptOption fileOptions[] = {
@@ -2244,6 +2244,8 @@ main (int argc, char **argv, char **envp)
 	}
 	if (help_option_given) {
 		poptPrintHelp(ctx, stdout, 0);
+		fprintf(stdout, "\n%s",
+			_("EVENT can be either COUNT, SECONDS, MILLISECONDS, or MATCHSTRING.\n"));
 		gp_params_exit (&gp_params);
                 poptFreeContext(ctx);
 		return 0;
