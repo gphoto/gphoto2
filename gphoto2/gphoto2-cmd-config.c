@@ -124,7 +124,7 @@ show_section (CmdConfig *cmd_config, CameraWidget *section)
 	count++;
 	scroll = newCDKScroll (cmd_config->screen, CENTER, CENTER, RIGHT,
 			       10, 50, title,
-			       items, count, NUMBERS, A_REVERSE, TRUE, FALSE);
+			       (const char**)items, count, NUMBERS, A_REVERSE, TRUE, FALSE);
 	if (!scroll)
 		return (GP_ERROR);
 
