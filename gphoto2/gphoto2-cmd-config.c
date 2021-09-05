@@ -154,7 +154,7 @@ static int
 show_date (CmdConfig *cmd_config, CameraWidget *date)
 {
 	CDKCALENDAR *calendar = NULL;
-	int day, month, year, selection;
+	int day, month, year;
 	time_t xtime;
 	struct tm *date_info;
 	const char *label;
@@ -182,7 +182,7 @@ show_date (CmdConfig *cmd_config, CameraWidget *date)
 		return (GP_ERROR);
 
 	drawCDKCalendar (calendar, TRUE);
-	selection = activateCDKCalendar (calendar, 0);
+	/*selection = */ activateCDKCalendar (calendar, 0);	/* returns a time_t, but we need to inject the current time anyway */
 
 	if (calendar->exitType == vNORMAL) {
 		date_info = localtime (&xtime);
@@ -318,7 +318,7 @@ show_radio (CmdConfig *cmd_config, CameraWidget *radio)
 	}
 
 	list = newCDKItemlist (cmd_config->screen, CENTER, CENTER,
-			       title, _("Value: "), items, count,
+			       title, _("Value: "), (const char**)items, count,
 			       current, TRUE, FALSE);
 	if (!list)
 		return (GP_ERROR);
