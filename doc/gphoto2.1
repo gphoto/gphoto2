@@ -39,7 +39,7 @@ gphoto2 \- command\-line gphoto2 client
 .br
 [\-\-auto\-detect] [\-\-port\ \fIPATH\fR] [\-\-speed\ \fISPEED\fR] [\-\-camera\ \fIMODEL\fR]
 .br
-[\-\-filename\ \fIFILENAME\fR]
+[\-\-filename\ \fIFILENAME\fR] [\-\-filenumber\ \fIFILENUMBER\fR]
 .br
 [\-\-usbid\ \fIUSBIDS\fR]
 .br
@@ -284,6 +284,15 @@ Default value for this option can be specified in the
 ~/\&.gphoto/settings
 file as
 \fBgphoto2=filename=value\fR\&.
+.RE
+.PP
+\fB\-\-filenumber\fR \fIFILENUMBER\fR
+.RS 4
+If you specify the filename using the
+\fB\-\-filename\fR
+option and use the %n pattern, this pattern usually starts at 1\&. For incremental usage, you can use
+\fB\-\-filenumber\fR
+to have it start at another number FILENUMBER\&.
 .RE
 .PP
 \fB\-\-usbid\fR \fI\fIUSBIDS\fR\fR
