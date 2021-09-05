@@ -107,7 +107,7 @@ action_camera_upload_file (GPParams *p, const char *folder, const char *path)
 	if (p->filename && strcmp (p->filename, ""))
 		fn = p->filename;
 	else
-		fn = basename (path);
+		fn = basename ((char*)path);
 
 	res = gp_camera_folder_put_file (p->camera, folder, fn, GP_FILE_TYPE_NORMAL, file,
 					 p->context);
@@ -135,7 +135,7 @@ action_camera_upload_metadata (GPParams *p, const char *folder, const char *path
 	if (p->filename && strcmp (p->filename, "")) {
 		fn = p->filename;
 	} else if (path == strstr(path, "meta_")) {
-		fn = path+5;
+		fn = (char*)(path+5);
 	}
 	res = gp_camera_folder_put_file (p->camera, folder, fn, GP_FILE_TYPE_METADATA, file,
 					 p->context);
@@ -377,7 +377,7 @@ print_file_action (GPParams *p, const char *folder, const char *filename)
                 if (info.file.fields & GP_FILE_INFO_TYPE)
                     printf(" FILETYPE=%s", info.file.type);
                 if (info.file.fields & GP_FILE_INFO_MTIME)
-                    printf(" FILEMTIME=%d", info.file.mtime);
+                    printf(" FILEMTIME=%ld", info.file.mtime);
                 printf("\n");
             } else
                 printf ("FILENAME='%s/%s'\n", folder, filename);
@@ -401,7 +401,7 @@ print_file_action (GPParams *p, const char *folder, const char *filename)
 		    if (info.file.fields & GP_FILE_INFO_TYPE)
                 printf(" %s", info.file.type);
 		    if (info.file.fields & GP_FILE_INFO_MTIME)
-                printf(" %d", info.file.mtime);
+                printf(" %ld", info.file.mtime);
 		    putchar ('\n');
 		} else
 		    printf("#%-5i %s\n", x+1, filename);
@@ -1153,7 +1153,7 @@ action_camera_wait_event (GPParams *p, enum download_type downloadtype, const ch
 			printf ( _("Waiting for %d events from camera. Press Ctrl-C to abort.\n"), wp.u.events);
 		} else {
 			wp.type = WAIT_STRING;
-			wp.u.str = arg;
+			wp.u.str = (char*)arg;
 			printf ( _("Waiting for '%s' event from camera. Press Ctrl-C to abort.\n"), wp.u.str);
 		}
 	}
