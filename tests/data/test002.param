@@ -1,3 +1,3 @@
 TITLE='Nonrecursive directory file list'
 COMMAND='$PROGRAM --camera="Directory Browse" --port=disk:"$STAGINGDIR" --no-recurse -L 2> "$ERRFILE" > "$OUTFILE"'
-SEDCOMMAND='s@\(in folder .\).*/@\1@'
+SEDCOMMAND='s@\(in folder .\).*/@\1@; s/^\(#.*\)\( [1-9][0-9]\+\)$/\1 <<MTIME>>/'
