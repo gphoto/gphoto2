@@ -355,14 +355,16 @@ if $try_readline; then
         AC_CHECK_HEADER([readline/readline.h], [
             AC_CHECK_LIB([readline], [rl_completion_append_character], [
                 AC_CHECK_LIB([readline], [rl_completion_matches], [
-                    have_readline=:
-                    rl_msg="yes (doesn't require explicit -lncurses)"
-                    RL_LIBS="-lreadline"
-                    RL_CFLAGS=""
-                    AC_DEFINE([HAVE_RL], [1], [whether we use readline])
-                ], [
-		    rl_msg="no (available version too old)"
-                ])
+                    AC_CHECK_LIB([readline], [rl_copy_text], [
+                        have_readline=:
+                        rl_msg="yes (doesn't require explicit -lncurses)"
+                        RL_LIBS="-lreadline"
+                        RL_CFLAGS=""
+                        AC_DEFINE([HAVE_RL], [1], [whether we use readline])
+                    ], [
+		        rl_msg="no (available version too old or not GNU readline)"
+                    ])
+	       ])
             ], [
                 LDFLAGS_save="$LDFLAGS"
                 LDFLAGS="-lncurses"
