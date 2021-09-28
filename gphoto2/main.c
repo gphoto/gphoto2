@@ -1872,7 +1872,7 @@ cb_arg (poptContext __unused__ ctx,
 		cb_arg_run (ctx, reason, opt, arg, params);
 		break;
 	}
-};
+}
 
 
 static void
