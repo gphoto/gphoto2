@@ -223,7 +223,8 @@ get_path_for_id_rec (GPParams *p,
 		CL (n_folders = gp_list_count (list), list);
 		for (i = 0; i < (unsigned int)n_folders; i++) {
 			CL (gp_list_get_name (list, i, &name), list);
-			strncpy (subfolder, base_folder, sizeof (subfolder));
+			strncpy (subfolder, base_folder, sizeof (subfolder)-1);
+			subfolder[sizeof(subfolder)-1] = '\0';
 			if (strlen (base_folder) > 1)
 				strncat (subfolder, "/", sizeof (subfolder) - strlen(subfolder) - 1);
 			strncat (subfolder, name, sizeof (subfolder) - strlen(subfolder) - 1);
@@ -337,6 +338,7 @@ for_each_file_in_range (GPParams *p, FileAction action,
 				if (r == GP_OK) continue;
 				/* some cameras do not support downloads of some files */
 				if (r == GP_ERROR_NOT_SUPPORTED) continue;
+				free (index);
 				return r;
 			}
 	} else {
@@ -357,13 +359,17 @@ for_each_file_in_range (GPParams *p, FileAction action,
 					ffolder, ffile));
 				r = action (p, ffolder, ffile);
 				/* some cameras do not support downloads of some files */
-				if ((r != GP_OK) && (r != GP_ERROR_NOT_SUPPORTED)) return r;
+				if ((r != GP_OK) && (r != GP_ERROR_NOT_SUPPORTED)) {
+					free (index);
+					return r;
+				}
 				if (action == delete_file_action)
 					count++;
 			}
 	}
-		
-	return (GP_OK);
+
+	free (index);
+	return GP_OK;
 }
 
 
