@@ -7,17 +7,6 @@ AC_CONFIG_MACRO_DIR([auto-m4])
 AC_CONFIG_AUX_DIR([auto-aux])
 AM_INIT_AUTOMAKE([-Wall -Werror gnu 1.9 dist-bzip2 dist-xz check-news])
 
-if test ! -d "$srcdir/gphoto-m4"; then
-AC_MSG_ERROR([
-You are missing the gphoto-m4/ directory in your top
-$PACKAGE_TARNAME source directory.
-
-copying it from the gphoto/gphoto-m4 github repository
-
-and re-running autogen.sh might help.
-])
-fi
-
 GP_CHECK_SHELL_ENVIRONMENT
 GP_CONFIG_MSG([Build])
 GP_CONFIG_MSG([Source code location],[${srcdir}])
