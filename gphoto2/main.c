@@ -19,6 +19,7 @@
  */
 
 #define _DARWIN_C_SOURCE
+#define _XOPEN_SOURCE 500
 
 #include "config.h"
 #if defined (HAVE_SIGNAL_H)
