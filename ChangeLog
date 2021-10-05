@@ -163,7 +163,7 @@
 2004-01-08  Marcus Meissner  <marcus@jet.franken.de>
 
 	* gphoto2/*.[ch]:
-	  Merged patch from Hervé Eychenne <eychenne@users.sourceforge.net>:
+	  Merged patch from HervÃ© Eychenne <eychenne@users.sourceforge.net>:
 	  - new flag handling, obsoleting some global ints
 	  - --new handling, check for downloaded images.
 	  - some fprintf(stdout -> printf( cleanups.
@@ -210,7 +210,7 @@
 2004-07-09  Colin Marquardt  <colin@marquardt-home.de>
 
 	* configure.in (ALL_LINGUAS): Added fi
-	* fi.po: New Finnish translation, courtesy Matti Pöllä.
+	* fi.po: New Finnish translation, courtesy Matti PÃ¶llÃ¤.
 
 2004-06-10  Hubert Figuiere  <hfiguiere@teaser.fr>
 
@@ -347,33 +347,33 @@
 	* gphoto2/Makefile.am: added version.[ch]
 	* gphoto2/actions.c: added version/feature reports
 
-2002-11-06  Lutz Müller <lutz@users.sourceforge.net>
+2002-11-06  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/main.c:
 	* gphoto2/actions.[c,h]: Print some information on the build options
 	  when --debug.
 
-2002-11-06  Lutz Müller <lutz@users.sourceforge.net>
+2002-11-06  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/foreach.c (for_each_file_in_range: Supply the correct 
 	  folder.
 
-2002-11-05  Lutz Müller <lutz@users.sourceforge.net>
+2002-11-05  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/actions.c:
 	* gphoto2/foreach.c:
 	* gphoto2/main.c: While trying to hunt down a bug: Initialize some
 	  variables, set them to NULL after free, etc.
 
-2002-11-04  Lutz Müller <lutz@users.sourceforge.net>
+2002-11-04  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/foreach.c: Fix for-loop.
 
-2002-11-03  Lutz Müller <lutz@users.sourceforge.net>
+2002-11-03  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/actions.h: Fix typo in comment.
 
-2002-11-03  Lutz Müller <lutz@users.sourceforge.net>
+2002-11-03  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/options.[c,h]:
 	* gphoto2/main.c: Make --without-popt compile again.
@@ -383,47 +383,47 @@
 	* gphoto2/foreach.c: (for_each_file): actually recurse into the
 	  sub-folder.
 
-2002-10-18  Lutz Müller <lutz@users.sourceforge.net>
+2002-10-18  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/main.c:
 	* gphoto2/gp-param.h: force -> force_overwrite.
 
-2002-10-17  Lutz Müller <lutz@users.sourceforge.net>
+2002-10-17  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/gp-params.[c,h]: New. Simplifies passing around parameters.
 	* gphoto2/main.c: New --force parameter.
 	* gphoto2/foreach.[c,h]:
 	* gphoto2/actions.[c,h]: Adjust to above changes.
 
-2002-10-08  Lutz Müller <lutz@users.sourceforge.net>
+2002-10-08  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/actions.c: "!result" should have been "result < 0". I 
 	  apologize.
 
-2002-10-08  Lutz Müller <lutz@users.sourceforge.net>
+2002-10-08  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/main.c: Only show instructions on how to get debugging
 	  messages if --debug has not been used.
 
-2002-10-08  Lutz Müller <lutz@users.sourceforge.net>
+2002-10-08  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/main.c: Additional debugging messages in order to prepare
 	  fixing the introduced bugs.
 
-2002-10-03  Lutz Müller <lutz@users.sourceforge.net>
+2002-10-03  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/main.c: Kill warning.
 
-2002-10-03  Lutz Müller <lutz@users.sourceforge.net>
+2002-10-03  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* configure.in: Require libgphoto2-2.1.1.
 	* gphoto2/main.c: Create the context before the abilities list.
 
-2002-10-03  Lutz Müller <lutz@users.sourceforge.net>
+2002-10-03  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/main.c: Don't call gp_cmd_config #ifndef HAVE_CDK.
 
-2002-09-29  Lutz Müller <lutz@users.sourceforge.net>
+2002-09-29  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* configure.in: Use popt.h if available.
 	* gphoto2/*: Use popt.h if available.
@@ -433,23 +433,23 @@
 	* configure.in: 2.1.1dev6
 	* Makefile.am: create .tar.bz2 dists again
 
-2002-08-08  Lutz Müller <lutz@users.sourceforge.net>
+2002-08-08  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/main.c: '%n' should work now for non-root folders, too.
 
-2002-08-08  Lutz Müller <lutz@users.sourceforge.net>
+2002-08-08  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/main.c: Add %f for filename without suffix.
 
-2002-08-08  Lutz Müller <lutz@users.sourceforge.net>
+2002-08-08  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/main.c: tm->tm_wday starts with 0.
 
-2002-08-07  Lutz Müller <lutz@users.sourceforge.net>
+2002-08-07  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/main.c: Add %C (filename suffix).
 
-2002-08-07  Lutz Müller <lutz@users.sourceforge.net>
+2002-08-07  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* gphoto2/main.c: Let users specify %A, %y, etc. in --filename.
 
@@ -471,14 +471,14 @@
 	* gphoto2/.cvsignore: added everything created by build and unknown to CVS
 	* po/.cvsignore: added everything created by build and unknown to CVS
 	
-2002-07-29  Lutz Müller <lutz@users.sourceforge.net>
+2002-07-29  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	* README: The first few lines.
 
-2002-07-29  Lutz Müller <lutz@users.sourceforge.net>
+2002-07-29  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	gphoto2 is now functional.
 
-2002-07-28  Lutz Müller <lutz@users.sourceforge.net>
+2002-07-28  Lutz MÃ¼ller <lutz@users.sourceforge.net>
 
 	Initial setup.
