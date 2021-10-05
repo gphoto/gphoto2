@@ -18,14 +18,14 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __RANGE_H__
-#define __RANGE_H__
+#ifndef GPHOTO2_RANGE_H
+#define GPHOTO2_RANGE_H
 
 #include <gphoto2/gphoto2-context.h>
 
 int parse_range (const char *range, char *index, GPContext *context);
 
-#endif /* __RANGE_H__ */
+#endif /* !defined(GPHOTO2_RANGE_H) */
 
 
 /*

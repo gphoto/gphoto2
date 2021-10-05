@@ -18,8 +18,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __ACTIONS_H__
-#define __ACTIONS_H__
+#ifndef GPHOTO2_ACTIONS_H
+#define GPHOTO2_ACTIONS_H
 
 #include <gphoto2/gphoto2-camera.h>
 #include <gphoto2/gphoto2-context.h>
@@ -101,7 +101,8 @@ int set_config_value_action      (GPParams *, const char *name, const char *valu
 int print_storage_info     (GPParams *);
 
 void _get_portinfo_list	(GPParams *p);
-#endif /* __ACTIONS_H__ */
+
+#endif /* !defined(GPHOTO2_ACTIONS_H) */
 
 
 /*

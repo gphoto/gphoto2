@@ -18,8 +18,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __GP_PARAMS_H__
-#define __GP_PARAMS_H__
+#ifndef GPHOTO2_GP_PARAMS_H
+#define GPHOTO2_GP_PARAMS_H
 
 #include <gphoto2/gphoto2-camera.h>
 #include <gphoto2/gphoto2-abilities-list.h>
@@ -85,7 +85,7 @@ CameraAbilitiesList *gp_params_abilities_list (GPParams *params);
 
 int gp_params_run_hook (GPParams *params, const char *command, const char *argument);
 
-#endif
+#endif /* !defined(GPHOTO2_GP_PARAMS_H) */
 
 
 /*

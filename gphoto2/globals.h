@@ -1,5 +1,5 @@
-#ifndef __GLOBALS_H__
-#define __GLOBALS_H__
+#ifndef GPHOTO2_GLOBALS_H
+#define GPHOTO2_GLOBALS_H
 
 extern char	glob_cancel;
 
@@ -14,7 +14,7 @@ extern volatile int capture_now;
 /* flag for SIGUSR2 handler */
 extern volatile int end_next;
 
-#endif
+#endif /* !defined(GPHOTO2_GLOBALS_H) */
 
 
 /*

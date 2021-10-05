@@ -18,8 +18,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __VERSION_H__
-#define __VERSION_H__
+#ifndef GPHOTO2_VERSION_H
+#define GPHOTO2_VERSION_H
 
 /* for detailed version message */
 #include <gphoto2/gphoto2-version.h>
@@ -31,7 +31,7 @@ typedef struct {
 
 extern const module_version module_versions[];
 
-#endif /* __VERSION_H__ */
+#endif /* !defined(GPHOTO2_VERSION_H) */
 
 
 /*

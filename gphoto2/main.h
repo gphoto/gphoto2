@@ -18,8 +18,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __MAIN_H__
-#define __MAIN_H__
+#ifndef GPHOTO2_MAIN_H
+#define GPHOTO2_MAIN_H
 
 #include <gphoto2/gphoto2-file.h>
 #include <gphoto2/gphoto2-camera.h>
@@ -48,7 +48,7 @@ int	get_file_common (const char *arg, CameraFileType type );
 
 int	trigger_capture (void);
 
-#endif /* __MAIN_H__ */
+#endif /* !defined(GPHOTO2_MAIN_H) */
 
 
 /*

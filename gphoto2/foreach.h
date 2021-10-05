@@ -18,8 +18,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __FOREACH_H__
-#define __FOREACH_H__
+#ifndef GPHOTO2_FOREACH_H
+#define GPHOTO2_FOREACH_H
 
 #include <gphoto2/gphoto2-camera.h>
 #include <gphoto2/gphoto2-list.h>
@@ -32,7 +32,7 @@ int for_each_file           (GPParams *, FileAction action);
 int for_each_file_in_range  (GPParams *, FileAction action,
 			     const char *range);
 
-#endif /* __FOREACH_H__ */
+#endif /* !defined(GPHOTO2_FOREACH_H) */
 
 
 /*

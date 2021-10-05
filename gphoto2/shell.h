@@ -18,14 +18,14 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __SHELL_H__
-#define __SHELL_H__
+#ifndef GPHOTO2_SHELL_H
+#define GPHOTO2_SHELL_H
 
 #include <gp-params.h>
 
 int shell_prompt (GPParams *params);
 
-#endif /* __SHELL_H__ */
+#endif /* !defined(GPHOTO2_SHELL_H) */
 
 
 /*

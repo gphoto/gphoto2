@@ -18,14 +18,14 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __GPHOTO2_CMD_CONFIG_H__
-#define __GPHOTO2_CMD_CONFIG_H__
+#ifndef GPHOTO2_GPHOTO2_CMD_CONFIG_H
+#define GPHOTO2_GPHOTO2_CMD_CONFIG_H
 
 #include <gphoto2/gphoto2-camera.h>
 
 int gp_cmd_config (Camera *camera, GPContext *context);
 
-#endif /* __GPHOTO2_CMD_CONFIG_H__ */
+#endif /* !defined(GPHOTO2_GPHOTO2_CMD_CONFIG_H) */
 
 
 /*

@@ -17,14 +17,15 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#ifndef GPHOTO2_SPAWNVE_H
+#define GPHOTO2_SPAWNVE_H
+
 /* Just in case spawnve is in the RTL */
 #ifndef HAVE_SPAWNVE
-
-#ifndef __SPAWNVE_H__
-#define __SPAWNVE_H__
 
 int
 spawnve(const char *filename, char *const argv[], char *const envp[]);
 
-#endif /* __SPAWNVE_H__ */
 #endif
+
+#endif /* !defined(GPHOTO2_SPAWNVE_H) */

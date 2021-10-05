@@ -18,8 +18,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __I18N_H__
-#define __I18N_H__
+#ifndef GPHOTO2_I18N_H
+#define GPHOTO2_I18N_H
 
 #ifdef ENABLE_NLS
 #  include <libintl.h>
@@ -41,7 +41,7 @@
 #  define N_(String) (String)
 #endif
 
-#endif /* __I18N_H__ */
+#endif /* !defined(GPHOTO2_I18N_H) */
 
 
 /*
