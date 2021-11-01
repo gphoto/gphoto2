@@ -20,6 +20,7 @@
 
 #include "config.h"
 #include "actions.h"
+#include "globals.h"
 #include "foreach.h"
 #include "i18n.h"
 #include "main.h"
@@ -79,6 +80,8 @@ for_each_folder (GPParams *p, FolderAction action)
 	CL (count = gp_list_count (list), list);
 	if (p->flags & FLAGS_REVERSE) {
 		for (i = count - 1; i >= 0; i--) {
+			if (glob_cancel)
+				break;
 			CL (gp_list_get_name (list, i, &name), list);
 			f = p->folder;
 			p->folder = malloc (sizeof (char) *
@@ -99,6 +102,8 @@ for_each_folder (GPParams *p, FolderAction action)
 		}
 	} else {
 		for (i = 0; i < count; i++) {
+			if (glob_cancel)
+				break;
 			CL (gp_list_get_name (list, i, &name), list);
 			f = p->folder;
 			p->folder = malloc (sizeof (char) *
@@ -137,6 +142,8 @@ for_each_file (GPParams *p, FileAction action)
 	CR (count = gp_list_count (list));
 	if (p->flags & FLAGS_REVERSE) {
 		for (i = count ; i--; ) {
+			if (glob_cancel)
+				break;
 			CL (gp_list_get_name (list, i, &name), list);
 			r = action (p, p->folder, name);
 			if (r == GP_ERROR_NOT_SUPPORTED) /* can go on */
@@ -145,6 +152,8 @@ for_each_file (GPParams *p, FileAction action)
 		}
 	} else {
 		for (i = 0; i < count; i++) {
+			if (glob_cancel)
+				break;
 			CL (gp_list_get_name (list, i, &name), list);
 			r = action (p, p->folder, name);
 			if (r == GP_ERROR_NOT_SUPPORTED) /* can go on */
@@ -164,6 +173,8 @@ for_each_file (GPParams *p, FileAction action)
 					   list, p->context), list);
 	CL (count = gp_list_count (list), list);
 	for (i = 0; i < count; i++) {
+		if (glob_cancel)
+			break;
 		CL (gp_list_get_name (list, i, &name), list);
 		f = p->folder;
 		p->folder = malloc (sizeof (char) *
@@ -330,7 +341,9 @@ for_each_file_in_range (GPParams *p, FileAction action,
 	for (max = MAX_IMAGE_NUMBER - 1; !index[max]; max--);
 	
 	if (p->flags & FLAGS_REVERSE) {
-		for (i = max; 0 <= i; i--)
+		for (i = max; 0 <= i; i--) {
+			if (glob_cancel)
+				break;
 			if (index[i]) {
 				CR (get_path_for_id (p, p->folder,
 					(unsigned int) i, ffolder, ffile));
@@ -341,6 +354,7 @@ for_each_file_in_range (GPParams *p, FileAction action,
 				free (index);
 				return r;
 			}
+		}
 	} else {
 		unsigned int count;
 
@@ -350,7 +364,9 @@ for_each_file_in_range (GPParams *p, FileAction action,
 		 * if not deleting reversely. This is the case here and we need
 		 * to adjust the image IDs after a successful deletion.
 		 */
-		for (count = i = 0; i <= max; i++)
+		for (count = i = 0; i <= max; i++) {
+			if (glob_cancel)
+				break;
 			if (index[i]) {
 				GP_DEBUG ("Now processing ID %i "
 					  "(originally %i)...", i - count, i);
@@ -366,6 +382,7 @@ for_each_file_in_range (GPParams *p, FileAction action,
 				if (action == delete_file_action)
 					count++;
 			}
+		}
 	}
 
 	free (index);
