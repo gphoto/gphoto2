@@ -2457,7 +2457,7 @@ main (int argc, char **argv, char **envp)
 				}
 				if (i != count)
 					use_auto = 0;
-				if ((i == count) && (strcmp(xpath, "usb:"))) {
+				if ((type == GP_PORT_USB) && (i == count) && (strcmp(xpath, "usb:"))) {
 					fprintf (stderr, _("Port %s not found\n"), xpath );
 					CR_MAIN (GP_ERROR_UNKNOWN_PORT);
 				}
