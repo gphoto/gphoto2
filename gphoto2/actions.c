@@ -86,7 +86,7 @@ timediff_now (struct timeval *target) {
 int
 delete_all_action (GPParams *p)
 {
-	return (gp_camera_folder_delete_all (p->camera, p->folder, p->context));
+	return gp_camera_folder_delete_all (p->camera, p->folder, p->context);
 }
 
 int
@@ -112,7 +112,7 @@ action_camera_upload_file (GPParams *p, const char *folder, const char *path)
 	res = gp_camera_folder_put_file (p->camera, folder, fn, GP_FILE_TYPE_NORMAL, file,
 					 p->context);
 	gp_file_unref (file);
-	return (res);
+	return res;
 }
 
 int
@@ -128,7 +128,7 @@ action_camera_upload_metadata (GPParams *p, const char *folder, const char *path
 	res = gp_file_open (file, path);
 	if (res < 0) {
 		gp_file_unref (file);
-		return (res);
+		return res;
 	}
 
 	/* Check if the user specified a filename */
@@ -140,7 +140,7 @@ action_camera_upload_metadata (GPParams *p, const char *folder, const char *path
 	res = gp_camera_folder_put_file (p->camera, folder, fn, GP_FILE_TYPE_METADATA, file,
 					 p->context);
 	gp_file_unref (file);
-	return (res);
+	return res;
 }
 
 int
@@ -180,7 +180,7 @@ num_files_action (GPParams *p)
 		printf (_("Number of files in folder '%s': %i\n"),
 			p->folder, filecount);
 
-	return (GP_OK);
+	return GP_OK;
 }
 
 int
@@ -214,7 +214,7 @@ list_folders_action (GPParams *p)
 			printf (" - %s\n", name);
 	}
 	gp_list_free (list);
-	return (GP_OK);
+	return GP_OK;
 }
 
 int
@@ -261,7 +261,7 @@ list_files_action (GPParams *p)
 		CL (print_file_action (p, p->folder, name), list);
 	}
 	gp_list_free (list);
-	return (GP_OK);
+	return GP_OK;
 }
 
 int
@@ -335,7 +335,7 @@ print_info_action (GPParams *p, const char *folder, const char *filename)
 				(info.audio.status == GP_FILE_STATUS_DOWNLOADED) ? _("yes") : _("no"));
 	}
 
-	return (GP_OK);
+	return GP_OK;
 }
 
 int
@@ -351,7 +351,7 @@ print_file_action (GPParams *p, const char *folder, const char *filename)
 		if (info.file.fields & GP_FILE_INFO_STATUS &&
 		    info.file.status == GP_FILE_STATUS_DOWNLOADED) {
 			x++;
-			return (GP_OK);
+			return GP_OK;
 		}
 	}
 
@@ -407,49 +407,49 @@ print_file_action (GPParams *p, const char *folder, const char *filename)
 		    printf("#%-5i %s\n", x+1, filename);
 	}
 	x++;
-	return (GP_OK);
+	return GP_OK;
 }
 
 int
 save_file_action (GPParams *p, const char *folder, const char *filename)
 {
-	return (save_file_to_file (p->camera, p->context, p->flags,
-				   folder, filename, GP_FILE_TYPE_NORMAL));
+	return save_file_to_file (p->camera, p->context, p->flags,
+				   folder, filename, GP_FILE_TYPE_NORMAL);
 }
 
 int
 save_exif_action (GPParams *p, const char *folder, const char *filename)
 {
-	return (save_file_to_file (p->camera, p->context, p->flags,
-				   folder, filename, GP_FILE_TYPE_EXIF));
+	return save_file_to_file (p->camera, p->context, p->flags,
+				   folder, filename, GP_FILE_TYPE_EXIF);
 }
 
 int
 save_meta_action (GPParams *p, const char *folder, const char *filename)
 {
-	return (save_file_to_file (p->camera, p->context, p->flags,
-				   folder, filename, GP_FILE_TYPE_METADATA));
+	return save_file_to_file (p->camera, p->context, p->flags,
+				   folder, filename, GP_FILE_TYPE_METADATA);
 }
 
 int
 save_thumbnail_action (GPParams *p, const char *folder, const char *filename)
 {
-	return (save_file_to_file (p->camera, p->context, p->flags,
-				   folder, filename, GP_FILE_TYPE_PREVIEW));
+	return save_file_to_file (p->camera, p->context, p->flags,
+				   folder, filename, GP_FILE_TYPE_PREVIEW);
 }
 
 int
 save_raw_action (GPParams *p, const char *folder, const char *filename)
 {
-	return (save_file_to_file (p->camera, p->context, p->flags,
-				   folder, filename, GP_FILE_TYPE_RAW));
+	return save_file_to_file (p->camera, p->context, p->flags,
+				   folder, filename, GP_FILE_TYPE_RAW);
 }
 
 int
 save_audio_action (GPParams *p, const char *folder, const char *filename)
 {
-	return (save_file_to_file (p->camera, p->context, p->flags,
-				   folder, filename, GP_FILE_TYPE_AUDIO));
+	return save_file_to_file (p->camera, p->context, p->flags,
+				   folder, filename, GP_FILE_TYPE_AUDIO);
 }
 
 int
@@ -458,9 +458,9 @@ save_all_audio_action (GPParams *p, const char *folder, const char *filename)
 	/* not every file has an associated audio file */
 	if (camera_file_exists(p->camera, p->context, folder, filename,
 			       GP_FILE_TYPE_AUDIO))
-		return (save_file_to_file (p->camera, p->context, p->flags,
+		return save_file_to_file (p->camera, p->context, p->flags,
 					   folder, filename,
-					   GP_FILE_TYPE_AUDIO));
+					   GP_FILE_TYPE_AUDIO);
 	return GP_OK;
 }
 
@@ -474,10 +474,10 @@ delete_file_action (GPParams *p, const char *folder, const char *filename)
 					     &info, p->context));
 		if (info.file.fields & GP_FILE_INFO_STATUS &&
 		    info.file.status == GP_FILE_STATUS_DOWNLOADED)
-			return (GP_OK);
+			return GP_OK;
 	}
-	return (gp_camera_file_delete (p->camera, folder, filename,
-				       p->context));
+	return gp_camera_file_delete (p->camera, folder, filename,
+				       p->context);
 }
 
 #ifdef HAVE_LIBEXIF
@@ -530,7 +530,7 @@ print_exif_action (GPParams *p, const char *folder, const char *filename)
         gp_file_unref (file);
         if (!ed) {
                 gp_context_error (p->context, _("Could not parse EXIF data."));
-                return (GP_ERROR);
+                return GP_ERROR;
         }
 
         printf (_("EXIF tags:"));
@@ -553,11 +553,11 @@ print_exif_action (GPParams *p, const char *folder, const char *filename)
 
         exif_data_unref (ed);
 
-        return (GP_OK);
+        return GP_OK;
 #else
 	gp_context_error (p->context, _("gphoto2 has been compiled without "
 		"EXIF support."));
-	return (GP_ERROR_NOT_SUPPORTED);
+	return GP_ERROR_NOT_SUPPORTED;
 #endif
 }
 
@@ -569,7 +569,7 @@ list_cameras_action (GPParams *p)
 
 	r = gp_abilities_list_count (gp_params_abilities_list(p));
 	if (r < 0)
-		return (r);
+		return r;
 	if (p->flags & FLAGS_QUIET)
 		printf ("%i\n", r);
 	else {
@@ -600,7 +600,7 @@ list_cameras_action (GPParams *p)
 			}
 	}
 
-	return (r);
+	return r;
 }
 
 void
@@ -654,7 +654,7 @@ list_ports_action (GPParams *p)
 		gp_port_info_get_path (info, &xpath);
 		printf ("%-32s %-32s\n", xpath, xname);
 	}
-	return (result);
+	return result;
 
 }
 
@@ -742,7 +742,7 @@ action_camera_show_abilities (GPParams *p)
 		(a.folder_operations & GP_FOLDER_OPERATION_PUT_FILE) ?
 							_("yes"):_("no"));
 
-	return (GP_OK);
+	return GP_OK;
 }
 
 int
@@ -826,11 +826,11 @@ action_camera_about (GPParams *params)
 	CameraText text;
 
 	CR (gp_camera_get_about (params->camera, &text, params->context));
-	
+
 	printf (_("About the camera driver:"));
 	printf ("\n%s\n", _(text.text));
 
-	return (GP_OK);
+	return GP_OK;
 }
 
 int
@@ -843,7 +843,7 @@ action_camera_summary (GPParams *params)
 	printf (_("Camera summary:"));
 	printf ("\n%s\n", _(text.text));
 
-	return (GP_OK);
+	return GP_OK;
 }
 
 int
@@ -856,7 +856,7 @@ action_camera_manual (GPParams *params)
 	printf (_("Camera manual:"));
 	printf ("\n%s\n", _(text.text));
 
-	return (GP_OK);
+	return GP_OK;
 }
 
 int
@@ -874,7 +874,7 @@ action_camera_set_speed (GPParams *p, unsigned int speed)
 					   "serial ports."));
 			fputc ('\n', stderr);
 		}
-		return (GP_ERROR_BAD_PARAMETERS);
+		return GP_ERROR_BAD_PARAMETERS;
 	}
 	/* Set the speed. */
 	return gp_camera_set_port_speed (p->camera, speed);
@@ -891,7 +891,7 @@ action_camera_set_model (GPParams *p, const char *model)
 	CR (gp_camera_set_abilities (p->camera, a));
 	gp_setting_set ("gphoto2", "model", a.model);
 
-	return (GP_OK);
+	return GP_OK;
 }
 
 int
@@ -951,7 +951,7 @@ print_version_action (GPParams __unused__ *p)
 	  putchar ('\n');
 	}
 
-	return (GP_OK);
+	return GP_OK;
 }
 
 static int
@@ -1001,7 +1001,7 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 		gp_file_unref (file);
 		if (r < 0) {
 			unlink (tmpname);
-			return (r);
+			return r;
 		}
 	}
 	return GP_OK;
@@ -1260,7 +1260,7 @@ afterevent:
 				ret = set_folder_action(p, fn->folder);
 				if (ret != GP_OK) {
 					cli_error_print(_("Could not set folder."));
-					return (ret);
+					return ret;
 				}
 			}
 			ret = get_file_common (fn->name, GP_FILE_TYPE_NORMAL);
@@ -1274,7 +1274,7 @@ afterevent:
 					*/
 					cli_error_print ( _("Buggy libcanon.so?"));
 				}
-				return (ret);
+				return ret;
 			}
 
 			if (!(p->flags & FLAGS_KEEP)) {
@@ -1441,7 +1441,7 @@ override_usbids_action (GPParams *p, int usb_vendor, int usb_product,
 	gp_abilities_list_free (p->_abilities_list);
 	p->_abilities_list = al;
 
-	return (GP_OK);
+	return GP_OK;
 }
 
 /* time zero for debug log time stamps */
@@ -1471,7 +1471,7 @@ debug_action (GPParams *p, const char *debug_loglevel, const char *debug_logfile
 	/* make sure we're only executed once */
 	static int debug_flag = 0;
 	if (debug_flag != 0)
-		return(GP_OK);
+		return GP_OK;
 	debug_flag = 1;
 
 	if (debug_loglevel && !strcmp(debug_loglevel, "error"))
@@ -1536,7 +1536,7 @@ debug_action (GPParams *p, const char *debug_loglevel, const char *debug_logfile
 		}
 	}
 
-	return (GP_OK);
+	return GP_OK;
 }
 
 static void
@@ -1589,7 +1589,7 @@ list_all_config_action (GPParams *p) {
 	if (ret != GP_OK) return ret;
 	display_widgets (p, rootconfig, "", 1);
 	gp_widget_free (rootconfig);
-	return (GP_OK);
+	return GP_OK;
 }
 int
 list_config_action (GPParams *p) {
@@ -1600,7 +1600,7 @@ list_config_action (GPParams *p) {
 	if (ret != GP_OK) return ret;
 	display_widgets (p, rootconfig, "", 0);
 	gp_widget_free (rootconfig);
-	return (GP_OK);
+	return GP_OK;
 }
 
 static int
@@ -1983,7 +1983,7 @@ set_config_action (GPParams *p, const char *name, const char *value) {
 			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s."), value, name);
 	}
 	gp_widget_free (rootconfig);
-	return (ret);
+	return ret;
 }
 
 int
@@ -2054,7 +2054,7 @@ set_config_index_action (GPParams *p, const char *name, const char *value) {
 			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s."), value, name);
 	}
 	gp_widget_free (rootconfig);
-	return (ret);
+	return ret;
 }
 
 
@@ -2199,7 +2199,7 @@ set_config_value_action (GPParams *p, const char *name, const char *value) {
 			gp_context_error (p->context, _("Failed to set new configuration value %s for configuration entry %s."), value, name);
 	}
 	gp_widget_free (rootconfig);
-	return (ret);
+	return ret;
 }
 
 
