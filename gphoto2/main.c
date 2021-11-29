@@ -2404,6 +2404,15 @@ main (int argc, char **argv, char **envp)
 			if (use_auto) {
 				CR_MAIN (action_camera_set_model (&gp_params, model));
 			}
+			if (type == GP_PORT_USB) {
+				char *xpath;
+
+				gp_port_info_get_path (info, &xpath);
+				if (strcmp(xpath, "usb:") && strcmp(xpath, path)) {
+					fprintf (stderr, _("Port %s not found\n"), xpath );
+					CR_MAIN (GP_ERROR_UNKNOWN_PORT);
+				}
+			}
 			CR_MAIN (action_camera_set_port (&gp_params, path));
 
                 } else if (!count) {
@@ -2448,6 +2457,10 @@ main (int argc, char **argv, char **envp)
 				}
 				if (i != count)
 					use_auto = 0;
+				if ((i == count) && (strcmp(xpath, "usb:"))) {
+					fprintf (stderr, _("Port %s not found\n"), xpath );
+					CR_MAIN (GP_ERROR_UNKNOWN_PORT);
+				}
 			}
 			/* If --camera override, search the model with the same USB ID. */
 			if (use_auto && a.model[0]) {
