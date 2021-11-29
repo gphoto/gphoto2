@@ -2274,10 +2274,13 @@ main (int argc, char **argv, char **envp)
 	cb_params.type = CALLBACK_PARAMS_TYPE_PREINITIALIZE;
 	cb_params.p.r = GP_OK;
 	poptResetContext (ctx);
-	while ((cb_params.p.r >= 0) && (poptGetNextOpt (ctx) >= 0));
+	while ((cb_params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
+
+	CR_MAIN (cb_params.p.r);
+
 	cb_params.type = CALLBACK_PARAMS_TYPE_INITIALIZE;
 	poptResetContext (ctx);
-	while ((cb_params.p.r >= 0) && (poptGetNextOpt (ctx) >= 0));
+	while ((cb_params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
 	/* Load default values for --filename and --hook-script if not
 	 * explicitely specified
 	 */
@@ -2580,7 +2583,7 @@ main (int argc, char **argv, char **envp)
 
 	gp_params_exit (&gp_params);
         poptFreeContext(ctx);
-        return (EXIT_SUCCESS);
+        return EXIT_SUCCESS;
 }
 
 

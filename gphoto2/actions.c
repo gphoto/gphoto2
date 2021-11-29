@@ -774,6 +774,9 @@ action_camera_set_port (GPParams *params, const char *port)
 			strncat (verified_port, port,
 				 sizeof (verified_port)
 				 	- strlen (verified_port) - 1);
+		} else {
+			gp_log (GP_LOG_ERROR, "main", "Could not guess type of port for name '%s'.", port);
+			return GP_ERROR_UNKNOWN_PORT;
 		}
 		gp_log (GP_LOG_DEBUG, "main", "Guessed port name. Using port "
 			"'%s' from now on.", verified_port);
@@ -800,19 +803,21 @@ action_camera_set_port (GPParams *params, const char *port)
 	default:
 		break;
 	}
+	if (p < GP_OK)
+		return p;
 
 	/* Get info about our port. */
 	r = gp_port_info_list_get_info (params->portinfo_list, p, &info);
 	if (r < 0)
-		return (r);
+		return r;
 
 	/* Set the port of our camera. */
 	r = gp_camera_set_port_info (params->camera, info);
 	if (r < 0)
-		return (r);
+		return r;
 	gp_port_info_get_path (info, &path);
 	gp_setting_set ("gphoto2", "port", path);
-	return (GP_OK);
+	return GP_OK;
 }
 
 int
