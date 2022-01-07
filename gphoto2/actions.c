@@ -61,6 +61,11 @@
 #  include <libexif/exif-data.h>
 #endif
 
+/* only needed and present on windows */
+#ifndef O_BINARY
+# define O_BINARY 0
+#endif
+
 #define CR(result)       {int __r=(result); if (__r<0) return __r;}
 #define CRU(result,file) {int __r=(result); if (__r<0) {gp_file_unref(file);return __r;}}
 #define CL(result,list)  {int __r=(result); if (__r<0) {gp_list_free(list); return __r;}}
@@ -1035,7 +1040,7 @@ action_camera_capture_movie (GPParams *p, const char *arg)
 		fd = dup(fileno(stdout));
 		xname = "stdout";
 	} else {
-		fd = open("movie.mjpg",O_WRONLY|O_CREAT,0660);
+		fd = open("movie.mjpg",O_WRONLY|O_CREAT|O_BINARY,0660);
 		if (fd == -1) {
 			cli_error_print(_("Could not open 'movie.mjpg'."));
 			return GP_ERROR;
