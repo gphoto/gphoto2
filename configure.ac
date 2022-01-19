@@ -62,7 +62,7 @@ dnl ---------------------------------------------------------------------------
 dnl Check for libgphoto2
 dnl ---------------------------------------------------------------------------
 PKG_CHECK_MODULES([LIBGPHOTO2], [libgphoto2 >= 2.5.17], [], [dnl
-AC_MSG_ERROR([pkg-config cannot find libgphoto2])
+AC_MSG_ERROR([pkg-config cannot find libgphoto2, but gphoto2 requires libgphoto2 to build])
 ])
 
 
@@ -322,7 +322,7 @@ dnl ---------------------------------------------------------------------------
 dnl
 dnl POPT_TABLEEND is only defined starting with popt 1.6.1
 PKG_CHECK_MODULES([POPT], [popt >= 1.6.1], [], [dnl
-AC_MSG_ERROR([pkg-config could not find popt.pc])
+AC_MSG_ERROR([pkg-config could not find popt.pc, but gphoto2 requires popt to build])
 ])
 
 
