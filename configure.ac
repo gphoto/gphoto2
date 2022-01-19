@@ -277,7 +277,8 @@ dnl 0.5.3 introduces exif-ifd.h which we use
 dnl 0.6.9 introduces exif-log.h which we use
 PKG_CHECK_MODULES([LIBEXIF], [libexif >= 0.6.9],
                   [AC_DEFINE([HAVE_LIBEXIF], [1],
-                             [whether building with libexif])])
+                             [whether building with libexif])],
+                  [AC_MSG_WARN([building gphoto2 *without* libexif])])
 
 
 dnl ---------------------------------------------------------------------------
