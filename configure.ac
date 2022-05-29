@@ -1,5 +1,5 @@
 dnl Process this file with autoreconf to produce a configure script.
-AC_PREREQ(2.59)
+AC_PREREQ([2.69])
 
 dnl Next stable release must be 2.5.29 or later
 AC_INIT([gphoto2 command line interface],
@@ -15,7 +15,7 @@ AM_INIT_AUTOMAKE([
   -Wall
   -Werror
   gnu
-  1.9
+  1.14
   dist-bzip2
   dist-xz
   check-news
