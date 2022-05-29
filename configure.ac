@@ -1,11 +1,25 @@
+dnl Process this file with autoreconf to produce a configure script.
 AC_PREREQ(2.59)
+
 dnl Next stable release must be 2.5.29 or later
-AC_INIT([gphoto2 command line interface], [2.5.28.1], [gphoto-devel@lists.sourceforge.net], [gphoto2])
+AC_INIT([gphoto2 command line interface],
+        [2.5.28.1],
+        [gphoto-devel@lists.sourceforge.net],
+        [gphoto2])
+
 AC_CONFIG_SRCDIR([gphoto2/main.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([auto-m4])
 AC_CONFIG_AUX_DIR([auto-aux])
-AM_INIT_AUTOMAKE([-Wall -Werror gnu 1.9 dist-bzip2 dist-xz check-news])
+AM_INIT_AUTOMAKE([
+  -Wall
+  -Werror
+  gnu
+  1.9
+  dist-bzip2
+  dist-xz
+  check-news
+])
 
 GP_CHECK_SHELL_ENVIRONMENT
 GP_CONFIG_MSG([Build])
@@ -397,22 +411,26 @@ AC_SUBST([AM_LDFLAGS])
 # Create output files
 # ---------------------------------------------------------------------------
 AC_CONFIG_FILES([
-po/Makefile.in 
-Makefile
-gphoto2/Makefile
-gphoto-m4/Makefile
-doc/Makefile
-contrib/Makefile
-packaging/Makefile
-packaging/rpm/Makefile
-packaging/rpm/package.spec
-tests/data/Makefile
-tests/staging/subdir1/Makefile
-tests/staging/subdir2/Makefile
-tests/staging/Makefile
-tests/Makefile
+  po/Makefile.in
+  Makefile
+  gphoto2/Makefile
+  gphoto-m4/Makefile
+  doc/Makefile
+  contrib/Makefile
+  packaging/Makefile
+  packaging/rpm/Makefile
+  packaging/rpm/package.spec
+  tests/data/Makefile
+  tests/staging/subdir1/Makefile
+  tests/staging/subdir2/Makefile
+  tests/staging/Makefile
+  tests/Makefile
 ])
 AC_OUTPUT()dnl
 
 # Status output
 GP_CONFIG_OUTPUT
+
+dnl Local Variables:
+dnl indent-tabs-mode: nil
+dnl End:
