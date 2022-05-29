@@ -58,18 +58,18 @@ GP_REFERENCES()dnl
 dnl ---------------------------------------------------------------------------
 dnl i18n support
 dnl ---------------------------------------------------------------------------
-GP_GETTEXT_HACK([],[Lutz Müller and others],[${MAIL_GPHOTO_TRANSLATION}])
-ALL_LINGUAS="az cs da de en_GB es eu fi fr hu id is it ja nl pa pl pt_BR ro ru rw sk sr sv uk vi zh_CN zh_TW"
+GP_GETTEXT_SETUP([GETTEXT_PACKAGE_GPHOTO2],
+                 [gphoto2],
+                 [po])
 AM_PO_SUBDIRS()
-AM_GNU_GETTEXT_VERSION([0.14.1])
+AM_GNU_GETTEXT_VERSION([0.19.1])
 AM_GNU_GETTEXT([external])
 AM_ICONV()
-GP_GETTEXT_FLAGS()
 
-dnl We cannot use AC_DEFINE_UNQUOTED() for these definitions, as
-dnl we require make to do insert the proper $(datadir) value
-AC_SUBST([localedir],["\$(datadir)/locale"])
-AM_CPPFLAGS="$AM_CPPFLAGS -DLOCALEDIR=\\\"${localedir}\\\""
+GP_CONFIG_MSG([Use translations],
+              [${USE_NLS}])
+
+dnl GP_GETTEXT_HACK([],[Lutz Müller and others],[${MAIL_GPHOTO_TRANSLATION}])
 
 
 dnl ---------------------------------------------------------------------------

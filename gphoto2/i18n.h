@@ -21,10 +21,12 @@
 #ifndef GPHOTO2_I18N_H
 #define GPHOTO2_I18N_H
 
+#include "config.h"
+
 #ifdef ENABLE_NLS
 #  include <libintl.h>
 #  undef _
-#  define _(String) dgettext (PACKAGE, String)
+#  define _(String) dgettext (GETTEXT_PACKAGE_GPHOTO2, String)
 #  ifdef gettext_noop
 #    define N_(String) gettext_noop (String)
 #  else
