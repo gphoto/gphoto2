@@ -34,10 +34,19 @@ dnl ---------------------------------------------------------------------------
 AC_PROG_CC
 AC_PROG_CPP
 AM_PROG_CC_C_O
-m4_pattern_allow([AM_PROG_AR], [AM_PROG_AR])
-AM_PROG_LIBTOOL
 AC_PROG_INSTALL
 AC_SYS_LARGEFILE
+
+dnl Check for and set up libtool
+dnl
+dnl We use libtool to allow linking against uninstalled *.la libraries
+dnl in gphoto-suite.
+LT_PREREQ([2.4.2])
+LT_INIT([
+  disable-static
+  dlopen
+  win32-dll
+])
 
 GP_CONFIG_MSG([Compiler], [${CC}])
 AC_DEFINE_UNQUOTED([HAVE_CC], ["$CC"], [The C compiler we are using])
