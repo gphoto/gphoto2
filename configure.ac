@@ -78,6 +78,7 @@ dnl ---------------------------------------------------------------------------
 PKG_CHECK_MODULES([LIBGPHOTO2], [libgphoto2 >= 2.5.17], [], [dnl
 AC_MSG_ERROR([pkg-config cannot find libgphoto2, but gphoto2 requires libgphoto2 to build])
 ])
+GP_SHOW_MODULE_VARS([LIBGPHOTO2])
 
 
 AC_CHECK_FUNCS([strptime])
@@ -172,6 +173,7 @@ AM_CONDITIONAL([HAVE_CDK], [$have_cdk])
 AC_SUBST([CDK_CFLAGS])
 AC_SUBST([CDK_LIBS])
 GP_CONFIG_MSG([Interactive config support],[$cdk_msg])
+GP_SHOW_MODULE_VARS([CDK])
 
 dnl We emulate signals in Windows
 dnl This is taken from: https://github.com/OpenVPN/openvpn/blob/master/configure.ac
@@ -276,6 +278,7 @@ AM_CONDITIONAL([HAVE_JPEG], [$have_jpeg])
 AC_SUBST([JPEG_LIBS])
 AC_SUBST([JPEG_CFLAGS])
 GP_CONFIG_MSG([JPEG support],[$jpeg_msg])
+GP_SHOW_MODULE_VARS([JPEG])
 
 
 dnl ---------------------------------------------------------------------------
@@ -293,6 +296,7 @@ PKG_CHECK_MODULES([LIBEXIF], [libexif >= 0.6.9],
                   [AC_DEFINE([HAVE_LIBEXIF], [1],
                              [whether building with libexif])],
                   [AC_MSG_WARN([building gphoto2 *without* libexif])])
+GP_SHOW_MODULE_VARS([LIBEXIF])
 
 
 dnl ---------------------------------------------------------------------------
@@ -328,6 +332,7 @@ AM_CONDITIONAL([HAVE_AA], [$have_aa])
 AC_SUBST([AA_LIBS])
 AC_SUBST([AA_CFLAGS])
 GP_CONFIG_MSG([Text preview support],[$aa_msg])
+GP_SHOW_MODULE_VARS([AA])
 
 
 dnl ---------------------------------------------------------------------------
@@ -338,6 +343,7 @@ dnl POPT_TABLEEND is only defined starting with popt 1.6.1
 PKG_CHECK_MODULES([POPT], [popt >= 1.6.1], [], [dnl
 AC_MSG_ERROR([pkg-config could not find popt.pc, but gphoto2 requires popt to build])
 ])
+GP_SHOW_MODULE_VARS([POPT])
 
 
 dnl ---------------------------------------------------------------------------
@@ -388,6 +394,7 @@ fi
 AM_CONDITIONAL([HAVE_RL], [$have_readline])
 AC_SUBST([RL_LIBS])
 AC_SUBST([RL_CFLAGS])
+GP_SHOW_MODULE_VARS([RL])
 GP_CONFIG_MSG([Readline support], [$rl_msg])
 
 
