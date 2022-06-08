@@ -35,6 +35,7 @@
 #include "main.h"
 #include "range.h"
 #include "shell.h"
+#include "server.h"
 
 #ifdef HAVE_CDK
 #  include "gphoto2-cmd-config.h"
@@ -1343,6 +1344,7 @@ typedef enum {
 	ARG_RESET,
 	ARG_RESET_INTERVAL,
 	ARG_RMDIR,
+	ARG_SERVER,
 	ARG_SHELL,
 	ARG_SHOW_EXIF,
 	ARG_SHOW_INFO,
@@ -1732,6 +1734,9 @@ cb_arg_run (poptContext __unused__ ctx,
 		params->p.r = gp_camera_folder_make_dir (gp_params.camera,
 							 newfolder, newfilename, gp_params.context);
 		free (newfolder); free (newfilename);
+		break;
+	case ARG_SERVER:
+		params->p.r = server (&gp_params);
 		break;
 	case ARG_SHELL:
 		params->p.r = shell_prompt (&gp_params);
@@ -2172,6 +2177,8 @@ main (int argc, char **argv, char **envp)
 		 N_("About the camera driver manual"), NULL},
 		{"storage-info", '\0', POPT_ARG_NONE, NULL, ARG_STORAGE_INFO,
 		 N_("Show storage information"), NULL},
+		{"server", '\0', POPT_ARG_NONE, NULL, ARG_SERVER,
+		 N_("gPhoto REST http server"), NULL},
 		{"shell", '\0', POPT_ARG_NONE, NULL, ARG_SHELL,
 		 N_("gPhoto shell"), NULL},
 		POPT_TABLEEND

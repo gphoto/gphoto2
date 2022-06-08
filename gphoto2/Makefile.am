@@ -35,6 +35,8 @@ gphoto2_SOURCES = 		\
 	main.c main.h 		\
 	version.c version.h	\
 	range.c range.h 	\
+	mongoose.c mongoose.h 	\
+	server.c server.h 	\
 	shell.c shell.h 
 
 #gphoto2_LDFLAGS = -export-dynamic
