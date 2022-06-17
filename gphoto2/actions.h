@@ -26,6 +26,14 @@
 
 #include <gp-params.h>
 
+#ifdef WEBAPI
+#include "mongoose/mongoose.h"
+#define JSON_PRINTF mg_http_printf_chunk
+#else
+#define JSON_PRINTF(x,...)
+#endif
+
+
 enum wait_type {
 	WAIT_TIME,
 	WAIT_EVENTS,
@@ -85,15 +93,12 @@ int action_camera_wait_event      (GPParams *, enum download_type dt, const char
 /* Other actions */
 int list_cameras_action    (GPParams *);
 int list_ports_action      (GPParams *);
-int auto_detect_action     (GPParams *);
 int set_folder_action      (GPParams *, const char *folder);
 int set_filename_action    (GPParams *, const char *filename);
 int print_version_action   (GPParams *);
 int override_usbids_action (GPParams *, int usb_vendor, int usb_product,
 			    int usb_vendor_modified, int usb_product_modified);
 int debug_action           (GPParams *, const char *debug_loglevel, const char *debug_logfile_name);
-int list_config_action     (GPParams *);
-int list_all_config_action (GPParams *);
 int get_config_action      (GPParams *, const char *name);
 int set_config_action      (GPParams *, const char *name, const char *value);
 int set_config_index_action      (GPParams *, const char *name, const char *value);
@@ -101,6 +106,16 @@ int set_config_value_action      (GPParams *, const char *name, const char *valu
 int print_storage_info     (GPParams *);
 
 void _get_portinfo_list	(GPParams *p);
+
+#ifdef WEBAPI
+int auto_detect_action     (struct mg_connection *, GPParams *);
+int list_config_action     (struct mg_connection *, GPParams *);
+int list_all_config_action (struct mg_connection *, GPParams *);
+#else
+int auto_detect_action     (GPParams *);
+int list_config_action     (GPParams *);
+int list_all_config_action (GPParams *);
+#endif
 
 #endif /* !defined(GPHOTO2_ACTIONS_H) */
 

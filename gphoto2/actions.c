@@ -76,7 +76,11 @@
 #define __unused__
 #endif
 
+#ifndef WEBAPI
 static int print_widget (GPParams *p, const char*name, CameraWidget *widget);
+#else
+static int print_widget (struct mg_connection *c, GPParams *p, const char*name, CameraWidget *widget);
+#endif
 
 static long
 timediff_now (struct timeval *target) {
@@ -663,8 +667,14 @@ list_ports_action (GPParams *p)
 
 }
 
-int
-auto_detect_action (GPParams *p)
+
+#ifndef WEBAPI
+int 
+auto_detect_action(GPParams *p)
+#else
+int 
+auto_detect_action(struct mg_connection *c, GPParams *p)
+#endif
 {
 	int x, count;
         CameraList *list;
@@ -674,19 +684,35 @@ auto_detect_action (GPParams *p)
 	count = gp_port_info_list_count (p->portinfo_list);
 
 	CR (gp_list_new (&list));
-        gp_abilities_list_detect (gp_params_abilities_list(p), p->portinfo_list, list, p->context);
+  gp_abilities_list_detect (gp_params_abilities_list(p), p->portinfo_list, list, p->context);
 
-        CL (count = gp_list_count (list), list);
+  CL (count = gp_list_count (list), list);
 
-        printf(_("%-30s %-16s\n"), _("Model"), _("Port"));
-        printf(_("----------------------------------------------------------\n"));
-        for (x = 0; x < count; x++) {
-                CL (gp_list_get_name  (list, x, &name), list);
-                CL (gp_list_get_value (list, x, &value), list);
-                printf(_("%-30s %-16s\n"), name, value);
-        }
+#ifdef WEBAPI
+  char *firstChar = " ";
+	JSON_PRINTF( c, "{\"result\":[", 0 ); 
+#else
+  printf(_("%-30s %-16s\n"), _("Model"), _("Port"));
+  printf(_("----------------------------------------------------------\n"));
+#endif
+
+  for (x = 0; x < count; x++) {
+    CL (gp_list_get_name  (list, x, &name), list);
+    CL (gp_list_get_value (list, x, &value), list);
+#ifdef WEBAPI
+		JSON_PRINTF( c, "%s{\"model\":\"%s\",\"port\":\"%s\"}\n", firstChar, name, value );
+		firstChar = ",";
+#else
+    printf(_("%-30s %-16s\n"), name, value);
+#endif
+  }
+
+#ifdef WEBAPI
+  JSON_PRINTF( c, "],\"return_code\": 0}\n" );
+#endif
+
 	gp_list_free (list);
-        return GP_OK;
+  return GP_OK;
 }
 
 int
@@ -1544,8 +1570,14 @@ debug_action (GPParams *p, const char *debug_loglevel, const char *debug_logfile
 	return GP_OK;
 }
 
+#ifdef WEBAPI
 static void
-display_widgets (GPParams *p, CameraWidget *widget, char *prefix, int dumpval) {
+display_widgets (struct mg_connection *c, char **firstChar, GPParams *p, CameraWidget *widget, char *prefix, int dumpval)
+#else
+static void
+display_widgets (GPParams *p, CameraWidget *widget, char *prefix, int dumpval)
+#endif
+{
 	int 	ret, n, i;
 	char	*newprefix;
 	const char *label, *name, *uselabel;
@@ -1570,8 +1602,20 @@ display_widgets (GPParams *p, CameraWidget *widget, char *prefix, int dumpval) {
 	sprintf(newprefix,"%s/%s",prefix,uselabel);
 
 	if ((type != GP_WIDGET_WINDOW) && (type != GP_WIDGET_SECTION)) {
+#ifndef WEBAPI
 		printf("%s\n",newprefix);
 		if (dumpval) print_widget (p, newprefix, widget);
+#else
+    if (dumpval) {
+			JSON_PRINTF(c,"%s{\"path\":\"%s\"",*firstChar,newprefix);
+      print_widget (c, p, newprefix, widget);
+			JSON_PRINTF(c,"}\n");
+		}
+		else {
+      JSON_PRINTF(c,"%s\"%s\"\n",*firstChar,newprefix);
+		}
+		*firstChar = ",";
+#endif
 	}
 	for (i=0; i<n; i++) {
 		CameraWidget *child;
@@ -1579,33 +1623,73 @@ display_widgets (GPParams *p, CameraWidget *widget, char *prefix, int dumpval) {
 		ret = gp_widget_get_child (widget, i, &child);
 		if (ret != GP_OK)
 			continue;
+
+#ifdef WEBAPI	
+		display_widgets (c, firstChar, p, child, newprefix, dumpval);
+#else		
 		display_widgets (p, child, newprefix, dumpval);
+#endif
 	}
 	free(newprefix);
 }
 
 
+#ifndef WEBAPI
 int
-list_all_config_action (GPParams *p) {
+list_all_config_action (GPParams *p) 
+#else
+int 
+list_all_config_action (struct mg_connection *c, GPParams *p)
+#endif
+{
 	CameraWidget *rootconfig;
 	int	ret;
 
 	ret = gp_camera_get_config (p->camera, &rootconfig, p->context);
-	if (ret != GP_OK) return ret;
-	display_widgets (p, rootconfig, "", 1);
-	gp_widget_free (rootconfig);
-	return GP_OK;
+
+	if (ret == GP_OK)
+	{ 
+#ifdef WEBAPI
+    char *firstChar = " ";
+	  JSON_PRINTF( c, "\"result\":[" );
+	  display_widgets (c, &firstChar, p, rootconfig, "", 1);
+	  JSON_PRINTF( c, "]," );
+#else
+	  display_widgets (p, rootconfig, "", 1);
+#endif
+	  gp_widget_free (rootconfig);
+  }
+
+	return ret;
 }
+
+#ifndef WEBAPI
 int
-list_config_action (GPParams *p) {
+list_config_action (GPParams *p) 
+#else
+int 
+list_config_action (struct mg_connection *c, GPParams *p)
+#endif
+{
 	CameraWidget *rootconfig;
 	int	ret;
 
 	ret = gp_camera_get_config (p->camera, &rootconfig, p->context);
-	if (ret != GP_OK) return ret;
-	display_widgets (p, rootconfig, "", 0);
-	gp_widget_free (rootconfig);
-	return GP_OK;
+
+	if (ret == GP_OK)
+	{
+#ifdef WEBAPI
+    char *firstChar = " ";
+		JSON_PRINTF( c, "\"result\":[" );
+	  display_widgets (c, &firstChar, p, rootconfig, "", 0);
+		JSON_PRINTF( c, "]," );
+#else
+	  display_widgets (p, rootconfig, "", 0);
+#endif
+	  gp_widget_free (rootconfig);
+	}
+
+	return ret;
 }
 
 static int
@@ -1680,8 +1764,14 @@ my_strftime(char *s, size_t max, const char *fmt, const struct tm *tm)
 	return strftime(s, max, fmt, tm);
 }
 
+#ifndef WEBAPI
 static int
-print_widget (GPParams *p, const char *name, CameraWidget *widget) {
+print_widget (GPParams *p, const char *name, CameraWidget *widget) 
+#else
+static int
+print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidget *widget) 
+#endif
+{
 	const char *label;
 	CameraWidgetType	type;
 	int ret, readonly;
@@ -1697,16 +1787,26 @@ print_widget (GPParams *p, const char *name, CameraWidget *widget) {
 	if (ret != GP_OK)
 		return ret;
 
+#ifndef WEBAPI
 	printf ("Label: %s\n", label); /* "Label:" is not i18ned, the "label" variable is */
 	printf ("Readonly: %d\n", readonly);
+#else
+	JSON_PRINTF(c,", \"label\": \"%s\"", label); /* "Label:" is not i18ned, the "label" variable is */
+	JSON_PRINTF(c,", \"readonly\": %s", (readonly) ? "true" : "false" );
+#endif
 	switch (type) {
 	case GP_WIDGET_TEXT: {		/* char *		*/
 		char *txt;
 
 		ret = gp_widget_get_value (widget, &txt);
 		if (ret == GP_OK) {
+#ifndef WEBAPI
 			printf ("Type: TEXT\n"); /* parsed by scripts, no i18n */
 			printf ("Current: %s\n",txt);
+#else
+			JSON_PRINTF(c,", \"type\": \"TEXT\""); /* parsed by scripts, no i18n */
+			JSON_PRINTF(c,", \"current\": \"%s\"", txt);
+#endif
 		} else {
 			gp_context_error (p->context, _("Failed to retrieve value of text widget %s."), name);
 		}
@@ -1719,11 +1819,19 @@ print_widget (GPParams *p, const char *name, CameraWidget *widget) {
 		if (ret == GP_OK)
 			ret = gp_widget_get_value (widget, &f);
 		if (ret == GP_OK) {
+#ifndef WEBAPI
 			printf ("Type: RANGE\n");	/* parsed by scripts, no i18n */
 			printf ("Current: %g\n", f);	/* parsed by scripts, no i18n */
 			printf ("Bottom: %g\n", b);	/* parsed by scripts, no i18n */
 			printf ("Top: %g\n", t);	/* parsed by scripts, no i18n */
 			printf ("Step: %g\n", s);	/* parsed by scripts, no i18n */
+#else
+			JSON_PRINTF(c,", \"type\": \"RANGE\"");
+			JSON_PRINTF(c,", \"current\": %g\n", f);
+			JSON_PRINTF(c,", \"bottom\": %g\n", b);
+			JSON_PRINTF(c,", \"top\": %g\n", t);
+			JSON_PRINTF(c,", \"step\": %g\n", s);
+#endif
 		} else {
 			gp_context_error (p->context, _("Failed to retrieve values of range widget %s."), name);
 		}
@@ -1734,8 +1842,13 @@ print_widget (GPParams *p, const char *name, CameraWidget *widget) {
 
 		ret = gp_widget_get_value (widget, &t);
 		if (ret == GP_OK) {
+#ifndef WEBAPI
 			printf ("Type: TOGGLE\n");
 			printf ("Current: %d\n",t);
+#else
+			JSON_PRINTF(c,", \"type\": \"TOGGLE\"");
+			JSON_PRINTF(c,", \"current\": %d",t);
+#endif
 		} else {
 			gp_context_error (p->context, _("Failed to retrieve values of toggle widget %s."), name);
 		}
@@ -1755,10 +1868,17 @@ print_widget (GPParams *p, const char *name, CameraWidget *widget) {
 		xtime = t;
 		xtm = localtime (&xtime);
 		ret = my_strftime (timebuf, sizeof(timebuf), "%c", xtm);
+#ifndef WEBAPI
 		printf ("Type: DATE\n");
 		printf ("Current: %d\n", t);
 		printf ("Printable: %s\n", timebuf);
 		printf ("Help: %s\n", _("Use 'now' as the current time when setting.\n"));
+#else
+		JSON_PRINTF(c,", \"type\": \"DATE\"");
+		JSON_PRINTF(c,", \"current\": %d", t);
+		JSON_PRINTF(c,", \"printable\": \"%s\"", timebuf);
+		JSON_PRINTF(c,", \"help\": \"%s\"", _("Use 'now' as the current time when setting."));
+#endif
 		break;
 	}
 	case GP_WIDGET_MENU:
@@ -1770,15 +1890,38 @@ print_widget (GPParams *p, const char *name, CameraWidget *widget) {
 		if (ret == GP_OK) {
 			cnt = gp_widget_count_choices (widget);
 			if (type == GP_WIDGET_MENU)
+#ifndef WEBAPI
 				printf ("Type: MENU\n");
+#else
+				JSON_PRINTF(c,", \"type\": \"MENU\"");
+#endif
 			else
+#ifndef WEBAPI
 				printf ("Type: RADIO\n");
+#else
+				JSON_PRINTF(c,", \"type\": \"MENU\"");
+#endif
+#ifndef WEBAPI
 			printf ("Current: %s\n",current);
+#else
+			JSON_PRINTF(c,", \"current\": \"%s\"",current);
+			JSON_PRINTF(c,", \"choice\": [");
+#endif
 			for ( i=0; i<cnt; i++) {
 				const char *choice;
 				ret = gp_widget_get_choice (widget, i, &choice);
+#ifndef WEBAPI
 				printf ("Choice: %d %s\n", i, choice);
+#else
+				JSON_PRINTF(c,"%s{\"index\": %d, \"value\": \"%s\"}", (i==0) ? "" : ",", i, choice);
+#endif
 			}
+
+#ifdef WEBAPI
+			JSON_PRINTF(c,"]");
+#endif
+
+
 		} else {
 			gp_context_error (p->context, _("Failed to retrieve values of radio widget %s."), name);
 		}
@@ -1791,8 +1934,11 @@ print_widget (GPParams *p, const char *name, CameraWidget *widget) {
 	case GP_WIDGET_BUTTON:
 		break;
 	}
-	
+
+#ifndef WEBAPI
 	printf ("END\n");
+#endif
+
 	return GP_OK;
 }
 
@@ -1805,7 +1951,11 @@ get_config_action (GPParams *p, const char *name) {
 	ret = _find_widget_by_name (p, name, &child, &rootconfig);
 	if (ret != GP_OK)
 		return ret;
+
+#ifndef WEBAPI
 	ret = print_widget (p, name, child);
+#endif
+
 	gp_widget_free (rootconfig);
 	return ret;
 }
