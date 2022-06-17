@@ -4,6 +4,10 @@ I need to control my camera via a small embedded controller so i decided to impl
 
 2022 June, Thorsten Ludewig (t.ludewig@gmail.com)
 
+## clone with submodule (mongoose webserver)
+
+`git clone --recurse-submodules <repository path>` 
+
 ## Run server
 
 `gphoto2-webapi --server` default port 8866
