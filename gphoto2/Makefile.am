@@ -7,7 +7,7 @@ EXTRA_DIST = \
 	gphoto2-cmd-capture.c gphoto2-cmd-capture.h	\
 	i18n.h test-hook.sh
 
-bin_PROGRAMS = gphoto2
+bin_PROGRAMS = gphoto2 gphoto2-webapi
 
 doc_DATA = test-hook.sh
 
@@ -37,6 +37,21 @@ gphoto2_SOURCES = 		\
 	range.c range.h 	\
 	shell.c shell.h 
 
+gphoto2_webapi_SOURCES = 		\
+	$(AA_FILES)		\
+	$(CDK_FILES)		\
+	$(NO_POPT_FILES)	\
+	actions.c actions.h 	\
+	foreach.c foreach.h 	\
+	globals.h 		\
+	gp-params.c gp-params.h	\
+	spawnve.c spawnve.h	\
+	gphoto2-webapi.c gphoto2-webapi.h 		\
+	version.c version.h	\
+	range.c range.h 	\
+	mongoose/mongoose.c mongoose/mongoose.h 	\
+	server.c server.h 
+
 #gphoto2_LDFLAGS = -export-dynamic
 
 gphoto2_CFLAGS =					\
@@ -45,8 +60,17 @@ gphoto2_CFLAGS =					\
 	$(CDK_CFLAGS) $(AA_CFLAGS)			\
 	$(LIBEXIF_CFLAGS) $(RL_CFLAGS) $(POPT_CFLAGS)
 
+gphoto2_webapi_CFLAGS =					\
+	-DWEBAPI -I$(top_srcdir) -I$(top_srcdir)/gphoto2		\
+	$(LIBGPHOTO2_CFLAGS) $(AM_CPPFLAGS) $(CPPFLAGS)	\
+	$(CDK_CFLAGS) $(AA_CFLAGS)			\
+	$(LIBEXIF_CFLAGS) $(RL_CFLAGS) $(POPT_CFLAGS)
 
 gphoto2_LDADD =								\
+	$(LIBGPHOTO2_LIBS) $(CDK_LIBS) $(AA_LIBS) $(JPEG_LIBS) 		\
+	$(PTHREAD_LIBS) $(LIBEXIF_LIBS) $(INTLLIBS) $(RL_LIBS) $(POPT_LIBS)
+
+gphoto2_webapi_LDADD =								\
 	$(LIBGPHOTO2_LIBS) $(CDK_LIBS) $(AA_LIBS) $(JPEG_LIBS) 		\
 	$(PTHREAD_LIBS) $(LIBEXIF_LIBS) $(INTLLIBS) $(RL_LIBS) $(POPT_LIBS)
 
