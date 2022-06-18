@@ -586,8 +586,8 @@ save_file_to_file (struct mg_connection *c, Camera *camera, GPContext *context, 
 		   const char *folder, const char *filename,
 		   CameraFileType type)
 {
-        int fd, res;
-        CameraFile *file;
+  int fd, res;
+  CameraFile *file;
 	char	tmpname[20], *tmpfilename;
 	struct privstr *ps = NULL;
 
@@ -678,22 +678,45 @@ save_file_to_file (struct mg_connection *c, Camera *camera, GPContext *context, 
 	}
 
 	if (flags & FLAGS_STDOUT) {
-                const char *data;
-                unsigned long int size;
+    const char *data;
+    unsigned long int size;
 
-                CR (gp_file_get_data_and_size (file, &data, &size));
+    CR (gp_file_get_data_and_size (file, &data, &size));
 
 		if (flags & FLAGS_STDOUT_SIZE) /* this will be difficult in fd mode */
-                        printf ("%li\n", size);
-                if (1!=fwrite (data, size, 1, stdout))
+      printf ("%li\n", size);
+
+    if (1!=fwrite (data, size, 1, stdout))
 			fprintf(stderr,"fwrite failed writing to stdout.\n");
-		if (ps && ps->fd) close (ps->fd);
+
+		if (ps && ps->fd) 
+		  close (ps->fd);
+
 		free (ps);
 		gp_file_unref (file);
 		unlink (tmpname);
 		return (GP_OK);
 	}
+
+	if (flags & FLAGS_WEBAPI) {
+    const char *data;
+    unsigned long int size;
+
+    CR (gp_file_get_data_and_size (file, &data, &size));
+
+    mg_send( c, data, size );
+
+		if (ps && ps->fd) 
+		  close (ps->fd);
+
+		free (ps);
+		gp_file_unref (file);
+		unlink (tmpname);
+		return (GP_OK);
+	}
+
 	res = save_camera_file_to_file (folder, filename, type, file, tmpfilename);
+
 	if (ps && ps->fd) close (ps->fd);
 	free (ps);
 	gp_file_unref (file);
@@ -729,6 +752,34 @@ dissolve_filename (
 #endif
 }
 
+
+int
+get_file_http_common (struct mg_connection *c, const char *path, CameraFileType type )
+{
+  gp_log (GP_LOG_DEBUG, "gphoto2-webapi", "Getting '%s'...", path );
+
+	gp_params.download_type = type;
+	gp_params.flags |= FLAGS_WEBAPI;
+
+	int ret;
+	char *newfolder, *newfilename;
+
+	dissolve_filename (gp_params.folder, path, &newfolder, &newfilename);
+
+  CameraFileInfo info;		
+	CR (gp_camera_file_get_info (gp_params.camera, newfolder, newfilename, &info, gp_params.context));
+
+  const char *http_header = "HTTP/1.1 200 OK\r\n"
+														"Content-Type: %s\r\n"
+														"Content-Length: %ld\r\n\r\n";
+
+  mg_printf( c, http_header, info.file.type, info.file.size);
+
+  ret = save_file_to_file (c, gp_params.camera, gp_params.context, gp_params.flags,
+					   newfolder, newfilename, type);
+	free (newfolder); free (newfilename);
+	return ret;
+}
 
 
 /*! \brief parse range, download specified files, or their

@@ -193,6 +193,17 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			MG_HTTP_CHUNK_END;
     } 
 
+		else if (mg_http_match_uri(hm, "/api/get-file/#")) 
+		{			
+			if ( hm->uri.len >= 14 )
+			{
+  			char buffer[256];
+		  	strncpy( buffer, hm->uri.ptr, MIN((int)hm->uri.len,255));
+			  buffer[MIN((int)hm->uri.len,255)] = 0;
+			  char *path = buffer+13;
+				get_file_http_common ( c, path, GP_FILE_TYPE_NORMAL );
+			}
+    } 
 
     else
 		{
