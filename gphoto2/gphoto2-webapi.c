@@ -584,7 +584,7 @@ static CameraFileHandler xhandler = { x_size, x_read, x_write };
 int
 save_file_to_file (struct mg_connection *c, Camera *camera, GPContext *context, Flags flags,
 		   const char *folder, const char *filename,
-		   CameraFileType type)
+		   CameraFileType type, int webapi )
 {
   int fd, res;
   CameraFile *file;
@@ -698,7 +698,7 @@ save_file_to_file (struct mg_connection *c, Camera *camera, GPContext *context, 
 		return (GP_OK);
 	}
 
-	if (flags & FLAGS_WEBAPI) {
+	if (webapi) {
     const char *data;
     unsigned long int size;
 
@@ -752,35 +752,44 @@ dissolve_filename (
 #endif
 }
 
-
-int
-get_file_http_common (struct mg_connection *c, const char *path, CameraFileType type )
+int 
+get_file_http_common(struct mg_connection *c, const char *path, CameraFileType type)
 {
-  gp_log (GP_LOG_DEBUG, "gphoto2-webapi", "Getting '%s'...", path );
+	gp_log(GP_LOG_DEBUG, "gphoto2-webapi", "Getting '%s'...", path);
 
 	gp_params.download_type = type;
-	gp_params.flags |= FLAGS_WEBAPI;
 
 	int ret;
+	char *buffer;
 	char *newfolder, *newfilename;
 
-	dissolve_filename (gp_params.folder, path, &newfolder, &newfilename);
+	buffer = strdup(path);
+	char *lr = strrchr(buffer, '/');
+	*lr = 0;
+	newfolder = buffer;
+	newfilename = lr + 1;
 
-  CameraFileInfo info;		
-	CR (gp_camera_file_get_info (gp_params.camera, newfolder, newfilename, &info, gp_params.context));
+	if (strlen(newfilename) > 0)
+	{
+		CameraFileInfo info;
+		CR(gp_camera_file_get_info(gp_params.camera, newfolder, newfilename, &info, gp_params.context));
 
-  const char *http_header = "HTTP/1.1 200 OK\r\n"
-														"Content-Type: %s\r\n"
-														"Content-Length: %ld\r\n\r\n";
+		const char *http_header = "HTTP/1.1 200 OK\r\n"
+															"Content-Type: %s\r\n"
+															"Content-Length: %ld\r\n\r\n";
 
-  mg_printf( c, http_header, info.file.type, info.file.size);
+		mg_printf(c, http_header, info.file.type, info.file.size);
 
-  ret = save_file_to_file (c, gp_params.camera, gp_params.context, gp_params.flags,
-					   newfolder, newfilename, type);
-	free (newfolder); free (newfilename);
+		ret = save_file_to_file(c, gp_params.camera, gp_params.context, gp_params.flags,
+														newfolder, newfilename, type, TRUE );
+	}
+	else
+	{
+		ret = -1;
+	}
+	free(buffer);
 	return ret;
 }
-
 
 /*! \brief parse range, download specified files, or their
  *         thumbnails according to thumbnail argument, and save to files.
@@ -810,7 +819,7 @@ get_file_common (struct mg_connection *c, const char *arg, CameraFileType type )
 
 		dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
                 ret = save_file_to_file ( c, gp_params.camera, gp_params.context, gp_params.flags,
-					   newfolder, newfilename, type);
+					   newfolder, newfilename, type, FALSE);
 		free (newfolder); free (newfilename);
 		return ret;
 	}
@@ -900,6 +909,7 @@ save_captured_file (struct mg_connection *c, CameraFilePath *path, int download)
   JSON_PRINTF( c, "\"image_info\":{" );
   JSON_PRINTF( c, "\"name\": \"%s\",", path->name );
   JSON_PRINTF( c, "\"folder\": \"%s\",", path->folder );
+  JSON_PRINTF( c, "\"path\": \"%s%s%s\",", path->folder, pathsep, path->name );
 	JSON_PRINTF( c, "\"mtime\":%ld,", info.file.mtime );
   JSON_PRINTF( c, "\"size\":%ld,", info.file.size );
 	JSON_PRINTF( c, "\"height\":%d,", info.file.height );
