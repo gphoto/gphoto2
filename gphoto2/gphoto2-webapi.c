@@ -118,7 +118,7 @@ volatile int end_next = 0;
  * multibyte encoding safe.
  */
 
-static size_t
+size_t
 strncpy_lower(char *dst, const char *src, size_t count)
 {
 	unsigned int i;

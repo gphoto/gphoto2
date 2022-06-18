@@ -38,6 +38,7 @@
 
 void cli_error_print(char *format, ...);
 void dissolve_filename ( const char *folder, const char *filename, char **newfolder, char **newfilename );
+size_t strncpy_lower(char *dst, const char *src, size_t count);
 
 int	camera_file_exists (Camera *camera, GPContext *context,
 			    const char *folder, const char *filename,

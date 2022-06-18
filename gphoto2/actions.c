@@ -492,6 +492,8 @@ delete_file_action (GPParams *p, const char *folder, const char *filename)
 #ifdef HAVE_LIBEXIF
 
 #ifdef WEBAPI
+size_t strncpy_lower(char *dst, const char *src, size_t count);
+
 static void
 show_ifd(struct mg_connection *c, ExifContent *content)
 #else
@@ -512,7 +514,9 @@ show_ifd(ExifContent *content)
 		printf("%-59.59s", exif_entry_get_value(e, b, sizeof(b)));
 		printf("\n");
 #else
-    JSON_PRINTF( c, "\"%s\":\"%s\",", exif_tag_get_name(e->tag), exif_entry_get_value(e, b, sizeof(b)));
+		char bn[128];
+		strncpy_lower(bn, exif_tag_get_name(e->tag), 127 );
+    JSON_PRINTF( c, "\"%s\":\"%s\",", bn, exif_entry_get_value(e, b, sizeof(b)));
 #endif
 	}
 }
