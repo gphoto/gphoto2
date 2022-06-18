@@ -1381,43 +1381,26 @@ typedef enum {
 	ARG_DEBUG,
 	ARG_DEBUG_LOGLEVEL,
 	ARG_DEBUG_LOGFILE,
-	ARG_FILENAME,
-	ARG_FILENUMBER,
-	ARG_FOLDER,
-	ARG_FORCE_OVERWRITE,
 	ARG_GET_CONFIG,
 	ARG_SET_CONFIG,
 	ARG_SET_CONFIG_INDEX,
 	ARG_SET_CONFIG_VALUE,
 	ARG_HELP,
-	ARG_HOOK_SCRIPT,
 	ARG_KEEP,
 	ARG_KEEP_RAW,
 	ARG_LIST_CAMERAS,
-	ARG_LIST_FILES,
-	ARG_LIST_FOLDERS,
 	ARG_LIST_PORTS,
-	ARG_MANUAL,
-	ARG_MKDIR,
 	ARG_MODEL,
-	ARG_NEW,
 	ARG_NO_KEEP,
 	ARG_NO_RECURSE,
-	ARG_NUM_FILES,
 	ARG_PORT,
 	ARG_QUIET,
-	ARG_RECURSE,
 	ARG_RESET,
 	ARG_RESET_INTERVAL,
-	ARG_RMDIR,
 	ARG_SERVER,
 	ARG_SERVER_URL,
 	ARG_SHOW_INFO,
-	ARG_PARSABLE,
-	ARG_SKIP_EXISTING,
 	ARG_SPEED,
-	ARG_STDOUT,
-	ARG_STDOUT_SIZE,
 	ARG_STORAGE_INFO,
 	ARG_SUMMARY,
 	ARG_USAGE,
@@ -1519,23 +1502,6 @@ cb_arg_init (poptContext __unused__ ctx,
 {
 	switch (opt->val) {
 
-	case ARG_FILENAME:
-		params->p.r = set_filename_action (&gp_params, arg);
-		break;
-	case ARG_FILENUMBER:
-		gp_params.filenr = atoi (arg);
-		params->p.r = GP_OK;
-		break;
-	case ARG_FOLDER:
-		params->p.r = set_folder_action (&gp_params, arg);
-		break;
-
-	case ARG_FORCE_OVERWRITE:
-		gp_params.flags |= FLAGS_FORCE_OVERWRITE;
-		break;
-	case ARG_NEW:
-		gp_params.flags |= FLAGS_NEW;
-		break;
 	case ARG_KEEP_RAW:
 		gp_params.flags |= FLAGS_KEEP_RAW;
 		break;
@@ -1550,9 +1516,6 @@ cb_arg_init (poptContext __unused__ ctx,
 	case ARG_NO_RECURSE:
 		gp_params.flags &= ~FLAGS_RECURSE;
 		break;
-	case ARG_RECURSE:
-		gp_params.flags |= FLAGS_RECURSE;
-		break;
 
 	case ARG_MODEL:
 		gp_log (GP_LOG_DEBUG, "main", "Processing 'model' "
@@ -1565,10 +1528,6 @@ cb_arg_init (poptContext __unused__ ctx,
 		params->p.r = action_camera_set_port (&gp_params, arg);
 		break;
 
-	case ARG_SKIP_EXISTING:
-		gp_params.flags |= FLAGS_SKIP_EXISTING;
-		break;
-
 	case ARG_SPEED:
 		params->p.r = action_camera_set_speed (&gp_params, atoi (arg));
 		break;
@@ -1577,40 +1536,8 @@ cb_arg_init (poptContext __unused__ ctx,
 		gp_params.flags |= FLAGS_QUIET;
 		break;
 
-	case ARG_PARSABLE:
-		gp_params.flags |= FLAGS_QUIET;
-		gp_params.flags |= FLAGS_PARSABLE;
-		break;
-
 	case ARG_RESET_INTERVAL:
 		gp_params.flags |= FLAGS_RESET_CAPTURE_INTERVAL;
-		break;
-
-	case ARG_HOOK_SCRIPT:
-		do {
-			const size_t sz = strlen(arg);
-			char *copy = malloc(sz+1);
-			if (!copy) {
-				perror("malloc error");
-				exit (EXIT_FAILURE);
-			}
-			gp_params.hook_script = strcpy(copy, arg);
-			/* Run init hook */
-			if (0!=gp_params_run_hook(&gp_params, "init", NULL)) {
-				fprintf(stderr,
-					"Hook script \"%s\" init failed. Aborting.\n",
-					gp_params.hook_script);
-				exit(3);
-			}
-		} while (0);
-		break;
-
-	case ARG_STDOUT:
-		gp_params.flags |= FLAGS_QUIET | FLAGS_STDOUT;
-		break;
-	case ARG_STDOUT_SIZE:
-		gp_params.flags |= FLAGS_QUIET | FLAGS_STDOUT
-			| FLAGS_STDOUT_SIZE;
 		break;
 
 	case ARG_VERSION:
@@ -1656,12 +1583,6 @@ cb_arg_run (poptContext __unused__ ctx,
 	case ARG_LIST_CAMERAS:
 		params->p.r = list_cameras_action (&gp_params);
 		break;
-	case ARG_LIST_FILES:
-		params->p.r = for_each_folder (&gp_params, list_files_action);
-		break;
-	case ARG_LIST_FOLDERS:
-		params->p.r = for_each_folder (&gp_params, list_folders_action);
-		break;
 	case ARG_LIST_PORTS:
 		params->p.r = list_ports_action (&gp_params);
 		break;
@@ -1700,24 +1621,6 @@ cb_arg_run (poptContext __unused__ ctx,
 		gp_port_free (port);
 		break;
 	}
-	case ARG_MANUAL:
-		params->p.r = action_camera_manual (&gp_params);
-		break;
-	case ARG_RMDIR:
-		dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
-		params->p.r = gp_camera_folder_remove_dir (gp_params.camera,
-							   newfolder, newfilename, gp_params.context);
-		free (newfolder); free (newfilename);
-		break;
-	case ARG_NUM_FILES:
-		params->p.r = num_files_action (&gp_params);
-		break;
-	case ARG_MKDIR:
-		dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
-		params->p.r = gp_camera_folder_make_dir (gp_params.camera,
-							 newfolder, newfilename, gp_params.context);
-		free (newfolder); free (newfilename);
-		break;
 	case ARG_SERVER_URL:
 		strncpy( webcfg.server_url, arg, WEBCFG_STR_LEN);
 		webcfg.server_url[WEBCFG_STR_LEN] = 0;
@@ -1952,11 +1855,6 @@ main (int argc, char **argv, char **envp)
 		 N_("Name of file to write debug info to"), N_("FILENAME")},
 		{"quiet", 'q', POPT_ARG_NONE, NULL, ARG_QUIET,
 		 N_("Quiet output (default=verbose)"), NULL},
-		{"parsable", '\0', POPT_ARG_NONE, NULL, ARG_PARSABLE,
-		 N_("Simple parsable output (implies quiet)"), NULL},
-		{"hook-script", '\0', POPT_ARG_STRING, NULL, ARG_HOOK_SCRIPT,
-		 N_("Hook script to call after downloads, captures, etc."),
-		 N_("FILENAME")},
 		POPT_TABLEEND
 	};
 	const struct poptOption cameraOptions[] = {
@@ -2018,48 +1916,13 @@ main (int argc, char **argv, char **envp)
 		 N_("Reset capture interval on signal (default=no)"), NULL},
 		POPT_TABLEEND
 	};
-	const struct poptOption fileOptions[] = {
-		GPHOTO2_POPT_CALLBACK
-		{"list-folders", 'l', POPT_ARG_NONE, NULL, ARG_LIST_FOLDERS,
-		 N_("List folders in folder"), NULL},
-		{"list-files", 'L', POPT_ARG_NONE, NULL, ARG_LIST_FILES,
-		 N_("List files in folder"), NULL},
-		{"mkdir", 'm', POPT_ARG_STRING, NULL, ARG_MKDIR,
-		 N_("Create a directory"), N_("DIRNAME")},
-		{"rmdir", 'r', POPT_ARG_STRING, NULL, ARG_RMDIR,
-		 N_("Remove a directory"), N_("DIRNAME")},
-		{"num-files", 'n', POPT_ARG_NONE, NULL, ARG_NUM_FILES,
-		 N_("Display number of files"), NULL},
-		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,
-		 N_("Specify a filename or filename pattern"), N_("FILENAME_PATTERN")},
-		{"filenumber", '\0', POPT_ARG_INT, NULL, ARG_FILENUMBER,
-		 N_("Specify the number a filename %%n will starts with (default 1)"), N_("NUMBER")},
-		{"folder", 'f', POPT_ARG_STRING, NULL, ARG_FOLDER,
-		 N_("Specify camera folder (default=\"/\")"), N_("FOLDER")},
-		{"recurse", 'R', POPT_ARG_NONE, NULL, ARG_RECURSE,
-		 N_("Recursion (default for download)"), NULL},
-		{"no-recurse", '\0', POPT_ARG_NONE, NULL, ARG_NO_RECURSE,
-		 N_("No recursion (default for deletion)"), NULL},
-		{"new", '\0', POPT_ARG_NONE, NULL, ARG_NEW,
-		 N_("Process new files only"), NULL},
-		{"force-overwrite", '\0', POPT_ARG_NONE, NULL,
-		 ARG_FORCE_OVERWRITE, N_("Overwrite files without asking"), NULL},
-		{"skip-existing", '\0', POPT_ARG_NONE, NULL,
-		 ARG_SKIP_EXISTING, N_("Skip existing files"), NULL},
-		POPT_TABLEEND
-	};
+
 	const struct poptOption miscOptions[] = {
 		GPHOTO2_POPT_CALLBACK
-		{"stdout", '\0', POPT_ARG_NONE, NULL, ARG_STDOUT,
-		 N_("Send file to stdout"), NULL},
-		{"stdout-size", '\0', POPT_ARG_NONE, NULL, ARG_STDOUT_SIZE,
-		 N_("Print filesize before data"), NULL},
 		{"show-info", '\0', POPT_ARG_STRING, NULL, ARG_SHOW_INFO,
 		 N_("Show image information, like width, height, and capture time"), NULL},
 		{"summary", '\0', POPT_ARG_NONE, NULL, ARG_SUMMARY,
 		 N_("Show camera summary"), NULL},
-		{"manual", '\0', POPT_ARG_NONE, NULL, ARG_MANUAL,
-		 N_("Show camera driver manual"), NULL},
 		{"about", '\0', POPT_ARG_NONE, NULL, ARG_ABOUT,
 		 N_("About the camera driver manual"), NULL},
 		{"storage-info", '\0', POPT_ARG_NONE, NULL, ARG_STORAGE_INFO,
@@ -2070,6 +1933,7 @@ main (int argc, char **argv, char **envp)
 		 N_("Server URL - e.g http://0.0.0.0:8866"), NULL},
 		POPT_TABLEEND
 	};
+
 	const struct poptOption options[] = {
 		GPHOTO2_POPT_CALLBACK
 		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &generalOptions, 0,
@@ -2084,8 +1948,6 @@ main (int argc, char **argv, char **envp)
 		 N_("Camera and software configuration"), NULL},
 		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &captureOptions, 0,
 		 N_("Capture an image from or on the camera"), NULL},
-		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &fileOptions, 0,
-		 N_("Downloading, uploading and manipulating files"), NULL},
 		POPT_TABLEEND
 	};
 	CameraAbilities a;
@@ -2219,13 +2081,7 @@ main (int argc, char **argv, char **envp)
 	CHECK_OPT (ARG_SHOW_PREVIEW);
 	CHECK_OPT (ARG_CONFIG);
 	CHECK_OPT (ARG_GET_CONFIG);
-	CHECK_OPT (ARG_LIST_FILES);
-	CHECK_OPT (ARG_LIST_FOLDERS);
-	CHECK_OPT (ARG_MANUAL);
-	CHECK_OPT (ARG_MKDIR);
-	CHECK_OPT (ARG_NUM_FILES);
 	CHECK_OPT (ARG_RESET);
-	CHECK_OPT (ARG_RMDIR);
 	CHECK_OPT (ARG_SET_CONFIG);
 	CHECK_OPT (ARG_SET_CONFIG_INDEX);
 	CHECK_OPT (ARG_SET_CONFIG_VALUE);
@@ -2378,46 +2234,9 @@ main (int argc, char **argv, char **envp)
                 }
 		gp_list_free (list);
         }
-
-	/*
-	 * Recursion is too dangerous for deletion. Only turn it on if
-	 * explicitely specified.
-	 */
-	/*
-	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
-	cb_params.p.q.found = 0;
-	cb_params.p.q.arg = ARG_DELETE_FILE;
-	poptResetContext (ctx);
-	while (poptGetNextOpt (ctx) >= 0);
-	if (!cb_params.p.q.found) {
-		cb_params.p.q.arg = ARG_DELETE_ALL_FILES;
-		poptResetContext (ctx);
-		while (poptGetNextOpt (ctx) >= 0);
-	}
-	*/
-
-	if (cb_params.p.q.found) {
-		cb_params.p.q.found = 0;
-		cb_params.p.q.arg = ARG_RECURSE;
-		poptResetContext (ctx);
-		while (poptGetNextOpt (ctx) >= 0);
-		if (!cb_params.p.q.found)
-			gp_params.flags &= ~FLAGS_RECURSE;
-	}
-
-        signal (SIGINT, signal_exit);
-        signal (SIGTERM, signal_exit);
-
-	/* If we are told to be quiet, be so. *
-	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
-	cb_params.p.q.found = 0;
-	cb_params.p.q.arg = ARG_QUIET;
-	poptResetContext (ctx);
-	while (poptGetNextOpt (ctx) >= 0);
-	if (cb_params.p.q.found) {
-		gp_params.flags |= FLAGS_QUIET;
-	}
-	*/
+      
+	signal (SIGINT, signal_exit);
+  signal (SIGTERM, signal_exit);
 
 	/* Run startup hook */
 	gp_params_run_hook(&gp_params, "start", NULL);
