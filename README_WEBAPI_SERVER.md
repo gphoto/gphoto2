@@ -100,8 +100,7 @@ response
 
 - `http://<server ip>:8866/api/get-file/<path to file/image>` 
 
-response 
-- native file
+response - native file
 
 - `http://<server ip>:8866/api/get-exif/<path to image>` 
 

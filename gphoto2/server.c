@@ -205,6 +205,28 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			}
     } 
 
+#ifdef HAVE_LIBEXIF
+		else if (mg_http_match_uri(hm, "/api/get-exif/#")) 
+		{			
+			if ( hm->uri.len >= 14 )
+			{
+				char *newfilename = NULL, *newfolder = NULL;
+
+  			char buffer[256];
+		  	strncpy( buffer, hm->uri.ptr, MIN((int)hm->uri.len,255));
+			  buffer[MIN((int)hm->uri.len,255)] = 0;
+			  char *path = buffer+13;
+
+		  	dissolve_filename (p->folder, path, &newfolder, &newfilename);
+        MG_HTTP_CHUNK_START;
+		  	mg_http_printf_chunk(c, "{" );
+        mg_http_printf_chunk(c, "\"return_code\":%d}\n", print_exif_action (c, p, newfolder, newfilename));
+		  	MG_HTTP_CHUNK_END;
+  			free (newfolder); free (newfilename);
+			}
+    } 
+#endif
+
     else
 		{
 			mg_http_reply(c, 404, "", "Page not found.\n" );
