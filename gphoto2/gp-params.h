@@ -38,6 +38,7 @@ typedef enum {
 	FLAGS_KEEP_RAW 		= 1 << 9,
 	FLAGS_SKIP_EXISTING	= 1 << 10,
 	FLAGS_PARSABLE		= 1 << 11,
+	FLAGS_WEBAPI		= 1 << 12,
 } Flags;
 
 typedef enum {
