@@ -60,7 +60,7 @@ All responses are [JSON](https://json.org) formated.
 
 response
 
-```json
+```jsonc
 {
   image_info: {
     name: "IMG_0264.JPG",
@@ -80,7 +80,7 @@ response
 
 response
 
-```json
+```jsonc
 {
   image_info: {
     name: "IMG_0265.JPG",
