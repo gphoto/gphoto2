@@ -490,39 +490,56 @@ delete_file_action (GPParams *p, const char *folder, const char *filename)
 }
 
 #ifdef HAVE_LIBEXIF
-static void
-show_ifd (ExifContent *content)
-{
-        ExifEntry *e;
-        unsigned int i;
 
-        for (i = 0; i < content->count; i++) {
-                e = content->entries[i];
-                printf ("%-20.20s", exif_tag_get_name (e->tag));
-                printf ("|");
-		{char b[1024];
-		printf ("%-59.59s", exif_entry_get_value (e, b, sizeof (b)));
-		}
-                printf ("\n");
-        }
+#ifdef WEBAPI
+static void
+show_ifd(struct mg_connection *c, ExifContent *content)
+#else
+static void
+show_ifd(ExifContent *content)
+#endif
+{
+	ExifEntry *e;
+	unsigned int i;
+
+	for (i = 0; i < content->count; i++)
+	{			
+		char b[1024];
+		e = content->entries[i];
+#ifndef WEBAPI		
+		printf("%-20.20s", exif_tag_get_name(e->tag));
+		printf("|");
+		printf("%-59.59s", exif_entry_get_value(e, b, sizeof(b)));
+		printf("\n");
+#else
+    JSON_PRINTF( c, "\"%s\":\"%s\",", exif_tag_get_name(e->tag), exif_entry_get_value(e, b, sizeof(b)));
+#endif
+	}
 }
 
+#ifndef WEBAPI
 static void
-print_hline (void)
+print_hline(void)
 {
-        int i;
+	int i;
 
-        for (i = 0; i < 20; i++)
-                putchar ('-');
-        printf ("+");
-        for (i = 0; i < 59; i++)
-                putchar ('-');
-        putchar ('\n');
+	for (i = 0; i < 20; i++)
+		putchar('-');
+	printf("+");
+	for (i = 0; i < 59; i++)
+		putchar('-');
+	putchar('\n');
 }
 #endif
+#endif
 
+#ifdef WEBAPI
+int 
+print_exif_action (struct mg_connection *c, GPParams *p, const char *folder, const char *filename)
+#else
 int
 print_exif_action (GPParams *p, const char *folder, const char *filename)
+#endif
 {
 #ifdef HAVE_LIBEXIF
         CameraFile *file;
@@ -542,6 +559,7 @@ print_exif_action (GPParams *p, const char *folder, const char *filename)
                 return GP_ERROR;
         }
 
+#ifndef WEBAPI
         printf (_("EXIF tags:"));
         putchar ('\n');
         print_hline ();
@@ -550,19 +568,31 @@ print_exif_action (GPParams *p, const char *folder, const char *filename)
         printf ("%-59.59s", _("Value"));
         putchar ('\n');
         print_hline ();
+#endif
+
 	for (i = 0; i < EXIF_IFD_COUNT; i++)
+	{
 		if (ed->ifd[i])
+		{
+#ifndef WEBAPI
 			show_ifd (ed->ifd[i]);
-        print_hline ();
-        if (ed->size) {
-                printf (_("EXIF data contains a thumbnail (%i bytes)."),
-                        ed->size);
-                putchar ('\n');
-        }
+#else
+			show_ifd (c, ed->ifd[i]);
+#endif
+		}
+	}
 
-        exif_data_unref (ed);
+#ifndef WEBAPI
+  print_hline ();
+  if (ed->size) {
+    printf (_("EXIF data contains a thumbnail (%i bytes)."), ed->size);
+    putchar ('\n');
+  }
+#endif
 
-        return GP_OK;
+  exif_data_unref (ed);
+
+  return GP_OK;
 #else
 	gp_context_error (p->context, _("gphoto2 has been compiled without "
 		"EXIF support."));

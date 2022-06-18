@@ -36,7 +36,8 @@
 #define VERSION "2"
 #endif
 
-void 	cli_error_print(char *format, ...);
+void cli_error_print(char *format, ...);
+void dissolve_filename ( const char *folder, const char *filename, char **newfolder, char **newfilename );
 
 int	camera_file_exists (Camera *camera, GPContext *context,
 			    const char *folder, const char *filename,

@@ -55,7 +55,6 @@ struct waitparams {
 /* Image actions */
 typedef int FileAction    (GPParams *, const char *folder, const char *filename);
 int print_file_action     (GPParams *, const char *folder, const char *filename);
-int print_exif_action     (GPParams *, const char *folder, const char *filename);
 int print_info_action     (GPParams *, const char *folder, const char *filename);
 int save_file_action      (GPParams *, const char *folder, const char *filename);
 int save_thumbnail_action (GPParams *, const char *folder, const char *filename);
@@ -111,10 +110,12 @@ void _get_portinfo_list	(GPParams *p);
 int auto_detect_action     (struct mg_connection *, GPParams *);
 int list_config_action     (struct mg_connection *, GPParams *);
 int list_all_config_action (struct mg_connection *, GPParams *);
+int print_exif_action      (struct mg_connection *, GPParams *, const char *folder, const char *filename);
 #else
 int auto_detect_action     (GPParams *);
 int list_config_action     (GPParams *);
 int list_all_config_action (GPParams *);
+int print_exif_action      (GPParams *, const char *folder, const char *filename);
 #endif
 
 #endif /* !defined(GPHOTO2_ACTIONS_H) */

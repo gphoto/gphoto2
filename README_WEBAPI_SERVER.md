@@ -60,7 +60,7 @@ All responses are [JSON](https://json.org) formated.
 
 response
 
-```json
+```jsonc
 {
   image_info: {
     name: "IMG_0264.JPG",
@@ -80,7 +80,7 @@ response
 
 response
 
-```json
+```jsonc
 {
   image_info: {
     name: "IMG_0265.JPG",
@@ -102,6 +102,8 @@ response
 
 response 
 - native file
+
+- `http://<server ip>:8866/api/get-exif/<path to image>` 
 
 
 ## Mongoose HTTP Server - LICENSE

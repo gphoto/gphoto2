@@ -725,7 +725,7 @@ save_file_to_file (struct mg_connection *c, Camera *camera, GPContext *context, 
         return (res);
 }
 
-static void
+void
 dissolve_filename (
 	const char *folder, const char *filename,
 	char **newfolder, char **newfilename
@@ -1412,7 +1412,6 @@ typedef enum {
 	ARG_RMDIR,
 	ARG_SERVER,
 	ARG_SERVER_URL,
-	ARG_SHOW_EXIF,
 	ARG_SHOW_INFO,
 	ARG_PARSABLE,
 	ARG_SKIP_EXISTING,
@@ -1725,17 +1724,6 @@ cb_arg_run (poptContext __unused__ ctx,
 		break;
 	case ARG_SERVER:
 		params->p.r = webapi_server (&gp_params);
-		break;
-	case ARG_SHOW_EXIF:
-		/* Did the user specify a file or a range? */
-		if (strchr (arg, '.')) {
-			dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
-			params->p.r = print_exif_action (&gp_params, newfolder, newfilename);
-			free (newfolder); free (newfilename);
-			break;
-		}
-		params->p.r = for_each_file_in_range (&gp_params,
-						      print_exif_action, arg);
 		break;
 	case ARG_SHOW_INFO:
 		/* Did the user specify a file or a range? */
@@ -2066,11 +2054,6 @@ main (int argc, char **argv, char **envp)
 		 N_("Send file to stdout"), NULL},
 		{"stdout-size", '\0', POPT_ARG_NONE, NULL, ARG_STDOUT_SIZE,
 		 N_("Print filesize before data"), NULL},
-
-#ifdef HAVE_LIBEXIF
-		{"show-exif", '\0', POPT_ARG_STRING, NULL, ARG_SHOW_EXIF,
-		 N_("Show EXIF information of JPEG images"), NULL},
-#endif
 		{"show-info", '\0', POPT_ARG_STRING, NULL, ARG_SHOW_INFO,
 		 N_("Show image information, like width, height, and capture time"), NULL},
 		{"summary", '\0', POPT_ARG_NONE, NULL, ARG_SUMMARY,
@@ -2248,7 +2231,6 @@ main (int argc, char **argv, char **envp)
 	CHECK_OPT (ARG_SET_CONFIG_VALUE);
 	CHECK_OPT (ARG_SERVER);
 	CHECK_OPT (ARG_SERVER_URL);
-	CHECK_OPT (ARG_SHOW_EXIF);
 	CHECK_OPT (ARG_SHOW_INFO);
 	CHECK_OPT (ARG_STORAGE_INFO);
 	CHECK_OPT (ARG_SUMMARY);
