@@ -217,12 +217,22 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			  buffer[MIN((int)hm->uri.len,255)] = 0;
 			  char *path = buffer+13;
 
-		  	dissolve_filename (p->folder, path, &newfolder, &newfilename);
+				char *lr = strrchr( path, '/' );
+				*lr=0;
+        newfolder = path;
+				newfilename = lr+1;
+
         MG_HTTP_CHUNK_START;
-		  	mg_http_printf_chunk(c, "{" );
-        mg_http_printf_chunk(c, "\"return_code\":%d}\n", print_exif_action (c, p, newfolder, newfilename));
+        if ( strlen(newfilename) > 0 )
+				{
+		  	  mg_http_printf_chunk(c, "{" );
+          mg_http_printf_chunk(c, "\"return_code\":%d}\n", print_exif_action (c, p, newfolder, newfilename));
+				}
+				else
+				{
+          mg_http_printf_chunk(c, "{ \"return_code\": -1 }\n");
+				}
 		  	MG_HTTP_CHUNK_END;
-  			free (newfolder); free (newfilename);
 			}
     } 
 #endif
