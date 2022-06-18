@@ -139,7 +139,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			MG_HTTP_CHUNK_END;
     } 
 
-		else if (mg_http_match_uri(hm, "/api/list-config")) 
+		else if (mg_http_match_uri(hm, "/api/config/list")) 
 		{
       MG_HTTP_CHUNK_START;
 			mg_http_printf_chunk(c, "{" );
@@ -147,7 +147,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			MG_HTTP_CHUNK_END;
     } 
 
-		else if (mg_http_match_uri(hm, "/api/list-all-config")) 
+		else if (mg_http_match_uri(hm, "/api/config/list-all")) 
 		{
       MG_HTTP_CHUNK_START;
  			mg_http_printf_chunk(c, "{" );

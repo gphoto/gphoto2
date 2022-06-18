@@ -48,7 +48,7 @@ All responses are [JSON](https://json.org) formated.
 
   list available config names
 
-- `http://<server ip>:8866/api/config/list/all` 
+- `http://<server ip>:8866/api/config/list-all` 
 
   list config including current and available config values
 
