@@ -606,20 +606,10 @@ save_file_to_file (struct mg_connection *c, Camera *camera, GPContext *context, 
 		}
 	}
 
-	CameraFileInfo info;
-		
-	CR (gp_camera_file_get_info (camera, folder, filename, &info, context));
-
-  JSON_PRINTF( c, "\"image_info\":{" );
-	JSON_PRINTF( c, "\"mtime\":%ld,", info.file.mtime );
-  JSON_PRINTF( c, "\"size\":%ld,", info.file.size );
-	JSON_PRINTF( c, "\"height\":%d,", info.file.height );
-	JSON_PRINTF( c, "\"width\":%d,", info.file.width );
-	JSON_PRINTF( c, "\"type\":\"%s\"\n", info.file.type );
-  JSON_PRINTF( c, "}," );
-
 	if (flags & FLAGS_NEW) {
-		
+		CameraFileInfo info;
+   	CR (gp_camera_file_get_info (camera, folder, filename, &info, context));
+
 		switch (type) {
 		case GP_FILE_TYPE_PREVIEW:
 			if (info.preview.fields & GP_FILE_INFO_STATUS &&
@@ -853,8 +843,18 @@ save_captured_file (struct mg_connection *c, CameraFilePath *path, int download)
 			path->folder, pathsep, path->name);
 	}
 
-  JSON_PRINTF( c, "\"image_name\": \"%s\",", path->name );
-  JSON_PRINTF( c, "\"camera_folder\": \"%s\",", path->folder );
+	CameraFileInfo info;		
+	CR (gp_camera_file_get_info (gp_params.camera, path->folder, path->name, &info, gp_params.context));
+
+  JSON_PRINTF( c, "\"image_info\":{" );
+  JSON_PRINTF( c, "\"name\": \"%s\",", path->name );
+  JSON_PRINTF( c, "\"folder\": \"%s\",", path->folder );
+	JSON_PRINTF( c, "\"mtime\":%ld,", info.file.mtime );
+  JSON_PRINTF( c, "\"size\":%ld,", info.file.size );
+	JSON_PRINTF( c, "\"height\":%d,", info.file.height );
+	JSON_PRINTF( c, "\"width\":%d,", info.file.width );
+	JSON_PRINTF( c, "\"type\":\"%s\"\n", info.file.type );
+  JSON_PRINTF( c, "}," );
   JSON_PRINTF( c, "\"download\": %s,", (download) ? "true" : "false" );
 
 	if (download) {
@@ -883,6 +883,7 @@ save_captured_file (struct mg_connection *c, CameraFilePath *path, int download)
 		}
 
 		result = get_file_common ( c, path->name, GP_FILE_TYPE_NORMAL);
+
 		if (result != GP_OK) {
 			cli_error_print (_("Could not get image."));
 			if(result == GP_ERROR_FILE_NOT_FOUND) {
