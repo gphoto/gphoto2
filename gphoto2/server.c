@@ -218,12 +218,15 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			  char *path = buffer+13;
 
 				char *lr = strrchr( path, '/' );
-				*lr=0;
-        newfolder = path;
-				newfilename = lr+1;
+				if ( lr != NULL )
+				{
+				  *lr=0;
+          newfolder = path;
+				  newfilename = lr+1;
+				}
 
         MG_HTTP_CHUNK_START;
-        if ( strlen(newfilename) > 0 )
+        if ( newfilename != NULL && strlen(newfilename) > 0 )
 				{
 		  	  mg_http_printf_chunk(c, "{" );
           mg_http_printf_chunk(c, "\"return_code\":%d}\n", print_exif_action (c, p, newfolder, newfilename));

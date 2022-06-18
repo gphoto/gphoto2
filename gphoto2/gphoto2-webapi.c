@@ -280,7 +280,6 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 				break;
 
 			case 'f':
-
 				/* Get the file name without suffix */
 				s = strrchr (name, '.');
 				if (!s)
@@ -376,84 +375,94 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 	return (GP_OK);
 }
 
-
-int
-save_camera_file_to_file (
-	const char *folder, const char *name, CameraFileType type, CameraFile *file, const char *curname
-) {
+int save_camera_file_to_file(
+		const char *folder, const char *name, CameraFileType type, CameraFile *file, const char *curname)
+{
 	char *path = NULL, s[1024], c[1024];
 	int res;
 	time_t mtime;
 	struct utimbuf u;
 
-	CR (get_path_for_file (folder, name, type, file, &path));
-	strncpy (s, path, sizeof (s) - 1);
-	s[sizeof (s) - 1] = '\0';
-	free (path);
+	CR(get_path_for_file(folder, name, type, file, &path));
+	strncpy(s, path, sizeof(s) - 1);
+	s[sizeof(s) - 1] = '\0';
+	free(path);
 	path = NULL;
 
-        if ((gp_params.flags & FLAGS_SKIP_EXISTING) && gp_system_is_file (s)) {
-		if ((gp_params.flags & FLAGS_QUIET) == 0) {
-			printf (_("Skip existing file %s\n"), s);
-			fflush (stdout);
+	if ((gp_params.flags & FLAGS_SKIP_EXISTING) && gp_system_is_file(s))
+	{
+		if ((gp_params.flags & FLAGS_QUIET) == 0)
+		{
+			printf(_("Skip existing file %s\n"), s);
+			fflush(stdout);
 		}
 		if (curname)
-			unlink (curname);
+			unlink(curname);
 		return (GP_OK);
 	}
-        if ((gp_params.flags & FLAGS_QUIET) == 0) {
-                while ((gp_params.flags & FLAGS_FORCE_OVERWRITE) == 0 &&
-		       gp_system_is_file (s)) {
-			do {
-				putchar ('\007');
-				printf (_("File %s exists. Overwrite? [y|n] "),
-					s);
-				fflush (stdout);
-				if (NULL == fgets (c, sizeof (c) - 1, stdin))
+	if ((gp_params.flags & FLAGS_QUIET) == 0)
+	{
+		while ((gp_params.flags & FLAGS_FORCE_OVERWRITE) == 0 &&
+					 gp_system_is_file(s))
+		{
+			do
+			{
+				putchar('\007');
+				printf(_("File %s exists. Overwrite? [y|n] "),
+							 s);
+				fflush(stdout);
+				if (NULL == fgets(c, sizeof(c) - 1, stdin))
 					return GP_ERROR;
-			} while ((c[0]!='y')&&(c[0]!='Y')&&
-				 (c[0]!='n')&&(c[0]!='N'));
+			} while ((c[0] != 'y') && (c[0] != 'Y') &&
+							 (c[0] != 'n') && (c[0] != 'N'));
 
-			if ((c[0]=='y') || (c[0]=='Y'))
+			if ((c[0] == 'y') || (c[0] == 'Y'))
 				break;
 
-			do {
-				printf (_("Specify new filename? [y|n] "));
-				fflush (stdout);
-				if (NULL == fgets (c, sizeof (c) - 1, stdin))
+			do
+			{
+				printf(_("Specify new filename? [y|n] "));
+				fflush(stdout);
+				if (NULL == fgets(c, sizeof(c) - 1, stdin))
 					return GP_ERROR;
-			} while ((c[0]!='y')&&(c[0]!='Y')&&
-				 (c[0]!='n')&&(c[0]!='N'));
+			} while ((c[0] != 'y') && (c[0] != 'Y') &&
+							 (c[0] != 'n') && (c[0] != 'N'));
 
-			if (!((c[0]=='y') || (c[0]=='Y'))) {
-				if (curname) unlink (curname);
+			if (!((c[0] == 'y') || (c[0] == 'Y')))
+			{
+				if (curname)
+					unlink(curname);
 				return (GP_OK);
 			}
 
-			printf (_("Enter new filename: "));
-			fflush (stdout);
-			if (NULL == fgets (s, sizeof (s) - 1, stdin))
+			printf(_("Enter new filename: "));
+			fflush(stdout);
+			if (NULL == fgets(s, sizeof(s) - 1, stdin))
 				return GP_ERROR;
-			s[strlen (s) - 1] = 0;
-                }
-                printf (_("Saving file as %s\n"), s);
-		fflush (stdout);
-        }
+			s[strlen(s) - 1] = 0;
+		}
+		printf(_("Saving file as %s\n"), s);
+		fflush(stdout);
+	}
 	path = s;
-	while ((path = strchr (path, gp_system_dir_delim))){
+	while ((path = strchr(path, gp_system_dir_delim)))
+	{
 		*path = '\0';
-		if(!gp_system_is_dir (s))
-			gp_system_mkdir (s);
+		if (!gp_system_is_dir(s))
+			gp_system_mkdir(s);
 		*path++ = gp_system_dir_delim;
 	}
-	if (curname) {
+	if (curname)
+	{
 		int x;
 
 		unlink(s);
-		if (-1 == rename (curname, s)) {
+		if (-1 == rename(curname, s))
+		{
 			/* happens if the user specified a absolute path with --filename */
 			/* EPERM happens on windows, see https://github.com/gphoto/libgphoto2/issues/97 */
-			if ((errno == EXDEV) || (errno == EPERM)) {
+			if ((errno == EXDEV) || (errno == EPERM))
+			{
 				char buf[8192];
 				int in_fd, out_fd;
 
@@ -465,10 +474,13 @@ save_camera_file_to_file (
 				if (out_fd < 0)
 					perror("Can't open file for writing");
 
-				while (1) {
+				while (1)
+				{
 					ssize_t result = read(in_fd, buf, sizeof(buf));
-					if (!result) break;
-					if (-1 == write(out_fd, buf, result)) {
+					if (!result)
+						break;
+					if (-1 == write(out_fd, buf, result))
+					{
 						perror("write");
 						break;
 					}
@@ -476,31 +488,33 @@ save_camera_file_to_file (
 				close(out_fd);
 				close(in_fd);
 				unlink(curname);
-			} else
+			}
+			else
 				perror("rename");
 		}
 		x = umask(0022); /* get umask */
-		umask(x);/* set it back to the old value */
-		chmod(s,0666 & ~x);
+		umask(x);				 /* set it back to the old value */
+		chmod(s, 0666 & ~x);
 	}
-	res = gp_file_get_mtime (file, &mtime);
-        if ((res == GP_OK) && (mtime)) {
-                u.actime = mtime;
-                u.modtime = mtime;
-                utime (s, &u);
-        }
+	res = gp_file_get_mtime(file, &mtime);
+	if ((res == GP_OK) && (mtime))
+	{
+		u.actime = mtime;
+		u.modtime = mtime;
+		utime(s, &u);
+	}
 	gp_params_run_hook(&gp_params, "download", s);
 	return (GP_OK);
 }
 
-int
-camera_file_exists (Camera *camera, GPContext *context, const char *folder,
-		    const char *filename, CameraFileType type)
+int camera_file_exists(Camera *camera, GPContext *context, const char *folder,
+											 const char *filename, CameraFileType type)
 {
 	CameraFileInfo info;
-	CR (gp_camera_file_get_info (camera, folder, filename, &info,
-				     context));
-	switch (type) {
+	CR(gp_camera_file_get_info(camera, folder, filename, &info,
+														 context));
+	switch (type)
+	{
 	case GP_FILE_TYPE_METADATA:
 		return TRUE;
 	case GP_FILE_TYPE_AUDIO:
@@ -511,51 +525,60 @@ camera_file_exists (Camera *camera, GPContext *context, const char *folder,
 	case GP_FILE_TYPE_NORMAL:
 		return (info.file.fields != 0);
 	default:
-		gp_context_error (context, "Unknown file type in camera_file_exists: %d", type);
+		gp_context_error(context, "Unknown file type in camera_file_exists: %d", type);
 		return FALSE;
 	}
 }
 
-struct privstr {
+struct privstr
+{
 	int fd;
 };
 
-static int x_size(void*priv,uint64_t *size) {
+static int x_size(void *priv, uint64_t *size)
+{
 	struct privstr *ps = priv;
 	int fd = ps->fd;
 	off_t res;
 
-	gp_log (GP_LOG_DEBUG, "x_size","(%p,%u)", priv, (unsigned int)*size);
-	res = lseek (fd, 0, SEEK_END);
-	if (res == -1) {
-		perror ("x_size: lseek SEEK_END");
+	gp_log(GP_LOG_DEBUG, "x_size", "(%p,%u)", priv, (unsigned int)*size);
+	res = lseek(fd, 0, SEEK_END);
+	if (res == -1)
+	{
+		perror("x_size: lseek SEEK_END");
 		return GP_ERROR_IO;
 	}
-	res = lseek (fd, 0, SEEK_CUR);
-	if (res == -1) {
-		perror ("x_size: lseek SEEK_CUR");
+	res = lseek(fd, 0, SEEK_CUR);
+	if (res == -1)
+	{
+		perror("x_size: lseek SEEK_CUR");
 		return GP_ERROR_IO;
 	}
 	*size = res;
-	res = lseek (fd, 0, SEEK_SET);
-	if (res == -1) {
-		perror ("x_size: lseek SEEK_SET");
+	res = lseek(fd, 0, SEEK_SET);
+	if (res == -1)
+	{
+		perror("x_size: lseek SEEK_SET");
 		return GP_ERROR_IO;
 	}
 	return GP_OK;
 }
 
-static int x_read(void*priv,unsigned char *data, uint64_t *size) {
-	struct privstr 	*ps = priv;
-	int 		fd = ps->fd;
-	uint64_t	curread = 0, xsize, res;
+static int x_read(void *priv, unsigned char *data, uint64_t *size)
+{
+	struct privstr *ps = priv;
+	int fd = ps->fd;
+	uint64_t curread = 0, xsize, res;
 
-	gp_log (GP_LOG_DEBUG, "x_read", "(%p,%p,%u)", priv, data, (unsigned int)*size);
+	gp_log(GP_LOG_DEBUG, "x_read", "(%p,%p,%u)", priv, data, (unsigned int)*size);
 	xsize = *size;
-	while (curread < xsize) {
-		res = read (fd, data+curread, xsize-curread);
-		if (res == -1) return GP_ERROR_IO_READ;
-		if (!res) break;
+	while (curread < xsize)
+	{
+		res = read(fd, data + curread, xsize - curread);
+		if (res == -1)
+			return GP_ERROR_IO_READ;
+		if (!res)
+			break;
 		curread += res;
 	}
 	*size = curread;
@@ -725,28 +748,29 @@ save_file_to_file (struct mg_connection *c, Camera *camera, GPContext *context, 
         return (res);
 }
 
-void
-dissolve_filename (
-	const char *folder, const char *filename,
-	char **newfolder, char **newfilename
-) {
+void dissolve_filename(
+		const char *folder, const char *filename,
+		char **newfolder, char **newfilename)
+{
 	char *nfolder, *s;
 
-	s = strrchr (filename, '/');
-	if (!s) {
-		*newfolder = strdup (folder);
-		*newfilename = strdup (filename);
+	s = strrchr(filename, '/');
+	if (!s)
+	{
+		*newfolder = strdup(folder);
+		*newfilename = strdup(filename);
 		return;
 	}
 	while (filename[0] == '/')
 		filename++;
-	nfolder = malloc (strlen (folder) + 1 + (s-filename) + 1);
-	strcpy (nfolder, folder);
-	if (strcmp (nfolder, "/")) strcat (nfolder, "/"); /* if its not the root directory, append / */
-	memcpy (nfolder+strlen(nfolder), filename, (s-filename));
-	nfolder[strlen (folder) + 1 + (s-filename)-1] = '\0';
-	*newfolder   = nfolder;
-	*newfilename = strdup (s+1);
+	nfolder = malloc(strlen(folder) + 1 + (s - filename) + 1);
+	strcpy(nfolder, folder);
+	if (strcmp(nfolder, "/"))
+		strcat(nfolder, "/"); /* if its not the root directory, append / */
+	memcpy(nfolder + strlen(nfolder), filename, (s - filename));
+	nfolder[strlen(folder) + 1 + (s - filename) - 1] = '\0';
+	*newfolder = nfolder;
+	*newfilename = strdup(s + 1);
 #if 0
 	fprintf (stderr, "%s - %s dissolved to %s - %s\n", folder, filename, *newfolder, *newfilename);
 #endif
@@ -759,33 +783,32 @@ get_file_http_common(struct mg_connection *c, const char *path, CameraFileType t
 
 	gp_params.download_type = type;
 
-	int ret;
+	int ret = -1;
 	char *buffer;
 	char *newfolder, *newfilename;
 
 	buffer = strdup(path);
 	char *lr = strrchr(buffer, '/');
-	*lr = 0;
-	newfolder = buffer;
-	newfilename = lr + 1;
-
-	if (strlen(newfilename) > 0)
+	if (lr != NULL)
 	{
-		CameraFileInfo info;
-		CR(gp_camera_file_get_info(gp_params.camera, newfolder, newfilename, &info, gp_params.context));
+		*lr = 0;
+		newfolder = buffer;
+		newfilename = lr + 1;
 
-		const char *http_header = "HTTP/1.1 200 OK\r\n"
-															"Content-Type: %s\r\n"
-															"Content-Length: %ld\r\n\r\n";
+		if (strlen(newfilename) > 0)
+		{
+			CameraFileInfo info;
+			CR(gp_camera_file_get_info(gp_params.camera, newfolder, newfilename, &info, gp_params.context));
 
-		mg_printf(c, http_header, info.file.type, info.file.size);
+			const char *http_header = "HTTP/1.1 200 OK\r\n"
+																"Content-Type: %s\r\n"
+																"Content-Length: %ld\r\n\r\n";
 
-		ret = save_file_to_file(c, gp_params.camera, gp_params.context, gp_params.flags,
-														newfolder, newfilename, type, TRUE );
-	}
-	else
-	{
-		ret = -1;
+			mg_printf(c, http_header, info.file.type, info.file.size);
+
+			ret = save_file_to_file(c, gp_params.camera, gp_params.context, gp_params.flags,
+															newfolder, newfilename, type, TRUE);
+		}
 	}
 	free(buffer);
 	return ret;
@@ -1808,40 +1831,9 @@ report_failure (int result, int argc, char **argv)
 		}							\
 	} while (0)
 
-
 #define GPHOTO2_POPT_CALLBACK \
 	{NULL, '\0', POPT_ARG_CALLBACK, \
 			(void *) &cb_arg, 0, (char *) &cb_params, NULL},
-
-/*! main function: parse command line arguments and call actions
- *
- * Perhaps we should use the following code for parsing command line
- * options:
-
-       poptGetContext(NULL, argc, argv, poptOptions, 0);
-       while ((rc = poptGetNextOpt(poptcon)) > 0) {
-            switch (rc) {
-            ARG_FOO:
-	         printf("foo = %s\n", poptGetOptArg(poptcon));
-		 break;
-            }
-       }
-       poptFreeContext(poptcon);
- *
- * Regardless of whether we do this or not, we should get rid of those
- * legions of poptResetContext() calls followed by lots of
- * poptGetNextOpt() calls.
- *
- * At least we should get rid of all those stages. Probably two stages
- * are sufficient:
- *  -# look for --help, --debug, --debug-logfile, --quiet
- *  -# repeat this until command line has been used up
- *     -# go through all command line options
- *     -# ignore those from above
- *     -# if setting for command, store its value
- *     -# if command, execute command
- */
-
 
 int
 main (int argc, char **argv, char **envp)
@@ -1851,6 +1843,7 @@ main (int argc, char **argv, char **envp)
 	int i, help_option_given = 0;
 	int usage_option_given = 0;
 	char *debug_logfile_name = NULL, *debug_loglevel = NULL;
+
 	const struct poptOption generalOptions[] = {
 		GPHOTO2_POPT_CALLBACK
 		{"help", '?', POPT_ARG_NONE, (void *) &help_option_given, ARG_HELP,
@@ -1867,6 +1860,7 @@ main (int argc, char **argv, char **envp)
 		 N_("Quiet output (default=verbose)"), NULL},
 		POPT_TABLEEND
 	};
+
 	const struct poptOption cameraOptions[] = {
 		GPHOTO2_POPT_CALLBACK
 		{"port", '\0', POPT_ARG_STRING, NULL, ARG_PORT,
@@ -1879,6 +1873,7 @@ main (int argc, char **argv, char **envp)
 		 N_("(expert only) Override USB IDs"), N_("USBIDs")},
 		POPT_TABLEEND
 	};
+
 	const struct poptOption infoOptions[] = {
 		GPHOTO2_POPT_CALLBACK
 		{"version", 'v', POPT_ARG_NONE, NULL, ARG_VERSION,
@@ -1891,6 +1886,7 @@ main (int argc, char **argv, char **envp)
 		 N_("Display the camera/driver abilities in the libgphoto2 database"), NULL},
 		POPT_TABLEEND
 	};
+
 	const struct poptOption configOptions[] = {
 		GPHOTO2_POPT_CALLBACK
 #ifdef HAVE_CDK
@@ -1960,6 +1956,7 @@ main (int argc, char **argv, char **envp)
 		 N_("Capture an image from or on the camera"), NULL},
 		POPT_TABLEEND
 	};
+
 	CameraAbilities a;
 	GPPortInfo info;
 	GPPortType type;
@@ -2102,6 +2099,7 @@ main (int argc, char **argv, char **envp)
 	CHECK_OPT (ARG_SUMMARY);
 	CHECK_OPT (ARG_WAIT_EVENT);
 	gp_port_info_get_type (info, &type);
+
 	if (cb_params.p.q.found &&
 	    (!strcmp (a.model, "") || (type == GP_PORT_NONE))) {
 		int count;
@@ -2269,11 +2267,3 @@ main (int argc, char **argv, char **envp)
         poptFreeContext(ctx);
         return EXIT_SUCCESS;
 }
-
-
-/*
- * Local Variables:
- * c-file-style:"linux"
- * indent-tabs-mode:t
- * End:
- */
