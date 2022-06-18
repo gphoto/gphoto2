@@ -56,9 +56,52 @@ All responses are [JSON](https://json.org) formated.
 
   set the `config name` to the specified `index value` 
 
-- `http://<server ip>:8866/api/capture-image` 
+- `http://<server ip>:8866/api/capture-image`
+
+response
+
+```json
+{
+  image_info: {
+    name: "IMG_0264.JPG",
+    folder: "/store_00020001/DCIM/100CANON",
+    mtime: 1655542624,
+    size: 4838064,
+    height: 3456,
+    width: 5184,
+    type: "image/jpeg"
+  },
+  download: false,
+  return_code: 0
+}
+```
 
 - `http://<server ip>:8866/api/capture-image-download` 
+
+response
+
+```json
+{
+  image_info: {
+    name: "IMG_0265.JPG",
+    folder: "/store_00020001/DCIM/100CANON",
+    mtime: 1655542624,
+    size: 4838064,
+    height: 3456,
+    width: 5184,
+    type: "image/jpeg"
+  },
+  download: true,
+  local_folder: "/home/user/Projects/gphoto2",
+  keeping_file_on_camera: true,
+  return_code: 0
+}
+```
+
+- `http://<server ip>:8866/api/get-file/<path to file/image>` 
+
+response 
+- native file
 
 
 ## Mongoose HTTP Server - LICENSE
