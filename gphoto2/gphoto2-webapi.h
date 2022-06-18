@@ -41,12 +41,12 @@ void 	cli_error_print(char *format, ...);
 int	camera_file_exists (Camera *camera, GPContext *context,
 			    const char *folder, const char *filename,
 			    CameraFileType type);
-int	save_file_to_file (Camera *camera, GPContext *context, Flags flags,
+int	save_file_to_file (struct mg_connection *c, Camera *camera, GPContext *context, Flags flags,
 			   const char *folder, const char *filename,
 			   CameraFileType type);
 int	save_camera_file_to_file (const char *folder, const char *fn, CameraFileType type, CameraFile *file, const char *tmpname);
 int	capture_generic (struct mg_connection *c, CameraCaptureType type, const char *name, int download);
-int	get_file_common (const char *arg, CameraFileType type );
+int	get_file_common (struct mg_connection *c, const char *arg, CameraFileType type );
 
 int	trigger_capture (void);
 

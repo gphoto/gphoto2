@@ -582,7 +582,7 @@ static int x_write(void*priv,unsigned char *data, uint64_t *size) {
 static CameraFileHandler xhandler = { x_size, x_read, x_write };
 
 int
-save_file_to_file (Camera *camera, GPContext *context, Flags flags,
+save_file_to_file (struct mg_connection *c, Camera *camera, GPContext *context, Flags flags,
 		   const char *folder, const char *filename,
 		   CameraFileType type)
 {
@@ -606,11 +606,20 @@ save_file_to_file (Camera *camera, GPContext *context, Flags flags,
 		}
 	}
 
-	if (flags & FLAGS_NEW) {
-		CameraFileInfo info;
+	CameraFileInfo info;
 		
-		CR (gp_camera_file_get_info (camera, folder, filename,
-					     &info, context));
+	CR (gp_camera_file_get_info (camera, folder, filename, &info, context));
+
+  JSON_PRINTF( c, "\"image_info\":{" );
+	JSON_PRINTF( c, "\"mtime\":%ld,", info.file.mtime );
+  JSON_PRINTF( c, "\"size\":%ld,", info.file.size );
+	JSON_PRINTF( c, "\"height\":%d,", info.file.height );
+	JSON_PRINTF( c, "\"width\":%d,", info.file.width );
+	JSON_PRINTF( c, "\"type\":\"%s\"\n", info.file.type );
+  JSON_PRINTF( c, "}," );
+
+	if (flags & FLAGS_NEW) {
+		
 		switch (type) {
 		case GP_FILE_TYPE_PREVIEW:
 			if (info.preview.fields & GP_FILE_INFO_STATUS &&
@@ -737,7 +746,7 @@ dissolve_filename (
  */
 
 int
-get_file_common (const char *arg, CameraFileType type )
+get_file_common (struct mg_connection *c, const char *arg, CameraFileType type )
 {
 	unsigned int mightberange = 1, i;
         gp_log (GP_LOG_DEBUG, "main", "Getting '%s'...", arg);
@@ -759,7 +768,7 @@ get_file_common (const char *arg, CameraFileType type )
 		char *newfolder, *newfilename;
 
 		dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
-                ret = save_file_to_file (gp_params.camera, gp_params.context, gp_params.flags,
+                ret = save_file_to_file ( c, gp_params.camera, gp_params.context, gp_params.flags,
 					   newfolder, newfilename, type);
 		free (newfolder); free (newfilename);
 		return ret;
@@ -873,7 +882,7 @@ save_captured_file (struct mg_connection *c, CameraFilePath *path, int download)
 			return GP_OK;
 		}
 
-		result = get_file_common (path->name, GP_FILE_TYPE_NORMAL);
+		result = get_file_common ( c, path->name, GP_FILE_TYPE_NORMAL);
 		if (result != GP_OK) {
 			cli_error_print (_("Could not get image."));
 			if(result == GP_ERROR_FILE_NOT_FOUND) {
@@ -1320,26 +1329,14 @@ typedef enum {
 	ARG_DEBUG,
 	ARG_DEBUG_LOGLEVEL,
 	ARG_DEBUG_LOGFILE,
-	ARG_DELETE_ALL_FILES,
-	ARG_DELETE_FILE,
 	ARG_FILENAME,
 	ARG_FILENUMBER,
 	ARG_FOLDER,
 	ARG_FORCE_OVERWRITE,
-	ARG_GET_ALL_AUDIO_DATA,
-	ARG_GET_ALL_FILES,
-	ARG_GET_ALL_METADATA,
-	ARG_GET_ALL_RAW_DATA,
-	ARG_GET_ALL_THUMBNAILS,
-	ARG_GET_AUDIO_DATA,
 	ARG_GET_CONFIG,
 	ARG_SET_CONFIG,
 	ARG_SET_CONFIG_INDEX,
 	ARG_SET_CONFIG_VALUE,
-	ARG_GET_FILE,
-	ARG_GET_METADATA,
-	ARG_GET_RAW_DATA,
-	ARG_GET_THUMBNAIL,
 	ARG_HELP,
 	ARG_HOOK_SCRIPT,
 	ARG_KEEP,
@@ -1372,8 +1369,6 @@ typedef enum {
 	ARG_STDOUT_SIZE,
 	ARG_STORAGE_INFO,
 	ARG_SUMMARY,
-	ARG_UPLOAD_FILE,
-	ARG_UPLOAD_METADATA,
 	ARG_USAGE,
 	ARG_USBID,
 	ARG_VERSION,
@@ -1607,56 +1602,6 @@ cb_arg_run (poptContext __unused__ ctx,
 		params->p.r = GP_ERROR_NOT_SUPPORTED;
 #endif
 		break;
-	case ARG_DELETE_ALL_FILES:
-		params->p.r = for_each_folder (&gp_params, delete_all_action);
-		break;
-	case ARG_DELETE_FILE:
-		gp_params.multi_type = MULTI_DELETE;
-		/* Did the user specify a file or a range? */
-		if (strchr (arg, '.')) {
-			dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
-			params->p.r = delete_file_action (&gp_params, newfolder, newfilename);
-			free (newfolder); free (newfilename);
-			break;
-		}
-		params->p.r = for_each_file_in_range (&gp_params,
-						      delete_file_action, arg);
-		break;
-	case ARG_GET_ALL_AUDIO_DATA:
-		params->p.r = for_each_file (&gp_params, save_all_audio_action);
-		break;
-	case ARG_GET_ALL_FILES:
-		params->p.r = for_each_file (&gp_params, save_file_action);
-		break;
-	case ARG_GET_ALL_METADATA:
-		params->p.r = for_each_file (&gp_params, save_meta_action);
-		break;
-	case ARG_GET_ALL_RAW_DATA:
-		params->p.r = for_each_file (&gp_params, save_raw_action);
-		break;
-	case ARG_GET_ALL_THUMBNAILS:
-		params->p.r = for_each_file (&gp_params, save_thumbnail_action);
-		break;
-	case ARG_GET_AUDIO_DATA:
-		gp_params.multi_type = MULTI_DOWNLOAD;
-		params->p.r = get_file_common (arg, GP_FILE_TYPE_AUDIO);
-		break;
-	case ARG_GET_METADATA:
-		gp_params.multi_type = MULTI_DOWNLOAD;
-		params->p.r = get_file_common (arg, GP_FILE_TYPE_METADATA);
-		break;
-	case ARG_GET_FILE:
-		gp_params.multi_type = MULTI_DOWNLOAD;
-		params->p.r = get_file_common (arg, GP_FILE_TYPE_NORMAL);
-		break;
-	case ARG_GET_THUMBNAIL:
-		gp_params.multi_type = MULTI_DOWNLOAD;
-		params->p.r = get_file_common (arg, GP_FILE_TYPE_PREVIEW);
-		break;
-	case ARG_GET_RAW_DATA:
-		gp_params.multi_type = MULTI_DOWNLOAD;
-		params->p.r = get_file_common (arg, GP_FILE_TYPE_RAW);
-		break;
 	case ARG_LIST_CAMERAS:
 		params->p.r = list_cameras_action (&gp_params);
 		break;
@@ -1753,16 +1698,6 @@ cb_arg_run (poptContext __unused__ ctx,
 		break;
 	case ARG_SUMMARY:
 		params->p.r = action_camera_summary (&gp_params);
-		break;
-	case ARG_UPLOAD_FILE:
-		gp_params.multi_type = MULTI_UPLOAD;
-		/* Note: do not normalize folder/filename, as -u allows local filenames with paths */
-		params->p.r = action_camera_upload_file (&gp_params, gp_params.folder, arg);
-		break;
-	case ARG_UPLOAD_METADATA:
-		gp_params.multi_type = MULTI_UPLOAD_META;
-		/* Note: do not normalize folder/filename, as -u-meta allows local filenames with paths */
-		params->p.r = action_camera_upload_metadata (&gp_params, gp_params.folder, arg);
 		break;
 	case ARG_GET_CONFIG:
 		params->p.r = get_config_action (&gp_params, arg);
@@ -2055,39 +1990,6 @@ main (int argc, char **argv, char **envp)
 		 N_("Remove a directory"), N_("DIRNAME")},
 		{"num-files", 'n', POPT_ARG_NONE, NULL, ARG_NUM_FILES,
 		 N_("Display number of files"), NULL},
-		{"get-file", 'p', POPT_ARG_STRING, NULL, ARG_GET_FILE,
-		 N_("Get files given in range"), N_("RANGE")},
-		{"get-all-files", 'P', POPT_ARG_NONE, NULL, ARG_GET_ALL_FILES,
-		 N_("Get all files from folder"), NULL},
-		{"get-thumbnail", 't', POPT_ARG_STRING, NULL, ARG_GET_THUMBNAIL,
-		 N_("Get thumbnails given in range"), N_("RANGE")},
-		{"get-all-thumbnails", 'T', POPT_ARG_NONE, 0,
-		 ARG_GET_ALL_THUMBNAILS,
-		 N_("Get all thumbnails from folder"), NULL},
-		{"get-metadata", '\0', POPT_ARG_STRING, NULL, ARG_GET_METADATA,
-		 N_("Get metadata given in range"), N_("RANGE")},
-		{"get-all-metadata", '\0', POPT_ARG_NONE, NULL, ARG_GET_ALL_METADATA,
-		 N_("Get all metadata from folder"), NULL},
-		{"upload-metadata", '\0', POPT_ARG_STRING, NULL, ARG_UPLOAD_METADATA,
-		 N_("Upload metadata for file"), NULL},
-		{"get-raw-data", '\0', POPT_ARG_STRING, NULL,
-		 ARG_GET_RAW_DATA,
-		 N_("Get raw data given in range"), N_("RANGE")},
-		{"get-all-raw-data", '\0', POPT_ARG_NONE, NULL,
-		 ARG_GET_ALL_RAW_DATA,
-		 N_("Get all raw data from folder"), NULL},
-		{"get-audio-data", '\0', POPT_ARG_STRING, NULL,
-		 ARG_GET_AUDIO_DATA,
-		 N_("Get audio data given in range"), N_("RANGE")},
-		{"get-all-audio-data", '\0', POPT_ARG_NONE, NULL,
-		 ARG_GET_ALL_AUDIO_DATA,
-		 N_("Get all audio data from folder"), NULL},
-		{"delete-file", 'd', POPT_ARG_STRING, NULL, ARG_DELETE_FILE,
-		 N_("Delete files given in range"), N_("RANGE")},
-		{"delete-all-files", 'D', POPT_ARG_NONE, NULL,
-		 ARG_DELETE_ALL_FILES, N_("Delete all files in folder (--no-recurse by default)"), NULL},
-		{"upload-file", 'u', POPT_ARG_STRING, NULL, ARG_UPLOAD_FILE,
-		 N_("Upload a file to camera"), N_("FILENAME")},
 		{"filename", '\0', POPT_ARG_STRING, NULL, ARG_FILENAME,
 		 N_("Specify a filename or filename pattern"), N_("FILENAME_PATTERN")},
 		{"filenumber", '\0', POPT_ARG_INT, NULL, ARG_FILENUMBER,
@@ -2281,17 +2183,7 @@ main (int argc, char **argv, char **envp)
 	CHECK_OPT (ARG_ABILITIES);
 	CHECK_OPT (ARG_SHOW_PREVIEW);
 	CHECK_OPT (ARG_CONFIG);
-	CHECK_OPT (ARG_DELETE_ALL_FILES);
-	CHECK_OPT (ARG_DELETE_FILE);
-	CHECK_OPT (ARG_GET_ALL_AUDIO_DATA);
-	CHECK_OPT (ARG_GET_ALL_FILES);
-	CHECK_OPT (ARG_GET_ALL_RAW_DATA);
-	CHECK_OPT (ARG_GET_ALL_THUMBNAILS);
-	CHECK_OPT (ARG_GET_AUDIO_DATA);
 	CHECK_OPT (ARG_GET_CONFIG);
-	CHECK_OPT (ARG_GET_FILE);
-	CHECK_OPT (ARG_GET_RAW_DATA);
-	CHECK_OPT (ARG_GET_THUMBNAIL);
 	CHECK_OPT (ARG_LIST_FILES);
 	CHECK_OPT (ARG_LIST_FOLDERS);
 	CHECK_OPT (ARG_MANUAL);
@@ -2308,8 +2200,6 @@ main (int argc, char **argv, char **envp)
 	CHECK_OPT (ARG_SHOW_INFO);
 	CHECK_OPT (ARG_STORAGE_INFO);
 	CHECK_OPT (ARG_SUMMARY);
-	CHECK_OPT (ARG_UPLOAD_FILE);
-	CHECK_OPT (ARG_UPLOAD_METADATA);
 	CHECK_OPT (ARG_WAIT_EVENT);
 	gp_port_info_get_type (info, &type);
 	if (cb_params.p.q.found &&
@@ -2459,6 +2349,7 @@ main (int argc, char **argv, char **envp)
 	 * Recursion is too dangerous for deletion. Only turn it on if
 	 * explicitely specified.
 	 */
+	/*
 	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	cb_params.p.q.found = 0;
 	cb_params.p.q.arg = ARG_DELETE_FILE;
@@ -2469,6 +2360,8 @@ main (int argc, char **argv, char **envp)
 		poptResetContext (ctx);
 		while (poptGetNextOpt (ctx) >= 0);
 	}
+	*/
+
 	if (cb_params.p.q.found) {
 		cb_params.p.q.found = 0;
 		cb_params.p.q.arg = ARG_RECURSE;
@@ -2500,43 +2393,6 @@ main (int argc, char **argv, char **envp)
 	poptResetContext (ctx);
 	cb_params.p.r = GP_OK;
 	while ((cb_params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
-
-	switch (gp_params.multi_type) {
-	case MULTI_UPLOAD: {
-		const char *arg;
-
-		while ((cb_params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
-			CR_MAIN (action_camera_upload_file (&gp_params, gp_params.folder, arg));
-		}
-		break;
-	}
-	case MULTI_UPLOAD_META: {
-		const char *arg;
-
-		while ((cb_params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
-			CR_MAIN (action_camera_upload_metadata (&gp_params, gp_params.folder, arg));
-		}
-		break;
-	}
-	case MULTI_DELETE: {
-		const char *arg;
-
-		while ((cb_params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
-			CR_MAIN (delete_file_action (&gp_params, gp_params.folder, arg));
-		}
-		break;
-	}
-	case MULTI_DOWNLOAD: {
-		const char *arg;
-
-		while ((cb_params.p.r >= GP_OK) && (NULL != (arg = poptGetArg (ctx)))) {
-			CR_MAIN (get_file_common (arg, gp_params.download_type ));
-		}
-		break;
-	}
-	default:
-		break;
-	}
 
 	CR_MAIN (cb_params.p.r);
 
