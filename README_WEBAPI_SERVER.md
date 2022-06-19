@@ -22,13 +22,13 @@ binding to a specific ip and or port
 
 ## API Calls - all HTTP GET
 
-All responses are [JSON](https://json.org) formated.
+Nearly all responses are [JSON](https://json.org) formated.
 
 ### general
 
 - `http://<server ip>:8866/` 
 
-   version information for now
+  version information for now
 
 - `http://<server ip>:8866/api/version` 
 
@@ -37,6 +37,17 @@ All responses are [JSON](https://json.org) formated.
 - `http://<server ip>:8866/api/auto-detect` 
 
   show detected camera info
+  ```jsonc
+  {
+    result: [
+              {
+                model: "Canon EOS 550D",
+                port: "usb:003,005"
+              }
+            ],
+    return_code: 0
+  }
+  ```
 
 - `http://<server ip>:8866/api/trigger-capture` 
 
@@ -44,45 +55,45 @@ All responses are [JSON](https://json.org) formated.
 
 - `http://<server ip>:8866/api/capture-image`
 
-response
+  response
 
-```jsonc
-{
-  image_info: {
-    name: "IMG_0264.JPG",
-    folder: "/store_00020001/DCIM/100CANON",
-    mtime: 1655542624,
-    size: 4838064,
-    height: 3456,
-    width: 5184,
-    type: "image/jpeg"
-  },
-  download: false,
-  return_code: 0
-}
-```
+  ```jsonc
+  {
+    image_info: {
+      name: "IMG_0264.JPG",
+      folder: "/store_00020001/DCIM/100CANON",
+      mtime: 1655542624,
+      size: 4838064,
+      height: 3456,
+      width: 5184,
+      type: "image/jpeg"
+    },
+    download: false,
+    return_code: 0
+  }
+  ```
 
 - `http://<server ip>:8866/api/capture-image-download` 
 
-response
-
-```jsonc
-{
-  image_info: {
-    name: "IMG_0265.JPG",
-    folder: "/store_00020001/DCIM/100CANON",
-    mtime: 1655542624,
-    size: 4838064,
-    height: 3456,
-    width: 5184,
-    type: "image/jpeg"
-  },
-  download: true,
-  local_folder: "/home/user/Projects/gphoto2",
-  keeping_file_on_camera: true,
-  return_code: 0
-}
-```
+  response
+  
+  ```jsonc
+  {
+    image_info: {
+      name: "IMG_0265.JPG",
+      folder: "/store_00020001/DCIM/100CANON",
+      mtime: 1655542624,
+      size: 4838064,
+      height: 3456,
+      width: 5184,
+      type: "image/jpeg"
+    },
+    download: true,
+    local_folder: "/home/user/Projects/gphoto2",
+    keeping_file_on_camera: true,
+    return_code: 0
+  }
+  ```
 
 
 ### server
@@ -109,40 +120,40 @@ response
 
 - `http://<server ip>:8866/api/file/get/<path to file/image>` 
 
-response - native file
+  response - native file
 
 - `http://<server ip>:8866/api/file/exif/<path to image>` 
 
-response 
-
-```jsonc
-{
-  make: "Canon",
-  model: "Canon EOS 550D",
-  orientation: "Oben links",
-  xresolution: "72",
-  yresolution: "72",
-...
-}
-``` 
+  response 
+  
+  ```jsonc
+  {
+    make: "Canon",
+    model: "Canon EOS 550D",
+    orientation: "Oben links",
+    xresolution: "72",
+    yresolution: "72",
+  ...
+  }
+  ``` 
 
 - `http://<server ip>:8866/api/file/list/<path to folder>` 
 
-response
-
-```jsonc
-{
-  path: "/store_00020001/DCIM/",
-  files: [
-           {
-             name: "100CANON",
-             isFolder: true
-           }
-         ],
-  entries: 1,
-  return_code: 0
-}
-```
+  response
+  
+  ```jsonc
+  {
+    path: "/store_00020001/DCIM/",
+    files: [
+             {
+               name: "100CANON",
+               isFolder: true
+             }
+           ],
+    entries: 1,
+    return_code: 0
+  }
+  ```
 
 ## Mongoose HTTP Server - LICENSE
 
