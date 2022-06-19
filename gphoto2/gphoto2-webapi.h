@@ -36,6 +36,8 @@
 #define VERSION "2"
 #endif
 
+#define WEBAPI_SERVER_VERSION "0.0.1"
+
 void cli_error_print(char *format, ...);
 void dissolve_filename ( const char *folder, const char *filename, char **newfolder, char **newfilename );
 size_t strncpy_lower(char *dst, const char *src, size_t count);
