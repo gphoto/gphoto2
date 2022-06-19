@@ -4,9 +4,16 @@ I need to control my camera via a small embedded controller so i decided to impl
 
 2022 June, Thorsten Ludewig (t.ludewig@gmail.com)
 
-## clone with submodule (mongoose webserver)
+## clone with submodule (mongoose webserver) and build
 
-`git clone --recurse-submodules <repository path>` 
+  ```plain
+  git clone --recurse-submodules <repository path>
+  cd gphoto2/gphoto2/mongoose
+  git checkout tags/7.7
+  cd ../..
+  ``` 
+
+  See README.md for further build info.
 
 ## Run server
 
