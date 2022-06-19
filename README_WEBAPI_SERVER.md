@@ -155,6 +155,10 @@ Nearly all responses are [JSON](https://json.org) formated.
   }
   ```
 
+- `http://<server ip>:8866/api/file/delete/<path to file>` 
+
+  remove specified file
+
 ## Mongoose HTTP Server - LICENSE
 
 https://github.com/cesanta/mongoose

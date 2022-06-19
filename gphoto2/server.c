@@ -89,7 +89,8 @@ static int
 server_http_version(struct mg_connection *c)
 {
 	MG_HTTP_CHUNK_START;
-	mg_http_printf_chunk(c, "{ \"result\": [{ \"name\": \"mongoose\", \"version\": \"%s\"}", MG_VERSION);
+	JSON_PRINTF(c, "{ \"result\": [{ \"name\": \"mongoose\", \"version\": \"%s\"}", MG_VERSION);
+	JSON_PRINTF(c, ",{ \"name\": \"webapi_server\", \"version\": \"%s\"}", WEBAPI_SERVER_VERSION);
 
 	int n;
 
@@ -253,8 +254,45 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 				strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
 				buffer[MIN((int)hm->uri.len, 255)] = 0;
 				char *path = buffer + 13;
-				puts( path );
 				get_file_http_common(c, path, GP_FILE_TYPE_NORMAL);
+			}
+		}
+
+		else if (mg_http_match_uri(hm, "/api/file/delete/#"))
+		{
+			if (hm->uri.len >= 17)
+			{
+				char buffer[256];
+				char *filename = NULL, *folder = NULL;
+
+				strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
+				buffer[MIN((int)hm->uri.len, 255)] = 0;
+				char *path = buffer + 16;
+
+				char *lr = strrchr(path, '/');
+				if (lr != NULL)
+				{
+					*lr = 0;
+					folder = path;
+					filename = lr + 1;
+				}
+
+				MG_HTTP_CHUNK_START;
+				if (filename != NULL && strlen(filename) > 0)
+				{
+					mg_http_printf_chunk(c, "{");
+					mg_http_printf_chunk(c, "\"return_code\":%d}\n", delete_file_action(p, folder, filename));
+				}
+				else
+				{
+					mg_http_printf_chunk(c, "{ \"return_code\": -1 }\n");
+				}
+				MG_HTTP_CHUNK_END;
+
+				MG_HTTP_CHUNK_START;
+				mg_http_printf_chunk(c, "{");
+				mg_http_printf_chunk(c, "\"return_code\":%d}\n", 0 );
+				MG_HTTP_CHUNK_END;
 			}
 		}
 
@@ -341,7 +379,7 @@ int webapi_server(GPParams *params)
 		strcpy(webcfg.server_url, s_http_addr);
 	}
 
-	printf("Starting GPhoto2 " VERSION " WebAPI server - %s\n", webcfg.server_url);
+	printf("Starting GPhoto2 " VERSION " - WebAPI server " WEBAPI_SERVER_VERSION " - %s\n", webcfg.server_url);
 
 	mg_log_set("2");
 	mg_mgr_init(&mgr);
