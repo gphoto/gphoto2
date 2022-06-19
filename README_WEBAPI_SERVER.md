@@ -104,6 +104,23 @@ response - native file
 
 - `http://<server ip>:8866/api/get-exif/<path to image>` 
 
+- `http://<server ip>:8866/api/list-files/<path to folder>` 
+
+response
+
+```jsonc
+{
+  path: "/store_00020001/DCIM/",
+  files: [
+           {
+             name: "100CANON",
+             isFolder: true
+           }
+         ],
+  entries: 1,
+  return_code: 0
+}
+```
 
 ## Mongoose HTTP Server - LICENSE
 
