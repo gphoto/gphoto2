@@ -24,13 +24,11 @@ binding to a specific ip and or port
 
 All responses are [JSON](https://json.org) formated.
 
+### general
+
 - `http://<server ip>:8866/` 
 
    version information for now
-
-- `http://<server ip>:8866/api/server/shutdown` 
-
-  shutdown http server
 
 - `http://<server ip>:8866/api/version` 
 
@@ -43,18 +41,6 @@ All responses are [JSON](https://json.org) formated.
 - `http://<server ip>:8866/api/trigger-capture` 
 
   trigger capture image
-
-- `http://<server ip>:8866/api/config/list` 
-
-  list available config names
-
-- `http://<server ip>:8866/api/config/list-all` 
-
-  list config including current and available config values
-
-- `http://<server ip>:8866/api/config/set-index/<config name>?i=<index value>` 
-
-  set the `config name` to the specified `index value` 
 
 - `http://<server ip>:8866/api/capture-image`
 
@@ -98,13 +84,49 @@ response
 }
 ```
 
-- `http://<server ip>:8866/api/get-file/<path to file/image>` 
+
+### server
+
+- `http://<server ip>:8866/api/server/shutdown` 
+
+  shutdown http server
+
+### config
+
+- `http://<server ip>:8866/api/config/list` 
+
+  list available config names
+
+- `http://<server ip>:8866/api/config/list-all` 
+
+  list config including current and available config values
+
+- `http://<server ip>:8866/api/config/set-index/<config name>?i=<index value>` 
+
+  set the `config name` to the specified `index value` 
+
+### file
+
+- `http://<server ip>:8866/api/file/get/<path to file/image>` 
 
 response - native file
 
-- `http://<server ip>:8866/api/get-exif/<path to image>` 
+- `http://<server ip>:8866/api/file/exif/<path to image>` 
 
-- `http://<server ip>:8866/api/list-files/<path to folder>` 
+response 
+
+```jsonc
+{
+  make: "Canon",
+  model: "Canon EOS 550D",
+  orientation: "Oben links",
+  xresolution: "72",
+  yresolution: "72",
+...
+}
+``` 
+
+- `http://<server ip>:8866/api/file/list/<path to folder>` 
 
 response
 

@@ -245,7 +245,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			MG_HTTP_CHUNK_END;
 		}
 
-		else if (mg_http_match_uri(hm, "/api/get-file/#"))
+		else if (mg_http_match_uri(hm, "/api/file/get/#"))
 		{
 			if (hm->uri.len >= 14)
 			{
@@ -253,21 +253,44 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 				strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
 				buffer[MIN((int)hm->uri.len, 255)] = 0;
 				char *path = buffer + 13;
+				puts( path );
 				get_file_http_common(c, path, GP_FILE_TYPE_NORMAL);
 			}
 		}
 
-#ifdef HAVE_LIBEXIF
-		else if (mg_http_match_uri(hm, "/api/get-exif/#"))
+		else if (mg_http_match_uri(hm, "/api/file/list/#"))
 		{
-			if (hm->uri.len >= 14)
+			if (hm->uri.len >= 16)
+			{
+				char buffer[256];
+				strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
+				buffer[MIN((int)hm->uri.len, 255)] = 0;
+				char *path = buffer + 14;
+        char *lastChar = path + strlen(path)-1;
+
+        if( *lastChar != '/' )
+				{
+          strcat( lastChar, "/" ); 
+				}
+
+				MG_HTTP_CHUNK_START;
+				mg_http_printf_chunk(c, "{");
+				mg_http_printf_chunk(c, "\"return_code\":%d}\n", list_files(c, path));
+				MG_HTTP_CHUNK_END;
+			}
+		}
+
+#ifdef HAVE_LIBEXIF
+		else if (mg_http_match_uri(hm, "/api/file/exif/#"))
+		{
+			if (hm->uri.len >= 15)
 			{
 				char *newfilename = NULL, *newfolder = NULL;
 
 				char buffer[256];
 				strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
 				buffer[MIN((int)hm->uri.len, 255)] = 0;
-				char *path = buffer + 13;
+				char *path = buffer + 14;
 
 				char *lr = strrchr(path, '/');
 				if (lr != NULL)
@@ -291,28 +314,6 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			}
 		}
 #endif
-
-		else if (mg_http_match_uri(hm, "/api/list-files/#"))
-		{
-			if (hm->uri.len >= 16)
-			{
-				char buffer[256];
-				strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
-				buffer[MIN((int)hm->uri.len, 255)] = 0;
-				char *path = buffer + 15;
-        char *lastChar = path + strlen(path)-1;
-
-        if( *lastChar != '/' )
-				{
-          strcat( lastChar, "/" ); 
-				}
-
-				MG_HTTP_CHUNK_START;
-				mg_http_printf_chunk(c, "{");
-				mg_http_printf_chunk(c, "\"return_code\":%d}\n", list_files(c, path));
-				MG_HTTP_CHUNK_END;
-			}
-		}
 
 		else
 		{
