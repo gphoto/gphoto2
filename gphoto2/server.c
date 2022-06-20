@@ -234,17 +234,18 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 		{
 			int ret = -1;
 
-			if (hm->query.len >= 3 && hm->query.ptr[0] == 'i' && hm->query.ptr[1] == '=' && hm->uri.len >= 22)
+			if (hm->query.ptr[1] == '=' && hm->uri.len >= 22)
 			{
 				char buffer[256];
-				char buffer2[6];
+				char index[4];
 				strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
-				strncpy(buffer2, hm->query.ptr, MIN((int)hm->query.len, 5));
 				buffer[MIN((int)hm->uri.len, 255)] = 0;
-				buffer2[MIN((int)hm->query.len, 5)] = 0;
 				char *name = buffer + 21;
-				char *value = buffer2 + 2;
-				ret = set_config_index_action(p, name, value);
+
+				if (mg_http_get_var(&hm->query, "i", index, sizeof(index)) > 0)
+				{
+					ret = set_config_index_action(p, name, index);
+				}
 			}
 
 			mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":%d}\n", ret);
@@ -258,9 +259,28 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			char *name = buffer + 15;
 
 			MG_HTTP_CHUNK_START;
-			mg_http_printf_chunk(c, "{ \"path\": \"%s\"", name );
-			mg_http_printf_chunk(c, ",\"return_code\":%d}", get_config_action( c, p, name ) );
+			mg_http_printf_chunk(c, "{ \"path\": \"%s\"", name);
+			mg_http_printf_chunk(c, ",\"return_code\":%d}", get_config_action(c, p, name));
 			MG_HTTP_CHUNK_END;
+		}
+
+		else if (mg_http_match_uri(hm, "/api/config/set/#"))
+		{
+			int ret = -1;
+			if (hm->query.ptr[1] == '=' && hm->uri.len >= 16)
+			{
+				char buffer[256];
+				char value[1024];
+				strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
+				buffer[MIN((int)hm->uri.len, 255)] = 0;
+				char *name = buffer + 15;
+
+				if (mg_http_get_var(&hm->query, "v", value, sizeof(value)) > 0)
+				{
+				  ret = set_config_action( p, name, value );	
+				}
+			}
+			mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":%d}\n", ret);
 		}
 
 		else if (mg_http_match_uri(hm, "/api/capture-image"))

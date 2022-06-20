@@ -188,6 +188,9 @@ Nearly all responses are [JSON](https://json.org) formated.
   }
   ```
 
+- `http://<server ip>:8866/api/config/set/<config name>?v=<value>` 
+
+  set the `config name` to the specified `value` 
 
 ### file
 
