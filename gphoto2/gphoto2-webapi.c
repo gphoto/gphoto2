@@ -1522,9 +1522,6 @@ typedef enum
 	ARG_DEBUG,
 	ARG_DEBUG_LOGLEVEL,
 	ARG_DEBUG_LOGFILE,
-	ARG_SET_CONFIG,
-	ARG_SET_CONFIG_INDEX,
-	ARG_SET_CONFIG_VALUE,
 	ARG_HELP,
 	ARG_KEEP,
 	ARG_KEEP_RAW,
@@ -1548,8 +1545,7 @@ typedef enum
 	ARG_SUMMARY,
 	ARG_USAGE,
 	ARG_USBID,
-	ARG_VERSION,
-	ARG_WAIT_EVENT
+	ARG_VERSION
 } Arg;
 
 typedef enum
@@ -1818,60 +1814,6 @@ cb_arg_run(poptContext __unused__ ctx,
 	case ARG_SUMMARY:
 		params->p.r = action_camera_summary(&gp_params);
 		break;
-	case ARG_SET_CONFIG:
-	{
-		char *name, *value;
-
-		if (strchr(arg, '=') == NULL)
-		{
-			params->p.r = GP_ERROR_BAD_PARAMETERS;
-			break;
-		}
-		name = strdup(arg);
-		value = strchr(name, '=');
-		*value = '\0';
-		value++;
-		params->p.r = set_config_action(&gp_params, name, value);
-		free(name);
-		break;
-	}
-	case ARG_SET_CONFIG_INDEX:
-	{
-		char *name, *value;
-
-		if (strchr(arg, '=') == NULL)
-		{
-			params->p.r = GP_ERROR_BAD_PARAMETERS;
-			break;
-		}
-		name = strdup(arg);
-		value = strchr(name, '=');
-		*value = '\0';
-		value++;
-		params->p.r = set_config_index_action(&gp_params, name, value);
-		free(name);
-		break;
-	}
-	case ARG_SET_CONFIG_VALUE:
-	{
-		char *name, *value;
-
-		if (strchr(arg, '=') == NULL)
-		{
-			params->p.r = GP_ERROR_BAD_PARAMETERS;
-			break;
-		}
-		name = strdup(arg);
-		value = strchr(name, '=');
-		*value = '\0';
-		value++;
-		params->p.r = set_config_value_action(&gp_params, name, value);
-		free(name);
-		break;
-	}
-	case ARG_WAIT_EVENT:
-		params->p.r = action_camera_wait_event(&gp_params, DT_NO_DOWNLOAD, arg);
-		break;
 	case ARG_STORAGE_INFO:
 		params->p.r = print_storage_info(&gp_params);
 		break;
@@ -2050,8 +1992,6 @@ int main(int argc, char **argv, char **envp)
 			 N_("Keep RAW images on camera after capturing"), NULL},
 			{"no-keep", '\0', POPT_ARG_NONE, NULL, ARG_NO_KEEP,
 			 N_("Remove images from camera after capturing"), NULL},
-			{"wait-event", '\0', POPT_ARG_STRING | POPT_ARGFLAG_OPTIONAL, NULL, ARG_WAIT_EVENT,
-			 N_("Wait for event(s) from camera"), N_("EVENT")},
 			{"show-preview", '\0', POPT_ARG_NONE, NULL,
 			 ARG_SHOW_PREVIEW,
 			 N_("Show a quick preview as Ascii Art"), NULL},
@@ -2243,9 +2183,6 @@ int main(int argc, char **argv, char **envp)
 	CHECK_OPT(ARG_SHOW_PREVIEW);
 	CHECK_OPT(ARG_CONFIG);
 	CHECK_OPT(ARG_RESET);
-	CHECK_OPT(ARG_SET_CONFIG);
-	CHECK_OPT(ARG_SET_CONFIG_INDEX);
-	CHECK_OPT(ARG_SET_CONFIG_VALUE);
 	CHECK_OPT(ARG_SERVER);
 	CHECK_OPT(ARG_SERVER_URL);
 	CHECK_OPT(ARG_AUTH_ENABLED);
@@ -2254,7 +2191,6 @@ int main(int argc, char **argv, char **envp)
 	CHECK_OPT(ARG_SHOW_INFO);
 	CHECK_OPT(ARG_STORAGE_INFO);
 	CHECK_OPT(ARG_SUMMARY);
-	CHECK_OPT(ARG_WAIT_EVENT);
 	
 	gp_port_info_get_type(info, &type);
 
