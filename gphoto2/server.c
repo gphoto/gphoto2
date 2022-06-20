@@ -253,7 +253,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 		else if (mg_http_match_uri(hm, "/api/capture-image"))
 		{
 			MG_HTTP_CHUNK_START;
-			mg_http_printf_chunk(c, "{ \"files\":[");
+			mg_http_printf_chunk(c, "{ \"images\":[");
 			mg_http_printf_chunk(c, "],\"return_code\":%d}\n", capture_generic(c, GP_CAPTURE_IMAGE, NULL, 0));
 			MG_HTTP_CHUNK_END;
 		}
@@ -261,7 +261,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 		else if (mg_http_match_uri(hm, "/api/capture-image-download"))
 		{
 			MG_HTTP_CHUNK_START;
-			mg_http_printf_chunk(c, "{ \"files\":[");
+			mg_http_printf_chunk(c, "{ \"images\":[");
 			mg_http_printf_chunk(c, "],\"return_code\":%d}\n", capture_generic(c, GP_CAPTURE_IMAGE, NULL, 1));
 			MG_HTTP_CHUNK_END;
 		}
