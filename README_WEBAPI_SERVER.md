@@ -66,16 +66,32 @@ Nearly all responses are [JSON](https://json.org) formated.
 
   ```jsonc
   {
-    image_info: {
-      name: "IMG_0264.JPG",
-      folder: "/store_00020001/DCIM/100CANON",
-      mtime: 1655542624,
-      size: 4838064,
-      height: 3456,
-      width: 5184,
-      type: "image/jpeg"
-    },
-    download: false,
+    images: [
+      {
+        info: {
+          name: "IMG_0322.CR2",
+          folder: "/store_00020001/DCIM/100CANON",
+          path: "/store_00020001/DCIM/100CANON/IMG_0322.CR2",
+          mtime: 1655724028,
+          size: 21937775,
+          type: "image/x-canon-cr2"
+        },
+        download: false
+      },
+      {
+        info: {
+          name: "IMG_0322.JPG",
+          folder: "/store_00020001/DCIM/100CANON",
+          path: "/store_00020001/DCIM/100CANON/IMG_0322.JPG",
+          mtime: 1655724026,
+          size: 4038986,
+          height: 3456,
+          width: 5184,
+          type: "image/jpeg"
+        },
+        download: false
+      }
+    ],
     return_code: 0
   }
   ```
@@ -86,18 +102,36 @@ Nearly all responses are [JSON](https://json.org) formated.
   
   ```jsonc
   {
-    image_info: {
-      name: "IMG_0265.JPG",
-      folder: "/store_00020001/DCIM/100CANON",
-      mtime: 1655542624,
-      size: 4838064,
-      height: 3456,
-      width: 5184,
-      type: "image/jpeg"
-    },
-    download: true,
-    local_folder: "/home/user/Projects/gphoto2",
-    keeping_file_on_camera: true,
+    images: [
+      {
+        info: {
+          name: "IMG_0321.CR2",
+          folder: "/store_00020001/DCIM/100CANON",
+          path: "/store_00020001/DCIM/100CANON/IMG_0321.CR2",
+          mtime: 1655723756,
+          size: 21888193,
+          type: "image/x-canon-cr2"
+        },
+        download: true,
+        local_folder: "/home/th/Projects/gphoto2",
+        keeping_file_on_camera: true
+      },
+      {
+        info: {
+          name: "IMG_0321.JPG",
+          folder: "/store_00020001/DCIM/100CANON",
+          path: "/store_00020001/DCIM/100CANON/IMG_0321.JPG",
+          mtime: 1655723756,
+          size: 4113431,
+          height: 3456,
+          width: 5184,
+          type: "image/jpeg"
+        },
+        download: true,
+        local_folder: "/home/th/Projects/gphoto2",
+        keeping_file_on_camera: true
+      }
+    ],
     return_code: 0
   }
   ```

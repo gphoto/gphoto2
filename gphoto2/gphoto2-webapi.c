@@ -478,7 +478,7 @@ int save_camera_file_to_file(
 				return GP_ERROR;
 			s[strlen(s) - 1] = 0;
 		}
-		printf(_("Saving file as %s\n"), s);
+		// printf(_("Saving file as %s\n"), s);
 		fflush(stdout);
 	}
 	path = s;
@@ -973,7 +973,7 @@ timediff_now(struct timeval *target)
 }
 
 static int
-save_captured_file(struct mg_connection *c, CameraFilePath *path, int download)
+save_captured_file(struct mg_connection *c, CameraFilePath *path, int download, int filenumber )
 {
 	char *pathsep;
 	static CameraFilePath last;
@@ -984,21 +984,10 @@ save_captured_file(struct mg_connection *c, CameraFilePath *path, int download)
 	else
 		pathsep = "/";
 
-	if (gp_params.flags & FLAGS_QUIET)
-	{
-		if (!(gp_params.flags & (FLAGS_STDOUT | FLAGS_STDOUT_SIZE)))
-			printf("%s%s%s\n", path->folder, pathsep, path->name);
-	}
-	else
-	{
-		printf(_("New file is in location %s%s%s on the camera\n"),
-					 path->folder, pathsep, path->name);
-	}
-
 	CameraFileInfo info;
 	CR(gp_camera_file_get_info(gp_params.camera, path->folder, path->name, &info, gp_params.context));
 
-	JSON_PRINTF(c, "\"image_info\":{");
+	JSON_PRINTF(c, "%s{\"image_info\":{", (filenumber==0) ? "" : "," );
 	JSON_PRINTF(c, "\"name\": \"%s\",", path->name);
 	JSON_PRINTF(c, "\"folder\": \"%s\",", path->folder);
 	JSON_PRINTF(c, "\"path\": \"%s%s%s\",", path->folder, pathsep, path->name);
@@ -1008,14 +997,14 @@ save_captured_file(struct mg_connection *c, CameraFilePath *path, int download)
 	JSON_PRINTF(c, "\"width\":%d,", info.file.width);
 	JSON_PRINTF(c, "\"type\":\"%s\"\n", info.file.type);
 	JSON_PRINTF(c, "},");
-	JSON_PRINTF(c, "\"download\": %s,", (download) ? "true" : "false");
+	JSON_PRINTF(c, "\"download\": %s", (download) ? "true" : "false");
 
 	if (download)
 	{
 		char *cwd;
 		if ((cwd = getcwd(NULL, 0)) != NULL)
 		{
-			JSON_PRINTF(c, "\"local_folder\": \"%s\",", cwd);
+			JSON_PRINTF(c, ",\"local_folder\": \"%s\"", cwd);
 			free(cwd);
 		}
 
@@ -1029,14 +1018,6 @@ save_captured_file(struct mg_connection *c, CameraFilePath *path, int download)
 				cli_error_print(_("Could not set folder."));
 				return (result);
 			}
-		}
-		if ((gp_params.flags & FLAGS_KEEP_RAW) &&
-				(!strstr(path->name, ".jpg") && !strstr(path->name, ".JPG")))
-		{
-			if (!(gp_params.flags & FLAGS_QUIET))
-				printf(_("Keeping file %s%s%s on the camera\n"),
-							 path->folder, pathsep, path->name);
-			return GP_OK;
 		}
 
 		result = get_file_common(c, path->name, GP_FILE_TYPE_NORMAL);
@@ -1056,7 +1037,7 @@ save_captured_file(struct mg_connection *c, CameraFilePath *path, int download)
 			return (result);
 		}
 
-		JSON_PRINTF(c, "\"keeping_file_on_camera\": %s,", (gp_params.flags & FLAGS_KEEP) ? "true" : "false");
+		JSON_PRINTF(c, ",\"keeping_file_on_camera\": %s", (gp_params.flags & FLAGS_KEEP) ? "true" : "false");
 
 		if (!(gp_params.flags & FLAGS_KEEP))
 		{
@@ -1071,13 +1052,9 @@ save_captured_file(struct mg_connection *c, CameraFilePath *path, int download)
 				return (result);
 			}
 		}
-		else
-		{
-			if (!(gp_params.flags & FLAGS_QUIET))
-				printf(_("Keeping file %s%s%s on the camera\n"),
-							 path->folder, pathsep, path->name);
-		}
 	}
+
+	JSON_PRINTF( c, "}" );
 	return GP_OK;
 }
 
@@ -1115,14 +1092,16 @@ wait_and_handle_event(struct mg_connection *c, long waittime, CameraEventType *t
 		free(data);
 		break;
 	case GP_EVENT_FILE_CHANGED:
-		if (!(gp_params.flags & FLAGS_QUIET))
-			printf(_("Event FILE_CHANGED %s/%s during wait, ignoring.\n"), path->folder, path->name);
+		//if (!(gp_params.flags & FLAGS_QUIET))
+		//	printf(_("Event FILE_CHANGED %s/%s during wait, ignoring.\n"), path->folder, path->name);
 		free(data);
 		break;
 	case GP_EVENT_FILE_ADDED:
-		result = save_captured_file(c, path, download);
+	{
+		result = save_captured_file(c, path, download, 1 );
 		free(data);
 		/* result will fall through to final return */
+	}
 		break;
 	case GP_EVENT_UNKNOWN:
 #if 0 /* too much spam for the common usage */
@@ -1146,6 +1125,7 @@ int capture_generic(struct mg_connection *c, CameraCaptureType type, const char 
 	CameraEventType evtype;
 	long waittime;
 	struct timeval next_pic_time, expose_end_time;
+  int fileNumber = 0;
 
 	result = gp_camera_get_abilities(gp_params.camera, &a);
 	if (result != GP_OK)
@@ -1252,7 +1232,7 @@ int capture_generic(struct mg_connection *c, CameraCaptureType type, const char 
 							continue;
 						}
 					}
-					result = save_captured_file(c, &path, download);
+					result = save_captured_file(c, &path, download, fileNumber++ );
 					if (result != GP_OK)
 						break;
 				}
