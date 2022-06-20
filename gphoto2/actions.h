@@ -98,7 +98,6 @@ int print_version_action   (GPParams *);
 int override_usbids_action (GPParams *, int usb_vendor, int usb_product,
 			    int usb_vendor_modified, int usb_product_modified);
 int debug_action           (GPParams *, const char *debug_loglevel, const char *debug_logfile_name);
-int get_config_action      (GPParams *, const char *name);
 int set_config_action      (GPParams *, const char *name, const char *value);
 int set_config_index_action      (GPParams *, const char *name, const char *value);
 int set_config_value_action      (GPParams *, const char *name, const char *value);
@@ -111,11 +110,13 @@ int auto_detect_action     (struct mg_connection *, GPParams *);
 int list_config_action     (struct mg_connection *, GPParams *);
 int list_all_config_action (struct mg_connection *, GPParams *);
 int print_exif_action      (struct mg_connection *, GPParams *, const char *folder, const char *filename);
+int get_config_action      (struct mg_connection *, GPParams *, const char *name);
 #else
 int auto_detect_action     (GPParams *);
 int list_config_action     (GPParams *);
 int list_all_config_action (GPParams *);
 int print_exif_action      (GPParams *, const char *folder, const char *filename);
+int get_config_action      (GPParams *, const char *name);
 #endif
 
 #endif /* !defined(GPHOTO2_ACTIONS_H) */

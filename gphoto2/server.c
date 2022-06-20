@@ -250,6 +250,20 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":%d}\n", ret);
 		}
 
+		else if (mg_http_match_uri(hm, "/api/config/get/#"))
+		{
+			char buffer[256];
+			strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
+			buffer[MIN((int)hm->uri.len, 255)] = 0;
+			char *name = buffer + 15;
+      puts( name );
+
+			MG_HTTP_CHUNK_START;
+			mg_http_printf_chunk(c, "{ \"path\": \"%s\"", name );
+			mg_http_printf_chunk(c, ",\"return_code\":%d}", get_config_action( c, p, name ) );
+			MG_HTTP_CHUNK_END;
+		}
+
 		else if (mg_http_match_uri(hm, "/api/capture-image"))
 		{
 			MG_HTTP_CHUNK_START;

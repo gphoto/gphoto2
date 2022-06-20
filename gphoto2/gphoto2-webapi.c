@@ -1522,7 +1522,6 @@ typedef enum
 	ARG_DEBUG,
 	ARG_DEBUG_LOGLEVEL,
 	ARG_DEBUG_LOGFILE,
-	ARG_GET_CONFIG,
 	ARG_SET_CONFIG,
 	ARG_SET_CONFIG_INDEX,
 	ARG_SET_CONFIG_VALUE,
@@ -1819,9 +1818,6 @@ cb_arg_run(poptContext __unused__ ctx,
 	case ARG_SUMMARY:
 		params->p.r = action_camera_summary(&gp_params);
 		break;
-	case ARG_GET_CONFIG:
-		params->p.r = get_config_action(&gp_params, arg);
-		break;
 	case ARG_SET_CONFIG:
 	{
 		char *name, *value;
@@ -2043,14 +2039,6 @@ int main(int argc, char **argv, char **envp)
 			{"config", '\0', POPT_ARG_NONE, NULL, ARG_CONFIG,
 			 N_("Configure"), NULL},
 #endif
-			{"get-config", '\0', POPT_ARG_STRING, NULL, ARG_GET_CONFIG,
-			 N_("Get configuration value"), NULL},
-			{"set-config", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG,
-			 N_("Set configuration value or index in choices"), NULL},
-			{"set-config-index", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG_INDEX,
-			 N_("Set configuration value index in choices"), NULL},
-			{"set-config-value", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG_VALUE,
-			 N_("Set configuration value"), NULL},
 			{"reset", '\0', POPT_ARG_NONE, NULL, ARG_RESET,
 			 N_("Reset device port"), NULL},
 			POPT_TABLEEND};
@@ -2254,7 +2242,6 @@ int main(int argc, char **argv, char **envp)
 	CHECK_OPT(ARG_ABILITIES);
 	CHECK_OPT(ARG_SHOW_PREVIEW);
 	CHECK_OPT(ARG_CONFIG);
-	CHECK_OPT(ARG_GET_CONFIG);
 	CHECK_OPT(ARG_RESET);
 	CHECK_OPT(ARG_SET_CONFIG);
 	CHECK_OPT(ARG_SET_CONFIG_INDEX);

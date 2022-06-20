@@ -1977,8 +1977,14 @@ print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidg
 }
 
 
+#ifndef WEBAPI
 int
-get_config_action (GPParams *p, const char *name) {
+get_config_action (GPParams *p, const char *name) 
+#else
+int 
+get_config_action (struct mg_connection *c, GPParams *p, const char *name)
+#endif
+{
 	CameraWidget *rootconfig,*child;
 	int	ret;
 
@@ -1988,6 +1994,8 @@ get_config_action (GPParams *p, const char *name) {
 
 #ifndef WEBAPI
 	ret = print_widget (p, name, child);
+#else
+  ret = print_widget (c, p, name, child);
 #endif
 
 	gp_widget_free (rootconfig);
