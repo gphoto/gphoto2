@@ -8,9 +8,10 @@
 typedef struct _webapi_server_config
 {
   char server_url[WEBCFG_STR_LEN+1];
-  char api_user[WEBCFG_STR_LEN+1];
-  char api_password[WEBCFG_STR_LEN+1];
-  int server_done;
+  char auth_enabled;
+  char auth_user[WEBCFG_STR_LEN+1];
+  char auth_password[WEBCFG_STR_LEN+1];
+  char server_done;
 } WebAPIServerConfig;
 
 

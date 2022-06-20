@@ -81,6 +81,7 @@ static const char *http_chunked_header = "HTTP/1.1 200 OK\r\n"
 																				 "Transfer-Encoding: chunked\r\n\r\n";
 
 static const char *content_type_application_json = "Content-Type: application/json\r\n";
+static const char *content_type_text_html = "Content-Type: text/html\r\n";
 
 #define MG_HTTP_CHUNK_START mg_printf(c, http_chunked_header)
 #define MG_HTTP_CHUNK_END mg_http_printf_chunk(c, "")
@@ -134,7 +135,7 @@ static int list_files(struct mg_connection *c, const char *path)
 
 	JSON_PRINTF(c, "\"path\":\"%s\",\"files\":[", path);
 
-  int sizeD = gp_list_count(list);
+	int sizeD = gp_list_count(list);
 	for (int i = 0; i < sizeD; i++)
 	{
 		CL(gp_list_get_name(list, i, &name), list);
@@ -143,7 +144,7 @@ static int list_files(struct mg_connection *c, const char *path)
 
 	CL(gp_camera_folder_list_files(p->camera, path, list, p->context), list);
 
-  int sizeF = gp_list_count(list);
+	int sizeF = gp_list_count(list);
 	for (int i = 0; i < sizeF; i++)
 	{
 		CL(gp_list_get_name(list, i, &name), list);
@@ -151,7 +152,7 @@ static int list_files(struct mg_connection *c, const char *path)
 	}
 
 	JSON_PRINTF(c, "],");
-	JSON_PRINTF(c, "\"entries\":%d,", sizeD + sizeF) ;
+	JSON_PRINTF(c, "\"entries\":%d,", sizeD + sizeF);
 
 	gp_list_free(list);
 	return GP_OK;
@@ -167,9 +168,28 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 		if (mg_http_match_uri(hm, "/"))
 		{
 			server_http_version(c);
+			return;
 		}
 
-		else if (mg_http_match_uri(hm, "/api/version"))
+		if (webcfg.auth_enabled)
+		{
+			char remote_user[WEBCFG_STR_LEN + 1], password[WEBCFG_STR_LEN + 1];
+			remote_user[0] = 0;
+			password[0] = 0;
+
+			mg_http_creds(hm, remote_user, sizeof(remote_user), password, sizeof(password));
+
+			if (mg_http_match_uri(hm, "/api/#"))
+			{
+				if (remote_user[0] == 0 || strncmp(remote_user, webcfg.auth_user, WEBCFG_STR_LEN) != 0 || password[0] == 0 || strncmp(password, webcfg.auth_password, WEBCFG_STR_LEN) != 0)
+				{
+					mg_printf(c, "HTTP/1.1 401 Unauthorized\r\nWWW-Authenticate: Basic realm=\"gphoto2-webapi\"\r\nContent-Length: 0\r\n\r\n");
+					return;
+				}
+			}
+		}
+
+		if (mg_http_match_uri(hm, "/api/version"))
 		{
 			server_http_version(c);
 		}
@@ -254,7 +274,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 				strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
 				buffer[MIN((int)hm->uri.len, 255)] = 0;
 				char *path = buffer + 13;
-				if ( get_file_http_common(c, path, GP_FILE_TYPE_NORMAL) != GP_OK )
+				if (get_file_http_common(c, path, GP_FILE_TYPE_NORMAL) != GP_OK)
 				{
 					mg_http_reply(c, 404, content_type_application_json, "{ \"error\":\"file not found\",\"return_code\":-1}\n");
 				}
@@ -294,7 +314,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 
 				MG_HTTP_CHUNK_START;
 				mg_http_printf_chunk(c, "{");
-				mg_http_printf_chunk(c, "\"return_code\":%d}\n", 0 );
+				mg_http_printf_chunk(c, "\"return_code\":%d}\n", 0);
 				MG_HTTP_CHUNK_END;
 			}
 		}
@@ -307,11 +327,11 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 				strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
 				buffer[MIN((int)hm->uri.len, 255)] = 0;
 				char *path = buffer + 14;
-        char *lastChar = path + strlen(path)-1;
+				char *lastChar = path + strlen(path) - 1;
 
-        if( *lastChar != '/' )
+				if (*lastChar != '/')
 				{
-          strcat( lastChar, "/" ); 
+					strcat(lastChar, "/");
 				}
 
 				MG_HTTP_CHUNK_START;
@@ -341,24 +361,24 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 					newfilename = lr + 1;
 				}
 
-				MG_HTTP_CHUNK_START;
 				if (newfilename != NULL && strlen(newfilename) > 0)
 				{
+					MG_HTTP_CHUNK_START;
 					mg_http_printf_chunk(c, "{");
 					mg_http_printf_chunk(c, "\"return_code\":%d}\n", print_exif_action(c, p, newfolder, newfilename));
+					MG_HTTP_CHUNK_END;
 				}
 				else
 				{
-					mg_http_printf_chunk(c, "{ \"return_code\": -1 }\n");
+					mg_http_reply(c, 404, content_type_application_json, "{ \"error\":\"file not found\",\"return_code\":-1}\n");
 				}
-				MG_HTTP_CHUNK_END;
 			}
 		}
 #endif
 
 		else
 		{
-			mg_http_reply(c, 404, "", "Page not found.\n");
+			mg_http_reply(c, 404, content_type_text_html, "<html><head><title>404</title></head><body><h1>Error: 404</h1>Page not found.</body></html>");
 		}
 	}
 }
@@ -366,8 +386,9 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 void webapi_server_initialize(void)
 {
 	webcfg.server_url[0] = 0;
-	webcfg.api_user[0] = 0;
-	webcfg.api_password[0] = 0;
+	webcfg.auth_enabled = FALSE;
+	webcfg.auth_user[0] = 0;
+	webcfg.auth_password[0] = 0;
 	webcfg.server_done = FALSE;
 }
 
