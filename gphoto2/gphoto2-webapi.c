@@ -987,14 +987,14 @@ save_captured_file(struct mg_connection *c, CameraFilePath *path, int download, 
 	CameraFileInfo info;
 	CR(gp_camera_file_get_info(gp_params.camera, path->folder, path->name, &info, gp_params.context));
 
-	JSON_PRINTF(c, "%s{\"image_info\":{", (filenumber==0) ? "" : "," );
+	JSON_PRINTF(c, "%s{\"info\":{", (filenumber==0) ? "" : "," );
 	JSON_PRINTF(c, "\"name\": \"%s\",", path->name);
 	JSON_PRINTF(c, "\"folder\": \"%s\",", path->folder);
 	JSON_PRINTF(c, "\"path\": \"%s%s%s\",", path->folder, pathsep, path->name);
 	JSON_PRINTF(c, "\"mtime\":%ld,", info.file.mtime);
 	JSON_PRINTF(c, "\"size\":%ld,", info.file.size);
-	JSON_PRINTF(c, "\"height\":%d,", info.file.height);
-	JSON_PRINTF(c, "\"width\":%d,", info.file.width);
+	if ( info.file.height > 0 ) JSON_PRINTF(c, "\"height\":%d,", info.file.height);
+	if ( info.file.width > 0 ) JSON_PRINTF(c, "\"width\":%d,", info.file.width);
 	JSON_PRINTF(c, "\"type\":\"%s\"\n", info.file.type);
 	JSON_PRINTF(c, "},");
 	JSON_PRINTF(c, "\"download\": %s", (download) ? "true" : "false");
