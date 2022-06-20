@@ -161,6 +161,34 @@ Nearly all responses are [JSON](https://json.org) formated.
 
   get single config property
 
+  sample request
+
+  `http://localhost:8866/api/config/get/main/imgsettings/colorspace`
+
+  response
+
+  ```jsonc
+  {
+    path: "/main/imgsettings/colorspace",
+    label: "Farbraum",
+    readonly: false,
+    type: "MENU",
+    current: "sRGB",
+    choice: [
+        {
+          index: 0,
+          value: "sRGB"
+        },
+        {
+          index: 1,
+          value: "AdobeRGB"
+        }
+      ],
+    return_code: 0
+  }
+  ```
+
+
 ### file
 
 - `http://<server ip>:8866/api/file/get/<path to file/image>` 
