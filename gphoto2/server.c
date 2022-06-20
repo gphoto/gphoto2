@@ -256,7 +256,6 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
 			buffer[MIN((int)hm->uri.len, 255)] = 0;
 			char *name = buffer + 15;
-      puts( name );
 
 			MG_HTTP_CHUNK_START;
 			mg_http_printf_chunk(c, "{ \"path\": \"%s\"", name );
