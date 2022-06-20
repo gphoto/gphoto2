@@ -157,6 +157,10 @@ Nearly all responses are [JSON](https://json.org) formated.
 
   set the `config name` to the specified `index value` 
 
+- `http://<server ip>:8866/api/config/get/<config name>` 
+
+  get single config property
+
 ### file
 
 - `http://<server ip>:8866/api/file/get/<path to file/image>` 
