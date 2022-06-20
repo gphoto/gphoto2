@@ -1540,6 +1540,9 @@ typedef enum
 	ARG_RESET_INTERVAL,
 	ARG_SERVER,
 	ARG_SERVER_URL,
+	ARG_AUTH_ENABLED,
+	ARG_AUTH_USER,
+	ARG_AUTH_PASSWORD,
 	ARG_SHOW_INFO,
 	ARG_SPEED,
 	ARG_STORAGE_INFO,
@@ -1776,13 +1779,30 @@ cb_arg_run(poptContext __unused__ ctx,
 		gp_port_free(port);
 		break;
 	}
+
 	case ARG_SERVER_URL:
 		strncpy(webcfg.server_url, arg, WEBCFG_STR_LEN);
 		webcfg.server_url[WEBCFG_STR_LEN] = 0;
 		break;
+
 	case ARG_SERVER:
 		params->p.r = webapi_server(&gp_params);
 		break;
+
+	case ARG_AUTH_ENABLED:
+		webcfg.auth_enabled = TRUE;
+		break;
+
+	case ARG_AUTH_USER:
+		strncpy(webcfg.auth_user, arg, WEBCFG_STR_LEN);
+		webcfg.auth_user[WEBCFG_STR_LEN] = 0;
+		break;
+
+	case ARG_AUTH_PASSWORD:
+		strncpy(webcfg.auth_password, arg, WEBCFG_STR_LEN);
+		webcfg.auth_password[WEBCFG_STR_LEN] = 0;
+		break;
+
 	case ARG_SHOW_INFO:
 		/* Did the user specify a file or a range? */
 		if (strchr(arg, '.'))
@@ -2064,6 +2084,12 @@ int main(int argc, char **argv, char **envp)
 			 N_("gPhoto webapi server"), NULL},
 			{"server-url", '\0', POPT_ARG_STRING, NULL, ARG_SERVER_URL,
 			 N_("Server URL - e.g http://0.0.0.0:8866"), NULL},
+			{"auth-enabled", '\0', POPT_ARG_NONE, NULL, ARG_AUTH_ENABLED,
+			 N_("api authentication enabled"), NULL},
+			{"auth-user", '\0', POPT_ARG_STRING, NULL, ARG_AUTH_USER,
+			 N_("api user"), NULL},
+			{"auth-password", '\0', POPT_ARG_STRING, NULL, ARG_AUTH_PASSWORD,
+			 N_("api password"), NULL},
 			POPT_TABLEEND};
 
 	const struct poptOption options[] = {
@@ -2235,6 +2261,9 @@ int main(int argc, char **argv, char **envp)
 	CHECK_OPT(ARG_SET_CONFIG_VALUE);
 	CHECK_OPT(ARG_SERVER);
 	CHECK_OPT(ARG_SERVER_URL);
+	CHECK_OPT(ARG_AUTH_ENABLED);
+	CHECK_OPT(ARG_AUTH_USER);
+	CHECK_OPT(ARG_AUTH_PASSWORD);
 	CHECK_OPT(ARG_SHOW_INFO);
 	CHECK_OPT(ARG_STORAGE_INFO);
 	CHECK_OPT(ARG_SUMMARY);
