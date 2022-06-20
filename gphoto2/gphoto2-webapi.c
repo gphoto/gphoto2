@@ -23,7 +23,7 @@
 #define _XOPEN_SOURCE 500
 
 #include "config.h"
-#if defined (HAVE_SIGNAL_H)
+#if defined(HAVE_SIGNAL_H)
 #include <signal.h>
 #endif
 #include "actions.h"
@@ -38,7 +38,7 @@
 #include "server.h"
 
 #ifdef HAVE_CDK
-#  include "gphoto2-cmd-config.h"
+#include "gphoto2-cmd-config.h"
 #endif
 
 #include <stdlib.h>
@@ -57,15 +57,15 @@
 #include <popt.h>
 
 #ifdef HAVE_RL
-#  include <readline/readline.h>
+#include <readline/readline.h>
 #endif
 
 #ifdef HAVE_PTHREAD
-#  include <pthread.h>
+#include <pthread.h>
 #endif
 
 #ifndef WIN32
-#  include <signal.h>
+#include <signal.h>
 #endif
 
 #if defined(_MSC_VER)
@@ -78,13 +78,18 @@
 #include "mongoose/mongoose.h"
 
 #ifndef MAX
-# define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
 #endif
 #ifndef MIN
-# define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
 #endif
 
-#define CR(result) {int r = (result); if (r < 0) return (r);}
+#define CR(result)    \
+	{                   \
+		int r = (result); \
+		if (r < 0)        \
+			return (r);     \
+	}
 
 #ifdef __GNUC__
 #define __unused__ __attribute__((unused))
@@ -122,25 +127,27 @@ size_t
 strncpy_lower(char *dst, const char *src, size_t count)
 {
 	unsigned int i;
-	if ((dst == NULL) || (src == NULL)
-	    || (((unsigned long)count)>= 0x7fff)) {
+	if ((dst == NULL) || (src == NULL) || (((unsigned long)count) >= 0x7fff))
+	{
 		return -1;
 	}
-	for (i=0; (i<count) && (src[i] != '\0'); i++) {
-		dst[i] = (char) tolower((int)src[i]);
+	for (i = 0; (i < count) && (src[i] != '\0'); i++)
+	{
+		dst[i] = (char)tolower((int)src[i]);
 	}
-	if (i<count) {
+	if (i < count)
+	{
 		dst[i] = '\0';
-	} else {
-		dst[count-1] = '\0';
+	}
+	else
+	{
+		dst[count - 1] = '\0';
 	}
 	return i;
 }
 
-
-#undef  MIN
-#define MIN(a, b)  (((a) < (b)) ? (a) : (b))
-
+#undef MIN
+#define MIN(a, b) (((a) < (b)) ? (a) : (b))
 
 /*! \brief Create local filename for CameraFile according to pattern in gp_params
  *
@@ -153,7 +160,7 @@ strncpy_lower(char *dst, const char *src, size_t count)
  */
 
 static int
-get_path_for_file (const char *folder, const char *name, CameraFileType type, CameraFile *file, char **path)
+get_path_for_file(const char *folder, const char *name, CameraFileType type, CameraFile *file, char **path)
 {
 	unsigned int i, l;
 	char *s = NULL, b[1024];
@@ -165,16 +172,18 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 		return GP_ERROR_BAD_PARAMETERS;
 
 	*path = NULL;
-	if (file) {
-		CR (gp_file_get_mtime (file, &t));
-	
-		if (!t)	/* use the current time as fallback if the camera did not return it. */
+	if (file)
+	{
+		CR(gp_file_get_mtime(file, &t));
+
+		if (!t) /* use the current time as fallback if the camera did not return it. */
 			t = time(NULL);
 	}
 
-	tm = localtime (&t);
+	tm = localtime(&t);
 	hour12 = tm->tm_hour % 12;
-	if (hour12 == 0) {
+	if (hour12 == 0)
+	{
 		hour12 = 12;
 	}
 
@@ -182,31 +191,39 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 	 * If the user didn't specify a filename, use the original name
 	 * (and prefix).
 	 */
-	if (!gp_params.filename || !strcmp (gp_params.filename, "")) {
-		if (file) {
-			return gp_file_get_name_by_type (file, name, type, path);
-		} else if ((type == GP_FILE_TYPE_NORMAL) && strchr(name,'.')) {
+	if (!gp_params.filename || !strcmp(gp_params.filename, ""))
+	{
+		if (file)
+		{
+			return gp_file_get_name_by_type(file, name, type, path);
+		}
+		else if ((type == GP_FILE_TYPE_NORMAL) && strchr(name, '.'))
+		{
 			/* return the original name */
 			*path = strdup(name);
 			return (GP_OK);
-		} else
+		}
+		else
 			/* Download required to get the path from CameraFile *file */
 			return (GP_ERROR_BAD_PARAMETERS);
 	}
 
 	/* The user did specify a filename. Use it. */
-	b[sizeof (b) - 1] = '\0';
-	for (i = 0; i < strlen (gp_params.filename); i++) {
-		if (gp_params.filename[i] == '%') {
+	b[sizeof(b) - 1] = '\0';
+	for (i = 0; i < strlen(gp_params.filename); i++)
+	{
+		if (gp_params.filename[i] == '%')
+		{
 			char padding = '0'; /* default padding character */
-			int precision = 0;  /* default: no padding */
+			int precision = 0;	/* default: no padding */
 			i++;
 			/* determine padding character */
-			switch (gp_params.filename[i]) {
-			  /* case ' ':
-			   * spaces are not supported everywhere, so we
-			   * restrict ourselves to padding with zeros.
-			   */
+			switch (gp_params.filename[i])
+			{
+				/* case ' ':
+				 * spaces are not supported everywhere, so we
+				 * restrict ourselves to padding with zeros.
+				 */
 			case '0':
 				padding = gp_params.filename[i];
 				precision = 1; /* do padding */
@@ -214,80 +231,90 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 				break;
 			}
 			/* determine padding width */
-			if (isdigit((int)gp_params.filename[i])) {
+			if (isdigit((int)gp_params.filename[i]))
+			{
 				char *cp;
 				long int _prec;
 				_prec = strtol(&gp_params.filename[i],
-					       &cp, 10);
+											 &cp, 10);
 				if (_prec < 1)
 					precision = 1;
 				else if (_prec > 20)
 					precision = 20;
 				else
 					precision = _prec;
-				if (*cp != 'n') {
+				if (*cp != 'n')
+				{
 					/* make sure this is %n */
-					gp_context_error (gp_params.context,
-						  _("Zero padding numbers "
-						    "in file names is only "
-						    "possible with %%n."));
+					gp_context_error(gp_params.context,
+													 _("Zero padding numbers "
+														 "in file names is only "
+														 "possible with %%n."));
 					return GP_ERROR_BAD_PARAMETERS;
 				}
 				/* go to first non-digit character */
 				i += (cp - &gp_params.filename[i]);
-			} else if (precision && ( gp_params.filename[i] != 'n')) {
-				gp_context_error (gp_params.context,
-					  _("You cannot use %%n "
-					    "zero padding "
-					    "without a "
-					    "precision value!"
-					    ));
+			}
+			else if (precision && (gp_params.filename[i] != 'n'))
+			{
+				gp_context_error(gp_params.context,
+												 _("You cannot use %%n "
+													 "zero padding "
+													 "without a "
+													 "precision value!"));
 				return GP_ERROR_BAD_PARAMETERS;
 			}
-			switch (gp_params.filename[i]) {
+			switch (gp_params.filename[i])
+			{
 			case 'n':
 				/*
- 				 * Previously this used an folder index number.
+				 * Previously this used an folder index number.
 				 * Now this uses a linear increasing number.
 				 */
-				if (precision > 1) {
+				if (precision > 1)
+				{
 					char padfmt[16];
 					strcpy(padfmt, "%!.*i");
 					padfmt[1] = padding;
-					snprintf (b, sizeof (b), padfmt,
-						  precision, gp_params.filenr);
-				} else {
-					snprintf (b, sizeof (b), "%i",
-						  gp_params.filenr);
+					snprintf(b, sizeof(b), padfmt,
+									 precision, gp_params.filenr);
+				}
+				else
+				{
+					snprintf(b, sizeof(b), "%i",
+									 gp_params.filenr);
 				}
 				gp_params.filenr++;
 				break;
 
 			case 'C':
 				/* Get the suffix of the original name */
-				s = strrchr (name, '.');
-				if (!s) {
-					free (*path);
+				s = strrchr(name, '.');
+				if (!s)
+				{
+					free(*path);
 					*path = NULL;
-					gp_context_error (gp_params.context,
-						_("The filename provided "
-						  "by the camera ('%s') "
-						  "does not contain a "
-						  "suffix!"), name);
+					gp_context_error(gp_params.context,
+													 _("The filename provided "
+														 "by the camera ('%s') "
+														 "does not contain a "
+														 "suffix!"),
+													 name);
 					return (GP_ERROR_BAD_PARAMETERS);
 				}
-				strncpy (b, s + 1, sizeof (b) - 1);
+				strncpy(b, s + 1, sizeof(b) - 1);
 				break;
 
 			case 'f':
 				/* Get the file name without suffix */
-				s = strrchr (name, '.');
+				s = strrchr(name, '.');
 				if (!s)
-					strncpy (b, name, sizeof (b) - 1);
-				else {
-					l = MIN ((unsigned long)(sizeof(b) - 1),
-						 (unsigned long)(s - name));
-					strncpy (b, name, l);
+					strncpy(b, name, sizeof(b) - 1);
+				else
+				{
+					l = MIN((unsigned long)(sizeof(b) - 1),
+									(unsigned long)(s - name));
+					strncpy(b, name, l);
 					b[l] = '\0';
 				}
 				break;
@@ -296,10 +323,12 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 				/* Get the folder name */
 				{
 					const char *f = folder ? folder : "";
-					if (f[0] == '/') f++; /* Skip first '/' */
-					if (!f[0]) f = "."; /* replace empty folder name by '.' */
+					if (f[0] == '/')
+						f++; /* Skip first '/' */
+					if (!f[0])
+						f = "."; /* replace empty folder name by '.' */
 
-					strncpy (b, f, sizeof (b) - 1 - strlen(b));
+					strncpy(b, f, sizeof(b) - 1 - strlen(b));
 					b[sizeof(b) - 1] = '\0';
 				}
 				break;
@@ -319,48 +348,55 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 			case 'S':
 			case 'y':
 			case 'Y':
-				{
-					char fmt[3] = { '%', '\0', '\0' };
-					if (!file) return (GP_ERROR_BAD_PARAMETERS); /* mtime unknown */
+			{
+				char fmt[3] = {'%', '\0', '\0'};
+				if (!file)
+					return (GP_ERROR_BAD_PARAMETERS); /* mtime unknown */
 
-					fmt[1] = gp_params.filename[i]; /* the letter of this 'case' */
-					strftime(b, sizeof (b), fmt, tm);
-					break;
-				}
+				fmt[1] = gp_params.filename[i]; /* the letter of this 'case' */
+				strftime(b, sizeof(b), fmt, tm);
+				break;
+			}
 			case '%':
-				strcpy (b, "%");
+				strcpy(b, "%");
 				break;
 			case ':':
 				strncpy_lower(b, name, sizeof(b));
-				b[sizeof(b)-1] = '\0';
+				b[sizeof(b) - 1] = '\0';
 				break;
 			default:
-				free (*path);
+				free(*path);
 				*path = NULL;
-				gp_context_error (gp_params.context,
-					_("Invalid format '%s' (error at "
-					  "position %i)."), gp_params.filename,
-					i + 1);
+				gp_context_error(gp_params.context,
+												 _("Invalid format '%s' (error at "
+													 "position %i)."),
+												 gp_params.filename,
+												 i + 1);
 				return (GP_ERROR_BAD_PARAMETERS);
 			}
-		} else {
+		}
+		else
+		{
 			b[0] = gp_params.filename[i];
 			b[1] = '\0';
 		}
 
-		s = *path ? realloc (*path, strlen (*path) + strlen (b) + 1) :
-			    malloc (strlen (b) + 1);
-		if (!s) {
-			free (*path);
+		s = *path ? realloc(*path, strlen(*path) + strlen(b) + 1) : malloc(strlen(b) + 1);
+		if (!s)
+		{
+			free(*path);
 			*path = NULL;
 			return (GP_ERROR_NO_MEMORY);
 		}
-		if (*path) {
+		if (*path)
+		{
 			*path = s;
-			strcat (*path, b);
-		} else {
+			strcat(*path, b);
+		}
+		else
+		{
 			*path = s;
-			strcpy (*path, b);
+			strcpy(*path, b);
 		}
 	}
 
@@ -368,8 +404,9 @@ get_path_for_file (const char *folder, const char *name, CameraFileType type, Ca
 	 * If the file is a capture_preview,
 	 * apply prefix over the calculated basename
 	 */
-	if (type == GP_FILE_TYPE_PREVIEW) {
-		return gp_file_get_name_by_type (file, s, type, path);
+	if (type == GP_FILE_TYPE_PREVIEW)
+	{
+		return gp_file_get_name_by_type(file, s, type, path);
 	}
 
 	return (GP_OK);
@@ -585,167 +622,190 @@ static int x_read(void *priv, unsigned char *data, uint64_t *size)
 	return GP_OK;
 }
 
-static int x_write(void*priv,unsigned char *data, uint64_t *size) {
-	struct privstr 	*ps = priv;
-	int 		fd = ps->fd;
-	uint64_t	curwritten = 0, xsize, res;
+static int x_write(void *priv, unsigned char *data, uint64_t *size)
+{
+	struct privstr *ps = priv;
+	int fd = ps->fd;
+	uint64_t curwritten = 0, xsize, res;
 
-	gp_log (GP_LOG_DEBUG, "x_write","(%p,%p,%u)", priv, data, (unsigned int)*size);
+	gp_log(GP_LOG_DEBUG, "x_write", "(%p,%p,%u)", priv, data, (unsigned int)*size);
 	xsize = *size;
-	while (curwritten < xsize) {
-		res = write (fd, data+curwritten, xsize-curwritten);
-		if (res == -1) return GP_ERROR_IO_WRITE;
-		if (!res) break;
+	while (curwritten < xsize)
+	{
+		res = write(fd, data + curwritten, xsize - curwritten);
+		if (res == -1)
+			return GP_ERROR_IO_WRITE;
+		if (!res)
+			break;
 		curwritten += res;
 	}
 	*size = curwritten;
 	return GP_OK;
 }
 
-static CameraFileHandler xhandler = { x_size, x_read, x_write };
+static CameraFileHandler xhandler = {x_size, x_read, x_write};
 
-int
-save_file_to_file (struct mg_connection *c, Camera *camera, GPContext *context, Flags flags,
-		   const char *folder, const char *filename,
-		   CameraFileType type, int webapi )
+int save_file_to_file(struct mg_connection *c, Camera *camera, GPContext *context, Flags flags,
+											const char *folder, const char *filename,
+											CameraFileType type, int webapi)
 {
-  int fd, res;
-  CameraFile *file;
-	char	tmpname[20], *tmpfilename;
+	int fd, res;
+	CameraFile *file;
+	char tmpname[20], *tmpfilename;
 	struct privstr *ps = NULL;
 
-	if (flags & FLAGS_SKIP_EXISTING && !(flags & FLAGS_STDOUT)) {
+	if (flags & FLAGS_SKIP_EXISTING && !(flags & FLAGS_STDOUT))
+	{
 		char *path = NULL;
 		/* Check if the file is present before downloading it. */
-		res = get_path_for_file (folder, filename, type, NULL, &path);
-		if (res == (GP_OK) && gp_system_is_file (path)) {
+		res = get_path_for_file(folder, filename, type, NULL, &path);
+		if (res == (GP_OK) && gp_system_is_file(path))
+		{
 			/* File name pattern do not require CameraFile and target file
-			   exists: Skip this file. */
-			if ((gp_params.flags & FLAGS_QUIET) == 0) {
-				printf (_("Skip existing file %s\n"), path);
-				fflush (stdout);
+				 exists: Skip this file. */
+			if ((gp_params.flags & FLAGS_QUIET) == 0)
+			{
+				printf(_("Skip existing file %s\n"), path);
+				fflush(stdout);
 			}
 			return (GP_OK);
 		}
 	}
 
-	if (flags & FLAGS_NEW) {
+	if (flags & FLAGS_NEW)
+	{
 		CameraFileInfo info;
-   	CR (gp_camera_file_get_info (camera, folder, filename, &info, context));
+		CR(gp_camera_file_get_info(camera, folder, filename, &info, context));
 
-		switch (type) {
+		switch (type)
+		{
 		case GP_FILE_TYPE_PREVIEW:
 			if (info.preview.fields & GP_FILE_INFO_STATUS &&
-			    info.preview.status == GP_FILE_STATUS_DOWNLOADED)
+					info.preview.status == GP_FILE_STATUS_DOWNLOADED)
 				return (GP_OK);
 			break;
 		case GP_FILE_TYPE_NORMAL:
 		case GP_FILE_TYPE_RAW:
 		case GP_FILE_TYPE_EXIF:
 			if (info.file.fields & GP_FILE_INFO_STATUS &&
-			    info.file.status == GP_FILE_STATUS_DOWNLOADED)
+					info.file.status == GP_FILE_STATUS_DOWNLOADED)
 				return (GP_OK);
 			break;
 		case GP_FILE_TYPE_AUDIO:
 			if (info.audio.fields & GP_FILE_INFO_STATUS &&
-			    info.audio.status == GP_FILE_STATUS_DOWNLOADED)
+					info.audio.status == GP_FILE_STATUS_DOWNLOADED)
 				return (GP_OK);
 			break;
 		default:
 			return (GP_ERROR_NOT_SUPPORTED);
 		}
 	}
-	
-	strcpy (tmpname, "tmpfileXXXXXX");
+
+	strcpy(tmpname, "tmpfileXXXXXX");
 	fd = mkstemp(tmpname);
 
-	if (fd == -1) {
-	    if (errno == EACCES) {
-	        gp_context_error (context, _("Permission denied"));
-	        return GP_ERROR;
-	    }
-	    CR (gp_file_new (&file));
-	    tmpfilename = NULL;
-	} else {
-		if (time(NULL) & 1) { /* to test both methods. */
-			gp_log (GP_LOG_DEBUG, "save_file_to_file","using fd method");
-			res = gp_file_new_from_fd (&file, fd);
-			if (res < GP_OK) {
-				close (fd);
-				unlink (tmpname);
+	if (fd == -1)
+	{
+		if (errno == EACCES)
+		{
+			gp_context_error(context, _("Permission denied"));
+			return GP_ERROR;
+		}
+		CR(gp_file_new(&file));
+		tmpfilename = NULL;
+	}
+	else
+	{
+		if (time(NULL) & 1)
+		{ /* to test both methods. */
+			gp_log(GP_LOG_DEBUG, "save_file_to_file", "using fd method");
+			res = gp_file_new_from_fd(&file, fd);
+			if (res < GP_OK)
+			{
+				close(fd);
+				unlink(tmpname);
 				return res;
 			}
-		} else {
-			gp_log (GP_LOG_DEBUG, "save_file_to_file","using handler method");
-			ps = malloc (sizeof(*ps));
-			if (!ps) return GP_ERROR_NO_MEMORY;
+		}
+		else
+		{
+			gp_log(GP_LOG_DEBUG, "save_file_to_file", "using handler method");
+			ps = malloc(sizeof(*ps));
+			if (!ps)
+				return GP_ERROR_NO_MEMORY;
 			ps->fd = fd;
 			/* just pass in the file pointer as private */
-			res = gp_file_new_from_handler (&file, &xhandler, ps);
-			if (res < GP_OK) {
-				close (fd);
-				unlink (tmpname);
+			res = gp_file_new_from_handler(&file, &xhandler, ps);
+			if (res < GP_OK)
+			{
+				close(fd);
+				unlink(tmpname);
 				return res;
 			}
 		}
 		tmpfilename = tmpname;
 	}
 
-  res = gp_camera_file_get (camera, folder, filename, type, file, context);
+	res = gp_camera_file_get(camera, folder, filename, type, file, context);
 
-	if (res < GP_OK) {
-		free (ps);
-		gp_file_unref (file);
-		if (tmpfilename) unlink (tmpfilename);
+	if (res < GP_OK)
+	{
+		free(ps);
+		gp_file_unref(file);
+		if (tmpfilename)
+			unlink(tmpfilename);
 		return res;
 	}
 
-	if (flags & FLAGS_STDOUT) {
-    const char *data;
-    unsigned long int size;
+	if (flags & FLAGS_STDOUT)
+	{
+		const char *data;
+		unsigned long int size;
 
-    CR (gp_file_get_data_and_size (file, &data, &size));
+		CR(gp_file_get_data_and_size(file, &data, &size));
 
 		if (flags & FLAGS_STDOUT_SIZE) /* this will be difficult in fd mode */
-      printf ("%li\n", size);
+			printf("%li\n", size);
 
-    if (1!=fwrite (data, size, 1, stdout))
-			fprintf(stderr,"fwrite failed writing to stdout.\n");
+		if (1 != fwrite(data, size, 1, stdout))
+			fprintf(stderr, "fwrite failed writing to stdout.\n");
 
-		if (ps && ps->fd) 
-		  close (ps->fd);
+		if (ps && ps->fd)
+			close(ps->fd);
 
-		free (ps);
-		gp_file_unref (file);
-		unlink (tmpname);
+		free(ps);
+		gp_file_unref(file);
+		unlink(tmpname);
 		return (GP_OK);
 	}
 
-	if (webapi) {
-    const char *data;
-    unsigned long int size;
+	if (webapi)
+	{
+		const char *data;
+		unsigned long int size;
 
-    CR (gp_file_get_data_and_size (file, &data, &size));
+		CR(gp_file_get_data_and_size(file, &data, &size));
 
-    mg_send( c, data, size );
+		mg_send(c, data, size);
 
-		if (ps && ps->fd) 
-		  close (ps->fd);
+		if (ps && ps->fd)
+			close(ps->fd);
 
-		free (ps);
-		gp_file_unref (file);
-		unlink (tmpname);
+		free(ps);
+		gp_file_unref(file);
+		unlink(tmpname);
 		return (GP_OK);
 	}
 
-	res = save_camera_file_to_file (folder, filename, type, file, tmpfilename);
+	res = save_camera_file_to_file(folder, filename, type, file, tmpfilename);
 
-	if (ps && ps->fd) close (ps->fd);
-	free (ps);
-	gp_file_unref (file);
-	if ((res!=GP_OK) && tmpfilename)
-		unlink (tmpfilename);
-        return (res);
+	if (ps && ps->fd)
+		close(ps->fd);
+	free(ps);
+	gp_file_unref(file);
+	if ((res != GP_OK) && tmpfilename)
+		unlink(tmpfilename);
+	return (res);
 }
 
 void dissolve_filename(
@@ -776,8 +836,7 @@ void dissolve_filename(
 #endif
 }
 
-int 
-get_file_http_common(struct mg_connection *c, const char *path, CameraFileType type)
+int get_file_http_common(struct mg_connection *c, const char *path, CameraFileType type)
 {
 	gp_log(GP_LOG_DEBUG, "gphoto2-webapi", "Getting '%s'...", path);
 
@@ -818,80 +877,85 @@ get_file_http_common(struct mg_connection *c, const char *path, CameraFileType t
  *         thumbnails according to thumbnail argument, and save to files.
  */
 
-int
-get_file_common (struct mg_connection *c, const char *arg, CameraFileType type )
+int get_file_common(struct mg_connection *c, const char *arg, CameraFileType type)
 {
 	unsigned int mightberange = 1, i;
-        gp_log (GP_LOG_DEBUG, "main", "Getting '%s'...", arg);
+	gp_log(GP_LOG_DEBUG, "main", "Getting '%s'...", arg);
 
 	gp_params.download_type = type; /* remember for multi download */
 	/*
 	 * If the user specified the file directly (and not a number),
 	 * get that file.
 	 */
-	for (i=0;i<strlen(arg);i++) {
-		if ((arg[i] != '-') && ((arg[i] < '0') || (arg[i] > '9'))) {
+	for (i = 0; i < strlen(arg); i++)
+	{
+		if ((arg[i] != '-') && ((arg[i] < '0') || (arg[i] > '9')))
+		{
 			mightberange = 0;
 			break;
 		}
 	}
 
-	if (!mightberange) {
+	if (!mightberange)
+	{
 		int ret;
 		char *newfolder, *newfilename;
 
-		dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
-                ret = save_file_to_file ( c, gp_params.camera, gp_params.context, gp_params.flags,
-					   newfolder, newfilename, type, FALSE);
-		free (newfolder); free (newfilename);
+		dissolve_filename(gp_params.folder, arg, &newfolder, &newfilename);
+		ret = save_file_to_file(c, gp_params.camera, gp_params.context, gp_params.flags,
+														newfolder, newfilename, type, FALSE);
+		free(newfolder);
+		free(newfilename);
 		return ret;
 	}
 
-        switch (type) {
-        case GP_FILE_TYPE_PREVIEW:
-		CR (for_each_file_in_range (&gp_params, save_thumbnail_action, arg));
+	switch (type)
+	{
+	case GP_FILE_TYPE_PREVIEW:
+		CR(for_each_file_in_range(&gp_params, save_thumbnail_action, arg));
 		break;
-        case GP_FILE_TYPE_NORMAL:
-                CR (for_each_file_in_range (&gp_params, save_file_action, arg));
+	case GP_FILE_TYPE_NORMAL:
+		CR(for_each_file_in_range(&gp_params, save_file_action, arg));
 		break;
-        case GP_FILE_TYPE_RAW:
-                CR (for_each_file_in_range (&gp_params, save_raw_action, arg));
+	case GP_FILE_TYPE_RAW:
+		CR(for_each_file_in_range(&gp_params, save_raw_action, arg));
 		break;
 	case GP_FILE_TYPE_AUDIO:
-		CR (for_each_file_in_range (&gp_params, save_audio_action, arg));
+		CR(for_each_file_in_range(&gp_params, save_audio_action, arg));
 		break;
 	case GP_FILE_TYPE_EXIF:
-		CR (for_each_file_in_range (&gp_params, save_exif_action, arg));
+		CR(for_each_file_in_range(&gp_params, save_exif_action, arg));
 		break;
 	case GP_FILE_TYPE_METADATA:
-		CR (for_each_file_in_range (&gp_params, save_meta_action, arg));
+		CR(for_each_file_in_range(&gp_params, save_meta_action, arg));
 		break;
-        default:
-                return (GP_ERROR_NOT_SUPPORTED);
-        }
+	default:
+		return (GP_ERROR_NOT_SUPPORTED);
+	}
 
 	return (GP_OK);
 }
 
 static void
-sig_handler_capture_now (int sig_num)
+sig_handler_capture_now(int sig_num)
 {
-	signal (SIGUSR1, sig_handler_capture_now);
+	signal(SIGUSR1, sig_handler_capture_now);
 	capture_now = 1;
 }
 
 static void
-sig_handler_end_next (int sig_num)
+sig_handler_end_next(int sig_num)
 {
-        signal (SIGUSR2, sig_handler_end_next);
-        end_next = 1;
+	signal(SIGUSR2, sig_handler_end_next);
+	end_next = 1;
 }
 
 /* temp test function */
-int
-trigger_capture (void) {
-	int result =  gp_camera_trigger_capture (gp_params.camera, gp_params.context);
-	if (result != GP_OK) {
+int trigger_capture(void)
+{
+	int result = gp_camera_trigger_capture(gp_params.camera, gp_params.context);
+	if (result != GP_OK)
+	{
 		cli_error_print(_("Could not trigger capture."));
 		return (result);
 	}
@@ -899,16 +963,18 @@ trigger_capture (void) {
 }
 
 static long
-timediff_now (struct timeval *target) {
+timediff_now(struct timeval *target)
+{
 	struct timeval now;
 
-	gettimeofday (&now, NULL);
-	return	(target->tv_sec-now.tv_sec)*1000+
-		(target->tv_usec-now.tv_usec)/1000;
+	gettimeofday(&now, NULL);
+	return (target->tv_sec - now.tv_sec) * 1000 +
+				 (target->tv_usec - now.tv_usec) / 1000;
 }
 
 static int
-save_captured_file (struct mg_connection *c, CameraFilePath *path, int download) {
+save_captured_file(struct mg_connection *c, CameraFilePath *path, int download)
+{
 	char *pathsep;
 	static CameraFilePath last;
 	int result;
@@ -918,213 +984,242 @@ save_captured_file (struct mg_connection *c, CameraFilePath *path, int download)
 	else
 		pathsep = "/";
 
-	if (gp_params.flags & FLAGS_QUIET) {
-		if (!(gp_params.flags & (FLAGS_STDOUT|FLAGS_STDOUT_SIZE)))
-			printf ("%s%s%s\n", path->folder, pathsep, path->name);
-	} else {
-		printf (_("New file is in location %s%s%s on the camera\n"),
-			path->folder, pathsep, path->name);
+	if (gp_params.flags & FLAGS_QUIET)
+	{
+		if (!(gp_params.flags & (FLAGS_STDOUT | FLAGS_STDOUT_SIZE)))
+			printf("%s%s%s\n", path->folder, pathsep, path->name);
+	}
+	else
+	{
+		printf(_("New file is in location %s%s%s on the camera\n"),
+					 path->folder, pathsep, path->name);
 	}
 
-	CameraFileInfo info;		
-	CR (gp_camera_file_get_info (gp_params.camera, path->folder, path->name, &info, gp_params.context));
+	CameraFileInfo info;
+	CR(gp_camera_file_get_info(gp_params.camera, path->folder, path->name, &info, gp_params.context));
 
-  JSON_PRINTF( c, "\"image_info\":{" );
-  JSON_PRINTF( c, "\"name\": \"%s\",", path->name );
-  JSON_PRINTF( c, "\"folder\": \"%s\",", path->folder );
-  JSON_PRINTF( c, "\"path\": \"%s%s%s\",", path->folder, pathsep, path->name );
-	JSON_PRINTF( c, "\"mtime\":%ld,", info.file.mtime );
-  JSON_PRINTF( c, "\"size\":%ld,", info.file.size );
-	JSON_PRINTF( c, "\"height\":%d,", info.file.height );
-	JSON_PRINTF( c, "\"width\":%d,", info.file.width );
-	JSON_PRINTF( c, "\"type\":\"%s\"\n", info.file.type );
-  JSON_PRINTF( c, "}," );
-  JSON_PRINTF( c, "\"download\": %s,", (download) ? "true" : "false" );
+	JSON_PRINTF(c, "\"image_info\":{");
+	JSON_PRINTF(c, "\"name\": \"%s\",", path->name);
+	JSON_PRINTF(c, "\"folder\": \"%s\",", path->folder);
+	JSON_PRINTF(c, "\"path\": \"%s%s%s\",", path->folder, pathsep, path->name);
+	JSON_PRINTF(c, "\"mtime\":%ld,", info.file.mtime);
+	JSON_PRINTF(c, "\"size\":%ld,", info.file.size);
+	JSON_PRINTF(c, "\"height\":%d,", info.file.height);
+	JSON_PRINTF(c, "\"width\":%d,", info.file.width);
+	JSON_PRINTF(c, "\"type\":\"%s\"\n", info.file.type);
+	JSON_PRINTF(c, "},");
+	JSON_PRINTF(c, "\"download\": %s,", (download) ? "true" : "false");
 
-	if (download) {
-    char *cwd;
-    if( (cwd=getcwd(NULL, 0)) != NULL) {
-      JSON_PRINTF( c, "\"local_folder\": \"%s\",", cwd );
-      free(cwd);
-    }
+	if (download)
+	{
+		char *cwd;
+		if ((cwd = getcwd(NULL, 0)) != NULL)
+		{
+			JSON_PRINTF(c, "\"local_folder\": \"%s\",", cwd);
+			free(cwd);
+		}
 
-		if (strcmp(path->folder, last.folder)) {
+		if (strcmp(path->folder, last.folder))
+		{
 			memcpy(&last, path, sizeof(last));
 
 			result = set_folder_action(&gp_params, path->folder);
-			if (result != GP_OK) {
+			if (result != GP_OK)
+			{
 				cli_error_print(_("Could not set folder."));
 				return (result);
 			}
 		}
-		if (	(gp_params.flags & FLAGS_KEEP_RAW) &&
-			(!strstr(path->name,".jpg") && !strstr(path->name,".JPG"))
-		) {
+		if ((gp_params.flags & FLAGS_KEEP_RAW) &&
+				(!strstr(path->name, ".jpg") && !strstr(path->name, ".JPG")))
+		{
 			if (!(gp_params.flags & FLAGS_QUIET))
-				printf (_("Keeping file %s%s%s on the camera\n"),
-					path->folder, pathsep, path->name);
+				printf(_("Keeping file %s%s%s on the camera\n"),
+							 path->folder, pathsep, path->name);
 			return GP_OK;
 		}
 
-		result = get_file_common ( c, path->name, GP_FILE_TYPE_NORMAL);
+		result = get_file_common(c, path->name, GP_FILE_TYPE_NORMAL);
 
-		if (result != GP_OK) {
-			cli_error_print (_("Could not get image."));
-			if(result == GP_ERROR_FILE_NOT_FOUND) {
+		if (result != GP_OK)
+		{
+			cli_error_print(_("Could not get image."));
+			if (result == GP_ERROR_FILE_NOT_FOUND)
+			{
 				/* Buggy libcanon.so?
 				 * Can happen if this was the first capture after a
 				 * CF card format, or during a directory roll-over,
 				 * ie: CANON100 -> CANON101
 				 */
-				cli_error_print ( _("Buggy libcanon.so?"));
+				cli_error_print(_("Buggy libcanon.so?"));
 			}
 			return (result);
 		}
 
-    JSON_PRINTF( c, "\"keeping_file_on_camera\": %s,", (gp_params.flags & FLAGS_KEEP) ? "true" : "false" );
+		JSON_PRINTF(c, "\"keeping_file_on_camera\": %s,", (gp_params.flags & FLAGS_KEEP) ? "true" : "false");
 
-		if (!(gp_params.flags & FLAGS_KEEP)) {
+		if (!(gp_params.flags & FLAGS_KEEP))
+		{
 			if (!(gp_params.flags & FLAGS_QUIET))
-				printf (_("Deleting file %s%s%s on the camera\n"),
-					path->folder, pathsep, path->name);
+				printf(_("Deleting file %s%s%s on the camera\n"),
+							 path->folder, pathsep, path->name);
 
-			result = delete_file_action (&gp_params, path->folder, path->name);
-			if (result != GP_OK) {
-				cli_error_print ( _("Could not delete image."));
+			result = delete_file_action(&gp_params, path->folder, path->name);
+			if (result != GP_OK)
+			{
+				cli_error_print(_("Could not delete image."));
 				return (result);
 			}
-		} else {
-			if (!(gp_params.flags & FLAGS_QUIET)) 
-				printf (_("Keeping file %s%s%s on the camera\n"),
-					path->folder, pathsep, path->name);
+		}
+		else
+		{
+			if (!(gp_params.flags & FLAGS_QUIET))
+				printf(_("Keeping file %s%s%s on the camera\n"),
+							 path->folder, pathsep, path->name);
 		}
 	}
 	return GP_OK;
 }
 
 static int
-wait_and_handle_event (struct mg_connection *c, long waittime, CameraEventType *type, int download) {
-	int 		result;
-	CameraEventType	evtype;
-	void		*data;
-	CameraFilePath	*path;
+wait_and_handle_event(struct mg_connection *c, long waittime, CameraEventType *type, int download)
+{
+	int result;
+	CameraEventType evtype;
+	void *data;
+	CameraFilePath *path;
 
-	if (!type) type = &evtype;
+	if (!type)
+		type = &evtype;
 	evtype = GP_EVENT_UNKNOWN;
 	data = NULL;
 	result = gp_camera_wait_for_event(gp_params.camera, waittime, type, &data, gp_params.context);
-	if (result == GP_ERROR_NOT_SUPPORTED) {
+	if (result == GP_ERROR_NOT_SUPPORTED)
+	{
 		*type = GP_EVENT_TIMEOUT;
-		usleep(waittime*1000);
+		usleep(waittime * 1000);
 		return GP_OK;
 	}
 	if (result != GP_OK)
 		return result;
 	path = data;
-	switch (*type) {
+	switch (*type)
+	{
 	case GP_EVENT_TIMEOUT:
 		break;
 	case GP_EVENT_CAPTURE_COMPLETE:
 		break;
 	case GP_EVENT_FOLDER_ADDED:
 		if (!(gp_params.flags & FLAGS_QUIET))
-			printf (_("Event FOLDER_ADDED %s/%s during wait, ignoring.\n"), path->folder, path->name);
-		free (data);
+			printf(_("Event FOLDER_ADDED %s/%s during wait, ignoring.\n"), path->folder, path->name);
+		free(data);
 		break;
 	case GP_EVENT_FILE_CHANGED:
 		if (!(gp_params.flags & FLAGS_QUIET))
-			printf (_("Event FILE_CHANGED %s/%s during wait, ignoring.\n"), path->folder, path->name);
-		free (data);
+			printf(_("Event FILE_CHANGED %s/%s during wait, ignoring.\n"), path->folder, path->name);
+		free(data);
 		break;
 	case GP_EVENT_FILE_ADDED:
-		result = save_captured_file (c, path, download);
-		free (data);
+		result = save_captured_file(c, path, download);
+		free(data);
 		/* result will fall through to final return */
 		break;
 	case GP_EVENT_UNKNOWN:
 #if 0 /* too much spam for the common usage */
 		printf (_("Event UNKNOWN %s during wait, ignoring.\n"), (char*)data);
 #endif
-		free (data);
+		free(data);
 		break;
 	default:
 		if (!(gp_params.flags & FLAGS_QUIET))
-			printf (_("Unknown event type %d during bulb wait, ignoring.\n"), *type);
+			printf(_("Unknown event type %d during bulb wait, ignoring.\n"), *type);
 		break;
 	}
 	return result;
 }
 
-int
-capture_generic (struct mg_connection *c, CameraCaptureType type, const char __unused__ *name, int download)
+int capture_generic(struct mg_connection *c, CameraCaptureType type, const char __unused__ *name, int download)
 {
 	CameraFilePath path;
 	int result, frames = 0;
-	CameraAbilities	a;
+	CameraAbilities a;
 	CameraEventType evtype;
 	long waittime;
 	struct timeval next_pic_time, expose_end_time;
 
-	result = gp_camera_get_abilities (gp_params.camera, &a);
-	if (result != GP_OK) {
+	result = gp_camera_get_abilities(gp_params.camera, &a);
+	if (result != GP_OK)
+	{
 		cli_error_print(_("Could not get capabilities?"));
 		return (result);
 	}
-	gettimeofday (&next_pic_time, NULL);
+	gettimeofday(&next_pic_time, NULL);
 	next_pic_time.tv_sec += glob_interval;
-	if(glob_interval) {
-		if (!(gp_params.flags & FLAGS_QUIET)) {
+	if (glob_interval)
+	{
+		if (!(gp_params.flags & FLAGS_QUIET))
+		{
 			if (glob_interval != -1)
-				printf (_("Time-lapse mode enabled (interval: %ds).\n"),
-					glob_interval);
+				printf(_("Time-lapse mode enabled (interval: %ds).\n"),
+							 glob_interval);
 			else
-				printf (_("Standing by waiting for SIGUSR1 to capture.\n"));
+				printf(_("Standing by waiting for SIGUSR1 to capture.\n"));
 		}
 	}
 
-	if(glob_bulblength) {
-		if (!(gp_params.flags & FLAGS_QUIET)) {
-			printf (_("Bulb mode enabled (exposure time: %ds).\n"),
-				glob_bulblength);
+	if (glob_bulblength)
+	{
+		if (!(gp_params.flags & FLAGS_QUIET))
+		{
+			printf(_("Bulb mode enabled (exposure time: %ds).\n"),
+						 glob_bulblength);
 		}
 	}
 
-	while(++frames) {
-		if (!(gp_params.flags & FLAGS_QUIET) && glob_interval) {
-			if(!glob_frames)
-				printf (_("Capturing frame #%d...\n"), frames);
+	while (++frames)
+	{
+		if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
+		{
+			if (!glob_frames)
+				printf(_("Capturing frame #%d...\n"), frames);
 			else
-				printf (_("Capturing frame #%d/%d...\n"), frames, glob_frames);
+				printf(_("Capturing frame #%d/%d...\n"), frames, glob_frames);
 		}
 
 		fflush(stdout);
 
 		/* Now handle the different capture methods */
-		if(glob_bulblength) {
+		if (glob_bulblength)
+		{
 			/* Bulb mode is special ... we enable it, wait disable it */
-			result = set_config_action (&gp_params, "bulb", "1");
-			if (result != GP_OK) {
+			result = set_config_action(&gp_params, "bulb", "1");
+			if (result != GP_OK)
+			{
 				cli_error_print(_("Could not set bulb capture, result %d."), result);
 				return (result);
 			}
-			gettimeofday (&expose_end_time, NULL);
+			gettimeofday(&expose_end_time, NULL);
 			expose_end_time.tv_sec += glob_bulblength;
-			waittime = timediff_now (&expose_end_time);
-			while(waittime > 0) {
-				result = wait_and_handle_event(c,waittime, &evtype, download);
+			waittime = timediff_now(&expose_end_time);
+			while (waittime > 0)
+			{
+				result = wait_and_handle_event(c, waittime, &evtype, download);
 				if (result != GP_OK)
 					return result;
-				waittime = timediff_now (&expose_end_time);
+				waittime = timediff_now(&expose_end_time);
 			}
-			result = set_config_action (&gp_params, "bulb", "0");
-			if (result != GP_OK) {
+			result = set_config_action(&gp_params, "bulb", "0");
+			if (result != GP_OK)
+			{
 				cli_error_print(_("Could not end capture (bulb mode)."));
 				return (result);
 			}
 			/* The actual download will happen down below in the interval wait
 			 * or the loop exit.
 			 */
-		} else {
+		}
+		else
+		{
 			result = GP_ERROR_NOT_SUPPORTED;
 #if 0
 			/* Not a good idea, as we do not know how long to wait after capture ... */
@@ -1135,42 +1230,48 @@ capture_generic (struct mg_connection *c, CameraCaptureType type, const char __u
 				/* The downloads will be handled by wait_event */
 			}
 #endif
-			if (result == GP_ERROR_NOT_SUPPORTED) {
-				result = gp_camera_capture (gp_params.camera, type, &path, gp_params.context);
-				if (result != GP_OK) {
-			  printf( "(%s:%d) result=%d\n", __FILE__, __LINE__, result );
+			if (result == GP_ERROR_NOT_SUPPORTED)
+			{
+				result = gp_camera_capture(gp_params.camera, type, &path, gp_params.context);
+				if (result != GP_OK)
+				{
+					printf("(%s:%d) result=%d\n", __FILE__, __LINE__, result);
 					cli_error_print(_("Could not capture image."));
-				} else {
+				}
+				else
+				{
 					/* If my Canon EOS 10D is set to auto-focus and it is unable to
 					 * get focus lock - it will return with *UNKNOWN* as the filename.
 					 */
-					if (glob_interval && strcmp(path.name, "*UNKNOWN*") == 0) {
-						if (!(gp_params.flags & FLAGS_QUIET)) {
-							printf (_("Capture failed (auto-focus problem?)...\n"));
+					if (glob_interval && strcmp(path.name, "*UNKNOWN*") == 0)
+					{
+						if (!(gp_params.flags & FLAGS_QUIET))
+						{
+							printf(_("Capture failed (auto-focus problem?)...\n"));
 							sleep(1);
 							continue;
 						}
 					}
-					result = save_captured_file (c, &path, download);
+					result = save_captured_file(c, &path, download);
 					if (result != GP_OK)
 						break;
 				}
 			}
-			if (result != GP_OK) {
-			  printf( "(%s:%d) result=%d\n", __FILE__, __LINE__, result );
+			if (result != GP_OK)
+			{
+				printf("(%s:%d) result=%d\n", __FILE__, __LINE__, result);
 				cli_error_print(_("Could not capture."));
-				if (	(result == GP_ERROR_NOT_SUPPORTED)	||
-					(result == GP_ERROR_NO_MEMORY)		||
-					(result == GP_ERROR_CANCEL)		||
-					(result == GP_ERROR_NO_SPACE)		||
-					(result == GP_ERROR_IO_USB_CLAIM)	||
-					(result == GP_ERROR_IO_LOCK)		||
-					(result == GP_ERROR_CAMERA_BUSY)	||
-					(result == GP_ERROR_OS_FAILURE) || 
-					(result == -2)
-				)
-				
-				JSON_PRINTF( c, "\"error_message\": \"Could not capture.\","  );
+				if ((result == GP_ERROR_NOT_SUPPORTED) ||
+						(result == GP_ERROR_NO_MEMORY) ||
+						(result == GP_ERROR_CANCEL) ||
+						(result == GP_ERROR_NO_SPACE) ||
+						(result == GP_ERROR_IO_USB_CLAIM) ||
+						(result == GP_ERROR_IO_LOCK) ||
+						(result == GP_ERROR_CAMERA_BUSY) ||
+						(result == GP_ERROR_OS_FAILURE) ||
+						(result == -2))
+
+					JSON_PRINTF(c, "\"error_message\": \"Could not capture.\",");
 
 				return (result);
 			}
@@ -1179,12 +1280,15 @@ capture_generic (struct mg_connection *c, CameraCaptureType type, const char __u
 		/* Break if we've reached the requested number of frames
 		 * to capture.
 		 */
-		if(!glob_interval) break;
+		if (!glob_interval)
+			break;
 
-		if(glob_frames && frames == glob_frames) break;
+		if (glob_frames && frames == glob_frames)
+			break;
 
 		/* Break if we've been told to end before the next frame */
-		if(end_next) break;
+		if (end_next)
+			break;
 
 		/*
 		 * Even if the interval is set to -1, it is better to take a
@@ -1192,41 +1296,52 @@ capture_generic (struct mg_connection *c, CameraCaptureType type, const char __u
 		 * response when a signal is caught.
 		 * [alesan]
 		 */
-		if (glob_interval != -1) {
-			waittime = timediff_now (&next_pic_time);
+		if (glob_interval != -1)
+		{
+			waittime = timediff_now(&next_pic_time);
 			result = GP_OK;
-			if (waittime > 0) {
+			if (waittime > 0)
+			{
 				if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
-					printf (_("Waiting for next capture slot %ld seconds...\n"), waittime/1000);
+					printf(_("Waiting for next capture slot %ld seconds...\n"), waittime / 1000);
 				/* We're not sure about sleep() semantics when catching a signal */
-				do {
+				do
+				{
 					/* granularity in which we can receive signals is 200 */
-					if (waittime > 200) waittime = 200;
-					result = wait_and_handle_event (c,waittime, NULL, download);
+					if (waittime > 200)
+						waittime = 200;
+					result = wait_and_handle_event(c, waittime, NULL, download);
 					if (result != GP_OK)
 						break;
-					if (capture_now && !(gp_params.flags & FLAGS_QUIET) && glob_interval) {
-						printf (_("Awakened by SIGUSR1...\n"));
+					if (capture_now && !(gp_params.flags & FLAGS_QUIET) && glob_interval)
+					{
+						printf(_("Awakened by SIGUSR1...\n"));
 						break;
 					}
-					waittime = timediff_now (&next_pic_time);
+					waittime = timediff_now(&next_pic_time);
 				} while (waittime > 0);
-			} else {
+			}
+			else
+			{
 				/* drain the queue first though, even though there is no time. */
-				while (1) {
-					result = wait_and_handle_event (c,1, &evtype, download);
+				while (1)
+				{
+					result = wait_and_handle_event(c, 1, &evtype, download);
 					if ((result != GP_OK) || (evtype == GP_EVENT_TIMEOUT))
 						break;
 				}
 				if (!(gp_params.flags & FLAGS_QUIET) && glob_interval)
-					printf (_("not sleeping (%ld seconds behind schedule)\n"), -waittime/1000);
+					printf(_("not sleeping (%ld seconds behind schedule)\n"), -waittime / 1000);
 			}
-			if (result != GP_OK) break;
-			if (capture_now && (gp_params.flags & FLAGS_RESET_CAPTURE_INTERVAL)) {
-				gettimeofday (&next_pic_time, NULL);
+			if (result != GP_OK)
+				break;
+			if (capture_now && (gp_params.flags & FLAGS_RESET_CAPTURE_INTERVAL))
+			{
+				gettimeofday(&next_pic_time, NULL);
 				next_pic_time.tv_sec += glob_interval;
 			}
-			else if (!capture_now) {
+			else if (!capture_now)
+			{
 				/*
 				 * In the case of a (huge) time-sync while gphoto is running,
 				 * gphoto could percieve an extremely large amount of time and
@@ -1234,53 +1349,62 @@ capture_generic (struct mg_connection *c, CameraCaptureType type, const char __u
 				 * difference of time with the following loop.
 				 * [alesan]
 				 */
-				do {
+				do
+				{
 					next_pic_time.tv_sec += glob_interval;
-				} while (glob_interval && (timediff_now (&next_pic_time) < 0));
+				} while (glob_interval && (timediff_now(&next_pic_time) < 0));
 			}
 			capture_now = 0;
-		} else {
+		}
+		else
+		{
 			/* wait indefinitely for SIGUSR1 */
-			do {
-				result = wait_and_handle_event (c,200, &evtype, download);
-			} while(!capture_now && (result == GP_OK));
+			do
+			{
+				result = wait_and_handle_event(c, 200, &evtype, download);
+			} while (!capture_now && (result == GP_OK));
 			if (result != GP_OK)
 				break;
 			capture_now = 0;
 			if (!(gp_params.flags & FLAGS_QUIET))
-				printf (_("Awakened by SIGUSR1...\n"));
+				printf(_("Awakened by SIGUSR1...\n"));
 		}
 	}
 	/* The final capture will fall out of the loop into this case,
 	 * so make sure we wait a bit for the the camera to finish stuff.
 	 */
-	gettimeofday (&expose_end_time, NULL);
+	gettimeofday(&expose_end_time, NULL);
 	waittime = 3000;
 	/* tricky, this loop might need to download both JPG and RAW. so wait longer. */
 	/*if (glob_frames || end_next || !glob_interval || glob_bulblength) waittime = 2000;*/
 	/* Drain the event queue at the end and download left over added images */
-	while (1) {
+	while (1)
+	{
 		int realwait = waittime - (-timediff_now(&expose_end_time));
-		if (realwait < -3) break; /* wait at most 6 seconds */
+		if (realwait < -3)
+			break; /* wait at most 6 seconds */
 
-		if (realwait < 0) realwait = 0; /* just drain the queue now */
-		result = wait_and_handle_event(c,realwait, &evtype, download);
-		if ((result != GP_OK) || (evtype == GP_EVENT_TIMEOUT)) {
+		if (realwait < 0)
+			realwait = 0; /* just drain the queue now */
+		result = wait_and_handle_event(c, realwait, &evtype, download);
+		if ((result != GP_OK) || (evtype == GP_EVENT_TIMEOUT))
+		{
 			/*printf("Timeout or error, leaving loop.\n");*/
 			break;
 		}
-		if (evtype == GP_EVENT_CAPTURE_COMPLETE) {
+		if (evtype == GP_EVENT_CAPTURE_COMPLETE)
+		{
 			/*printf("Capture complete, waiting final 0.1s.\n");*/
 			waittime = 100;
 		}
-		if (evtype == GP_EVENT_FILE_ADDED) { /* Restart timer, more image data might come. */
+		if (evtype == GP_EVENT_FILE_ADDED)
+		{ /* Restart timer, more image data might come. */
 			/*printf("File added, waiting more %gs.\n", waittime/1000.0);*/
-			gettimeofday (&expose_end_time, NULL);
+			gettimeofday(&expose_end_time, NULL);
 		}
 	}
 	return GP_OK;
 }
-
 
 /* Set/init global variables                                    */
 /* ------------------------------------------------------------ */
@@ -1288,69 +1412,72 @@ capture_generic (struct mg_connection *c, CameraCaptureType type, const char __u
 #ifdef HAVE_PTHREAD
 
 typedef struct _ThreadData ThreadData;
-struct _ThreadData {
+struct _ThreadData
+{
 	Camera *camera;
 	time_t timeout;
 	CameraTimeoutFunc func;
 };
 
 static void
-thread_cleanup_func (void *data)
+thread_cleanup_func(void *data)
 {
 	ThreadData *td = data;
 
-	free (td);
+	free(td);
 }
 
 static void *
-thread_func (void *data)
+thread_func(void *data)
 {
 	ThreadData *td = data;
 	time_t t, last;
 
-	pthread_cleanup_push (thread_cleanup_func, td);
+	pthread_cleanup_push(thread_cleanup_func, td);
 
-	last = time (NULL);
-	while (1) {
-		t = time (NULL);
-		if (t - last > td->timeout) {
-			td->func (td->camera, NULL);
+	last = time(NULL);
+	while (1)
+	{
+		t = time(NULL);
+		if (t - last > td->timeout)
+		{
+			td->func(td->camera, NULL);
 			last = t;
 		}
-		pthread_testcancel ();
+		pthread_testcancel();
 	}
 
-	pthread_cleanup_pop (1);
+	pthread_cleanup_pop(1);
 }
 
 static unsigned int
-start_timeout_func (Camera *camera, unsigned int timeout,
-		    CameraTimeoutFunc func, void __unused__ *data)
+start_timeout_func(Camera *camera, unsigned int timeout,
+									 CameraTimeoutFunc func, void __unused__ *data)
 {
 	pthread_t tid;
 	ThreadData *td;
 
-	td = malloc (sizeof (ThreadData));
+	td = malloc(sizeof(ThreadData));
 	if (!td)
 		return 0;
-	memset (td, 0, sizeof (ThreadData));
+	memset(td, 0, sizeof(ThreadData));
 	td->camera = camera;
 	td->timeout = timeout;
 	td->func = func;
 
-	pthread_create (&tid, NULL, thread_func, td);
+	pthread_create(&tid, NULL, thread_func, td);
 
 	return (tid);
 }
 
 static void
-stop_timeout_func (Camera __unused__ *camera, unsigned int id,
-		   void __unused__ *data)
+stop_timeout_func(Camera __unused__ *camera, unsigned int id,
+									void __unused__ *data)
 {
 	pthread_t tid = id;
 
-	pthread_cancel (tid);
-	pthread_join (tid, NULL);
+	pthread_cancel(tid);
+	pthread_join(tid, NULL);
 }
 
 #endif
@@ -1358,46 +1485,46 @@ stop_timeout_func (Camera __unused__ *camera, unsigned int id,
 /* Misc functions                                                       */
 /* ------------------------------------------------------------------   */
 
-void
-cli_error_print (char *format, ...)
+void cli_error_print(char *format, ...)
 {
-        va_list         pvar;
+	va_list pvar;
 
-        fprintf(stderr, _("ERROR: "));
-        va_start(pvar, format);
-        vfprintf(stderr, format, pvar);
-        va_end(pvar);
-        fprintf(stderr, "\n");
+	fprintf(stderr, _("ERROR: "));
+	va_start(pvar, format);
+	vfprintf(stderr, format, pvar);
+	va_end(pvar);
+	fprintf(stderr, "\n");
 }
 
 static void
-signal_resize (int __unused__ signo)
+signal_resize(int __unused__ signo)
 {
 	const char *columns;
 
-	columns = getenv ("COLUMNS");
-	if (columns && atoi (columns))
-		gp_params.cols = atoi (columns);
+	columns = getenv("COLUMNS");
+	if (columns && atoi(columns))
+		gp_params.cols = atoi(columns);
 }
 
 static void
-signal_exit (int __unused__ signo)
+signal_exit(int __unused__ signo)
 {
 	/* If we already were told to cancel, abort. */
-	if (glob_cancel) {
+	if (glob_cancel)
+	{
 		if ((gp_params.flags & FLAGS_QUIET) == 0)
-			printf (_("\nAborting...\n"));
+			printf(_("\nAborting...\n"));
 		if (gp_params.camera)
-			gp_camera_unref (gp_params.camera);
+			gp_camera_unref(gp_params.camera);
 		if (gp_params.context)
-			gp_context_unref (gp_params.context);
+			gp_context_unref(gp_params.context);
 		if ((gp_params.flags & FLAGS_QUIET) == 0)
-			printf (_("Aborted.\n"));
-		exit (EXIT_FAILURE);
+			printf(_("Aborted.\n"));
+		exit(EXIT_FAILURE);
 	}
 
 	if ((gp_params.flags & FLAGS_QUIET) == 0)
-                printf (_("\nCancelling...\n"));
+		printf(_("\nCancelling...\n"));
 
 	glob_cancel = 1;
 	glob_interval = 0;
@@ -1406,7 +1533,8 @@ signal_exit (int __unused__ signo)
 /* Main :)                                                              */
 /* -------------------------------------------------------------------- */
 
-typedef enum {
+typedef enum
+{
 	ARG_ABILITIES,
 	ARG_ABOUT,
 	ARG_SHOW_PREVIEW,
@@ -1442,7 +1570,8 @@ typedef enum {
 	ARG_WAIT_EVENT
 } Arg;
 
-typedef enum {
+typedef enum
+{
 	CALLBACK_PARAMS_TYPE_NONE,
 	CALLBACK_PARAMS_TYPE_PREINITIALIZE,
 	CALLBACK_PARAMS_TYPE_INITIALIZE,
@@ -1451,9 +1580,11 @@ typedef enum {
 } CallbackParamsType;
 
 typedef struct _CallbackParams CallbackParams;
-struct _CallbackParams {
+struct _CallbackParams
+{
 	CallbackParamsType type;
-	union {
+	union
+	{
 		/*
 		 * CALLBACK_PARAMS_TYPE_RUN,
 		 * CALLBACK_PARAMS_TYPE_INITIALIZE,
@@ -1462,7 +1593,8 @@ struct _CallbackParams {
 		int r;
 
 		/* CALLBACK_PARAMS_TYPE_QUERY */
-		struct {
+		struct
+		{
 			Arg arg;
 			char found;
 		} q;
@@ -1471,69 +1603,70 @@ struct _CallbackParams {
 	} p;
 };
 
-
 /*! \brief popt callback with type CALLBACK_PARAMS_TYPE_QUERY
  */
 
 static void
-cb_arg_query (poptContext __unused__ ctx,
-	      enum poptCallbackReason __unused__ reason,
-	      const struct poptOption *opt, const char __unused__ *arg,
-	      CallbackParams *params)
+cb_arg_query(poptContext __unused__ ctx,
+						 enum poptCallbackReason __unused__ reason,
+						 const struct poptOption *opt, const char __unused__ *arg,
+						 CallbackParams *params)
 {
 	/* p.q.arg is an enum, but opt->val is an int */
 	if (opt->val == (int)(params->p.q.arg))
 		params->p.q.found = 1;
 }
 
-
 /*! \brief popt callback with type CALLBACK_PARAMS_TYPE_PREINITIALIZE
  */
 
 static void
-cb_arg_preinit (poptContext __unused__ ctx,
-		enum poptCallbackReason __unused__ reason,
-		const struct poptOption *opt, const char *arg,
-		CallbackParams *params)
+cb_arg_preinit(poptContext __unused__ ctx,
+							 enum poptCallbackReason __unused__ reason,
+							 const struct poptOption *opt, const char *arg,
+							 CallbackParams *params)
 {
 	int usb_product, usb_vendor;
 	int usb_product_modified, usb_vendor_modified;
-	switch (opt->val) {
+	switch (opt->val)
+	{
 	case ARG_USBID:
-		gp_log (GP_LOG_DEBUG, "main", "Overriding USB "
-			"IDs to '%s'...", arg);
-		if (sscanf (arg, "0x%x:0x%x=0x%x:0x%x",
-			    &usb_vendor_modified,
-			    &usb_product_modified, &usb_vendor,
-			    &usb_product) != 4) {
-			printf (_("Use the following syntax a:b=c:d "
-				  "to treat any USB device detected "
-				  "as a:b as c:d instead. "
-				  "a b c d should be hexadecimal "
-				  "numbers beginning with '0x'.\n"));
+		gp_log(GP_LOG_DEBUG, "main", "Overriding USB "
+																 "IDs to '%s'...",
+					 arg);
+		if (sscanf(arg, "0x%x:0x%x=0x%x:0x%x",
+							 &usb_vendor_modified,
+							 &usb_product_modified, &usb_vendor,
+							 &usb_product) != 4)
+		{
+			printf(_("Use the following syntax a:b=c:d "
+							 "to treat any USB device detected "
+							 "as a:b as c:d instead. "
+							 "a b c d should be hexadecimal "
+							 "numbers beginning with '0x'.\n"));
 			params->p.r = GP_ERROR_BAD_PARAMETERS;
 			break;
 		}
-		params->p.r = override_usbids_action (&gp_params, usb_vendor,
-						      usb_product, usb_vendor_modified,
-						      usb_product_modified);
+		params->p.r = override_usbids_action(&gp_params, usb_vendor,
+																				 usb_product, usb_vendor_modified,
+																				 usb_product_modified);
 		break;
 	default:
 		break;
 	}
 }
 
-
 /*! \brief popt callback with type CALLBACK_PARAMS_TYPE_INITIALIZE
  */
 
 static void
-cb_arg_init (poptContext __unused__ ctx,
-	     enum poptCallbackReason __unused__ reason,
-	     const struct poptOption *opt, const char *arg,
-	     CallbackParams *params)
+cb_arg_init(poptContext __unused__ ctx,
+						enum poptCallbackReason __unused__ reason,
+						const struct poptOption *opt, const char *arg,
+						CallbackParams *params)
 {
-	switch (opt->val) {
+	switch (opt->val)
+	{
 
 	case ARG_KEEP_RAW:
 		gp_params.flags |= FLAGS_KEEP_RAW;
@@ -1551,18 +1684,20 @@ cb_arg_init (poptContext __unused__ ctx,
 		break;
 
 	case ARG_MODEL:
-		gp_log (GP_LOG_DEBUG, "main", "Processing 'model' "
-			"option ('%s')...", arg);
-		params->p.r = action_camera_set_model (&gp_params, arg);
+		gp_log(GP_LOG_DEBUG, "main", "Processing 'model' "
+																 "option ('%s')...",
+					 arg);
+		params->p.r = action_camera_set_model(&gp_params, arg);
 		break;
 	case ARG_PORT:
-		gp_log (GP_LOG_DEBUG, "main", "Processing 'port' "
-			"option ('%s')...", arg);
-		params->p.r = action_camera_set_port (&gp_params, arg);
+		gp_log(GP_LOG_DEBUG, "main", "Processing 'port' "
+																 "option ('%s')...",
+					 arg);
+		params->p.r = action_camera_set_port(&gp_params, arg);
 		break;
 
 	case ARG_SPEED:
-		params->p.r = action_camera_set_speed (&gp_params, atoi (arg));
+		params->p.r = action_camera_set_speed(&gp_params, atoi(arg));
 		break;
 
 	case ARG_QUIET:
@@ -1574,8 +1709,8 @@ cb_arg_init (poptContext __unused__ ctx,
 		break;
 
 	case ARG_VERSION:
-		params->p.r = print_version_action (&gp_params);
-		printf( "%-16s%-15s%s\n", "mongoose", MG_VERSION, "webserver" );
+		params->p.r = print_version_action(&gp_params);
+		printf("%-16s%-15s%s\n", "mongoose", MG_VERSION, "webserver");
 		break;
 	default:
 		break;
@@ -1586,154 +1721,168 @@ cb_arg_init (poptContext __unused__ ctx,
  */
 
 static void
-cb_arg_run (poptContext __unused__ ctx,
-	    enum poptCallbackReason __unused__ reason,
-	    const struct poptOption *opt, const char *arg,
-	    CallbackParams *params)
+cb_arg_run(poptContext __unused__ ctx,
+					 enum poptCallbackReason __unused__ reason,
+					 const struct poptOption *opt, const char *arg,
+					 CallbackParams *params)
 {
 	char *newfilename = NULL, *newfolder = NULL;
 
-	switch (opt->val) {
+	switch (opt->val)
+	{
 	case ARG_ABILITIES:
-		params->p.r = action_camera_show_abilities (&gp_params);
+		params->p.r = action_camera_show_abilities(&gp_params);
 		break;
 	case ARG_ABOUT:
-		params->p.r = action_camera_about (&gp_params);
+		params->p.r = action_camera_about(&gp_params);
 		break;
 	case ARG_SHOW_PREVIEW:
-		params->p.r = action_camera_show_preview (&gp_params);
+		params->p.r = action_camera_show_preview(&gp_params);
 		break;
 	case ARG_CONFIG:
 #ifdef HAVE_CDK
-		params->p.r = gp_cmd_config (gp_params.camera, gp_params.context);
+		params->p.r = gp_cmd_config(gp_params.camera, gp_params.context);
 #else
-		gp_context_error (gp_params.context,
-				  _("gphoto2 has been compiled without "
-				    "support for CDK."));
+		gp_context_error(gp_params.context,
+										 _("gphoto2 has been compiled without "
+											 "support for CDK."));
 		params->p.r = GP_ERROR_NOT_SUPPORTED;
 #endif
 		break;
 	case ARG_LIST_CAMERAS:
-		params->p.r = list_cameras_action (&gp_params);
+		params->p.r = list_cameras_action(&gp_params);
 		break;
 	case ARG_LIST_PORTS:
-		params->p.r = list_ports_action (&gp_params);
+		params->p.r = list_ports_action(&gp_params);
 		break;
-	case ARG_RESET: {
-		GPPort		*port;
-		GPPortInfo	info;
+	case ARG_RESET:
+	{
+		GPPort *port;
+		GPPortInfo info;
 
 		/* If a camera is already open, close it, as we need a new port */
-		if (gp_params.camera) {
-			gp_camera_exit (gp_params.camera, gp_params.context);
+		if (gp_params.camera)
+		{
+			gp_camera_exit(gp_params.camera, gp_params.context);
 			/* exit, not free. will reopen on next command. */
 		}
 
-		params->p.r = gp_port_new (&port);
-		if (params->p.r != GP_OK) {
-			gp_log(GP_LOG_ERROR,"port_reset", "new failed %d", params->p.r);
+		params->p.r = gp_port_new(&port);
+		if (params->p.r != GP_OK)
+		{
+			gp_log(GP_LOG_ERROR, "port_reset", "new failed %d", params->p.r);
 			break;
 		}
-		params->p.r = gp_camera_get_port_info (gp_params.camera, &info);
-		if (params->p.r != GP_OK) {
-			gp_log(GP_LOG_ERROR,"port_reset", "camera_get_port_info failed");
+		params->p.r = gp_camera_get_port_info(gp_params.camera, &info);
+		if (params->p.r != GP_OK)
+		{
+			gp_log(GP_LOG_ERROR, "port_reset", "camera_get_port_info failed");
 			break;
 		}
-		params->p.r = gp_port_set_info (port, info);
-		if (params->p.r != GP_OK) {
-			gp_log(GP_LOG_ERROR,"port_reset", "port_set_info failed");
+		params->p.r = gp_port_set_info(port, info);
+		if (params->p.r != GP_OK)
+		{
+			gp_log(GP_LOG_ERROR, "port_reset", "port_set_info failed");
 			break;
 		}
-		params->p.r = gp_port_open (port);
-		if (params->p.r != GP_OK) {
-			gp_log(GP_LOG_ERROR,"port_reset", "open failed %d", params->p.r);
+		params->p.r = gp_port_open(port);
+		if (params->p.r != GP_OK)
+		{
+			gp_log(GP_LOG_ERROR, "port_reset", "open failed %d", params->p.r);
 			break;
 		}
-		params->p.r = gp_port_reset (port);
-		gp_port_close (port);
-		gp_port_free (port);
+		params->p.r = gp_port_reset(port);
+		gp_port_close(port);
+		gp_port_free(port);
 		break;
 	}
 	case ARG_SERVER_URL:
-		strncpy( webcfg.server_url, arg, WEBCFG_STR_LEN);
+		strncpy(webcfg.server_url, arg, WEBCFG_STR_LEN);
 		webcfg.server_url[WEBCFG_STR_LEN] = 0;
 		break;
 	case ARG_SERVER:
-		params->p.r = webapi_server (&gp_params);
+		params->p.r = webapi_server(&gp_params);
 		break;
 	case ARG_SHOW_INFO:
 		/* Did the user specify a file or a range? */
-		if (strchr (arg, '.')) {
-			dissolve_filename (gp_params.folder, arg, &newfolder, &newfilename);
-			params->p.r = print_info_action (&gp_params, newfolder, newfilename);
-			free (newfolder); free (newfilename);
+		if (strchr(arg, '.'))
+		{
+			dissolve_filename(gp_params.folder, arg, &newfolder, &newfilename);
+			params->p.r = print_info_action(&gp_params, newfolder, newfilename);
+			free(newfolder);
+			free(newfilename);
 			break;
 		}
-		params->p.r = for_each_file_in_range (&gp_params,
-						      print_info_action, arg);
+		params->p.r = for_each_file_in_range(&gp_params,
+																				 print_info_action, arg);
 		break;
 	case ARG_SUMMARY:
-		params->p.r = action_camera_summary (&gp_params);
+		params->p.r = action_camera_summary(&gp_params);
 		break;
 	case ARG_GET_CONFIG:
-		params->p.r = get_config_action (&gp_params, arg);
+		params->p.r = get_config_action(&gp_params, arg);
 		break;
-	case ARG_SET_CONFIG: {
+	case ARG_SET_CONFIG:
+	{
 		char *name, *value;
 
-		if (strchr (arg, '=') == NULL) {
+		if (strchr(arg, '=') == NULL)
+		{
 			params->p.r = GP_ERROR_BAD_PARAMETERS;
 			break;
 		}
-		name  = strdup (arg);
-		value = strchr (name, '=');
+		name = strdup(arg);
+		value = strchr(name, '=');
 		*value = '\0';
 		value++;
-		params->p.r = set_config_action (&gp_params, name, value);
-		free (name);
-		break;
-	}
-	case ARG_SET_CONFIG_INDEX: {
-		char *name, *value;
-
-		if (strchr (arg, '=') == NULL) {
-			params->p.r = GP_ERROR_BAD_PARAMETERS;
-			break;
-		}
-		name  = strdup (arg);
-		value = strchr (name, '=');
-		*value = '\0';
-		value++;
-		params->p.r = set_config_index_action (&gp_params, name, value);
-		free (name);
+		params->p.r = set_config_action(&gp_params, name, value);
+		free(name);
 		break;
 	}
-	case ARG_SET_CONFIG_VALUE: {
+	case ARG_SET_CONFIG_INDEX:
+	{
 		char *name, *value;
 
-		if (strchr (arg, '=') == NULL) {
+		if (strchr(arg, '=') == NULL)
+		{
 			params->p.r = GP_ERROR_BAD_PARAMETERS;
 			break;
 		}
-		name  = strdup (arg);
-		value = strchr (name, '=');
+		name = strdup(arg);
+		value = strchr(name, '=');
 		*value = '\0';
 		value++;
-		params->p.r = set_config_value_action (&gp_params, name, value);
-		free (name);
+		params->p.r = set_config_index_action(&gp_params, name, value);
+		free(name);
+		break;
+	}
+	case ARG_SET_CONFIG_VALUE:
+	{
+		char *name, *value;
+
+		if (strchr(arg, '=') == NULL)
+		{
+			params->p.r = GP_ERROR_BAD_PARAMETERS;
+			break;
+		}
+		name = strdup(arg);
+		value = strchr(name, '=');
+		*value = '\0';
+		value++;
+		params->p.r = set_config_value_action(&gp_params, name, value);
+		free(name);
 		break;
 	}
 	case ARG_WAIT_EVENT:
-		params->p.r = action_camera_wait_event (&gp_params, DT_NO_DOWNLOAD, arg);
+		params->p.r = action_camera_wait_event(&gp_params, DT_NO_DOWNLOAD, arg);
 		break;
 	case ARG_STORAGE_INFO:
-		params->p.r = print_storage_info (&gp_params);
+		params->p.r = print_storage_info(&gp_params);
 		break;
 	default:
 		break;
 	};
 }
-
 
 /*! \brief Callback function called while parsing command line options.
  *
@@ -1742,101 +1891,108 @@ cb_arg_run (poptContext __unused__ ctx,
  */
 
 static void
-cb_arg (poptContext __unused__ ctx,
-	enum poptCallbackReason __unused__ reason,
-	const struct poptOption *opt, const char *arg,
-	void *data)
+cb_arg(poptContext __unused__ ctx,
+			 enum poptCallbackReason __unused__ reason,
+			 const struct poptOption *opt, const char *arg,
+			 void *data)
 {
-	CallbackParams *params = (CallbackParams *) data;
+	CallbackParams *params = (CallbackParams *)data;
 
 	/* Check if we are only to query. */
-	switch (params->type) {
+	switch (params->type)
+	{
 	case CALLBACK_PARAMS_TYPE_NONE:
 		/* do nothing */
 		break;
 	case CALLBACK_PARAMS_TYPE_QUERY:
-		cb_arg_query (ctx, reason, opt, arg, params);
+		cb_arg_query(ctx, reason, opt, arg, params);
 		break;
 	case CALLBACK_PARAMS_TYPE_PREINITIALIZE:
-		cb_arg_preinit (ctx, reason, opt, arg, params);
+		cb_arg_preinit(ctx, reason, opt, arg, params);
 		break;
 	case CALLBACK_PARAMS_TYPE_INITIALIZE:
 		/* Check if we are only to initialize. */
-		cb_arg_init (ctx, reason, opt, arg, params);
+		cb_arg_init(ctx, reason, opt, arg, params);
 		break;
 	case CALLBACK_PARAMS_TYPE_RUN:
-		cb_arg_run (ctx, reason, opt, arg, params);
+		cb_arg_run(ctx, reason, opt, arg, params);
 		break;
 	}
 }
 
-
 static void
-report_failure (int result, int argc, char **argv)
+report_failure(int result, int argc, char **argv)
 {
 	if (result >= 0)
 		return;
 
-	if (result == GP_ERROR_CANCEL) {
-		fprintf (stderr, _("Operation cancelled.\n"));
+	if (result == GP_ERROR_CANCEL)
+	{
+		fprintf(stderr, _("Operation cancelled.\n"));
 		return;
 	}
-	if (result == -2000) {
-		fprintf (stderr, _("*** Error: No camera found. ***\n\n"));
-	} else {
-		fprintf (stderr, _("*** Error (%i: '%s') ***       \n\n"), result,
-			gp_result_as_string (result));
+	if (result == -2000)
+	{
+		fprintf(stderr, _("*** Error: No camera found. ***\n\n"));
 	}
-	if (!debug_option_given) {
+	else
+	{
+		fprintf(stderr, _("*** Error (%i: '%s') ***       \n\n"), result,
+						gp_result_as_string(result));
+	}
+	if (!debug_option_given)
+	{
 		int n;
-		printf (_("For debugging messages, please use "
-			  "the --debug option.\n"
-			  "Debugging messages may help finding a "
-			  "solution to your problem.\n"
-			  "If you intend to send any error or "
-			  "debug messages to the gphoto\n"
-			  "developer mailing list "
-			  "<gphoto-devel@lists.sourceforge.net>, please run\n"
-			  "gphoto2 as follows:\n\n"));
+		printf(_("For debugging messages, please use "
+						 "the --debug option.\n"
+						 "Debugging messages may help finding a "
+						 "solution to your problem.\n"
+						 "If you intend to send any error or "
+						 "debug messages to the gphoto\n"
+						 "developer mailing list "
+						 "<gphoto-devel@lists.sourceforge.net>, please run\n"
+						 "gphoto2 as follows:\n\n"));
 
 		/*
 		 * Print the exact command line to assist bugreporters
 		 */
-		printf ("    env LANG=C gphoto2 --debug --debug-logfile=my-logfile.txt");
-		for (n = 1; n < argc; n++) {
+		printf("    env LANG=C gphoto2 --debug --debug-logfile=my-logfile.txt");
+		for (n = 1; n < argc; n++)
+		{
 			if (strchr(argv[n], ' ') == NULL)
-				printf(" %s",argv[n]);
+				printf(" %s", argv[n]);
 			else
-				printf(" \"%s\"",argv[n]);
+				printf(" \"%s\"", argv[n]);
 		}
-		printf ("\n\n");
-		printf (_("Please make sure there is sufficient quoting "
-			"around the arguments.\n\n"));
+		printf("\n\n");
+		printf(_("Please make sure there is sufficient quoting "
+						 "around the arguments.\n\n"));
 	}
 }
 
-#define CR_MAIN(result)							\
-	do {								\
-		int r = (result);					\
-									\
-		if (r < 0) {						\
-			report_failure (r, argc, argv);			\
-									\
-			/* Run stop hook */				\
-			gp_params_run_hook(&gp_params, "stop", NULL);	\
-									\
-			gp_params_exit (&gp_params);			\
-                	poptFreeContext(ctx);				\
-			return (EXIT_FAILURE);				\
-		}							\
+#define CR_MAIN(result)                             \
+	do                                                \
+	{                                                 \
+		int r = (result);                               \
+                                                    \
+		if (r < 0)                                      \
+		{                                               \
+			report_failure(r, argc, argv);                \
+                                                    \
+			/* Run stop hook */                           \
+			gp_params_run_hook(&gp_params, "stop", NULL); \
+                                                    \
+			gp_params_exit(&gp_params);                   \
+			poptFreeContext(ctx);                         \
+			return (EXIT_FAILURE);                        \
+		}                                               \
 	} while (0)
 
-#define GPHOTO2_POPT_CALLBACK \
+#define GPHOTO2_POPT_CALLBACK     \
 	{NULL, '\0', POPT_ARG_CALLBACK, \
-			(void *) &cb_arg, 0, (char *) &cb_params, NULL},
+	 (void *)&cb_arg, 0, (char *)&cb_params, NULL},
 
-int
-main (int argc, char **argv, char **envp)
+int main(int argc, char **argv, char **envp)
 {
 	CallbackParams cb_params;
 	poptContext ctx;
@@ -1845,117 +2001,105 @@ main (int argc, char **argv, char **envp)
 	char *debug_logfile_name = NULL, *debug_loglevel = NULL;
 
 	const struct poptOption generalOptions[] = {
-		GPHOTO2_POPT_CALLBACK
-		{"help", '?', POPT_ARG_NONE, (void *) &help_option_given, ARG_HELP,
-		 N_("Print complete help message on program usage"), NULL},
-		{"usage", '\0', POPT_ARG_NONE, (void *) &usage_option_given, ARG_USAGE,
-		 N_("Print short message on program usage"), NULL},
-		{"debug", '\0', POPT_ARG_NONE, (void *) &debug_option_given, ARG_DEBUG,
-		 N_("Turn on debugging"), NULL},
-		{"debug-loglevel", '\0', POPT_ARG_STRING, (void *) &debug_loglevel, ARG_DEBUG_LOGLEVEL,
-		 N_("Set debug level [error|debug|data|all]"), NULL},
-		{"debug-logfile", '\0', POPT_ARG_STRING, (void *) &debug_logfile_name, ARG_DEBUG_LOGFILE,
-		 N_("Name of file to write debug info to"), N_("FILENAME")},
-		{"quiet", 'q', POPT_ARG_NONE, NULL, ARG_QUIET,
-		 N_("Quiet output (default=verbose)"), NULL},
-		POPT_TABLEEND
-	};
+			GPHOTO2_POPT_CALLBACK{"help", '?', POPT_ARG_NONE, (void *)&help_option_given, ARG_HELP,
+														N_("Print complete help message on program usage"), NULL},
+			{"usage", '\0', POPT_ARG_NONE, (void *)&usage_option_given, ARG_USAGE,
+			 N_("Print short message on program usage"), NULL},
+			{"debug", '\0', POPT_ARG_NONE, (void *)&debug_option_given, ARG_DEBUG,
+			 N_("Turn on debugging"), NULL},
+			{"debug-loglevel", '\0', POPT_ARG_STRING, (void *)&debug_loglevel, ARG_DEBUG_LOGLEVEL,
+			 N_("Set debug level [error|debug|data|all]"), NULL},
+			{"debug-logfile", '\0', POPT_ARG_STRING, (void *)&debug_logfile_name, ARG_DEBUG_LOGFILE,
+			 N_("Name of file to write debug info to"), N_("FILENAME")},
+			{"quiet", 'q', POPT_ARG_NONE, NULL, ARG_QUIET,
+			 N_("Quiet output (default=verbose)"), NULL},
+			POPT_TABLEEND};
 
 	const struct poptOption cameraOptions[] = {
-		GPHOTO2_POPT_CALLBACK
-		{"port", '\0', POPT_ARG_STRING, NULL, ARG_PORT,
-		 N_("Specify device port"), N_("FILENAME")},
-		{"speed", '\0', POPT_ARG_INT, NULL, ARG_SPEED,
-		 N_("Specify serial transfer speed"), N_("SPEED")},
-		{"camera", '\0', POPT_ARG_STRING, NULL, ARG_MODEL,
-		 N_("Specify camera model"), N_("MODEL")},
-		{"usbid", '\0', POPT_ARG_STRING, NULL, ARG_USBID,
-		 N_("(expert only) Override USB IDs"), N_("USBIDs")},
-		POPT_TABLEEND
-	};
+			GPHOTO2_POPT_CALLBACK{"port", '\0', POPT_ARG_STRING, NULL, ARG_PORT,
+														N_("Specify device port"), N_("FILENAME")},
+			{"speed", '\0', POPT_ARG_INT, NULL, ARG_SPEED,
+			 N_("Specify serial transfer speed"), N_("SPEED")},
+			{"camera", '\0', POPT_ARG_STRING, NULL, ARG_MODEL,
+			 N_("Specify camera model"), N_("MODEL")},
+			{"usbid", '\0', POPT_ARG_STRING, NULL, ARG_USBID,
+			 N_("(expert only) Override USB IDs"), N_("USBIDs")},
+			POPT_TABLEEND};
 
 	const struct poptOption infoOptions[] = {
-		GPHOTO2_POPT_CALLBACK
-		{"version", 'v', POPT_ARG_NONE, NULL, ARG_VERSION,
-		 N_("Display version and exit"), NULL},
-		{"list-cameras", '\0', POPT_ARG_NONE, NULL, ARG_LIST_CAMERAS,
-		 N_("List supported camera models"), NULL},
-		{"list-ports", '\0', POPT_ARG_NONE, NULL, ARG_LIST_PORTS,
-		 N_("List supported port devices"), NULL},
-		{"abilities", 'a', POPT_ARG_NONE, NULL, ARG_ABILITIES,
-		 N_("Display the camera/driver abilities in the libgphoto2 database"), NULL},
-		POPT_TABLEEND
-	};
+			GPHOTO2_POPT_CALLBACK{"version", 'v', POPT_ARG_NONE, NULL, ARG_VERSION,
+														N_("Display version and exit"), NULL},
+			{"list-cameras", '\0', POPT_ARG_NONE, NULL, ARG_LIST_CAMERAS,
+			 N_("List supported camera models"), NULL},
+			{"list-ports", '\0', POPT_ARG_NONE, NULL, ARG_LIST_PORTS,
+			 N_("List supported port devices"), NULL},
+			{"abilities", 'a', POPT_ARG_NONE, NULL, ARG_ABILITIES,
+			 N_("Display the camera/driver abilities in the libgphoto2 database"), NULL},
+			POPT_TABLEEND};
 
 	const struct poptOption configOptions[] = {
-		GPHOTO2_POPT_CALLBACK
+			GPHOTO2_POPT_CALLBACK
 #ifdef HAVE_CDK
-		{"config", '\0', POPT_ARG_NONE, NULL, ARG_CONFIG,
-		 N_("Configure"), NULL},
+			{"config", '\0', POPT_ARG_NONE, NULL, ARG_CONFIG,
+			 N_("Configure"), NULL},
 #endif
-		{"get-config", '\0', POPT_ARG_STRING, NULL, ARG_GET_CONFIG,
-		 N_("Get configuration value"), NULL},
-		{"set-config", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG,
-		 N_("Set configuration value or index in choices"), NULL},
-		{"set-config-index", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG_INDEX,
-		 N_("Set configuration value index in choices"), NULL},
-		{"set-config-value", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG_VALUE,
-		 N_("Set configuration value"), NULL},
-		{"reset", '\0', POPT_ARG_NONE, NULL, ARG_RESET,
-		 N_("Reset device port"), NULL},
-		POPT_TABLEEND
-	};
+			{"get-config", '\0', POPT_ARG_STRING, NULL, ARG_GET_CONFIG,
+			 N_("Get configuration value"), NULL},
+			{"set-config", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG,
+			 N_("Set configuration value or index in choices"), NULL},
+			{"set-config-index", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG_INDEX,
+			 N_("Set configuration value index in choices"), NULL},
+			{"set-config-value", '\0', POPT_ARG_STRING, NULL, ARG_SET_CONFIG_VALUE,
+			 N_("Set configuration value"), NULL},
+			{"reset", '\0', POPT_ARG_NONE, NULL, ARG_RESET,
+			 N_("Reset device port"), NULL},
+			POPT_TABLEEND};
+
 	const struct poptOption captureOptions[] = {
-		GPHOTO2_POPT_CALLBACK
-		{"keep", '\0', POPT_ARG_NONE, NULL, ARG_KEEP,
-		 N_("Keep images on camera after capturing"), NULL},
-		{"keep-raw", '\0', POPT_ARG_NONE, NULL, ARG_KEEP_RAW,
-		 N_("Keep RAW images on camera after capturing"), NULL},
-		{"no-keep", '\0', POPT_ARG_NONE, NULL, ARG_NO_KEEP,
-		 N_("Remove images from camera after capturing"), NULL},
-		{"wait-event", '\0', POPT_ARG_STRING|POPT_ARGFLAG_OPTIONAL, NULL, ARG_WAIT_EVENT,
-		 N_("Wait for event(s) from camera"), N_("EVENT")},
-		{"show-preview", '\0', POPT_ARG_NONE, NULL,
-		 ARG_SHOW_PREVIEW,
-		 N_("Show a quick preview as Ascii Art"), NULL},
-		{"reset-interval", '\0', POPT_ARG_NONE, NULL, ARG_RESET_INTERVAL,
-		 N_("Reset capture interval on signal (default=no)"), NULL},
-		POPT_TABLEEND
-	};
+			GPHOTO2_POPT_CALLBACK{"keep", '\0', POPT_ARG_NONE, NULL, ARG_KEEP,
+														N_("Keep images on camera after capturing"), NULL},
+			{"keep-raw", '\0', POPT_ARG_NONE, NULL, ARG_KEEP_RAW,
+			 N_("Keep RAW images on camera after capturing"), NULL},
+			{"no-keep", '\0', POPT_ARG_NONE, NULL, ARG_NO_KEEP,
+			 N_("Remove images from camera after capturing"), NULL},
+			{"wait-event", '\0', POPT_ARG_STRING | POPT_ARGFLAG_OPTIONAL, NULL, ARG_WAIT_EVENT,
+			 N_("Wait for event(s) from camera"), N_("EVENT")},
+			{"show-preview", '\0', POPT_ARG_NONE, NULL,
+			 ARG_SHOW_PREVIEW,
+			 N_("Show a quick preview as Ascii Art"), NULL},
+			{"reset-interval", '\0', POPT_ARG_NONE, NULL, ARG_RESET_INTERVAL,
+			 N_("Reset capture interval on signal (default=no)"), NULL},
+			POPT_TABLEEND};
 
 	const struct poptOption miscOptions[] = {
-		GPHOTO2_POPT_CALLBACK
-		{"show-info", '\0', POPT_ARG_STRING, NULL, ARG_SHOW_INFO,
-		 N_("Show image information, like width, height, and capture time"), NULL},
-		{"summary", '\0', POPT_ARG_NONE, NULL, ARG_SUMMARY,
-		 N_("Show camera summary"), NULL},
-		{"about", '\0', POPT_ARG_NONE, NULL, ARG_ABOUT,
-		 N_("About the camera driver manual"), NULL},
-		{"storage-info", '\0', POPT_ARG_NONE, NULL, ARG_STORAGE_INFO,
-		 N_("Show storage information"), NULL},
-		{"server", '\0', POPT_ARG_NONE, NULL, ARG_SERVER,
-		 N_("gPhoto webapi server"), NULL},
-		{"server-url", '\0', POPT_ARG_STRING, NULL, ARG_SERVER_URL,
-		 N_("Server URL - e.g http://0.0.0.0:8866"), NULL},
-		POPT_TABLEEND
-	};
+			GPHOTO2_POPT_CALLBACK{"show-info", '\0', POPT_ARG_STRING, NULL, ARG_SHOW_INFO,
+														N_("Show image information, like width, height, and capture time"), NULL},
+			{"summary", '\0', POPT_ARG_NONE, NULL, ARG_SUMMARY,
+			 N_("Show camera summary"), NULL},
+			{"about", '\0', POPT_ARG_NONE, NULL, ARG_ABOUT,
+			 N_("About the camera driver manual"), NULL},
+			{"storage-info", '\0', POPT_ARG_NONE, NULL, ARG_STORAGE_INFO,
+			 N_("Show storage information"), NULL},
+			{"server", '\0', POPT_ARG_NONE, NULL, ARG_SERVER,
+			 N_("gPhoto webapi server"), NULL},
+			{"server-url", '\0', POPT_ARG_STRING, NULL, ARG_SERVER_URL,
+			 N_("Server URL - e.g http://0.0.0.0:8866"), NULL},
+			POPT_TABLEEND};
 
 	const struct poptOption options[] = {
-		GPHOTO2_POPT_CALLBACK
-		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &generalOptions, 0,
-		 N_("Common options"), NULL},		
-		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &miscOptions, 0,
-		 N_("Miscellaneous options (unsorted)"), NULL},		
-		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &infoOptions, 0,
-		 N_("Get information on software and host system (not from the camera)"), NULL},
-		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &cameraOptions, 0,
-		 N_("Specify the camera to use"), NULL},
-		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &configOptions, 0,
-		 N_("Camera and software configuration"), NULL},
-		{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *) &captureOptions, 0,
-		 N_("Capture an image from or on the camera"), NULL},
-		POPT_TABLEEND
-	};
+			GPHOTO2_POPT_CALLBACK{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *)&generalOptions, 0,
+														N_("Common options"), NULL},
+			{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *)&miscOptions, 0,
+			 N_("Miscellaneous options (unsorted)"), NULL},
+			{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *)&infoOptions, 0,
+			 N_("Get information on software and host system (not from the camera)"), NULL},
+			{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *)&cameraOptions, 0,
+			 N_("Specify the camera to use"), NULL},
+			{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *)&configOptions, 0,
+			 N_("Camera and software configuration"), NULL},
+			{NULL, '\0', POPT_ARG_INCLUDE_TABLE, (void *)&captureOptions, 0,
+			 N_("Capture an image from or on the camera"), NULL},
+			POPT_TABLEEND};
 
 	CameraAbilities a;
 	GPPortInfo info;
@@ -1964,11 +2108,11 @@ main (int argc, char **argv, char **envp)
 	cb_params.type = CALLBACK_PARAMS_TYPE_NONE;
 
 	/* For translation */
-	setlocale (LC_ALL, "");
-        bindtextdomain (PACKAGE, LOCALEDIR);
-        textdomain (PACKAGE);
+	setlocale(LC_ALL, "");
+	bindtextdomain(PACKAGE, LOCALEDIR);
+	textdomain(PACKAGE);
 
-  webapi_server_initialize();
+	webapi_server_initialize();
 
 	/* These are for people signaling us */
 	capture_now = 0;
@@ -1979,20 +2123,21 @@ main (int argc, char **argv, char **envp)
 	/* Create/Initialize the global variables before we first use
 	 * them. And the signal handlers and popt callback functions
 	 * do use them. */
-	gp_params_init (&gp_params, envp);
+	gp_params_init(&gp_params, envp);
 
 	/* Figure out the width of the terminal and watch out for changes */
-	signal_resize (0);
+	signal_resize(0);
 #ifdef SIGWINCH
-	signal (SIGWINCH, signal_resize);
+	signal(SIGWINCH, signal_resize);
 #endif
 
 	/* Prepare processing options. */
-	ctx = poptGetContext (PACKAGE, argc, (const char **) argv, options, 0);
-	if (argc <= 1) {
-		poptPrintUsage (ctx, stdout, 0);
-		gp_params_exit (&gp_params);
-                poptFreeContext(ctx);
+	ctx = poptGetContext(PACKAGE, argc, (const char **)argv, options, 0);
+	if (argc <= 1)
+	{
+		poptPrintUsage(ctx, stdout, 0);
+		gp_params_exit(&gp_params);
+		poptFreeContext(ctx);
 		return (0);
 	}
 
@@ -2000,262 +2145,297 @@ main (int argc, char **argv, char **envp)
 	 * Do we need debugging output? While we are at it, scan the
 	 * options for bad ones.
 	 */
-	poptResetContext (ctx);
-	while ((result = poptGetNextOpt (ctx)) >= 0);
-	if (result == POPT_ERROR_BADOPT) {
-		poptPrintUsage (ctx, stderr, 0);
-		gp_params_exit (&gp_params);
-                poptFreeContext(ctx);
+	poptResetContext(ctx);
+	while ((result = poptGetNextOpt(ctx)) >= 0)
+		;
+	if (result == POPT_ERROR_BADOPT)
+	{
+		poptPrintUsage(ctx, stderr, 0);
+		gp_params_exit(&gp_params);
+		poptFreeContext(ctx);
 		return (EXIT_FAILURE);
 	}
-	if (help_option_given) {
+
+	if (help_option_given)
+	{
 		poptPrintHelp(ctx, stdout, 0);
 		fprintf(stdout, "\n%s",
-			_("EVENT can be either COUNT, SECONDS, MILLISECONDS, or MATCHSTRING.\n"));
-		gp_params_exit (&gp_params);
-                poptFreeContext(ctx);
+						_("EVENT can be either COUNT, SECONDS, MILLISECONDS, or MATCHSTRING.\n"));
+		gp_params_exit(&gp_params);
+		poptFreeContext(ctx);
 		return 0;
 	}
-	if (usage_option_given) {
+
+	if (usage_option_given)
+	{
 		poptPrintUsage(ctx, stdout, 0);
-		gp_params_exit (&gp_params);
-                poptFreeContext(ctx);
+		gp_params_exit(&gp_params);
+		poptFreeContext(ctx);
 		return 0;
 	}
-	if (debug_option_given) {
-		CR_MAIN (debug_action (&gp_params, debug_loglevel, debug_logfile_name));
+
+	if (debug_option_given)
+	{
+		CR_MAIN(debug_action(&gp_params, debug_loglevel, debug_logfile_name));
 	}
 
-	gp_log (GP_LOG_DEBUG, "main", "invoked with following arguments:");
-	for (i=1;i<argc;i++)
-		gp_log (GP_LOG_DEBUG, "main", "  %s", argv[i]);
+	gp_log(GP_LOG_DEBUG, "main", "invoked with following arguments:");
+	for (i = 1; i < argc; i++)
+		gp_log(GP_LOG_DEBUG, "main", "  %s", argv[i]);
 
-
-	/* Initialize. */
+		/* Initialize. */
 #ifdef HAVE_PTHREAD
-	gp_camera_set_timeout_funcs (gp_params.camera, start_timeout_func,
-				     stop_timeout_func, NULL);
+	gp_camera_set_timeout_funcs(gp_params.camera, start_timeout_func,
+															stop_timeout_func, NULL);
 #endif
 	cb_params.type = CALLBACK_PARAMS_TYPE_PREINITIALIZE;
 	cb_params.p.r = GP_OK;
-	poptResetContext (ctx);
-	while ((cb_params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
+	poptResetContext(ctx);
+	while ((cb_params.p.r >= GP_OK) && (poptGetNextOpt(ctx) >= 0))
+		;
 
-	CR_MAIN (cb_params.p.r);
+	CR_MAIN(cb_params.p.r);
 
 	cb_params.type = CALLBACK_PARAMS_TYPE_INITIALIZE;
-	poptResetContext (ctx);
-	while ((cb_params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
+	poptResetContext(ctx);
+	while ((cb_params.p.r >= GP_OK) && (poptGetNextOpt(ctx) >= 0))
+		;
 	/* Load default values for --filename and --hook-script if not
 	 * explicitely specified
 	 */
-	if (!gp_params.filename) {
+	if (!gp_params.filename)
+	{
 		char buf[256];
-		if (gp_setting_get("gphoto2","filename",buf)>=0) {
-			set_filename_action(&gp_params,buf);
-		}	
+		if (gp_setting_get("gphoto2", "filename", buf) >= 0)
+		{
+			set_filename_action(&gp_params, buf);
+		}
 	}
-	if (!gp_params.hook_script) {
+	if (!gp_params.hook_script)
+	{
 		char buf[PATH_MAX];
-		if (gp_setting_get("gphoto2","hook-script",buf)>=0) {
+		if (gp_setting_get("gphoto2", "hook-script", buf) >= 0)
+		{
 			gp_params.hook_script = strdup(buf);
 			/* Run init hook */
-			if (0!=gp_params_run_hook(&gp_params, "init", NULL)) {
+			if (0 != gp_params_run_hook(&gp_params, "init", NULL))
+			{
 				fprintf(stdout,
-					"Hook script \"%s\" init failed. Aborting.\n",
-					gp_params.hook_script);
+								"Hook script \"%s\" init failed. Aborting.\n",
+								gp_params.hook_script);
 				exit(3);
 			}
-		}	
+		}
 	}
-	CR_MAIN (cb_params.p.r);
+	CR_MAIN(cb_params.p.r);
 
-#define CHECK_OPT(o)					\
-	if (!cb_params.p.q.found) {			\
-		cb_params.p.q.arg = (o);			\
-		poptResetContext (ctx);			\
-		while (poptGetNextOpt (ctx) >= 0);	\
+#define CHECK_OPT(o)                 \
+	if (!cb_params.p.q.found)          \
+	{                                  \
+		cb_params.p.q.arg = (o);         \
+		poptResetContext(ctx);           \
+		while (poptGetNextOpt(ctx) >= 0) \
+			;                              \
 	}
 
 	/* If we need a camera, make sure we've got one. */
-	CR_MAIN (gp_camera_get_abilities (gp_params.camera, &a));
-	CR_MAIN (gp_camera_get_port_info (gp_params.camera, &info));
+	CR_MAIN(gp_camera_get_abilities(gp_params.camera, &a));
+	CR_MAIN(gp_camera_get_port_info(gp_params.camera, &info));
 
 	/* Determine which command is given on command line */
 	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	cb_params.p.q.found = 0;
-	CHECK_OPT (ARG_ABILITIES);
-	CHECK_OPT (ARG_SHOW_PREVIEW);
-	CHECK_OPT (ARG_CONFIG);
-	CHECK_OPT (ARG_GET_CONFIG);
-	CHECK_OPT (ARG_RESET);
-	CHECK_OPT (ARG_SET_CONFIG);
-	CHECK_OPT (ARG_SET_CONFIG_INDEX);
-	CHECK_OPT (ARG_SET_CONFIG_VALUE);
-	CHECK_OPT (ARG_SERVER);
-	CHECK_OPT (ARG_SERVER_URL);
-	CHECK_OPT (ARG_SHOW_INFO);
-	CHECK_OPT (ARG_STORAGE_INFO);
-	CHECK_OPT (ARG_SUMMARY);
-	CHECK_OPT (ARG_WAIT_EVENT);
-	gp_port_info_get_type (info, &type);
+	CHECK_OPT(ARG_ABILITIES);
+	CHECK_OPT(ARG_SHOW_PREVIEW);
+	CHECK_OPT(ARG_CONFIG);
+	CHECK_OPT(ARG_GET_CONFIG);
+	CHECK_OPT(ARG_RESET);
+	CHECK_OPT(ARG_SET_CONFIG);
+	CHECK_OPT(ARG_SET_CONFIG_INDEX);
+	CHECK_OPT(ARG_SET_CONFIG_VALUE);
+	CHECK_OPT(ARG_SERVER);
+	CHECK_OPT(ARG_SERVER_URL);
+	CHECK_OPT(ARG_SHOW_INFO);
+	CHECK_OPT(ARG_STORAGE_INFO);
+	CHECK_OPT(ARG_SUMMARY);
+	CHECK_OPT(ARG_WAIT_EVENT);
+	
+	gp_port_info_get_type(info, &type);
 
 	if (cb_params.p.q.found &&
-	    (!strcmp (a.model, "") || (type == GP_PORT_NONE))) {
+			(!strcmp(a.model, "") || (type == GP_PORT_NONE)))
+	{
 		int count;
 		const char *model = NULL, *path = NULL;
 		CameraList *list;
 		char buf[1024];
 		int use_auto = 1;
 
-		gp_log (GP_LOG_DEBUG, "main", "The user has not specified "
-			"both a model and a port. Try to figure them out.");
-
+		gp_log(GP_LOG_DEBUG, "main", "The user has not specified "
+																 "both a model and a port. Try to figure them out.");
 
 		_get_portinfo_list(&gp_params);
-		CR_MAIN (gp_list_new (&list)); /* no freeing below */
-		CR_MAIN (gp_abilities_list_detect (gp_params_abilities_list(&gp_params),
-						   gp_params.portinfo_list,
-						   list, gp_params.context));
-		CR_MAIN (count = gp_list_count (list));
-                if (count == 1) {
-                        /* Exactly one camera detected */
-			CR_MAIN (gp_list_get_name (list, 0, &model));
-			CR_MAIN (gp_list_get_value (list, 0, &path));
-			if (a.model[0] && strcmp(a.model,model)) {
+		CR_MAIN(gp_list_new(&list)); /* no freeing below */
+		CR_MAIN(gp_abilities_list_detect(gp_params_abilities_list(&gp_params),
+																		 gp_params.portinfo_list,
+																		 list, gp_params.context));
+		CR_MAIN(count = gp_list_count(list));
+		if (count == 1)
+		{
+			/* Exactly one camera detected */
+			CR_MAIN(gp_list_get_name(list, 0, &model));
+			CR_MAIN(gp_list_get_value(list, 0, &path));
+			if (a.model[0] && strcmp(a.model, model))
+			{
 				CameraAbilities alt;
 				int m;
 
-				CR_MAIN (m = gp_abilities_list_lookup_model (
-						 gp_params_abilities_list(&gp_params),
-						 model));
-				CR_MAIN (gp_abilities_list_get_abilities (
-						 gp_params_abilities_list(&gp_params),
-						 m, &alt));
+				CR_MAIN(m = gp_abilities_list_lookup_model(
+										gp_params_abilities_list(&gp_params),
+										model));
+				CR_MAIN(gp_abilities_list_get_abilities(
+						gp_params_abilities_list(&gp_params),
+						m, &alt));
 
-				if ((a.port == GP_PORT_USB) && (alt.port == GP_PORT_USB)) {
-					if (	(a.usb_vendor  == alt.usb_vendor)  &&
-						(a.usb_product == alt.usb_product)
-					)
+				if ((a.port == GP_PORT_USB) && (alt.port == GP_PORT_USB))
+				{
+					if ((a.usb_vendor == alt.usb_vendor) &&
+							(a.usb_product == alt.usb_product))
 						use_auto = 0;
 				}
 			}
 
-			if (use_auto) {
-				CR_MAIN (action_camera_set_model (&gp_params, model));
+			if (use_auto)
+			{
+				CR_MAIN(action_camera_set_model(&gp_params, model));
 			}
-			if (type == GP_PORT_USB) {
+			if (type == GP_PORT_USB)
+			{
 				char *xpath;
 
-				gp_port_info_get_path (info, &xpath);
-				if (strcmp(xpath, "usb:") && strcmp(xpath, path)) {
-					fprintf (stderr, _("Port %s not found\n"), xpath );
-					CR_MAIN (GP_ERROR_UNKNOWN_PORT);
+				gp_port_info_get_path(info, &xpath);
+				if (strcmp(xpath, "usb:") && strcmp(xpath, path))
+				{
+					fprintf(stderr, _("Port %s not found\n"), xpath);
+					CR_MAIN(GP_ERROR_UNKNOWN_PORT);
 				}
 			}
-			CR_MAIN (action_camera_set_port (&gp_params, path));
-
-                } else if (!count) {
+			CR_MAIN(action_camera_set_port(&gp_params, path));
+		}
+		else if (!count)
+		{
 			int ret;
 			/*
 			 * No camera detected. Have a look at the settings.
 			 * Ignore errors here, it might be a serial one.
 			 */
-                        if (gp_setting_get ("gphoto2", "model", buf) >= 0)
-				action_camera_set_model (&gp_params, buf);
-			if (gp_setting_get ("gphoto2", "port", buf) >= 0)
-				action_camera_set_port (&gp_params, buf);
-			ret = gp_camera_init (gp_params.camera, gp_params.context);
-			if (ret != GP_OK) {
+			if (gp_setting_get("gphoto2", "model", buf) >= 0)
+				action_camera_set_model(&gp_params, buf);
+			if (gp_setting_get("gphoto2", "port", buf) >= 0)
+				action_camera_set_port(&gp_params, buf);
+			ret = gp_camera_init(gp_params.camera, gp_params.context);
+			if (ret != GP_OK)
+			{
 				if (ret == GP_ERROR_BAD_PARAMETERS)
 					ret = -2000;
-				CR_MAIN (ret);
+				CR_MAIN(ret);
 			}
-		} else {
+		}
+		else
+		{
 			/* If --port override, search the model with the same port. */
-			if (type != GP_PORT_NONE) {
+			if (type != GP_PORT_NONE)
+			{
 				int i;
 				char *xpath, *xname;
 
-				gp_port_info_get_path (info, &xpath);
-				gp_port_info_get_name (info, &xname);
-				gp_log (GP_LOG_DEBUG, "gphoto2", "Looking for port ...\n");
-				gp_log (GP_LOG_DEBUG, "gphoto2", "info.type = %d\n", type);
-				gp_log (GP_LOG_DEBUG, "gphoto2", "info.name = %s\n", xname);
-				gp_log (GP_LOG_DEBUG, "gphoto2", "info.path = %s\n", xpath);
+				gp_port_info_get_path(info, &xpath);
+				gp_port_info_get_name(info, &xname);
+				gp_log(GP_LOG_DEBUG, "gphoto2", "Looking for port ...\n");
+				gp_log(GP_LOG_DEBUG, "gphoto2", "info.type = %d\n", type);
+				gp_log(GP_LOG_DEBUG, "gphoto2", "info.name = %s\n", xname);
+				gp_log(GP_LOG_DEBUG, "gphoto2", "info.path = %s\n", xpath);
 
-				for (i=0;i<count;i++) {
+				for (i = 0; i < count; i++)
+				{
 					const char *xport, *xmodel;
-					gp_list_get_value (list, i, &xport);
-					if (!strcmp(xport, xpath)) {
-						gp_list_get_name (list, i, &xmodel);
-						CR_MAIN (action_camera_set_model (&gp_params, xmodel));
-						CR_MAIN (action_camera_set_port (&gp_params, xport));
-						gp_log (GP_LOG_DEBUG, "gphoto2","found port, was entry %d\n", i);
+					gp_list_get_value(list, i, &xport);
+					if (!strcmp(xport, xpath))
+					{
+						gp_list_get_name(list, i, &xmodel);
+						CR_MAIN(action_camera_set_model(&gp_params, xmodel));
+						CR_MAIN(action_camera_set_port(&gp_params, xport));
+						gp_log(GP_LOG_DEBUG, "gphoto2", "found port, was entry %d\n", i);
 						break;
 					}
 				}
 				if (i != count)
 					use_auto = 0;
-				if ((type == GP_PORT_USB) && (i == count) && (strcmp(xpath, "usb:"))) {
-					fprintf (stderr, _("Port %s not found\n"), xpath );
-					CR_MAIN (GP_ERROR_UNKNOWN_PORT);
+				if ((type == GP_PORT_USB) && (i == count) && (strcmp(xpath, "usb:")))
+				{
+					fprintf(stderr, _("Port %s not found\n"), xpath);
+					CR_MAIN(GP_ERROR_UNKNOWN_PORT);
 				}
 			}
 			/* If --camera override, search the model with the same USB ID. */
-			if (use_auto && a.model[0]) {
+			if (use_auto && a.model[0])
+			{
 				int i;
 				const char *xmodel;
 
-				gp_log (GP_LOG_DEBUG, "gphoto2","Looking for model %s\n", a.model);
-				for (i=0;i<count;i++) {
+				gp_log(GP_LOG_DEBUG, "gphoto2", "Looking for model %s\n", a.model);
+				for (i = 0; i < count; i++)
+				{
 					CameraAbilities alt;
 					int m;
 
-					gp_list_get_name (list, i, &xmodel);
-					CR_MAIN (m = gp_abilities_list_lookup_model (
-							 gp_params_abilities_list(&gp_params), xmodel));
-					CR_MAIN (gp_abilities_list_get_abilities (
-							 gp_params_abilities_list(&gp_params), m, &alt));
+					gp_list_get_name(list, i, &xmodel);
+					CR_MAIN(m = gp_abilities_list_lookup_model(
+											gp_params_abilities_list(&gp_params), xmodel));
+					CR_MAIN(gp_abilities_list_get_abilities(
+							gp_params_abilities_list(&gp_params), m, &alt));
 
-					if ((a.port == GP_PORT_USB) && (alt.port == GP_PORT_USB)) {
-						if (	(a.usb_vendor  == alt.usb_vendor)  &&
-							(a.usb_product == alt.usb_product)
-						) {
+					if ((a.port == GP_PORT_USB) && (alt.port == GP_PORT_USB))
+					{
+						if ((a.usb_vendor == alt.usb_vendor) &&
+								(a.usb_product == alt.usb_product))
+						{
 							use_auto = 0;
-							CR_MAIN (gp_list_get_value (list, i, &path));
-							CR_MAIN (action_camera_set_port (&gp_params, path));
+							CR_MAIN(gp_list_get_value(list, i, &path));
+							CR_MAIN(action_camera_set_port(&gp_params, path));
 							break;
 						}
 					}
 				}
 			}
-			if (use_auto) {
+			if (use_auto)
+			{
 				/* More than one camera detected */
 				/*FIXME: Let the user choose from the list!*/
-				gp_log (GP_LOG_DEBUG,"gphoto2","Nothing specified, using first entry of autodetect list.\n");
-				CR_MAIN (gp_list_get_name (list, 0, &model));
-				CR_MAIN (gp_list_get_value (list, 0, &path));
-				CR_MAIN (action_camera_set_model (&gp_params, model));
-				CR_MAIN (action_camera_set_port (&gp_params, path));
+				gp_log(GP_LOG_DEBUG, "gphoto2", "Nothing specified, using first entry of autodetect list.\n");
+				CR_MAIN(gp_list_get_name(list, 0, &model));
+				CR_MAIN(gp_list_get_value(list, 0, &path));
+				CR_MAIN(action_camera_set_model(&gp_params, model));
+				CR_MAIN(action_camera_set_port(&gp_params, path));
 			}
-                }
-		gp_list_free (list);
-        }
-      
-	signal (SIGINT, signal_exit);
-  signal (SIGTERM, signal_exit);
+		}
+		gp_list_free(list);
+	}
+
+	signal(SIGINT, signal_exit);
+	signal(SIGTERM, signal_exit);
 
 	/* Run startup hook */
 	gp_params_run_hook(&gp_params, "start", NULL);
 
 	/* Go! */
 	cb_params.type = CALLBACK_PARAMS_TYPE_RUN;
-	poptResetContext (ctx);
+	poptResetContext(ctx);
 	cb_params.p.r = GP_OK;
-	while ((cb_params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
+	while ((cb_params.p.r >= GP_OK) && (poptGetNextOpt(ctx) >= 0))
+		;
 
-	CR_MAIN (cb_params.p.r);
+	CR_MAIN(cb_params.p.r);
 
 	/* Run stop hook */
 	gp_params_run_hook(&gp_params, "stop", NULL);
@@ -2263,7 +2443,7 @@ main (int argc, char **argv, char **envp)
 	/* FIXME: Env var checks (e.g. for Windows, OS/2) should happen before
 	 *        we load the camlibs */
 
-	gp_params_exit (&gp_params);
-        poptFreeContext(ctx);
-        return EXIT_SUCCESS;
+	gp_params_exit(&gp_params);
+	poptFreeContext(ctx);
+	return EXIT_SUCCESS;
 }
