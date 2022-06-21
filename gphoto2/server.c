@@ -214,6 +214,16 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			MG_HTTP_CHUNK_END;
 		}
 
+		else if (mg_http_match_uri(hm, "/api/show-preview"))
+		{
+			int ret = action_camera_show_preview( c, p );
+
+			if ( ret != GP_OK )
+			{
+			  mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":%d}\n", ret );
+			}
+		}
+
 		else if (mg_http_match_uri(hm, "/api/config/list"))
 		{
 			MG_HTTP_CHUNK_START;

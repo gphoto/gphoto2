@@ -1517,7 +1517,6 @@ typedef enum
 {
 	ARG_ABILITIES,
 	ARG_ABOUT,
-	ARG_SHOW_PREVIEW,
 	ARG_CONFIG,
 	ARG_DEBUG,
 	ARG_DEBUG_LOGLEVEL,
@@ -1713,9 +1712,6 @@ cb_arg_run(poptContext __unused__ ctx,
 		break;
 	case ARG_ABOUT:
 		params->p.r = action_camera_about(&gp_params);
-		break;
-	case ARG_SHOW_PREVIEW:
-		params->p.r = action_camera_show_preview(&gp_params);
 		break;
 	case ARG_CONFIG:
 #ifdef HAVE_CDK
@@ -1992,9 +1988,6 @@ int main(int argc, char **argv, char **envp)
 			 N_("Keep RAW images on camera after capturing"), NULL},
 			{"no-keep", '\0', POPT_ARG_NONE, NULL, ARG_NO_KEEP,
 			 N_("Remove images from camera after capturing"), NULL},
-			{"show-preview", '\0', POPT_ARG_NONE, NULL,
-			 ARG_SHOW_PREVIEW,
-			 N_("Show a quick preview as Ascii Art"), NULL},
 			{"reset-interval", '\0', POPT_ARG_NONE, NULL, ARG_RESET_INTERVAL,
 			 N_("Reset capture interval on signal (default=no)"), NULL},
 			POPT_TABLEEND};
@@ -2180,7 +2173,6 @@ int main(int argc, char **argv, char **envp)
 	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	cb_params.p.q.found = 0;
 	CHECK_OPT(ARG_ABILITIES);
-	CHECK_OPT(ARG_SHOW_PREVIEW);
 	CHECK_OPT(ARG_CONFIG);
 	CHECK_OPT(ARG_RESET);
 	CHECK_OPT(ARG_SERVER);

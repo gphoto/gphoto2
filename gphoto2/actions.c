@@ -1019,8 +1019,13 @@ print_version_action (GPParams __unused__ *p)
 	return GP_OK;
 }
 
+#ifndef WEBAPI
 static int
 _action_camera_capture_preview (GPParams *p, int viewasciiart)
+#else
+static int
+_action_camera_capture_preview (struct mg_connection *c, GPParams *p, int viewasciiart)
+#endif
 {
 	CameraFile *file;
 	int	r, fd;
@@ -1060,6 +1065,7 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 		return r;
 	}
 
+#ifndef WEBAPI
 	/* name it file_%filename if --filename is set, otherwise capture_preview */
 	if(!(p->flags & FLAGS_STDOUT)) {
 		r = save_camera_file_to_file (NULL, "capture_preview", p->filename?GP_FILE_TYPE_PREVIEW:GP_FILE_TYPE_NORMAL, file, tmpfilename);
@@ -1069,17 +1075,65 @@ _action_camera_capture_preview (GPParams *p, int viewasciiart)
 			return r;
 		}
 	}
+#else
+  struct stat st;
+  stat(tmpfilename, &st);
+
+	char buf[8192];
+	int in_fd;
+
+  in_fd = open(tmpfilename, O_RDONLY);
+
+	if (in_fd < 0)
+		return -1;
+
+	const char *http_header = "HTTP/1.1 200 OK\r\n"
+														"Content-Length: %ld\r\n"
+														"Content-Type: image/jpeg\r\n\r\n";
+
+	mg_printf(c, http_header, st.st_size );
+
+	while (1)
+	{
+		ssize_t result = read(in_fd, buf, sizeof(buf));
+		if (!result)
+			break;
+		mg_send( c, buf, result );
+	}
+
+  unlink (tmpname);
+#endif
 	return GP_OK;
 }
 
+#ifndef WEBAPI
 int
-action_camera_capture_preview (GPParams *p) {
-	return _action_camera_capture_preview (p, 0);
+action_camera_capture_preview (GPParams *p) 
+#else
+int
+action_camera_capture_preview (struct mg_connection * c, GPParams *p) 
+#endif
+{
+#ifndef WEBAPI
+  return _action_camera_capture_preview (p, 0);
+#else
+  return _action_camera_capture_preview (c, p, 0);
+#endif	
 }
 
+#ifndef WEBAPI
 int
-action_camera_show_preview (GPParams *p) {
-	return _action_camera_capture_preview (p, 1);
+action_camera_show_preview (GPParams *p) 
+#else
+int
+action_camera_show_preview (struct mg_connection * c, GPParams *p) 
+#endif
+{
+#ifndef WEBAPI
+  return _action_camera_capture_preview (p, 1);
+#else
+  return _action_camera_capture_preview (c, p, 1);
+#endif	
 }
 
 enum moviemode { MOVIE_ENDLESS, MOVIE_FRAMES, MOVIE_SECONDS };

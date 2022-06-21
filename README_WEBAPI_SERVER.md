@@ -102,7 +102,7 @@ Nearly all responses are [JSON](https://json.org) formated.
           type: "image/x-canon-cr2"
         },
         download: true,
-        local_folder: "/home/th/Projects/gphoto2",
+        local_folder: "/home/user/Projects/gphoto2",
         keeping_file_on_camera: true
       },
       {
@@ -117,7 +117,7 @@ Nearly all responses are [JSON](https://json.org) formated.
           type: "image/jpeg"
         },
         download: true,
-        local_folder: "/home/th/Projects/gphoto2",
+        local_folder: "/home/user/Projects/gphoto2",
         keeping_file_on_camera: true
       }
     ],
@@ -125,6 +125,9 @@ Nearly all responses are [JSON](https://json.org) formated.
   }
   ```
 
+- `http://<server ip>:8866/api/show-preview` 
+
+  show preview image
 
 ### server
 
