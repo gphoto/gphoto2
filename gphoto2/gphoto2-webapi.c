@@ -1687,7 +1687,6 @@ cb_arg_init(poptContext __unused__ ctx,
 
 	case ARG_VERSION:
 		params->p.r = print_version_action(&gp_params);
-		printf("%-16s%-15s%s\n", "mongoose", MG_VERSION, "webserver");
 		break;
 	default:
 		break;

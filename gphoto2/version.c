@@ -21,7 +21,28 @@
 #include "config.h"
 #include "version.h"
 
+#include "mongoose.h"
+
 #include <stdlib.h>
+
+
+#ifdef __GNUC__
+#define __unused__ __attribute__((unused))
+#else
+#define __unused__
+#endif
+
+#ifdef WEBAPI
+static const char **gphoto2_frontend_mongoose_version(GPVersionVerbosity __unused__ verbose)
+{
+	static const char *both[] = {
+		MG_VERSION,
+		"webserver lib",
+		NULL
+	};
+	return both;
+}
+#endif
 
 static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 {
@@ -60,6 +81,9 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 #else
 		"no readline (for easy navigation in the shell)",
 #endif
+#ifdef WEBAPI
+		"mongoose (for gphoto2-webapi)",
+#endif
 		NULL
 	};
 	static const char *shrt[] = {
@@ -95,6 +119,9 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 #else
 		"no readline",
 #endif
+#ifdef WEBAPI
+		"mongoose",
+#endif
 		NULL
 	};
 	return((verbose == GP_VERSION_VERBOSE)?verb:shrt);
@@ -104,6 +131,9 @@ const module_version module_versions[] = {
 	{ "gphoto2", gphoto2_frontend_version },
 	{ "libgphoto2", gp_library_version },
 	{ "libgphoto2_port", gp_port_library_version },
+#ifdef WEBAPI
+	{ "mongoose", gphoto2_frontend_mongoose_version },
+#endif
 	{ NULL, NULL }
 };
 
