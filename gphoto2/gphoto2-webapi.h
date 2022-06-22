@@ -26,7 +26,7 @@
 #include <gphoto2/gphoto2-camera.h>
 #include <gp-params.h>
 
-#include "mongoose/mongoose.h"
+#include "mongoose.h"
 #define JSON_PRINTF mg_http_printf_chunk
 
 #define MAX_IMAGE_NUMBER                65536

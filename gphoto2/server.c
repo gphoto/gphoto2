@@ -19,8 +19,8 @@
 
 #define _DARWIN_C_SOURCE
 
-#ifndef WEBAPI
-#define WEBAPI
+#ifndef GPHOTO2_WEBAPI
+#error  GPHOTO2_WEBAPI must be defined
 #endif
 
 #include "config.h"
@@ -29,7 +29,7 @@
 #include "i18n.h"
 #include "gphoto2-webapi.h"
 #include "server.h"
-#include "mongoose/mongoose.h"
+#include "mongoose.h"
 #include "version.h"
 
 #include <ctype.h>

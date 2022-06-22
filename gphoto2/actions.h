@@ -26,8 +26,8 @@
 
 #include <gp-params.h>
 
-#ifdef WEBAPI
-#include "mongoose/mongoose.h"
+#ifdef GPHOTO2_WEBAPI
+#include "mongoose.h"
 #define JSON_PRINTF mg_http_printf_chunk
 #else
 #define JSON_PRINTF(x,...)
@@ -103,7 +103,7 @@ int print_storage_info     (GPParams *);
 
 void _get_portinfo_list	(GPParams *p);
 
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
 int auto_detect_action     (struct mg_connection *, GPParams *);
 int list_config_action     (struct mg_connection *, GPParams *);
 int list_all_config_action (struct mg_connection *, GPParams *);
