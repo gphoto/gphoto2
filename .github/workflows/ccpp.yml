@@ -1,0 +1,31 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: apt-get install
+      run: sudo apt-get update && sudo apt-get install -y autopoint gettext libgphoto2-dev libexif-dev libcdk5-dev libaa1-dev libpopt-dev libreadline-dev libjpeg62-dev 
+    - name: autoreconf
+      run: autoreconf -i -f
+    - name: configure
+      run: ./configure --prefix=$PWD/__prefix
+    - name: make
+      run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC
+    - name: make check
+      run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC check
+    - name: make install
+      run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC install
+    - name: make installcheck
+      run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC installcheck
+    - name: make distcheck
+      run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC distcheck
