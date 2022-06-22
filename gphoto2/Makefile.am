@@ -16,6 +16,15 @@ common_ldadd         =
 common_ldflags       =
 common_sources       =
 
+common_sources      += globals.h
+common_sources      += i18n.h
+common_sources      += actions.c   actions.h
+common_sources      += foreach.c   foreach.h
+common_sources      += gp-params.c gp-params.h
+common_sources      += spawnve.c   spawnve.h
+common_sources      += version.c   version.h
+common_sources      += range.c     range.h
+
 common_cppflags     += -I$(srcdir)/mongoose
 
 common_cppflags     += -I$(top_srcdir)
@@ -50,15 +59,7 @@ gphoto2_LDADD         = $(common_ldadd)
 gphoto2_LDFLAGS       = $(common_ldflags)
 gphoto2_SOURCES       = $(common_sources)
 
-gphoto2_SOURCES      += actions.c actions.h
-gphoto2_SOURCES      += foreach.c foreach.h
-gphoto2_SOURCES      += globals.h
-gphoto2_SOURCES      += i18n.h
-gphoto2_SOURCES      += gp-params.c gp-params.h
-gphoto2_SOURCES      += spawnve.c spawnve.h
 gphoto2_SOURCES      += main.c main.h
-gphoto2_SOURCES      += version.c version.h
-gphoto2_SOURCES      += range.c range.h
 gphoto2_SOURCES      += shell.c shell.h
 
 # gphoto2_LDFLAGS    += -export-dynamic
@@ -94,15 +95,7 @@ gphoto2_webapi_LDADD         = $(common_ldadd)
 gphoto2_webapi_LDFLAGS       = $(common_ldflags)
 gphoto2_webapi_SOURCES       = $(common_sources)
 
-gphoto2_webapi_SOURCES      += actions.c actions.h
-gphoto2_webapi_SOURCES      += foreach.c foreach.h
-gphoto2_webapi_SOURCES      += globals.h
-gphoto2_webapi_SOURCES      += i18n.h
-gphoto2_webapi_SOURCES      += gp-params.c gp-params.h
-gphoto2_webapi_SOURCES      += spawnve.c spawnve.h
 gphoto2_webapi_SOURCES      += gphoto2-webapi.c gphoto2-webapi.h
-gphoto2_webapi_SOURCES      += version.c version.h
-gphoto2_webapi_SOURCES      += range.c range.h
 gphoto2_webapi_SOURCES      += mongoose/mongoose.c mongoose/mongoose.h
 gphoto2_webapi_SOURCES      += server.c server.h
 
