@@ -21,6 +21,21 @@ common_cppflags     += -I$(srcdir)/mongoose
 common_cppflags     += -I$(top_srcdir)
 common_cppflags     += -I$(top_srcdir)/gphoto2
 
+common_cppflags     += $(POPT_CFLAGS)
+common_ldadd        += $(POPT_LIBS)
+
+common_cppflags     += $(LIBEXIF_CFLAGS)
+common_ldadd        += $(LIBEXIF_LIBS)
+
+common_cppflags     += $(LIBGPHOTO2_CFLAGS)
+common_ldadd        += $(LIBGPHOTO2_LIBS)
+
+# TODO: Where are the corresponding _cppflags definitions?
+common_ldadd        += $(JPEG_LIBS)
+common_ldadd        += $(PTHREAD_LIBS)
+common_ldadd        += $(INTLLIBS)
+
+
 
 ########################################################################
 # The gphoto2 command line interface executable
@@ -46,36 +61,24 @@ gphoto2_SOURCES      += version.c version.h
 gphoto2_SOURCES      += range.c range.h
 gphoto2_SOURCES      += shell.c shell.h
 
-if HAVE_CDK
-gphoto2_SOURCES      += gphoto2-cmd-config.c gphoto2-cmd-config.h
-endif
-
-if HAVE_AA
-gphoto2_SOURCES      += gphoto2-cmd-capture.c gphoto2-cmd-capture.h
-endif
-
 # gphoto2_LDFLAGS    += -export-dynamic
 
 gphoto2_CPPFLAGS     += -DPROGNAME=\"gphoto2\"
 
-gphoto2_CFLAGS       += $(LIBGPHOTO2_CFLAGS)
-gphoto2_CFLAGS       += $(AM_CPPFLAGS)
-gphoto2_CFLAGS       += $(CPPFLAGS)
-gphoto2_CFLAGS       += $(CDK_CFLAGS)
-gphoto2_CFLAGS       += $(AA_CFLAGS)
-gphoto2_CFLAGS       += $(LIBEXIF_CFLAGS)
 gphoto2_CFLAGS       += $(RL_CFLAGS)
-gphoto2_CFLAGS       += $(POPT_CFLAGS)
-
-gphoto2_LDADD        += $(LIBGPHOTO2_LIBS)
-gphoto2_LDADD        += $(CDK_LIBS)
-gphoto2_LDADD        += $(AA_LIBS)
-gphoto2_LDADD        += $(JPEG_LIBS)
-gphoto2_LDADD        += $(PTHREAD_LIBS)
-gphoto2_LDADD        += $(LIBEXIF_LIBS)
-gphoto2_LDADD        += $(INTLLIBS)
 gphoto2_LDADD        += $(RL_LIBS)
-gphoto2_LDADD        += $(POPT_LIBS)
+
+if HAVE_CDK
+gphoto2_SOURCES      += gphoto2-cmd-config.c gphoto2-cmd-config.h
+gphoto2_CFLAGS       += $(CDK_CFLAGS)
+gphoto2_LDADD        += $(CDK_LIBS)
+endif
+
+if HAVE_AA
+gphoto2_SOURCES      += gphoto2-cmd-capture.c gphoto2-cmd-capture.h
+gphoto2_CFLAGS       += $(AA_CFLAGS)
+gphoto2_LDADD        += $(AA_LIBS)
+endif
 
 
 ########################################################################
@@ -103,35 +106,22 @@ gphoto2_webapi_SOURCES      += range.c range.h
 gphoto2_webapi_SOURCES      += mongoose/mongoose.c mongoose/mongoose.h
 gphoto2_webapi_SOURCES      += server.c server.h
 
-if HAVE_CDK
-gphoto2_webapi_SOURCES      += gphoto2-cmd-config.c gphoto2-cmd-config.h
-endif
-
-if HAVE_AA
-gphoto2_webapi_SOURCES      += gphoto2-cmd-capture.c gphoto2-cmd-capture.h
-endif
-
 gphoto2_webapi_CPPFLAGS     += -DPROGNAME=\"gphoto2-webapi\"
 gphoto2_webapi_CPPFLAGS     += -DGPHOTO2_WEBAPI
 
-gphoto2_webapi_CFLAGS       += $(LIBGPHOTO2_CFLAGS)
-gphoto2_webapi_CFLAGS       += $(AM_CPPFLAGS)
-gphoto2_webapi_CFLAGS       += $(CPPFLAGS)
+# FIXME: Does interactive config make sense for gphoto2-webapi?
+if HAVE_CDK
+gphoto2_webapi_SOURCES      += gphoto2-cmd-config.c gphoto2-cmd-config.h
 gphoto2_webapi_CFLAGS       += $(CDK_CFLAGS)
-gphoto2_webapi_CFLAGS       += $(AA_CFLAGS)
-gphoto2_webapi_CFLAGS       += $(LIBEXIF_CFLAGS)
-gphoto2_webapi_CFLAGS       += $(RL_CFLAGS)
-gphoto2_webapi_CFLAGS       += $(POPT_CFLAGS)
-
-gphoto2_webapi_LDADD        += $(LIBGPHOTO2_LIBS)
 gphoto2_webapi_LDADD        += $(CDK_LIBS)
+endif
+
+# FIXME: Does ASCII art preview make sense for gphoto2-webapi?
+if HAVE_AA
+gphoto2_webapi_SOURCES      += gphoto2-cmd-capture.c gphoto2-cmd-capture.h
+gphoto2_webapi_CFLAGS       += $(AA_CFLAGS)
 gphoto2_webapi_LDADD        += $(AA_LIBS)
-gphoto2_webapi_LDADD        += $(JPEG_LIBS)
-gphoto2_webapi_LDADD        += $(PTHREAD_LIBS)
-gphoto2_webapi_LDADD        += $(LIBEXIF_LIBS)
-gphoto2_webapi_LDADD        += $(INTLLIBS)
-gphoto2_webapi_LDADD        += $(RL_LIBS)
-gphoto2_webapi_LDADD        += $(POPT_LIBS)
+endif
 
 
 ########################################################################
