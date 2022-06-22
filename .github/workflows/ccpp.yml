@@ -22,7 +22,7 @@ jobs:
     - name: make
       run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC
     - name: make check
-      run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC check
+      run: NPROC=$(nproc); set -x; if make -j$NPROC -l$NPROC check; then :; else s=$?; cat tests/testsuite.log; exit "$s"; fi
     - name: make install
       run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC install
     - name: make installcheck
