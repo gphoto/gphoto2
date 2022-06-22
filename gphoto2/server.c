@@ -19,8 +19,6 @@
 
 #define _DARWIN_C_SOURCE
 
-#define GPHOTO2_WEBAPI
-
 #ifndef GPHOTO2_WEBAPI
 #error  GPHOTO2_WEBAPI must be defined
 #endif
@@ -174,7 +172,7 @@ show_preview(struct mg_connection *c)
   CR (gp_file_get_data_and_size ( file, (const char**)&data, &size));
 
 	const char *http_header = "HTTP/1.1 200 OK\r\n"
-														"Content-Length: %ld\r\n"
+														"Content-Length: %lu\r\n"
 														"Content-Type: image/jpeg\r\n\r\n";
 
 	mg_printf(c, http_header, size );
@@ -182,6 +180,38 @@ show_preview(struct mg_connection *c)
 
   free( data );
 
+	return GP_OK;
+}
+
+static int broadcast_preview(struct mg_mgr *mgr) {
+  struct mg_connection *conn;
+	CameraFile *file;
+  char *data = NULL ;
+	unsigned long int size;
+
+  for (conn = mgr->conns; conn != NULL; conn = conn->next) 
+	{
+    if (conn->label[0] != 'S') continue; // Skip non-stream connections
+
+    if (data == NULL || size == 0) 
+		{
+      CR (gp_file_new (&file));
+      CR (gp_camera_capture_preview (p->camera, file, p->context));
+      CR (gp_file_get_data_and_size ( file, (const char**)&data, &size));
+		}
+
+    if (data == NULL || size == 0) continue;  // Skip on file read error
+
+    mg_printf(conn,
+              "--foo\r\nContent-Type: image/jpeg\r\n"
+              "Content-Length: %lu\r\n\r\n",
+              (unsigned long) size);
+
+    mg_send(conn, data, size);
+    mg_send(conn, "\r\n", 2);
+  }
+
+  if ( data != NULL ) free(data);
 	return GP_OK;
 }
 
@@ -249,6 +279,18 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 			{
 			  mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":%d}\n", ret );
 			}
+		}
+
+		else if (mg_http_match_uri(hm, "/api/live-preview"))
+		{
+      c->label[0] = 'S'; // mark connection as stream
+
+      mg_printf(
+          c, "%s",
+          "HTTP/1.0 200 OK\r\n"
+          "Cache-Control: no-cache\r\n"
+          "Pragma: no-cache\r\nExpires: Thu, 01 Dec 1994 16:00:00 GMT\r\n"
+          "Content-Type: multipart/x-mixed-replace; boundary=--foo\r\n\r\n");
 		}
 
 		else if (mg_http_match_uri(hm, "/api/config/list"))
@@ -462,6 +504,10 @@ void webapi_server_initialize(void)
 	webcfg.server_done = FALSE;
 }
 
+static void timer_callback(void *arg) {
+  broadcast_preview(arg);
+}
+
 int webapi_server(GPParams *params)
 {
 	struct mg_mgr mgr;
@@ -478,6 +524,7 @@ int webapi_server(GPParams *params)
 	mg_log_set("2");
 	mg_mgr_init(&mgr);
 	mg_http_listen(&mgr, webcfg.server_url, fn, NULL);
+	mg_timer_add(&mgr, 500, MG_TIMER_REPEAT, timer_callback, &mgr);
 
 	do
 	{
