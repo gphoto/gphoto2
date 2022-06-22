@@ -983,7 +983,7 @@ int
 print_version_action (GPParams __unused__ *p)
 {
 	int n;
-	printf (_("gphoto2 %s\n"
+	printf (_("%s (%s) %s\n"
 		  "\n"
 		  "Copyright (c) 2000-%d Marcus Meissner and others\n"
 		  "\n"
@@ -991,9 +991,10 @@ print_version_action (GPParams __unused__ *p)
 		  "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
 		  "License. For more information about these matters, see the files named COPYING.\n"
 		  "\n"
-		  "This version of gphoto2 is using the following software versions and options:\n"),
-		VERSION,
-		2021 /* year of release! */
+		  "This version of %s is using the following software versions and options:\n"),
+		PROGNAME, PACKAGE_NAME, PACKAGE_VERSION,
+		2021, /* year of release! */
+		PROGNAME
 		);
 
 	for (n = 0; module_versions[n].name != NULL; n++) {

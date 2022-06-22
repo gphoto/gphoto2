@@ -54,6 +54,8 @@ endif
 
 # gphoto2_LDFLAGS    += -export-dynamic
 
+gphoto2_CPPFLAGS     += -DPROGNAME=\"gphoto2\"
+
 gphoto2_CFLAGS       += $(LIBGPHOTO2_CFLAGS)
 gphoto2_CFLAGS       += $(AM_CPPFLAGS)
 gphoto2_CFLAGS       += $(CPPFLAGS)
@@ -107,6 +109,7 @@ if HAVE_AA
 gphoto2_webapi_SOURCES      += gphoto2-cmd-capture.c gphoto2-cmd-capture.h
 endif
 
+gphoto2_webapi_CPPFLAGS     += -DPROGNAME=\"gphoto2-webapi\"
 gphoto2_webapi_CPPFLAGS     += -DWEBAPI
 
 gphoto2_webapi_CFLAGS       += $(LIBGPHOTO2_CFLAGS)
