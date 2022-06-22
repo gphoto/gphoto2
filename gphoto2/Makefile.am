@@ -16,6 +16,8 @@ common_ldadd         =
 common_ldflags       =
 common_sources       =
 
+common_cppflags     += -I$(srcdir)/mongoose
+
 common_cppflags     += -I$(top_srcdir)
 common_cppflags     += -I$(top_srcdir)/gphoto2
 

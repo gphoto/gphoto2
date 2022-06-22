@@ -75,7 +75,7 @@
 #include <unistd.h>
 #endif
 
-#include "mongoose/mongoose.h"
+#include "mongoose.h"
 
 #ifndef MAX
 #define MAX(a, b) ((a) > (b) ? (a) : (b))

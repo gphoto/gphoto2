@@ -29,7 +29,7 @@
 #include "i18n.h"
 #include "gphoto2-webapi.h"
 #include "server.h"
-#include "mongoose/mongoose.h"
+#include "mongoose.h"
 #include "version.h"
 
 #include <ctype.h>

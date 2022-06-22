@@ -27,7 +27,7 @@
 #include <gp-params.h>
 
 #ifdef WEBAPI
-#include "mongoose/mongoose.h"
+#include "mongoose.h"
 #define JSON_PRINTF mg_http_printf_chunk
 #else
 #define JSON_PRINTF(x,...)
