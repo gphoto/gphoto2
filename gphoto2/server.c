@@ -19,8 +19,11 @@
 
 #define _DARWIN_C_SOURCE
 
+// this is definition not really nessesary, it is to tell 
+// intellisense (VScode) that GPHOTO2_WEBAPI is allways defined only.
+// so we get less warnings within VScode
 #ifndef GPHOTO2_WEBAPI
-#error  GPHOTO2_WEBAPI must be defined
+#define GPHOTO2_WEBAPI
 #endif
 
 #include "config.h"
