@@ -1027,6 +1027,7 @@ static int
 _action_camera_capture_preview (struct mg_connection *c, GPParams *p, int viewasciiart)
 #endif
 {
+#ifndef WEBAPI
 	CameraFile *file;
 	int	r, fd;
 	char tmpname[20], *tmpfilename = NULL;
@@ -1065,7 +1066,6 @@ _action_camera_capture_preview (struct mg_connection *c, GPParams *p, int viewas
 		return r;
 	}
 
-#ifndef WEBAPI
 	/* name it file_%filename if --filename is set, otherwise capture_preview */
 	if(!(p->flags & FLAGS_STDOUT)) {
 		r = save_camera_file_to_file (NULL, "capture_preview", p->filename?GP_FILE_TYPE_PREVIEW:GP_FILE_TYPE_NORMAL, file, tmpfilename);
@@ -1076,32 +1076,22 @@ _action_camera_capture_preview (struct mg_connection *c, GPParams *p, int viewas
 		}
 	}
 #else
-  struct stat st;
-  stat(tmpfilename, &st);
+	CameraFile *file;
+	char *data;
+	unsigned long int size;
 
-	char buf[8192];
-	int in_fd;
-
-  in_fd = open(tmpfilename, O_RDONLY);
-
-	if (in_fd < 0)
-		return -1;
+  CR (gp_file_new (&file));
+  CR (gp_camera_capture_preview (p->camera, file, p->context));
+  CR (gp_file_get_data_and_size ( file, (const char**)&data, &size));
 
 	const char *http_header = "HTTP/1.1 200 OK\r\n"
 														"Content-Length: %ld\r\n"
 														"Content-Type: image/jpeg\r\n\r\n";
 
-	mg_printf(c, http_header, st.st_size );
+	mg_printf(c, http_header, size );
+	mg_send( c, data, size );
 
-	while (1)
-	{
-		ssize_t result = read(in_fd, buf, sizeof(buf));
-		if (!result)
-			break;
-		mg_send( c, buf, result );
-	}
-
-  unlink (tmpname);
+  free( data );
 #endif
 	return GP_OK;
 }
