@@ -86,6 +86,8 @@ int action_camera_upload_metadata (GPParams *, const char *folder,
 				   const char *path);
 int action_camera_capture_movie   (GPParams *, const char *arg);
 int action_camera_wait_event      (GPParams *, enum download_type dt, const char*args);
+int action_camera_show_preview    (GPParams *);
+int action_camera_capture_preview (GPParams *);
 
 /* Other actions */
 int list_cameras_action    (GPParams *);
@@ -109,16 +111,12 @@ int list_config_action     (struct mg_connection *, GPParams *);
 int list_all_config_action (struct mg_connection *, GPParams *);
 int print_exif_action      (struct mg_connection *, GPParams *, const char *folder, const char *filename);
 int get_config_action      (struct mg_connection *, GPParams *, const char *name);
-int action_camera_show_preview    (struct mg_connection *, GPParams *);
-int action_camera_capture_preview (struct mg_connection *, GPParams *);
 #else
 int auto_detect_action     (GPParams *);
 int list_config_action     (GPParams *);
 int list_all_config_action (GPParams *);
 int print_exif_action      (GPParams *, const char *folder, const char *filename);
 int get_config_action      (GPParams *, const char *name);
-int action_camera_show_preview    (GPParams *);
-int action_camera_capture_preview (GPParams *);
 #endif
 
 #endif /* !defined(GPHOTO2_ACTIONS_H) */

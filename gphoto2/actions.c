@@ -1020,15 +1020,8 @@ print_version_action (GPParams __unused__ *p)
 	return GP_OK;
 }
 
-#ifndef GPHOTO2_WEBAPI
 static int
-_action_camera_capture_preview (GPParams *p, int viewasciiart)
-#else
-static int
-_action_camera_capture_preview (struct mg_connection *c, GPParams *p, int viewasciiart)
-#endif
-{
-#ifndef GPHOTO2_WEBAPI
+_action_camera_capture_preview (GPParams *p, int viewasciiart) {
 	CameraFile *file;
 	int	r, fd;
 	char tmpname[20], *tmpfilename = NULL;
@@ -1076,55 +1069,18 @@ _action_camera_capture_preview (struct mg_connection *c, GPParams *p, int viewas
 			return r;
 		}
 	}
-#else
-	CameraFile *file;
-	char *data;
-	unsigned long int size;
 
-  CR (gp_file_new (&file));
-  CR (gp_camera_capture_preview (p->camera, file, p->context));
-  CR (gp_file_get_data_and_size ( file, (const char**)&data, &size));
-
-	const char *http_header = "HTTP/1.1 200 OK\r\n"
-														"Content-Length: %ld\r\n"
-														"Content-Type: image/jpeg\r\n\r\n";
-
-	mg_printf(c, http_header, size );
-	mg_send( c, data, size );
-
-  free( data );
-#endif
 	return GP_OK;
 }
 
-#ifndef GPHOTO2_WEBAPI
 int
-action_camera_capture_preview (GPParams *p)
-#else
-int
-action_camera_capture_preview (struct mg_connection * c, GPParams *p)
-#endif
-{
-#ifndef GPHOTO2_WEBAPI
+action_camera_capture_preview (GPParams *p) {
   return _action_camera_capture_preview (p, 0);
-#else
-  return _action_camera_capture_preview (c, p, 0);
-#endif
 }
 
-#ifndef GPHOTO2_WEBAPI
 int
-action_camera_show_preview (GPParams *p)
-#else
-int
-action_camera_show_preview (struct mg_connection * c, GPParams *p)
-#endif
-{
-#ifndef GPHOTO2_WEBAPI
+action_camera_show_preview (GPParams *p) {
   return _action_camera_capture_preview (p, 1);
-#else
-  return _action_camera_capture_preview (c, p, 1);
-#endif
 }
 
 enum moviemode { MOVIE_ENDLESS, MOVIE_FRAMES, MOVIE_SECONDS };

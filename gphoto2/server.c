@@ -19,6 +19,8 @@
 
 #define _DARWIN_C_SOURCE
 
+#define GPHOTO2_WEBAPI
+
 #ifndef GPHOTO2_WEBAPI
 #error  GPHOTO2_WEBAPI must be defined
 #endif
@@ -40,6 +42,8 @@
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
+
+#define CR(result)       {int __r=(result); if (__r<0) return __r;}
 
 #define CHECK_NULL(x) \
 	{                   \
@@ -158,6 +162,29 @@ static int list_files(struct mg_connection *c, const char *path)
 	return GP_OK;
 }
 
+static int
+show_preview(struct mg_connection *c)
+{
+	CameraFile *file;
+	char *data;
+	unsigned long int size;
+
+  CR (gp_file_new (&file));
+  CR (gp_camera_capture_preview (p->camera, file, p->context));
+  CR (gp_file_get_data_and_size ( file, (const char**)&data, &size));
+
+	const char *http_header = "HTTP/1.1 200 OK\r\n"
+														"Content-Length: %ld\r\n"
+														"Content-Type: image/jpeg\r\n\r\n";
+
+	mg_printf(c, http_header, size );
+	mg_send( c, data, size );
+
+  free( data );
+
+	return GP_OK;
+}
+
 static void
 fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 {
@@ -216,7 +243,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 
 		else if (mg_http_match_uri(hm, "/api/show-preview"))
 		{
-			int ret = action_camera_show_preview( c, p );
+			int ret = show_preview( c );
 
 			if ( ret != GP_OK )
 			{
