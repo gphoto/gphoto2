@@ -330,9 +330,6 @@ gp_params_exit (GPParams *p)
 }
 
 
-/* If CALL_VIA_SYSTEM is defined, use insecure system(3) instead of execve(2) */
-/* #define CALL_VIA_SYSTEM */
-
 static int
 internal_run_hook(const char *const hook_script,
 		  const char *const action, const char *const argument,
@@ -353,40 +350,6 @@ gp_params_run_hook (GPParams *params, const char *action, const char *argument)
 				 params->envp);
 }
 
-
-#ifdef CALL_VIA_SYSTEM
-static void
-internal_putenv(const char *const varname, const char *const value)
-{
-	if (NULL != varname) {
-		if (NULL != value) {
-			const size_t varname_size = strlen(varname);
-			const size_t value_size = strlen(value);
-			/* '=' and '\0' */
-			const size_t buffer_size = varname_size + value_size + 2;
-			char buffer[buffer_size];
-			strcpy(buffer, varname);
-			strcat(buffer, "=");
-			strcat(buffer, value);
-			printf("putenv(\"%s\")\n", buffer);
-			if (0 != putenv(buffer)) {
-				printf("putenv error\n");
-			}
-		} else {
-			/* clear variable */
-			if (unsetenv(varname)) {
-				int my_errno = errno;
-				fprintf(stderr, "unsetenv(\"%s\"): %s",
-					varname, strerror(my_errno));
-			}
-		}
-	}
-	printf("%% %s=%s\n", varname, getenv(varname));
-}
-#endif
-
-
-#ifndef CALL_VIA_SYSTEM
 
 #define ASSERT(cond)					\
   do {							\
@@ -412,7 +375,6 @@ alloc_envar(const char *varname, const char *value)
   strcat(result_buf, value);
   return result_buf;
 }
-#endif
 
 
 static int
@@ -420,21 +382,6 @@ internal_run_hook(const char *const hook_script,
 		  const char *const action, const char *const argument,
 		  char **envp)
 {
-#ifdef CALL_VIA_SYSTEM
-	int retcode;
-
-	/* run hook using system(3) */
-	internal_putenv("ACTION", action);
-	internal_putenv("ARGUMENT", argument);
-	
-	retcode = system(hook_script);
-	if (retcode != 0) {
-		fprintf(stderr, "Hook script returned error code %d (0x%x)\n",
-			retcode, retcode);
-		return 1;
-	}
-	return 0;
-#else
 	/* spawnve() based implementation of internal_run_hook()
 	 *
 	 * Most of the code here creates and destructs the
@@ -537,7 +484,6 @@ internal_run_hook(const char *const hook_script,
 		return 1;
 	}
 	return 0;
-#endif
 }
 
 
