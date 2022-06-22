@@ -18,8 +18,9 @@
  */
 
 #define _DARWIN_C_SOURCE
+#define _GNU_SOURCE 
 
-// this is definition not really nessesary, it is to tell 
+// this is definition not really nessesary, it is to tell
 // intellisense (VScode) that GPHOTO2_WEBAPI is allways defined only.
 // so we get less warnings within VScode
 #ifndef GPHOTO2_WEBAPI
@@ -44,7 +45,12 @@
 #include <unistd.h>
 #endif
 
-#define CR(result)       {int __r=(result); if (__r<0) return __r;}
+#define CR(result)      \
+	{                     \
+		int __r = (result); \
+		if (__r < 0)        \
+			return __r;       \
+	}
 
 #define CHECK_NULL(x) \
 	{                   \
@@ -170,51 +176,55 @@ show_preview(struct mg_connection *c)
 	char *data;
 	unsigned long int size;
 
-  CR (gp_file_new (&file));
-  CR (gp_camera_capture_preview (p->camera, file, p->context));
-  CR (gp_file_get_data_and_size ( file, (const char**)&data, &size));
+	CR(gp_file_new(&file));
+	CR(gp_camera_capture_preview(p->camera, file, p->context));
+	CR(gp_file_get_data_and_size(file, (const char **)&data, &size));
 
 	const char *http_header = "HTTP/1.1 200 OK\r\n"
 														"Content-Length: %lu\r\n"
 														"Content-Type: image/jpeg\r\n\r\n";
 
-	mg_printf(c, http_header, size );
-	mg_send( c, data, size );
+	mg_printf(c, http_header, size);
+	mg_send(c, data, size);
 
-  free( data );
+	free(data);
 
 	return GP_OK;
 }
 
-static int broadcast_preview(struct mg_mgr *mgr) {
-  struct mg_connection *conn;
+static int broadcast_preview(struct mg_mgr *mgr)
+{
+	struct mg_connection *conn;
 	CameraFile *file;
-  char *data = NULL ;
+	char *data = NULL;
 	unsigned long int size;
 
-  for (conn = mgr->conns; conn != NULL; conn = conn->next) 
+	for (conn = mgr->conns; conn != NULL; conn = conn->next)
 	{
-    if (conn->label[0] != 'S') continue; // Skip non-stream connections
+		if (conn->label[0] != 'S')
+			continue; // Skip non-stream connections
 
-    if (data == NULL || size == 0) 
+		if (data == NULL || size == 0)
 		{
-      CR (gp_file_new (&file));
-      CR (gp_camera_capture_preview (p->camera, file, p->context));
-      CR (gp_file_get_data_and_size ( file, (const char**)&data, &size));
+			CR(gp_file_new(&file));
+			CR(gp_camera_capture_preview(p->camera, file, p->context));
+			CR(gp_file_get_data_and_size(file, (const char **)&data, &size));
 		}
 
-    if (data == NULL || size == 0) continue;  // Skip on file read error
+		if (data == NULL || size == 0)
+			continue; // Skip on file read error
 
-    mg_printf(conn,
-              "--foo\r\nContent-Type: image/jpeg\r\n"
-              "Content-Length: %lu\r\n\r\n",
-              (unsigned long) size);
+		mg_printf(conn,
+							"--foo\r\nContent-Type: image/jpeg\r\n"
+							"Content-Length: %lu\r\n\r\n",
+							(unsigned long)size);
 
-    mg_send(conn, data, size);
-    mg_send(conn, "\r\n", 2);
-  }
+		mg_send(conn, data, size);
+		mg_send(conn, "\r\n", 2);
+	}
 
-  if ( data != NULL ) free(data);
+	if (data != NULL)
+		free(data);
 	return GP_OK;
 }
 
@@ -276,24 +286,24 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 
 		else if (mg_http_match_uri(hm, "/api/show-preview"))
 		{
-			int ret = show_preview( c );
+			int ret = show_preview(c);
 
-			if ( ret != GP_OK )
+			if (ret != GP_OK)
 			{
-			  mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":%d}\n", ret );
+				mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":%d}\n", ret);
 			}
 		}
 
 		else if (mg_http_match_uri(hm, "/api/live-preview"))
 		{
-      c->label[0] = 'S'; // mark connection as stream
+			c->label[0] = 'S'; // mark connection as stream
 
-      mg_printf(
-          c, "%s",
-          "HTTP/1.0 200 OK\r\n"
-          "Cache-Control: no-cache\r\n"
-          "Pragma: no-cache\r\nExpires: Thu, 01 Dec 1994 16:00:00 GMT\r\n"
-          "Content-Type: multipart/x-mixed-replace; boundary=--foo\r\n\r\n");
+			mg_printf(
+					c, "%s",
+					"HTTP/1.0 200 OK\r\n"
+					"Cache-Control: no-cache\r\n"
+					"Pragma: no-cache\r\nExpires: Thu, 01 Dec 1994 16:00:00 GMT\r\n"
+					"Content-Type: multipart/x-mixed-replace; boundary=--foo\r\n\r\n");
 		}
 
 		else if (mg_http_match_uri(hm, "/api/config/list"))
@@ -359,7 +369,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 
 				if (mg_http_get_var(&hm->query, "v", value, sizeof(value)) > 0)
 				{
-				  ret = set_config_action( p, name, value );	
+					ret = set_config_action(p, name, value);
 				}
 			}
 			mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":%d}\n", ret);
@@ -498,17 +508,108 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 	}
 }
 
-void webapi_server_initialize(void)
+#ifdef _WIN32
+#define FILE_SEPARATOR "\\"
+#else
+#define FILE_SEPARATOR "/"
+#endif
+
+static char *rtrim(char *s)
+{
+    char* back = s + strlen(s);
+    while(isspace(*--back));
+    *(back+1) = '\0';
+    return s;
+}
+
+static void get_cfgname(char *cfgname)
+{
+	strcpy(cfgname, getenv("HOME"));
+	strcat(cfgname, FILE_SEPARATOR);
+	strcat(cfgname, ".gphoto");
+	strcat(cfgname, FILE_SEPARATOR);
+	strcat(cfgname, "webapi.config");
+}
+
+static void webcfg_print_config(FILE *out)
+{
+	fprintf(out, "server_url=%s\n", webcfg.server_url);
+	fprintf(out, "auth_enabled=%s\n", webcfg.auth_enabled ? "true" : "false");
+	fprintf(out, "auth_user=%s\n", webcfg.auth_user);
+	fprintf(out, "auth_password=%s\n", webcfg.auth_password);
+}
+
+static void webcfg_write_config()
+{
+	char cfgname[256];
+	get_cfgname(cfgname);
+	FILE *cfgfile = fopen(cfgname, "w");
+	webcfg_print_config(cfgfile);
+	fclose(cfgfile);
+}
+
+static void webcfg_read_config()
+{
+	char cfgname[256];
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t read;
+
+	get_cfgname(cfgname);
+	FILE *cfgfile = fopen(cfgname, "r");
+
+	if (cfgfile == NULL)
+		return;
+
+	while ((read = getline(&line, &len, cfgfile)) != -1)
+	{
+    rtrim(line);
+
+    if ( strncmp( "server_url=", line, 11 ) == 0 )
+    {
+      strcpy( webcfg.server_url, line + 11 );
+			continue;
+		}
+
+	  if ( strncmp( "auth_enabled=", line, 13 ) == 0 )
+    {
+      if( strcmp( "true", line + 13 ) == 0 )
+			{
+				webcfg.auth_enabled = true;
+			}
+			continue;
+		}
+
+    if ( strncmp( "auth_user=", line, 10 ) == 0 )
+    {
+      strcpy( webcfg.auth_user, line + 10 );
+			continue;
+		}
+
+    if ( strncmp( "auth_password=", line, 14 ) == 0 )
+    {
+      strcpy( webcfg.auth_password, line + 14 );
+			continue;
+		}
+	}
+
+	free(line);
+	fclose(cfgfile);
+}
+
+void webapi_server_initialize()
 {
 	webcfg.server_url[0] = 0;
 	webcfg.auth_enabled = FALSE;
 	webcfg.auth_user[0] = 0;
 	webcfg.auth_password[0] = 0;
 	webcfg.server_done = FALSE;
+	webcfg_read_config();
 }
 
-static void timer_callback(void *arg) {
-  broadcast_preview(arg);
+static void timer_callback(void *arg)
+{
+	broadcast_preview(arg);
 }
 
 int webapi_server(GPParams *params)
@@ -522,7 +623,9 @@ int webapi_server(GPParams *params)
 		strcpy(webcfg.server_url, s_http_addr);
 	}
 
-	printf("Starting GPhoto2 " VERSION " - WebAPI server " WEBAPI_SERVER_VERSION " - %s\n", webcfg.server_url);
+	printf("\nStarting GPhoto2 " VERSION " - WebAPI server " WEBAPI_SERVER_VERSION " - %s\n", webcfg.server_url);
+	webcfg_write_config();
+	// webcfg_print_config(stdout);
 
 	mg_log_set("2");
 	mg_mgr_init(&mgr);
