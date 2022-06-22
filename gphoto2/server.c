@@ -19,8 +19,8 @@
 
 #define _DARWIN_C_SOURCE
 
-#ifndef WEBAPI
-#define WEBAPI
+#ifndef GPHOTO2_WEBAPI
+#error  GPHOTO2_WEBAPI must be defined
 #endif
 
 #include "config.h"

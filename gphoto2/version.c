@@ -32,7 +32,7 @@
 #define __unused__
 #endif
 
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
 static const char **gphoto2_frontend_mongoose_version(GPVersionVerbosity __unused__ verbose)
 {
 	static const char *both[] = {
@@ -81,7 +81,7 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 #else
 		"no readline (for easy navigation in the shell)",
 #endif
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
 		"mongoose (for gphoto2-webapi)",
 #endif
 		NULL
@@ -119,7 +119,7 @@ static const char **gphoto2_frontend_version(GPVersionVerbosity verbose)
 #else
 		"no readline",
 #endif
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
 		"mongoose",
 #endif
 		NULL
@@ -131,7 +131,7 @@ const module_version module_versions[] = {
 	{ "gphoto2", gphoto2_frontend_version },
 	{ "libgphoto2", gp_library_version },
 	{ "libgphoto2_port", gp_port_library_version },
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
 	{ "mongoose", gphoto2_frontend_mongoose_version },
 #endif
 	{ NULL, NULL }

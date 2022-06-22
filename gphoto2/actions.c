@@ -76,7 +76,7 @@
 #define __unused__
 #endif
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 static int print_widget (GPParams *p, const char*name, CameraWidget *widget);
 #else
 static int print_widget (struct mg_connection *c, GPParams *p, const char*name, CameraWidget *widget);
@@ -491,7 +491,7 @@ delete_file_action (GPParams *p, const char *folder, const char *filename)
 
 #ifdef HAVE_LIBEXIF
 
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
 size_t strncpy_lower(char *dst, const char *src, size_t count);
 
 static void
@@ -508,7 +508,7 @@ show_ifd(ExifContent *content)
 	{			
 		char b[1024];
 		e = content->entries[i];
-#ifndef WEBAPI		
+#ifndef GPHOTO2_WEBAPI
 		printf("%-20.20s", exif_tag_get_name(e->tag));
 		printf("|");
 		printf("%-59.59s", exif_entry_get_value(e, b, sizeof(b)));
@@ -521,7 +521,7 @@ show_ifd(ExifContent *content)
 	}
 }
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 static void
 print_hline(void)
 {
@@ -537,8 +537,8 @@ print_hline(void)
 #endif
 #endif
 
-#ifdef WEBAPI
-int 
+#ifdef GPHOTO2_WEBAPI
+int
 print_exif_action (struct mg_connection *c, GPParams *p, const char *folder, const char *filename)
 #else
 int
@@ -563,7 +563,7 @@ print_exif_action (GPParams *p, const char *folder, const char *filename)
                 return GP_ERROR;
         }
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
         printf (_("EXIF tags:"));
         putchar ('\n');
         print_hline ();
@@ -578,7 +578,7 @@ print_exif_action (GPParams *p, const char *folder, const char *filename)
 	{
 		if (ed->ifd[i])
 		{
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 			show_ifd (ed->ifd[i]);
 #else
 			show_ifd (c, ed->ifd[i]);
@@ -586,7 +586,7 @@ print_exif_action (GPParams *p, const char *folder, const char *filename)
 		}
 	}
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
   print_hline ();
   if (ed->size) {
     printf (_("EXIF data contains a thumbnail (%i bytes)."), ed->size);
@@ -702,11 +702,11 @@ list_ports_action (GPParams *p)
 }
 
 
-#ifndef WEBAPI
-int 
+#ifndef GPHOTO2_WEBAPI
+int
 auto_detect_action(GPParams *p)
 #else
-int 
+int
 auto_detect_action(struct mg_connection *c, GPParams *p)
 #endif
 {
@@ -722,9 +722,9 @@ auto_detect_action(struct mg_connection *c, GPParams *p)
 
   CL (count = gp_list_count (list), list);
 
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
   char *firstChar = " ";
-	JSON_PRINTF( c, "{\"result\":[", 0 ); 
+	JSON_PRINTF( c, "{\"result\":[", 0 );
 #else
   printf(_("%-30s %-16s\n"), _("Model"), _("Port"));
   printf(_("----------------------------------------------------------\n"));
@@ -733,7 +733,7 @@ auto_detect_action(struct mg_connection *c, GPParams *p)
   for (x = 0; x < count; x++) {
     CL (gp_list_get_name  (list, x, &name), list);
     CL (gp_list_get_value (list, x, &value), list);
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
 		JSON_PRINTF( c, "%s{\"model\":\"%s\",\"port\":\"%s\"}\n", firstChar, name, value );
 		firstChar = ",";
 #else
@@ -741,7 +741,7 @@ auto_detect_action(struct mg_connection *c, GPParams *p)
 #endif
   }
 
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
   JSON_PRINTF( c, "],\"return_code\": 0}\n" );
 #endif
 
@@ -1020,7 +1020,7 @@ print_version_action (GPParams __unused__ *p)
 	return GP_OK;
 }
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 static int
 _action_camera_capture_preview (GPParams *p, int viewasciiart)
 #else
@@ -1066,7 +1066,7 @@ _action_camera_capture_preview (struct mg_connection *c, GPParams *p, int viewas
 		return r;
 	}
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 	/* name it file_%filename if --filename is set, otherwise capture_preview */
 	if(!(p->flags & FLAGS_STDOUT)) {
 		r = save_camera_file_to_file (NULL, "capture_preview", p->filename?GP_FILE_TYPE_PREVIEW:GP_FILE_TYPE_NORMAL, file, tmpfilename);
@@ -1107,34 +1107,34 @@ _action_camera_capture_preview (struct mg_connection *c, GPParams *p, int viewas
 	return GP_OK;
 }
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 int
-action_camera_capture_preview (GPParams *p) 
+action_camera_capture_preview (GPParams *p)
 #else
 int
-action_camera_capture_preview (struct mg_connection * c, GPParams *p) 
+action_camera_capture_preview (struct mg_connection * c, GPParams *p)
 #endif
 {
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
   return _action_camera_capture_preview (p, 0);
 #else
   return _action_camera_capture_preview (c, p, 0);
-#endif	
+#endif
 }
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 int
-action_camera_show_preview (GPParams *p) 
+action_camera_show_preview (GPParams *p)
 #else
 int
-action_camera_show_preview (struct mg_connection * c, GPParams *p) 
+action_camera_show_preview (struct mg_connection * c, GPParams *p)
 #endif
 {
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
   return _action_camera_capture_preview (p, 1);
 #else
   return _action_camera_capture_preview (c, p, 1);
-#endif	
+#endif
 }
 
 enum moviemode { MOVIE_ENDLESS, MOVIE_FRAMES, MOVIE_SECONDS };
@@ -1659,7 +1659,7 @@ debug_action (GPParams *p, const char *debug_loglevel, const char *debug_logfile
 	return GP_OK;
 }
 
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
 static void
 display_widgets (struct mg_connection *c, char **firstChar, GPParams *p, CameraWidget *widget, char *prefix, int dumpval)
 #else
@@ -1691,7 +1691,7 @@ display_widgets (GPParams *p, CameraWidget *widget, char *prefix, int dumpval)
 	sprintf(newprefix,"%s/%s",prefix,uselabel);
 
 	if ((type != GP_WIDGET_WINDOW) && (type != GP_WIDGET_SECTION)) {
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 		printf("%s\n",newprefix);
 		if (dumpval) print_widget (p, newprefix, widget);
 #else
@@ -1713,9 +1713,9 @@ display_widgets (GPParams *p, CameraWidget *widget, char *prefix, int dumpval)
 		if (ret != GP_OK)
 			continue;
 
-#ifdef WEBAPI	
+#ifdef GPHOTO2_WEBAPI
 		display_widgets (c, firstChar, p, child, newprefix, dumpval);
-#else		
+#else
 		display_widgets (p, child, newprefix, dumpval);
 #endif
 	}
@@ -1723,11 +1723,11 @@ display_widgets (GPParams *p, CameraWidget *widget, char *prefix, int dumpval)
 }
 
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 int
-list_all_config_action (GPParams *p) 
+list_all_config_action (GPParams *p)
 #else
-int 
+int
 list_all_config_action (struct mg_connection *c, GPParams *p)
 #endif
 {
@@ -1738,7 +1738,7 @@ list_all_config_action (struct mg_connection *c, GPParams *p)
 
 	if (ret == GP_OK)
 	{ 
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
     char *firstChar = " ";
 	  JSON_PRINTF( c, "\"result\":[" );
 	  display_widgets (c, &firstChar, p, rootconfig, "", 1);
@@ -1752,11 +1752,11 @@ list_all_config_action (struct mg_connection *c, GPParams *p)
 	return ret;
 }
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 int
-list_config_action (GPParams *p) 
+list_config_action (GPParams *p)
 #else
-int 
+int
 list_config_action (struct mg_connection *c, GPParams *p)
 #endif
 {
@@ -1767,7 +1767,7 @@ list_config_action (struct mg_connection *c, GPParams *p)
 
 	if (ret == GP_OK)
 	{
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
     char *firstChar = " ";
 		JSON_PRINTF( c, "\"result\":[" );
 	  display_widgets (c, &firstChar, p, rootconfig, "", 0);
@@ -1853,12 +1853,12 @@ my_strftime(char *s, size_t max, const char *fmt, const struct tm *tm)
 	return strftime(s, max, fmt, tm);
 }
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 static int
-print_widget (GPParams *p, const char *name, CameraWidget *widget) 
+print_widget (GPParams *p, const char *name, CameraWidget *widget)
 #else
 static int
-print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidget *widget) 
+print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidget *widget)
 #endif
 {
 	const char *label;
@@ -1876,7 +1876,7 @@ print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidg
 	if (ret != GP_OK)
 		return ret;
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 	printf ("Label: %s\n", label); /* "Label:" is not i18ned, the "label" variable is */
 	printf ("Readonly: %d\n", readonly);
 #else
@@ -1889,7 +1889,7 @@ print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidg
 
 		ret = gp_widget_get_value (widget, &txt);
 		if (ret == GP_OK) {
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 			printf ("Type: TEXT\n"); /* parsed by scripts, no i18n */
 			printf ("Current: %s\n",txt);
 #else
@@ -1908,7 +1908,7 @@ print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidg
 		if (ret == GP_OK)
 			ret = gp_widget_get_value (widget, &f);
 		if (ret == GP_OK) {
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 			printf ("Type: RANGE\n");	/* parsed by scripts, no i18n */
 			printf ("Current: %g\n", f);	/* parsed by scripts, no i18n */
 			printf ("Bottom: %g\n", b);	/* parsed by scripts, no i18n */
@@ -1931,7 +1931,7 @@ print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidg
 
 		ret = gp_widget_get_value (widget, &t);
 		if (ret == GP_OK) {
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 			printf ("Type: TOGGLE\n");
 			printf ("Current: %d\n",t);
 #else
@@ -1957,7 +1957,7 @@ print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidg
 		xtime = t;
 		xtm = localtime (&xtime);
 		ret = my_strftime (timebuf, sizeof(timebuf), "%c", xtm);
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 		printf ("Type: DATE\n");
 		printf ("Current: %d\n", t);
 		printf ("Printable: %s\n", timebuf);
@@ -1979,18 +1979,18 @@ print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidg
 		if (ret == GP_OK) {
 			cnt = gp_widget_count_choices (widget);
 			if (type == GP_WIDGET_MENU)
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 				printf ("Type: MENU\n");
 #else
 				JSON_PRINTF(c,", \"type\": \"MENU\"");
 #endif
 			else
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 				printf ("Type: RADIO\n");
 #else
 				JSON_PRINTF(c,", \"type\": \"MENU\"");
 #endif
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 			printf ("Current: %s\n",current);
 #else
 			JSON_PRINTF(c,", \"current\": \"%s\"",current);
@@ -1999,14 +1999,14 @@ print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidg
 			for ( i=0; i<cnt; i++) {
 				const char *choice;
 				ret = gp_widget_get_choice (widget, i, &choice);
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 				printf ("Choice: %d %s\n", i, choice);
 #else
 				JSON_PRINTF(c,"%s{\"index\": %d, \"value\": \"%s\"}", (i==0) ? "" : ",", i, choice);
 #endif
 			}
 
-#ifdef WEBAPI
+#ifdef GPHOTO2_WEBAPI
 			JSON_PRINTF(c,"]");
 #endif
 
@@ -2024,7 +2024,7 @@ print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidg
 		break;
 	}
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 	printf ("END\n");
 #endif
 
@@ -2032,7 +2032,7 @@ print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidg
 }
 
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 int
 get_config_action (GPParams *p, const char *name) 
 #else
@@ -2047,7 +2047,7 @@ get_config_action (struct mg_connection *c, GPParams *p, const char *name)
 	if (ret != GP_OK)
 		return ret;
 
-#ifndef WEBAPI
+#ifndef GPHOTO2_WEBAPI
 	ret = print_widget (p, name, child);
 #else
   ret = print_widget (c, p, name, child);

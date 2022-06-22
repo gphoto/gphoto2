@@ -112,7 +112,7 @@ gphoto2_webapi_SOURCES      += gphoto2-cmd-capture.c gphoto2-cmd-capture.h
 endif
 
 gphoto2_webapi_CPPFLAGS     += -DPROGNAME=\"gphoto2-webapi\"
-gphoto2_webapi_CPPFLAGS     += -DWEBAPI
+gphoto2_webapi_CPPFLAGS     += -DGPHOTO2_WEBAPI
 
 gphoto2_webapi_CFLAGS       += $(LIBGPHOTO2_CFLAGS)
 gphoto2_webapi_CFLAGS       += $(AM_CPPFLAGS)
