@@ -109,13 +109,6 @@ gphoto2_webapi_CFLAGS       += $(CDK_CFLAGS)
 gphoto2_webapi_LDADD        += $(CDK_LIBS)
 endif
 
-# FIXME: Does ASCII art preview make sense for gphoto2-webapi?
-if HAVE_AA
-gphoto2_webapi_SOURCES      += gphoto2-cmd-capture.c gphoto2-cmd-capture.h
-gphoto2_webapi_CFLAGS       += $(AA_CFLAGS)
-gphoto2_webapi_LDADD        += $(AA_LIBS)
-endif
-
 
 ########################################################################
 # Some tests
