@@ -16,6 +16,9 @@ common_ldadd         =
 common_ldflags       =
 common_sources       =
 
+common_cppflags     += -I$(top_srcdir)
+common_cppflags     += -I$(top_srcdir)/gphoto2
+
 
 ########################################################################
 # The gphoto2 command line interface executable
@@ -51,8 +54,6 @@ endif
 
 # gphoto2_LDFLAGS    += -export-dynamic
 
-gphoto2_CFLAGS       += -I$(top_srcdir)
-gphoto2_CFLAGS       += -I$(top_srcdir)/gphoto2
 gphoto2_CFLAGS       += $(LIBGPHOTO2_CFLAGS)
 gphoto2_CFLAGS       += $(AM_CPPFLAGS)
 gphoto2_CFLAGS       += $(CPPFLAGS)
@@ -106,9 +107,8 @@ if HAVE_AA
 gphoto2_webapi_SOURCES      += gphoto2-cmd-capture.c gphoto2-cmd-capture.h
 endif
 
-gphoto2_webapi_CFLAGS       += -DWEBAPI
-gphoto2_webapi_CFLAGS       += -I$(top_srcdir)
-gphoto2_webapi_CFLAGS       += -I$(top_srcdir)/gphoto2
+gphoto2_webapi_CPPFLAGS     += -DWEBAPI
+
 gphoto2_webapi_CFLAGS       += $(LIBGPHOTO2_CFLAGS)
 gphoto2_webapi_CFLAGS       += $(AM_CPPFLAGS)
 gphoto2_webapi_CFLAGS       += $(CPPFLAGS)
