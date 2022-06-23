@@ -647,7 +647,6 @@ int webapi_server(GPParams *params)
 
 	printf("\nStarting GPhoto2 " VERSION " - WebAPI server " WEBAPI_SERVER_VERSION " - %s\n", webcfg.server_url);
 	webcfg_write_config();
-	webcfg_print_config(stdout);
 
 	mg_log_set("2");
 	mg_mgr_init(&mgr);
