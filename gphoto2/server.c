@@ -557,7 +557,6 @@ static void webcfg_write_config()
 {
 	char cfgname[256];
   get_cfgfolder(cfgname);
-	puts( cfgname );
 	mkdir( cfgname, 0755 );
 	get_cfgname(cfgname);
 	FILE *cfgfile = fopen(cfgname, "w");
