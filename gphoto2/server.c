@@ -508,11 +508,20 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 	}
 }
 
+
 #ifdef _WIN32
 #define FILE_SEPARATOR "\\"
 #else
 #define FILE_SEPARATOR "/"
 #endif
+
+#define CFG_FOLDER ".gphoto"
+#define CFG_FILENAME "webapi.config"
+#define CFG_SERVER_URL "server_url="
+#define CFG_AUTH_ENABLED "auth_enabled="
+#define CFG_AUTH_USER "auth_user="
+#define CFG_AUTH_PASSWORD "auth_password="
+#define ISIZEOF(x) ((int)sizeof(x)-1)
 
 static char *rtrim(char *s)
 {
@@ -522,28 +531,41 @@ static char *rtrim(char *s)
     return s;
 }
 
-static void get_cfgname(char *cfgname)
+static void get_cfgfolder(char *cfgname)
 {
 	strcpy(cfgname, getenv("HOME"));
 	strcat(cfgname, FILE_SEPARATOR);
-	strcat(cfgname, ".gphoto");
+	strcat(cfgname, CFG_FOLDER);
+}
+
+static void get_cfgname(char *cfgname)
+{
+  get_cfgfolder(cfgname);
 	strcat(cfgname, FILE_SEPARATOR);
-	strcat(cfgname, "webapi.config");
+	strcat(cfgname, CFG_FILENAME );
 }
 
 static void webcfg_print_config(FILE *out)
 {
-	fprintf(out, "server_url=%s\n", webcfg.server_url);
-	fprintf(out, "auth_enabled=%s\n", webcfg.auth_enabled ? "true" : "false");
-	fprintf(out, "auth_user=%s\n", webcfg.auth_user);
-	fprintf(out, "auth_password=%s\n", webcfg.auth_password);
+	fprintf(out, CFG_SERVER_URL "%s\n", webcfg.server_url);
+	fprintf(out, CFG_AUTH_ENABLED "%s\n", webcfg.auth_enabled ? "true" : "false");
+	fprintf(out, CFG_AUTH_USER "%s\n", webcfg.auth_user);
+	fprintf(out, CFG_AUTH_PASSWORD "%s\n", webcfg.auth_password);
 }
 
 static void webcfg_write_config()
 {
 	char cfgname[256];
+  get_cfgfolder(cfgname);
+	puts( cfgname );
+	mkdir( cfgname, 0755 );
 	get_cfgname(cfgname);
 	FILE *cfgfile = fopen(cfgname, "w");
+	if (cfgfile == NULL)
+	{
+		fprintf( stderr, "ERROR: Can not write %s file.", cfgname );
+		return;
+	}
 	webcfg_print_config(cfgfile);
 	fclose(cfgfile);
 }
@@ -565,30 +587,30 @@ static void webcfg_read_config()
 	{
     rtrim(line);
 
-    if ( strncmp( "server_url=", line, 11 ) == 0 )
+    if ( strncmp( CFG_SERVER_URL, line, ISIZEOF(CFG_SERVER_URL)) == 0 )
     {
-      strcpy( webcfg.server_url, line + 11 );
+      strcpy( webcfg.server_url, line + ISIZEOF(CFG_SERVER_URL));
 			continue;
 		}
 
-	  if ( strncmp( "auth_enabled=", line, 13 ) == 0 )
+	  if ( strncmp( CFG_AUTH_ENABLED, line, ISIZEOF(CFG_AUTH_ENABLED) ) == 0 )
     {
-      if( strcmp( "true", line + 13 ) == 0 )
+      if( strcmp( "true", line + ISIZEOF(CFG_AUTH_ENABLED)) == 0 )
 			{
 				webcfg.auth_enabled = true;
 			}
 			continue;
 		}
 
-    if ( strncmp( "auth_user=", line, 10 ) == 0 )
+    if ( strncmp( CFG_AUTH_USER, line, ISIZEOF(CFG_AUTH_USER) ) == 0 )
     {
-      strcpy( webcfg.auth_user, line + 10 );
+      strcpy( webcfg.auth_user, line + ISIZEOF(CFG_AUTH_USER) );
 			continue;
 		}
 
-    if ( strncmp( "auth_password=", line, 14 ) == 0 )
+    if ( strncmp( CFG_AUTH_PASSWORD, line, ISIZEOF(CFG_AUTH_PASSWORD) ) == 0 )
     {
-      strcpy( webcfg.auth_password, line + 14 );
+      strcpy( webcfg.auth_password, line + ISIZEOF(CFG_AUTH_PASSWORD) );
 			continue;
 		}
 	}
@@ -625,7 +647,7 @@ int webapi_server(GPParams *params)
 
 	printf("\nStarting GPhoto2 " VERSION " - WebAPI server " WEBAPI_SERVER_VERSION " - %s\n", webcfg.server_url);
 	webcfg_write_config();
-	// webcfg_print_config(stdout);
+	webcfg_print_config(stdout);
 
 	mg_log_set("2");
 	mg_mgr_init(&mgr);
