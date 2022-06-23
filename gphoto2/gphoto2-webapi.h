@@ -43,10 +43,10 @@ void dissolve_filename ( const char *folder, const char *filename, char **newfol
 size_t strncpy_lower(char *dst, const char *src, size_t count);
 
 int	camera_file_exists (Camera *camera, GPContext *context,
-			    const char *folder, const char *filename,
-			    CameraFileType type);
+          const char *folder, const char *filename,
+          CameraFileType type);
 int	save_file_to_file (struct mg_connection *c, Camera *camera, GPContext *context, Flags flags,
-			   const char *folder, const char *filename, CameraFileType type, int webapi);
+          const char *folder, const char *filename, CameraFileType type, int webapi);
 int	save_camera_file_to_file (const char *folder, const char *fn, CameraFileType type, CameraFile *file, const char *tmpname);
 int	capture_generic (struct mg_connection *c, CameraCaptureType type, const char *name, int download);
 int	get_file_common (struct mg_connection *c, const char *arg, CameraFileType type );
@@ -55,11 +55,3 @@ int get_file_http_common (struct mg_connection *c, const char *arg, CameraFileTy
 int	trigger_capture (void);
 
 #endif /* !defined(GPHOTO2_WEBAPI_H) */
-
-
-/*
- * Local Variables:
- * c-file-style:"linux"
- * indent-tabs-mode:t
- * End:
- */
