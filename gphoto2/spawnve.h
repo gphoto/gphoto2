@@ -1,5 +1,5 @@
 /* spawnve.h - interface for spawnve() function, basically fork+execve+wait
- * Copyright Â© 2006 Hans Ulrich Niedermann <gp@n-dimensional.de>
+ * Copyright © 2006 Hans Ulrich Niedermann <gp@n-dimensional.de>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
