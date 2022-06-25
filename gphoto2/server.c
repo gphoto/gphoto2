@@ -214,48 +214,39 @@ static void start_thread(void (*f)(void *), void *p)
 #endif
 }
 
-static void thread_function(void *param)
+static void producer_thread_function_d(void *param)
 {
-  int sock = (int)(size_t)param; // Paired socket. We own it
-  sleep(2);                      // Simulate long execution
-  send(sock, "hi", 2, 0);        // Wakeup event manager
-  close(sock);                   // Close the connection
-}
+  MG_INFO(("start"));
 
-static void link_conns(struct mg_connection *c1, struct mg_connection *c2)
-{
-  c1->fn_data = c2;
-  c2->fn_data = c1;
-}
+  CameraFile *file;
+  char *data = NULL;
+  unsigned long int size;
 
-static void unlink_conns(struct mg_connection *c1, struct mg_connection *c2)
-{
-  c1->fn_data = c2->fn_data = NULL;
-}
+  struct mg_connection *c = (struct mg_connection *)(size_t)param;
+  // uint64_t counter = 1l;
+  int r;
 
-static void pipe_event_handler(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
-{
-  struct mg_connection *parent = (struct mg_connection *)fn_data;
-  MG_INFO(("%lu %p %d %p", c->id, c->fd, ev, parent));
+  r = gp_file_new(&file);
 
-  if (parent == NULL)
-  { // If parent connection closed, close too
-    c->is_closing = 1;
-  }
-  else if (ev == MG_EV_READ)
-  { // Got data from the worker thread
-    mg_http_reply(parent, 200, "Host: foo.com\r\n", "%.*s\n", c->recv.len,
-                  c->recv.buf); // Respond!
-    c->recv.len = 0;            // Tell Mongoose we've consumed data
-  }
-  else if (ev == MG_EV_OPEN)
+  while (r == GP_OK)
   {
-    link_conns(c, parent);
+    // MG_INFO(("d - get frame %lu", counter++));
+    r = gp_camera_capture_preview(p->camera, file, p->context);
+    gp_file_get_data_and_size(file, (const char **)&data, &size);
+
+    if (data == NULL || size == 0)
+      continue; // Skip on file read error
+
+    mg_printf(c,
+              "--foo\r\nContent-Type: image/jpeg\r\n"
+              "Content-Length: %lu\r\n\r\n",
+              (unsigned long)size);
+
+    mg_send(c, data, size);
+    mg_send(c, "\r\n", 2);
   }
-  else if (ev == MG_EV_CLOSE)
-  {
-    unlink_conns(c, parent);
-  }
+
+  MG_INFO(("end"));
 }
 
 static int broadcast_preview(struct mg_mgr *mgr)
@@ -460,8 +451,15 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
     else if (mg_http_match_uri(hm, "/api/capture-movie"))
     {
       c->label[0] = 'M';
-      int sock = mg_mkpipe(c->mgr, pipe_event_handler, c);
-      start_thread(thread_function, (void *)(size_t)sock); // Start thread
+
+      mg_printf(
+          c, "%s",
+          "HTTP/1.0 200 OK\r\n"
+          "Cache-Control: no-cache\r\n"
+          "Pragma: no-cache\r\nExpires: Thu, 01 Dec 1994 16:00:00 GMT\r\n"
+          "Content-Type: multipart/x-mixed-replace; boundary=--foo\r\n\r\n");
+
+      start_thread(producer_thread_function_d, (void *)(size_t)c); // Start thread
     }
 
     else if (mg_http_match_uri(hm, "/api/file/get/#"))
@@ -583,11 +581,6 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
   else if (ev == MG_EV_CLOSE)
   {
     printf("MG_EV_CLOSE connection label = %c (%d)\n", c->label[0], c->label[0]);
-    if (c->fn_data != NULL && c->label[0] == 'M')
-    {
-      puts("unlink_conns");
-      unlink_conns(c, c->fn_data);
-    }
   }
 }
 
