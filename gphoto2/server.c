@@ -192,6 +192,72 @@ show_preview(struct mg_connection *c)
   return GP_OK;
 }
 
+static void start_thread(void (*f)(void *), void *p)
+{
+
+#ifdef _WIN32
+  _beginthread((void(__cdecl *)(void *))f, 0, p);
+#else
+
+#define closesocket(x) close(x)
+
+#undef __USE_EXTERN_INLINES
+#include <pthread.h>
+
+  pthread_t thread_id = (pthread_t)0;
+  pthread_attr_t attr;
+  (void)pthread_attr_init(&attr);
+  (void)pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+  pthread_create(&thread_id, &attr, (void *(*)(void *))f, p);
+  pthread_attr_destroy(&attr);
+
+#endif
+}
+
+static void thread_function(void *param)
+{
+  int sock = (int)(size_t)param; // Paired socket. We own it
+  sleep(2);                      // Simulate long execution
+  send(sock, "hi", 2, 0);        // Wakeup event manager
+  close(sock);                   // Close the connection
+}
+
+static void link_conns(struct mg_connection *c1, struct mg_connection *c2)
+{
+  c1->fn_data = c2;
+  c2->fn_data = c1;
+}
+
+static void unlink_conns(struct mg_connection *c1, struct mg_connection *c2)
+{
+  c1->fn_data = c2->fn_data = NULL;
+}
+
+static void pipe_event_handler(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
+{
+  struct mg_connection *parent = (struct mg_connection *)fn_data;
+  MG_INFO(("%lu %p %d %p", c->id, c->fd, ev, parent));
+
+  if (parent == NULL)
+  { // If parent connection closed, close too
+    c->is_closing = 1;
+  }
+  else if (ev == MG_EV_READ)
+  { // Got data from the worker thread
+    mg_http_reply(parent, 200, "Host: foo.com\r\n", "%.*s\n", c->recv.len,
+                  c->recv.buf); // Respond!
+    c->recv.len = 0;            // Tell Mongoose we've consumed data
+  }
+  else if (ev == MG_EV_OPEN)
+  {
+    link_conns(c, parent);
+  }
+  else if (ev == MG_EV_CLOSE)
+  {
+    unlink_conns(c, parent);
+  }
+}
+
 static int broadcast_preview(struct mg_mgr *mgr)
 {
   struct mg_connection *conn;
@@ -391,6 +457,13 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
       MG_HTTP_CHUNK_END;
     }
 
+    else if (mg_http_match_uri(hm, "/api/capture-movie"))
+    {
+      c->label[0] = 'M';
+      int sock = mg_mkpipe(c->mgr, pipe_event_handler, c);
+      start_thread(thread_function, (void *)(size_t)sock); // Start thread
+    }
+
     else if (mg_http_match_uri(hm, "/api/file/get/#"))
     {
       if (hm->uri.len >= 14)
@@ -504,6 +577,16 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
     else
     {
       mg_http_reply(c, 404, content_type_text_html, "<html><head><title>404</title></head><body><h1>Error: 404</h1>Page not found.</body></html>");
+    }
+  }
+
+  else if (ev == MG_EV_CLOSE)
+  {
+    printf("MG_EV_CLOSE connection label = %c (%d)\n", c->label[0], c->label[0]);
+    if (c->fn_data != NULL && c->label[0] == 'M')
+    {
+      puts("unlink_conns");
+      unlink_conns(c, c->fn_data);
     }
   }
 }
