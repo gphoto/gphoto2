@@ -83,7 +83,7 @@
 #if MG_ARCH == MG_ARCH_WIN32 && MG_ENABLE_WINSOCK
 #define MG_SOCK_ERRNO WSAGetLastError()
 #ifndef SO_EXCLUSIVEADDRUSE
-#define SO_EXCLUSIVEADDRUSE ((int) (~SO_REUSEADDR))
+#define SO_EXCLUSIVEADDRUSE ((int)(~SO_REUSEADDR))
 #pragma comment(lib, "ws2_32.lib")
 #endif
 #elif MG_ARCH == MG_ARCH_FREERTOS_TCP
@@ -102,7 +102,7 @@ typedef Socket_t SOCKET;
 typedef int SOCKET;
 #endif
 
-#define FD(c_) ((SOCKET) (size_t) (c_)->fd)
+#define FD(c_) ((SOCKET)(size_t)(c_)->fd)
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -253,7 +253,7 @@ static void producer_thread_function_d(void *param)
 
   r = gp_file_new(&file);
 
-  while (r == GP_OK && c->is_closing == 0 )
+  while (r == GP_OK && c->is_closing == 0)
   {
     // MG_INFO(("d - get frame %lu", counter++));
     r = gp_camera_capture_preview(p->camera, file, p->context);
@@ -263,17 +263,17 @@ static void producer_thread_function_d(void *param)
       continue; // Skip on file read error
 
     sprintf(buffer,
-              "--foo\r\nContent-Type: image/jpeg\r\n"
-              "Content-Length: %lu\r\n\r\n", (unsigned long)size);
-    send(FD(c), (char *)buffer, strlen(buffer), 0 );
-    send(FD(c), (char *)data, size, 0 );
-    send(FD(c), (char *)"\r\n", 2, 0 );
+            "--foo\r\nContent-Type: image/jpeg\r\n"
+            "Content-Length: %lu\r\n\r\n",
+            (unsigned long)size);
+    send(FD(c), (char *)buffer, strlen(buffer), 0);
+    send(FD(c), (char *)data, size, 0);
+    send(FD(c), (char *)"\r\n", 2, 0);
     c->recv.len = 0;
   }
 
   MG_INFO(("end"));
 }
-
 
 static void
 fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
@@ -431,11 +431,11 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
       c->label[0] = 'M';
 
       const char *http_header = "HTTP/1.0 200 OK\r\n"
-          "Cache-Control: no-cache\r\n"
-          "Pragma: no-cache\r\nExpires: Thu, 01 Dec 1994 16:00:00 GMT\r\n"
-          "Content-Type: multipart/x-mixed-replace; boundary=--foo\r\n\r\n";
+                                "Cache-Control: no-cache\r\n"
+                                "Pragma: no-cache\r\nExpires: Thu, 01 Dec 1994 16:00:00 GMT\r\n"
+                                "Content-Type: multipart/x-mixed-replace; boundary=--foo\r\n\r\n";
 
-      send(FD(c), (char *)http_header, strlen(http_header), 0 );
+      send(FD(c), (char *)http_header, strlen(http_header), 0);
       c->recv.len = 0;
 
       start_thread(producer_thread_function_d, (void *)(size_t)c);
