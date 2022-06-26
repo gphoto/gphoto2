@@ -133,7 +133,7 @@ Nearly all responses are [JSON](https://json.org) formated.
 
   online preview as motion jpeg stream 
   
-  *ATTENTION: Only one stream ist supported!*
+  *ATTENTION: Only one stream is supported!*
 
 ### server
 
