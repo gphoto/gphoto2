@@ -129,6 +129,10 @@ Nearly all responses are [JSON](https://json.org) formated.
 
   show preview image
 
+- `http://<server ip>:8866/api/capture-movie` 
+
+  online preview as motion jpeg stream
+
 ### server
 
 - `http://<server ip>:8866/api/server/shutdown` 
