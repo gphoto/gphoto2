@@ -131,7 +131,9 @@ Nearly all responses are [JSON](https://json.org) formated.
 
 - `http://<server ip>:8866/api/capture-movie` 
 
-  online preview as motion jpeg stream
+  online preview as motion jpeg stream 
+  
+  *ATTENTION: Only one stream ist supported!*
 
 ### server
 
