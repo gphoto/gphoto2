@@ -80,6 +80,30 @@
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #endif
 
+#if MG_ARCH == MG_ARCH_WIN32 && MG_ENABLE_WINSOCK
+#define MG_SOCK_ERRNO WSAGetLastError()
+#ifndef SO_EXCLUSIVEADDRUSE
+#define SO_EXCLUSIVEADDRUSE ((int) (~SO_REUSEADDR))
+#pragma comment(lib, "ws2_32.lib")
+#endif
+#elif MG_ARCH == MG_ARCH_FREERTOS_TCP
+#define MG_SOCK_ERRNO errno
+typedef Socket_t SOCKET;
+#define INVALID_SOCKET FREERTOS_INVALID_SOCKET
+#elif MG_ARCH == MG_ARCH_TIRTOS
+#define MG_SOCK_ERRNO errno
+#define closesocket(x) close(x)
+#else
+#define MG_SOCK_ERRNO errno
+#ifndef closesocket
+#define closesocket(x) close(x)
+#endif
+#define INVALID_SOCKET (-1)
+typedef int SOCKET;
+#endif
+
+#define FD(c_) ((SOCKET) (size_t) (c_)->fd)
+
 //////////////////////////////////////////////////////////////////////////////////////
 
 WebAPIServerConfig webcfg;
@@ -216,6 +240,7 @@ static void start_thread(void (*f)(void *), void *p)
 
 static void producer_thread_function_d(void *param)
 {
+  char buffer[256];
   MG_INFO(("start"));
 
   CameraFile *file;
@@ -228,7 +253,7 @@ static void producer_thread_function_d(void *param)
 
   r = gp_file_new(&file);
 
-  while (r == GP_OK)
+  while (r == GP_OK && c->is_closing == 0 )
   {
     // MG_INFO(("d - get frame %lu", counter++));
     r = gp_camera_capture_preview(p->camera, file, p->context);
@@ -237,53 +262,18 @@ static void producer_thread_function_d(void *param)
     if (data == NULL || size == 0)
       continue; // Skip on file read error
 
-    mg_printf(c,
+    sprintf(buffer,
               "--foo\r\nContent-Type: image/jpeg\r\n"
-              "Content-Length: %lu\r\n\r\n",
-              (unsigned long)size);
-
-    mg_send(c, data, size);
-    mg_send(c, "\r\n", 2);
+              "Content-Length: %lu\r\n\r\n", (unsigned long)size);
+    send(FD(c), (char *)buffer, strlen(buffer), 0 );
+    send(FD(c), (char *)data, size, 0 );
+    send(FD(c), (char *)"\r\n", 2, 0 );
+    c->recv.len = 0;
   }
 
   MG_INFO(("end"));
 }
 
-static int broadcast_preview(struct mg_mgr *mgr)
-{
-  struct mg_connection *conn;
-  CameraFile *file;
-  char *data = NULL;
-  unsigned long int size;
-
-  for (conn = mgr->conns; conn != NULL; conn = conn->next)
-  {
-    if (conn->label[0] != 'S')
-      continue; // Skip non-stream connections
-
-    if (data == NULL || size == 0)
-    {
-      CR(gp_file_new(&file));
-      CR(gp_camera_capture_preview(p->camera, file, p->context));
-      CR(gp_file_get_data_and_size(file, (const char **)&data, &size));
-    }
-
-    if (data == NULL || size == 0)
-      continue; // Skip on file read error
-
-    mg_printf(conn,
-              "--foo\r\nContent-Type: image/jpeg\r\n"
-              "Content-Length: %lu\r\n\r\n",
-              (unsigned long)size);
-
-    mg_send(conn, data, size);
-    mg_send(conn, "\r\n", 2);
-  }
-
-  if (data != NULL)
-    free(data);
-  return GP_OK;
-}
 
 static void
 fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
@@ -349,18 +339,6 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
       {
         mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":%d}\n", ret);
       }
-    }
-
-    else if (mg_http_match_uri(hm, "/api/live-preview"))
-    {
-      c->label[0] = 'S'; // mark connection as stream
-
-      mg_printf(
-          c, "%s",
-          "HTTP/1.0 200 OK\r\n"
-          "Cache-Control: no-cache\r\n"
-          "Pragma: no-cache\r\nExpires: Thu, 01 Dec 1994 16:00:00 GMT\r\n"
-          "Content-Type: multipart/x-mixed-replace; boundary=--foo\r\n\r\n");
     }
 
     else if (mg_http_match_uri(hm, "/api/config/list"))
@@ -452,14 +430,15 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
     {
       c->label[0] = 'M';
 
-      mg_printf(
-          c, "%s",
-          "HTTP/1.0 200 OK\r\n"
+      const char *http_header = "HTTP/1.0 200 OK\r\n"
           "Cache-Control: no-cache\r\n"
           "Pragma: no-cache\r\nExpires: Thu, 01 Dec 1994 16:00:00 GMT\r\n"
-          "Content-Type: multipart/x-mixed-replace; boundary=--foo\r\n\r\n");
+          "Content-Type: multipart/x-mixed-replace; boundary=--foo\r\n\r\n";
 
-      start_thread(producer_thread_function_d, (void *)(size_t)c); // Start thread
+      send(FD(c), (char *)http_header, strlen(http_header), 0 );
+      c->recv.len = 0;
+
+      start_thread(producer_thread_function_d, (void *)(size_t)c);
     }
 
     else if (mg_http_match_uri(hm, "/api/file/get/#"))
@@ -704,11 +683,6 @@ void webapi_server_initialize()
   webcfg_read_config();
 }
 
-static void timer_callback(void *arg)
-{
-  broadcast_preview(arg);
-}
-
 int webapi_server(GPParams *params)
 {
   struct mg_mgr mgr;
@@ -726,7 +700,6 @@ int webapi_server(GPParams *params)
   mg_log_set("2");
   mg_mgr_init(&mgr);
   mg_http_listen(&mgr, webcfg.server_url, fn, NULL);
-  mg_timer_add(&mgr, 500, MG_TIMER_REPEAT, timer_callback, &mgr);
 
   do
   {
