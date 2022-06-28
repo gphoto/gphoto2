@@ -112,6 +112,7 @@ static GPParams *p = NULL;
 static const char *s_http_addr = "http://0.0.0.0:8866";
 
 static const char *http_chunked_header = "HTTP/1.1 200 OK\r\n"
+                                         "Access-Control-Allow-Origin: *\r\n"
                                          "Content-Type: application/json\r\n"
                                          "Transfer-Encoding: chunked\r\n\r\n";
 
@@ -125,8 +126,8 @@ static int
 server_http_version(struct mg_connection *c)
 {
   MG_HTTP_CHUNK_START;
-  JSON_PRINTF(c, "{ \"result\": [{ \"name\": \"mongoose\", \"version\": \"%s\"}", MG_VERSION);
-  JSON_PRINTF(c, ",{ \"name\": \"webapi_server\", \"version\": \"%s\"}", WEBAPI_SERVER_VERSION);
+  JSON_PRINTF(c, "{ \"result\": [");
+  JSON_PRINTF(c, "{ \"name\": \"webapi_server\", \"version\": \"%s\"}", WEBAPI_SERVER_VERSION);
 
   int n;
 
@@ -205,6 +206,7 @@ show_preview(struct mg_connection *c)
   CR(gp_file_get_data_and_size(file, (const char **)&data, &size));
 
   const char *http_header = "HTTP/1.1 200 OK\r\n"
+                            "Access-Control-Allow-Origin: *\r\n"
                             "Content-Length: %lu\r\n"
                             "Content-Type: image/jpeg\r\n\r\n";
 

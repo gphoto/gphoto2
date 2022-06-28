@@ -860,6 +860,7 @@ int get_file_http_common(struct mg_connection *c, const char *path, CameraFileTy
       CR(gp_camera_file_get_info(gp_params.camera, newfolder, newfilename, &info, gp_params.context));
 
       const char *http_header = "HTTP/1.1 200 OK\r\n"
+                                "Access-Control-Allow-Origin: *\r\n"
                                 "Content-Type: %s\r\n"
                                 "Content-Length: %ld\r\n\r\n";
 
