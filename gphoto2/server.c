@@ -281,7 +281,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
   {
     struct mg_http_message *hm = (struct mg_http_message *)ev_data;
 
-    if (mg_http_match_uri(hm, "/"))
+    if ( webcfg.html_root[0] == 0 && mg_http_match_uri(hm, "/"))
     {
       server_http_version(c);
       return;
@@ -551,6 +551,12 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
     }
 #endif
 
+    else if ( strlen(webcfg.html_root) > 0 )
+    {
+      struct mg_http_serve_opts opts = {.root_dir = webcfg.html_root};
+      mg_http_serve_dir(c, ev_data, &opts);
+    }
+
     else
     {
       mg_http_reply(c, 404, content_type_text_html, "<html><head><title>404</title></head><body><h1>Error: 404</h1>Page not found.</body></html>");
@@ -577,6 +583,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 #define CFG_AUTH_ENABLED "auth_enabled="
 #define CFG_AUTH_USER "auth_user="
 #define CFG_AUTH_PASSWORD "auth_password="
+#define CFG_HTML_ROOT "html_root="
 #define ISIZEOF(x) ((int)sizeof(x) - 1)
 
 static char *rtrim(char *s)
@@ -608,6 +615,7 @@ static void webcfg_print_config(FILE *out)
   fprintf(out, CFG_AUTH_ENABLED "%s\n", webcfg.auth_enabled ? "true" : "false");
   fprintf(out, CFG_AUTH_USER "%s\n", webcfg.auth_user);
   fprintf(out, CFG_AUTH_PASSWORD "%s\n", webcfg.auth_password);
+  fprintf(out, CFG_HTML_ROOT "%s\n", webcfg.html_root);
 }
 
 static void webcfg_write_config()
@@ -669,6 +677,12 @@ static void webcfg_read_config()
       strcpy(webcfg.auth_password, line + ISIZEOF(CFG_AUTH_PASSWORD));
       continue;
     }
+
+    if (strncmp(CFG_HTML_ROOT, line, ISIZEOF(CFG_HTML_ROOT)) == 0)
+    {
+      strcpy(webcfg.html_root, line + ISIZEOF(CFG_HTML_ROOT));
+      continue;
+    }
   }
 
   free(line);
@@ -681,6 +695,7 @@ void webapi_server_initialize()
   webcfg.auth_enabled = FALSE;
   webcfg.auth_user[0] = 0;
   webcfg.auth_password[0] = 0;
+  webcfg.html_root[0] = 0;
   webcfg.server_done = FALSE;
   webcfg_read_config();
 }

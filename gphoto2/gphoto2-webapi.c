@@ -1539,6 +1539,7 @@ typedef enum
   ARG_AUTH_ENABLED,
   ARG_AUTH_USER,
   ARG_AUTH_PASSWORD,
+  ARG_HTML_ROOT,
   ARG_SHOW_INFO,
   ARG_SPEED,
   ARG_STORAGE_INFO,
@@ -1794,6 +1795,11 @@ cb_arg_run(poptContext __unused__ ctx,
     webcfg.auth_password[WEBCFG_STR_LEN] = 0;
     break;
 
+  case ARG_HTML_ROOT:
+    strncpy(webcfg.html_root, arg, 255);
+    webcfg.html_root[255] = 0;
+    break;
+
   case ARG_SHOW_INFO:
     /* Did the user specify a file or a range? */
     if (strchr(arg, '.'))
@@ -2011,6 +2017,8 @@ int main(int argc, char **argv, char **envp)
        N_("api user"), NULL},
       {"auth-password", '\0', POPT_ARG_STRING, NULL, ARG_AUTH_PASSWORD,
        N_("api password"), NULL},
+      {"html-root", '\0', POPT_ARG_STRING, NULL, ARG_HTML_ROOT,
+       N_("root directory for HTML files"), NULL},
       POPT_TABLEEND};
 
   const struct poptOption options[] = {
@@ -2180,6 +2188,7 @@ int main(int argc, char **argv, char **envp)
   CHECK_OPT(ARG_AUTH_ENABLED);
   CHECK_OPT(ARG_AUTH_USER);
   CHECK_OPT(ARG_AUTH_PASSWORD);
+  CHECK_OPT(ARG_HTML_ROOT);
   CHECK_OPT(ARG_SHOW_INFO);
   CHECK_OPT(ARG_STORAGE_INFO);
   CHECK_OPT(ARG_SUMMARY);

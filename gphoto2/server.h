@@ -12,6 +12,7 @@ typedef struct _webapi_server_config
   char auth_user[WEBCFG_STR_LEN+1];
   char auth_password[WEBCFG_STR_LEN+1];
   char server_done;
+  char html_root[256];
 } WebAPIServerConfig;
 
 
