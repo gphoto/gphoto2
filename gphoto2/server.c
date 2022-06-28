@@ -243,7 +243,6 @@ static void start_thread(void (*f)(void *), void *p)
 static void producer_thread_function_d(void *param)
 {
   char buffer[256];
-  MG_INFO(("start"));
 
   CameraFile *file;
   char *data = NULL;
@@ -273,8 +272,6 @@ static void producer_thread_function_d(void *param)
     send(FD(c), (char *)"\r\n", 2, 0);
     c->recv.len = 0;
   }
-
-  MG_INFO(("end"));
 }
 
 static void
@@ -432,7 +429,8 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
     {
       c->label[0] = 'M';
 
-      const char *http_header = "HTTP/1.0 200 OK\r\n"
+      const char *http_header = "HTTP/1.1 200 OK\r\n"
+                                "Access-Control-Allow-Origin: *\r\n"
                                 "Cache-Control: no-cache\r\n"
                                 "Pragma: no-cache\r\nExpires: Thu, 01 Dec 1994 16:00:00 GMT\r\n"
                                 "Content-Type: multipart/x-mixed-replace; boundary=--foo\r\n\r\n";
@@ -559,10 +557,12 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
     }
   }
 
+/* for debugging only
   else if (ev == MG_EV_CLOSE)
   {
     printf("MG_EV_CLOSE connection label = %c (%d)\n", c->label[0], c->label[0]);
   }
+*/
 }
 
 #ifdef _WIN32
