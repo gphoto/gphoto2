@@ -312,7 +312,9 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 
     else if (mg_http_match_uri(hm, "/api/server/shutdown"))
     {
-      mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":0}\n");
+      MG_HTTP_CHUNK_START;
+      mg_http_printf_chunk(c, "{\"return_code\": 0}" );
+      MG_HTTP_CHUNK_END;
       webcfg.server_done = TRUE;
     }
 
