@@ -613,10 +613,12 @@ static void get_cfgname(char *cfgname)
 
 static void webcfg_print_config(FILE *out)
 {
+  char cfgbuffer[256];
+  mg_base64_encode((const unsigned char *)webcfg.auth_password, strlen(webcfg.auth_password), cfgbuffer);
   fprintf(out, CFG_SERVER_URL "%s\n", webcfg.server_url);
   fprintf(out, CFG_AUTH_ENABLED "%s\n", webcfg.auth_enabled ? "true" : "false");
   fprintf(out, CFG_AUTH_USER "%s\n", webcfg.auth_user);
-  fprintf(out, CFG_AUTH_PASSWORD "%s\n", webcfg.auth_password);
+  fprintf(out, CFG_AUTH_PASSWORD "%s\n", cfgbuffer);
   fprintf(out, CFG_HTML_ROOT "%s\n", webcfg.html_root);
 }
 
@@ -639,6 +641,7 @@ static void webcfg_write_config()
 static void webcfg_read_config()
 {
   char cfgname[256];
+  char cfgbuffer[256];
   char *line = NULL;
   size_t len = 0;
   ssize_t read;
@@ -676,7 +679,8 @@ static void webcfg_read_config()
 
     if (strncmp(CFG_AUTH_PASSWORD, line, ISIZEOF(CFG_AUTH_PASSWORD)) == 0)
     {
-      strcpy(webcfg.auth_password, line + ISIZEOF(CFG_AUTH_PASSWORD));
+      strcpy(cfgbuffer, line + ISIZEOF(CFG_AUTH_PASSWORD));
+      mg_base64_decode( cfgbuffer, strlen(cfgbuffer), webcfg.auth_password);
       continue;
     }
 
