@@ -17,14 +17,49 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y autopoint gettext libcdk5-dev libaa1-dev libpopt-dev libreadline-dev libjpeg-dev libexif-dev libgphoto2-dev
     - name: autoreconf
       run: autoreconf -i -f
+
     - name: configure
-      run: ./configure --prefix=$PWD/__prefix
+      run: ./configure --prefix=$PWD/__prefix-blank
     - name: make
       run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC
-    #- name: make check
-    #  run: NPROC=$(nproc); set -x; if make -j$NPROC -l$NPROC check; then :; else s=$?; cat tests/testsuite.log; exit "$s"; fi
     - name: make install
       run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC install
+
+    - name: apt-get install libreadline-dev
+      run: sudo apt-get install -y libreadline-dev
+    - name: make distclean
+      run: make distclean
+    - name: configure
+      run: ./configure --prefix=$PWD/__prefix-rl
+    - name: make
+      run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC
+    - name: make install
+      run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC install
+
+    - name: apt-get install libcdk5-dev
+      run: sudo apt-get install -y libcdk5-dev
+    - name: make distclean
+      run: make distclean
+    - name: configure
+      run: ./configure --prefix=$PWD/__prefix-rl-cdk
+    - name: make
+      run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC
+    - name: make install
+      run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC install
+
+    - name: apt-get install libaa1-dev
+      run: sudo apt-get install -y libaa1-dev
+    - name: make distclean
+      run: make distclean
+    - name: configure
+      run: ./configure --prefix=$PWD/__prefix-rl-cdk-aa
+    - name: make
+      run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC
+    - name: make install
+      run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC install
+
+    #- name: make check
+    #  run: NPROC=$(nproc); set -x; if make -j$NPROC -l$NPROC check; then :; else s=$?; cat tests/testsuite.log; exit "$s"; fi
     #- name: make installcheck
     #  run: NPROC=$(nproc); set -x; make -j$NPROC -l$NPROC installcheck
     #- name: make distcheck
