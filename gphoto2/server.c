@@ -122,6 +122,16 @@ static const char *content_type_text_html = "Content-Type: text/html\r\n";
 #define MG_HTTP_CHUNK_START mg_printf(c, http_chunked_header)
 #define MG_HTTP_CHUNK_END mg_http_printf_chunk(c, "")
 
+
+static void
+http_200(struct mg_connection *c, int ret)
+{
+  MG_HTTP_CHUNK_START;
+  mg_http_printf_chunk(c, "{\"return_code\": %d}", ret );
+  MG_HTTP_CHUNK_END;
+}
+
+
 static int
 server_http_version(struct mg_connection *c)
 {
@@ -312,9 +322,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 
     else if (mg_http_match_uri(hm, "/api/server/shutdown"))
     {
-      MG_HTTP_CHUNK_START;
-      mg_http_printf_chunk(c, "{\"return_code\": 0}" );
-      MG_HTTP_CHUNK_END;
+      http_200(c,0);
       webcfg.server_done = TRUE;
     }
 
@@ -338,7 +346,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
 
       if (ret != GP_OK)
       {
-        mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":%d}\n", ret);
+        http_200(c,ret);
       }
     }
 
@@ -375,8 +383,7 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
           ret = set_config_index_action(p, name, index);
         }
       }
-
-      mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":%d}\n", ret);
+      http_200( c, ret );
     }
 
     else if (mg_http_match_uri(hm, "/api/config/get/#"))
@@ -408,7 +415,8 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
           ret = set_config_action(p, name, value);
         }
       }
-      mg_http_reply(c, 200, content_type_application_json, "{\"return_code\":%d}\n", ret);
+
+      http_200( c, ret );
     }
 
     else if (mg_http_match_uri(hm, "/api/capture-image"))
