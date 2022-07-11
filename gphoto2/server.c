@@ -459,7 +459,22 @@ fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data)
         strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
         buffer[MIN((int)hm->uri.len, 255)] = 0;
         char *path = buffer + 13;
-        if (get_file_http_common(c, path, GP_FILE_TYPE_NORMAL) != GP_OK)
+        if (get_file_http_common(c, path, GP_FILE_TYPE_NORMAL, FALSE ) != GP_OK)
+        {
+          mg_http_reply(c, 404, content_type_application_json, "{ \"error\":\"file not found\",\"return_code\":-1}\n");
+        }
+      }
+    }
+
+    else if (mg_http_match_uri(hm, "/api/file/download/#"))
+    {
+      if (hm->uri.len >= 19)
+      {
+        char buffer[256];
+        strncpy(buffer, hm->uri.ptr, MIN((int)hm->uri.len, 255));
+        buffer[MIN((int)hm->uri.len, 255)] = 0;
+        char *path = buffer + 18;
+        if (get_file_http_common(c, path, GP_FILE_TYPE_NORMAL, TRUE ) != GP_OK)
         {
           mg_http_reply(c, 404, content_type_application_json, "{ \"error\":\"file not found\",\"return_code\":-1}\n");
         }

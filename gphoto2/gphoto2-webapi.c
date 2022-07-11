@@ -836,7 +836,7 @@ void dissolve_filename(
 #endif
 }
 
-int get_file_http_common(struct mg_connection *c, const char *path, CameraFileType type)
+int get_file_http_common(struct mg_connection *c, const char *path, CameraFileType type, uint8_t download)
 {
   gp_log(GP_LOG_DEBUG, "gphoto2-webapi", "Getting '%s'...", path);
 
@@ -859,14 +859,25 @@ int get_file_http_common(struct mg_connection *c, const char *path, CameraFileTy
       CameraFileInfo info;
       CR(gp_camera_file_get_info(gp_params.camera, newfolder, newfilename, &info, gp_params.context));
 
-      const char *http_header = "HTTP/1.1 200 OK\r\n"
+      if ( download == TRUE )
+      {
+        const char *http_header = "HTTP/1.1 200 OK\r\n"
                                 "Access-Control-Allow-Origin: *\r\n"
-                                "Content-Type: %s\r\n"
+                                "Content-Type: application/octet-stream\r\n"
                                 "Content-Disposition: attachment; filename=%s\r\n"
                                 "Content-Length: %ld\r\n\r\n";
 
-//      mg_printf(c, http_header, info.file.type, newfilename, info.file.size);
-      mg_printf(c, http_header, "application/octet-stream", newfilename, info.file.size);
+        mg_printf(c, http_header, newfilename, info.file.size);
+      }
+      else
+      {
+        const char *http_header = "HTTP/1.1 200 OK\r\n"
+                                "Access-Control-Allow-Origin: *\r\n"
+                                "Content-Type: %s\r\n"
+                                "Content-Length: %ld\r\n\r\n";
+
+        mg_printf(c, http_header, info.file.type, info.file.size);
+      }
 
       ret = save_file_to_file(c, gp_params.camera, gp_params.context, gp_params.flags,
                               newfolder, newfilename, type, TRUE);
