@@ -1938,7 +1938,12 @@ print_widget (struct mg_connection *c, GPParams *p, const char *name, CameraWidg
 #endif
 #ifndef GPHOTO2_WEBAPI
 			printf ("Current: %s\n",current);
-#else
+#else     
+		  // rtrim
+      char* rptr = current + strlen(current);
+      while(isspace(*--rptr));
+      *(rptr+1) = '\0';
+
 			JSON_PRINTF(c,", \"current\": \"%s\"",current);
 			JSON_PRINTF(c,", \"choice\": [");
 #endif
