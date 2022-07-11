@@ -194,7 +194,11 @@ Nearly all responses are [JSON](https://json.org) formated.
 
 - `http://<server ip>:8866/api/file/get/<path to file/image>` 
 
-  response - native file
+  response - native file, with image mimetype e.g. `image/jpeg`
+  
+- `http://<server ip>:8866/api/file/download/<path to file/image>` 
+
+  response - native file, mimetype is allways `application/octet-stream` and the content disposition filename header is set.
 
 - `http://<server ip>:8866/api/file/exif/<path to image>` 
 
