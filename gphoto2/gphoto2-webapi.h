@@ -36,7 +36,7 @@
 #define VERSION "2"
 #endif
 
-#define WEBAPI_SERVER_VERSION "0.0.13"
+#define WEBAPI_SERVER_VERSION "0.0.14"
 
 void cli_error_print(char *format, ...);
 void dissolve_filename ( const char *folder, const char *filename, char **newfolder, char **newfilename );
