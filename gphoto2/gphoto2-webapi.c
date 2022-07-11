@@ -862,9 +862,11 @@ int get_file_http_common(struct mg_connection *c, const char *path, CameraFileTy
       const char *http_header = "HTTP/1.1 200 OK\r\n"
                                 "Access-Control-Allow-Origin: *\r\n"
                                 "Content-Type: %s\r\n"
+                                "Content-Disposition: attachment; filename=%s\r\n"
                                 "Content-Length: %ld\r\n\r\n";
 
-      mg_printf(c, http_header, info.file.type, info.file.size);
+//      mg_printf(c, http_header, info.file.type, newfilename, info.file.size);
+      mg_printf(c, http_header, "application/octet-stream", newfilename, info.file.size);
 
       ret = save_file_to_file(c, gp_params.camera, gp_params.context, gp_params.flags,
                               newfolder, newfilename, type, TRUE);
