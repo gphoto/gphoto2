@@ -1198,7 +1198,7 @@ thread_func (void *data)
 	pthread_cleanup_pop (1);
 }
 
-static unsigned int
+static pthread_t
 start_timeout_func (Camera *camera, unsigned int timeout,
 		    CameraTimeoutFunc func, void __unused__ *data)
 {
@@ -1219,7 +1219,7 @@ start_timeout_func (Camera *camera, unsigned int timeout,
 }
 
 static void
-stop_timeout_func (Camera __unused__ *camera, unsigned int id,
+stop_timeout_func (Camera __unused__ *camera, pthread_t id,
 		   void __unused__ *data)
 {
 	pthread_t tid = id;
