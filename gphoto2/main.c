@@ -1307,6 +1307,7 @@ typedef enum {
 	ARG_FOLDER,
 	ARG_FORCE_OVERWRITE,
 	ARG_GET_ALL_AUDIO_DATA,
+	ARG_GET_ALL_EXIF,
 	ARG_GET_ALL_FILES,
 	ARG_GET_ALL_METADATA,
 	ARG_GET_ALL_RAW_DATA,
@@ -1316,6 +1317,7 @@ typedef enum {
 	ARG_SET_CONFIG,
 	ARG_SET_CONFIG_INDEX,
 	ARG_SET_CONFIG_VALUE,
+	ARG_GET_EXIF,
 	ARG_GET_FILE,
 	ARG_GET_METADATA,
 	ARG_GET_RAW_DATA,
@@ -1636,6 +1638,9 @@ cb_arg_run (poptContext __unused__ ctx,
 	case ARG_GET_ALL_AUDIO_DATA:
 		params->p.r = for_each_file (&gp_params, save_all_audio_action);
 		break;
+	case ARG_GET_ALL_EXIF:
+		params->p.r = for_each_file (&gp_params, save_exif_action);
+		break;
 	case ARG_GET_ALL_FILES:
 		params->p.r = for_each_file (&gp_params, save_file_action);
 		break;
@@ -1655,6 +1660,10 @@ cb_arg_run (poptContext __unused__ ctx,
 	case ARG_GET_METADATA:
 		gp_params.multi_type = MULTI_DOWNLOAD;
 		params->p.r = get_file_common (arg, GP_FILE_TYPE_METADATA);
+		break;
+	case ARG_GET_EXIF:
+		gp_params.multi_type = MULTI_DOWNLOAD;
+		params->p.r = get_file_common (arg, GP_FILE_TYPE_EXIF);
 		break;
 	case ARG_GET_FILE:
 		gp_params.multi_type = MULTI_DOWNLOAD;
@@ -2125,6 +2134,10 @@ main (int argc, char **argv, char **envp)
 		{"get-all-audio-data", '\0', POPT_ARG_NONE, NULL,
 		 ARG_GET_ALL_AUDIO_DATA,
 		 N_("Get all audio data from folder"), NULL},
+		{"get-exif", '\0', POPT_ARG_STRING, NULL, ARG_GET_EXIF,
+		 N_("Get files given in range"), N_("RANGE")},
+		{"get-all-exif", '\0', POPT_ARG_NONE, NULL, ARG_GET_ALL_EXIF,
+		 N_("Get all files from folder"), NULL},
 		{"delete-file", 'd', POPT_ARG_STRING, NULL, ARG_DELETE_FILE,
 		 N_("Delete files given in range"), N_("RANGE")},
 		{"delete-all-files", 'D', POPT_ARG_NONE, NULL,
