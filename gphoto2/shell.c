@@ -83,6 +83,7 @@ static int shell_get           (Camera *, const char *);
 static int shell_put           (Camera *, const char *);
 static int shell_get_thumbnail (Camera *, const char *);
 static int shell_get_raw       (Camera *, const char *);
+static int shell_get_exif      (Camera *, const char *);
 static int shell_del           (Camera *, const char *);
 static int shell_help          (Camera *, const char *);
 static int shell_ls            (Camera *, const char *);
@@ -133,6 +134,8 @@ static const struct _ShellFunctionTable {
 	{"get-thumbnail", shell_get_thumbnail, N_("Download a thumbnail"),
 	 N_("[directory/]filename"), 1},
 	{"get-raw", shell_get_raw, N_("Download raw data"),
+	 N_("[directory/]filename"), 1},
+	{"get-exif", shell_get_exif, N_("Download Exif data"),
 	 N_("[directory/]filename"), 1},
 	{"show-info", shell_show_info, N_("Show image information, like width, height, and capture time"),
 	 N_("[directory/]filename"), 1},
@@ -747,6 +750,15 @@ shell_get_raw (Camera __unused__ *camera, const char *arg)
 {
 	CHECK (shell_file_action (p->camera, p->context, p->folder, arg,
 				  save_raw_action));
+
+	return (GP_OK);
+}
+
+static int
+shell_get_exif (Camera __unused__ *camera, const char *arg)
+{
+	CHECK (shell_file_action (p->camera, p->context, p->folder, arg,
+				  save_exif_action));
 
 	return (GP_OK);
 }

@@ -63,6 +63,8 @@ gphoto2 \- command\-line gphoto2 client
 .br
 [\-\-get\-audio\-data\ \fIRANGE\ or\ NAME\fR] [\-\-get\-all\-audio\-data]
 .br
+[\-\-get\-exif\ \fIRANGE\ or\ NAME\fR] [\-\-get\-all\-exif]
+.br
 [\-\-get\-metadata\ \fIRANGE\ or\ NAME\fR] [\-\-get\-all\-metadata] [\-\-upload\-metadata\ \fIFILENAME\fR]
 .br
 [\-\-force\-overwrite]
@@ -399,6 +401,16 @@ Get audio data given in range\&.
 Get all audio data from folder\&.
 .RE
 .PP
+\fB\-\-get\-exif\fR \fIRANGE\fR
+.RS 4
+Get Exif given in range\&.
+.RE
+.PP
+\fB\-\-get\-all\-exif\fR
+.RS 4
+Get all Exif from folder\&.
+.RE
+.PP
 \fB\-\-upload\-metadata\fR \fIFILENAME\fR
 .RS 4
 Upload meta data for the specific file, taken from a file prefix with meta_ \&.
@@ -706,6 +718,11 @@ Download the specified thumbnail to the current directory\&.
 get\-raw \fIFILENAME\fR
 .RS 4
 Download the specified raw data to the current directory\&.
+.RE
+.PP
+get\-exif \fIFILENAME\fR
+.RS 4
+Download the specified Exif data to the current directory\&.
 .RE
 .PP
 show\-info \fIFILENAME\fR
