@@ -1342,6 +1342,7 @@ typedef enum {
 	ARG_PORT,
 	ARG_QUIET,
 	ARG_RECURSE,
+	ARG_REVERSE,
 	ARG_RESET,
 	ARG_RESET_INTERVAL,
 	ARG_RMDIR,
@@ -1489,6 +1490,10 @@ cb_arg_init (poptContext __unused__ ctx,
 		break;
 	case ARG_RECURSE:
 		gp_params.flags |= FLAGS_RECURSE;
+		break;
+
+	case ARG_REVERSE:
+		gp_params.flags |= FLAGS_REVERSE;
 		break;
 
 	case ARG_MODEL:
@@ -2154,6 +2159,8 @@ main (int argc, char **argv, char **envp)
 		 N_("Recursion (default for download)"), NULL},
 		{"no-recurse", '\0', POPT_ARG_NONE, NULL, ARG_NO_RECURSE,
 		 N_("No recursion (default for deletion)"), NULL},
+		{"reverse", '\0', POPT_ARG_NONE, NULL, ARG_REVERSE,
+		 N_("Reverse order of file operations"), NULL},
 		{"new", '\0', POPT_ARG_NONE, NULL, ARG_NEW,
 		 N_("Process new files only"), NULL},
 		{"force-overwrite", '\0', POPT_ARG_NONE, NULL,
