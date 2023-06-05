@@ -31,6 +31,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fnmatch.h>
 
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
@@ -80,6 +81,7 @@ static int shell_cd            (Camera *, const char *);
 static int shell_lcd           (Camera *, const char *);
 static int shell_exit          (Camera *, const char *);
 static int shell_get           (Camera *, const char *);
+static int shell_mget          (Camera *, const char *);
 static int shell_put           (Camera *, const char *);
 static int shell_get_thumbnail (Camera *, const char *);
 static int shell_get_raw       (Camera *, const char *);
@@ -130,6 +132,7 @@ static const struct _ShellFunctionTable {
 	 N_("directory"), 0},
 	{"exit", shell_exit, N_("Exit the gPhoto shell"), NULL, 0},
 	{"get", shell_get, N_("Download a file"), N_("[directory/]filename"), 1},
+	{"mget", shell_mget, N_("Download multiple files"), N_("[directory/]pattern"), 1},
 	{"put", shell_put, N_("Upload a file"), N_("[directory/]filename"), 1},
 	{"get-thumbnail", shell_get_thumbnail, N_("Download a thumbnail"),
 	 N_("[directory/]filename"), 1},
@@ -742,6 +745,44 @@ shell_get (Camera __unused__ *camera, const char *arg)
 	CHECK (shell_file_action (p->camera, p->context, p->folder, arg,
 				  save_file_action));
 
+	return (GP_OK);
+}
+
+static int
+shell_mget (Camera __unused__ *camera, const char *arg)
+{
+	CameraList *list;
+	char folder[MAX_FOLDER_LEN];
+	int x;
+	int allcnt=0, getcnt=0;
+	const char *name;
+
+	/* Skip leading spaces of pattern */
+	while (arg[0] == ' ')
+		arg++;
+
+	/* Get file list of current directory */
+	CHECK (gp_list_new (&list));
+	CL (gp_camera_folder_list_files (p->camera, folder, list,
+					    p->context), list);
+
+	/* Get all matching files */
+	for (x = 1; x <= gp_list_count (list); x++) {
+		gp_list_get_name (list, x - 1, &name);
+		if (fnmatch (arg, name, (1 << 4)) == 0) {
+			printf ("Getting file %s ... ", name);
+			fflush(stdout);
+			// get file
+			CHECK (shell_file_action (p->camera, p->context, p->folder, name, save_file_action));
+			getcnt++;
+		}
+		else if (!(p->flags & FLAGS_QUIET))
+			printf ("Skipping file %s\n", name);
+		allcnt++;
+	}
+
+	printf("Done. %d of %d files copied from current directory.\n", getcnt, allcnt);
+	gp_list_free (list);
 	return (GP_OK);
 }
 
