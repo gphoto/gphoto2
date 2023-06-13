@@ -1086,6 +1086,12 @@ action_camera_capture_movie (GPParams *p, const char *arg)
 
 		captured_frames++;
 
+		if (end_next) {
+			printf(_("Movie capture: SIGUSR2 signal received, stopping capture!\n"));
+			end_next = 0;
+			break;
+		}
+
 		if (glob_cancel) {
 			fprintf(stderr, _("Ctrl-C pressed ... Exiting.\n"));
 			break;
