@@ -1104,7 +1104,7 @@ capture_generic (CameraCaptureType type, const char __unused__ *name, int downlo
 			else if (!capture_now) {
 				/*
 				 * In the case of a (huge) time-sync while gphoto is running,
-				 * gphoto could percieve an extremely large amount of time and
+				 * gphoto could perceive an extremely large amount of time and
 				 * stay "behind schedule" quite forever. That's why I reduce the
 				 * difference of time with the following loop.
 				 * [alesan]
@@ -2302,7 +2302,7 @@ main (int argc, char **argv, char **envp)
 	poptResetContext (ctx);
 	while ((cb_params.p.r >= GP_OK) && (poptGetNextOpt (ctx) >= 0));
 	/* Load default values for --filename and --hook-script if not
-	 * explicitely specified
+	 * explicitly specified
 	 */
 	if (!gp_params.filename) {
 		char buf[256];
@@ -2525,7 +2525,7 @@ main (int argc, char **argv, char **envp)
 
 	/*
 	 * Recursion is too dangerous for deletion. Only turn it on if
-	 * explicitely specified.
+	 * explicitly specified.
 	 */
 	cb_params.type = CALLBACK_PARAMS_TYPE_QUERY;
 	cb_params.p.q.found = 0;
