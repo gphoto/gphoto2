@@ -373,7 +373,7 @@ print_file_action (GPParams *p, const char *folder, const char *filename)
                            (info.file.permissions & GP_FILE_PERM_DELETE) ? "d" : "-");
                 }
                 if (info.file.fields & GP_FILE_INFO_SIZE)
-                    printf(" FILESIZE=%lld", (unsigned long long int)info.file.size);
+                    printf(" FILESIZE=%llu", (unsigned long long int)info.file.size);
                 if ((info.file.fields & GP_FILE_INFO_WIDTH) && +
                     (info.file.fields & GP_FILE_INFO_HEIGHT)) {
                     printf(" IMGWIDTH=%d", info.file.width);
