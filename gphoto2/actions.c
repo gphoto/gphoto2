@@ -286,7 +286,7 @@ print_info_action (GPParams *p, const char *folder, const char *filename)
 		if (info.file.fields & GP_FILE_INFO_TYPE)
 			printf (_("  Mime type:   '%s'\n"), info.file.type);
 		if (info.file.fields & GP_FILE_INFO_SIZE)
-			printf (_("  Size:        %lu byte(s)\n"), (unsigned long int)info.file.size);
+			printf (_("  Size:        %llu byte(s)\n"), (unsigned long long int)info.file.size);
 		if (info.file.fields & GP_FILE_INFO_WIDTH)
 			printf (_("  Width:       %i pixel(s)\n"), info.file.width);
 		if (info.file.fields & GP_FILE_INFO_HEIGHT)
@@ -318,7 +318,7 @@ print_info_action (GPParams *p, const char *folder, const char *filename)
 		if (info.preview.fields & GP_FILE_INFO_TYPE)
 			printf (_("  Mime type:   '%s'\n"), info.preview.type);
 		if (info.preview.fields & GP_FILE_INFO_SIZE)
-			printf (_("  Size:        %lu byte(s)\n"), (unsigned long int)info.preview.size);
+			printf (_("  Size:        %llu byte(s)\n"), (unsigned long long int)info.preview.size);
 		if (info.preview.fields & GP_FILE_INFO_WIDTH)
 			printf (_("  Width:       %i pixel(s)\n"), info.preview.width);
 		if (info.preview.fields & GP_FILE_INFO_HEIGHT)
@@ -334,7 +334,7 @@ print_info_action (GPParams *p, const char *folder, const char *filename)
 		if (info.audio.fields & GP_FILE_INFO_TYPE)
 			printf (_("  Mime type:  '%s'\n"), info.audio.type);
 		if (info.audio.fields & GP_FILE_INFO_SIZE)
-			printf (_("  Size:       %lu byte(s)\n"), (unsigned long int)info.audio.size);
+			printf (_("  Size:       %llu byte(s)\n"), (unsigned long long int)info.audio.size);
 		if (info.audio.fields & GP_FILE_INFO_STATUS)
 			printf (_("  Downloaded: %s\n"),
 				(info.audio.status == GP_FILE_STATUS_DOWNLOADED) ? _("yes") : _("no"));
@@ -373,7 +373,7 @@ print_file_action (GPParams *p, const char *folder, const char *filename)
                            (info.file.permissions & GP_FILE_PERM_DELETE) ? "d" : "-");
                 }
                 if (info.file.fields & GP_FILE_INFO_SIZE)
-                    printf(" FILESIZE=%5ld", (unsigned long int)info.file.size);
+                    printf(" FILESIZE=%llu", (unsigned long long int)info.file.size);
                 if ((info.file.fields & GP_FILE_INFO_WIDTH) && +
                     (info.file.fields & GP_FILE_INFO_HEIGHT)) {
                     printf(" IMGWIDTH=%d", info.file.width);
@@ -1398,11 +1398,11 @@ print_storage_info (GPParams *p)
 			printf("\n");
 		}
 		if (sinfos[i].fields & GP_STORAGEINFO_MAXCAPACITY)
-			printf ("totalcapacity=%lu KB\n", (unsigned long)sinfos[i].capacitykbytes);
+			printf ("totalcapacity=%llu KB\n", (unsigned long long)sinfos[i].capacitykbytes);
 		if (sinfos[i].fields & GP_STORAGEINFO_FREESPACEKBYTES)
-			printf ("free=%lu KB\n", (unsigned long)sinfos[i].freekbytes);
+			printf ("free=%llu KB\n", (unsigned long long)sinfos[i].freekbytes);
 		if (sinfos[i].fields & GP_STORAGEINFO_FREESPACEIMAGES)
-			printf ("freeimages=%lu\n", (unsigned long)sinfos[i].freeimages);
+			printf ("freeimages=%llu\n", (unsigned long long)sinfos[i].freeimages);
 	}
 	if (sinfos)
 		free(sinfos);
