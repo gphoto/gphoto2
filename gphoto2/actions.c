@@ -382,7 +382,7 @@ print_file_action (GPParams *p, const char *folder, const char *filename)
                 if (info.file.fields & GP_FILE_INFO_TYPE)
                     printf(" FILETYPE=%s", info.file.type);
                 if (info.file.fields & GP_FILE_INFO_MTIME)
-                    printf(" FILEMTIME=%ld", info.file.mtime);
+                    printf(" FILEMTIME=%lld", (long long)info.file.mtime);
                 printf("\n");
             } else
                 printf ("FILENAME='%s/%s'\n", folder, filename);
@@ -406,7 +406,7 @@ print_file_action (GPParams *p, const char *folder, const char *filename)
 		    if (info.file.fields & GP_FILE_INFO_TYPE)
                 printf(" %s", info.file.type);
 		    if (info.file.fields & GP_FILE_INFO_MTIME)
-                printf(" %ld", info.file.mtime);
+                printf(" %lld", (long long)info.file.mtime);
 		    putchar ('\n');
 		} else
 		    printf("#%-5i %s\n", x+1, filename);
