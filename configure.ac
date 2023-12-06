@@ -421,7 +421,7 @@ dnl Turn on all warnings when using gcc
 dnl ---------------------------------------------------------------------------
 AS_VAR_IF([GCC], [yes], [dnl
     CFLAGS="$CFLAGS -Wall"
-    CFLAGS="$CFLAGS -Wmissing-declarations -Wmissing-prototypes"
+    CFLAGS="$CFLAGS -Wmissing-declarations -Wmissing-prototypes -Werror=incompatible-pointer-types -Werror=implicit -Werror=int-conversion"
     # FIXME: Check for --enable-debug here
     CFLAGS="$CFLAGS -g"
     LDFLAGS="$LDFLAGS -g"
