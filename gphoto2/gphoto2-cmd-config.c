@@ -59,8 +59,8 @@ static int
 set_config (CmdConfig *cmd_config)
 {
 	int result, selection;
-	const char *msg[10];
-	const char *buttons[] = {N_("</B/24>Continue"), N_("</B16>Cancel")};
+	CDK_CONST char *msg[10];
+	CDK_CONST char *buttons[] = {N_("</B/24>Continue"), N_("</B16>Cancel")};
 	CDKDIALOG *question = NULL;
 
 	result = gp_camera_set_config (cmd_config->camera, cmd_config->window,
@@ -124,7 +124,7 @@ show_section (CmdConfig *cmd_config, CameraWidget *section)
 	count++;
 	scroll = newCDKScroll (cmd_config->screen, CENTER, CENTER, RIGHT,
 			       10, 50, title,
-			       (const char**)items, count, NUMBERS, A_REVERSE, TRUE, FALSE);
+			       (CDK_CONST char**)items, count, NUMBERS, A_REVERSE, TRUE, FALSE);
 	if (!scroll)
 		return (GP_ERROR);
 
@@ -318,7 +318,7 @@ show_radio (CmdConfig *cmd_config, CameraWidget *radio)
 	}
 
 	list = newCDKItemlist (cmd_config->screen, CENTER, CENTER,
-			       title, _("Value: "), (const char**)items, count,
+			       title, _("Value: "), (CDK_CONST char**)items, count,
 			       current, TRUE, FALSE);
 	if (!list)
 		return (GP_ERROR);
@@ -368,7 +368,7 @@ show_toggle (CmdConfig *cmd_config, CameraWidget *toggle)
 	int value, selection;
 	const char *label;
 	char title[1024];
-	const char *info[] = {N_("Yes"), N_("No")};
+	CDK_CONST char *info[] = {N_("Yes"), N_("No")};
 
 	CHECK (gp_widget_get_value (toggle, &value));
 	CHECK (gp_widget_get_label (toggle, &label));
