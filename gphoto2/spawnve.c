@@ -69,7 +69,7 @@ spawnve(const char *filename, char *const argv[], char *const envp[])
       }
       return 0;
     } else {
-      /* some error occured */
+      /* some error occurred */
       fprintf(stderr, "error waiting for child\n");
       return -1;
     }
