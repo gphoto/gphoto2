@@ -37,7 +37,7 @@ jobs:
         fetch-depth: 2
 
     # install all necessary things for libgphoto2
-    - run: sudo apt-get update && sudo apt-get install -y autopoint gettext libusb-1.0-0-dev libcurl4-openssl-dev bison flex
+    - run: sudo apt-get update && sudo apt-get install -y autopoint gettext libusb-1.0-0-dev libcurl4-openssl-dev bison flex libltdl-dev
 
     # install gphoto2 specifics packages
     - run: sudo apt-get install -y libpopt-dev
