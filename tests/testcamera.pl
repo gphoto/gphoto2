@@ -230,6 +230,11 @@ foreach (@allconfig) {
 		$jpgformat = $1 if (!defined($jpgformat));
 		next;
 	}
+	# new canon eos style ... use L first
+	if (/^Choice: (\d*) .*L$/) {
+		$jpgformat = $1 if (!defined($jpgformat));
+		next;
+	}
 	if (/^Choice: (\d*) .*Fine/) {
 		$jpgformat = $1 if (!defined($jpgformat));
 		next;
