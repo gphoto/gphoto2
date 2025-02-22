@@ -17,7 +17,7 @@ at one of the following URLs:
   * https://github.com/gphoto/
   * http://sf.net/projects/gphoto
 
-The man page is in the file [gphoto2.1](doc/gphoto2.1).
+The main page is in the file [gphoto2.1](doc/gphoto2.1).
 
 
 ## How do I build it?
