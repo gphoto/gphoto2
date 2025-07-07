@@ -93,6 +93,8 @@ gphoto2 \- command\-line gphoto2 client
 .br
 [\-\-keep] [\-\-no\-keep]
 .br
+[\-\-reverse]
+.br
 [\-\-show\-info\ \fIRANGE\ or\ NAME\fR]
 .br
 [\-\-show\-exif\ \fIRANGE\ or\ NAME\fR]
@@ -514,6 +516,11 @@ Triggers the capture an image and return\&. If you want to get the image downloa
 This feature is only available for some camera brands and drivers\&.
 .RE
 .PP
+\fB\-\-reverse\fR
+.RS 4
+When doing file operations like \-\-get\-all\-files, \-P or \-T it reverts the order of files to download\&.
+.RE
+.PP
 \fB\-\-keep\fR
 .RS 4
 When doing \-\-capture\-image\-and\-download or interval capture, this option will keep the images on the memory card of the camera\&.
@@ -832,14 +839,14 @@ Exit the gphoto2 shell\&.
 .RS 4
 If set, defines the directory where the
 libgphoto2
-library looks for its camera drivers (camlibs)\&. You only need to set this on OS/2 systems and broken/test installations\&.
+library looks for its camera drivers (camlibs)\&. You only need to set this with non\-standard installations\&.
 .RE
 .PP
 \fBIOLIBS\fR
 .RS 4
 If set, defines the directory where the
 libgphoto2_port
-library looks for its I/O drivers (iolibs)\&. You only need to set this on OS/2 systems and broken/test installations\&.
+library looks for its I/O drivers (iolibs)\&. You only need to set this with non\-standard installations\&.
 .RE
 .PP
 \fBLD_DEBUG\fR
