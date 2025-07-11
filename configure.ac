@@ -19,6 +19,7 @@ AM_INIT_AUTOMAKE([
   dist-bzip2
   dist-xz
   check-news
+  subdir-objects
 ])
 
 GP_CHECK_SHELL_ENVIRONMENT
