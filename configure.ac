@@ -1,9 +1,9 @@
 dnl Process this file with autoreconf to produce a configure script.
 AC_PREREQ([2.69])
 
-dnl Next stable release must be 2.5.29 or later
+dnl Next stable release must be 2.5.33 or later
 AC_INIT([gphoto2 command line interface],
-        [2.5.28.1],
+        [2.5.32],
         [gphoto-devel@lists.sourceforge.net],
         [gphoto2])
 
