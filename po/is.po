@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gphoto2-2.5.28\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
 "POT-Creation-Date: 2022-01-03 12:21+0100\n"
-"PO-Revision-Date: 2022-05-06 11:00+0000\n"
+"PO-Revision-Date: 2022-05-06 16:17+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
@@ -363,6 +363,15 @@ msgid ""
 "\n"
 "This version of gphoto2 is using the following software versions and options:\n"
 msgstr ""
+"gphoto2 %s\n"
+"\n"
+"Höfundarréttur (c) 2000-%d Marcus Meissner og fleiri\n"
+"\n"
+"gphoto2 er dreift ÁN ÁBYRGÐAR, að svo miklu leyti sem heimilt er með lögum.\n"
+"Þú mátt dreifa aftur afritum af gphoto2 með skilmálum almenna GNU General\n"
+" Public notkunarleyfisins. Til að sjá nánari upplýsingar hvað þetta varðar ættirðu að skoða skrárnar sem nefnast  COPYING.\n"
+"\n"
+"Þessi útgáfa gphoto2 nýtir sér eftirfarandi útgáfur hugbúnaðar og valkosti í honum:\n"
 
 #: gphoto2/actions.c:1040
 msgid "Could not open 'movie.mjpg'."
@@ -528,7 +537,7 @@ msgstr ""
 #: gphoto2/actions.c:1390
 #, c-format
 msgid "Camera layout (DCIM)"
-msgstr ""
+msgstr "Framsetning myndavélar (DCIM)"
 
 #: gphoto2/actions.c:1431
 #, c-format
@@ -756,17 +765,17 @@ msgstr ""
 #: gphoto2/main.c:263
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
-msgstr ""
+msgstr "Skráaheitið sem myndavélin gaf upp ('%s') er ekki með skráarendingu!"
 
 #: gphoto2/main.c:332
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
-msgstr ""
+msgstr "Ógilt snið '%s' (villa á staðsetningu %i)."
 
 #: gphoto2/main.c:387 gphoto2/main.c:593
 #, c-format
 msgid "Skip existing file %s\n"
-msgstr ""
+msgstr "Sleppi fyrirliggjandi skrá %s\n"
 
 #: gphoto2/main.c:399
 #, c-format
@@ -799,17 +808,17 @@ msgstr "Ekki tókst að hleypa af myndatöku."
 #: gphoto2/main.c:831
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
-msgstr ""
+msgstr "Ný skrá er staðsett á %s%s%s á myndavélinni\n"
 
 #: gphoto2/main.c:848 gphoto2/main.c:879
 #, c-format
 msgid "Keeping file %s%s%s on the camera\n"
-msgstr ""
+msgstr "Held eftir skránni %s%s%s á myndavélinni\n"
 
 #: gphoto2/main.c:869
 #, c-format
 msgid "Deleting file %s%s%s on the camera\n"
-msgstr ""
+msgstr "Eyði skránni %s%s%s á myndavélinni\n"
 
 #: gphoto2/main.c:912
 #, c-format
@@ -833,17 +842,17 @@ msgstr ""
 
 #: gphoto2/main.c:951
 msgid "Could not get capabilities?"
-msgstr ""
+msgstr "Gat ekki sótt upplýsingar um getu?"
 
 #: gphoto2/main.c:959
 #, c-format
 msgid "Time-lapse mode enabled (interval: %ds).\n"
-msgstr ""
+msgstr "Myndataka í tímastökkum (hikmyndun - time lapse) er virk (millibil: %ds).\n"
 
 #: gphoto2/main.c:962
 #, c-format
 msgid "Standing by waiting for SIGUSR1 to capture.\n"
-msgstr ""
+msgstr "Bíð eftir SIGUSR1 til að taka mynd.\n"
 
 #: gphoto2/main.c:968
 #, c-format
@@ -853,12 +862,12 @@ msgstr ""
 #: gphoto2/main.c:976
 #, c-format
 msgid "Capturing frame #%d...\n"
-msgstr ""
+msgstr "Tek upp ramma #%d...\n"
 
 #: gphoto2/main.c:978
 #, c-format
 msgid "Capturing frame #%d/%d...\n"
-msgstr ""
+msgstr "Tek upp ramma #%d/%d...\n"
 
 #: gphoto2/main.c:988
 #, c-format
@@ -871,7 +880,7 @@ msgstr ""
 
 #: gphoto2/main.c:1015
 msgid "Could not trigger image capture."
-msgstr ""
+msgstr "Ekki tókst að hleypa af myndatöku."
 
 #: gphoto2/main.c:1022
 msgid "Could not capture image."
@@ -880,7 +889,7 @@ msgstr "Gat ekki náð í mynd."
 #: gphoto2/main.c:1029
 #, c-format
 msgid "Capture failed (auto-focus problem?)...\n"
-msgstr ""
+msgstr "Myndataka mistókst (vandamál með sjálfvirkan-fókus?)...\n"
 
 #: gphoto2/main.c:1040
 msgid "Could not capture."
@@ -894,7 +903,7 @@ msgstr ""
 #: gphoto2/main.c:1084 gphoto2/main.c:1126
 #, c-format
 msgid "Awakened by SIGUSR1...\n"
-msgstr ""
+msgstr "Vakið af SIGUSR1...\n"
 
 #: gphoto2/main.c:1097
 #, c-format
