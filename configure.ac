@@ -3,7 +3,7 @@ AC_PREREQ([2.69])
 
 dnl Next stable release must be 2.5.33 or later
 AC_INIT([gphoto2 command line interface],
-        [2.5.32],
+        [2.5.32.1],
         [gphoto-devel@lists.sourceforge.net],
         [gphoto2])
 
