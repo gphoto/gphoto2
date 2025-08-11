@@ -2,357 +2,360 @@
 # Copyright (C) 2008 Lutz Müller and others
 # This file is distributed under the same license as the gphoto2 package.
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2010-2014.
+# Andika Triwidada <andika@gmail.com>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gphoto2 2.5.4\n"
+"Project-Id-Version: gphoto2 2.5.28\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2014-03-23 19:35+0100\n"
-"PO-Revision-Date: 2014-06-01 09:59+0700\n"
-"Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
+"POT-Creation-Date: 2022-01-03 12:21+0100\n"
+"PO-Revision-Date: 2025-02-24 19:27+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
 "Language: id\n"
-"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
+"X-Generator: Poedit 3.5\n"
 
-#: gphoto2/actions.c:174
+#: gphoto2/actions.c:180
 #, c-format
 msgid "Number of files in folder '%s': %i\n"
 msgstr "Jumlah berkas di folder '%s': %i\n"
 
-#: gphoto2/actions.c:195
+#: gphoto2/actions.c:201
 #, c-format
 msgid "There is %d folder in folder '%s'.\n"
 msgid_plural "There are %d folders in folder '%s'.\n"
 msgstr[0] "Ada %d folder di folder '%s'.\n"
 
-#: gphoto2/actions.c:244
+#: gphoto2/actions.c:250
 #, c-format
 msgid "There is no file in folder '%s'.\n"
 msgstr "Tidak ada berkas di folder '%s'.\n"
 
-#: gphoto2/actions.c:247
+#: gphoto2/actions.c:253
 #, c-format
 msgid "There is %d file in folder '%s'.\n"
 msgid_plural "There are %d files in folder '%s'.\n"
 msgstr[0] "Ada %d berkas di folder '%s'.\n"
 
-#: gphoto2/actions.c:269
+#: gphoto2/actions.c:275
 #, c-format
 msgid "Information on file '%s' (folder '%s'):\n"
 msgstr "Informasi di berkas '%s' (folder '%s'):\n"
 
-#: gphoto2/actions.c:271
+#: gphoto2/actions.c:277
 #, c-format
 msgid "File:\n"
 msgstr "Berkas:\n"
 
-#: gphoto2/actions.c:273 gphoto2/actions.c:305 gphoto2/actions.c:321
+#: gphoto2/actions.c:279 gphoto2/actions.c:311 gphoto2/actions.c:327
 #, c-format
 msgid "  None available.\n"
 msgstr "  Tak ada yang tersedia.\n"
 
-#: gphoto2/actions.c:276 gphoto2/actions.c:308
+#: gphoto2/actions.c:282 gphoto2/actions.c:314
 #, c-format
 msgid "  Mime type:   '%s'\n"
 msgstr "  Tipe mime:   '%s'\n"
 
-#: gphoto2/actions.c:278 gphoto2/actions.c:310
+#: gphoto2/actions.c:284 gphoto2/actions.c:316
 #, c-format
 msgid "  Size:        %lu byte(s)\n"
-msgstr "  Ukuran:        %lu bita\n"
+msgstr "  Ukuran:      %lu bita\n"
 
-#: gphoto2/actions.c:280 gphoto2/actions.c:312
+#: gphoto2/actions.c:286 gphoto2/actions.c:318
 #, c-format
 msgid "  Width:       %i pixel(s)\n"
 msgstr "  Lebar:       %i piksel\n"
 
-#: gphoto2/actions.c:282 gphoto2/actions.c:314
+#: gphoto2/actions.c:288 gphoto2/actions.c:320
 #, c-format
 msgid "  Height:      %i pixel(s)\n"
-msgstr "  Tinggi:      %i piksel(s)\n"
+msgstr "  Tinggi:      %i piksel\n"
 
-#: gphoto2/actions.c:284 gphoto2/actions.c:316
+#: gphoto2/actions.c:290 gphoto2/actions.c:322
 #, c-format
 msgid "  Downloaded:  %s\n"
 msgstr "  Terunduh:  %s\n"
 
-#: gphoto2/actions.c:285 gphoto2/actions.c:317 gphoto2/actions.c:329
-#: gphoto2/actions.c:682 gphoto2/actions.c:684 gphoto2/actions.c:712
-#: gphoto2/actions.c:715 gphoto2/actions.c:718 gphoto2/actions.c:721
-#: gphoto2/actions.c:724 gphoto2/actions.c:1737 gphoto2/actions.c:1964
+#: gphoto2/actions.c:291 gphoto2/actions.c:323 gphoto2/actions.c:335
+#: gphoto2/actions.c:697 gphoto2/actions.c:699 gphoto2/actions.c:731
+#: gphoto2/actions.c:734 gphoto2/actions.c:737 gphoto2/actions.c:740
+#: gphoto2/actions.c:743 gphoto2/actions.c:1874 gphoto2/actions.c:2117
 msgid "yes"
 msgstr "ya"
 
-#: gphoto2/actions.c:285 gphoto2/actions.c:317 gphoto2/actions.c:329
-#: gphoto2/actions.c:682 gphoto2/actions.c:684 gphoto2/actions.c:712
-#: gphoto2/actions.c:715 gphoto2/actions.c:718 gphoto2/actions.c:721
-#: gphoto2/actions.c:724 gphoto2/actions.c:1731 gphoto2/actions.c:1958
+#: gphoto2/actions.c:291 gphoto2/actions.c:323 gphoto2/actions.c:335
+#: gphoto2/actions.c:697 gphoto2/actions.c:699 gphoto2/actions.c:731
+#: gphoto2/actions.c:734 gphoto2/actions.c:737 gphoto2/actions.c:740
+#: gphoto2/actions.c:743 gphoto2/actions.c:1868 gphoto2/actions.c:2111
 msgid "no"
 msgstr "tidak"
 
-#: gphoto2/actions.c:287
+#: gphoto2/actions.c:293
 #, c-format
 msgid "  Permissions: "
 msgstr "  Hak akses: "
 
-#: gphoto2/actions.c:290
+#: gphoto2/actions.c:296
 #, c-format
 msgid "read/delete"
 msgstr "baca/hapus"
 
-#: gphoto2/actions.c:292
+#: gphoto2/actions.c:298
 #, c-format
 msgid "read"
 msgstr "baca"
 
-#: gphoto2/actions.c:294
+#: gphoto2/actions.c:300
 #, c-format
 msgid "delete"
 msgstr "hapus"
 
-#: gphoto2/actions.c:296
+#: gphoto2/actions.c:302
 #, c-format
 msgid "none"
 msgstr "tak ada"
 
-#: gphoto2/actions.c:300
+#: gphoto2/actions.c:306
 #, c-format
 msgid "  Time:        %s"
-msgstr "  Waktu:        %s"
+msgstr "  Waktu:       %s"
 
-#: gphoto2/actions.c:303
+#: gphoto2/actions.c:309
 #, c-format
 msgid "Thumbnail:\n"
-msgstr "Miniatur:\n"
+msgstr "Gambar mini:\n"
 
-#: gphoto2/actions.c:319
+#: gphoto2/actions.c:325
 #, c-format
 msgid "Audio data:\n"
 msgstr "Data audio:\n"
 
-#: gphoto2/actions.c:324
+#: gphoto2/actions.c:330
 #, c-format
 msgid "  Mime type:  '%s'\n"
 msgstr "  Tipe mime:  '%s'\n"
 
-#: gphoto2/actions.c:326
+#: gphoto2/actions.c:332
 #, c-format
 msgid "  Size:       %lu byte(s)\n"
-msgstr "  Ukuran:       %lu bita\n"
+msgstr "  Ukuran:     %lu bita\n"
 
-#: gphoto2/actions.c:328
+#: gphoto2/actions.c:334
 #, c-format
 msgid "  Downloaded: %s\n"
-msgstr "  Terunduh: %s\n"
+msgstr "  Terunduh:   %s\n"
 
-#: gphoto2/actions.c:504
+#: gphoto2/actions.c:532
 msgid "Could not parse EXIF data."
 msgstr "Tak dapat mengurai data EXIF."
 
-#: gphoto2/actions.c:508
+#: gphoto2/actions.c:536
 #, c-format
 msgid "EXIF tags:"
 msgstr "Tag EXIF:"
 
-#: gphoto2/actions.c:511
+#: gphoto2/actions.c:539
 msgid "Tag"
 msgstr "Tag"
 
-#: gphoto2/actions.c:513
+#: gphoto2/actions.c:541
 msgid "Value"
 msgstr "Nilai"
 
-#: gphoto2/actions.c:534
+#: gphoto2/actions.c:549
 #, c-format
 msgid "EXIF data contains a thumbnail (%i bytes)."
 msgstr "Data EXIF berisi miniatur (%i bita)."
 
-#: gphoto2/actions.c:543
+#: gphoto2/actions.c:558
 msgid "gphoto2 has been compiled without EXIF support."
 msgstr "gphoto2 telah dikompilasi tanpa sokongan EXIF."
 
-#: gphoto2/actions.c:561
+#: gphoto2/actions.c:576
 #, c-format
 msgid "Number of supported cameras: %i\n"
 msgstr "Jumlah kamera yang disokong: %i\n"
 
-#: gphoto2/actions.c:562
+#: gphoto2/actions.c:577
 #, c-format
 msgid "Supported cameras:\n"
 msgstr "Kamera disokong:\n"
 
-#: gphoto2/actions.c:575
+#: gphoto2/actions.c:590
 #, c-format
 msgid "\t\"%s\" (TESTING)\n"
 msgstr "\t\"%s\" (PERCOBAAN)\n"
 
-#: gphoto2/actions.c:578
+#: gphoto2/actions.c:593
 #, c-format
 msgid "\t\"%s\" (EXPERIMENTAL)\n"
 msgstr "\t\"%s\" (EKSPERIMENTAL)\n"
 
-#: gphoto2/actions.c:583
+#: gphoto2/actions.c:598
 #, c-format
 msgid "\t\"%s\"\n"
 msgstr "\t\"%s\"\n"
 
-#: gphoto2/actions.c:627
+#: gphoto2/actions.c:642
 #, c-format
 msgid "Devices found: %i\n"
 msgstr "Divais ditemukan: %i\n"
 
-#: gphoto2/actions.c:628
+#: gphoto2/actions.c:643
 #, c-format
 msgid ""
 "Path                             Description\n"
 "--------------------------------------------------------------\n"
 msgstr ""
-"Alamat                             Keterangan\n"
+"Path                             Keterangan\n"
 "--------------------------------------------------------------\n"
 
-#: gphoto2/actions.c:661 gphoto2/actions.c:666
+#: gphoto2/actions.c:676 gphoto2/actions.c:681
 #, c-format
 msgid "%-30s %-16s\n"
 msgstr "%-30s %-16s\n"
 
-#: gphoto2/actions.c:661
+#: gphoto2/actions.c:676
 msgid "Model"
 msgstr "Model"
 
-#: gphoto2/actions.c:661
+#: gphoto2/actions.c:676
 msgid "Port"
-msgstr "Pangkalan"
+msgstr "Port"
 
-#: gphoto2/actions.c:662
+#: gphoto2/actions.c:677
 #, c-format
 msgid "----------------------------------------------------------\n"
 msgstr "----------------------------------------------------------\n"
 
-#: gphoto2/actions.c:680
+#: gphoto2/actions.c:695
 #, c-format
 msgid "Abilities for camera             : %s\n"
-msgstr "Kemampuan untuk kamera             : %s\n"
+msgstr "Kemampuan untuk kamera           : %s\n"
 
-#: gphoto2/actions.c:681
+#: gphoto2/actions.c:696
 #, c-format
 msgid "Serial port support              : %s\n"
-msgstr "Sokongan pangkalan serial              : %s\n"
+msgstr "Sokongan pangkalan serial        : %s\n"
 
-#: gphoto2/actions.c:683
+#: gphoto2/actions.c:698
 #, c-format
 msgid "USB support                      : %s\n"
-msgstr "Sokongan USB                      : %s\n"
+msgstr "Sokongan USB                     : %s\n"
 
-#: gphoto2/actions.c:686
+#: gphoto2/actions.c:701
 #, c-format
 msgid "Transfer speeds supported        :\n"
-msgstr "Kecepatan transfer yang disokong        :\n"
+msgstr "Kecepatan transfer yang disokon  :\n"
 
-#: gphoto2/actions.c:688
+#: gphoto2/actions.c:703
 #, c-format
 msgid "                                 : %i\n"
 msgstr "                                 : %i\n"
 
-#: gphoto2/actions.c:691
+#: gphoto2/actions.c:706
 #, c-format
 msgid "Capture choices                  :\n"
 msgstr "Pilihan tangkap                  :\n"
 
-#: gphoto2/actions.c:693
+#: gphoto2/actions.c:708
 #, c-format
 msgid "                                 : Image\n"
 msgstr "                                 : Gambar\n"
 
-#: gphoto2/actions.c:697
+#: gphoto2/actions.c:712
 #, c-format
 msgid "                                 : Video\n"
 msgstr "                                 : Video\n"
 
-#: gphoto2/actions.c:701
+#: gphoto2/actions.c:716
 #, c-format
 msgid "                                 : Audio\n"
 msgstr "                                 : Audio\n"
 
-#: gphoto2/actions.c:705
+#: gphoto2/actions.c:720
 #, c-format
 msgid "                                 : Preview\n"
 msgstr "                                 : Pratayang\n"
 
-#: gphoto2/actions.c:709
+#: gphoto2/actions.c:724
+#, c-format
+msgid "                                 : Trigger Capture\n"
+msgstr "                                 : Tangkapan Picu\n"
+
+#: gphoto2/actions.c:728
 #, c-format
 msgid "                                 : Capture not supported by the driver\n"
 msgstr "                                 : Tangkap tidak disokong oleh penggerak\n"
 
-#: gphoto2/actions.c:711
+#: gphoto2/actions.c:730
 #, c-format
 msgid "Configuration support            : %s\n"
-msgstr "Sokongan konfigurasi            : %s\n"
+msgstr "Sokongan konfigurasi                 : %s\n"
 
-#: gphoto2/actions.c:713
+#: gphoto2/actions.c:732
 #, c-format
 msgid "Delete selected files on camera  : %s\n"
-msgstr "Hapus berkas terpilih pada kamera  : %s\n"
+msgstr "Hapus berkas terpilih pada kamera    : %s\n"
 
-#: gphoto2/actions.c:716
+#: gphoto2/actions.c:735
 #, c-format
 msgid "Delete all files on camera       : %s\n"
 msgstr "Hapus semua berkas pada kamera       : %s\n"
 
-#: gphoto2/actions.c:719
+#: gphoto2/actions.c:738
 #, c-format
 msgid "File preview (thumbnail) support : %s\n"
 msgstr "Sokongan pratayang (miniatur) berkas : %s\n"
 
-#: gphoto2/actions.c:722
+#: gphoto2/actions.c:741
 #, c-format
 msgid "File upload support              : %s\n"
-msgstr "Sokongan unggah berkas              : %s\n"
+msgstr "Sokongan unggah berkas               : %s\n"
 
-#: gphoto2/actions.c:739
+#: gphoto2/actions.c:758
 #, c-format
 msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
-msgstr "Pangkalan harus terlihat seperti 'serial:/dev/ttyS0' atau 'usb:', tapi '%s' kekurangan tanda titik dua jadi saya akan menduga apa maksud anda."
+msgstr "Pangkalan harus terlihat seperti 'serial:/dev/ttyS0' atau 'usb:', tapi '%s' kekurangan tanda titik dua jadi saya akan menduga apa maksud Anda."
 
-#: gphoto2/actions.c:773
+#: gphoto2/actions.c:795
 #, c-format
 msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
-msgstr "Pangkalan yang anda tentukan ('%s') tak dapat ditemukan. Silakan tentukan satu dari pangkalan yang ditemukan oleh 'gphoto2 --list-ports' dan pastikan ejaannya benar (misalnya dengan awalan 'serial:' atau 'usb:')."
+msgstr "Pangkalan yang Anda tentukan ('%s') tak dapat ditemukan. Silakan tentukan satu dari pangkalan yang ditemukan oleh 'gphoto2 --list-ports' dan pastikan ejaannya benar (misalnya dengan awalan 'serial:' atau 'usb:')."
 
-#: gphoto2/actions.c:806
+#: gphoto2/actions.c:830
 #, c-format
 msgid "About the camera driver:"
 msgstr "Tentang penggerak kamera:"
 
-#: gphoto2/actions.c:819
+#: gphoto2/actions.c:843
 #, c-format
 msgid "Camera summary:"
 msgstr "Ringkasan kamera:"
 
-#: gphoto2/actions.c:832
+#: gphoto2/actions.c:856
 #, c-format
 msgid "Camera manual:"
 msgstr "Manual kamera:"
 
-#: gphoto2/actions.c:849
+#: gphoto2/actions.c:873
 #, c-format
 msgid "You can only specify speeds for serial ports."
 msgstr "Anda hanya dapat menentukan kecepatan untuk pangkalan serial."
 
-#: gphoto2/actions.c:899
-msgid "OS/2 port by Bart van Leeuwen\n"
-msgstr "Pangkalan OS/2 oleh Bart van Leeuwen\n"
-
-#: gphoto2/actions.c:903
+#: gphoto2/actions.c:921
 #, c-format
 msgid ""
 "gphoto2 %s\n"
 "\n"
-"Copyright (c) 2000-%d Lutz Mueller and others\n"
-"%s\n"
+"Copyright (c) 2000-%d Marcus Meissner and others\n"
+"\n"
 "gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
 "redistribute copies of gphoto2 under the terms of the GNU General Public\n"
 "License. For more information about these matters, see the files named COPYING.\n"
@@ -361,540 +364,571 @@ msgid ""
 msgstr ""
 "gphoto2 %s\n"
 "\n"
-"Hak cipta (c) 2000-%d Lutz Mueller dan lainnya\n"
-"%s\n"
+"Hak cipta (c) 2000-%d Marcus Meissner dan lainnya\n"
+"\n"
 "gphoto2 hadir TANPA GARANSI, sampai batas yang diizinkan oleh hukum. Anda dapat\n"
 "mendistribusikan ulang salinan gphoto2 di bawah perjanjian Lisensi Publik Umum\n"
 "GNU. Untuk informasi lebih lanjut tentang masalah ini, lihat berkas yang bernama COPYING.\n"
 "\n"
 "Versi gphoto2 ini menggunakan versi perangkat lunak dan opsi berikut:\n"
 
-#: gphoto2/actions.c:1003
+#: gphoto2/actions.c:1040
 msgid "Could not open 'movie.mjpg'."
 msgstr "Tak dapat membuka 'movie.mjpg'."
 
-#: gphoto2/actions.c:1010
+#: gphoto2/actions.c:1047
 #, c-format
 msgid "Capturing preview frames as movie to '%s'. Press Ctrl-C to abort.\n"
 msgstr "Menangkap bingkai pratilik ketika film ke '%s'. Tekan Ctrl-C untuk membatalkan.\n"
 
-#: gphoto2/actions.c:1014
+#: gphoto2/actions.c:1051
 #, c-format
 msgid "Capturing preview frames as movie to '%s' for %d seconds.\n"
 msgstr "Menangkap bingkai pratilik ketika film ke '%s' selama %d detik.\n"
 
-#: gphoto2/actions.c:1019
+#: gphoto2/actions.c:1056
 #, c-format
 msgid "Capturing %d preview frames as movie to '%s'.\n"
 msgstr "Menangkap bingkai pratilik %d ketika film k '%s'.\n"
 
-#: gphoto2/actions.c:1029
+#: gphoto2/actions.c:1072
 msgid "Movie capture error... Exiting."
 msgstr "Galat menangkap film... Keluar."
 
-#: gphoto2/actions.c:1034
+#: gphoto2/actions.c:1078
 #, c-format
 msgid "Movie capture error... Unhandled MIME type '%s'."
 msgstr "Galat menangkap film... Tipe MIME tak dapat ditangani '%s'."
 
-#: gphoto2/actions.c:1041
+#: gphoto2/actions.c:1085
 #, c-format
 msgid "Ctrl-C pressed ... Exiting.\n"
 msgstr "Ctrl-C ditekan ... Keluar.\n"
 
-#: gphoto2/actions.c:1055
+#: gphoto2/actions.c:1099
 #, c-format
 msgid "Movie capture finished (%d frames)\n"
 msgstr "Menangkap film selesai (%d bingkai)\n"
 
-#: gphoto2/actions.c:1085
+#: gphoto2/actions.c:1131
 #, c-format
 msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
 msgstr "Menunggu peristiwa dari kamera. Tekan Ctrl-C untuk membatalkan.\n"
 
-#: gphoto2/actions.c:1091
+#: gphoto2/actions.c:1137
 #, c-format
 msgid "Waiting for %d frames from the camera. Press Ctrl-C to abort.\n"
 msgstr "Menunggu %d bingkai dari kamera. Tekan Ctrl-C untuk membatalkan.\n"
 
-#: gphoto2/actions.c:1096
+#: gphoto2/actions.c:1142
 #, c-format
 msgid "Waiting for %d milliseconds for events from camera. Press Ctrl-C to abort.\n"
 msgstr "Menunggu %d milidetik untuk peristiwa dari kamera. Tekan Ctrl-C untuk membatalkan.\n"
 
-#: gphoto2/actions.c:1101
+#: gphoto2/actions.c:1147
 #, c-format
 msgid "Waiting for %d seconds for events from camera. Press Ctrl-C to abort.\n"
 msgstr "Menunggu %d detik untuk peristiwa dari kamera. Tekan Ctrl-C untuk membatalkan.\n"
 
-#: gphoto2/actions.c:1105
+#: gphoto2/actions.c:1150
 #, c-format
 msgid "Waiting for %d events from camera. Press Ctrl-C to abort.\n"
 msgstr "Menunggu %d peristiwa dari kamera. Tekan Ctrl-C untuk membatalkan.\n"
 
-#: gphoto2/actions.c:1169 gphoto2/main.c:800
+#: gphoto2/actions.c:1154
+#, c-format
+msgid "Waiting for '%s' event from camera. Press Ctrl-C to abort.\n"
+msgstr "Menunggu kejadian '%s' dari kamera. Tekan Ctrl-C untuk menggugurkan.\n"
+
+#: gphoto2/actions.c:1169
+#, c-format
+msgid "SIGUSR1 signal received, triggering capture!\n"
+msgstr "Sinyal SIGUSR1 diterima, memicu penangkapan!\n"
+
+#: gphoto2/actions.c:1180
+#, c-format
+msgid "SIGUSR2 signal received, stopping wait!\n"
+msgstr "Sinyal SIGUSR2 diterima, berhenti menunggu!\n"
+
+#: gphoto2/actions.c:1218 gphoto2/actions.c:1229 gphoto2/actions.c:1236
+#: gphoto2/actions.c:1252 gphoto2/actions.c:1290 gphoto2/actions.c:1298
+#: gphoto2/actions.c:1306
+#, c-format
+msgid "event found, stopping wait!\n"
+msgstr "kejadian ditemukan, berhenti menunggu!\n"
+
+#: gphoto2/actions.c:1262 gphoto2/main.c:840
 msgid "Could not set folder."
 msgstr "Tak dapat mengatur folder."
 
-#: gphoto2/actions.c:1175 gphoto2/main.c:807
+#: gphoto2/actions.c:1268 gphoto2/main.c:855
 msgid "Could not get image."
 msgstr "Tak dapat mengambil gambar."
 
-#: gphoto2/actions.c:1182 gphoto2/main.c:814
+#: gphoto2/actions.c:1275 gphoto2/main.c:862
 msgid "Buggy libcanon.so?"
 msgstr "libcanon.so bermasalah?"
 
-#: gphoto2/actions.c:1192 gphoto2/main.c:826
+#: gphoto2/actions.c:1285 gphoto2/main.c:874
 msgid "Could not delete image."
 msgstr "Tak dapat menghapus gambar."
 
-#: gphoto2/actions.c:1216
+#: gphoto2/actions.c:1325
 #, c-format
 msgid "Getting storage information not supported for this camera.\n"
 msgstr "Mendapatkan informasi penyimpanan tak disokong untuk kamera ini.\n"
 
-#: gphoto2/actions.c:1231
+#: gphoto2/actions.c:1340
 #, c-format
 msgid "Read-Write"
 msgstr "Baca-Tulis"
 
-#: gphoto2/actions.c:1234
+#: gphoto2/actions.c:1343
 #, c-format
 msgid "Read-Only"
 msgstr "Hanya-Baca"
 
-#: gphoto2/actions.c:1237
+#: gphoto2/actions.c:1346
 #, c-format
 msgid "Read-only with delete"
 msgstr "Hanya-baca dengan hapus"
 
-#: gphoto2/actions.c:1240 gphoto2/actions.c:1250
+#: gphoto2/actions.c:1349 gphoto2/actions.c:1359
 #, c-format
 msgid "Unknown"
 msgstr "Tak diketahui"
 
-#: gphoto2/actions.c:1253
+#: gphoto2/actions.c:1362
 #, c-format
 msgid "Fixed ROM"
 msgstr "ROM Tetap"
 
-#: gphoto2/actions.c:1256
+#: gphoto2/actions.c:1365
 #, c-format
 msgid "Removable ROM"
 msgstr "ROM Dapat Dilepas"
 
-#: gphoto2/actions.c:1259
+#: gphoto2/actions.c:1368
 #, c-format
 msgid "Fixed RAM"
 msgstr "RAM Tetap"
 
-#: gphoto2/actions.c:1262
+#: gphoto2/actions.c:1371
 #, c-format
 msgid "Removable RAM"
 msgstr "RAM Dapat Dilepas"
 
-#: gphoto2/actions.c:1272
+#: gphoto2/actions.c:1381
 #, c-format
 msgid "Undefined"
 msgstr "Tak Didefinisikan"
 
-#: gphoto2/actions.c:1275
+#: gphoto2/actions.c:1384
 #, c-format
 msgid "Generic Flat"
 msgstr "Rata Generik"
 
-#: gphoto2/actions.c:1278
+#: gphoto2/actions.c:1387
 #, c-format
 msgid "Generic Hierarchical"
 msgstr "Hirarki Generik"
 
-#: gphoto2/actions.c:1281
+#: gphoto2/actions.c:1390
 #, c-format
 msgid "Camera layout (DCIM)"
 msgstr "Tata letak kamera (DCIM)"
 
-#: gphoto2/actions.c:1319
+#: gphoto2/actions.c:1431
 #, c-format
 msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
 msgstr "Menimpa id vendor/produk USB 0x%x/0x%x dengan 0x%x/0x%x"
 
-#: gphoto2/actions.c:1377
+#: gphoto2/actions.c:1499
 msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
 msgstr "SELALU SERTAKAN BARIS BERIKUT KETIKA MENGIRIM PESAN AWAKUTU KE MILIS:"
 
-#: gphoto2/actions.c:1392
+#: gphoto2/actions.c:1514
 #, c-format
 msgid "%s has been compiled with the following options:"
 msgstr "%s telah dikompilasi dengan opsi berikut:"
 
-#: gphoto2/actions.c:1523
+#: gphoto2/actions.c:1654
 #, c-format
 msgid "%s not found in configuration tree."
 msgstr "%s tak ditemukan di pohon konfigurasi."
 
-#: gphoto2/actions.c:1572
+#: gphoto2/actions.c:1706
 #, c-format
 msgid "Failed to retrieve value of text widget %s."
 msgstr "Gagal menerima nilai widget teks %s."
 
-#: gphoto2/actions.c:1589
+#: gphoto2/actions.c:1723
 #, c-format
 msgid "Failed to retrieve values of range widget %s."
 msgstr "Gagal menerima nilai widget rentang %s."
 
-#: gphoto2/actions.c:1601
+#: gphoto2/actions.c:1735
 #, c-format
 msgid "Failed to retrieve values of toggle widget %s."
 msgstr "Gagal menerima nilai widget ubah %s."
 
-#: gphoto2/actions.c:1613
+#: gphoto2/actions.c:1747
 #, c-format
 msgid "Failed to retrieve values of date/time widget %s."
 msgstr "Gagal menerima nilai widget tanggal/waktu %s."
 
-#: gphoto2/actions.c:1643
+#: gphoto2/actions.c:1756
+msgid "Use 'now' as the current time when setting.\n"
+msgstr "Gunakan 'sekarang' sebagai waktu saat ini saat menata.\n"
+
+#: gphoto2/actions.c:1778
 #, c-format
 msgid "Failed to retrieve values of radio widget %s."
 msgstr "Gagal menerima nilai dari widget radio %s."
 
-#: gphoto2/actions.c:1687
+#: gphoto2/actions.c:1824
 #, c-format
 msgid "Property %s is read only."
 msgstr "Properti %s hanya baca."
 
-#: gphoto2/actions.c:1701 gphoto2/actions.c:1928
+#: gphoto2/actions.c:1838 gphoto2/actions.c:2081
 #, c-format
 msgid "Failed to set the value of text widget %s to %s."
 msgstr "Gagal mengatur nilai widget teks %s ke %s."
 
-#: gphoto2/actions.c:1711 gphoto2/actions.c:1938
+#: gphoto2/actions.c:1848 gphoto2/actions.c:2091
 #, c-format
 msgid "The passed value %s is not a floating point value."
 msgstr "Nilai %s yang dilewatkan bukan nilai titik mengambang."
 
-#: gphoto2/actions.c:1716 gphoto2/actions.c:1943
+#: gphoto2/actions.c:1853 gphoto2/actions.c:2096
 #, c-format
 msgid "The passed value %f is not within the expected range %f - %f."
 msgstr "Nilai %f yang dilewatkan tidak dalam rentang %f - %f yang diharapkan."
 
-#: gphoto2/actions.c:1722 gphoto2/actions.c:1949
+#: gphoto2/actions.c:1859 gphoto2/actions.c:2102
 #, c-format
 msgid "Failed to set the value of range widget %s to %f."
 msgstr "Gagal mengatur nilai rentang widget %s ke %f."
 
-#: gphoto2/actions.c:1731 gphoto2/actions.c:1958
+#: gphoto2/actions.c:1868 gphoto2/actions.c:2111
 msgid "off"
 msgstr "mati"
 
-#: gphoto2/actions.c:1732 gphoto2/actions.c:1959
+#: gphoto2/actions.c:1869 gphoto2/actions.c:2112
 msgid "false"
 msgstr "salah"
 
-#: gphoto2/actions.c:1737 gphoto2/actions.c:1964
+#: gphoto2/actions.c:1874 gphoto2/actions.c:2117
 msgid "on"
 msgstr "hidup"
 
-#: gphoto2/actions.c:1738 gphoto2/actions.c:1965
+#: gphoto2/actions.c:1875 gphoto2/actions.c:2118
 msgid "true"
 msgstr "benar"
 
-#: gphoto2/actions.c:1743 gphoto2/actions.c:1970
+#: gphoto2/actions.c:1880 gphoto2/actions.c:2123
 #, c-format
 msgid "The passed value %s is not a valid toggle value."
 msgstr "Nilai %s yang dilewatkan bukan nilai ubah yang sah."
 
-#: gphoto2/actions.c:1749 gphoto2/actions.c:1976
+#: gphoto2/actions.c:1886 gphoto2/actions.c:2129
 #, c-format
 msgid "Failed to set values %s of toggle widget %s."
 msgstr "Gagal mengatur nilai %s dari widget ubah %s."
 
-#: gphoto2/actions.c:1756
+#: gphoto2/actions.c:1898 gphoto2/actions.c:2136
 msgid "now"
 msgstr "sekarang"
 
-#: gphoto2/actions.c:1764 gphoto2/actions.c:1989
+#: gphoto2/actions.c:1910 gphoto2/actions.c:2144
 #, c-format
 msgid "The passed value %s is neither a valid time nor an integer."
 msgstr "Nilai %s yang dilewatkan bukan waktu atau integer yang sah."
 
-#: gphoto2/actions.c:1771 gphoto2/actions.c:1996
+#: gphoto2/actions.c:1918 gphoto2/actions.c:2151
 #, c-format
 msgid "Failed to set new time of date/time widget %s to %s."
 msgstr "Gagal mengatur waktu baru dari widget tanggal/waktu %s ke %s."
 
-#: gphoto2/actions.c:1818 gphoto2/actions.c:1882 gphoto2/actions.c:2026
+#: gphoto2/actions.c:1965 gphoto2/actions.c:2032 gphoto2/actions.c:2181
 #, c-format
 msgid "Choice %s not found within list of choices."
 msgstr "Pilihan %s tak ditemukan di dalam senarai pilihan."
 
-#: gphoto2/actions.c:1826 gphoto2/actions.c:2034
+#: gphoto2/actions.c:1973 gphoto2/actions.c:2189
 #, c-format
 msgid "The %s widget is not configurable."
 msgstr "Widget %s tak dapat dikonfigurasi."
 
-#: gphoto2/actions.c:1833 gphoto2/actions.c:1901 gphoto2/actions.c:2041
+#: gphoto2/actions.c:1983 gphoto2/actions.c:2054 gphoto2/actions.c:2199
 #, c-format
 msgid "Failed to set new configuration value %s for configuration entry %s."
 msgstr "Gagal mengatur nilai konfigurasi baru %s untuk entri konfigurasi %s."
 
-#: gphoto2/actions.c:1894
+#: gphoto2/actions.c:2044
 #, c-format
 msgid "The %s widget has no indexed list of choices. Use --set-config-value instead."
 msgstr "Widget %s tidak memiliki senarai pilihan yang terindeks. Menggunakan --set-config-value."
 
-#: gphoto2/foreach.c:260
+#: gphoto2/foreach.c:272
 #, c-format
 msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
 msgstr "Jumlah berkas salah. Anda menentukan %i, tapi hanya ada %i berkas yang tersedia di '%s' atau subfoldernya. Silakan ambil jumlah berkas yang sah dari pengurutan berkas terlebih dahulu."
 
-#: gphoto2/foreach.c:285
+#: gphoto2/foreach.c:297
 #, c-format
 msgid "There are no files in folder '%s'."
 msgstr "Tidak ada berkas di folder '%s'."
 
-#: gphoto2/foreach.c:291
+#: gphoto2/foreach.c:303
 #, c-format
 msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
 msgstr "Jumlah berkas salah. Anda menentukan %i, tapi hanya ada 1 berkas yang tersedia di '%s'."
 
-#: gphoto2/foreach.c:299
+#: gphoto2/foreach.c:311
 #, c-format
 msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
 msgstr "Jumlah berkas salah. Anda menentukan %i, tapi hanya ada %i berkas yang tersedia di '%s'. Silakan ambil jumlah berkas yang sah dari pengurutan berkas terlebih dahulu."
 
-#: gphoto2/gp-params.c:62
+#: gphoto2/gp-params.c:70
 #, c-format
 msgid "*** Error ***              \n"
 msgstr "*** Galat ***              \n"
 
-#: gphoto2/gp-params.c:237
+#: gphoto2/gp-params.c:243
 #, c-format
 msgid "Press any key to continue.\n"
-msgstr "Silakan tekan tombol apapun untuk melanjutkan.\n"
+msgstr "Tekan tombol apa pun untuk melanjutkan.\n"
 
-#: gphoto2/gp-params.c:259
+#: gphoto2/gp-params.c:266
 #, c-format
 msgid "Not enough memory."
 msgstr "Tak cukup memori."
 
-#: gphoto2/gphoto2-cmd-capture.c:211
+#: gphoto2/gphoto2-cmd-capture.c:197
 msgid "Operation cancelled"
 msgstr "Operasi dibatalkan"
 
-#: gphoto2/gphoto2-cmd-config.c:55
+#: gphoto2/gphoto2-cmd-config.c:63
 msgid "</B/24>Continue"
 msgstr "</B/24>Lanjutkan"
 
-#: gphoto2/gphoto2-cmd-config.c:55
+#: gphoto2/gphoto2-cmd-config.c:63
 msgid "</B16>Cancel"
 msgstr "</B16>Batal"
 
-#: gphoto2/gphoto2-cmd-config.c:61
+#: gphoto2/gphoto2-cmd-config.c:69
 msgid "<C></5>Error"
 msgstr "<C></5>Galat"
 
-#: gphoto2/gphoto2-cmd-config.c:63
+#: gphoto2/gphoto2-cmd-config.c:71
 msgid "Could not set configuration:"
 msgstr "Tak dapat mengatur konfigurasi:"
 
-#: gphoto2/gphoto2-cmd-config.c:107
+#: gphoto2/gphoto2-cmd-config.c:115
 msgid "Exit"
 msgstr "Keluar"
 
-#: gphoto2/gphoto2-cmd-config.c:109
+#: gphoto2/gphoto2-cmd-config.c:117
 msgid "Back"
 msgstr "Mundur"
 
-#: gphoto2/gphoto2-cmd-config.c:254
+#: gphoto2/gphoto2-cmd-config.c:262
 msgid "Time: "
-msgstr "Waktu:"
+msgstr "Waktu: "
 
-#: gphoto2/gphoto2-cmd-config.c:313 gphoto2/gphoto2-cmd-config.c:341
-#: gphoto2/gphoto2-cmd-config.c:400 gphoto2/gphoto2-cmd-config.c:463
+#: gphoto2/gphoto2-cmd-config.c:321 gphoto2/gphoto2-cmd-config.c:349
+#: gphoto2/gphoto2-cmd-config.c:409 gphoto2/gphoto2-cmd-config.c:472
 msgid "Value: "
-msgstr "Nilai:"
+msgstr "Nilai: "
 
-#: gphoto2/gphoto2-cmd-config.c:362
+#: gphoto2/gphoto2-cmd-config.c:371
 msgid "Yes"
 msgstr "Ya"
 
-#: gphoto2/gphoto2-cmd-config.c:362
+#: gphoto2/gphoto2-cmd-config.c:371
 msgid "No"
 msgstr "Tidak"
 
-#: gphoto2/main.c:224
+#: gphoto2/main.c:221
 #, c-format
 msgid "Zero padding numbers in file names is only possible with %%n."
 msgstr "Jumlah pengisian nol di nama berkas hanya dimungkinkan dengan %%n."
 
-#: gphoto2/main.c:233
+#: gphoto2/main.c:230
 #, c-format
 msgid "You cannot use %%n zero padding without a precision value!"
 msgstr "Anda tak dapat menggunakan %%n pengisian nol tanpa nilai yang presisi!"
 
-#: gphoto2/main.c:266
+#: gphoto2/main.c:263
 #, c-format
 msgid "The filename provided by the camera ('%s') does not contain a suffix!"
 msgstr "Nama berkas yang disediakan oleh kamera ('%s') tidak berisi awalan!"
 
-#: gphoto2/main.c:335
+#: gphoto2/main.c:332
 #, c-format
 msgid "Invalid format '%s' (error at position %i)."
 msgstr "Format '%s' tidak sah (galat pada posisi %i)."
 
-#: gphoto2/main.c:382 gphoto2/main.c:561
+#: gphoto2/main.c:387 gphoto2/main.c:593
 #, c-format
 msgid "Skip existing file %s\n"
 msgstr "Lewati berkas yang ada %s\n"
 
-#: gphoto2/main.c:394
+#: gphoto2/main.c:399
 #, c-format
 msgid "File %s exists. Overwrite? [y|n] "
-msgstr "Berkas %s ada. Timpa? [y|t]"
+msgstr "Berkas %s ada. Timpa? [y|t] "
 
-#: gphoto2/main.c:406
+#: gphoto2/main.c:411
 #, c-format
 msgid "Specify new filename? [y|n] "
-msgstr "Tentukan nama berkas baru? [y|t]"
+msgstr "Tentukan nama berkas baru? [y|t] "
 
-#: gphoto2/main.c:418
+#: gphoto2/main.c:423
 #, c-format
 msgid "Enter new filename: "
-msgstr "Masukkan nama berkas baru:"
+msgstr "Masukkan nama berkas baru: "
 
-#: gphoto2/main.c:424
+#: gphoto2/main.c:429
 #, c-format
 msgid "Saving file as %s\n"
 msgstr "Menyimpan berkas sebagai %s\n"
 
-#: gphoto2/main.c:599
+#: gphoto2/main.c:631
 msgid "Permission denied"
 msgstr "Hak akses ditolak"
 
-#: gphoto2/main.c:761
+#: gphoto2/main.c:801
 msgid "Could not trigger capture."
 msgstr "Tak dapat memicu perekaman."
 
-#: gphoto2/main.c:791
+#: gphoto2/main.c:831
 #, c-format
 msgid "New file is in location %s%s%s on the camera\n"
 msgstr "Berkas baru berada di lokasi %s%s%s di dalam kamera\n"
 
-#: gphoto2/main.c:821
-#, c-format
-msgid "Deleting file %s%s%s on the camera\n"
-msgstr "Menghapus berkas %s%s%s di camera\n"
-
-#: gphoto2/main.c:831
+#: gphoto2/main.c:848 gphoto2/main.c:879
 #, c-format
 msgid "Keeping file %s%s%s on the camera\n"
 msgstr "Menyimpan berkas %s%s%s di camera\n"
 
-#: gphoto2/main.c:864
+#: gphoto2/main.c:869
+#, c-format
+msgid "Deleting file %s%s%s on the camera\n"
+msgstr "Menghapus berkas %s%s%s di kamera\n"
+
+#: gphoto2/main.c:912
 #, c-format
 msgid "Event FOLDER_ADDED %s/%s during wait, ignoring.\n"
 msgstr "Peristiwa FOLDER_DITAMBAHKAN %s/%s ketika menunggu, abaikan.\n"
 
-#: gphoto2/main.c:874
+#: gphoto2/main.c:917
+#, c-format
+msgid "Event FILE_CHANGED %s/%s during wait, ignoring.\n"
+msgstr "Kejadian BERKAS_BERUBAH %s/%s ketika menunggu, mengabaikan.\n"
+
+#: gphoto2/main.c:927
 #, c-format
 msgid "Event UNKNOWN %s during wait, ignoring.\n"
 msgstr "Peristiwa TAK DIKETAHUI %s ketika menunggu, abaikan.\n"
 
-#: gphoto2/main.c:880
+#: gphoto2/main.c:933
 #, c-format
 msgid "Unknown event type %d during bulb wait, ignoring.\n"
 msgstr "Tipe peristiwa tak diketahui %d ketika menunggu pijar, abaikan.\n"
 
-#: gphoto2/main.c:898
+#: gphoto2/main.c:951
 msgid "Could not get capabilities?"
-msgstr "Tak dapat mendapatkan kapabilitas?"
+msgstr "Tak bisa mendapatkan kapabilitas?"
 
-#: gphoto2/main.c:906
+#: gphoto2/main.c:959
 #, c-format
 msgid "Time-lapse mode enabled (interval: %ds).\n"
 msgstr "Mode jeda waktu diaktifkan (interval: %ds).\n"
 
-#: gphoto2/main.c:909
+#: gphoto2/main.c:962
 #, c-format
 msgid "Standing by waiting for SIGUSR1 to capture.\n"
-msgstr "Berdiri sambil menunggu SIGUSR1 untuk menangkap.\n"
+msgstr "Bersiap menunggu SIGUSR1 untuk menangkap.\n"
 
-#: gphoto2/main.c:915
+#: gphoto2/main.c:968
 #, c-format
 msgid "Bulb mode enabled (exposure time: %ds).\n"
 msgstr "Mode pijar diaktifkan (waktu pajanan: %dd).\n"
 
-#: gphoto2/main.c:928
+#: gphoto2/main.c:976
 #, c-format
 msgid "Capturing frame #%d...\n"
 msgstr "Menangkap bingkai #%d...\n"
 
-#: gphoto2/main.c:930
+#: gphoto2/main.c:978
 #, c-format
 msgid "Capturing frame #%d/%d...\n"
 msgstr "Menangkap bingkai #%d/%d...\n"
 
-#: gphoto2/main.c:940
+#: gphoto2/main.c:988
 #, c-format
 msgid "Could not set bulb capture, result %d."
 msgstr "Tak dapat mengatur penangkapan pijar, menghasilkan %d."
 
-#: gphoto2/main.c:954
+#: gphoto2/main.c:1002
 msgid "Could not end capture (bulb mode)."
 msgstr "Tak dapat mengakhiri penangkapan (mode pijar)."
 
-#: gphoto2/main.c:965
+#: gphoto2/main.c:1015
 msgid "Could not trigger image capture."
 msgstr "Tak dapat memicu penangkapan gambar."
 
-#: gphoto2/main.c:971
+#: gphoto2/main.c:1022
 msgid "Could not capture image."
 msgstr "Tak dapat menangkap gambar."
 
-#: gphoto2/main.c:978
+#: gphoto2/main.c:1029
 #, c-format
 msgid "Capture failed (auto-focus problem?)...\n"
 msgstr "Gagal menangkap (masalah fokus otomatis?)...\n"
 
-#: gphoto2/main.c:989
+#: gphoto2/main.c:1040
 msgid "Could not capture."
 msgstr "Tak dapat menangkap."
 
-#: gphoto2/main.c:1021
+#: gphoto2/main.c:1075
 #, c-format
 msgid "Waiting for next capture slot %ld seconds...\n"
 msgstr "Menunggu slot penangkapan berikutnya %ld detik...\n"
 
-#: gphoto2/main.c:1030 gphoto2/main.c:1071
+#: gphoto2/main.c:1084 gphoto2/main.c:1126
 #, c-format
 msgid "Awakened by SIGUSR1...\n"
 msgstr "Dibangunkan oleh SIGUSR1...\n"
 
-#: gphoto2/main.c:1043
+#: gphoto2/main.c:1097
 #, c-format
 msgid "not sleeping (%ld seconds behind schedule)\n"
-msgstr "tak tidur (%ld detik dibelakang jadwal)\n"
+msgstr "tak tidur (%ld detik terlambat dari jadwal)\n"
 
-#: gphoto2/main.c:1180
+#: gphoto2/main.c:1241
 #, c-format
 msgid "ERROR: "
-msgstr "GALAT:"
+msgstr "GALAT: "
 
-#: gphoto2/main.c:1203
+#: gphoto2/main.c:1264
 #, c-format
 msgid ""
 "\n"
 "Aborting...\n"
 msgstr ""
 "\n"
-"Membatalkan...\n"
+"Menggugurkan...\n"
 
-#: gphoto2/main.c:1209
+#: gphoto2/main.c:1270
 #, c-format
 msgid "Aborted.\n"
-msgstr "Dibatalkan.\n"
+msgstr "Digugurkan.\n"
 
-#: gphoto2/main.c:1214
+#: gphoto2/main.c:1275
 #, c-format
 msgid ""
 "\n"
@@ -903,21 +937,21 @@ msgstr ""
 "\n"
 "Membatalkan...\n"
 
-#: gphoto2/main.c:1363
+#: gphoto2/main.c:1428
 #, c-format
 msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
 msgstr "Gunakan sintaksis berikut a:b=c:d untuk memperlakukan divais USB apapun yang terdeteksi sebagai a:b sebagai c:d. a b c d harus merupakan nomor heksadesimal yang dimulai dengan '0x'.\n"
 
-#: gphoto2/main.c:1536
+#: gphoto2/main.c:1616
 msgid "gphoto2 has been compiled without support for CDK."
 msgstr "gphoto2 telah dikompilasi tanpa sokongan CDK."
 
-#: gphoto2/main.c:1800
+#: gphoto2/main.c:1886
 #, c-format
 msgid "Operation cancelled.\n"
 msgstr "Operasi dibatalkan.\n"
 
-#: gphoto2/main.c:1804
+#: gphoto2/main.c:1890
 #, c-format
 msgid ""
 "*** Error: No camera found. ***\n"
@@ -926,7 +960,7 @@ msgstr ""
 "*** Galat: Tak ada kamera yang ditemukan. ***\n"
 "\n"
 
-#: gphoto2/main.c:1806
+#: gphoto2/main.c:1892
 #, c-format
 msgid ""
 "*** Error (%i: '%s') ***       \n"
@@ -935,7 +969,7 @@ msgstr ""
 "*** Galat (%i: '%s') ***       \n"
 "\n"
 
-#: gphoto2/main.c:1811
+#: gphoto2/main.c:1897
 #, c-format
 msgid ""
 "For debugging messages, please use the --debug option.\n"
@@ -952,7 +986,7 @@ msgstr ""
 "gphoto2 sebagai berikut:\n"
 "\n"
 
-#: gphoto2/main.c:1832
+#: gphoto2/main.c:1918
 #, c-format
 msgid ""
 "Please make sure there is sufficient quoting around the arguments.\n"
@@ -961,378 +995,411 @@ msgstr ""
 "Tolong pastikan telah cukup ada kutipan di sekitar argumen.\n"
 "\n"
 
-#: gphoto2/main.c:1899
+#: gphoto2/main.c:1985
 msgid "Print complete help message on program usage"
 msgstr "Cetak pesan bantuan lengkap tentang penggunaan program"
 
-#: gphoto2/main.c:1901
+#: gphoto2/main.c:1987
 msgid "Print short message on program usage"
 msgstr "Cetak pesan pendek tentang penggunaan program"
 
-#: gphoto2/main.c:1903
+#: gphoto2/main.c:1989
 msgid "Turn on debugging"
 msgstr "Aktifkan awakutu"
 
-#: gphoto2/main.c:1905
+#: gphoto2/main.c:1991
+msgid "Set debug level [error|debug|data|all]"
+msgstr "Atur aras awakutu [error|debug|data|all]"
+
+#: gphoto2/main.c:1993
 msgid "Name of file to write debug info to"
 msgstr "Nama berkas untuk penulisan info awakutu"
 
-#: gphoto2/main.c:1905 gphoto2/main.c:1910 gphoto2/main.c:1916
-#: gphoto2/main.c:2040
+#: gphoto2/main.c:1993 gphoto2/main.c:2000 gphoto2/main.c:2006
+#: gphoto2/main.c:2133
 msgid "FILENAME"
 msgstr "NAMABERKAS"
 
-#: gphoto2/main.c:1907
+#: gphoto2/main.c:1995
 msgid "Quiet output (default=verbose)"
 msgstr "Keluaran senyap (standar=verbose)"
 
-#: gphoto2/main.c:1909
+#: gphoto2/main.c:1997
+msgid "Simple parsable output (implies quiet)"
+msgstr "Keluaran sederhana yang dapat diurai (mengimplikasikan senyap)"
+
+#: gphoto2/main.c:1999
 msgid "Hook script to call after downloads, captures, etc."
 msgstr "Skrip kait untuk dipanggil setelah unduh, tangkap, dll."
 
-#: gphoto2/main.c:1916
+#: gphoto2/main.c:2006
 msgid "Specify device port"
 msgstr "Tentukan pangkalan divais"
 
-#: gphoto2/main.c:1918
+#: gphoto2/main.c:2008
 msgid "Specify serial transfer speed"
 msgstr "Tentukan kecepatan transfer serial"
 
-#: gphoto2/main.c:1918
+#: gphoto2/main.c:2008
 msgid "SPEED"
 msgstr "KECEPATAN"
 
-#: gphoto2/main.c:1920
+#: gphoto2/main.c:2010
 msgid "Specify camera model"
 msgstr "Tentukan model kamera"
 
-#: gphoto2/main.c:1920
+#: gphoto2/main.c:2010
 msgid "MODEL"
 msgstr "MODEL"
 
-#: gphoto2/main.c:1922
+#: gphoto2/main.c:2012
 msgid "(expert only) Override USB IDs"
 msgstr "(hanya ahli) Timpa ID USB"
 
-#: gphoto2/main.c:1922
+#: gphoto2/main.c:2012
 msgid "USBIDs"
 msgstr "IDUSB"
 
-#: gphoto2/main.c:1928
+#: gphoto2/main.c:2018
 msgid "Display version and exit"
 msgstr "Tampilkan versi lalu keluar"
 
-#: gphoto2/main.c:1930
+#: gphoto2/main.c:2020
 msgid "List supported camera models"
 msgstr "Tampilkan model kamera yang didukung"
 
-#: gphoto2/main.c:1932
+#: gphoto2/main.c:2022
 msgid "List supported port devices"
 msgstr "Tampilkan divais pangkalan yang didukung"
 
-#: gphoto2/main.c:1934
-msgid "Display camera/driver abilities"
-msgstr "Tampilkan kemampuan kamera/penggerak"
+#: gphoto2/main.c:2024
+msgid "Display the camera/driver abilities in the libgphoto2 database"
+msgstr "Tampilkan kemampuan kamera/penggerak dalam basis data libgphoto2"
 
-#: gphoto2/main.c:1941
+#: gphoto2/main.c:2031
 msgid "Configure"
 msgstr "Konfigurasi"
 
-#: gphoto2/main.c:1944
+#: gphoto2/main.c:2034
 msgid "List configuration tree"
 msgstr "Tampilkan pohon konfigurasi"
 
-#: gphoto2/main.c:1946
+#: gphoto2/main.c:2036
 msgid "Dump full configuration tree"
 msgstr "Buang seluruh pohon konfigurasi"
 
-#: gphoto2/main.c:1948
+#: gphoto2/main.c:2038
 msgid "Get configuration value"
 msgstr "Ambil nilai konfigurasi"
 
-#: gphoto2/main.c:1950
+#: gphoto2/main.c:2040
 msgid "Set configuration value or index in choices"
 msgstr "Atur nilai konfigurasi atau indeks di pilihan"
 
-#: gphoto2/main.c:1952
+#: gphoto2/main.c:2042
 msgid "Set configuration value index in choices"
 msgstr "Atur indeks nilai konfigurasi di pilihan"
 
-#: gphoto2/main.c:1954
+#: gphoto2/main.c:2044
 msgid "Set configuration value"
 msgstr "Atur nilai konfigurasi"
 
-#: gphoto2/main.c:1956
+#: gphoto2/main.c:2046
 msgid "Reset device port"
 msgstr "Atur ulang pangkalan divais"
 
-#: gphoto2/main.c:1962
+#: gphoto2/main.c:2052
 msgid "Keep images on camera after capturing"
 msgstr "Simpan gambar di kamera setelah merekam"
 
-#: gphoto2/main.c:1964
+#: gphoto2/main.c:2054
+msgid "Keep RAW images on camera after capturing"
+msgstr "Pertahankan citra RAW di kamera setelah merekam"
+
+#: gphoto2/main.c:2056
 msgid "Remove images from camera after capturing"
 msgstr "Hapus gambar dari kamera setelah merekam"
 
-#: gphoto2/main.c:1966
+#: gphoto2/main.c:2058
 msgid "Wait for event(s) from camera"
 msgstr "Tunggu peristiwa dari kamera"
 
-#: gphoto2/main.c:1966 gphoto2/main.c:1968 gphoto2/main.c:1975
-#: gphoto2/main.c:1991
-msgid "COUNT"
-msgstr "HITUNG"
+#: gphoto2/main.c:2058 gphoto2/main.c:2060 gphoto2/main.c:2086
+msgid "EVENT"
+msgstr "KEJADIAN"
 
-#: gphoto2/main.c:1968
+#: gphoto2/main.c:2060
 msgid "Wait for event(s) from the camera and download new images"
 msgstr "Tunggu peristiwa dari kamera dan unduh gambar baru"
 
-#: gphoto2/main.c:1971
+#: gphoto2/main.c:2063
 msgid "Capture a quick preview"
 msgstr "Tangkap pratayang cepat"
 
-#: gphoto2/main.c:1973
+#: gphoto2/main.c:2066
+msgid "Show a quick preview as Ascii Art"
+msgstr "Tampilkan pratinjau cepat sebagai Seni Ascii"
+
+#: gphoto2/main.c:2068
 msgid "Set bulb exposure time in seconds"
 msgstr "Atur waktu pajanan pijar dalam detik"
 
-#: gphoto2/main.c:1973 gphoto2/main.c:1977
+#: gphoto2/main.c:2068 gphoto2/main.c:2072
 msgid "SECONDS"
 msgstr "DETIK"
 
-#: gphoto2/main.c:1975
+#: gphoto2/main.c:2070
 msgid "Set number of frames to capture (default=infinite)"
 msgstr "Atur jumlah bingkai yang ingin ditangkap (standar=tak terbatas)"
 
-#: gphoto2/main.c:1977
+#: gphoto2/main.c:2070
+msgid "COUNT"
+msgstr "HITUNG"
+
+#: gphoto2/main.c:2072
 msgid "Set capture interval in seconds"
 msgstr "Atur interval tangkap dalam detik"
 
-#: gphoto2/main.c:1979
+#: gphoto2/main.c:2074
 msgid "Reset capture interval on signal (default=no)"
 msgstr "Atur ulang interval tangkap pada sinyal (standar=tidak)"
 
-#: gphoto2/main.c:1981
+#: gphoto2/main.c:2076
 msgid "Capture an image"
 msgstr "Tangkap gambar"
 
-#: gphoto2/main.c:1983
+#: gphoto2/main.c:2078
 msgid "Trigger capture of an image"
 msgstr "Picu rekam sebuah gambar"
 
-#: gphoto2/main.c:1985
+#: gphoto2/main.c:2080
 msgid "Capture an image and download it"
 msgstr "Tangkap gambar lalu unduh gambar tersebut"
 
-#: gphoto2/main.c:1987
+#: gphoto2/main.c:2082
 msgid "Capture a movie"
 msgstr "Tangkap film"
 
-#: gphoto2/main.c:1987
+#: gphoto2/main.c:2082
 msgid "COUNT or SECONDS"
 msgstr "HITUNGAN atau DETIK"
 
-#: gphoto2/main.c:1989
+#: gphoto2/main.c:2084
 msgid "Capture an audio clip"
 msgstr "Tangkap klip audio"
 
-#: gphoto2/main.c:1991
+#: gphoto2/main.c:2086
 msgid "Wait for shutter release on the camera and download"
 msgstr "Tunggu sampai shutter kamera dilepas lalu unduh"
 
-#: gphoto2/main.c:1993
-msgid "Trigger image capture"
-msgstr "Picu perekaman gambar"
-
-#: gphoto2/main.c:1999
+#: gphoto2/main.c:2092
 msgid "List folders in folder"
 msgstr "Tampilkan folder di folder"
 
-#: gphoto2/main.c:2001
+#: gphoto2/main.c:2094
 msgid "List files in folder"
 msgstr "Tampilkan berkas di folder"
 
-#: gphoto2/main.c:2003
+#: gphoto2/main.c:2096
 msgid "Create a directory"
 msgstr "Buat direktori"
 
-#: gphoto2/main.c:2003 gphoto2/main.c:2005
+#: gphoto2/main.c:2096 gphoto2/main.c:2098
 msgid "DIRNAME"
-msgstr "NAMADIREKTORI"
+msgstr "NAMADIR"
 
-#: gphoto2/main.c:2005
+#: gphoto2/main.c:2098
 msgid "Remove a directory"
 msgstr "Hapus direktori"
 
-#: gphoto2/main.c:2007
+#: gphoto2/main.c:2100
 msgid "Display number of files"
 msgstr "Tampilkan jumlah berkas"
 
-#: gphoto2/main.c:2009
+#: gphoto2/main.c:2102
 msgid "Get files given in range"
 msgstr "Ambil berkas yang diberikan dalam jangkauan"
 
-#: gphoto2/main.c:2009 gphoto2/main.c:2013 gphoto2/main.c:2018
-#: gphoto2/main.c:2025 gphoto2/main.c:2031 gphoto2/main.c:2036
+#: gphoto2/main.c:2102 gphoto2/main.c:2106 gphoto2/main.c:2111
+#: gphoto2/main.c:2118 gphoto2/main.c:2124 gphoto2/main.c:2129
 msgid "RANGE"
 msgstr "RENTANG"
 
-#: gphoto2/main.c:2011
+#: gphoto2/main.c:2104
 msgid "Get all files from folder"
 msgstr "Ambil semua berkas dari folder"
 
-#: gphoto2/main.c:2013
+#: gphoto2/main.c:2106
 msgid "Get thumbnails given in range"
 msgstr "Ambil miniatur yang diberikan dalam jangkauan"
 
-#: gphoto2/main.c:2016
+#: gphoto2/main.c:2109
 msgid "Get all thumbnails from folder"
 msgstr "Ambil semua miniatur dari folder"
 
-#: gphoto2/main.c:2018
+#: gphoto2/main.c:2111
 msgid "Get metadata given in range"
 msgstr "Ambil miniatur yang diberikan dalam jangkauan"
 
-#: gphoto2/main.c:2020
+#: gphoto2/main.c:2113
 msgid "Get all metadata from folder"
 msgstr "Ambil semua metadata dari folder"
 
-#: gphoto2/main.c:2022
+#: gphoto2/main.c:2115
 msgid "Upload metadata for file"
 msgstr "Unggah metadata untuk berkas"
 
-#: gphoto2/main.c:2025
+#: gphoto2/main.c:2118
 msgid "Get raw data given in range"
 msgstr "Ambil data mentah yang diberikan dalam jangkauan"
 
-#: gphoto2/main.c:2028
+#: gphoto2/main.c:2121
 msgid "Get all raw data from folder"
 msgstr "Ambil semua data mentah dari folder"
 
-#: gphoto2/main.c:2031
+#: gphoto2/main.c:2124
 msgid "Get audio data given in range"
 msgstr "Ambil data audio yang diberikan dalam jangkauan"
 
-#: gphoto2/main.c:2034
+#: gphoto2/main.c:2127
 msgid "Get all audio data from folder"
 msgstr "Ambil semua data audio dari folder"
 
-#: gphoto2/main.c:2036
+#: gphoto2/main.c:2129
 msgid "Delete files given in range"
 msgstr "Hapus berkas yang diberikan dalam jangkauan"
 
-#: gphoto2/main.c:2038
+#: gphoto2/main.c:2131
 msgid "Delete all files in folder (--no-recurse by default)"
 msgstr "Hapus semua berkas dalam folder (standarnya --no-recurse)"
 
-#: gphoto2/main.c:2040
+#: gphoto2/main.c:2133
 msgid "Upload a file to camera"
 msgstr "Unggah berkas ke kamera"
 
-#: gphoto2/main.c:2042
+#: gphoto2/main.c:2135
 msgid "Specify a filename or filename pattern"
 msgstr "Tentukan nama berkas atau pola nama berkas"
 
-#: gphoto2/main.c:2042
+#: gphoto2/main.c:2135
 msgid "FILENAME_PATTERN"
 msgstr "POLA_NAMA_BERKAS"
 
-#: gphoto2/main.c:2044
+#: gphoto2/main.c:2137
+#, c-format
+msgid "Specify the number a filename %%n will starts with (default 1)"
+msgstr "Nyatakan angka bagi nama berkas %%n pertama (baku 1)"
+
+#: gphoto2/main.c:2137
+msgid "NUMBER"
+msgstr "ANGKA"
+
+#: gphoto2/main.c:2139
 msgid "Specify camera folder (default=\"/\")"
 msgstr "Tentukan folder kamera (standar=\"/\")"
 
-#: gphoto2/main.c:2044
+#: gphoto2/main.c:2139
 msgid "FOLDER"
 msgstr "FOLDER"
 
-#: gphoto2/main.c:2046
+#: gphoto2/main.c:2141
 msgid "Recursion (default for download)"
 msgstr "Rekursi (standar untuk unduh)"
 
-#: gphoto2/main.c:2048
+#: gphoto2/main.c:2143
 msgid "No recursion (default for deletion)"
 msgstr "Tanpa rekursi (standar untuk penghapusan)"
 
-#: gphoto2/main.c:2050
+#: gphoto2/main.c:2145
 msgid "Process new files only"
 msgstr "Proses hanya berkas baru"
 
-#: gphoto2/main.c:2052
+#: gphoto2/main.c:2147
 msgid "Overwrite files without asking"
 msgstr "Timpa berkas tanpa bertanya"
 
-#: gphoto2/main.c:2054
+#: gphoto2/main.c:2149
 msgid "Skip existing files"
 msgstr "Lewati berkas yang ada"
 
-#: gphoto2/main.c:2060
+#: gphoto2/main.c:2155
 msgid "Send file to stdout"
 msgstr "Kirik berkas ke stdout"
 
-#: gphoto2/main.c:2062
+#: gphoto2/main.c:2157
 msgid "Print filesize before data"
 msgstr "Cetak ukuran berkas sebelum data"
 
-#: gphoto2/main.c:2064
+#: gphoto2/main.c:2159
 msgid "List auto-detected cameras"
 msgstr "Tampilkan kamera otomatis terdeteksi"
 
-#: gphoto2/main.c:2068 gphoto2/shell.c:138
-msgid "Show EXIF information"
-msgstr "Tampilkan informasi EXIF"
+#: gphoto2/main.c:2163 gphoto2/shell.c:143
+msgid "Show EXIF information of JPEG images"
+msgstr "Tampilkan informasi EXIF dari citra JPEG"
 
-#: gphoto2/main.c:2071 gphoto2/shell.c:132
-msgid "Show info"
-msgstr "Tampilkan info"
+#: gphoto2/main.c:2166 gphoto2/shell.c:137
+msgid "Show image information, like width, height, and capture time"
+msgstr "Tampilkan informasi citra, seperti lebar, tinggi, dan waktu tangkap"
 
-#: gphoto2/main.c:2073
-msgid "Show summary"
-msgstr "Tampilkan ringkasan"
+#: gphoto2/main.c:2168 gphoto2/shell.c:150
+msgid "Show camera summary"
+msgstr "Tampilkan ringkasan kamera"
 
-#: gphoto2/main.c:2075
+#: gphoto2/main.c:2170
 msgid "Show camera driver manual"
 msgstr "Tampilkan manual penggerak kamera"
 
-#: gphoto2/main.c:2077
+#: gphoto2/main.c:2172
 msgid "About the camera driver manual"
 msgstr "Tentang manual penggerak kamera"
 
-#: gphoto2/main.c:2079
+#: gphoto2/main.c:2174 gphoto2/shell.c:151
 msgid "Show storage information"
 msgstr "Tampilkan informasi penyimpanan"
 
-#: gphoto2/main.c:2081
+#: gphoto2/main.c:2176
 msgid "gPhoto shell"
 msgstr "cangkang gPhoto"
 
-#: gphoto2/main.c:2087
+#: gphoto2/main.c:2182
 msgid "Common options"
 msgstr "Opsi umum"
 
-#: gphoto2/main.c:2089
+#: gphoto2/main.c:2184
 msgid "Miscellaneous options (unsorted)"
 msgstr "Opsi lainnya (tak diurutkan)"
 
-#: gphoto2/main.c:2091
+#: gphoto2/main.c:2186
 msgid "Get information on software and host system (not from the camera)"
 msgstr "Ambil informasi tentang perangkat lunak dan sistem host (bukan dari kamera)"
 
-#: gphoto2/main.c:2093
+#: gphoto2/main.c:2188
 msgid "Specify the camera to use"
 msgstr "Tentukan kamera yang digunakan"
 
-#: gphoto2/main.c:2095
+#: gphoto2/main.c:2190
 msgid "Camera and software configuration"
 msgstr "Konfigurasi kamera dan perangkat lunak"
 
-#: gphoto2/main.c:2097
+#: gphoto2/main.c:2192
 msgid "Capture an image from or on the camera"
 msgstr "Tangkap gambar dari atau di kamera"
 
-#: gphoto2/main.c:2099
+#: gphoto2/main.c:2194
 msgid "Downloading, uploading and manipulating files"
 msgstr "Mengunduh, mengunggah dan memanipulasi berkas"
 
-#: gphoto2/range.c:104 gphoto2/range.c:158
+#: gphoto2/main.c:2249
+msgid "EVENT can be either COUNT, SECONDS, MILLISECONDS, or MATCHSTRING.\n"
+msgstr "KEJADIAN bisa berupa COUNT, SECONDS, MILLISECONDS, atau MATCHSTRING.\n"
+
+#: gphoto2/main.c:2412 gphoto2/main.c:2461
+#, c-format
+msgid "Port %s not found\n"
+msgstr "Port %s tidak ditemukan\n"
+
+#: gphoto2/range.c:107 gphoto2/range.c:161
 #, c-format
 msgid ""
 "%s\n"
@@ -1341,7 +1408,7 @@ msgstr ""
 "%s\n"
 "ID gambar harus nomor yang lebih besar dari nol."
 
-#: gphoto2/range.c:110 gphoto2/range.c:164
+#: gphoto2/range.c:113 gphoto2/range.c:167
 #, c-format
 msgid ""
 "%s\n"
@@ -1350,7 +1417,7 @@ msgstr ""
 "%s\n"
 "ID gambar %i terlalu tinggi."
 
-#: gphoto2/range.c:126
+#: gphoto2/range.c:129
 #, c-format
 msgid ""
 "%s\n"
@@ -1359,7 +1426,7 @@ msgstr ""
 "%s\n"
 "Rentang harus dipisahkan oleh ','."
 
-#: gphoto2/range.c:140
+#: gphoto2/range.c:143
 #, c-format
 msgid ""
 "%s\n"
@@ -1368,7 +1435,7 @@ msgstr ""
 "%s\n"
 "Rentang perlu dijalankan dengan nomor."
 
-#: gphoto2/range.c:180
+#: gphoto2/range.c:183
 #, c-format
 msgid ""
 "%s\n"
@@ -1377,7 +1444,7 @@ msgstr ""
 "%s\n"
 "Karakter tak diharapkan '%c'."
 
-#: gphoto2/range.c:204
+#: gphoto2/range.c:207
 #, c-format
 msgid ""
 "%s\n"
@@ -1386,233 +1453,216 @@ msgstr ""
 "%s\n"
 "Menurunkan jangkauan tidak diizinkan. Anda perlu menentukan jangkauan dari %i ke %i."
 
-#: gphoto2/shell.c:65
+#: gphoto2/shell.c:67
 #, c-format
 msgid "*** Error (%i: '%s') ***"
 msgstr "*** Galat (%i: '%s') ***"
 
-#: gphoto2/shell.c:121
+#: gphoto2/shell.c:126
 msgid "Change to a directory on the camera"
 msgstr "Ubah ke direktori di kamera"
 
-#: gphoto2/shell.c:122 gphoto2/shell.c:124 gphoto2/shell.c:135
-#: gphoto2/shell.c:136
+#: gphoto2/shell.c:127 gphoto2/shell.c:129 gphoto2/shell.c:140
+#: gphoto2/shell.c:141
 msgid "directory"
 msgstr "direktori"
 
-#: gphoto2/shell.c:123
+#: gphoto2/shell.c:128
 msgid "Change to a directory on the local drive"
 msgstr "Ubah ke direktori di penggerak lokal"
 
-#: gphoto2/shell.c:125 gphoto2/shell.c:156 gphoto2/shell.c:157
+#: gphoto2/shell.c:130 gphoto2/shell.c:164 gphoto2/shell.c:165
 msgid "Exit the gPhoto shell"
 msgstr "Keluar cangkang gPhoto"
 
-#: gphoto2/shell.c:126
+#: gphoto2/shell.c:131
 msgid "Download a file"
 msgstr "Unduh berkas"
 
-#: gphoto2/shell.c:126 gphoto2/shell.c:127 gphoto2/shell.c:129
-#: gphoto2/shell.c:131 gphoto2/shell.c:133 gphoto2/shell.c:134
-#: gphoto2/shell.c:139
+#: gphoto2/shell.c:131 gphoto2/shell.c:132 gphoto2/shell.c:134
+#: gphoto2/shell.c:136 gphoto2/shell.c:138 gphoto2/shell.c:139
+#: gphoto2/shell.c:144
 msgid "[directory/]filename"
 msgstr "[direktori/]nama berkas"
 
-#: gphoto2/shell.c:127
+#: gphoto2/shell.c:132
 msgid "Upload a file"
 msgstr "Unggah berkas"
 
-#: gphoto2/shell.c:128
+#: gphoto2/shell.c:133
 msgid "Download a thumbnail"
 msgstr "Unduh miniatur"
 
-#: gphoto2/shell.c:130
+#: gphoto2/shell.c:135
 msgid "Download raw data"
 msgstr "Unduh data mentah"
 
-#: gphoto2/shell.c:134
+#: gphoto2/shell.c:139
 msgid "Delete"
 msgstr "Hapus"
 
-#: gphoto2/shell.c:135
+#: gphoto2/shell.c:140
 msgid "Create Directory"
 msgstr "Buat Direktori"
 
-#: gphoto2/shell.c:136
+#: gphoto2/shell.c:141
 msgid "Remove Directory"
 msgstr "Hapus Direktori"
 
-#: gphoto2/shell.c:141 gphoto2/shell.c:158
+#: gphoto2/shell.c:146 gphoto2/shell.c:166
 msgid "Displays command usage"
 msgstr "Tampilkan perintah pengunaan"
 
-#: gphoto2/shell.c:142 gphoto2/shell.c:158
+#: gphoto2/shell.c:147 gphoto2/shell.c:166
 msgid "[command]"
 msgstr "[perintah]"
 
-#: gphoto2/shell.c:143
+#: gphoto2/shell.c:148
 msgid "List the contents of the current directory"
 msgstr "Tampilkan isi direktori saat ini"
 
-#: gphoto2/shell.c:144
+#: gphoto2/shell.c:149
 msgid "[directory/]"
 msgstr "[direktori/]"
 
-#: gphoto2/shell.c:145
+#: gphoto2/shell.c:152
 msgid "List configuration variables"
 msgstr "Senarai variabel konfigurasi"
 
-#: gphoto2/shell.c:146
+#: gphoto2/shell.c:153
 msgid "Get configuration variable"
 msgstr "Ambil variabel konfigurasi"
 
-#: gphoto2/shell.c:146
+#: gphoto2/shell.c:153
 msgid "name"
 msgstr "nama"
 
-#: gphoto2/shell.c:147 gphoto2/shell.c:149
+#: gphoto2/shell.c:154 gphoto2/shell.c:156
 msgid "Set configuration variable"
 msgstr "Atur variabel konfigurasi"
 
-#: gphoto2/shell.c:147 gphoto2/shell.c:149
+#: gphoto2/shell.c:154 gphoto2/shell.c:156
 msgid "name=value"
 msgstr "nama=nilai"
 
-#: gphoto2/shell.c:148
+#: gphoto2/shell.c:155
 msgid "Set configuration variable index"
 msgstr "Atur indeks variabel konfigurasi"
 
-#: gphoto2/shell.c:148
+#: gphoto2/shell.c:155
 msgid "name=valueindex"
 msgstr "nama=indeksnilai"
 
-#: gphoto2/shell.c:150
+#: gphoto2/shell.c:157
+msgid "Triggers the capture of a single image"
+msgstr "Memicu penangkapan satu gambar"
+
+#: gphoto2/shell.c:158
 msgid "Capture a single image"
 msgstr "Tangkap sebuah gambar"
 
-#: gphoto2/shell.c:151
+#: gphoto2/shell.c:159
 msgid "Capture a single image and download it"
 msgstr "Tangkap sebuah gambar lalu unduh gambar tersebut"
 
-#: gphoto2/shell.c:152
+#: gphoto2/shell.c:160
 msgid "Capture a preview image"
 msgstr "Tangkap sebuah gambar pratilik"
 
-#: gphoto2/shell.c:153
+#: gphoto2/shell.c:161
 msgid "Wait for an event"
 msgstr "Tunggu peristiwa"
 
-#: gphoto2/shell.c:153 gphoto2/shell.c:154 gphoto2/shell.c:155
+#: gphoto2/shell.c:161 gphoto2/shell.c:162 gphoto2/shell.c:163
 msgid "count or seconds"
 msgstr "hitungan atau detik"
 
-#: gphoto2/shell.c:154
+#: gphoto2/shell.c:162
 msgid "Wait for images to be captured and download it"
 msgstr "Tunggu sampai gambar ditangkap lalu unduh gambar tersebut"
 
-#: gphoto2/shell.c:155
+#: gphoto2/shell.c:163
 msgid "Wait for events and images to be captured and download it"
 msgstr "Tangkap sampai peristiwa dan gambar ditangkap lalu unduh gambar tersebut"
 
-#: gphoto2/shell.c:480
+#: gphoto2/shell.c:488
 msgid "Invalid command."
 msgstr "Perintah tidak sah."
 
-#: gphoto2/shell.c:489
+#: gphoto2/shell.c:497
 #, c-format
 msgid "The command '%s' requires an argument."
 msgstr "Perintah '%s' memerlukan argumen."
 
-#: gphoto2/shell.c:542
+#: gphoto2/shell.c:550
 msgid "Invalid path."
 msgstr "Alamat tidak sah."
 
-#: gphoto2/shell.c:588
+#: gphoto2/shell.c:596
 msgid "Could not find home directory."
 msgstr "Tak dapat menemukan direktori rumah."
 
-#: gphoto2/shell.c:597
+#: gphoto2/shell.c:605
 #, c-format
 msgid "Could not change to local directory '%s'."
 msgstr "Tak dapat mengubah ke direktori lokal '%s'."
 
-#: gphoto2/shell.c:600
+#: gphoto2/shell.c:608
 #, c-format
 msgid "Local directory now '%s'."
 msgstr "Direktori lokal sekarang '%s'."
 
-#: gphoto2/shell.c:638
+#: gphoto2/shell.c:646
 #, c-format
 msgid "Remote directory now '%s'."
 msgstr "Direktori jarak jauh sekarang '%s'."
 
-#: gphoto2/shell.c:854
+#: gphoto2/shell.c:874
 #, c-format
 msgid "set-config needs a second argument.\n"
 msgstr "set-config memerlukan argumen kedua.\n"
 
-#: gphoto2/shell.c:875
+#: gphoto2/shell.c:895
 #, c-format
 msgid "set-config-value needs a second argument.\n"
 msgstr "set-config-value memerlukan argumen kedua.\n"
 
-#: gphoto2/shell.c:896
+#: gphoto2/shell.c:916
 #, c-format
 msgid "set-config-index needs a second argument.\n"
 msgstr "set-config-index memerlukan argumen kedua.\n"
 
-#: gphoto2/shell.c:948
+#: gphoto2/shell.c:979
 #, c-format
 msgid "Command '%s' not found. Use 'help' to get a list of available commands."
 msgstr "Perintah '%s' tak ditemukan. Gunakan 'help' untuk mendapatkan senarai perintah yang tersedia."
 
-#: gphoto2/shell.c:955
+#: gphoto2/shell.c:986
 #, c-format
 msgid "Help on \"%s\":"
 msgstr "Bantuan di \"%s\":"
 
-#: gphoto2/shell.c:957
+#: gphoto2/shell.c:988
 #, c-format
 msgid "Usage:"
 msgstr "Penggunaan:"
 
-#: gphoto2/shell.c:960
+#: gphoto2/shell.c:991
 #, c-format
 msgid "Description:"
-msgstr "Keterangan"
+msgstr "Deskripsi:"
 
-#: gphoto2/shell.c:962
+#: gphoto2/shell.c:993
 #, c-format
 msgid "* Arguments in brackets [] are optional"
 msgstr "* Argumen di kurawal [] adalah opsional"
 
-#: gphoto2/shell.c:983
+#: gphoto2/shell.c:1014
 #, c-format
 msgid "Available commands:"
 msgstr "Perintah yang tersedia:"
 
-#: gphoto2/shell.c:988
+#: gphoto2/shell.c:1019
 #, c-format
 msgid "To get help on a particular command, type in 'help command-name'."
 msgstr "Untuk mendapatkan bantuan untuk perintah tertentu, ketik 'help nama-perintah'."
-
-#~ msgid "  Name:        '%s'\n"
-#~ msgstr "  Nama:        '%s'\n"
-
-#~ msgid "You cannot use '%%n' in combination with non-persistent files!"
-#~ msgstr "Anda tak dapat menggunakan '%%n' dalam kombinasi dengan berkas tidak tetap!"
-
-#~ msgid "Could not get filename (bulb mode)."
-#~ msgstr "Tak dapat mendapatkan nama berkas (mode pijar)."
-
-#~ msgid "Could not close camera connection."
-#~ msgstr "Tak dapat menutup koneksi kamera."
-
-#~ msgid "Sleeping for %d second(s)...\n"
-#~ msgstr "Tidur selama %d detik...\n"
-
-#~ msgid "New file %s/%s, downloading...\n"
-#~ msgstr "Berkas baru %s/%s, mengunduh...\n"
-
-#~ msgid "filename"
-#~ msgstr "nama berkas"
