@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v5
     - name: apt-get install
       run: sudo apt-get update && sudo apt-get install -y autopoint gettext libcdk5-dev libaa1-dev libpopt-dev libreadline-dev libjpeg-dev libexif-dev libgphoto2-dev
     - name: autoreconf
