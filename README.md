@@ -40,7 +40,7 @@ To build gphoto2, you will need the following (apart from the common build tools
 
   * The libgphoto2 library.
   * The popt libraries (for commandline option handling),
-    the system package may be called popt-devel or popt-dev or similar.
+    the system package may be called popt-devel or libpopt-dev or similar.
 
 Optional:
 
