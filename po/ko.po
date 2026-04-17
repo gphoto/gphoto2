@@ -1,0 +1,1674 @@
+# Korean translation of the gphoto2 package.
+# Copyright (C) 2023 Lutz Müller and others
+# This file is distributed under the same license as the gphoto2 package.
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gphoto2 2.5.28\n"
+"Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2022-01-03 12:21+0100\n"
+"PO-Revision-Date: 2023-03-12 21:35+0900\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
+"Language-Team: Korean <translation-team-ko@googlegroups.com>\n"
+"Language: ko\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.3.1\n"
+
+#: gphoto2/actions.c:180
+#, c-format
+msgid "Number of files in folder '%s': %i\n"
+msgstr "'%s' 폴더의 파일 갯수: %i\n"
+
+#: gphoto2/actions.c:201
+#, c-format
+msgid "There is %d folder in folder '%s'.\n"
+msgid_plural "There are %d folders in folder '%s'.\n"
+msgstr[0] "'%2$s' 폴더에 폴더 %1$d개가 있습니다.\n"
+
+#: gphoto2/actions.c:250
+#, c-format
+msgid "There is no file in folder '%s'.\n"
+msgstr "'%s' 폴더에 파일이 없습니다.\n"
+
+#: gphoto2/actions.c:253
+#, c-format
+msgid "There is %d file in folder '%s'.\n"
+msgid_plural "There are %d files in folder '%s'.\n"
+msgstr[0] "'%2$s' 폴더에 파일 %1$d개가 있습니다.\n"
+
+#: gphoto2/actions.c:275
+#, c-format
+msgid "Information on file '%s' (folder '%s'):\n"
+msgstr "'%s' 파일 정보 ('%s' 폴더):\n"
+
+#: gphoto2/actions.c:277
+#, c-format
+msgid "File:\n"
+msgstr "파일:\n"
+
+#: gphoto2/actions.c:279 gphoto2/actions.c:311 gphoto2/actions.c:327
+#, c-format
+msgid "  None available.\n"
+msgstr "  내용이 없습니다.\n"
+
+#: gphoto2/actions.c:282 gphoto2/actions.c:314
+#, c-format
+msgid "  Mime type:   '%s'\n"
+msgstr "  MIME 형식:   '%s'\n"
+
+#: gphoto2/actions.c:284 gphoto2/actions.c:316
+#, c-format
+msgid "  Size:        %lu byte(s)\n"
+msgstr "  크기:        %lu 바이트\n"
+
+#: gphoto2/actions.c:286 gphoto2/actions.c:318
+#, c-format
+msgid "  Width:       %i pixel(s)\n"
+msgstr "  너비:        %i pixel(s)\n"
+
+#: gphoto2/actions.c:288 gphoto2/actions.c:320
+#, c-format
+msgid "  Height:      %i pixel(s)\n"
+msgstr "  높이:        %i pixel(s)\n"
+
+#: gphoto2/actions.c:290 gphoto2/actions.c:322
+#, c-format
+msgid "  Downloaded:  %s\n"
+msgstr "  다운로드함:   %s\n"
+
+#: gphoto2/actions.c:291 gphoto2/actions.c:323 gphoto2/actions.c:335
+#: gphoto2/actions.c:697 gphoto2/actions.c:699 gphoto2/actions.c:731
+#: gphoto2/actions.c:734 gphoto2/actions.c:737 gphoto2/actions.c:740
+#: gphoto2/actions.c:743 gphoto2/actions.c:1874 gphoto2/actions.c:2117
+msgid "yes"
+msgstr "예"
+
+#: gphoto2/actions.c:291 gphoto2/actions.c:323 gphoto2/actions.c:335
+#: gphoto2/actions.c:697 gphoto2/actions.c:699 gphoto2/actions.c:731
+#: gphoto2/actions.c:734 gphoto2/actions.c:737 gphoto2/actions.c:740
+#: gphoto2/actions.c:743 gphoto2/actions.c:1868 gphoto2/actions.c:2111
+msgid "no"
+msgstr "아니요"
+
+#: gphoto2/actions.c:293
+#, c-format
+msgid "  Permissions: "
+msgstr "  권한: "
+
+#: gphoto2/actions.c:296
+#, c-format
+msgid "read/delete"
+msgstr "읽기/삭제"
+
+#: gphoto2/actions.c:298
+#, c-format
+msgid "read"
+msgstr "읽기"
+
+#: gphoto2/actions.c:300
+#, c-format
+msgid "delete"
+msgstr "삭제"
+
+#: gphoto2/actions.c:302
+#, c-format
+msgid "none"
+msgstr "없음"
+
+#: gphoto2/actions.c:306
+#, c-format
+msgid "  Time:        %s"
+msgstr "  시간:        %s"
+
+#: gphoto2/actions.c:309
+#, c-format
+msgid "Thumbnail:\n"
+msgstr "미리 보기:\n"
+
+#: gphoto2/actions.c:325
+#, c-format
+msgid "Audio data:\n"
+msgstr "오디오 데이터:\n"
+
+#: gphoto2/actions.c:330
+#, c-format
+msgid "  Mime type:  '%s'\n"
+msgstr "  MIME 형식:  '%s'\n"
+
+#: gphoto2/actions.c:332
+#, c-format
+msgid "  Size:       %lu byte(s)\n"
+msgstr "  크기:       %lu 바이트\n"
+
+#: gphoto2/actions.c:334
+#, c-format
+msgid "  Downloaded: %s\n"
+msgstr "  다운로드함: %s\n"
+
+#: gphoto2/actions.c:532
+msgid "Could not parse EXIF data."
+msgstr "EXIF 데이터를 해석할 수 없습니다."
+
+#: gphoto2/actions.c:536
+#, c-format
+msgid "EXIF tags:"
+msgstr "EXIF 태그:"
+
+#: gphoto2/actions.c:539
+msgid "Tag"
+msgstr "태그"
+
+#: gphoto2/actions.c:541
+msgid "Value"
+msgstr "값"
+
+#: gphoto2/actions.c:549
+#, c-format
+msgid "EXIF data contains a thumbnail (%i bytes)."
+msgstr "EXIF 데이터에 미리 보기 사진(%i 바이트)이 있습니다."
+
+#: gphoto2/actions.c:558
+msgid "gphoto2 has been compiled without EXIF support."
+msgstr "EXIF 지원이 빠진 채로 gphoto2를 컴파일했습니다."
+
+#: gphoto2/actions.c:576
+#, c-format
+msgid "Number of supported cameras: %i\n"
+msgstr "지원 카메라 수: %i\n"
+
+#: gphoto2/actions.c:577
+#, c-format
+msgid "Supported cameras:\n"
+msgstr "지원 카메라:\n"
+
+#: gphoto2/actions.c:590
+#, c-format
+msgid "\t\"%s\" (TESTING)\n"
+msgstr "\t\"%s\" (시험중)\n"
+
+#: gphoto2/actions.c:593
+#, c-format
+msgid "\t\"%s\" (EXPERIMENTAL)\n"
+msgstr "\t\"%s\" (실험중)\n"
+
+#: gphoto2/actions.c:598
+#, c-format
+msgid "\t\"%s\"\n"
+msgstr "\t\"%s\"\n"
+
+#: gphoto2/actions.c:642
+#, c-format
+msgid "Devices found: %i\n"
+msgstr "찾은 장치: %i\n"
+
+#: gphoto2/actions.c:643
+#, c-format
+msgid ""
+"Path                             Description\n"
+"--------------------------------------------------------------\n"
+msgstr ""
+"경로                             설명\n"
+"--------------------------------------------------------------\n"
+
+#: gphoto2/actions.c:676 gphoto2/actions.c:681
+#, c-format
+msgid "%-30s %-16s\n"
+msgstr "%-30s %-16s\n"
+
+#: gphoto2/actions.c:676
+msgid "Model"
+msgstr "모델"
+
+#: gphoto2/actions.c:676
+msgid "Port"
+msgstr "포트"
+
+#: gphoto2/actions.c:677
+#, c-format
+msgid "----------------------------------------------------------\n"
+msgstr "----------------------------------------------------------\n"
+
+#: gphoto2/actions.c:695
+#, c-format
+msgid "Abilities for camera             : %s\n"
+msgstr "카메라 기능                      : %s\n"
+
+#: gphoto2/actions.c:696
+#, c-format
+msgid "Serial port support              : %s\n"
+msgstr "직렬 포트 지원                   : %s\n"
+
+#: gphoto2/actions.c:698
+#, c-format
+msgid "USB support                      : %s\n"
+msgstr "USB 지원                         : %s\n"
+
+#: gphoto2/actions.c:701
+#, c-format
+msgid "Transfer speeds supported        :\n"
+msgstr "전송 속도 지원                   :\n"
+
+#: gphoto2/actions.c:703
+#, c-format
+msgid "                                 : %i\n"
+msgstr "                                 : %i\n"
+
+#: gphoto2/actions.c:706
+#, c-format
+msgid "Capture choices                  :\n"
+msgstr "촬영 선택                        :\n"
+
+#: gphoto2/actions.c:708
+#, c-format
+msgid "                                 : Image\n"
+msgstr "                                 : 사진\n"
+
+#: gphoto2/actions.c:712
+#, c-format
+msgid "                                 : Video\n"
+msgstr "                                 : 비디오\n"
+
+#: gphoto2/actions.c:716
+#, c-format
+msgid "                                 : Audio\n"
+msgstr "                                 : 오디오\n"
+
+#: gphoto2/actions.c:720
+#, c-format
+msgid "                                 : Preview\n"
+msgstr "                                 : 미리 보기\n"
+
+#: gphoto2/actions.c:724
+#, c-format
+msgid "                                 : Trigger Capture\n"
+msgstr "                                 : 촬영 수행\n"
+
+#: gphoto2/actions.c:728
+#, c-format
+msgid "                                 : Capture not supported by the driver\n"
+msgstr "                                 : 드라이버에서 촬영을 지원하지 않습니다\n"
+
+#: gphoto2/actions.c:730
+#, c-format
+msgid "Configuration support            : %s\n"
+msgstr "설정 지원                        : %s\n"
+
+#: gphoto2/actions.c:732
+#, c-format
+msgid "Delete selected files on camera  : %s\n"
+msgstr "카메라의 선택한 파일 삭제        : %s\n"
+
+#: gphoto2/actions.c:735
+#, c-format
+msgid "Delete all files on camera       : %s\n"
+msgstr "카메라의 모든 파일 삭제          : %s\n"
+
+#: gphoto2/actions.c:738
+#, c-format
+msgid "File preview (thumbnail) support : %s\n"
+msgstr "파일 미리 보기(미리 보기 사진) 지원 : %s\n"
+
+#: gphoto2/actions.c:741
+#, c-format
+msgid "File upload support              : %s\n"
+msgstr "파일 업로드 지원                 : %s\n"
+
+#: gphoto2/actions.c:758
+#, c-format
+msgid "Ports must look like 'serial:/dev/ttyS0' or 'usb:', but '%s' is missing a colon so I am going to guess what you mean."
+msgstr "포트는 'serial:/dev/ttyS0' 또는 'usb:'처럼 지정해야 합니다만, '%s' 값에 콜로닝 빠져 무슨 값을 지정했는지 짐작중입니다."
+
+#: gphoto2/actions.c:795
+#, c-format
+msgid "The port you specified ('%s') can not be found. Please specify one of the ports found by 'gphoto2 --list-ports' and make sure the spelling is correct (i.e. with prefix 'serial:' or 'usb:')."
+msgstr "지정한 포트('%s')를 찾을 수 없습니다. 'gphoto2 --list-ports' 명령으로 찾은 포트 중 하나를 지정하시고, 철자가 올바른지 확인하십시오(예: 'serial:' 또는 'usb:' 접두사 붙임)."
+
+#: gphoto2/actions.c:830
+#, c-format
+msgid "About the camera driver:"
+msgstr "카메라 드라이버 정보:"
+
+#: gphoto2/actions.c:843
+#, c-format
+msgid "Camera summary:"
+msgstr "카메라 요약정보:"
+
+#: gphoto2/actions.c:856
+#, c-format
+msgid "Camera manual:"
+msgstr "카메라 설명서:"
+
+#: gphoto2/actions.c:873
+#, c-format
+msgid "You can only specify speeds for serial ports."
+msgstr "직렬 포트에 다음 속도만 지정할 수 있습니다."
+
+#: gphoto2/actions.c:921
+#, c-format
+msgid ""
+"gphoto2 %s\n"
+"\n"
+"Copyright (c) 2000-%d Marcus Meissner and others\n"
+"\n"
+"gphoto2 comes with NO WARRANTY, to the extent permitted by law. You may\n"
+"redistribute copies of gphoto2 under the terms of the GNU General Public\n"
+"License. For more information about these matters, see the files named COPYING.\n"
+"\n"
+"This version of gphoto2 is using the following software versions and options:\n"
+msgstr ""
+"gphoto2 %s\n"
+"\n"
+"Copyright (c) 2000-%d Marcus Meissner and others\n"
+"\n"
+"gphoto2는 법이 보증하는 한도내에서 그 어떤 보증 없이 제공합니다. GNU 일반 공중 사용\n"
+"허가서의 조항에 따라 gphoto2의 사본을 재배포할 수 있습니다. 자세한 내용은 COPYING\n"
+"파일 내용을 참고하십시오.\n"
+"\n"
+"gphoto2의 현재 버전은 다음 프로그램 버전과 옵션을 사용합니다:\n"
+
+#: gphoto2/actions.c:1040
+msgid "Could not open 'movie.mjpg'."
+msgstr "'movie.mjpg'를 열 수 없습니다."
+
+#: gphoto2/actions.c:1047
+#, c-format
+msgid "Capturing preview frames as movie to '%s'. Press Ctrl-C to abort.\n"
+msgstr "미리 보기 프레임을 '%s' 위치에 촬영합니다. 중단하려면 Ctrl-C를 누르십시오.\n"
+
+#: gphoto2/actions.c:1051
+#, c-format
+msgid "Capturing preview frames as movie to '%s' for %d seconds.\n"
+msgstr "미리 보기 프레임을 '%s' 위치에 %d초 동안 촬영합니다.\n"
+
+#: gphoto2/actions.c:1056
+#, c-format
+msgid "Capturing %d preview frames as movie to '%s'.\n"
+msgstr "미리 보기 프레임 %d개를 영상으로 '%s' 위치에 촬영합니다.\n"
+
+#: gphoto2/actions.c:1072
+msgid "Movie capture error... Exiting."
+msgstr "영상 촬영 오류... 나갑니다."
+
+#: gphoto2/actions.c:1078
+#, c-format
+msgid "Movie capture error... Unhandled MIME type '%s'."
+msgstr "영상 촬영 오류... 처리하지 못한 MIME 형식 '%s'."
+
+#: gphoto2/actions.c:1085
+#, c-format
+msgid "Ctrl-C pressed ... Exiting.\n"
+msgstr "Ctrl-C를 눌렀습니다 ... 나갑니다.\n"
+
+#: gphoto2/actions.c:1099
+#, c-format
+msgid "Movie capture finished (%d frames)\n"
+msgstr "영상 촬영이 끝났습니다(%d 프레임)\n"
+
+#: gphoto2/actions.c:1131
+#, c-format
+msgid "Waiting for events from camera. Press Ctrl-C to abort.\n"
+msgstr "카메라 이벤트를 기다리고 있습니다. 중단하려면 Ctrl-C를 누르십시오.\n"
+
+#: gphoto2/actions.c:1137
+#, c-format
+msgid "Waiting for %d frames from the camera. Press Ctrl-C to abort.\n"
+msgstr "카메라 프레임 %d장 처리를 기다리고 있습니다. 중단하려면 Ctrl-C를 누르십시오.\n"
+
+#: gphoto2/actions.c:1142
+#, c-format
+msgid "Waiting for %d milliseconds for events from camera. Press Ctrl-C to abort.\n"
+msgstr "카메라 이벤트 처리 %d밀리초를 기다리고 있습니다. 중단하려면 Ctrl-C를 누르십시오.\n"
+
+#: gphoto2/actions.c:1147
+#, c-format
+msgid "Waiting for %d seconds for events from camera. Press Ctrl-C to abort.\n"
+msgstr "카메라 이벤트 처리 %d초를 기다리고 있습니다. 중단하려면 Ctrl-C를 누르십시오.\n"
+
+#: gphoto2/actions.c:1150
+#, c-format
+msgid "Waiting for %d events from camera. Press Ctrl-C to abort.\n"
+msgstr "카메라 이벤트 %d건을 기다리고 있습니다. 중단하려면 Ctrl-C를 누르십시오.\n"
+
+#: gphoto2/actions.c:1154
+#, c-format
+msgid "Waiting for '%s' event from camera. Press Ctrl-C to abort.\n"
+msgstr "카메라의 '%s' 이벤트를 기다리고 있습니다. 중단하려면 Ctrl-C를 누르십시오.\n"
+
+#: gphoto2/actions.c:1169
+#, c-format
+msgid "SIGUSR1 signal received, triggering capture!\n"
+msgstr "SIGUSR1 시그널을 받았습니다. 촬영을 시작합니다!\n"
+
+#: gphoto2/actions.c:1180
+#, c-format
+msgid "SIGUSR2 signal received, stopping wait!\n"
+msgstr "SIGUSR2 시그널을 받았습니다. 중지를 기다립니다!\n"
+
+#: gphoto2/actions.c:1218 gphoto2/actions.c:1229 gphoto2/actions.c:1236
+#: gphoto2/actions.c:1252 gphoto2/actions.c:1290 gphoto2/actions.c:1298
+#: gphoto2/actions.c:1306
+#, c-format
+msgid "event found, stopping wait!\n"
+msgstr "이벤트가 나타났습니다, 기다림을 멈춥니다!\n"
+
+#: gphoto2/actions.c:1262 gphoto2/main.c:840
+msgid "Could not set folder."
+msgstr "폴더를 설정할 수 없습니다."
+
+#: gphoto2/actions.c:1268 gphoto2/main.c:855
+msgid "Could not get image."
+msgstr "사진을 가져올 수 없습니다."
+
+#: gphoto2/actions.c:1275 gphoto2/main.c:862
+msgid "Buggy libcanon.so?"
+msgstr "libcanon.so에 버그가 있는 것 같습니다만?"
+
+#: gphoto2/actions.c:1285 gphoto2/main.c:874
+msgid "Could not delete image."
+msgstr "사진을 삭제할 수 없습니다."
+
+#: gphoto2/actions.c:1325
+#, c-format
+msgid "Getting storage information not supported for this camera.\n"
+msgstr "이 카메라에서 저장소 정보 가져오기를 지원하지 않습니다.\n"
+
+#: gphoto2/actions.c:1340
+#, c-format
+msgid "Read-Write"
+msgstr "읽기-쓰기"
+
+#: gphoto2/actions.c:1343
+#, c-format
+msgid "Read-Only"
+msgstr "읽기 전용"
+
+#: gphoto2/actions.c:1346
+#, c-format
+msgid "Read-only with delete"
+msgstr "삭제가 가능한 읽기 전용"
+
+#: gphoto2/actions.c:1349 gphoto2/actions.c:1359
+#, c-format
+msgid "Unknown"
+msgstr "알 수 없음"
+
+#: gphoto2/actions.c:1362
+#, c-format
+msgid "Fixed ROM"
+msgstr "고정 롬"
+
+#: gphoto2/actions.c:1365
+#, c-format
+msgid "Removable ROM"
+msgstr "착탈식 롬"
+
+#: gphoto2/actions.c:1368
+#, c-format
+msgid "Fixed RAM"
+msgstr "고정 램"
+
+#: gphoto2/actions.c:1371
+#, c-format
+msgid "Removable RAM"
+msgstr "착탈식 램"
+
+#: gphoto2/actions.c:1381
+#, c-format
+msgid "Undefined"
+msgstr "정의 안함"
+
+#: gphoto2/actions.c:1384
+#, c-format
+msgid "Generic Flat"
+msgstr "일반 평형구조"
+
+#: gphoto2/actions.c:1387
+#, c-format
+msgid "Generic Hierarchical"
+msgstr "일반 계층구조"
+
+#: gphoto2/actions.c:1390
+#, c-format
+msgid "Camera layout (DCIM)"
+msgstr "카메라 레이아웃 (DCIM)"
+
+#: gphoto2/actions.c:1431
+#, c-format
+msgid "Overriding USB vendor/product id 0x%x/0x%x with 0x%x/0x%x"
+msgstr "USB 제조사/제품 ID 0x%x/0x%x 번을 0x%x/0x%x번으로 대신함"
+
+#: gphoto2/actions.c:1499
+msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
+msgstr "메일링 리스트에 디버깅 메시지를 보낼 경우 다음 내용을 항상 넣으십시오:"
+
+#: gphoto2/actions.c:1514
+#, c-format
+msgid "%s has been compiled with the following options:"
+msgstr "%s은(는) 다음 옵션으로 컴파일했습니다:"
+
+#: gphoto2/actions.c:1654
+#, c-format
+msgid "%s not found in configuration tree."
+msgstr "설정 트리에 %s이(가) 없습니다."
+
+#: gphoto2/actions.c:1706
+#, c-format
+msgid "Failed to retrieve value of text widget %s."
+msgstr "%s 텍스트 위젯 값 가져오기에 실패했습니다."
+
+#: gphoto2/actions.c:1723
+#, c-format
+msgid "Failed to retrieve values of range widget %s."
+msgstr "%s 범위 위젯 값 가져오기에 실패했습니다."
+
+#: gphoto2/actions.c:1735
+#, c-format
+msgid "Failed to retrieve values of toggle widget %s."
+msgstr "%s 전환 위젯 값 가져오기에 실패했습니다."
+
+#: gphoto2/actions.c:1747
+#, c-format
+msgid "Failed to retrieve values of date/time widget %s."
+msgstr "%s 날짜/시간 위젯 값 가져오기에 실패했습니다."
+
+#: gphoto2/actions.c:1756
+msgid "Use 'now' as the current time when setting.\n"
+msgstr "설정할 떄 현재 시간 값은 'now' 입니다.\n"
+
+#: gphoto2/actions.c:1778
+#, c-format
+msgid "Failed to retrieve values of radio widget %s."
+msgstr "%s 라디오 위젯 값 가져오기에 실패했습니다."
+
+#: gphoto2/actions.c:1824
+#, c-format
+msgid "Property %s is read only."
+msgstr "%s 속성은 읽기만 가능합니다."
+
+#: gphoto2/actions.c:1838 gphoto2/actions.c:2081
+#, c-format
+msgid "Failed to set the value of text widget %s to %s."
+msgstr "%s 텍스트 위젯의 %s값 설정에 실패했습니다."
+
+#: gphoto2/actions.c:1848 gphoto2/actions.c:2091
+#, c-format
+msgid "The passed value %s is not a floating point value."
+msgstr "전달한 %s 값은 적절한 소수 값이 아닙니다."
+
+#: gphoto2/actions.c:1853 gphoto2/actions.c:2096
+#, c-format
+msgid "The passed value %f is not within the expected range %f - %f."
+msgstr "전달한 %f 값은 요구 범위 %f - %f에 들어있지 않습니다."
+
+#: gphoto2/actions.c:1859 gphoto2/actions.c:2102
+#, c-format
+msgid "Failed to set the value of range widget %s to %f."
+msgstr "%s 범위 위젯의 %f값 설정에 실패했습니다."
+
+# NOTE: 값에 사용하는 문자열로 추정하여 그대로 반영
+#: gphoto2/actions.c:1868 gphoto2/actions.c:2111
+msgid "off"
+msgstr "off"
+
+# NOTE: 값에 사용하는 문자열로 추정하여 그대로 반영
+#: gphoto2/actions.c:1869 gphoto2/actions.c:2112
+msgid "false"
+msgstr "false"
+
+# NOTE: 값에 사용하는 문자열로 추정하여 그대로 반영
+#: gphoto2/actions.c:1874 gphoto2/actions.c:2117
+msgid "on"
+msgstr "on"
+
+# NOTE: 값에 사용하는 문자열로 추정하여 그대로 반영
+#: gphoto2/actions.c:1875 gphoto2/actions.c:2118
+msgid "true"
+msgstr "true"
+
+#: gphoto2/actions.c:1880 gphoto2/actions.c:2123
+#, c-format
+msgid "The passed value %s is not a valid toggle value."
+msgstr "전달한 %s 값은 적절한 전환 값이 아닙니다."
+
+#: gphoto2/actions.c:1886 gphoto2/actions.c:2129
+#, c-format
+msgid "Failed to set values %s of toggle widget %s."
+msgstr "%2$s 전환 위젯의 %1$s값 설정에 실패했습니다."
+
+# NOTE: 값에 사용하는 문자열로 추정하여 그대로 반영
+#: gphoto2/actions.c:1898 gphoto2/actions.c:2136
+msgid "now"
+msgstr "now"
+
+#: gphoto2/actions.c:1910 gphoto2/actions.c:2144
+#, c-format
+msgid "The passed value %s is neither a valid time nor an integer."
+msgstr "전달한 %s 값은 적절한 시간 또는 정수값이 아닙니다."
+
+#: gphoto2/actions.c:1918 gphoto2/actions.c:2151
+#, c-format
+msgid "Failed to set new time of date/time widget %s to %s."
+msgstr "날짜/시간 위젯 %s의 새 시간 %s값 설정에 실패했습니다."
+
+#: gphoto2/actions.c:1965 gphoto2/actions.c:2032 gphoto2/actions.c:2181
+#, c-format
+msgid "Choice %s not found within list of choices."
+msgstr "%s 선택 항목이 선택 목록에 없습니다."
+
+#: gphoto2/actions.c:1973 gphoto2/actions.c:2189
+#, c-format
+msgid "The %s widget is not configurable."
+msgstr "%s 위젯을 설정할 수 없습니다."
+
+#: gphoto2/actions.c:1983 gphoto2/actions.c:2054 gphoto2/actions.c:2199
+#, c-format
+msgid "Failed to set new configuration value %s for configuration entry %s."
+msgstr "구성 항목 %2$s에 새 구성 값 %1$s 설정에 실패했습니다."
+
+#: gphoto2/actions.c:2044
+#, c-format
+msgid "The %s widget has no indexed list of choices. Use --set-config-value instead."
+msgstr "%s 위젯에 선택 색인 목록이 없습니다. --set-config-value를 대신 사용하십시오."
+
+#: gphoto2/foreach.c:272
+#, c-format
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s' or its subfolders. Please obtain a valid file number from a file listing first."
+msgstr "잘못된 파일 번호. %i번을 지정했지만, 파일 %i개만이 '%s' 또는 해당 위치의 하위 폴더에 있습니다. 우선 파일 목록에서 적절한 파일번호를 가져오십시오."
+
+#: gphoto2/foreach.c:297
+#, c-format
+msgid "There are no files in folder '%s'."
+msgstr "'%s' 폴더에 파일이 없습니다."
+
+#: gphoto2/foreach.c:303
+#, c-format
+msgid "Bad file number. You specified %i, but there is only 1 file available in '%s'."
+msgstr "잘못된 파일 번호. %i번을 지정했지만, 파일 한개만 '%s' 위치에 있습니다."
+
+#: gphoto2/foreach.c:311
+#, c-format
+msgid "Bad file number. You specified %i, but there are only %i files available in '%s'. Please obtain a valid file number from a file listing first."
+msgstr "잘못된 파일 번호. %i번을 지정했지만, 파일 %i개반이 '%s' 위치에 있습니다. 우선 파일 목록에서 적절한 파일번호를 가져오십시오."
+
+#: gphoto2/gp-params.c:70
+#, c-format
+msgid "*** Error ***              \n"
+msgstr "*** 오류 ***               \n"
+
+#: gphoto2/gp-params.c:243
+#, c-format
+msgid "Press any key to continue.\n"
+msgstr "계속하려면 아무 키나 누르십시오.\n"
+
+#: gphoto2/gp-params.c:266
+#, c-format
+msgid "Not enough memory."
+msgstr "메모리가 부족합니다."
+
+#: gphoto2/gphoto2-cmd-capture.c:197
+msgid "Operation cancelled"
+msgstr "동작을 취소했습니다"
+
+#: gphoto2/gphoto2-cmd-config.c:63
+msgid "</B/24>Continue"
+msgstr "</B/24>계속"
+
+#: gphoto2/gphoto2-cmd-config.c:63
+msgid "</B16>Cancel"
+msgstr "</B16>취소"
+
+#: gphoto2/gphoto2-cmd-config.c:69
+msgid "<C></5>Error"
+msgstr "<C></5>오류"
+
+#: gphoto2/gphoto2-cmd-config.c:71
+msgid "Could not set configuration:"
+msgstr "설정할 수 없습니다:"
+
+#: gphoto2/gphoto2-cmd-config.c:115
+msgid "Exit"
+msgstr "나가기"
+
+#: gphoto2/gphoto2-cmd-config.c:117
+msgid "Back"
+msgstr "뒤로"
+
+#: gphoto2/gphoto2-cmd-config.c:262
+msgid "Time: "
+msgstr "시간: "
+
+#: gphoto2/gphoto2-cmd-config.c:321 gphoto2/gphoto2-cmd-config.c:349
+#: gphoto2/gphoto2-cmd-config.c:409 gphoto2/gphoto2-cmd-config.c:472
+msgid "Value: "
+msgstr "값: "
+
+#: gphoto2/gphoto2-cmd-config.c:371
+msgid "Yes"
+msgstr "예"
+
+#: gphoto2/gphoto2-cmd-config.c:371
+msgid "No"
+msgstr "아니요"
+
+#: gphoto2/main.c:221
+#, c-format
+msgid "Zero padding numbers in file names is only possible with %%n."
+msgstr "파일 이름의 빈자리 0 채움 숫자는 %%n으로만 가능합니다."
+
+#: gphoto2/main.c:230
+#, c-format
+msgid "You cannot use %%n zero padding without a precision value!"
+msgstr "정밀 값이 아닌 값에 %%n 빈자리 0 채움 숫자를 사용할 수 없습니다!"
+
+#: gphoto2/main.c:263
+#, c-format
+msgid "The filename provided by the camera ('%s') does not contain a suffix!"
+msgstr "카메라에서 지정한 파일 이름('%s')에 접미부가 없습니다!"
+
+#: gphoto2/main.c:332
+#, c-format
+msgid "Invalid format '%s' (error at position %i)."
+msgstr "잘못된 '%s' 형식(%i번 위치 오류)."
+
+#: gphoto2/main.c:387 gphoto2/main.c:593
+#, c-format
+msgid "Skip existing file %s\n"
+msgstr "기존 %s 파일 건너뛰기\n"
+
+#: gphoto2/main.c:399
+#, c-format
+msgid "File %s exists. Overwrite? [y|n] "
+msgstr "%s 파일이 이미 있습니다. 덮어쓰시겠습니까? [y|n] "
+
+#: gphoto2/main.c:411
+#, c-format
+msgid "Specify new filename? [y|n] "
+msgstr "새 파일 이름을 지정하시겠습니까? [y|n] "
+
+#: gphoto2/main.c:423
+#, c-format
+msgid "Enter new filename: "
+msgstr "새 파일 이름 입력 : "
+
+#: gphoto2/main.c:429
+#, c-format
+msgid "Saving file as %s\n"
+msgstr "%s 파일로 저장하는 중\n"
+
+#: gphoto2/main.c:631
+msgid "Permission denied"
+msgstr "권한 거부"
+
+#: gphoto2/main.c:801
+msgid "Could not trigger capture."
+msgstr "촬영을 수행할 수 없습니다."
+
+#: gphoto2/main.c:831
+#, c-format
+msgid "New file is in location %s%s%s on the camera\n"
+msgstr "카메라의 %s%s%s 위치에 새 파일을 넣었습니다\n"
+
+#: gphoto2/main.c:848 gphoto2/main.c:879
+#, c-format
+msgid "Keeping file %s%s%s on the camera\n"
+msgstr "카메라의 %s%s%s 파일을 보존합니다\n"
+
+#: gphoto2/main.c:869
+#, c-format
+msgid "Deleting file %s%s%s on the camera\n"
+msgstr "카메라의 %s%s%s 파일 삭제 중\n"
+
+#: gphoto2/main.c:912
+#, c-format
+msgid "Event FOLDER_ADDED %s/%s during wait, ignoring.\n"
+msgstr "기다리는 동안 FOLDER_ADDED %s/%s 이벤트가 나타났습니다만, 무시합니다.\n"
+
+#: gphoto2/main.c:917
+#, c-format
+msgid "Event FILE_CHANGED %s/%s during wait, ignoring.\n"
+msgstr "기다리는 동안 FILE_CHANGED %s/%s 이벤트가 나타났습니다만, 무시합니다.\n"
+
+#: gphoto2/main.c:927
+#, c-format
+msgid "Event UNKNOWN %s during wait, ignoring.\n"
+msgstr "알 수 없는 %s 이벤트 발생, 무시합니다.\n"
+
+# NOTE: 여기서 말하는 bulb는 전구가 아님. "노출 촬영".
+#: gphoto2/main.c:933
+#, c-format
+msgid "Unknown event type %d during bulb wait, ignoring.\n"
+msgstr "노출 촬영 동작을 기다리는 동안 알 수 없는 %d 이벤트 형식, 무시합니다.\n"
+
+#: gphoto2/main.c:951
+msgid "Could not get capabilities?"
+msgstr "가용 기능 정보를 가져올 수 없습니다?"
+
+#: gphoto2/main.c:959
+#, c-format
+msgid "Time-lapse mode enabled (interval: %ds).\n"
+msgstr "시간차 촬영 모드를 사용합니다(촬영간격: %d초).\n"
+
+#: gphoto2/main.c:962
+#, c-format
+msgid "Standing by waiting for SIGUSR1 to capture.\n"
+msgstr "SIGUSR1 시그널을 촬영 동작 전 기다립니다.\n"
+
+#: gphoto2/main.c:968
+#, c-format
+msgid "Bulb mode enabled (exposure time: %ds).\n"
+msgstr "노출 촬영 모드를 사용합니다 (노출 시간: %d초).\n"
+
+#: gphoto2/main.c:976
+#, c-format
+msgid "Capturing frame #%d...\n"
+msgstr "프레임 %d번 촬영 중...\n"
+
+#: gphoto2/main.c:978
+#, c-format
+msgid "Capturing frame #%d/%d...\n"
+msgstr "프레임 %d/%d번 촬영 중...\n"
+
+#: gphoto2/main.c:988
+#, c-format
+msgid "Could not set bulb capture, result %d."
+msgstr "노출 촬영을 설정할 수 없어, %d값을 반환합니다."
+
+#: gphoto2/main.c:1002
+msgid "Could not end capture (bulb mode)."
+msgstr "촬영을 끝낼 수 없습니다 (노출 촬영 모드)."
+
+#: gphoto2/main.c:1015
+msgid "Could not trigger image capture."
+msgstr "사진 촬영을 수행할 수 없습니다."
+
+#: gphoto2/main.c:1022
+msgid "Could not capture image."
+msgstr "사진을 촬영할 수 없습니다."
+
+#: gphoto2/main.c:1029
+#, c-format
+msgid "Capture failed (auto-focus problem?)...\n"
+msgstr "촬영 실패(자동-초점 문제?)...\n"
+
+#: gphoto2/main.c:1040
+msgid "Could not capture."
+msgstr "촬영할 수 없습니다."
+
+#: gphoto2/main.c:1075
+#, c-format
+msgid "Waiting for next capture slot %ld seconds...\n"
+msgstr "다음 촬영 슬롯 %ld초 기다리는 중...\n"
+
+#: gphoto2/main.c:1084 gphoto2/main.c:1126
+#, c-format
+msgid "Awakened by SIGUSR1...\n"
+msgstr "SIGUSR1으로 복귀합니다...\n"
+
+#: gphoto2/main.c:1097
+#, c-format
+msgid "not sleeping (%ld seconds behind schedule)\n"
+msgstr "대기 상태 아님 (일정 수행 %ld초 전)\n"
+
+#: gphoto2/main.c:1241
+#, c-format
+msgid "ERROR: "
+msgstr "오류 : "
+
+#: gphoto2/main.c:1264
+#, c-format
+msgid ""
+"\n"
+"Aborting...\n"
+msgstr ""
+"\n"
+"중단 중...\n"
+
+#: gphoto2/main.c:1270
+#, c-format
+msgid "Aborted.\n"
+msgstr "중단함.\n"
+
+#: gphoto2/main.c:1275
+#, c-format
+msgid ""
+"\n"
+"Cancelling...\n"
+msgstr ""
+"\n"
+"취소 중...\n"
+
+#: gphoto2/main.c:1428
+#, c-format
+msgid "Use the following syntax a:b=c:d to treat any USB device detected as a:b as c:d instead. a b c d should be hexadecimal numbers beginning with '0x'.\n"
+msgstr "c:d 대신 a:b로 감지하는 USB 장치를 처리하려면 a:b=c:d 문법을 활용하십시오. a b c d는 '0x'로 시작하는 16진수여야 합니다.\n"
+
+#: gphoto2/main.c:1616
+msgid "gphoto2 has been compiled without support for CDK."
+msgstr "CDK 지원이 빠진 채로 gphoto2를 컴파일했습니다."
+
+#: gphoto2/main.c:1886
+#, c-format
+msgid "Operation cancelled.\n"
+msgstr "동작을 취소했습니다.\n"
+
+#: gphoto2/main.c:1890
+#, c-format
+msgid ""
+"*** Error: No camera found. ***\n"
+"\n"
+msgstr ""
+"*** 오류: 카메라가 없습니다. ***\n"
+"\n"
+
+#: gphoto2/main.c:1892
+#, c-format
+msgid ""
+"*** Error (%i: '%s') ***       \n"
+"\n"
+msgstr ""
+"*** 오류  (%i: '%s') ***       \n"
+"\n"
+
+#: gphoto2/main.c:1897
+#, c-format
+msgid ""
+"For debugging messages, please use the --debug option.\n"
+"Debugging messages may help finding a solution to your problem.\n"
+"If you intend to send any error or debug messages to the gphoto\n"
+"developer mailing list <gphoto-devel@lists.sourceforge.net>, please run\n"
+"gphoto2 as follows:\n"
+"\n"
+msgstr ""
+"디버깅 메시지를 출력하려면, --debug 옵션을 사용하십시오.\n"
+"디버깅 메시지를 사용하면 문제 해결 탐색에 도움을 줄 수 있습니다.\n"
+"gphoto 개발자 메일링 리스트 <gphoto-devel@lists.sourceforge.net>로\n"
+"오류 메시지 또는 디버깅 메시지를 보내시려면, 다음과 같이 gphoto2를 실행\n"
+"하십시오: \n"
+"\n"
+"\n"
+
+#: gphoto2/main.c:1918
+#, c-format
+msgid ""
+"Please make sure there is sufficient quoting around the arguments.\n"
+"\n"
+msgstr ""
+"인자 주변에 따옴표로 완전히 감쌌는지 확인하십시오.\n"
+"\n"
+
+#: gphoto2/main.c:1985
+msgid "Print complete help message on program usage"
+msgstr "프로그램 사용법 출력시 전체 도움말 메시지를 출력합니다"
+
+#: gphoto2/main.c:1987
+msgid "Print short message on program usage"
+msgstr "프로그램 사용법 출력시 간단한 메시지를 출력합니다"
+
+#: gphoto2/main.c:1989
+msgid "Turn on debugging"
+msgstr "디버깅을 켭니다"
+
+#: gphoto2/main.c:1991
+msgid "Set debug level [error|debug|data|all]"
+msgstr "디버깅 수준을 설정합니다 [error|debug|data|all]"
+
+#: gphoto2/main.c:1993
+msgid "Name of file to write debug info to"
+msgstr "디버깅 정보를 기록할 파일 이름입니다"
+
+#: gphoto2/main.c:1993 gphoto2/main.c:2000 gphoto2/main.c:2006
+#: gphoto2/main.c:2133
+msgid "FILENAME"
+msgstr "<파일이름>"
+
+#: gphoto2/main.c:1995
+msgid "Quiet output (default=verbose)"
+msgstr "출력 안함(기본값=verbose)"
+
+#: gphoto2/main.c:1997
+msgid "Simple parsable output (implies quiet)"
+msgstr "해석가능한 간단한 출력(quiet 함축)"
+
+#: gphoto2/main.c:1999
+msgid "Hook script to call after downloads, captures, etc."
+msgstr "다운로드, 촬영 등 이후 호출할 후크 스크립트입니다"
+
+#: gphoto2/main.c:2006
+msgid "Specify device port"
+msgstr "장치 포트를 지정합니다"
+
+#: gphoto2/main.c:2008
+msgid "Specify serial transfer speed"
+msgstr "직렬 포트 전송 속도를 지정합니다"
+
+#: gphoto2/main.c:2008
+msgid "SPEED"
+msgstr "<속도>"
+
+#: gphoto2/main.c:2010
+msgid "Specify camera model"
+msgstr "카메라 모델을 지정합니다"
+
+#: gphoto2/main.c:2010
+msgid "MODEL"
+msgstr "<모델>"
+
+#: gphoto2/main.c:2012
+msgid "(expert only) Override USB IDs"
+msgstr "(전문가 전용) USB ID를 대신 활용합니다"
+
+#: gphoto2/main.c:2012
+msgid "USBIDs"
+msgstr "<USB_ID>"
+
+#: gphoto2/main.c:2018
+msgid "Display version and exit"
+msgstr "버전을 나타내고 나갑니다"
+
+#: gphoto2/main.c:2020
+msgid "List supported camera models"
+msgstr "지원 카메라 모델을 목록으로 보여줍니다"
+
+#: gphoto2/main.c:2022
+msgid "List supported port devices"
+msgstr "지원 포트 장치를 목록으로 보여줍니다"
+
+#: gphoto2/main.c:2024
+msgid "Display the camera/driver abilities in the libgphoto2 database"
+msgstr "libgphoto2 데이터베이스에 있는 카메라/드라이버 기능을 나타냅니다"
+
+#: gphoto2/main.c:2031
+msgid "Configure"
+msgstr "설정"
+
+#: gphoto2/main.c:2034
+msgid "List configuration tree"
+msgstr "구성 트리를 목록으로 보여줍니다"
+
+#: gphoto2/main.c:2036
+msgid "Dump full configuration tree"
+msgstr "전체 설정 트리를 덤핑합니다"
+
+#: gphoto2/main.c:2038
+msgid "Get configuration value"
+msgstr "구성 값을 가져옵니다"
+
+#: gphoto2/main.c:2040
+msgid "Set configuration value or index in choices"
+msgstr "구성 값 또는 선택 색인 값을 설정합니다"
+
+#: gphoto2/main.c:2042
+msgid "Set configuration value index in choices"
+msgstr "선택한 구성 값 색인을 설정합니다"
+
+#: gphoto2/main.c:2044
+msgid "Set configuration value"
+msgstr "구성 값을 설정합니다"
+
+#: gphoto2/main.c:2046
+msgid "Reset device port"
+msgstr "장치 포트를 초기화합니다"
+
+#: gphoto2/main.c:2052
+msgid "Keep images on camera after capturing"
+msgstr "촬영후 카메라 사진을 보존합니다"
+
+#: gphoto2/main.c:2054
+msgid "Keep RAW images on camera after capturing"
+msgstr "촬영후 카메라 원시 사진을 보존합니다"
+
+#: gphoto2/main.c:2056
+msgid "Remove images from camera after capturing"
+msgstr "촬영후 카메라 사진을 제거합니다"
+
+#: gphoto2/main.c:2058
+msgid "Wait for event(s) from camera"
+msgstr "카메라 이벤트를 기다립니다"
+
+#: gphoto2/main.c:2058 gphoto2/main.c:2060 gphoto2/main.c:2086
+msgid "EVENT"
+msgstr "<이벤트>"
+
+#: gphoto2/main.c:2060
+msgid "Wait for event(s) from the camera and download new images"
+msgstr "카메라의 이벤트와 새 사진 다운로드를 기다립니다"
+
+#: gphoto2/main.c:2063
+msgid "Capture a quick preview"
+msgstr "간단한 미리 보기 촬영"
+
+#: gphoto2/main.c:2066
+msgid "Show a quick preview as Ascii Art"
+msgstr "ASCII 아트 형식의 간단한 미리 보기를 보여줍니다"
+
+#: gphoto2/main.c:2068
+msgid "Set bulb exposure time in seconds"
+msgstr "초 단위 노출 촬영 노출 시간을 설정합니다"
+
+#: gphoto2/main.c:2068 gphoto2/main.c:2072
+msgid "SECONDS"
+msgstr "<초>"
+
+#: gphoto2/main.c:2070
+msgid "Set number of frames to capture (default=infinite)"
+msgstr "촬영할 프레임 수를 설정합니다(기본값=무한)"
+
+#: gphoto2/main.c:2070
+msgid "COUNT"
+msgstr "<횟수>"
+
+#: gphoto2/main.c:2072
+msgid "Set capture interval in seconds"
+msgstr "촬영할 초 단위 시간을 지정합니다"
+
+#: gphoto2/main.c:2074
+msgid "Reset capture interval on signal (default=no)"
+msgstr "촬영 시그널 간격을 초기화합니다(기본값=no)"
+
+#: gphoto2/main.c:2076
+msgid "Capture an image"
+msgstr "사진 촬영"
+
+#: gphoto2/main.c:2078
+msgid "Trigger capture of an image"
+msgstr "사진 촬영을 수행합니다"
+
+#: gphoto2/main.c:2080
+msgid "Capture an image and download it"
+msgstr "사진을 촬영하고 다운로드"
+
+#: gphoto2/main.c:2082
+msgid "Capture a movie"
+msgstr "영상 촬영"
+
+#: gphoto2/main.c:2082
+msgid "COUNT or SECONDS"
+msgstr "<횟수> 또는 <초>"
+
+#: gphoto2/main.c:2084
+msgid "Capture an audio clip"
+msgstr "오디오 클립 촬영"
+
+#: gphoto2/main.c:2086
+msgid "Wait for shutter release on the camera and download"
+msgstr "카메라의 셔터를 누르고 다운로드하는 동작을 기다립니다"
+
+#: gphoto2/main.c:2092
+msgid "List folders in folder"
+msgstr "폴더의 폴더를 목록으로 보여줍니다"
+
+#: gphoto2/main.c:2094
+msgid "List files in folder"
+msgstr "폴더의 파일을 목록으로 보여줍니다"
+
+#: gphoto2/main.c:2096
+msgid "Create a directory"
+msgstr "디렉터리를 만듭니"
+
+#: gphoto2/main.c:2096 gphoto2/main.c:2098
+msgid "DIRNAME"
+msgstr "<디렉터리이름>"
+
+#: gphoto2/main.c:2098
+msgid "Remove a directory"
+msgstr "디렉터리를 제거합니다"
+
+#: gphoto2/main.c:2100
+msgid "Display number of files"
+msgstr "파일 갯수 표시"
+
+#: gphoto2/main.c:2102
+msgid "Get files given in range"
+msgstr "주어진 범위의 파일을 가져옵니다"
+
+#: gphoto2/main.c:2102 gphoto2/main.c:2106 gphoto2/main.c:2111
+#: gphoto2/main.c:2118 gphoto2/main.c:2124 gphoto2/main.c:2129
+msgid "RANGE"
+msgstr "<범위>"
+
+#: gphoto2/main.c:2104
+msgid "Get all files from folder"
+msgstr "폴더의 모든 파일을 가져옵니다"
+
+#: gphoto2/main.c:2106
+msgid "Get thumbnails given in range"
+msgstr "주어진 범위의 미리 보기 사진을 가져옵니다"
+
+#: gphoto2/main.c:2109
+msgid "Get all thumbnails from folder"
+msgstr "폴더의 모든 미리 보기 사진을 가져옵니다"
+
+#: gphoto2/main.c:2111
+msgid "Get metadata given in range"
+msgstr "주어진 범위의 메타데이터를 가져옵니다"
+
+#: gphoto2/main.c:2113
+msgid "Get all metadata from folder"
+msgstr "폴더의 모든 메타데이터를 가져옵니다"
+
+#: gphoto2/main.c:2115
+msgid "Upload metadata for file"
+msgstr "파일의 메타데이터를 업로드합니다"
+
+#: gphoto2/main.c:2118
+msgid "Get raw data given in range"
+msgstr "주어진 범위의 원시 데이터를 가져옵니다"
+
+#: gphoto2/main.c:2121
+msgid "Get all raw data from folder"
+msgstr "폴더의 모든 원시 데이터를 가져옵니다"
+
+#: gphoto2/main.c:2124
+msgid "Get audio data given in range"
+msgstr "주어진 범위의 오디오 데이터를 가져옵니다"
+
+#: gphoto2/main.c:2127
+msgid "Get all audio data from folder"
+msgstr "폴더의 모든 오디오 데이터를 가져옵니다"
+
+#: gphoto2/main.c:2129
+msgid "Delete files given in range"
+msgstr "주어진 범위의 파일을 삭제합니다"
+
+#: gphoto2/main.c:2131
+msgid "Delete all files in folder (--no-recurse by default)"
+msgstr "폴더의 모든 파일 삭제 (기본 옵션: --no-recurse)"
+
+#: gphoto2/main.c:2133
+msgid "Upload a file to camera"
+msgstr "파일을 카메라로 업로드합니다"
+
+#: gphoto2/main.c:2135
+msgid "Specify a filename or filename pattern"
+msgstr "파일 이름 또는 파일 이름 패턴을 지정합니다"
+
+#: gphoto2/main.c:2135
+msgid "FILENAME_PATTERN"
+msgstr "<파일이름_패턴>"
+
+#: gphoto2/main.c:2137
+#, c-format
+msgid "Specify the number a filename %%n will starts with (default 1)"
+msgstr "시작할 파일 이름 번호 %%n번을 지정합니다(기본값 1)"
+
+#: gphoto2/main.c:2137
+msgid "NUMBER"
+msgstr "<숫자>"
+
+#: gphoto2/main.c:2139
+msgid "Specify camera folder (default=\"/\")"
+msgstr "카메라 폴더를 지정합니다(기본값=\"/\")"
+
+#: gphoto2/main.c:2139
+msgid "FOLDER"
+msgstr "<폴더>"
+
+#: gphoto2/main.c:2141
+msgid "Recursion (default for download)"
+msgstr "재귀(다운로드용 기본값)"
+
+#: gphoto2/main.c:2143
+msgid "No recursion (default for deletion)"
+msgstr "비재귀(삭제용 기본값)"
+
+#: gphoto2/main.c:2145
+msgid "Process new files only"
+msgstr "새 파일만 처리합니다"
+
+#: gphoto2/main.c:2147
+msgid "Overwrite files without asking"
+msgstr "물어보지 않고 파일을 덮어씁니다"
+
+#: gphoto2/main.c:2149
+msgid "Skip existing files"
+msgstr "기존 파일을 건너뜁니다"
+
+#: gphoto2/main.c:2155
+msgid "Send file to stdout"
+msgstr "파일을 표준 출력으로 내보냅니다"
+
+#: gphoto2/main.c:2157
+msgid "Print filesize before data"
+msgstr "데이터 출력 전 파일 크기를 출력합니다"
+
+#: gphoto2/main.c:2159
+msgid "List auto-detected cameras"
+msgstr "자동 감지 카메라를 목록으로 보여줍니다"
+
+#: gphoto2/main.c:2163 gphoto2/shell.c:143
+msgid "Show EXIF information of JPEG images"
+msgstr "JPEG 사진의 EXIF 정보를 보여줍니다"
+
+#: gphoto2/main.c:2166 gphoto2/shell.c:137
+msgid "Show image information, like width, height, and capture time"
+msgstr "너비, 높이, 촬영 시각 같은 사진 정보를 보여줍니다"
+
+#: gphoto2/main.c:2168 gphoto2/shell.c:150
+msgid "Show camera summary"
+msgstr "카메라 요약 정보를 보여줍니다"
+
+#: gphoto2/main.c:2170
+msgid "Show camera driver manual"
+msgstr "카메라 드라이버 설명서를 보여줍니다"
+
+#: gphoto2/main.c:2172
+msgid "About the camera driver manual"
+msgstr "카메라 드라이버 설명서 정보"
+
+#: gphoto2/main.c:2174 gphoto2/shell.c:151
+msgid "Show storage information"
+msgstr "저장소 정보를 보여줍니다"
+
+#: gphoto2/main.c:2176
+msgid "gPhoto shell"
+msgstr "gPhoto 셸"
+
+#: gphoto2/main.c:2182
+msgid "Common options"
+msgstr "명령 옵션"
+
+#: gphoto2/main.c:2184
+msgid "Miscellaneous options (unsorted)"
+msgstr "기타 옵션(정렬 안함)"
+
+#: gphoto2/main.c:2186
+msgid "Get information on software and host system (not from the camera)"
+msgstr "프로그램과 호스트 시스템(카메라 아님)의 정보를 가져옵니다"
+
+#: gphoto2/main.c:2188
+msgid "Specify the camera to use"
+msgstr "사용할 카메라를 지정하십시오"
+
+#: gphoto2/main.c:2190
+msgid "Camera and software configuration"
+msgstr "카메라 및 프로그램 설정"
+
+#: gphoto2/main.c:2192
+msgid "Capture an image from or on the camera"
+msgstr "카메라의 사진 촬영"
+
+#: gphoto2/main.c:2194
+msgid "Downloading, uploading and manipulating files"
+msgstr "파일을 다운로드, 업로드 및 수정합니다"
+
+#: gphoto2/main.c:2249
+msgid "EVENT can be either COUNT, SECONDS, MILLISECONDS, or MATCHSTRING.\n"
+msgstr "<이벤트>는 <횟수>, <초>, <밀리초>, <일치문자열>일 수 있습니다.\n"
+
+#: gphoto2/main.c:2412 gphoto2/main.c:2461
+#, c-format
+msgid "Port %s not found\n"
+msgstr "%s 포트가 없습니다\n"
+
+#: gphoto2/range.c:107 gphoto2/range.c:161
+#, c-format
+msgid ""
+"%s\n"
+"Image IDs must be a number greater than zero."
+msgstr ""
+"%s\n"
+"사진 ID 값은 0보다 커야 합니다."
+
+#: gphoto2/range.c:113 gphoto2/range.c:167
+#, c-format
+msgid ""
+"%s\n"
+"Image ID %i too high."
+msgstr ""
+"%s\n"
+"%i 사진 ID 값이 너무 큽니다."
+
+#: gphoto2/range.c:129
+#, c-format
+msgid ""
+"%s\n"
+"Ranges must be separated by ','."
+msgstr ""
+"%s\n"
+"범위 값은 쉼표','로 구분해야 합니다."
+
+#: gphoto2/range.c:143
+#, c-format
+msgid ""
+"%s\n"
+"Ranges need to start with a number."
+msgstr ""
+"%s\n"
+"범위 값은 숫자로 시작해야합니다."
+
+#: gphoto2/range.c:183
+#, c-format
+msgid ""
+"%s\n"
+"Unexpected character '%c'."
+msgstr ""
+"%s\n"
+"예기치 못한 문자 '%c'."
+
+#: gphoto2/range.c:207
+#, c-format
+msgid ""
+"%s\n"
+"Decreasing ranges are not allowed. You specified a range from %i to %i."
+msgstr ""
+"%s\n"
+"범위 축소를 허용하지 않습니다. %i에서 %i까지 범위를 지정했습니다."
+
+#: gphoto2/shell.c:67
+#, c-format
+msgid "*** Error (%i: '%s') ***"
+msgstr "*** 오류  (%i: '%s') ***"
+
+#: gphoto2/shell.c:126
+msgid "Change to a directory on the camera"
+msgstr "카메라의 디렉터리 위치를 바꿉니다"
+
+#: gphoto2/shell.c:127 gphoto2/shell.c:129 gphoto2/shell.c:140
+#: gphoto2/shell.c:141
+msgid "directory"
+msgstr "디렉터리"
+
+#: gphoto2/shell.c:128
+msgid "Change to a directory on the local drive"
+msgstr "로컬 드라이브의 디렉터리 위치를 바꿉니다"
+
+#: gphoto2/shell.c:130 gphoto2/shell.c:164 gphoto2/shell.c:165
+msgid "Exit the gPhoto shell"
+msgstr "gPhoto 셸을 나갑니다"
+
+#: gphoto2/shell.c:131
+msgid "Download a file"
+msgstr "파일을 다운로드 합니다"
+
+#: gphoto2/shell.c:131 gphoto2/shell.c:132 gphoto2/shell.c:134
+#: gphoto2/shell.c:136 gphoto2/shell.c:138 gphoto2/shell.c:139
+#: gphoto2/shell.c:144
+msgid "[directory/]filename"
+msgstr "[<디렉터리>/]<파일이름>"
+
+#: gphoto2/shell.c:132
+msgid "Upload a file"
+msgstr "파일 업로드"
+
+#: gphoto2/shell.c:133
+msgid "Download a thumbnail"
+msgstr "미리 보기 사진을 다운로드 합니다"
+
+#: gphoto2/shell.c:135
+msgid "Download raw data"
+msgstr "원시 데이터를 다운로드합니다"
+
+#: gphoto2/shell.c:139
+msgid "Delete"
+msgstr "삭제"
+
+#: gphoto2/shell.c:140
+msgid "Create Directory"
+msgstr "디렉터리를 만듭니다"
+
+#: gphoto2/shell.c:141
+msgid "Remove Directory"
+msgstr "디렉터리 제거"
+
+#: gphoto2/shell.c:146 gphoto2/shell.c:166
+msgid "Displays command usage"
+msgstr "명령 사용법을 나타냅니다"
+
+#: gphoto2/shell.c:147 gphoto2/shell.c:166
+msgid "[command]"
+msgstr "[<명령>]"
+
+#: gphoto2/shell.c:148
+msgid "List the contents of the current directory"
+msgstr "현재 디렉터리 내용 목록"
+
+#: gphoto2/shell.c:149
+msgid "[directory/]"
+msgstr "[<디렉터리>/]"
+
+#: gphoto2/shell.c:152
+msgid "List configuration variables"
+msgstr "구성 변수 목록"
+
+#: gphoto2/shell.c:153
+msgid "Get configuration variable"
+msgstr "구성 변수 값 가져오기"
+
+#: gphoto2/shell.c:153
+msgid "name"
+msgstr "이름"
+
+#: gphoto2/shell.c:154 gphoto2/shell.c:156
+msgid "Set configuration variable"
+msgstr "구성 변수 설정"
+
+#: gphoto2/shell.c:154 gphoto2/shell.c:156
+msgid "name=value"
+msgstr "이름=값"
+
+#: gphoto2/shell.c:155
+msgid "Set configuration variable index"
+msgstr "구성 변수 색인을 설정합니다"
+
+#: gphoto2/shell.c:155
+msgid "name=valueindex"
+msgstr "이름=값_색인"
+
+#: gphoto2/shell.c:157
+msgid "Triggers the capture of a single image"
+msgstr "단일 사진을 촬영할 트리거"
+
+#: gphoto2/shell.c:158
+msgid "Capture a single image"
+msgstr "단일 사진 촬영"
+
+#: gphoto2/shell.c:159
+msgid "Capture a single image and download it"
+msgstr "단일 사진을 촬영하고 다운로드"
+
+#: gphoto2/shell.c:160
+msgid "Capture a preview image"
+msgstr "미리 보기 사진 촬영"
+
+#: gphoto2/shell.c:161
+msgid "Wait for an event"
+msgstr "이벤트를 기다립니다"
+
+#: gphoto2/shell.c:161 gphoto2/shell.c:162 gphoto2/shell.c:163
+msgid "count or seconds"
+msgstr "횟수 또는 초"
+
+#: gphoto2/shell.c:162
+msgid "Wait for images to be captured and download it"
+msgstr "촬영하고 다운로드할 사진을 기다립니다"
+
+#: gphoto2/shell.c:163
+msgid "Wait for events and images to be captured and download it"
+msgstr "이벤트와 촬영하고 다운로드할 사진을 기다립니다"
+
+#: gphoto2/shell.c:488
+msgid "Invalid command."
+msgstr "잘못된 명령입니다."
+
+#: gphoto2/shell.c:497
+#, c-format
+msgid "The command '%s' requires an argument."
+msgstr "'%s' 명령에 인자가 필요합니다."
+
+#: gphoto2/shell.c:550
+msgid "Invalid path."
+msgstr "잘못된 경로입니다."
+
+#: gphoto2/shell.c:596
+msgid "Could not find home directory."
+msgstr "홈 디렉터리가 없습니다."
+
+#: gphoto2/shell.c:605
+#, c-format
+msgid "Could not change to local directory '%s'."
+msgstr "'%s' 로컬 디렉터리를 바꿀 수 없습니다."
+
+#: gphoto2/shell.c:608
+#, c-format
+msgid "Local directory now '%s'."
+msgstr "현재 로컬 디렉터리는 '%s'입니다."
+
+#: gphoto2/shell.c:646
+#, c-format
+msgid "Remote directory now '%s'."
+msgstr "현재 원격 디렉터리는 '%s'입니다."
+
+#: gphoto2/shell.c:874
+#, c-format
+msgid "set-config needs a second argument.\n"
+msgstr "set-config에 두번째 인자가 필요합니다.\n"
+
+#: gphoto2/shell.c:895
+#, c-format
+msgid "set-config-value needs a second argument.\n"
+msgstr "set-config-value에 두번째 인자가 필요합니다.\n"
+
+#: gphoto2/shell.c:916
+#, c-format
+msgid "set-config-index needs a second argument.\n"
+msgstr "set-config-index에 두번째 인자가 필요합니다.\n"
+
+#: gphoto2/shell.c:979
+#, c-format
+msgid "Command '%s' not found. Use 'help' to get a list of available commands."
+msgstr "'%s' 명령이 없습니다. 가용 명령을 확인하려면 'help'를 입력하십시오."
+
+#: gphoto2/shell.c:986
+#, c-format
+msgid "Help on \"%s\":"
+msgstr "\"%s\" 도움말:"
+
+#: gphoto2/shell.c:988
+#, c-format
+msgid "Usage:"
+msgstr "사용법:"
+
+#: gphoto2/shell.c:991
+#, c-format
+msgid "Description:"
+msgstr "설명:"
+
+#: gphoto2/shell.c:993
+#, c-format
+msgid "* Arguments in brackets [] are optional"
+msgstr "* 각괄호 [] 안의 인자는 옵션입니다"
+
+#: gphoto2/shell.c:1014
+#, c-format
+msgid "Available commands:"
+msgstr "가용 명령:"
+
+#: gphoto2/shell.c:1019
+#, c-format
+msgid "To get help on a particular command, type in 'help command-name'."
+msgstr "각 명령의 도움말을 확인하려면 'help 명령어-이름'을 입력하십시오."
