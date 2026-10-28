@@ -50,6 +50,7 @@
 #include <fcntl.h>
 #include <utime.h>
 #include <limits.h>
+#include <stdint.h>
 #include <errno.h>
 #include <sys/time.h>
 
@@ -1215,14 +1216,17 @@ start_timeout_func (Camera *camera, unsigned int timeout,
 
 	pthread_create (&tid, NULL, thread_func, td);
 
-	return (unsigned int)tid;
+	/* pthread_t may be a pointer; go through intptr_t so the casts are
+	 * well-defined. The CameraTimeout*Func API still uses unsigned int
+	 * (see libgphoto2#1204 for widening that). */
+	return (unsigned int)(intptr_t)tid;
 }
 
 static void
 stop_timeout_func (Camera __unused__ *camera, unsigned int id,
 		   void __unused__ *data)
 {
-	pthread_t tid = (pthread_t)id;
+	pthread_t tid = (pthread_t)(intptr_t)id;
 
 	pthread_cancel (tid);
 	pthread_join (tid, NULL);
